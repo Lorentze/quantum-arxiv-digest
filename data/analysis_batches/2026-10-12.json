@@ -1,0 +1,1047 @@
+{
+  "analyses": [
+    {
+      "id": "2610.13880",
+      "version": 1,
+      "analysis": {
+        "summary": "系统普查小规模 two-block 群代数 qLDPC 码，给出若干有限参数范围的最优性结论及新码；重点是穷尽搜索与资源前沿，而非新的渐近码构造。",
+        "problem": "简单、可平移的 two-block 码在有限物理比特数和检查权重约束下，能够达到怎样的 n、k、d 权衡？",
+        "setting": "CSS 群代数码 n=2|G|，检查矩阵由左右正则表示构造；搜索 n≤320、检查权重 5–9，以 kd²/n 和 Pareto 前沿比较。",
+        "main_results": [
+          "作者普查约 10⁸ 个码；部分参数区间穷尽，包括 n≤200、权重 6 的阿贝尔码中 Gross 码达到 kd²/n=12 的唯一性（模等价）。",
+          "报告 [[102,20,10]]、[[120,24,10]] 权重 9 码及 [[288,16,16]] 权重 6 码；群结构引导采样的同时间优质码产出提高约 4–15 倍。"
+        ],
+        "assumptions": [
+          "有限 n 和指定检查权重、码族的比较；平移不等于严格二维几何局域。"
+        ],
+        "limitations": [
+          "已读正文定义、搜索和结果章节节选；未逐项核查附录证明、距离计算或数据库；非阿贝尔高权重搜索并非全部穷尽。"
+        ],
+        "relevance": [
+          "为固定码的逻辑表征与 qLDPC 资源成本提供具体实例和比较基准；不直接给出 SPAM 鲁棒认证。"
+        ],
+        "follow_up": [
+          "研究问题：将这些码的检查权重、连接范围及 syndrome 电路成本纳入逻辑认证资源模型。"
+        ],
+        "techniques": [
+          "等价类约化、群代数维数筛选与先找距离见证再计算精确距离；依据代数组件进行定向采样。"
+        ],
+        "relevance_score": 82,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.13880v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:15:13Z"
+      }
+    },
+    {
+      "id": "2610.13879",
+      "version": 1,
+      "analysis": {
+        "summary": "将 BP-SF 译码实现为 GPU 并行、窗口化与流式处理，优化 qLDPC 存储的延迟；主要贡献是译码实现和数值性能。",
+        "problem": "长 syndrome 历史下如何保持纠错性能，同时降低尾部译码延迟和纠正释放时间？",
+        "setting": "电路级模拟固定基存储及完整 Pauli-frame 恢复；核心实例为 [[144,12,12]] bivariate bicycle 码。",
+        "main_results": [
+          "在 p=0.002、各方法初始 BP 均于 80 次迭代内失败的匹配样本子集上，99.9% 分位调用延迟相对指定 GPU 基线改善 13.15 倍。",
+          "512 轮实验报告窗口化处理相对整体译码约 17.1 倍加速；另一流式配置的纠正释放时间由 166.29 ms 降至 36.25 ms。"
+        ],
+        "assumptions": [
+          "数字取决于指定码、噪声参数、基线、重试次数及模拟配置；13.15 倍仅针对筛选后的困难样本。"
+        ],
+        "limitations": [
+          "仅阅读官方摘要，未核查正文证明、硬件测量配置和完整噪声模型；这些加速不构成普适复杂度界。"
+        ],
+        "relevance": [
+          "与 logical QEC 的时延预算相邻，但未直接处理逻辑 fidelity 可识别性或 SPAM 鲁棒性，暂不进入主阅读列表。"
+        ],
+        "follow_up": [
+          "研究问题：解码延迟是否应作为 syndrome 驱动逻辑认证模型的显式资源？"
+        ],
+        "techniques": [
+          "独立 syndrome-flip 重试、滑动窗口、联合相关图与分层调度的 CUDA 实现。"
+        ],
+        "relevance_score": 43,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.13879v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:15:13Z"
+      }
+    },
+    {
+      "id": "2610.13784",
+      "version": 1,
+      "analysis": {
+        "summary": "在二次费米系统的 Markovian 耗散制备中，量化跳跃算符空间衰减与耗散 gap 的权衡；临界性产生代价，拓扑本身未必如此。",
+        "problem": "保持同一目标稳态时，增强 dissipator 的局域性需要付出怎样的制备时间代价？",
+        "setting": "目标为 Bogoliubov 真空，L_j=√κ∑_k B_jk a_k，B 满秩且算符范数归一；周期平移不变情形以非零权重 β_k 混合模式。",
+        "main_results": [
+          "正文给出 Δ_L=(κ/2)inf_k|β_k|²。临界点为压低空间尾部至 r^{−(m+1)} 而在 β_k 引入 m 阶零点，会产生 τ∼N^{2m}/κ 的逆 gap 时间尺度。",
+          "Kitaev 链的平庸和拓扑有隙相均可有指数局域跳跃算符及不随 N 发散的逆 gap 时间尺度；特殊曲线可严格有限范围。"
+        ],
+        "assumptions": [
+          "二次 Hamiltonian、线性损耗跳跃算符、Markovian 动力学；上述公式采用周期边界和平移不变归一化。"
+        ],
+        "limitations": [
+          "已读正文构造、公式和临界性章节节选；未核查补充材料证明。逆 gap 不自动等同固定全局 trace-distance 精度的混合时间。"
+        ],
+        "relevance": [
+          "直接提供局域性和状态制备资源的权衡，亦与费米信息任务有关；不能直接套用为一般自适应线路下界。"
+        ],
+        "follow_up": [
+          "研究问题：加入测量、反馈或非 Markovian 记忆后，这一权衡哪些部分仍成立？"
+        ],
+        "techniques": [
+          "Bogoliubov 模式混合、Fourier 系数衰减与 third quantization 的耗散谱分析。"
+        ],
+        "relevance_score": 81,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.13784v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:15:13Z"
+      }
+    },
+    {
+      "id": "2610.13694",
+      "version": 1,
+      "analysis": {
+        "summary": "提出张量网络启发的递归量子神经网络，在经典故障诊断数据集比较分类性能和电路开销。",
+        "problem": "如何在四量子比特约束下兼顾经典数据分类准确性和两比特门成本？",
+        "setting": "依次编码经典输入，递归传播量子记忆，使用 QSMOTE 平衡类别；比较四个故障诊断数据集及 QNN/RQNN 基线。",
+        "main_results": [
+          "相对 RQNN，每样本两比特门从 32 降至 24，四比特需求不变。",
+          "SPID 数据集的 F1 和 ROC-AUC 改善，但作者明确指出增大架构复杂度并非普遍提高分类表现。"
+        ],
+        "assumptions": [
+          "结论依赖具体经典数据集、架构和基线。"
+        ],
+        "limitations": [
+          "仅阅读官方摘要，未核查正文证明；摘要未提供量子数据学习保证或相对最优经典算法的量子优势。"
+        ],
+        "relevance": [
+          "属于明确排除的经典数据集通用 QML；门数下降不足以建立与量子学习资源分离的直接联系。"
+        ],
+        "follow_up": [
+          "若后续出现严格量子数据访问模型或学习复杂度界，再考虑复查。"
+        ],
+        "techniques": [
+          "邻近相互作用、递归编码及分类、消融和多随机种子数值评估。"
+        ],
+        "relevance_score": 15,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.13694v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:15:13Z"
+      }
+    },
+    {
+      "id": "2610.13609",
+      "version": 1,
+      "analysis": {
+        "summary": "为连通图态设计 GMNL Bell 不等式，建立待估关联量数量与噪声鲁棒性的权衡，同时保留器件无关 self-testing。",
+        "problem": "如何以较少相关量认证真正多体非局域性，而非仅检出一般 Bell 非局域性？",
+        "setting": "多方 Bell 实验、连通图态和二值局域测量；以所有双局域模型的界为 GMNL 判据。",
+        "main_results": [
+          "第一族仅需随参与方数线性增长的 correlators；第二族增加相关量以提高噪声鲁棒性。",
+          "第一族的双局域界为 2(n−1)，量子界为 2√(1+|N_r|²)+2(n−|N_r|−1)。最大违反给出图态和测量的 self-testing。",
+          "正文对若干小型 GHZ 实例数值计算噪声下可提取 fidelity 下界。"
+        ],
+        "assumptions": [
+          "最大违反定理要求有限维测量和各方约化态满秩；认证仅确定局域等价意义下的目标态与测量。"
+        ],
+        "limitations": [
+          "已读定义、定理和 self-testing 节选；未核查附录证明及数值证书。线性 correlator 数量不直接保证总 shots 线性。"
+        ],
+        "relevance": [
+          "与 stabilizer、非局域游戏及量子态认证直接相关，可用于比较器件无关认证与受信局域控制认证的资源。"
+        ],
+        "follow_up": [
+          "研究问题：计入违反余量、置信度和测量设置后，总 sample complexity 如何随 n 增长？"
+        ],
+        "techniques": [
+          "重加权图态 stabilizer 的 BASTA 构造、双划分界及局域提取通道的 self-testing。"
+        ],
+        "relevance_score": 85,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.13609v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:15:13Z"
+      }
+    },
+    {
+      "id": "2610.13589",
+      "version": 1,
+      "analysis": {
+        "summary": "用黑盒采样优化 Clifford deformation，显示在电路噪声下最佳码形变依赖译码器和噪声模型。",
+        "problem": "指数规模形变空间中，怎样以较少 shots 找到低逻辑错误率的候选？",
+        "setting": "旋转表面码、两种强 Z 偏置电路级噪声及 PyMatching 译码；以 EBBI 搜索局域 Clifford 形变。",
+        "main_results": [
+          "d=3 数值实验报告相对随机搜索最多约 1100 倍 shots 节省；d=5 所谓最优候选仅为作者相信最优。",
+          "B-XZZX 与 XZZX 只在 O(d^{−1}) 比例的比特上不同；特定 SI1000-like 噪声下相对优势由 d=3 的约 5% 升至 d=11 的约 12%。"
+        ],
+        "assumptions": [
+          "指定偏置噪声和译码器；性能数字来自特定有限距离实验。"
+        ],
+        "limitations": [
+          "仅阅读官方摘要，未核查正文证明；缺乏摘要层面的全局最优性和普适复杂度保证。"
+        ],
+        "relevance": [
+          "噪声与译码器必须进入 logical benchmarking 定义这一点有参考价值；主体仍是启发式码优化，暂不进入主阅读列表。"
+        ],
+        "follow_up": [
+          "研究问题：在不假定候选错误率已知时，能否建立 SPAM 鲁棒的形变比较与最小 shots 界？"
+        ],
+        "techniques": [
+          "演化搜索与 best-arm identification，将电路、噪声和译码器视作黑盒。"
+        ],
+        "relevance_score": 64,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.13589v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:15:13Z"
+      }
+    },
+    {
+      "id": "2610.13554",
+      "version": 1,
+      "analysis": {
+        "summary": "用学习到的 polar 条件分布处理未知、有记忆的经典源压缩；与量子信息访问问题没有直接联系。",
+        "problem": "未知 q 元有记忆源的精确 successive-cancellation 递归需要显式模型，且计算昂贵。",
+        "setting": "经典无损、有损压缩及带解码端经典 side information 的 Wyner–Ziv 压缩；使用源样本训练神经解码器。",
+        "main_results": [
+          "作者给出解析递归，其精确实现对字母表大小为二次、对状态空间大小为三次复杂度。",
+          "学习条件分布后估计熵率及率失真关系，并构造 polar 压缩方案；实验包括有记忆源和基因组数据。"
+        ],
+        "techniques": [
+          "神经 polar 解码、学习 test channel、互信息与失真优化。"
+        ],
+        "assumptions": [
+          "需要可用于训练的经典源数据；摘要没有给出训练样本复杂度。"
+        ],
+        "limitations": [
+          "仅阅读官方摘要，未核查正文证明。",
+          "摘要未提供量子源、量子 side information 或量子测量保证。"
+        ],
+        "relevance": [
+          "命中 side information 是经典压缩语境，并非 measurement-order separation 或量子 data hiding；本轮筛除。"
+        ],
+        "follow_up": [],
+        "relevance_score": 15,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.13554v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:17:48Z"
+      }
+    },
+    {
+      "id": "2610.13283",
+      "version": 1,
+      "analysis": {
+        "summary": "研究二进制多项式优化的线路深度编译，主要贡献是经典优化建模和启发式算法。",
+        "problem": "高于二次的目标函数节省变量编码 qubit，但缺少原生高体门会增加实现深度。",
+        "setting": "给定二进制多项式形式，寻找最浅实现线路；不是固定未知 noisy gate 的认证模型。",
+        "main_results": [
+          "作者将线路设计转化为二元线性优化，并证明一个变体 NP-complete。",
+          "提出 Tempura 启发式及较快但牺牲最优性的建模；数值比较报告更短线路。"
+        ],
+        "techniques": [
+          "二元线性规划、启发式线路编排与数值性能比较。"
+        ],
+        "assumptions": [
+          "针对多项式目标函数的实现资源；摘要未完整列出连接约束和 ancilla 约定。"
+        ],
+        "limitations": [
+          "仅阅读官方摘要，未核查复杂性证明。",
+          "启发式实验优于对照不等于一般最优深度界；没有 SPAM 或 sample-complexity 结论。"
+        ],
+        "relevance": [
+          "与线路资源相邻，但缺少你的编码、design 或认证任务上的具体保证，本轮筛除。"
+        ],
+        "follow_up": [
+          "延伸问题：其中的调度约束能否用于已知 brickwork gate 的实现成本模型？"
+        ],
+        "relevance_score": 52,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.13283v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:17:48Z"
+      }
+    },
+    {
+      "id": "2610.13153",
+      "version": 1,
+      "analysis": {
+        "summary": "NV 中心的连续波 RF 磁场探测实验，避免高频 dynamical-decoupling 脉冲，但不涉及 QEC decoupling。",
+        "problem": "高频 AC 磁场探测要求短而高功率的微波脉冲，实验控制困难。",
+        "setting": "强横向静磁场调谐 NV 自旋能级，以连续波 ODMR 检测 RF-dressed states。",
+        "main_results": [
+          "实验可调探测频率为 14.4–632 MHz。",
+          "作者报告两端灵敏度分别为 0.558 和 24.4 μT/√Hz；高横向场下 contrast 与 linewidth 劣化限制高频性能。"
+        ],
+        "techniques": [
+          "连续波 ODMR、横向偏置场调谐、对比度与线宽表征。"
+        ],
+        "assumptions": [
+          "特定 NV 实验平台与连续波驱动；不是一般量子态或量子门的查询模型。"
+        ],
+        "limitations": [
+          "仅阅读官方摘要，未核查实验误差分析。",
+          "未给出 SPAM-robust 认证、logical fidelity 或最优学习资源界。"
+        ],
+        "relevance": [
+          "关键词 decoupling 指脉冲磁力计技术，与你的 decoupling/QEC 理论不同，本轮筛除。"
+        ],
+        "follow_up": [],
+        "relevance_score": 20,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.13153v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:17:48Z"
+      }
+    },
+    {
+      "id": "2610.12782",
+      "version": 1,
+      "analysis": {
+        "summary": "通过非正规子群的 coset 左右作用扩展 lifted-product CSS 码；表示论分块和小规模认证码参数值得关注。",
+        "problem": "怎样利用非正规子群扩展 qLDPC 构造，并计算编码维数、搜索有限尺寸优良码？",
+        "setting": "A 在 F₂[G]、B 在 F₂[N_G(H)] 上，作用于 G/H；H 不必正规。",
+        "main_results": [
+          "构造保持 CSS 对易；|G| 为奇数时，维数等于不可约表示及 H 固定子空间对应的 HGP 维数之和。",
+          "作者搜索 120≤n≤400，报告 w=6 的 [[360,20,20]]、w=7 的 [[360,24,20]] 等认证码，并声称改进对应的 kd²/n 纪录。"
+        ],
+        "techniques": [
+          "可交换左右 coset 作用、群表示分块、随机参数搜索及整数规划距离认证。"
+        ],
+        "assumptions": [
+          "维数公式要求群阶为奇数；构造本身不限于此。",
+          "有限搜索限制 protograph 形状及群/子群条件。"
+        ],
+        "limitations": [
+          "阅读构造、维数公式和搜索部分；未独立复算代码矩阵或核查全部证明。",
+          "认证距离须区别于表中仅找到上界的 ≤d；未建立 decoder、阈值或逻辑操作性能。"
+        ],
+        "relevance": [
+          "表示论与 qLDPC 的直接交叉，可为 logical benchmarking 提供不同小码实例。"
+        ],
+        "follow_up": [
+          "延伸问题：coset 对称性是否同时提供可实现的逻辑 twirling 原语，而非仅压缩维数计算？"
+        ],
+        "relevance_score": 82,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.12782v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:17:48Z"
+      }
+    },
+    {
+      "id": "2610.12685",
+      "version": 1,
+      "analysis": {
+        "summary": "La-cross 逻辑控制原语可用于建立 benchmarking 资源模型。",
+        "problem": "qLDPC 的逻辑操作怎样权衡时间、ancilla 与容错距离？",
+        "setting": "primitive complete-period La-cross HGP；seed degree k≥3，距离 D。",
+        "main_results": [
+          "作者证明 automorphisms 与 H/S folds 生成完整逻辑 Clifford，模 Pauli corrections；rank-one X/Z logical 有 D 个不相交代表。",
+          "两轮 gauging 估计需 O(D² log D) ancilla；防护论证明确为 heuristic。",
+          "surface-code 接口深度 O_k(1)、CNOT 数 O_k(D²)；Proposition 13 给出指定模型下 transfer fault distance D。"
+        ],
+        "techniques": [
+          "seed 对称性、Pauli symplectic action、gauging 与 chain-map 接口。"
+        ],
+        "assumptions": [
+          "置换按重标记/atom movement 实现；S folds 间需纠错。",
+          "transfer 定理要求理想编码初态与最终 target checks、Pauli faults、无噪声解码。"
+        ],
+        "limitations": [
+          "阅读主定理与原语章节，未独立核查附录。",
+          "两轮测量仍缺完整 circuit-level 容错分析；非渐近 constant-rate 码。"
+        ],
+        "relevance": [
+          "逻辑 twirling 的具体控制模型；生成 Clifford 群尚不保证均匀采样或 SPAM robustness。"
+        ],
+        "follow_up": [
+          "延伸问题：固定 noisy gadgets 后，哪些 fidelity 参数可由 syndrome/输出识别？"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.12685v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:17:48Z"
+      }
+    },
+    {
+      "id": "2610.12597",
+      "version": 1,
+      "analysis": {
+        "summary": "稀疏图谱维数连接 Clifford 传播与 CSS 距离；连接更多未必保护更好。",
+        "problem": "图几何怎样影响传播与编码保护？",
+        "setting": "稀疏长程/二次幂图的 Floquet Clifford；CSS 专例 CNOT/I 将单 qubit 编为 [[N,1,D]]。",
+        "main_results": [
+          "作者给出谱维数 d_s=2 定位阈值；两图族同 d_s 的临界指数数值相容，p_c 仍依赖微观结构。",
+          "D=min(d_X,d_Z)：割断 winding 路径的代价与最短 winding cycle；有限 N 最优连接非单调。",
+          "示例大 N 瓶颈为 polylog 增长的 winding sector，非线性距离码。"
+        ],
+        "techniques": [
+          "Laplacian 谱、cut/percolation、tableau、有限尺寸标度与图距离。"
+        ],
+        "assumptions": [
+          "特定图分布与 Clifford/CSS；非 Clifford、finite-rate 扩展属展望。"
+        ],
+        "limitations": [
+          "阅读谱维数、临界数值与 QEC 章节，未核查全部附录。",
+          "没有 k-design 保证、noisy encoder 阈值或最优浅层编码界。"
+        ],
+        "relevance": [
+          "直接联系 random-circuit encoding 的 locality tradeoff；快速传播不能直接等同最优纠错。"
+        ],
+        "follow_up": [
+          "延伸问题：固定图与深度后，谱维数能否约束 Choi/erasure performance？"
+        ],
+        "relevance_score": 93,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.12597v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:17:48Z"
+      }
+    },
+    {
+      "id": "2610.12447",
+      "version": 1,
+      "analysis": {
+        "summary": "用ZX图的flow结构分离稳定子背景与非Clifford旋转，快速计算纠缠区间和magic上界；纠缠界有重要条件。",
+        "problem": "如何避免指数规模张量收缩，估计大线路的纠缠与非稳定子资源？",
+        "setting": "纯态制备ZX图具有flow，可化为图态后接Pauli旋转。",
+        "main_results": [
+          "作者给出图态割邻接矩阵的二元域秩±跨割旋转的二元熵之和作为纠缠界。",
+          "log stabilizer extent有按旋转相位累加的上界，无需分支不干涉条件。"
+        ],
+        "techniques": [
+          "flow提取、Pauli gadget合并和稳定子等价化简。"
+        ],
+        "assumptions": [
+          "纠缠界要求Pauli分支无相干干涉；flow保证提取效率。"
+        ],
+        "limitations": [
+          "两两合并不能认证任意大图的干涉条件；Trotter例子实际出现界失效。",
+          "已读正文normal form、纠缠界和magic界段落；附录证明未完整核查。"
+        ],
+        "relevance": [
+          "与Clifford加magic的资源分离直接相关；magic界可用于线路资源估计。"
+        ],
+        "follow_up": [
+          "研究稳定子商群中的高阶Pauli依赖，能否在特定随机线路中严格控制干涉？"
+        ],
+        "relevance_score": 86,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.12447v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:16:11Z"
+      }
+    },
+    {
+      "id": "2610.12428",
+      "version": 1,
+      "analysis": {
+        "summary": "MNIST量子分类器实验未发现训练集规模与自适应线路大小的稳定关系。",
+        "problem": "现有泛化上界能否预测Q-FLAIR停止规则产生的线路规模？",
+        "setting": "经典MNIST的3与5分类，五种训练集规模和不同随机种子。",
+        "main_results": [
+          "作者报告规模、准确率非单调变化，泛化差距与上界弱相关。"
+        ],
+        "techniques": [
+          "复现自适应线路增长，再微调并统计活跃参数门。"
+        ],
+        "assumptions": [
+          "结果针对所用数据、优化器和有限实验设置。"
+        ],
+        "limitations": [
+          "仅核查官方摘要，未核查正文证明；有限实验不能建立或否定一般缩放定律。"
+        ],
+        "relevance": [
+          "属于经典数据上的变分量子机器学习；未提供量子数据学习或资源优势保证，符合排除项。"
+        ],
+        "follow_up": [
+          "本轮不推荐；若扩展到量子数据任务再评估。"
+        ],
+        "relevance_score": 18,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.12428v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:16:11Z"
+      }
+    },
+    {
+      "id": "2610.12544",
+      "version": 1,
+      "analysis": {
+        "summary": "经典masked diffusion模型在隐马尔可夫树混合分布下获得结构相关样本复杂度。",
+        "problem": "能否同时控制并行采样误差和有限训练样本误差，避免序列空间指数依赖？",
+        "setting": "经典离散序列分布可由隐马尔可夫树的混合近似。",
+        "main_results": [
+          "作者声称KL误差ε所需样本为约O(L K_par/ε)，K_par对结构参数为多项式。"
+        ],
+        "techniques": [
+          "transformer预测器与并行解遮蔽调度的端到端统计分析。"
+        ],
+        "assumptions": [
+          "需要所述潜在结构及近似条件，不能推广到任意分布。"
+        ],
+        "limitations": [
+          "仅核查官方摘要，未核查正文证明或全部结构参数。"
+        ],
+        "relevance": [
+          "纯经典生成学习理论；关键词sample complexity不构成量子研究关联。"
+        ],
+        "follow_up": [
+          "本轮不推荐。"
+        ],
+        "relevance_score": 6,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.12544v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:16:11Z"
+      }
+    },
+    {
+      "id": "2610.12400",
+      "version": 1,
+      "analysis": {
+        "summary": "从现有syndrome学习噪声并对输出带符号重加权，在模型内消除逻辑Pauli偏差；无需另加校准线路。",
+        "problem": "syndrome能否同时支撑逻辑噪声辨识和低开销误差缓解？",
+        "setting": "稳定子码、Pauli噪声及独立故障的已知DEM结构；快速在线与高精度离线双decoder。",
+        "main_results": [
+          "条件概率协方差可逆时，作者给出最小采样倍率1+p̄ᵀΣ⁻¹p̄。",
+          "d=7码容量模拟中，大训练预算下相对原始逻辑错误抑制超过1000倍。"
+        ],
+        "techniques": [
+          "syndrome字符的对数线性反演、decoder分区、负权重抵消。"
+        ],
+        "assumptions": [
+          "需要可辨识、满秩的噪声/分区模型；全线路局部分解依赖故障独立等结构。"
+        ],
+        "limitations": [
+          "并非无需学习噪声，也非任意SPAM鲁棒认证；相干错误与真实线路噪声未被数值验证。",
+          "已读方法、noise learning、全线路和discussion；长附录证明未全面核查。"
+        ],
+        "relevance": [
+          "直接对应你的syndrome驱动logical benchmarking与最小可辨识模型问题。"
+        ],
+        "follow_up": [
+          "固定码与gadget时，哪些不可见逻辑故障使syndrome不足以确定fidelity？"
+        ],
+        "relevance_score": 96,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.12400v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:16:11Z"
+      }
+    },
+    {
+      "id": "2610.12334",
+      "version": 1,
+      "analysis": {
+        "summary": "将特定中微子多体动力学编译为量子线路，并估算深度与T门预算。",
+        "problem": "空间非均匀中微子相互作用模拟的误差和容错资源需求有多大？",
+        "setting": "特定有限程哈密顿量与TEBD2乘积公式，比较理想和含噪后端。",
+        "main_results": [
+          "作者报告理想演化验证到N=30，并将线路资源估算扩至N=50。",
+          "在所选容差下，开边界线路约需每比特1.4万T门。"
+        ],
+        "techniques": [
+          "应用模型、后端编译和旋转合成预算联合计算。"
+        ],
+        "assumptions": [
+          "资源数值取决于特定物理参数、容差和边界。"
+        ],
+        "limitations": [
+          "仅核查官方摘要，未核查正文证明；不是通用资源下界或magic优势定理。"
+        ],
+        "relevance": [
+          "虽含magic和容错资源，核心是特定物理模拟，缺少你的认证、design或测量复杂度连接。"
+        ],
+        "follow_up": [
+          "本轮不优先推荐。"
+        ],
+        "relevance_score": 38,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.12334v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:16:11Z"
+      }
+    },
+    {
+      "id": "2610.12271",
+      "version": 1,
+      "analysis": {
+        "summary": "用局部酉多项式不变量构造多方纠缠spread，并刻画平坦纠缠结构的推广。",
+        "problem": "双方纠缠谱的平坦性如何推广到D≥3方纯态？",
+        "setting": "D边着色图对应的Rényi型量；HT及更大的SHT态族。",
+        "main_results": [
+          "作者声称特定图对产生局部操作单调量，并用极小值刻画HT态。",
+          "另计算若干spread在大局部维数Haar态中的渐近期望。"
+        ],
+        "techniques": [
+          "图索引张量不变量及SHT参数化。"
+        ],
+        "assumptions": [
+          "图对须满足特定条件；部分刻画限D=3或SHT态族。"
+        ],
+        "limitations": [
+          "仅核查官方摘要，未核查正文证明、单调性的操作定义与图条件。"
+        ],
+        "relevance": [
+          "与随机态矩量有间接联系，但摘要没有design构造、decoupling或可操作学习优势结果。"
+        ],
+        "follow_up": [
+          "若研究多方高阶矩，可再核查不变量的次数与有限阶design所需阶数。"
+        ],
+        "relevance_score": 58,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.12271v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:16:11Z"
+      }
+    },
+    {
+      "id": "2610.12264",
+      "version": 1,
+      "analysis": {
+        "summary": "作者用两光子的偏振和路径自由度实现六比特纠缠编码，并以局域偶校验筛选原始密钥。主要是光学密钥生成演示，与逻辑保真度认证或 magic 资源下界联系较弱。",
+        "problem": "能否利用纠缠相关与局域校验生成公私密钥，并减少实验误码？",
+        "setting": "每光子承载一个偏振、两个路径比特；双方各持三比特，编码到经典 [3,2,2] 偶校验码。",
+        "main_results": [
+          "作者报告偏振 Bell 源的 CHSH 参数 S=2.798±0.008；正文该指标表征的是两光子偏振资源，而非独立验证全部六比特编码。",
+          "方案结合局域校验、双方相关与公开一比特通信完成密钥重建。"
+        ],
+        "techniques": [
+          "Sagnac 型 II SPDC 光源；偏振/路径 CNOT 编码与光子探测。"
+        ],
+        "assumptions": [
+          "采用指定纠缠源和编码相关结构；局域校验只检测违反奇偶约束的错误。"
+        ],
+        "limitations": [
+          "只阅读协议框架及实验表征节选，未独立核查完整安全论证或附录。",
+          "作者的无泄漏及指数攻击代价主张不能由 CHSH 违反直接推出；不据此认定具有可组合安全性或 SPAM 鲁棒认证。"
+        ],
+        "relevance": [
+          "命中 stabilizer 主要来自经典偶校验，未给出用户关心的逻辑错误识别或量子资源分离。"
+        ],
+        "follow_up": [
+          "如进一步阅读，先明确 Eve 的量子侧信息、公开通信泄漏与校验后剩余错误模型。"
+        ],
+        "relevance_score": 30,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.12264v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:17:31Z"
+      }
+    },
+    {
+      "id": "2610.12148",
+      "version": 1,
+      "analysis": {
+        "summary": "对 GBP/USD 时间序列的 1,368 种 QNN 配置作经验比较，并测试硬件噪声影响。属于经典数据上的架构调参，不直接回答量子数据学习或门认证的理论问题。",
+        "problem": "编码、ansatz、比特数、深度和代价函数如何影响金融预测？",
+        "setting": "经典汇率数据；QNN 网格搜索，与 BiLSTM 基线比较；另在 IQM Emerald 设备执行。",
+        "main_results": [
+          "作者报告最佳配置 R²=0.985，并在该实验设置中优于 BiLSTM。",
+          "作者观察门选择和排列比参数数量更关键，硬件门误差和退相干降低预测表现。"
+        ],
+        "techniques": [
+          "配置网格搜索、预测指标与执行成本比较、硬件运行。"
+        ],
+        "assumptions": [
+          "结果依赖该数据集、训练方案和选用基线；摘要未详述数据划分。"
+        ],
+        "limitations": [
+          "分析仅依据摘要；未核查正文证明、完整实验协议或统计显著性。",
+          "该 R² 比较不建立通用量子优势、样本复杂度界或 SPAM 鲁棒性。"
+        ],
+        "relevance": [
+          "属于用户排除的经典数据 QML 经验评估；circuit depth 关键词不足以形成理论关联。"
+        ],
+        "follow_up": [
+          "若日后需要实验基线，可核查时间序列泄漏控制及公平的经典模型调参预算。"
+        ],
+        "relevance_score": 15,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/html/2610.12148v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:17:31Z"
+      }
+    },
+    {
+      "id": "2610.12098",
+      "version": 1,
+      "analysis": {
+        "summary": "对称投影的 Clifford+T 实现具有近线性的非 Clifford 成本：作者给出 T-count Õ(n) 构造及 2n−2 下界。关键是统一算符范数近似的 block encoding，而非任意 purification channel 的普遍下界。",
+        "problem": "处理 n 份 d 维系统时，实现对称子空间投影需要多少 T 门？",
+        "setting": "Π=(1/n!)ΣπP(π)；以酉线路 block-encode 成功 Kraus 算符，允许 clean stabilizer 辅助比特。",
+        "main_results": [
+          "n,d≥2、0<ε<1/2 时，归一化为 1 的构造算符范数误差≤ε，T-count Õ(n)，辅助比特 O(n log n)；隐藏因子为 n,d,1/ε 的 polylog。",
+          "ε<(1/2)√(1−1/n) 时，任意有限正归一化及任意数量 clean stabilizer ancillas 的实现需至少 2n−2 个 T 门。"
+        ],
+        "techniques": [
+          "递归 Dicke masks、可逆排序与相干 permutation routing、LCU；下界结合 stabilizer nullity 与 Pauli symmetry gap。"
+        ],
+        "assumptions": [
+          "下界针对统一算符范数准确的对称投影 block encoding；辅助资源限定为 clean stabilizer。"
+        ],
+        "limitations": [
+          "已阅读主要定理、构造框架及范围说明节选，未逐项核查全部证明。",
+          "不覆盖仅规定概率–保真度权衡的任意 purification map；未证明深度或辅助空间同时最优，也未计入成功率导致的重复成本。"
+        ],
+        "relevance": [
+          "直接相关于 magic 最优资源成本，可参考其把任务专用下界与通用资源论区分的方式。"
+        ],
+        "follow_up": [
+          "研究问题：测量和适应性、dirty ancillas 或允许失败的 purification 是否可突破该 block-encoding 下界？"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.12098v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:17:31Z"
+      }
+    },
+    {
+      "id": "2610.12015",
+      "version": 1,
+      "analysis": {
+        "summary": "有限 shots 可提高经验特征矩阵的秩，使无正则化量子线性回归出现虚假方向。作者分析精确标签时偏差与方差的资源权衡，并指出标签噪声可使增加 shots 反而增大测试误差。",
+        "problem": "量子特征需要采样估计时，更多训练态和更多每态 shots 能否相互替代？",
+        "setting": "固定量子动态和 POVM 产生概率特征；n_tr 个训练态、每态 N shots，最小范数最小二乘；主要分析 overcomplete 情形 n_tr,n_out>d²。",
+        "main_results": [
+          "经验矩阵的伪逆可随 √N 增长，但精确标签及精确测试概率使奇异项在预测中消去。",
+          "在所述非退化条件下，MSE 的领先项为偏差平方 O(N⁻²) 与训练方差 O((N n_tr)⁻¹)；固定 N 仅增大数据量不能消除偏差。",
+          "标签也有噪声时，虚假方向可被激活，测试误差可能随 N 增长。"
+        ],
+        "techniques": [
+          "按物理特征/噪声子空间分块伪逆，Schur complement，误差分解与多项分布集中界。"
+        ],
+        "assumptions": [
+          "主要误差界使用精确训练标签、无限测试统计，以及物理 Gram 和噪声协方差相关块的非退化条件。"
+        ],
+        "limitations": [
+          "阅读模型、秩不连续机制及主误差界节选，未逐项核查 37 页补充证明。",
+          "不是所有 QML 算法的普遍不可能性；正则化比较及有限测试统计需另分析，也未建立 SPAM 鲁棒性。"
+        ],
+        "relevance": [
+          "研究量子态输入与测量预算，贴近用户关心的 quantum-data learning 和 shots/资源 tradeoff。"
+        ],
+        "follow_up": [
+          "研究问题：对 shadows 或测量特征学习，约束物理子空间或截断伪逆能否给出更好的总 shots 界？"
+        ],
+        "relevance_score": 82,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.12015v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:17:31Z"
+      }
+    },
+    {
+      "id": "2610.12001",
+      "version": 1,
+      "analysis": {
+        "summary": "作者确定 2×3 magic rectangle 的精确量子值和全部有限维最优策略，并由此得到 magic square 的完美可预测阈值及阈值以上线性的随机性增长。与 nonlocal-game certification 和量子侧信息紧密相关。",
+        "problem": "不限制有限局域维数或 POVM 时，最优博弈分数能约束哪些态、测量和对手猜测概率？",
+        "setting": "均匀 2×3 rectangle；任意有限维 tensor-product 策略与 POVM，允许对手持有 quantum side information。",
+        "main_results": [
+          "量子及 commuting-operator 值为 (1+√(2/3))/2；有限维最优策略在局域等距后含 Φ₄，测量在 occupied supports 上固定。",
+          "magic-square 完美预测 Alice 第一整行的最大分数 β₀=(2+√(2/3))/3；w≥β₀ 时 p_guess≤1−(9/2)(w−β₀)，最佳兼容随机性损失在阈值附近为 Θ(w−β₀)。",
+          "同一刚性分类刻画最优三比特 random access codes；隐私约束只隐藏完整三比特 parity，并不要求隐藏两比特 parity。"
+        ],
+        "techniques": [
+          "精确 sum-of-squares 证书与等号测量代数，局域矩阵因子抽取，按对手猜测扇区比较分数。"
+        ],
+        "assumptions": [
+          "完整策略分类使用精确最优值和有限维；随机性界是一轮 raw key 的结论。"
+        ],
+        "limitations": [
+          "阅读核心定理、阈值归约及猜测界证明节选；未独立核查全部刚性证明或附录。",
+          "未给出完整 robust extraction theorem；猜测曲线最优系数仍开放，不能直接视为完整多轮 QKD 安全率。"
+        ],
+        "relevance": [
+          "适合与用户已有 nonlocal-game 资源分离及 data hiding 比较；博弈名称中的 magic 本身不意味着非 Clifford 门成本定理。"
+        ],
+        "follow_up": [
+          "研究问题：加入 stabilizer/magic-free 或受限测量后，最优值与侧信息阈值如何改变？"
+        ],
+        "relevance_score": 90,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.12001v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:17:31Z"
+      }
+    },
+    {
+      "id": "2610.11960",
+      "version": 1,
+      "analysis": {
+        "summary": "经典参数估计中，作者结合 n 个样本与 k 级参数侧信息，获得约 1/(n k²) 的 minimax 风险尺度，上下界相差对数因子。可提供侧信息资源建模参考，但不涉及量子测量时序。",
+        "problem": "有限比特参数提示与样本观测能否产生乘法式估计收益？",
+        "setting": "有界实参数 θ、有限字母表分布 Pθ、i.i.d. 样本；helper 知道 θ 并发送优化后的 k 级量化值。",
+        "main_results": [
+          "正文在局域 Lipschitz 与正概率条件下给出 Ω(1/(n k²)) 下界；加入反向可识别条件后得到带 ln(nk²) 的上界。",
+          "Bernoulli 情形 k>2 时，上界为 321 ln(k²)/[n(k/2−1)²]，改善单用样本或单用提示的尺度。"
+        ],
+        "techniques": [
+          "量化区间索引取模 k，利用经验分布选同余候选区间；集中界与 converse。"
+        ],
+        "assumptions": [
+          "helper 直接知道真参数；经典 i.i.d. 观测、平方损失及定理所述光滑/可识别条件。"
+        ],
+        "limitations": [
+          "阅读模型、主要定理和实现方案节选，未核查完整 converse。",
+          "是经典 side-information 问题，未给出 quantum-data separation 或先测量后获侧信息的界。"
+        ],
+        "relevance": [
+          "与侧信息资源预算相邻，但目前仅方法参考，未直接连接用户的量子 distinguishability 或 learning 目标。"
+        ],
+        "follow_up": [
+          "研究问题：侧信息若在量子测量后给出，何种测量限制能改变这个乘法收益？"
+        ],
+        "relevance_score": 56,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.11960v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:17:31Z"
+      }
+    },
+    {
+      "id": "2610.11887",
+      "version": 1,
+      "analysis": {
+        "summary": "作者构造非加性、标量封闭的经典最大和秩距离码。虽然通过 syndrome 映射实现，但这里不是量子纠错综合征，也未给出量子编码构造。",
+        "problem": "多块和秩度量下，达到最大距离的码能否突破已有线性构造？",
+        "setting": "有限域 F_(q^m) 上长度 N 的经典码，各块长度不超过 m，距离参数 2≤δ≤N−1。",
+        "main_results": [
+          "满足文中交换条件时，码大小为 q^[m(N−δ+1)]、最小和秩距离为 δ。",
+          "作者称多块非加性 MSRD 家族此前尚未出现；新码保留相应线性 MSRD 码的重量分布。"
+        ],
+        "techniques": [
+          "交换 σ-有理正规曲线的范数分量，再通过线性化 Reed–Solomon syndrome 映射提升。"
+        ],
+        "assumptions": [
+          "有限域范数类划分必须满足文中的乘法稳定性条件；其具体可实现参数未由摘要核查。"
+        ],
+        "limitations": [
+          "仅据摘要；未核查正文证明、解码复杂度和作者的优先权判断。",
+          "非加性经典码不能直接等同于非加性量子码或 qLDPC 构造。"
+        ],
+        "relevance": [
+          "syndrome 是关键词误匹配；当前没有与你的逻辑认证、随机编码或稳定子研究直接衔接的结果。"
+        ],
+        "follow_up": [
+          "只有发现明确的量子码映射与纠错保证时，再考虑跟进。"
+        ],
+        "relevance_score": 15,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.11887v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:18:07Z"
+      }
+    },
+    {
+      "id": "2610.11834",
+      "version": 1,
+      "analysis": {
+        "summary": "作者研究带噪一位经典压缩感知，给出依赖先验近似覆盖数的后验采样恢复保证及下界。sample complexity 的匹配来自经典学习问题，未涉及量子态。",
+        "problem": "先验复杂度如何决定一位观测所需数量，学习到的近似先验会怎样影响恢复？",
+        "setting": "经典信号服从先验分布，通过带噪一位测量恢复；近似先验误差用 Wasserstein 距离衡量。",
+        "main_results": [
+          "测量数按近似覆盖数的对数增长，另含一位分离间隙因子。",
+          "主先验依赖与作者给出的通用恢复下界接近；扩散先验算法在图像数据上验证。"
+        ],
+        "techniques": [
+          "分布覆盖数、后验采样、Wasserstein 先验失配控制及扩散先验近似实现。"
+        ],
+        "assumptions": [
+          "学习先验须与真实分布足够接近；噪声与测量分布的精确条件需查正文。"
+        ],
+        "limitations": [
+          "仅据摘要；未核查正文证明与近最优结论的全部参数。",
+          "摘要不提供量子 POVM、非交换状态空间或单拷贝量子学习保证。"
+        ],
+        "relevance": [
+          "覆盖数思想可能提供工具类比，但不能据此推得量子 shadow 或认证样本复杂度。"
+        ],
+        "follow_up": [
+          "未来出现明确量子数据任务时，再检查其先验失配论证是否可迁移。"
+        ],
+        "relevance_score": 20,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.11834v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:18:07Z"
+      }
+    },
+    {
+      "id": "2610.11686",
+      "version": 1,
+      "analysis": {
+        "summary": "作者将电场驱动的分子谐振动精确归结为相干态的相空间位移，讨论强场激发与光谱态制备。研究对象是分子振动控制，与你目前的量子信息任务关联很弱。",
+        "problem": "如何在非微扰强场下描述任意时间依赖电场引起的分子振动激发？",
+        "setting": "谐势、线性偶极耦合；动力学由复相空间坐标决定。",
+        "main_results": [
+          "作者给出位移坐标的闭式表达及其泊松振动态分布。",
+          "讨论共振增强、失谐抑制，以及弱场微扰极限与强场非微扰描述。"
+        ],
+        "techniques": [
+          "受驱谐振子的相干态演化与经典相空间动力学。"
+        ],
+        "assumptions": [
+          "精确可解结构依赖谐势和线性耦合；摘要不足以判定失谐指数抑制对任意驱动包络的适用范围。"
+        ],
+        "limitations": [
+          "仅据摘要；未核查正文推导、脉冲条件或非谐修正。",
+          "state preparation 指分子振动激发，不是线路资源界、量子认证或纠错编码。"
+        ],
+        "relevance": [
+          "符合你排除无具体表征或纠错联系的光谱方向的筛选规则。"
+        ],
+        "follow_up": [
+          "除非涉及明确的量子信息测量任务，目前无需跟进。"
+        ],
+        "relevance_score": 8,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.11686v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:18:07Z"
+      }
+    },
+    {
+      "id": "2610.11658",
+      "version": 1,
+      "analysis": {
+        "summary": "156 比特 heavy-hex 实验展示缺陷排除、ACES 噪声表征及筛选如何改善逻辑存储和 lattice surgery。对你的逻辑 benchmarking 很有价值：必须明确被认证的操作与后选择条件。",
+        "problem": "大芯片的局部劣质元件和泄漏如何影响逻辑存储、逻辑测量及其可观测性能？",
+        "setting": "动态 compass code；存储用 7×7 patch，稳定性用 5×5 patch，surgery 用两个较小 patch。逻辑误差由多轮综合征后的 X/Z 输出拟合。",
+        "main_results": [
+          "联合策略下存储每轮逻辑误差为 Z 4.11%、X 2.56%，相对基线改善约 32%/35%。",
+          "3×3 surgery 的 Bell 保真下界由无筛选 58.6% 到预筛选 77.3%，logical-gap 后选择可超过 97%；27% yield 的分母是已通过预筛选的 shots。"
+        ],
+        "techniques": [
+          "绕过缺陷的检查日程、ACES-informed BeliefMatching、泄漏/逻辑 gap 筛选；由 XX、ZZ 相关量给 Bell 保真上下界。"
+        ],
+        "assumptions": [
+          "逻辑性能依赖固定 patch、日程、解码器与筛选规则；每轮误差来自指数拟合，并非直接测得任意逻辑通道保真。"
+        ],
+        "limitations": [
+          "只审阅摘要、结果和部分方法，未审阅全部附录。",
+          "条件保真不能当作无条件 gadget 保真；一个后选择阈值例子的总 yield 仅 4.55%。没有证明 SPAM 消除或长期无记忆噪声。"
+        ],
+        "relevance": [
+          "适合作为逻辑认证的实际模型：同时报告条件错误、接受概率与总体资源；综合征、解码先验及额外 IQ 数据承担不同信息角色。"
+        ],
+        "follow_up": [
+          "哪些逻辑原语与相关量足以识别保真，并能在有界 SPAM 下控制拟合偏差？",
+          "将接受率、shots、综合征轮数和物理门调用分开计量。"
+        ],
+        "relevance_score": 88,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.11658v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:18:07Z"
+      }
+    },
+    {
+      "id": "2610.11540",
+      "version": 1,
+      "analysis": {
+        "summary": "最值得读：作者用 trace filter 后处理抑制结构化 random-circuit RB 的混合瞬态，使浅层也能拟合衰减。代价是更大方差及经典计算成本；这提供与你固定门认证不同的资源权衡。",
+        "problem": "1D brickwork 混合较慢，LinXEB 浅层偏差与深层信号衰弱冲突，能否仅改后处理？",
+        "setting": "记录随机线路 g 与单次 bitstring x，比较 α∈[1,3] 的过滤器；α=1 为 LinXEB 型，α=3 为 trace filter。",
+        "main_results": [
+          "局部 Clifford 对称性下，信号化为 Tr[P T^m(M)]，理想门的混合瞬态被消除；实验最多 12 比特，40 层窗口内标准方法难拟合，过滤法在 10 层以下给一致估计。",
+          "无噪声全局 Clifford 情形的方差界为 O([1+((α−1)/(α+1))²]^n)，α=3 为 O((5/4)^n)；后处理最坏即使 Clifford 也为 #P-hard。"
+        ],
+        "techniques": [
+          "以局部 Clifford 轨道重加权实现超算符迹；稳定子与浅层 1D 张量网络计算过滤器。"
+        ],
+        "assumptions": [
+          "时间平稳 Markovian gate-set；twirl 保持局部 Clifford 对称性。附录 Proposition 3 的精确迹恒等式明确假设完美初态制备。"
+        ],
+        "limitations": [
+          "只核查主文及相关命题，未独立复核全部证明。",
+          "不能直接推出任意非重复 SPAM 鲁棒、固定单门过程保真或多项式 shots；深度、shots 与总目标门调用须分别比较。"
+        ],
+        "relevance": [
+          "直接连接你的随机线路、表示论和 benchmarking；α 给出深度偏差与统计方差的权衡，局部对称性提供可借鉴结构。"
+        ],
+        "follow_up": [
+          "有界且非重复初态误差怎样影响迹过滤与衰减参数？",
+          "针对重叠两层目标线路，能否选局部 Pauli 子空间降低方差，同时计入后处理和总目标门调用？"
+        ],
+        "relevance_score": 98,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.11540v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:18:07Z"
+      }
+    },
+    {
+      "id": "2610.11438",
+      "version": 1,
+      "analysis": {
+        "summary": "作者用 operator dominance 统一处理 QKD 编码、强度调制及表征不完美，并估计有限密钥率。与带误差资源的安全认证相邻，但不是固定门或逻辑 benchmarking 的直接结果。",
+        "problem": "真实源端调制及表征误差如何纳入 QKD 安全分析而避免密钥率过度下降？",
+        "setting": "商业 QKD 参数下的编码/强度调制误差，有限总脉冲数，并考察 MDI-QKD。",
+        "main_results": [
+          "摘要报告模拟密钥率接近理想模型；N=10^12 时最大距离达约 250 km，N=10^14 时该距离范围内更接近渐近极限。",
+          "作者报告框架亦适用于 MDI 场景。"
+        ],
+        "techniques": [
+          "operator dominance 方法统一约束不完美源及表征，并做有限密钥率模拟。"
+        ],
+        "assumptions": [
+          "需要可验证的源误差和表征约束；对时间漂移、脉冲相关性及攻击模型的精确假设未由摘要确认。"
+        ],
+        "limitations": [
+          "仅据官方摘要；未核查正文证明、有限统计界与模拟参数。",
+          "通信距离是指定参数下的模拟结果，不是无条件器件鲁棒性，也不是非重复 SPAM gate certification。"
+        ],
+        "relevance": [
+          "可作为鲁棒性约束的工具线索，但对你当前门认证和逻辑认证问题缺少直接资源保证，暂不进入重点订阅。"
+        ],
+        "follow_up": [
+          "若研究有界制备误差的保真下界，再检查 operator dominance 是否带来可用且不指数恶化的界。"
+        ],
+        "relevance_score": 55,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.11438v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T03:18:07Z"
+      }
+    }
+  ]
+}
