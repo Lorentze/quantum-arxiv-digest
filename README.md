@@ -11,7 +11,7 @@ GitHub 仓库写入授权已在 2026-10-12 实际验证。当前代码支持 Git
 1. 在 [仓库 Pages 设置](https://github.com/Lorentze/quantum-arxiv-digest/settings/pages) 的 **Build and deployment → Source** 选择 **GitHub Actions**。
 2. 打开 [Daily research digest 工作流](https://github.com/Lorentze/quantum-arxiv-digest/actions/workflows/digest.yml)，运行一次；若首次 push 因 Pages 未启用而失败，启用后重跑失败任务即可。
 3. 确认 Pages 发布成功后，网站为 `https://lorentze.github.io/quantum-arxiv-digest/`，全部精选 RSS 为 `https://lorentze.github.io/quantum-arxiv-digest/feed.xml`。在发布成功前，这些是预期网址。
-4. 本仓库已验证候选抓取、真实分析、导入写回与再次 Pages 发布；每日 ChatGPT 分析任务已创建，从 2026-10-13 上午开始运行。GitHub 计划北京时间 09:17 收集，ChatGPT 任务安排在上午约 10:30，实际启动可浮动。仅抓取完成不会生成新的 AI 摘要。完整分析指令见 [HOSTED_ANALYSIS.md](docs/HOSTED_ANALYSIS.md)。
+4. 本仓库已验证候选抓取、真实分析、导入写回与再次 Pages 发布；每日 ChatGPT 分析任务已创建，从 2026-10-13 上午开始运行。GitHub 计划北京时间 08:17 收集，ChatGPT 任务安排在上午 09:00 启动，按精确日程执行；分析与部署完成后更新网页和 RSS。仅抓取完成不会生成新的 AI 摘要。完整分析指令见 [HOSTED_ANALYSIS.md](docs/HOSTED_ANALYSIS.md)。
 
 正式存档从三篇本次会话分析开始，现已完成一次新候选分析并再次发布；任务创建成功与未来某轮分析成功分别记录。详细上线步骤见 [QUICKSTART.md](docs/QUICKSTART.md)。本地功能也保留如下。
 
