@@ -1,6 +1,6 @@
 # GitHub 上线：无需个人 API key
 
-目标仓库：[Lorentze/quantum-arxiv-digest](https://github.com/Lorentze/quantum-arxiv-digest)。2026-10-12 已验证连接可以真实写入仓库，之前的 403 已解决。代码已上传，首次 Pages 构建与部署已成功；ChatGPT 每日分析任务尚未创建。
+目标仓库：[Lorentze/quantum-arxiv-digest](https://github.com/Lorentze/quantum-arxiv-digest)。2026-10-12 已验证连接可以真实写入仓库，之前的 403 已解决。代码已上传，首次 Pages 构建与部署已成功；ChatGPT 每日分析任务已启用，从 2026-10-13 上午开始。
 
 ## 1. 启用 Pages
 
@@ -23,7 +23,7 @@
 
 工作流计划每天北京时间 09:17 抓取候选，但它本身不会在 hosted 模式生成技术分析。先手动运行工作流，确认 `data/state.json` 中有 `pending`，再按 [HOSTED_ANALYSIS.md](HOSTED_ANALYSIS.md) 分析少量真实候选并安全写回。
 
-确认写回触发 Pages 更新且 RSS 有新分析后，才能创建每日 ChatGPT 分析任务；建议安排在候选抓取之后。当前任务尚未创建，仍需端到端验证。不把未经分析的候选当成 AI 摘要。
+当前已验证一次抓取、候选分析、导入写回与 Pages 再发布，并已创建每日 ChatGPT 分析任务：北京时间上午约 10:30，实际启动可浮动；首次安排在 2026-10-13。任务每轮最多处理 30 篇，剩余保留。不把未经分析的候选当成 AI 摘要。无需重复创建该任务，可在 ChatGPT Scheduled 查看运行结果。
 
 ## 本地版
 

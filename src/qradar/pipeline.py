@@ -184,6 +184,9 @@ def make_update(state: dict, profile: dict, *, lookback_days: int | None = None,
         if analysis["relevance_score"] >= profile["screening"].get("min_ai_score", 70):
             paper["analysis"] = analysis
             paper["selected_at"] = timestamp
+            # The archive publishes our analysis and links to the source;
+            # complete source abstracts are only needed while reviewing candidates.
+            paper["abstract"] = ""
             result["papers"].append(paper)
             count_selected += 1
         else:
@@ -281,6 +284,7 @@ def import_analyses(state: dict, profile: dict, batch: dict, *, now: datetime | 
         if analysis["relevance_score"] >= profile["screening"].get("min_ai_score", 70):
             paper["analysis"] = analysis
             paper["selected_at"] = timestamp
+            paper["abstract"] = ""
             result["papers"].append(paper)
             selected += 1
         else:

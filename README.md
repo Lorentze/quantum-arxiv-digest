@@ -2,18 +2,18 @@
 
 面向 Guoding Liu 研究方向的网页与本地阅读平台：收集 arXiv 新论文，保存中文技术分析，在浏览器中按主题检索，并生成 RSS。
 
-**本地流程不需要 GitHub，也不需要 OpenAI API key。** 本地程序负责抓取、归档、网页和 RSS；你把它导出的分析请求交给 ChatGPT，再把 ChatGPT 返回的分析 JSON 导入网页。没有 API key 时，这一步需要手动完成，目前没有启用每日自动分析任务。
+**本地流程不需要 GitHub，也不需要 OpenAI API key。** 本地程序负责抓取、归档、网页和 RSS；你把它导出的分析请求交给 ChatGPT，再把 ChatGPT 返回的分析 JSON 导入网页。本地流程中的这一步需要手动完成；本机没有启用每日自动分析任务。在线版使用下方的独立 ChatGPT 任务。
 
 ## GitHub 网页与公开 RSS
 
-GitHub 仓库写入授权已在 2026-10-12 实际验证。当前代码支持 GitHub Pages 发布，**首次 Pages 部署已成功，ChatGPT 每日分析任务尚未创建**。GitHub Actions 默认只收集候选，不要求个人 OpenAI API key。
+GitHub 仓库写入授权已在 2026-10-12 实际验证。当前代码支持 GitHub Pages 发布，**Pages 已部署，ChatGPT 每日分析任务已启用**。GitHub Actions 默认只收集候选，不要求个人 OpenAI API key。
 
 1. 在 [仓库 Pages 设置](https://github.com/Lorentze/quantum-arxiv-digest/settings/pages) 的 **Build and deployment → Source** 选择 **GitHub Actions**。
 2. 打开 [Daily research digest 工作流](https://github.com/Lorentze/quantum-arxiv-digest/actions/workflows/digest.yml)，运行一次；若首次 push 因 Pages 未启用而失败，启用后重跑失败任务即可。
 3. 确认 Pages 发布成功后，网站为 `https://lorentze.github.io/quantum-arxiv-digest/`，全部精选 RSS 为 `https://lorentze.github.io/quantum-arxiv-digest/feed.xml`。在发布成功前，这些是预期网址。
-4. 按 [ChatGPT 分析说明](docs/HOSTED_ANALYSIS.md) 验证真实候选分析、导入和写回，再配置每日分析任务。仅抓取完成不会生成新的 AI 摘要。
+4. 本仓库已验证候选抓取、真实分析、导入写回与再次 Pages 发布；每日 ChatGPT 分析任务已创建，从 2026-10-13 上午开始运行。GitHub 计划北京时间 09:17 收集，ChatGPT 任务安排在上午约 10:30，实际启动可浮动。仅抓取完成不会生成新的 AI 摘要。完整分析指令见 [HOSTED_ANALYSIS.md](docs/HOSTED_ANALYSIS.md)。
 
-正式存档已有三篇本次会话的真实分析；它们可随首次 Pages 部署发布，不代表每日分析已启动。详细上线步骤见 [QUICKSTART.md](docs/QUICKSTART.md)。本地功能也保留如下。
+正式存档从三篇本次会话分析开始，现已完成一次新候选分析并再次发布；任务创建成功与未来某轮分析成功分别记录。详细上线步骤见 [QUICKSTART.md](docs/QUICKSTART.md)。本地功能也保留如下。
 
 ## 本地启动与使用
 
@@ -25,7 +25,7 @@ GitHub 仓库写入授权已在 2026-10-12 实际验证。当前代码支持 Git
    PYTHONPATH=src python3 -m qradar serve --port 8765 --open
    ```
 
-2. 浏览器打开 `http://127.0.0.1:8765/`。正式存档预置三篇本次 ChatGPT 会话整理的真实论文摘要，标明证据范围；它们不是每日自动运行的结果。`Preview.html` 另有五篇独立阅读示例。
+2. 浏览器打开 `http://127.0.0.1:8765/`。正式存档最初预置三篇本次 ChatGPT 会话整理的真实论文摘要，标明证据范围；它们不是每日自动运行的结果。`Preview.html` 另有五篇独立阅读示例。
 3. 在网页点击 **收集候选**。首次默认回看最近七天；关键词匹配的论文进入待分析队列。
 4. 点击 **导出待分析材料**，把下载的 `qradar-analysis-request.txt` 上传到 ChatGPT，让它按文件里的要求输出分析 JSON。
 5. 将 JSON 保存为文件，回到网页点击 **导入 ChatGPT 分析**。程序先校验批次；符合研究相关性阈值的摘要进入正式存档、网页和 RSS，其余记录为已评估。
