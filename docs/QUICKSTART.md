@@ -1,6 +1,6 @@
 # GitHub 上线：无需个人 API key
 
-目标仓库：[Lorentze/quantum-arxiv-digest](https://github.com/Lorentze/quantum-arxiv-digest)。2026-10-12 已验证连接可以真实写入仓库，之前的 403 已解决。代码与部署配置已准备；当前尚未启用或验证 Pages，也尚未创建 ChatGPT 每日分析任务。
+目标仓库：[Lorentze/quantum-arxiv-digest](https://github.com/Lorentze/quantum-arxiv-digest)。2026-10-12 已验证连接可以真实写入仓库，之前的 403 已解决。代码已上传，首次 Pages 构建与部署已成功；ChatGPT 每日分析任务尚未创建。
 
 ## 1. 启用 Pages
 
@@ -10,7 +10,7 @@
 
 打开 [Actions → Daily research digest](https://github.com/Lorentze/quantum-arxiv-digest/actions/workflows/digest.yml)。若首次提交因 Pages 尚未启用失败，启用后点击 **Re-run jobs**。也可 **Run workflow → main**，同时测试 arXiv 抓取与候选队列保存。
 
-默认 `DIGEST_MODE=hosted`，无需设置 Secrets，也无需 `OPENAI_API_KEY`。`push` 只构建已保存的正式分析；计划和手动任务在 hosted 模式下收集候选。正式存档已有三篇本次 ChatGPT 会话分析的论文，均说明只读了官方摘要；五篇独立 demo 不计入正式存档。
+默认 `DIGEST_MODE=hosted`，无需设置 Secrets，也无需 `OPENAI_API_KEY`。hosted 模式首次无收集记录时，`push` 会初始化候选队列；后续 `push` 只构建已保存分析。计划和手动任务在 hosted 模式下收集候选。正式存档已有三篇本次 ChatGPT 会话分析的论文，均说明只读了官方摘要；五篇独立 demo 不计入正式存档。
 
 检查 build 和 deploy 都成功，以 deploy 返回的网址为准。成功后的预期地址：
 

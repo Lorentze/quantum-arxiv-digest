@@ -6,7 +6,7 @@
 
 ## GitHub 网页与公开 RSS
 
-GitHub 仓库写入授权已在 2026-10-12 实际验证。当前代码支持 GitHub Pages 发布，**Pages 尚需启用，ChatGPT 每日分析任务尚未创建**。GitHub Actions 默认只收集候选，不要求个人 OpenAI API key。
+GitHub 仓库写入授权已在 2026-10-12 实际验证。当前代码支持 GitHub Pages 发布，**首次 Pages 部署已成功，ChatGPT 每日分析任务尚未创建**。GitHub Actions 默认只收集候选，不要求个人 OpenAI API key。
 
 1. 在 [仓库 Pages 设置](https://github.com/Lorentze/quantum-arxiv-digest/settings/pages) 的 **Build and deployment → Source** 选择 **GitHub Actions**。
 2. 打开 [Daily research digest 工作流](https://github.com/Lorentze/quantum-arxiv-digest/actions/workflows/digest.yml)，运行一次；若首次 push 因 Pages 未启用而失败，启用后重跑失败任务即可。

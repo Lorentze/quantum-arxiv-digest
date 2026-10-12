@@ -5,13 +5,13 @@ GitHub 写入授权现已恢复，可选择公开 Pages 或本地网页。上线
 
 ## GitHub Actions 与 Pages
 
-在仓库 Settings → Pages 将 Source 设为 GitHub Actions。工作流的 `push` 构建保存的分析；默认 hosted 模式的每日计划和手动运行收集 arXiv 候选，同时构建已有精选。ChatGPT 负责分析与写回，完整任务指令见 [HOSTED_ANALYSIS.md](HOSTED_ANALYSIS.md)。
+在仓库 Settings → Pages 将 Source 设为 GitHub Actions。工作流的 `push` 构建保存的分析；首次无收集记录时，hosted 模式的 `push` 也初始化候选。默认 hosted 模式的每日计划和手动运行收集 arXiv 候选，同时构建已有精选。ChatGPT 负责分析与写回，完整任务指令见 [HOSTED_ANALYSIS.md](HOSTED_ANALYSIS.md)。
 
 默认无需 OpenAI API key。若以后选择 API 模式，设置 Actions Variable `DIGEST_MODE=api`，另行配置可用的 `OPENAI_API_KEY` secret；不要把 key 写入仓库。API 与 hosted 分析不要同时处理同一队列。
 
 Actions 的状态保存需要工作流 `contents: write`，部署需要 `pages: write` 和 `id-token: write`。ChatGPT 连接的权限与 Actions token 是两条独立路径；当前仅确认 ChatGPT 写入已成功，云端工作流须实际运行检查。状态提交不 force push，遇并发更新应重读状态再合并。
 
-当前不宣称公开部署或每日分析已经上线。对外订阅应以 Pages deploy 的成功结果为准。
+首次 Pages 部署已成功，每日分析尚未启用。对外订阅应以 Pages deploy 的成功结果为准。
 
 ## 本机订阅
 

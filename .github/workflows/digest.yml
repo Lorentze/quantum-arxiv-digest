@@ -55,6 +55,20 @@ jobs:
             *) echo '::error::DIGEST_MODE must be hosted or api.'; exit 1 ;;
           esac
 
+      - name: Detect the first candidate collection
+        id: bootstrap
+        if: github.event_name == 'push' && env.DIGEST_MODE == 'hosted'
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          state = json.loads(Path('data/state.json').read_text(encoding='utf-8'))
+          first = not (state.get('last_collection_run') or state.get('last_successful_run'))
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as file:
+              file.write('collect=' + str(first).lower() + '\n')
+          PY
+
       - name: Validate API configuration for a live update
         if: github.event_name != 'push' && env.DIGEST_MODE == 'api'
         env:
@@ -79,7 +93,7 @@ jobs:
             --output public
 
       - name: Collect papers for ChatGPT analysis without an API key
-        if: github.event_name != 'push' && env.DIGEST_MODE == 'hosted'
+        if: env.DIGEST_MODE == 'hosted' && (github.event_name != 'push' || steps.bootstrap.outputs.collect == 'true')
         env:
           SITE_URL: ${{ steps.pages.outputs.base_url }}
         run: |
@@ -90,7 +104,7 @@ jobs:
             --output public
 
       - name: Render the saved archive after a code or profile change
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' && steps.bootstrap.outputs.collect != 'true'
         env:
           SITE_URL: ${{ steps.pages.outputs.base_url }}
         run: |
@@ -114,7 +128,7 @@ jobs:
           PY
 
       - name: Save successful live results
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' || steps.bootstrap.outputs.collect == 'true'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
