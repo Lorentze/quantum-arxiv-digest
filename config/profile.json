@@ -1,0 +1,30 @@
+{
+  "title": "Guoding Liu · Quantum Information",
+  "background": "Quantum-information theory using random circuits, representation theory, stabilizer formalism and decoupling. Research connects device benchmarking and certification with QEC and resource-dependent quantum advantages.",
+  "research_questions": [
+    "Can a fixed noisy multi-qubit gate be certified using trusted local controls, without a trusted inverse or short-time Hamiltonian access, robust to small non-repeatable SPAM? What are the shot, sequence length and target-call costs?",
+    "Which bounded-error logical primitives and syndrome or logical-output data identify logical fidelity for a fixed code, recovery and gadget? What physical-noise and memory assumptions are necessary?",
+    "Which tasks have nearly optimal depth, ancilla and magic costs simultaneously? What tradeoffs or lower bounds arise under locality and adaptive measurement?",
+    "How do design order, scrambling and decoupling affect encoding, noisy-state discrimination and single-copy learning?",
+    "Which quantum-data tasks reveal an operational advantage from magic, measurement access, coherent processing or timing of classical side information?",
+    "Can high-order fermionic designs reduce total single-copy sample complexity, beyond improved tails or additional quantum memory?"
+  ],
+  "exclusions": [
+    "Generic variational quantum machine learning on classical datasets without rigorous quantum-data guarantees",
+    "Quantum chemistry calculations without a connection to measurement, shadows or fermionic information theory",
+    "Hardware materials and spectroscopy without a concrete characterization or error-correction connection",
+    "Purely software engineering or heuristic benchmarking of classical simulators"
+  ],
+  "source": {"categories": ["quant-ph", "cs.IT", "cs.CC", "math.IT"], "lookback_days": 7, "max_results": 2500, "max_catchup_days": 30},
+  "screening": {"min_keyword_score": 3, "min_ai_score": 70, "max_analyses_per_run": 30, "prefetch_fulltext": true},
+  "ai": {"language": "zh-CN", "api_style": "responses", "max_source_chars": 60000, "max_output_tokens": 5000, "timeout_seconds": 120},
+  "topics": [
+    {"id": "benchmarking", "label": "Benchmarking / SPAM", "weight": 4, "keywords": ["randomized benchmarking", "randomised benchmarking", "gate benchmarking", "logical benchmarking", "SPAM", "noise tailoring", "Pauli twirling", "group twirling", "gate certification", "process fidelity", "process estimation", "gate fidelity"]},
+    {"id": "logical_qec", "label": "Logical QEC", "weight": 3, "keywords": ["quantum error correction", "quantum error-correcting", "quantum error correcting", "logical error", "logical fidelity", "syndrome", "qLDPC", "quantum LDPC", "approximate QEC", "transversal", "quantum encoding", "decoupling", "pseudo-QECC"]},
+    {"id": "random_designs", "label": "Random circuits / designs", "weight": 4, "keywords": ["unitary design", "unitary k-design", "unitary t-design", "unitary 2-design", "unitary $", "random circuit", "random Clifford", "brickwork", "anticoncentration", "anti-concentration", "scrambling", "Clifford design", "Haar random", "Haar-random"]},
+    {"id": "magic_stabilizer", "label": "Magic / stabilizer", "weight": 3, "keywords": ["magic state", "quantum magic", "stabilizer", "stabiliser", "non-Clifford", "nonlocal game", "non-local game", "Clifford circuit", "T-count", "T count", "magic-free"]},
+    {"id": "adaptive_resources", "label": "Adaptive circuits / resources", "weight": 3, "keywords": ["adaptive circuit", "mid-circuit measurement", "midcircuit measurement", "measurement-assisted", "measurement assisted", "feedforward", "feed-forward", "ancilla-free", "ancilla free", "depth lower bound", "circuit depth", "state preparation", "magic consumption", "gate compilation"]},
+    {"id": "quantum_learning", "label": "Quantum learning / certification", "weight": 3, "keywords": ["quantum learning", "quantum state learning", "classical shadow", "quantum shadow", "state certification", "quantum certification", "sample complexity", "quantum readout", "measurement complexity", "quantum tomography", "Gibbs state", "Gibbs sampling", "fermionic shadow", "quantum hypothesis testing"]},
+    {"id": "data_hiding", "label": "Quantum data / information access", "weight": 3, "keywords": ["data hiding", "state distinguishability", "state discrimination", "quantum discrimination", "side information", "side-information", "measurement order", "information-theoretic separation", "quantum differential privacy", "average contraction", "computational indistinguishability", "pseudorandom quantum"]}
+  ]
+}

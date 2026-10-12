@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "profile_title": "Guoding Liu · Quantum Information",
+  "papers": [
+    {
+      "id": "2610.10531",
+      "version": 1,
+      "title": "Efficient Estimation of Logical Sensitivities Through Fault-Counting",
+      "authors": [
+        "Winston Fu",
+        "J. Wilson Staples",
+        "Jeff D. Thompson"
+      ],
+      "abstract": "",
+      "url": "https://arxiv.org/abs/2610.10531v1",
+      "pdf_url": "https://arxiv.org/pdf/2610.10531v1",
+      "published": "2026-10-07T17:58:42Z",
+      "updated": "2026-10-07T17:58:42Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 5,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction",
+          "quantum error-correcting",
+          "logical error"
+        ]
+      },
+      "first_seen_at": "2026-10-09T08:13:46Z",
+      "analysis": {
+        "summary": "利用一次 QEC Monte Carlo 仿真中的故障配置，同时估计逻辑错误率对各物理噪声参数的导数。它适合误差预算与模型分析；能否由实际设备的 syndrome 数据实现同类估计仍需另行研究。",
+        "problem": "如何低成本确定哪些物理噪声机制最影响逻辑失败概率 p_L？目标是逻辑灵敏度 ν_i = ∂p_L/∂p_i。",
+        "setting": "在一个固定物理噪声配置下做 QEC Monte Carlo 仿真，能够读取底层故障配置；作者以 circuit-level noise 的 surface code 验证方法。",
+        "main_results": [
+          "作者提出从单个噪声配置的数据集同时估计整个梯度 ∇_p p_L，而非逐参数重新采样做有限差分。",
+          "所报告 surface-code 仿真中，与有限差分达到相同方差时，所需仿真样本约少 10–100 倍。",
+          "应用包括逐量子比特误差预算、有效码距推断，以及用 Newton 方法寻找多参数噪声的阈值轮廓。"
+        ],
+        "techniques": [
+          "故障配置计数与可微估计；将估计梯度接入 Newton 求根。"
+        ],
+        "assumptions": [
+          "可访问仿真故障配置及所用噪声模型；摘要未交代完整独立性、decoder 和参数边界条件。"
+        ],
+        "limitations": [
+          "10–100 倍优势是所报告仿真的固定方差比较，不能直接解读为普适 ε 或码距复杂度定理。",
+          "摘要未给出仅依赖实验 syndrome、对未知噪声或 SPAM 鲁棒的估计保证。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 logical QEC 的噪声敏感度、误差预算直接相关；关键差别是这里观察到隐藏故障，而你的 logical benchmarking 希望从允许的实验数据辨识逻辑性能。"
+        ],
+        "follow_up": [
+          "研究问题：给定 syndrome 或 logical-output 数据，哪些灵敏度可辨识？能否证明其相对完全故障信息的样本成本下界？"
+        ],
+        "relevance_score": 88,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.10531v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-09T08:13:46+00:00"
+      },
+      "selected_at": "2026-10-09T08:16:39Z"
+    },
+    {
+      "id": "2610.10471",
+      "version": 1,
+      "title": "Optimized discrete Wigner representations and non-stabilizerness in qubit systems",
+      "authors": [
+        "A. B. Klimov",
+        "C. Muñoz",
+        "I. Sainz"
+      ],
+      "abstract": "",
+      "url": "https://arxiv.org/abs/2610.10471v1",
+      "pdf_url": "https://arxiv.org/pdf/2610.10471v1",
+      "published": "2026-10-07T17:33:58Z",
+      "updated": "2026-10-07T17:33:58Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "first_seen_at": "2026-10-09T08:13:46Z",
+      "analysis": {
+        "summary": "通过让离散 Wigner 表示随状态优化，恢复 qubit stabilizer 态的相空间几何描述，并构造 non-stabilizer witness。有限尺寸下它并非资源单调量，不能直接当作 magic 成本。",
+        "problem": "固定的状态无关 Wigner 映射为何难以专门刻画 qubit stabilizer？状态依赖优化能否给出可由测量统计获得的诊断？",
+        "setting": "Qubit 系统、固定相空间 partition；优化使用构成该 partition 的 mutually unbiased bases 测量概率。纯态上讨论 witness 下界。",
+        "main_results": [
+          "作者声称每个 qubit stabilizer 态在任意固定 partition 下，都可经优化得到精确 delta-function Wigner 表示。",
+          "以优化后原点的 Wigner 值定义 witness：stabilizer 饱和纯态通用下界，严格高于下界可认证 non-stabilizerness。",
+          "大 qubit 数时，作者报告 witness 在随机 Clifford 变换下集中并近似不变；广泛态族的渐近线性增长被表述为启示。"
+        ],
+        "techniques": [
+          "在各 MUB 的测量概率中取最大值，实现状态依赖的相空间优化。"
+        ],
+        "assumptions": [
+          "纯态 witness 结论与大 qubit 数行为应区分；摘要未给出具体下界、集中速率或完整采样模型。"
+        ],
+        "limitations": [
+          "有限尺寸 witness 不是 resource monotone；渐近 Clifford 近似不变也未给出操作任务优势。",
+          "摘要未说明噪声容忍度，以及优化和估计的总测量成本。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "连接 magic / stabilizer 与随机 Clifford，但其现有结论是状态诊断；和 adaptive Clifford data hiding 的具体区分能力之间仍需建立桥梁。"
+        ],
+        "follow_up": [
+          "研究问题：能否将 witness 与受限测量区分优势、所需 magic 或总单拷贝样本数联系起来，并明确有限尺寸反例？"
+        ],
+        "relevance_score": 86,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.10471v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-09T08:13:46+00:00"
+      },
+      "selected_at": "2026-10-09T08:16:39Z"
+    },
+    {
+      "id": "2610.09341",
+      "version": 1,
+      "title": "Building codes with transversal CCZ using projective geometry and SAT solvers",
+      "authors": [
+        "Bohan Lu",
+        "Kenneth R. Brown"
+      ],
+      "abstract": "",
+      "url": "https://arxiv.org/abs/2610.09341v1",
+      "pdf_url": "https://arxiv.org/pdf/2610.09341v1",
+      "published": "2026-10-07T03:00:02Z",
+      "updated": "2026-10-07T03:00:02Z",
+      "categories": [
+        "quant-ph",
+        "cs.IT"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "transversal"
+        ]
+      },
+      "first_seen_at": "2026-10-09T08:13:46Z",
+      "analysis": {
+        "summary": "把射影几何给出的 8-divisible stabilizer 与 SAT 搜索结合，构造三个逻辑 qubit 上可实现 CCZ 的 CSS 码，并给出特定 quasi-transversal 模型的块长下界。",
+        "problem": "在距离要求下，多少物理 qubit 足以让三个逻辑 qubit 的 CCZ 由 transversal T/T† 实现？",
+        "setting": "CSS 码、三个逻辑 qubit；构造的码距至少 3。下界另针对 d_Z ≥ 3、transversal T 加 diagonal Clifford correction 的 quasi-transversal CCZ 模型。",
+        "main_results": [
+          "作者构造 13 个块长的码，n 分布在 48–496，d_Z 为 3 或 4；示例为 [[48,3,3]]。",
+          "作者声称上述 quasi-transversal 模型不存在 n < 39 的码。结合既有 [[47,3,3]] 构造，39 ≤ n ≤ 46 的存在性仍开放。"
+        ],
+        "techniques": [
+          "用射影几何构造 8-divisible X-stabilizers，保障 d_Z ≥ 3；SAT 搜索兼容逻辑 CCZ 的三个 X-logical operators。"
+        ],
+        "assumptions": [
+          "块长下界依赖 CSS、三个逻辑 qubit、d_Z 条件及指定 correction 模型，不能推广到任意 CCZ 实现。"
+        ],
+        "limitations": [
+          "摘要未给出全部 X 距离、完整噪声与纠错 gadget，也未比较总 T 数、深度、ancilla 和阈值成本。",
+          "39–46 的块长间隙尚未封闭；有限码距构造不等于随块长增长的高距离码族。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "贴近 non-Clifford logical QEC 和资源界，也为你的 CCZ benchmarking 提供可具体化的编码后目标门。"
+        ],
+        "follow_up": [
+          "研究问题：固定编码、恢复与 CCZ gadget 后，哪些 syndrome 和 logical-output 统计可认证逻辑门保真度？应把块长、magic、shots 与 target-gate calls 分开比较。"
+        ],
+        "relevance_score": 89,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.09341v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-09T08:13:46+00:00"
+      },
+      "selected_at": "2026-10-09T08:16:39Z"
+    }
+  ],
+  "pending": [],
+  "screened": {},
+  "last_successful_run": null,
+  "last_run": {
+    "analyzed": 3,
+    "selected": 3,
+    "pending": 0
+  },
+  "is_demo": false,
+  "last_collection_run": null,
+  "last_analysis_run": "2026-10-09T08:16:39Z",
+  "last_analysis_batch": {
+    "analyzed": 3,
+    "selected": 3,
+    "pending": 0
+  },
+  "topic_labels": {
+    "benchmarking": "Benchmarking / SPAM",
+    "logical_qec": "Logical QEC",
+    "random_designs": "Random circuits / designs",
+    "magic_stabilizer": "Magic / stabilizer",
+    "adaptive_resources": "Adaptive circuits / resources",
+    "quantum_learning": "Quantum learning / certification",
+    "data_hiding": "Quantum data / information access"
+  },
+  "archive_origin": "本次 ChatGPT 会话基于官方摘要整理的起始存档；不是每日自动任务。"
+}

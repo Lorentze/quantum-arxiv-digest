@@ -1,0 +1,173 @@
+name: Daily research digest
+
+on:
+  schedule:
+    # UTC 01:17 = Beijing 09:17. Off the hour to reduce Actions queue delays.
+    - cron: "17 1 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+# Pull requests never enter this workflow or receive the API key.
+permissions:
+  contents: read
+
+concurrency:
+  group: quantum-arxiv-production
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+      pages: read
+    env:
+      # Hosted: Actions collects; a separate ChatGPT task analyzes the queue.
+      # API mode is opt-in and requires the repository's own API credentials.
+      DIGEST_MODE: ${{ vars.DIGEST_MODE || 'hosted' }}
+    steps:
+      - name: Check out the production branch
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install digest pipeline
+        run: python -m pip install '.[fulltext]'
+
+      - name: Resolve the public site URL
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Validate the selected analysis mode
+        run: |
+          case "$DIGEST_MODE" in
+            hosted|api) ;;
+            *) echo '::error::DIGEST_MODE must be hosted or api.'; exit 1 ;;
+          esac
+
+      - name: Validate API configuration for a live update
+        if: github.event_name != 'push' && env.DIGEST_MODE == 'api'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo '::error::Add repository secret OPENAI_API_KEY before running a live digest. Existing published content has not been changed.'
+            exit 1
+          fi
+
+      - name: Fetch new papers and generate AI technical summaries
+        if: github.event_name != 'push' && env.DIGEST_MODE == 'api'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5-mini' }}
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+        run: |
+          qradar run \
+            --profile config/profile.json \
+            --site-url "$SITE_URL" \
+            --state data/state.json \
+            --output public
+
+      - name: Collect papers for ChatGPT analysis without an API key
+        if: github.event_name != 'push' && env.DIGEST_MODE == 'hosted'
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+        run: |
+          qradar collect \
+            --profile config/profile.json \
+            --site-url "$SITE_URL" \
+            --state data/state.json \
+            --output public
+
+      - name: Render the saved archive after a code or profile change
+        if: github.event_name == 'push'
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+        run: |
+          qradar build \
+            --state data/state.json \
+            --output public \
+            --site-url "$SITE_URL"
+
+      - name: Validate the generated site and RSS
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          site = Path('public')
+          assert (site / 'index.html').stat().st_size > 0
+          feeds = [site / 'feed.xml', *sorted((site / 'feeds').glob('*.xml'))]
+          for path in feeds:
+              root = ET.parse(path).getroot()
+              assert root.tag == 'rss', f'Invalid RSS root: {path}'
+              assert root.find('channel') is not None, f'Missing RSS channel: {path}'
+          PY
+
+      - name: Save successful live results
+        if: github.event_name != 'push'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/state.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update arXiv review queue and digest archive'
+            # Do not force-push: concurrent human edits must be preserved.
+            git push origin HEAD:main
+          fi
+
+      - name: Upload the site and RSS feeds
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: public
+
+      - name: Record build status
+        if: success()
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+        run: |
+          echo '### Research digest built' >> "$GITHUB_STEP_SUMMARY"
+          echo "Website: $SITE_URL" >> "$GITHUB_STEP_SUMMARY"
+          echo "RSS: $SITE_URL/feed.xml" >> "$GITHUB_STEP_SUMMARY"
+          echo "Analysis mode: $DIGEST_MODE" >> "$GITHUB_STEP_SUMMARY"
+          if [ "$DIGEST_MODE" = hosted ]; then
+            echo 'Actions does not generate AI summaries in hosted mode. Pending papers await a separately configured ChatGPT analysis task.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo 'The deployment job below publishes this artifact.' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Record failed update
+        if: failure()
+        run: |
+          echo '### Digest update failed' >> "$GITHUB_STEP_SUMMARY"
+          echo 'No new site artifact will be deployed. The previously published website and RSS remain available.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Review the failed step and check Pages, repository writes, or source/network access. API secrets are required only when DIGEST_MODE=api.' >> "$GITHUB_STEP_SUMMARY"
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Record deployment status
+        if: failure()
+        run: |
+          echo '### Pages deployment failed' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The digest build completed, but this run did not publish the new artifact. Check Pages source and deployment environment permissions; rerun the failed job.' >> "$GITHUB_STEP_SUMMARY"
+

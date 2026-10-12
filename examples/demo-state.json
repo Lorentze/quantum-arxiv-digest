@@ -1,0 +1,339 @@
+{
+  "schema_version": 1,
+  "papers": [
+    {
+      "id": "2610.10531",
+      "version": 1,
+      "title": "Efficient Estimation of Logical Sensitivities Through Fault-Counting",
+      "authors": [
+        "Winston Fu",
+        "J. Wilson Staples",
+        "Jeff D. Thompson"
+      ],
+      "abstract": "",
+      "url": "https://arxiv.org/abs/2610.10531",
+      "pdf_url": "https://arxiv.org/pdf/2610.10531v1",
+      "published": "2026-10-08T04:00:00Z",
+      "updated": "2026-10-08T04:00:00Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "source": "rss",
+      "date_basis": "announcement",
+      "announcement_type": "new",
+      "topics": [
+        "logical_qec"
+      ],
+      "analysis": {
+        "summary": "把 physical noise 对 logical failure 的影响定义为灵敏度 ν_i = ∂p_L/∂p_i。作者提出利用已知 fault configurations，从一个噪声参数点的 Monte Carlo 数据同时估计整个梯度；摘要报告在 surface-code 模拟中，相同方差所需 shots 比 finite differences 少一至两个数量级。这是模拟侧的 error-budget 工具，尚不能直接等同于 syndrome-only 实验认证。",
+        "problem": "当电路同时受多种 physical noise 影响时，怎样高效确定每种噪声对 logical error rate 的边际贡献，而不对每个参数反复扫描？",
+        "setting": "固定 QEC 电路与多参数噪声模型 p，目标量是 p_L(p) 及其梯度；输入是 circuit-level Monte Carlo samples，以及每个样本底层的 fault configuration。摘要以 surface-code simulations 为验证场景。",
+        "main_results": [
+          "作者声称从单一噪声配置的一组 Monte Carlo samples，可同时获得 ∇_p p_L 的所有分量，而传统 finite differences 需要在多个 p_i 值上测量 p_L。",
+          "在所述 surface-code circuit-level noise 模拟中，估计器与 finite differences 一致，并在相同方差下减少一至两个数量级的 shots；摘要未给出该收益对码距和噪声率的完整依赖。",
+          "作者将梯度用于分解 error budget、解析 individual-qubit sensitivities、推断 effective code distance，并结合 Newton root finding 追踪多维噪声模型中的 threshold contours。"
+        ],
+        "techniques": [
+          "基于底层 fault-counting 信息的 differentiable estimator。",
+          "利用 logical sensitivities 进行 Newton root finding；摘要没有提供估计器公式或方差证明。"
+        ],
+        "assumptions": [
+          "必须获得模拟样本的底层 fault configuration，并在明确的参数化噪声模型中定义 p_i。",
+          "摘要中的实证收益来自 surface-code circuit-level noise simulations；其他码和噪声结构的保证需要读全文。"
+        ],
+        "limitations": [
+          "分析仅依据摘要；作者的正确性与性能主张未独立验证。",
+          "实际 syndrome record 通常不直接提供每个底层 fault；摘要没有建立仅凭实验 syndrome 数据估计同一梯度的方法。",
+          "摘要未说明 coherent noise、时间相关噪声或 decoder memory 下的适用条件，也未给出一般 sample-complexity bound。"
+        ],
+        "relevance": [
+          "直接对应你想建模的 physical-noise features 如何决定 logical performance；ν_i 提供了可操作的数学目标。",
+          "可作为 logical characterization 的模拟基线：明确比较已知 latent faults 与仅有 syndrome / logical-output data 的信息差异。"
+        ],
+        "follow_up": [
+          "研究问题：仅观察 syndrome histories 和 logical outputs 时，哪些 ν_i 可识别？最少还需哪些 calibrated controls 或噪声结构假设？",
+          "研究问题：能否估计一组与 logical fidelity 有关的组合灵敏度，避免完整 physical-noise reconstruction，并给出 SPAM 与 model mismatch 的误差界？"
+        ],
+        "relevance_score": 94,
+        "status": "preview",
+        "model": "ChatGPT preview (not API pipeline)",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.10531",
+        "analyzed_at": "2026-10-09T01:23:39+00:00"
+      }
+    },
+    {
+      "id": "2610.08890",
+      "version": 1,
+      "title": "Quantum Readout Complexity for Normalized Linear Functionals",
+      "authors": [
+        "Roi Vence-Nogueira"
+      ],
+      "abstract": "",
+      "url": "https://arxiv.org/abs/2610.08890",
+      "pdf_url": "https://arxiv.org/pdf/2610.08890v1",
+      "published": "2026-10-08T04:00:00Z",
+      "updated": "2026-10-08T04:00:00Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "source": "rss",
+      "date_basis": "announcement",
+      "announcement_type": "new",
+      "topics": [
+        "quantum_learning",
+        "data_hiding",
+        "adaptive_resources"
+      ],
+      "analysis": {
+        "summary": "研究 quantum numerical algorithms 的读出接口：振幅编码的正函数 q 产生与 q² 有关的测量概率，但目标 F_φ(q) = ∫φq dν / ∫q dν 对 q 是线性的。作者在固定正参考态附近给出由 susceptibility χ_0 控制的最优 copies 成本 Θ(χ_0 ε⁻² log(1/β))，并声称两个固定 single-copy measurements 足以达到该量级。",
+        "problem": "量子算法输出一个 L²-normalized amplitude-encoded state 后，提取 L¹-normalized 科学观测量真正需要多少 quantum-state copies？测量和 classical / coherent access 如何改变这一成本？",
+        "setting": "未知正解 q 由 quantum-state amplitudes 编码；目标是以 absolute error ε、failure probability β 估计 F_φ(q)。最优成本结论限定于一个固定 positive reference state 及其邻域，而不是任意全局解族。",
+        "main_results": [
+          "作者引入 target-dependent susceptibility χ_φ 来量化读出 normalized linear functional 所需的 copies；摘要中的局部最优界写作 Θ(χ_0 ε⁻² log(1/β))。",
+          "作者声称两个固定 single-copy measurements 可达到同一量级，因此该局部 baseline 不必依赖 collective multi-copy readout。",
+          "论文进一步比较保留 classical information、adaptive allocation、coherent access 或限制 solution family 后 baseline 如何变化；摘要没有给出这些扩展的定量界。"
+        ],
+        "techniques": [
+          "通过 target-dependent susceptibility 描述读出成本，并比较不同数据接口。",
+          "构造两个固定 single-copy measurements；具体 POVM、可实现成本和 lower-bound 方法在摘要中未说明。"
+        ],
+        "assumptions": [
+          "q 为正，且主 copies 结论在固定 positive reference state 的某个邻域内成立。",
+          "ε 表示目标 functional 的 absolute error，β 表示 allowed failure probability；copies 与 coherent-oracle calls 应分别计数。"
+        ],
+        "limitations": [
+          "分析仅依据摘要；未核查 susceptibility 的定义、局部邻域条件或 lower-bound proof。",
+          "最优 copies 界没有自动计入制备每份 solution state 的成本；测量电路深度与 ancilla 成本也未在摘要中给出。",
+          "摘要只说明研究了 coherent access / side information 的变化，不能据此宣称这些资源已带来特定指数优势。"
+        ],
+        "relevance": [
+          "贴近你的 quantum-data access 研究：先固定 task、accuracy 与 access model，再比较不同资源的 operational value。",
+          "两个 fixed single-copy measurements 的结论可作为判断更高 design order、adaptive measurement 或 quantum memory 是否改善总 sample complexity 的比较基线。"
+        ],
+        "follow_up": [
+          "研究问题：哪些 classical side information 真正改变 χ 或最优 copies 界？能否将其到达测量前后的顺序分开建模？",
+          "研究问题：加入 preparation noise、SPAM 与 locality 限制后，two-measurement 最优性是否保留，还是出现新的 depth–copies tradeoff？"
+        ],
+        "relevance_score": 92,
+        "status": "preview",
+        "model": "ChatGPT preview (not API pipeline)",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.08890",
+        "analyzed_at": "2026-10-09T01:23:39+00:00"
+      }
+    },
+    {
+      "id": "2610.10471",
+      "version": 1,
+      "title": "Optimized discrete Wigner representations and non-stabilizerness in qubit systems",
+      "authors": [
+        "A. B. Klimov",
+        "C. Mu\\~noz",
+        "I. Sainz"
+      ],
+      "abstract": "",
+      "url": "https://arxiv.org/abs/2610.10471",
+      "pdf_url": "https://arxiv.org/pdf/2610.10471v1",
+      "published": "2026-10-08T04:00:00Z",
+      "updated": "2026-10-08T04:00:00Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "source": "rss",
+      "date_basis": "announcement",
+      "announcement_type": "new",
+      "topics": [
+        "magic_stabilizer",
+        "quantum_learning"
+      ],
+      "analysis": {
+        "summary": "作者允许 discrete Wigner representation 随量子态优化，声称每个 qubit stabilizer state 在任意固定 phase-space partition 下都可获得精确 delta-function 表示；以 optimized Wigner origin value 定义 non-stabilizer witness。重要边界是：摘要明确说该 witness 在有限尺寸下不是 resource monotone，而 large-n Clifford 随机化的集中性只是另一类性质。",
+        "problem": "qubit 系统的 state-independent Wigner map 难以统一呈现 stabilizer 结构，是否能用可从测量统计优化的表示构造一个 operational non-stabilizerness diagnostic？",
+        "setting": "qubit states、一个固定 phase-space partition，以及构成该 partition 的 mutually unbiased bases；优化通过选取相应 measurement probabilities 的最大值实现。摘要的 witness lower-bound 饱和陈述针对 pure states。",
+        "main_results": [
+          "作者声称，对任何固定 phase-space partition，每个 qubit stabilizer state 都存在精确 delta-function 的 state-adapted discrete Wigner representation。",
+          "作者以 optimized origin value 定义 witness：pure stabilizer states 饱和 universal lower bound，严格更大的值可认证 non-stabilizerness。",
+          "摘要明确该量在 finite size 不是 resource monotone；作者报告其 large-qubit limit 下高度集中、对 random Clifford transformations 有效不变，并提出广泛 non-stabilizer families 的渐近线性增长迹象。"
+        ],
+        "techniques": [
+          "在 phase-space representation 上做 state-dependent optimization。",
+          "直接从 mutually unbiased bases 的 measurement statistics 选择最大概率；集中性结果的具体方法未在摘要中陈述。"
+        ],
+        "assumptions": [
+          "明确区分固定 partition 与 state-dependent representation；后者不能直接作为同一个 state-independent map 的性质使用。",
+          "pure-state witness 陈述、mixed-state 情况和有限尺寸 resource-theory 条件需分别核查。"
+        ],
+        "limitations": [
+          "分析仅依据摘要；未审阅 witness 的显式表达式、证明和可实验估计的精度要求。",
+          "摘要未给出所需 bases 数量、copies complexity、SPAM robustness 或测量电路资源成本。",
+          "非 monotone witness 不能自动用于证明 magic conversion 或 magic consumption lower bounds。",
+          "原始 RSS 摘要中部分英文字符显示为问号，保留来源原文；需要全文校对。"
+        ],
+        "relevance": [
+          "与你的 stabilizer / magic resource separation 相关，且将 non-stabilizerness 的抽象结构连接到可测量统计。",
+          "适合检验 restricted measurement 下能否高效认证 magic，以及优化本身是否引入隐藏的测量或计算成本。"
+        ],
+        "follow_up": [
+          "研究问题：在你的 restricted Clifford / local-control readout model 下，估计该 witness 的总 shots 和电路深度是多少？",
+          "研究问题：有限尺寸非 monotonicity 的反例对实际 magic certification 有什么影响；small SPAM 与 mixed noise 下是否存在可靠 threshold？"
+        ],
+        "relevance_score": 90,
+        "status": "preview",
+        "model": "ChatGPT preview (not API pipeline)",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.10471",
+        "analyzed_at": "2026-10-09T01:23:39+00:00"
+      }
+    },
+    {
+      "id": "2610.09749",
+      "version": 1,
+      "title": "Automated reduction of fault-tolerant circuits",
+      "authors": [
+        "Hyeongjun Jeon",
+        "Jeonghoon Lee",
+        "Taehyun Kim"
+      ],
+      "abstract": "",
+      "url": "https://arxiv.org/abs/2610.09749",
+      "pdf_url": "https://arxiv.org/pdf/2610.09749v1",
+      "published": "2026-10-08T04:00:00Z",
+      "updated": "2026-10-08T04:00:00Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "source": "rss",
+      "date_basis": "announcement",
+      "announcement_type": "new",
+      "topics": [
+        "logical_qec",
+        "adaptive_resources"
+      ],
+      "analysis": {
+        "summary": "从已知 fault-tolerant circuit 出发，作者用保留 fault equivalence 的 rewrites 自动压缩 syndrome-extraction circuits，再通过 circuit-level Monte Carlo 比较 logical performance。摘要展示了减少 ancilla preparations / CNOTs 的例子，也展示资源计数不变但 CNOT depth 改善的例子；资源减少和 logical error 改善是不同的性能指标。",
+        "problem": "能否在不逐一重新验证每个候选电路的 fault tolerance 的情况下，系统地降低 QEC circuit 的资源成本或改善逻辑性能？",
+        "setting": "输入是已有 fault-tolerance guarantee 的电路；搜索通过 non-reducing enabling rules 暴露 Bell-pair reductions，每次 reduction 移除一次 ancilla preparation 和一个 CNOT。摘要分别讨论 [[7,1,3]] Shor-style syndrome extraction 与 Steane-based dynamic extraction。",
+        "main_results": [
+          "作者声称所有搜索 transitions 保留 fault equivalence，因此输出电路继承输入的 fault-tolerance properties；具体 equivalence 定义需查全文。",
+          "对 [[7,1,3]] Shor-style 电路，一个 syndrome round 的 ancilla preparations 从 30 降至 18，CNOT 从 54 降至 42；two-qubit error p = 10⁻³ 时，两种 logical basis states 的 logical error 均下降约 21%。",
+          "另一 dynamic-extraction 电路使用 4 ancillas 和 14 CNOT，与既有设计资源计数一致但改善 CNOT depth；idle depolarizing rate 为 3p/10 与 p/10 时，摘要分别报告约 15% 与 10% 的 logical error 降幅。"
+        ],
+        "techniques": [
+          "搜索 non-reducing enabling rewrites，再进行 Bell-pair reductions。",
+          "用 circuit-level Monte Carlo 评估候选电路，而 fault-tolerance guarantee 来自 rewrite invariance。"
+        ],
+        "assumptions": [
+          "输入电路已知 fault tolerant，且所用 rewrite rules 的 fault equivalence 适用于采用的 fault model。",
+          "logical-error 数字来自所述模拟噪声配置；dynamic-extraction 数字显式依赖 idle depolarizing noise rate。"
+        ],
+        "limitations": [
+          "分析仅依据摘要；未核查 fault-equivalence proof、搜索完备性或 Monte Carlo uncertainty。",
+          "ancilla preparations 数量与同时占用的 ancilla space 不是同一个资源；首个例子没有直接给出峰值 ancilla 数。",
+          "两种 logical basis states 的错误率改善不等同于一般 logical process fidelity 的改善；摘要没有提供 SPAM-robust 实验认证。"
+        ],
+        "relevance": [
+          "为你的 depth / ancilla tradeoffs 提供具体 QEC task；可把 rewrite-preserved 属性与真正随噪声模型变化的 logical performance 分开。",
+          "对应 logical benchmarking 的关键 formulation：固定完整 extraction / recovery gadget，再明确到底估计 logical failure、state fidelity 还是 process fidelity。"
+        ],
+        "follow_up": [
+          "研究问题：fault-equivalence constraints 下是否有可证明的 depth–ancilla–gate-count lower bounds，而不只依赖搜索结果？",
+          "研究问题：对优化后 gadget，最少 logical preparations / readouts 与 syndrome data 能否给出包含 coherent noise 和 SPAM 的 process-fidelity bounds？"
+        ],
+        "relevance_score": 88,
+        "status": "preview",
+        "model": "ChatGPT preview (not API pipeline)",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.09749",
+        "analyzed_at": "2026-10-09T01:23:39+00:00"
+      }
+    },
+    {
+      "id": "2610.09341",
+      "version": 1,
+      "title": "Building codes with transversal CCZ using projective geometry and SAT solvers",
+      "authors": [
+        "Bohan Lu",
+        "Kenneth R. Brown"
+      ],
+      "abstract": "",
+      "url": "https://arxiv.org/abs/2610.09341",
+      "pdf_url": "https://arxiv.org/pdf/2610.09341v1",
+      "published": "2026-10-08T04:00:00Z",
+      "updated": "2026-10-08T04:00:00Z",
+      "categories": [
+        "quant-ph",
+        "cs.IT",
+        "math.IT"
+      ],
+      "source": "rss",
+      "date_basis": "announcement",
+      "announcement_type": "new",
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer",
+        "adaptive_resources"
+      ],
+      "analysis": {
+        "summary": "作者用 projective geometry 与 SAT search 构造编码 3 个 logical qubits、distance 至少 3 的 CSS codes，使 logical CCZ 由 transversal physical T / T† 实现。摘要给出 n = 48 至 496 的 13 个 block lengths，并声称 quasi-transversal CCZ 的特定 CSS family 在 n < 39 不可能；既有 [[47,3,3]] 上界仍留下 39–46 的空档。",
+        "problem": "为容错 non-Clifford operation 配置专门的 stabilizer code 时，需要多少 physical qubits？几何结构和自动搜索能否同时产生构造并给出严格的 block-length 下界？",
+        "setting": "CSS code 编码三个 logical qubits。8-divisible X-stabilizers 来自 projective geometry 并保证 d_Z ≥ 3；SAT solver 寻找与 transversal CCZ 相容的三个 X-logical operators。下界针对 Z-distance 至少 3、transversal T 加 diagonal Clifford correction 的 quasi-transversal CCZ。",
+        "main_results": [
+          "作者报告在 n = 48 至 496 的 13 个 block lengths 上构造 distance 至少 3 的 codes，其中 d_Z 为 3 或 4，并以 [[48,3,3]] Q_48 为例。",
+          "作者声称，具有三个 logical qubits、d_Z ≥ 3 和所定义 quasi-transversal CCZ 的 CSS code 在 n < 39 时不存在。",
+          "摘要引用既有 [[47,3,3]] code 作为上界，因此最短 block length 的未解决区间是 39 ≤ n ≤ 46。"
+        ],
+        "techniques": [
+          "使用 projective geometry 构造 8-divisible X-stabilizers。",
+          "用 SAT solver 寻找 logical operators；下界的证明方法在摘要中未说明。"
+        ],
+        "assumptions": [
+          "必须区分构造的 full distance 至少 3 与下界假设的 Z-distance 至少 3。",
+          "下界限定于所述 CSS / quasi-transversal implementation model，不能推广为所有 CCZ implementation 的 qubit 或 magic 成本下界。"
+        ],
+        "limitations": [
+          "分析仅依据摘要；未独立核查 code 参数、divisibility 条件或 block-length lower bound。",
+          "摘要没有给出 full logical-noise performance、threshold、syndrome-extraction depth 或 magic-state factory 成本。",
+          "transversal physical T/T† 不代表 physical non-Clifford resource 无成本，也不能从 block length 直接推出整个 fault-tolerant computation 的 magic budget。"
+        ],
+        "relevance": [
+          "将 stabilizer structure、non-Clifford operation 与 QEC resource costs 结合，贴合你关心的 magic / ancilla / depth tradeoffs。",
+          "下界和构造之间的明确空档适合作为科学问题筛选范例，比仅比较 heuristic performance 更有针对性。"
+        ],
+        "follow_up": [
+          "研究问题：加入 extraction / recovery 电路后，这些 codes 的完整 logical CCZ gadget 在 depth、physical T count、ancilla 与 logical infidelity 之间有何 tradeoff？",
+          "研究问题：能否用 bounded-error logical controls 认证此类 CCZ gadget，并区分 syndrome-visible faults 与 invisible logical faults？"
+        ],
+        "relevance_score": 86,
+        "status": "preview",
+        "model": "ChatGPT preview (not API pipeline)",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.09341",
+        "analyzed_at": "2026-10-09T01:23:39+00:00"
+      }
+    }
+  ],
+  "pending": [],
+  "screened": {},
+  "last_successful_run": null,
+  "last_run": {
+    "status": "preview",
+    "fetched": 145,
+    "selected": 5,
+    "analyzed": 0,
+    "pending": 0,
+    "note": "ChatGPT-authored preview from a captured official RSS announcement; no scheduled run or API call performed."
+  },
+  "is_demo": true,
+  "profile_title": "Guoding Liu · quantum information",
+  "preview_date": "2026-10-08",
+  "topic_labels": {
+    "benchmarking": "Benchmarking / SPAM",
+    "logical_qec": "Logical QEC",
+    "random_designs": "Random circuits / designs",
+    "magic_stabilizer": "Magic / stabilizer",
+    "adaptive_resources": "Adaptive circuits / resources",
+    "quantum_learning": "Quantum learning / certification",
+    "data_hiding": "Quantum data / information access"
+  }
+}

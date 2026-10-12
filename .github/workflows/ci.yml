@@ -1,0 +1,53 @@
+name: Tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Fork PR code runs without secrets, Pages access, or write permission.
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.11", "3.12", "3.13"]
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install package
+        run: python -m pip install .
+
+      - name: Check Python syntax
+        run: python -m compileall -q src tests
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Build an offline demonstration
+        run: qradar demo --output demo-public --site-url https://example.org/quantum-arxiv-digest
+
+      - name: Verify generated website and RSS
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          site = Path('demo-public')
+          assert (site / 'index.html').stat().st_size > 0
+          root = ET.parse(site / 'feed.xml').getroot()
+          assert root.tag == 'rss'
+          assert root.find('channel') is not None
+          assert root.findall('./channel/item'), 'Demo feed must contain examples'
+          PY
+

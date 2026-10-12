@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quantum-arxiv-digest"
+version = "0.1.0"
+description = "A personalized arXiv research digest with AI technical summaries and RSS"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+authors = [{name = "Guoding Liu"}]
+dependencies = []
+
+[project.optional-dependencies]
+fulltext = ["pypdf>=5,<7"]
+
+[project.scripts]
+qradar = "qradar.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+qradar = ["assets/*"]
+
