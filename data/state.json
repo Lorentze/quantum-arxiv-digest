@@ -188,6 +188,74 @@
         "analyzed_at": "2026-10-09T08:13:46+00:00"
       },
       "selected_at": "2026-10-09T08:16:39Z"
+    },
+    {
+      "id": "2610.06811",
+      "version": 1,
+      "title": "Polynomial-time simulation of non-Clifford quantum error correction",
+      "authors": [
+        "Serban Cercelescu",
+        "Mark Koch",
+        "Arthur Pesah"
+      ],
+      "abstract": "We show that every intermediate state of a broad class of non-Clifford quantum error-correction circuits is a third-order phase-polynomial state, even under stochastic Pauli noise. The class includes magic state distillation and cultivation, code switching and gauge fixing, transversal non-Clifford gates with syndrome extraction, and injection of diagonal magic states. Third-order phase-polynomial states strictly generalize stabilizer states, and we prove that they are exactly the stabilizer states of the diagonal-Clifford-and-Pauli (DCP) stabilizer formalism that we introduce. We characterize these states and show that their representations can be updated in polynomial time. This yields an exact polynomial-time simulation algorithm for these circuits and, more broadly, a framework for reasoning about their internal states and about magic states in general. We provide an open-source implementation, \\texttt{merlin}, and benchmark it against existing non-Clifford simulators on distillation, cultivation, and code switching circuits. The benchmarks demonstrate improved runtime and memory scaling as the number of logical outputs grows in Bravyi-Haah distillation, and simulation of a code switching circuit beyond the reach of all other tested simulators.",
+      "url": "https://arxiv.org/abs/2610.06811",
+      "pdf_url": "https://arxiv.org/pdf/2610.06811v1",
+      "published": "2026-10-05T17:54:39Z",
+      "updated": "2026-10-05T17:54:39Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 10,
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction",
+          "syndrome",
+          "transversal"
+        ],
+        "magic_stabilizer": [
+          "magic state",
+          "stabilizer",
+          "non-Clifford"
+        ]
+      },
+      "first_seen_at": "2026-10-12T02:38:41Z",
+      "analysis": {
+        "summary": "在受限的非-Clifford QEC 线路中，用 DCP 稳定子与三阶相位多项式追踪条件态，实现精确的多项式时间模拟。",
+        "problem": "避免多个逻辑 magic 输出造成的指数级模拟成本。",
+        "setting": "准备 |0⟩、|+⟩，使用 Pauli/CNOT/T 门、Z 型及兼容的 X 型 Pauli 测量；随机 Pauli 故障按轨迹采样。",
+        "main_results": [
+          "模拟时间关于 qubit 数和线路规模为多项式，无需限制 T 总数；每条可达分支须保持 3PP 态。",
+          "理想 X 测量为确定性或反对易于当前 Z 稳定子、反馈限于 DCP 修正时，作者证明 DCP 故障下的测量兼容性。"
+        ],
+        "techniques": [
+          "仿射支撑上的 Z₈ 三阶相位多项式，与 DCP 稳定子表的等价表示及更新规则。"
+        ],
+        "assumptions": [
+          "兼容测量并非任意自适应测量；随机 Pauli 噪声也不代表一般相干噪声。"
+        ],
+        "limitations": [
+          "仅阅读摘要与结果综述，未复核证明或运行 merlin。",
+          "通用模拟仍可能因 DCP rank 指数增长而困难；所读节选未审阅附录算法。"
+        ],
+        "relevance": [
+          "连接 magic、适应测量与 logical QEC：可模拟性边界由允许的测量和反馈约束决定。"
+        ],
+        "follow_up": [
+          "读者建议：寻找首次破坏兼容性的物理操作，并分析其 magic 或深度成本。"
+        ],
+        "relevance_score": 89,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.06811v1",
+        "model": "ChatGPT 本次会话",
+        "analyzed_at": "2026-10-12T02:41:58+00:00"
+      },
+      "selected_at": "2026-10-12T02:42:01Z"
     }
   ],
   "pending": [
@@ -2757,42 +2825,6 @@
       "keyword_matches": {
         "magic_stabilizer": [
           "stabilizer"
-        ]
-      },
-      "first_seen_at": "2026-10-12T02:38:41Z"
-    },
-    {
-      "id": "2610.06811",
-      "version": 1,
-      "title": "Polynomial-time simulation of non-Clifford quantum error correction",
-      "authors": [
-        "Serban Cercelescu",
-        "Mark Koch",
-        "Arthur Pesah"
-      ],
-      "abstract": "We show that every intermediate state of a broad class of non-Clifford quantum error-correction circuits is a third-order phase-polynomial state, even under stochastic Pauli noise. The class includes magic state distillation and cultivation, code switching and gauge fixing, transversal non-Clifford gates with syndrome extraction, and injection of diagonal magic states. Third-order phase-polynomial states strictly generalize stabilizer states, and we prove that they are exactly the stabilizer states of the diagonal-Clifford-and-Pauli (DCP) stabilizer formalism that we introduce. We characterize these states and show that their representations can be updated in polynomial time. This yields an exact polynomial-time simulation algorithm for these circuits and, more broadly, a framework for reasoning about their internal states and about magic states in general. We provide an open-source implementation, \\texttt{merlin}, and benchmark it against existing non-Clifford simulators on distillation, cultivation, and code switching circuits. The benchmarks demonstrate improved runtime and memory scaling as the number of logical outputs grows in Bravyi-Haah distillation, and simulation of a code switching circuit beyond the reach of all other tested simulators.",
-      "url": "https://arxiv.org/abs/2610.06811",
-      "pdf_url": "https://arxiv.org/pdf/2610.06811v1",
-      "published": "2026-10-05T17:54:39Z",
-      "updated": "2026-10-05T17:54:39Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 10,
-      "topics": [
-        "logical_qec",
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction",
-          "syndrome",
-          "transversal"
-        ],
-        "magic_stabilizer": [
-          "magic state",
-          "stabilizer",
-          "non-Clifford"
         ]
       },
       "first_seen_at": "2026-10-12T02:38:41Z"
@@ -6385,19 +6417,19 @@
   "last_run": {
     "fetched": 609,
     "keyword_candidates": 118,
-    "analyzed": 0,
-    "selected": 0,
-    "pending": 118,
+    "analyzed": 1,
+    "selected": 1,
+    "pending": 117,
     "lookback_days": 7,
     "date_basis": "initial_submission"
   },
   "is_demo": false,
   "last_collection_run": "2026-10-12T02:38:41Z",
-  "last_analysis_run": "2026-10-09T08:16:39Z",
+  "last_analysis_run": "2026-10-12T02:42:01Z",
   "last_analysis_batch": {
-    "analyzed": 3,
-    "selected": 3,
-    "pending": 0
+    "analyzed": 1,
+    "selected": 1,
+    "pending": 117
   },
   "topic_labels": {
     "benchmarking": "Benchmarking / SPAM",
