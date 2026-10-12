@@ -3,54 +3,42 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="个性化 arXiv 研究精选：阅读问题、假设、主要结果和研究联系的技术摘要。">
+  <meta name="description" content="Quantum research papers, original English abstracts and Chinese AI technical reports.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'">
-  <title>Quantum Paper Radar · 量子论文雷达</title>
-  <link rel="alternate" type="application/rss+xml" title="Quantum Paper Radar RSS" href="{{SITE_URL}}feed.xml">
+  <title>Quantum arXiv Digest</title>
+  <link rel="alternate" type="application/rss+xml" title="Quantum arXiv Digest RSS" href="{{SITE_URL}}feed.xml">
   <link rel="stylesheet" href="./style.css">
   <script src="./app.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#paper-list">跳到论文列表</a>
+  <a class="skip-link" href="#paper-list">跳到文章列表</a>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="./" aria-label="量子论文雷达首页"><span class="brand-mark" aria-hidden="true">Q</span><span>QUANTUM PAPER RADAR<span class="brand-sub">量子论文雷达</span></span></a>
-      <nav aria-label="主导航"><a href="#paper-list">论文精选</a><a href="#subscriptions">订阅 RSS <span aria-hidden="true">↗</span></a></nav>
+      <a class="brand" href="./">Quantum arXiv Digest</a>
+      <nav aria-label="主导航"><a id="current-feed" href="./feed.xml">RSS</a><button type="button" class="text-button" id="copy-feed">复制 RSS</button></nav>
     </div>
   </header>
   <main class="shell">
     <section class="intro" aria-labelledby="page-title">
-      <div class="intro-text"><p class="eyebrow"><span class="small-dot" aria-hidden="true"></span> A RESEARCH READING DESK</p><h1 id="page-title">让值得读的论文，<br><span>更容易被发现。</span></h1><p class="intro-copy">从 arXiv 筛选相关工作，梳理问题、假设与技术贡献。<br class="desktop-break">为量子信息研究保留一份可检索、可订阅的阅读记录。</p><p class="profile-line">研究画像 <span id="profile-title">{{PROFILE_TITLE}}</span></p></div>
-      <div class="status-panel" aria-label="数据状态"><p class="panel-label">阅读档案 <span id="mode-label">正在读取</span></p><p class="archive-count"><span id="total-count">—</span><span>篇精选论文</span></p><div class="status-rule"></div><p class="update-status" id="update-status">正在读取最近更新信息…</p><a class="subscribe-button" href="./feed.xml"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="4" cy="16" r="2"/><path d="M3 9a8 8 0 0 1 8 8M3 3a14 14 0 0 1 14 14"/></svg>订阅完整 RSS<span aria-hidden="true">↗</span></a></div>
+      <h1 id="page-title" lang="en">Quantum papers.</h1>
+      <p lang="en">Original abstracts. Chinese AI technical reports.</p>
     </section>
-    <div class="notice" id="demo-notice" hidden><span class="notice-icon" aria-hidden="true">i</span><div><strong>真实论文阅读预览 · 非自动更新</strong><p>这些条目依据真实 arXiv 公告与论文摘要整理，用于展示技术阅读效果。完成候选抓取与 AI 分析后即可更新精选；AI 分析可以由 ChatGPT 完成。启动本地服务后，就能订阅本机 RSS。</p></div></div>
-    <section class="local-workbench" id="local-workbench" aria-labelledby="local-heading" hidden>
-      <div class="local-heading"><div><p class="eyebrow">LOCAL READING DESK</p><h2 id="local-heading">在本机更新阅读档案</h2><p>无需 GitHub 或 API key。候选收集与技术分析分开完成。</p></div><span class="pending-badge"><strong id="pending-count">0</strong> 篇待分析</span></div>
-      <div class="local-actions">
-        <div class="local-step"><span class="step-number" aria-hidden="true">1</span><div><h3>收集候选论文</h3><p>从 arXiv 抓取近期论文，按研究画像初筛。</p><button class="local-button primary" id="collect-papers" type="button">收集候选</button></div></div>
-        <div class="local-step"><span class="step-number" aria-hidden="true">2</span><div><h3>交给 ChatGPT 分析</h3><p>导出材料，在 ChatGPT 中上传或粘贴，要求返回 JSON 文件。</p><button class="local-button" id="export-request" type="button">导出待分析材料</button></div></div>
-        <div class="local-step"><span class="step-number" aria-hidden="true">3</span><div><h3>保存分析结果</h3><p>导入 ChatGPT 返回的 JSON，合格条目将加入精选和 RSS。</p><button class="local-button" id="import-analysis" type="button">导入 ChatGPT 分析</button><input id="analysis-file" type="file" accept=".json,application/json" hidden></div></div>
-      </div>
-      <p class="local-status" id="local-status" role="status" aria-live="polite">正在读取本机状态…</p>
-      <div class="local-notes"><p>收集候选不会自动生成摘要；只有导入完成的分析才会发布。</p><p>本机 RSS：<a id="local-feed-link" href="./feed.xml">feed.xml</a>。同一台电脑上支持 HTTP 源的阅读器可订阅，需保持服务运行；手机和云端阅读器不能直接访问这个本机地址。</p></div>
-    </section>
-    <div class="workspace">
-      <aside class="sidebar" aria-label="主题筛选与订阅">
-        <div class="sidebar-heading"><h2>研究主题</h2><span id="topic-count">—</span></div>
-        <div class="topic-filters" id="topic-filters"><button class="topic-button active" type="button" data-topic="" aria-pressed="true"><span>全部主题</span><span class="topic-number">—</span></button></div>
-        <section class="subscription-box" id="subscriptions" aria-labelledby="subscription-heading"><div class="rss-label"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="4" cy="16" r="2"/><path d="M3 9a8 8 0 0 1 8 8M3 3a14 14 0 0 1 14 14"/></svg><h2 id="subscription-heading">带到你的阅读器</h2></div><p id="subscription-description">订阅全部精选，或只关注一个研究主题。无需账户。</p><a class="feed-link" href="./feed.xml" id="current-feed">全部精选 RSS <span aria-hidden="true">↗</span></a><button type="button" class="copy-button" id="copy-feed">复制订阅链接</button><p class="copy-status" id="copy-status" role="status"></p></section>
-        <section class="scope-box"><h2>怎样读这份摘要</h2><p><span class="scope-dot abstract" aria-hidden="true"></span><strong>基于摘要</strong><br>仅概述 abstract 中明示的结果。</p><p><span class="scope-dot fulltext" aria-hidden="true"></span><strong>基于全文节选</strong><br>包含正文内容，仍可能不完整。</p><p class="scope-note">分析范围逐篇标注。建议问题与作者结果分开列出；技术正确性仍需阅读原文核验。</p></section>
-      </aside>
-      <section class="reading-area" aria-labelledby="list-heading">
-        <div class="list-heading"><div><p class="eyebrow">PAPER COLLECTION</p><h2 id="list-heading">研究精选 <span id="results-count">—</span></h2></div><span class="collection-note">问题 · 结果 · 研究联系</span></div>
-        <form class="toolbar" id="filter-form" role="search"><label class="search-wrap" for="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span class="sr-only">搜索标题、作者或技术摘要</span><input id="search" type="search" placeholder="搜索标题、作者、技术关键词…" autocomplete="off"></label><label class="select-wrap"><span class="sr-only">提交时间范围</span><select id="date-filter"><option value="all">全部日期</option><option value="7">近 7 天提交</option><option value="30">近 30 天提交</option><option value="90">近 90 天提交</option></select></label><label class="select-wrap"><span class="sr-only">排序方式</span><select id="sort"><option value="recent">最新提交优先</option><option value="relevance">相关性优先</option></select></label></form>
-        <p class="result-caption" id="result-caption" role="status" aria-live="polite">正在读取论文…</p>
-        <div class="paper-list" id="paper-list" tabindex="-1"></div>
-        <div class="empty-state" id="empty-state" hidden><span aria-hidden="true">⌕</span><h3>这里暂时没有论文</h3><p id="empty-message">尝试其他关键词、主题或时间范围。</p><button class="reset-button" id="reset-filters" type="button">重置筛选</button></div>
-        <noscript><div class="notice">阅读界面需要 JavaScript。你也可以直接在 <a href="./feed.xml">RSS 中阅读全部技术摘要</a>。</div></noscript>
-      </section>
-    </div>
-    <footer class="site-footer"><div><strong>Quantum Paper Radar</strong><p>研究发现，从一个好问题开始。</p></div><div><p id="run-summary">数据状态在每次成功更新后记录。</p><p>来源：arXiv · 技术摘要由 AI 辅助生成，演示条目另行标注。</p></div><a href="./feed.xml">RSS ↗</a></footer>
+    <p class="notice" id="demo-notice" hidden>真实论文阅读预览 · 非自动更新</p>
+    <form class="toolbar" id="filter-form" role="search">
+      <label class="search-wrap" for="search"><span class="sr-only">搜索标题、作者或技术关键词</span><input id="search" type="search" placeholder="搜索论文 / Search papers" autocomplete="off"></label>
+      <label class="select-wrap"><span class="sr-only">研究主题</span><select id="topic-filter"><option value="">全部主题</option></select></label>
+    </form>
+    <div class="list-caption"><p id="result-caption" role="status" aria-live="polite">正在读取文章…</p><p class="copy-status" id="copy-status" role="status"></p></div>
+    <section class="paper-list" id="paper-list" tabindex="-1" aria-label="论文文章"></section>
+    <div class="empty-state" id="empty-state" hidden><h2>暂无文章</h2><p id="empty-message">请稍后刷新。</p><button type="button" class="reset-button" id="reset-filters">清除筛选</button></div>
+    <details class="local-workbench" id="local-workbench" hidden>
+      <summary>本机更新 <span id="pending-count">0</span> 篇待分析</summary>
+      <div class="local-actions"><button class="local-button" id="collect-papers" type="button">收集候选</button><button class="local-button" id="export-request" type="button">导出待分析材料</button><button class="local-button" id="import-analysis" type="button">导入 ChatGPT 分析</button><input id="analysis-file" type="file" accept=".json,application/json" hidden></div>
+      <p class="local-status" id="local-status" role="status" aria-live="polite"></p>
+      <p class="local-notes">将导出的材料交给 ChatGPT，导入完成的分析后更新文章。<a id="local-feed-link" href="./feed.xml">本机 RSS</a> 需保持本地服务运行。</p>
+    </details>
+    <noscript><p class="notice">请启用 JavaScript 查看文章列表；RSS 中的每篇文章均可直接打开中文报告。</p></noscript>
   </main>
+  <footer class="site-footer shell"><p>AI 阅读报告 · 分析依据逐篇标注</p><p id="updated-at"></p></footer>
 </body>
 </html>

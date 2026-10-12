@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "profile_title": "Guoding Liu · Quantum Information",
+  "profile_title": "Quantum arXiv Digest",
   "papers": [
     {
       "id": "2610.13880",
@@ -9,7 +9,7 @@
       "authors": [
         "Gideon Lee"
       ],
-      "abstract": "",
+      "abstract": "Two-block group-algebra codes are among the simplest quantum LDPC codes, and many of them are translation invariant on a twisted torus, which suits neutral-atom arrays and other platforms with movable qubits. We ask how far they go at small sizes when searched systematically across all groups. To tackle this question, we use a series of algebraic constraints and screens to design a search pipeline capable of enumerating broad and complete swathes of two-block codes on a laptop. With it we census about $10^8$ two-block codes with up to $320$ qubits at check weights five to nine. Several of these censuses are exhaustive, and support complete statements; for instance, the Gross code is, up to equivalence, the only abelian weight-six two-block code with $n \\le 200$ to reach $kd^2/n=12$, and the known $[[64,18,8]]$ is the best two-block code by $kd^2/n$ across weights five to nine with $n \\le 94$. The censuses are also large enough to give insights into where good codes live - they concentrate in a handful of groups; abelian groups give the best codes at small $n$ and non-abelian groups at large $n$, with the crossover appearing to move out as the check weight grows; and high quality codes become $100$ to $1000$ times rarer per draw from weight six to weights eight and nine. Using the group algebra and the census data to steer a statistical search finds four to fifteen times as many good codes as uniform draws in equal time. Among the codes found are $[[102,20,10]]$ and $[[120,24,10]]$ at check weight nine, which we simulate in noisy syndrome-extraction circuits, and $[[288,16,16]]$, the best weight-six two-block code with $n \\le 300$. At check weights seven to nine, our best codes exceed the best published $kd^2/n$ with exact distance at the same check weight in most length bands up to $320$ qubits. All codes are available in a public database.",
       "url": "https://arxiv.org/abs/2610.13880",
       "pdf_url": "https://arxiv.org/pdf/2610.13880v1",
       "published": "2026-10-09T17:26:49Z",
@@ -29,36 +29,46 @@
       },
       "first_seen_at": "2026-10-12T02:38:41Z",
       "analysis": {
-        "summary": "系统普查小规模 two-block 群代数 qLDPC 码，给出若干有限参数范围的最优性结论及新码；重点是穷尽搜索与资源前沿，而非新的渐近码构造。",
-        "problem": "简单、可平移的 two-block 码在有限物理比特数和检查权重约束下，能够达到怎样的 n、k、d 权衡？",
-        "setting": "CSS 群代数码 n=2|G|，检查矩阵由左右正则表示构造；搜索 n≤320、检查权重 5–9，以 kd²/n 和 Pareto 前沿比较。",
+        "summary": "这篇工作重新评估一种结构很简单的量子 LDPC 码：two-block 群代数码。作者没有提出新的渐近构造，而是把代数约束、码等价约化和距离验证组合成可在笔记本上运行的搜索流程，普查约一亿个小码。在限定物理比特数和检查权重后，这些简单码仍能占据许多资源比较的 Pareto 前沿。论文最有价值的产物是可核查的有限尺寸码数据库，以及解释如何把昂贵的找码问题拆成一系列廉价筛选的技术路线。",
+        "problem": "对近期硬件而言，渐近常数编码率并不足以判断一个码是否划算。真正的问题是：在 n≤320、稳定子检查权重 5 至 9 的规模中，最简单的两块 CSS 结构可以同时提供多少逻辑比特 k 和多大距离 d？过去许多结论来自分散的随机搜索，既可能漏掉好码，也容易把找到的低权重逻辑算符误当作精确距离。作者希望同时改善搜索覆盖、文献比较和距离证据。",
+        "setting": "取有限群 G 和群代数元素 a,b∈F₂[G]，令 n=2|G|。两块检查矩阵为 H_X=(L(a)|R(b))、H_Z=(R(b)^T|L(a)^T)；左、右正则作用互相交换，因此 CSS 对易条件自动满足。检查权重由 a、b 的支持决定。主要指标 Q=kd²/n 强调距离，并按相同检查权重和长度区间比较；作者另外给出 kd/n、n/k 对 d 和完整 Pareto 前沿，避免单一分数掩盖编码率差异。",
         "main_results": [
-          "作者普查约 10⁸ 个码；部分参数区间穷尽，包括 n≤200、权重 6 的阿贝尔码中 Gross 码达到 kd²/n=12 的唯一性（模等价）。",
-          "报告 [[102,20,10]]、[[120,24,10]] 权重 9 码及 [[288,16,16]] 权重 6 码；群结构引导采样的同时间优质码产出提高约 4–15 倍。"
+          "普查覆盖约 10⁸ 个候选码，其中若干参数区域为穷尽枚举，可给出明确的有限类最优性。例如，n≤200 的阿贝尔、权重六 two-block 码中，Gross 码是达到 Q=12 的唯一等价类；已知 [[64,18,8]] 码在 n≤94、权重五至九的 two-block 范围内具有最大 Q。",
+          "搜索得到权重九的 [[102,20,10]]、[[120,24,10]]，以及权重六的 [[288,16,16]] 等实例。前两个码约以五个物理比特保护一个逻辑比特，作者还模拟其含噪 syndrome 提取电路。在权重七至九、多个 n≤320 的长度区间，新码改善了相同检查权重下已有精确距离码的 Q 前沿。",
+          "好码高度集中于少数群；阿贝尔和非阿贝尔群的相对优势随码长与权重改变。利用初始普查及群代数结构引导后续采样，在所测试的固定时间比较中，好码产出提高约 4 至 15 倍。这是搜索效率的实测提升，不是对所有群或参数的普适复杂度定理。"
         ],
         "techniques": [
-          "等价类约化、群代数维数筛选与先找距离见证再计算精确距离；依据代数组件进行定向采样。"
+          "先以群自同构、平移和块交换等关系压缩重复候选，再用群代数的维数约束剔除 k=0 或不可能达到目标参数的码；这样把计算预算集中到真正可能改进文献基准的候选上。",
+          "距离计算采用双向夹逼：随机算法寻找低权重非平凡逻辑算符，提供可立即拒绝候选的距离上界；没有找到见证并不意味着距离已被证明，因此幸存者还必须经过逐权重的精确搜索来建立下界。精确阶段利用连通支持、未满足检查的剪枝界和对称根减少分支。",
+          "最终用 Tanner 图的规范形式再次去重，保留逻辑算符见证，并借独立距离程序核对重要小码。对不同长度、权重分别设置文献锚点，使搜索目标和比较对象清晰。"
         ],
         "assumptions": [
-          "有限 n 和指定检查权重、码族的比较；平移不等于严格二维几何局域。"
+          "最优性陈述只覆盖论文明确穷尽的群、码长、检查权重和 two-block 结构；较大非阿贝尔或高权重区域仍含统计采样。平移不变或可嵌入扭曲环面，也不等于每个检查在严格二维近邻硬件上都局域。",
+          "Q 只使用码参数，未直接计入辅助比特、原子移动、检查电路深度、译码延迟和逻辑门成本。权重更大可能得到更好 Q，也可能扩大单轮 syndrome 电路的故障传播。"
         ],
         "limitations": [
-          "已读正文定义、搜索和结果章节节选；未逐项核查附录证明、距离计算或数据库；非阿贝尔高权重搜索并非全部穷尽。"
+          "已阅读 v1 正文的定义、搜索流程、主要结果与距离算法说明；没有独立重跑完整普查或逐个复算公开数据库。低距离的重要实例可由外部精确程序交叉验证，更高距离部分仍依赖作者的搜索实现及见证。",
+          "论文展示的是有限尺寸搜索和若干噪声模拟，不能据此推出渐近好码、统一硬件阈值或所有码都有高效逻辑操作。数据库给出了比较起点，真正的架构优势还需要电路与噪声模型。"
         ],
         "relevance": [
-          "为固定码的逻辑表征与 qLDPC 资源成本提供具体实例和比较基准；不直接给出 SPAM 鲁棒认证。"
+          "适合研究 qLDPC 有限资源、群代数结构及纠错架构的读者。它具体展示了如何把理论筛选转化为搜索算法，也为比较不同逻辑认证或容错方案提供可重复使用的固定码实例。",
+          "可借此区分三个不同问题：码参数优良、存储电路优良、逻辑计算优良；论文主要解决第一个，并对少数实例触及第二个。"
         ],
         "follow_up": [
-          "研究问题：将这些码的检查权重、连接范围及 syndrome 电路成本纳入逻辑认证资源模型。"
+          "在同一连接和噪声预算下，把 Q 前沿换成每个逻辑比特所需的辅助比特数、门数及移动距离，权重九实例是否仍占优？",
+          "高质量码为何集中于特定群：已有代数约束主要解释 k，能否进一步预测大 d，而减少对距离枚举的依赖？"
         ],
         "relevance_score": 82,
         "status": "analyzed",
         "evidence_level": "full_text_excerpt",
         "source_url": "https://arxiv.org/html/2610.13880v1",
         "model": "ChatGPT 本次会话",
-        "analyzed_at": "2026-10-12T03:15:13+00:00"
+        "analyzed_at": "2026-10-12T03:52:15+00:00"
       },
-      "selected_at": "2026-10-12T03:20:36Z"
+      "selected_at": "2026-10-12T03:20:36Z",
+      "sources": [
+        "arxiv"
+      ]
     },
     {
       "id": "2610.13784",
@@ -69,7 +79,7 @@
         "Sara Murciano",
         "Mattia Moroder"
       ],
-      "abstract": "",
+      "abstract": "Dissipative state preparation engineers quantum many-body states as steady states of an open-system dynamics. The spatial range of the required dissipation sets both the feasibility of analog implementations and the connectivity and control complexity of digital ones. Yet how this locality quantitatively constrains preparation times remains largely unknown. Here, we establish an exact locality-preparation time relation for quadratic fermionic systems and develop a construction that optimizes the locality of the dissipative dynamics while preserving the target state. Applied to the Kitaev chain, our framework reveals sharply different locality-preparation time tradeoffs in critical and gapped regimes. At criticality, suppressing the algebraic tails of the jump operators necessarily forces the preparation time to grow algebraically with system size. By contrast, both trivial and topological gapped phases admit exponentially localized dissipation with a finite preparation time in the thermodynamic limit. Our results identify when fast dissipative preparation is compatible with local control and when criticality imposes an unavoidable dynamical cost.",
       "url": "https://arxiv.org/abs/2610.13784",
       "pdf_url": "https://arxiv.org/pdf/2610.13784v1",
       "published": "2026-10-09T16:03:49Z",
@@ -89,36 +99,46 @@
       },
       "first_seen_at": "2026-10-12T02:38:41Z",
       "analysis": {
-        "summary": "在二次费米系统的 Markovian 耗散制备中，量化跳跃算符空间衰减与耗散 gap 的权衡；临界性产生代价，拓扑本身未必如此。",
-        "problem": "保持同一目标稳态时，增强 dissipator 的局域性需要付出怎样的制备时间代价？",
-        "setting": "目标为 Bogoliubov 真空，L_j=√κ∑_k B_jk a_k，B 满秩且算符范数归一；周期平移不变情形以非零权重 β_k 混合模式。",
+        "summary": "论文研究一个具体的状态制备资源问题：如果只允许空间范围更短的耗散操作，达到同一目标态是否一定更慢？作者在二次费米 Hamiltonian、线性 Markovian 跳跃算符的框架内建立了可以精确计算的关系。关键不是直接截断原有非局域操作，而是先重新混合准粒子湮灭算符，在保持目标暗态的同时优化实空间尾部。Kitaev 链中的结论把临界性与拓扑区分开：临界奇点使局域性改善伴随多项式减速，有隙拓扑态则仍能兼容指数局域的快速耗散。",
+        "problem": "直接耗散每个 Bogoliubov 模式可以去掉激发、制备基态，但这些模式通常分布在整个系统。实验需要控制跳跃算符的空间范围；单纯切断远程系数可能改变稳态。论文希望找到一族目标态完全相同的耗散器，明确其空间衰减与最慢弛豫率之间的关系，再考察有限范围截断后的误差。",
+        "setting": "将二次 Hamiltonian 写成 H=Σ_k ε_k a_k†a_k，目标 |Ω⟩ 是所选 Bogoliubov 真空。采用 L_j=√κ Σ_k B_jk a_k，B 满秩且 ||B||op=1；满秩保证所有准粒子方向都受到耗散，范数归一固定总体强度，避免用任意放大耦合伪造速度优势。周期、平移不变时 B_jk=e^(-ikj)β_k/√N，实空间跳跃系数是 β_k u_k、β_k v_k 的 Fourier 系数。",
         "main_results": [
-          "正文给出 Δ_L=(κ/2)inf_k|β_k|²。临界点为压低空间尾部至 r^{−(m+1)} 而在 β_k 引入 m 阶零点，会产生 τ∼N^{2m}/κ 的逆 gap 时间尺度。",
-          "Kitaev 链的平庸和拓扑有隙相均可有指数局域跳跃算符及不随 N 发散的逆 gap 时间尺度；特殊曲线可严格有限范围。"
+          "平移不变模型的 Liouvillian gap 为 Δ_L=(κ/2) min_k |β_k|²。物理费米密度矩阵受到宇称超选择约束，不包含实现这一 gap 的奇宇称相干模式；论文使用可访问的最慢速率 Γ=2Δ_L，定义渐近弛豫时间 τ=1/Γ。这个定义需要和给定全局精度的混合时间区分。",
+          "临界处，Bogoliubov 系数的动量奇点产生实空间代数尾。让 β_k 在奇点附近具有 m 阶零点，可把尾部压到约 r^(-m-1)，但有限系统最邻近动量相距约 1/N，使最小 |β_k| 约为 N^(-m)，因而 τ∼N^(2m)/κ。改善局域性的同一动作也削弱了最慢模式的耗散。",
+          "Kitaev 链的平庸和拓扑有隙相都可选择指数局域跳跃算符，同时保持不随 N 发散的 τ。拓扑区的特殊曲线 Δ²+(μ/2)²=t² 上还能构造只涉及相邻两个格点的严格有限范围跳跃算符。拓扑绕数本身并不强迫制备减速。",
+          "有限范围实验的数值例子显示：在截断前先压低临界尾部，能明显改善相关函数和稳态重叠；但抑制指数并非越大越好。慢模式的系数过小会放大相对截断误差，因此出现最佳中间参数。"
         ],
         "techniques": [
-          "Bogoliubov 模式混合、Fourier 系数衰减与 third quantization 的耗散谱分析。"
+          "从共同暗态出发利用混合矩阵 B 的自由度，把保持目标态与优化操作局域性分开处理；这是比直接删除远程耦合更有结构的设计办法。",
+          "通过 Fourier 正则性分析，将动量函数的连续性、零点阶数和复平面解析性转换成实空间代数或指数衰减；再用 third quantization 计算二次 Lindbladian 的弛豫谱。",
+          "对临界与有隙参数分别构造 β_k，并在相同空间截断下比较相关函数。图中的全局误差采用归一化 Hilbert–Schmidt 重叠，不宜直接改称任意操作任务的保真度保证。"
         ],
         "assumptions": [
-          "二次 Hamiltonian、线性损耗跳跃算符、Markovian 动力学；上述公式采用周期边界和平移不变归一化。"
+          "精确关系建立在二次费米系统、线性准粒子损耗和 Markovian Lindblad 动力学上；明确的 β_k 公式还使用周期边界与平移不变性。若存在零模，必须先指定目标基态流形中的态，再选择相应创建或湮灭方向。",
+          "临界零点的讨论要求有限系统采样动量上的 B 仍保持满秩。若某个实际动量恰好被置为零，会出现未被耗散的方向，不能照搬唯一目标稳态的陈述。"
         ],
         "limitations": [
-          "已读正文构造、公式和临界性章节节选；未核查补充材料证明。逆 gap 不自动等同固定全局 trace-distance 精度的混合时间。"
+          "已阅读 v1 正文构造、局域性公式、Kitaev 相图和截断比较，并核对补充材料中满秩暗态条件的论证；未逐步独立验证全部补充证明。",
+          "τ 描述渐近最慢弛豫，不能单凭 gap 宣称常数时间达到固定全局 trace distance；维数、初态重叠和误差精度还可能带来额外代价。反馈、非 Markovian 浴和相互作用体系均超出当前定理的适用范围。"
         ],
         "relevance": [
-          "直接提供局域性和状态制备资源的权衡，亦与费米信息任务有关；不能直接套用为一般自适应线路下界。"
+          "该工作把空间控制范围变成可定量的状态制备资源，适合研究费米量子信息、储备池工程及局域性限制。其启发是同时追踪目标态、耦合归一和慢模式，不能只看操作的空间支持。"
         ],
         "follow_up": [
-          "研究问题：加入测量、反馈或非 Markovian 记忆后，这一权衡哪些部分仍成立？"
+          "把 τ 换成制备精度 ε 的全局混合时间后，系统大小与 ε 如何共同进入资源界？",
+          "增加局域测量、反馈或有限记忆的环境，能否绕开临界尾部与慢模式之间的同一约束，代价转移到哪种资源？"
         ],
         "relevance_score": 81,
         "status": "analyzed",
         "evidence_level": "full_text_excerpt",
         "source_url": "https://arxiv.org/html/2610.13784v1",
         "model": "ChatGPT 本次会话",
-        "analyzed_at": "2026-10-12T03:15:13+00:00"
+        "analyzed_at": "2026-10-12T03:52:15+00:00"
       },
-      "selected_at": "2026-10-12T03:20:36Z"
+      "selected_at": "2026-10-12T03:20:36Z",
+      "sources": [
+        "arxiv"
+      ]
     },
     {
       "id": "2610.13609",
@@ -129,7 +149,7 @@
         "Flavio Baccari",
         "Remigiusz Augusiak"
       ],
-      "abstract": "",
+      "abstract": "Experimental detection of multipartite Bell nonlocality faces many challenges. The increase in the size of the system demands a higher fidelity of state preparation, a higher detection efficiency, and a larger number of correlators that need to be estimated. These issues are even more pronounced if one wishes to detect a more restrictive variant of Bell nonlocality called genuine multipartite nonlocality (GMNL). In this work, we introduce two classes of multipartite Bell inequalities that are capable of detecting GMNL correlations and address different experimental hurdles in GMNL detection. The first class consists of the number of correlators that scales linearly with the number of parties. The second class increases the number of correlators and, in return, provides higher noise robustness of GMNL detection. Both classes of inequalities are constructed to detect GMNL in graph states, and in fact both can be used for self-testing of graph states and the performed measurements.",
       "url": "https://arxiv.org/abs/2610.13609",
       "pdf_url": "https://arxiv.org/pdf/2610.13609v1",
       "published": "2026-10-09T13:55:46Z",
@@ -148,37 +168,46 @@
       },
       "first_seen_at": "2026-10-12T02:38:41Z",
       "analysis": {
-        "summary": "为连通图态设计 GMNL Bell 不等式，建立待估关联量数量与噪声鲁棒性的权衡，同时保留器件无关 self-testing。",
-        "problem": "如何以较少相关量认证真正多体非局域性，而非仅检出一般 Bell 非局域性？",
-        "setting": "多方 Bell 实验、连通图态和二值局域测量；以所有双局域模型的界为 GMNL 判据。",
+        "summary": "论文为图态构造真正多体非局域性（GMNL）的 Bell 见证，并在测量资源与噪声耐受之间提供两种选择。第一族保留随参与方数线性增长的相关量，第二族加入更多稳定子乘积、形成 Svetlichny 型核心来提高违反余量。技术重点是重新设计 Bell 表达式，使它超过所有双局域模型的上界，同时仍能从最大违反推断图态和测量。它解决的是比普通 Bell 非局域性更强的认证目标，而不仅是给原有图态不等式换一个阈值。",
+        "problem": "在多方实验中，违反普通 Bell 不等式并不排除系统只在某些子群内非局域：不同双划分上的局域模型及其概率混合也可能产生强相关。原来的 BASTA 图态不等式具有较少相关量和 self-testing 优点，却不足以检出 GMNL。论文的问题是，怎样保留这些实验友好性质，又能排除每个双划分上局域的无信号模型？",
+        "setting": "考虑连通图 G 的 n 比特图态，其生成元为 g_i=X_i∏_{j∈N_i}Z_j；每方拥有两种二值测量。选一个旋转方 r，用 A_r,0±A_r,1 替换该方的 X、Z，其他方用各自两种测量替换。双局域集合允许各分组内部存在无信号相关，因而认证目标比仅排除完全局域隐藏变量模型更严格。",
         "main_results": [
-          "第一族仅需随参与方数线性增长的 correlators；第二族增加相关量以提高噪声鲁棒性。",
-          "第一族的双局域界为 2(n−1)，量子界为 2√(1+|N_r|²)+2(n−|N_r|−1)。最大违反给出图态和测量的 self-testing。",
-          "正文对若干小型 GHZ 实例数值计算噪声下可提取 fidelity 下界。"
+          "第一族表达式以 r 及其邻居组成核心，对其他生成元加权为 2。其双局域上界为 β_BL=2(n−1)，量子最大值为 β_Q=2√(1+|N_r|²)+2(n−|N_r|−1)。理想图态配合适当旋转角能达到量子界；所需相关量随 n 线性增加，每方仍只需两种设置。",
+          "与原 BASTA 的优化方向不同，第一族选择度数较小的旋转顶点可提高 β_Q/β_BL。还可以在图态的局域补等价类中寻找更有利的图，改变各方测量基而保持目标态的局域等价关系。完整最优化可能昂贵，因此这一自由度不等于高效全局最优算法。",
+          "最大违反满足论文的有限维与约化态满秩条件时，可 self-test 图态及测量：结论是在局域变换和额外辅助系统意义下确定目标，而非知道实验内部的绝对基。作者进一步为 3 至 6 方 GHZ 示例数值给出噪声下的可提取保真度下界。",
+          "第二族用团结构内的稳定子奇数乘积替换或扩充核心，获得 Svetlichny 型噪声优势。代价是相关量数可随核心大小指数增加；也不是每个连通图都直接适用。作者检查至 8 顶点的局域补类别，显示绝大多数可使用该构造。"
         ],
         "techniques": [
-          "重加权图态 stabilizer 的 BASTA 构造、双划分界及局域提取通道的 self-testing。"
+          "证明分成核心和扩展两部分：核心确保跨越核心的双划分不能达到量子值，扩展用无信号相关的不等式把其余参与方连接进证书，防止漏掉核心之外的双划分。",
+          "量子上界利用平方和分解；达到上界会强制出现相应的局域代数关系，再由这些关系推出图态稳定子和 self-testing 结构。有限噪声下的保真度则另外使用局域提取通道与算符不等式方法。",
+          "白噪声可见度提供直观比较：若完全混合态的 Bell 值为零，ρ=p|G⟩⟨G|+(1−p)I/2ⁿ 的违反要求 p 超过 β_BL/β_Q。因此增加量子界与双局域界的比例会改善此特定噪声模型的耐受性。"
         ],
         "assumptions": [
-          "最大违反定理要求有限维测量和各方约化态满秩；认证仅确定局域等价意义下的目标态与测量。"
+          "GMNL 判据依赖论文采用的无信号双局域模型及连通图结构；与其他多体非局域性定义比较时，必须先确认允许的组内相关模型一致。",
+          "理想最大违反的 self-testing 定理与有噪声的鲁棒保真度界是不同结果。后者在文中针对具体小型实例计算，不能把理想定理自动当作所有大图的统一噪声界。"
         ],
         "limitations": [
-          "已读定义、定理和 self-testing 节选；未核查附录证明及数值证书。线性 correlator 数量不直接保证总 shots 线性。"
+          "已阅读 v1 定义、两族构造、界值、自测试与局域补优化章节；没有独立核查所有附录或重算数值证书。第一族的线性相关量数只说明需要估计的量较少，不保证总实验 shots 线性。",
+          "要以给定置信度证明违反，还需考虑相关量方差、系数权重、违反余量和测量分配。白噪声阈值改善也不能直接等同对任意局域噪声、漏检或实验漂移的鲁棒性。"
         ],
         "relevance": [
-          "与 stabilizer、非局域游戏及量子态认证直接相关，可用于比较器件无关认证与受信局域控制认证的资源。"
+          "适合图态、稳定子、非局域游戏及器件无关认证研究。两族构造具体展示：更强认证目标会压缩违反余量，增加测量项则可能换回噪声耐受；资源评价应同时报告两者。"
         ],
         "follow_up": [
-          "研究问题：计入违反余量、置信度和测量设置后，总 sample complexity 如何随 n 增长？"
+          "固定置信度和噪声水平后，如何为这些带权相关量分配 shots，使总样本复杂度最小？",
+          "能否在局域补搜索中直接优化可提取保真度或有限样本认证成本，而不仅最大化理想界值比例？"
         ],
         "relevance_score": 85,
         "status": "analyzed",
         "evidence_level": "full_text_excerpt",
         "source_url": "https://arxiv.org/html/2610.13609v1",
         "model": "ChatGPT 本次会话",
-        "analyzed_at": "2026-10-12T03:15:13+00:00"
+        "analyzed_at": "2026-10-12T03:52:15+00:00"
       },
-      "selected_at": "2026-10-12T03:20:36Z"
+      "selected_at": "2026-10-12T03:20:36Z",
+      "sources": [
+        "arxiv"
+      ]
     },
     {
       "id": "2610.12782",
@@ -189,7 +218,7 @@
         "V. Lalitha",
         "Shayan Srinivasa Garani"
       ],
-      "abstract": "",
+      "abstract": "We introduce coset lifted product (CLP) codes, a family of quantum LDPC codes that combine the protograph structure of lifted product codes with the coset action of Aydin, Tamo, and Barg \\cite{AydinTamoBarg2026}. Given a finite group $G$, a subgroup $H \\le G$ that need not be normal, a protograph $A$ over $\\mathbb F_2[G]$, and a protograph $B$ over $\\mathbb F_2[N_G(H)]$, the two protographs act on the cosets $G/H$ from the left and from the right to produce quantum CSS codes. Further, for groups of odd order, we give an explicit formula for the dimension as a sum over the irreducible representations $ρ$ of $G$ of hypergraph product dimensions. A search over $14,843$ pairs $(G,H)$ with $H$ restricted to be non-normal and $120 \\le n \\le 400$ yields certified codes that exceed the best published value of $Q=kd^2/n$ at check weights $6,7$ and $9$, i.e., we obtain $[[360,20,20]]$ at $w=6$, a $[[360,24,20]]$ code at $w=7$, and codes $[[252,16,18]]$ and $[[288,16,20]]$ at $w=9$. Our search also produce high-distance codes with parameters $[[168,10,14]], [[240,8,20]]$ at $w=6$ and $[[216,8,18]]$ at $w=7$.",
       "url": "https://arxiv.org/abs/2610.12782",
       "pdf_url": "https://arxiv.org/pdf/2610.12782v1",
       "published": "2026-10-08T22:39:36Z",
@@ -209,38 +238,46 @@
       },
       "first_seen_at": "2026-10-12T02:38:41Z",
       "analysis": {
-        "summary": "通过非正规子群的 coset 左右作用扩展 lifted-product CSS 码；表示论分块和小规模认证码参数值得关注。",
-        "problem": "怎样利用非正规子群扩展 qLDPC 构造，并计算编码维数、搜索有限尺寸优良码？",
-        "setting": "A 在 F₂[G]、B 在 F₂[N_G(H)] 上，作用于 G/H；H 不必正规。",
+        "summary": "作者提出 coset lifted product（CLP）量子 LDPC 码，把 lifted-product 的原型图结构与非正规子群的陪集作用结合起来。核心创新是改变提升时所作用的空间：不再让群只作用在自身，而是在 G/H 上组合左作用与合法的右作用。论文证明 CSS 对易性，给出奇数阶群的表示论维数公式，并搜索有限规模的非正规实例，得到若干精确认证距离的新码。这是一条扩大代数找码空间的路线，贡献同时包含构造、维数计算和可核查的小码参数。",
+        "problem": "常见 two-block 和 lifted-product 码常采用群的正则表示；这样结构清楚，却可能把有效候选限制在较小的设计空间。若子群 H 不正规，G/H 不能简单作为商群使用，左右作用又必须满足 CSS 对易要求。论文要解决的正是：怎样在这种更一般的陪集空间上定义合法的两套作用，保留原型图扩展能力，并计算由此产生的逻辑比特数？",
+        "setting": "取有限群 G、任意子群 H≤G，令 m=|G/H|；A 的元素来自 F₂[G]，B 的元素来自 F₂[N_G(H)]，其中 N_G(H) 是 H 的正规化子。左作用为 xH↦gxH，右作用为 xH↦xnH。限制 n 在正规化子内，保证右作用不依赖陪集代表的选择。把这些置换块按 lifted-product 方式组装成 H_X、H_Z，码长为 m(n_A1 n_B0+n_A0 n_B1)。",
         "main_results": [
-          "构造保持 CSS 对易；|G| 为奇数时，维数等于不可约表示及 H 固定子空间对应的 HGP 维数之和。",
-          "作者搜索 120≤n≤400，报告 w=6 的 [[360,20,20]]、w=7 的 [[360,24,20]] 等认证码，并声称改进对应的 kd²/n 纪录。"
+          "左右作用都把 xH 送到 gxnH，所以互相交换；在二元域上，H_X H_Z^T 的两项相同并相消，得到 CSS 正交性。这个构造对正规或非正规 H 都成立；不同极限恢复通常的 lifted product 和既有陪集 two-block 构造。",
+          "当 |G| 为奇数时，可在 F₂ 的代数闭包上分解陪集表示。不可约表示 ρ 的重数为 μ_ρ=dim ρ^H；相应 A_ρ 和 B_ρ 分别作用于表示空间和重数空间。编码维数为各块 HGP 维数之和，即 Σ_ρ[dim ker A_ρ·dim ker B_ρ^T+dim ker A_ρ^T·dim ker B_ρ]。",
+          "在受限的 14,843 个非正规群—子群对、120≤n≤400 的搜索中，论文报告权重六 [[360,20,20]]、权重七 [[360,24,20]]、权重九 [[252,16,18]] 与 [[288,16,20]] 等认证码。作者将这些码与相同检查权重的已发表 Q=kd²/n 指标比较，称其中多项改进已有精确距离纪录。",
+          "文中严格区分 [[n,k,d]] 与 [[n,k,≤d]]：前者具有整数规划距离证书，后者仅表示搜索找到一个权重 d 的逻辑算符。更高候选 Q 若来自距离上界，就不能与认证纪录混成已经实现的性能。"
         ],
         "techniques": [
-          "可交换左右 coset 作用、群表示分块、随机参数搜索及整数规划距离认证。"
+          "利用正规化子保证右陪集作用良定义，用与全部左作用交换这一结构直接证明 CSS 条件；无需依赖随机生成检查矩阵后碰巧正交。",
+          "维数推导结合 Maschke 半单性、Frobenius reciprocity 和 Schur 引理，把大陪集置换表示分成小表示块，再使用标准 HGP 核维数公式。域扩张不改变原二元检查矩阵的秩，因此能把分块计算还原为逻辑比特数。",
+          "搜索先核对正交、秩及检查权重，再分级增加随机距离搜索预算；幸存者用每个逻辑对偶扇区的整数规划排除更轻逻辑算符。最终结合达到上界的见证固定精确距离，并用独立矩阵脚本重新核查。"
         ],
         "assumptions": [
-          "维数公式要求群阶为奇数；构造本身不限于此。",
-          "有限搜索限制 protograph 形状及群/子群条件。"
+          "奇数阶只限制所给的表示论闭式维数公式，不限制基本 CSS 构造。群阶为偶数时，特征二会破坏上述半单分解，不能直接照搬定理。",
+          "有限搜索还限制原型图形状、子群与 core 的指标、正规化子指标以及元素支持。搜索产物不代表所有非正规陪集码，参数改进也只对应作者选定的文献基准。"
         ],
         "limitations": [
-          "阅读构造、维数公式和搜索部分；未独立复算代码矩阵或核查全部证明。",
-          "认证距离须区别于表中仅找到上界的 ≤d；未建立 decoder、阈值或逻辑操作性能。"
+          "已阅读 v1 作用定义、CSS 证明、奇数阶维数定理和搜索认证流程；未独立重建每个新码或重跑整数规划。随机搜索发现的低权重算符只给距离上界；作者也指出部分大距离候选在更长搜索后下降，需保留这一证据等级。",
+          "优良 n、k、d 参数尚未提供实用译码器、电路级阈值、局域布局或逻辑门成本。表示论分块是代数计算工具，通常并不保持物理比特上的局域性，也不自动产生容错实现。"
         ],
         "relevance": [
-          "表示论与 qLDPC 的直接交叉，可为 logical benchmarking 提供不同小码实例。"
+          "论文适合研究表示论与 qLDPC 交叉的读者：子群固定子空间直接控制陪集表示中的可见扇区，因而把群结构转化为编码维数。它也提供一组可与普通 bicycle 码比较的有限尺寸基准。"
         ],
         "follow_up": [
-          "延伸问题：coset 对称性是否同时提供可实现的逻辑 twirling 原语，而非仅压缩维数计算？"
+          "相同硬件连接与译码预算下，CLP 的认证参数优势还能保留多少，哪些陪集结构最便于 syndrome 电路？",
+          "能否利用正规化子或陪集对称性构造低成本逻辑操作；这种计算上的对称性与可实际实施的逻辑 twirling 有何差别？"
         ],
         "relevance_score": 82,
         "status": "analyzed",
         "evidence_level": "full_text_excerpt",
         "source_url": "https://arxiv.org/html/2610.12782v1",
         "model": "ChatGPT 本次会话",
-        "analyzed_at": "2026-10-12T03:17:48+00:00"
+        "analyzed_at": "2026-10-12T03:52:15+00:00"
       },
-      "selected_at": "2026-10-12T03:20:36Z"
+      "selected_at": "2026-10-12T03:20:36Z",
+      "sources": [
+        "arxiv"
+      ]
     },
     {
       "id": "2610.12685",
@@ -253,7 +290,7 @@
         "Guido Pupillo",
         "Samuel Crew"
       ],
-      "abstract": "",
+      "abstract": "Quantum LDPC codes promise to reduce the overhead of fault-tolerant quantum computation, but their practical use requires efficient logical gates, measurements, and access to non-Clifford resources. Here, we develop a complete set of computational primitives for La-cross hypergraph product codes. For a subclass of these codes, we show that seed automorphisms together with fold-transversal gates generate the full logical Clifford group up to Pauli corrections. We further prove that every rank one logical operator admits $D$ pairwise disjoint physical representatives, enabling parallel gauging and a space--time tradeoff for logical measurements. Finally, we construct an addressable surface code interface for injecting externally prepared resource states into selected logical qubits. Together, these results establish La-cross codes as a simple, low-connectivity generalisation of surface code computation, retaining analogous computational primitives while providing a complete Clifford+$T$ instruction set across multiple encoded qubits.",
       "url": "https://arxiv.org/abs/2610.12685",
       "pdf_url": "https://arxiv.org/pdf/2610.12685v1",
       "published": "2026-10-08T20:09:36Z",
@@ -278,39 +315,46 @@
       },
       "first_seen_at": "2026-10-12T02:38:41Z",
       "analysis": {
-        "summary": "La-cross 逻辑控制原语可用于建立 benchmarking 资源模型。",
-        "problem": "qLDPC 的逻辑操作怎样权衡时间、ancilla 与容错距离？",
-        "setting": "primitive complete-period La-cross HGP；seed degree k≥3，距离 D。",
+        "summary": "论文把 La-cross qLDPC 从一个存储码推进到具体的计算工具箱：利用种子码自同构和折叠门生成逻辑 Clifford 操作，用不相交逻辑代表交换辅助空间与测量时间，再通过表面码接口向指定逻辑比特注入资源态。真正的技术主线是沿用 HGP 的行列结构，让逻辑代数、测量冗余和错误传播可以在同一几何语言中分析。需要分别看待三个结论的严格程度：Clifford 生成与接口故障距离有定理，两轮并行测量的保护估计仍是启发式。",
+        "problem": "qLDPC 的存储率优势只有在能低成本寻址和操作逻辑比特时才有计算价值。传统手术常需要随码距增长的重复 syndrome 轮数，传送门则依赖额外逻辑块。论文希望在有限 La-cross 码上识别原生 Clifford 控制、快速逻辑 Pauli 测量和外部 magic state 入口，同时明确时间、辅助比特和故障距离之间的关系。",
+        "setting": "重点是 primitive complete-period 的方形 La-cross HGP。经典种子由 h_k(x)=1+x+x^k 这样的 primitive 多项式产生，周期 L=2^k−1；取 n=sL、D=s2^(k−1)，量子参数为 [[n²+(n−k)²,k²,D]]。主要数据区是 n×n 行列阵列，稳定子权重至多六。逻辑 X、Z 分别有行列型代表，秩一逻辑标签写为 qu^T，这种可分离结构贯穿后续原语。",
         "main_results": [
-          "作者证明 automorphisms 与 H/S folds 生成完整逻辑 Clifford，模 Pauli corrections；rank-one X/Z logical 有 D 个不相交代表。",
-          "两轮 gauging 估计需 O(D² log D) ancilla；防护论证明确为 heuristic。",
-          "surface-code 接口深度 O_k(1)、CNOT 数 O_k(D²)；Proposition 13 给出指定模型下 transfer fault distance D。"
+          "对 k≥3，种子自同构与 Hadamard、S 折叠门生成完整的 k² 逻辑比特 Clifford 群，模 Pauli frame 修正。证明不是把所有 Clifford 都宣称为单层 transversal 门，而是表明多个原语合成后可以生成整个辛群 Sp(2k²,2)。",
+          "每个秩一 X 或 Z 逻辑算符拥有 D 个两两不相交的物理代表。对 r=2t−1 个代表并行 gauging、各测 T=ceil(D/t) 轮，再多数表决，作者提出保护规模约 tT≥D 的空间—时间权衡。取 t=D/2 得到两轮及 O(D² log D) 辅助比特估计；文中明确把这部分保护论证标为 heuristic。",
+          "从距离 D 表面码到指定 La-cross 逻辑自由度构造同态 CNOT 接口。固定 k 时，该接口 CNOT 深度 O_k(1)、门数 O_k(D²)，隐藏常数随 k 而变。随后测源块逻辑 X 并更新 frame，可以把外部准备的 |T⟩ 等资源态转入目标。",
+          "Proposition 13 在指定的传送模型中证明故障距离恰为 D，且允许接口和 syndrome CNOT 的任意调度。该模型包含理想编码初态、理想最终目标检查、规定的 Pauli 门故障和测量翻转，以及无噪声的译码与 frame 更新。"
         ],
         "techniques": [
-          "seed 对称性、Pauli symplectic action、gauging 与 chain-map 接口。"
+          "将逻辑 Pauli 标签表示成二元矩阵，计算种子自同构的张量积作用；再证明与相位折叠共轭得到的对称剪切张成全部辛变换，由此建立 Clifford 完备性。",
+          "秩一逻辑的不同代表来自种子生成矩阵 G 的不同解 Gv=q。primitive 周期使这些解的支持能够分割，因而多个测量 gadget 可以共用逻辑信息而不共享数据比特；辅助 gauging 图需满足展开性、拥塞和短环基条件。",
+          "接口以 chain map 保证检查与逻辑作用兼容。传播引理把每个源 X 错误限制到目标的一列，把目标 Z 错误限制到源的一行；结合非平凡逻辑至少占 D 行或列的支持界，得到故障距离证明。"
         ],
         "assumptions": [
-          "置换按重标记/atom movement 实现；S folds 间需纠错。",
-          "transfer 定理要求理想编码初态与最终 target checks、Pauli faults、无噪声解码。"
+          "置换要通过重标记或原子移动实施，不能无成本地替换成含噪 SWAP 网络。检查区的自同构 gadget 还可能需要 CNOT 电路，因此完整资源评估必须包含这些门。",
+          "Hadamard 与自同构的支持性质较强；相位折叠可把单故障扩展到镜像对，论文的一般界为至少 ceil(D/2)，并要求相继 S folds 之间做纠错。两轮 gauging 的多数表决则尚需完整电路级相关故障分析。"
         ],
         "limitations": [
-          "阅读主定理与原语章节，未独立核查附录。",
-          "两轮测量仍缺完整 circuit-level 容错分析；非渐近 constant-rate 码。"
+          "已阅读 v1 主定理、并行 gauging、接口构造和故障模型，未独立复核所有附录。constant-depth 接口不包括外部资源态制备、蒸馏及全部测量步骤，因此不能当作常数总时间通用计算。",
+          "La-cross 的优势针对紧凑有限实例：固定 k 时编码 k² 比特而物理比特约为 2n²，属于非渐近常数编码率的码族。生成完整 Clifford 群也不保证高效均匀采样或 SPAM 鲁棒的逻辑 benchmarking。评价整个工具箱时还应分别报告逻辑作用、故障距离和实际条件保真度，避免把单项定理外推为统一的实验保证。"
         ],
         "relevance": [
-          "逻辑 twirling 的具体控制模型；生成 Clifford 群尚不保证均匀采样或 SPAM robustness。"
+          "论文给出具体且可审查的逻辑控制与接口模型，适合研究容错逻辑资源、magic state 接口和逻辑认证。尤其值得保留其行列传播界，作为比较 noisy gadget 或解释 syndrome 信息的结构起点。"
         ],
         "follow_up": [
-          "延伸问题：固定 noisy gadgets 后，哪些 fidelity 参数可由 syndrome/输出识别？"
+          "在相关电路噪声下，两轮 gauging 能否保持所期望的距离，辅助空间增大是否引入新的故障瓶颈？",
+          "固定这些含噪原语后，怎样高效编译或采样逻辑 Clifford，并从 syndrome 与输出数据识别可重复的逻辑保真度参数？"
         ],
         "relevance_score": 95,
         "status": "analyzed",
         "evidence_level": "full_text_excerpt",
         "source_url": "https://arxiv.org/html/2610.12685v1",
         "model": "ChatGPT 本次会话",
-        "analyzed_at": "2026-10-12T03:17:48+00:00"
+        "analyzed_at": "2026-10-12T03:52:15+00:00"
       },
-      "selected_at": "2026-10-12T03:20:36Z"
+      "selected_at": "2026-10-12T03:20:36Z",
+      "sources": [
+        "arxiv"
+      ]
     },
     {
       "id": "2610.12597",
@@ -321,7 +365,7 @@
         "Marin Bukov",
         "Andrea Solfanelli"
       ],
-      "abstract": "",
+      "abstract": "Quantum error-correcting codes on graph geometries beyond regular euclidean lattices have emerged as a promising route toward robust quantum information processing. A major challenge in quantum error correction is the trade-off between favorable properties of codes constructed in high dimensionality and the need for locality in practical implementations on near-term hardware. Sparse intermediate geometries may combine the advantages of both, but how their structure governs quantum information dynamics and code performance remains unclear. Here we show that the spectral dimension $d_s$, defined from the low-energy spectrum of the graph Laplacian, is the universal parameter connecting these properties. Using Floquet random Clifford circuits on two distinct sparse graph architectures with tunable spectral dimension, we find that $d_s$ governs both quantum information spreading and the scaling of the resulting quantum error-correcting code distance. We identify a geometry-induced entanglement phase transition from localized area-law to ergodic volume-law, whose universality is determined by $d_s$ and exhibits long-range percolation criticality. In the ergodic phase, the circuit acts as a CSS code encoder whose code distance is set by the competition between two logical sectors --- the cost of severing the graph and the length of its shortest winding cycle --- which connectivity pushes in opposite directions. The spectral dimension organizes this trade-off, highlighting a maximum at intermediate $d_s$ retaining sparse connectivity and physical realizability.",
       "url": "https://arxiv.org/abs/2610.12597",
       "pdf_url": "https://arxiv.org/pdf/2610.12597v1",
       "published": "2026-10-08T18:19:50Z",
@@ -346,38 +390,46 @@
       },
       "first_seen_at": "2026-10-12T02:38:41Z",
       "analysis": {
-        "summary": "稀疏图谱维数连接 Clifford 传播与 CSS 距离；连接更多未必保护更好。",
-        "problem": "图几何怎样影响传播与编码保护？",
-        "setting": "稀疏长程/二次幂图的 Floquet Clifford；CSS 专例 CNOT/I 将单 qubit 编为 [[N,1,D]]。",
+        "summary": "论文把稀疏随机图的谱维数作为连接量子信息传播和纠错性能的几何参数。它在两种可调长程图上研究周期 Clifford 动力学，借 Laplacian 谱、阻断割和渗流解释从局域面积律到遍历体积律的转变，再把特定 CSS 情形的距离拆成切断与绕行两个逻辑扇区。最有价值的结论是：增加连接一方面让割更难，另一方面制造短路、缩短绕行逻辑，因而纠错性能并不随连接单调改善。有限系统中的最佳几何来自两种代价的平衡。",
+        "problem": "严格近邻格点便于实现，但信息传播和编码受局域性限制；高连接图能快速扩散，却可能昂贵。中间的稀疏长程图是否兼有两者优势，需要一个比平均度更有解释力的量。论文提出用低能 Laplacian 谱描述跨尺度连接，再问这一参数能否同时组织传播相变与编码保护，而不把快速 scrambling 直接当作优良纠错的同义词。",
+        "setting": "在 N 比特随机作用图的每条边放置两比特 Clifford 门：概率 p 为保留局域守恒量的阻断门，概率 1−p 为传播门；同一 Floquet 周期 U 重复作用。比较一般长程 LR 图与只含二次幂距离的 PWR2 图。谱维数定义为最小非零 Laplacian 本征值 λ₁∼N^(−2/d_s) 的标度，反映跨尺度扩散。纠错几何的精确解释针对 NB=CNOT、B=I 的 CSS 特例和环形嵌入。",
         "main_results": [
-          "作者给出谱维数 d_s=2 定位阈值；两图族同 d_s 的临界指数数值相容，p_c 仍依赖微观结构。",
-          "D=min(d_X,d_Z)：割断 winding 路径的代价与最短 winding cycle；有限 N 最优连接非单调。",
-          "示例大 N 瓶颈为 polylog 增长的 winding sector，非线性距离码。"
+          "阻断割概率揭示 d_s=2 的几何分界：d_s<2 时有限密度割可存活并限制传播；d_s>2 时单点绝对割概率呈拉伸指数衰减，系统才可能出现集体渗流转变。单点割消失本身不是遍历性的充分条件，论文进一步以大规模数值与 tableau 团簇分析支持相变。边缘维数 d_s=2 的标度需要单独处理。",
+          "匹配谱维数的 LR 与 PWR2 体系具有相容的临界指数，并与相应长程渗流类别比较一致；临界阻断概率 p_c 仍依赖微观图结构。也就是说，通用性主要涉及存在性与指数组织，不能理解成相同 d_s 就有完全相同的阈值和有限尺寸曲线。",
+          "CSS 特例把一个逻辑自由度的保护拆成 D=min(d_X,d_Z)：d_X 是切断所有绕行路径所需的最小代价，d_Z 是最短非平凡绕行环长度。两种算符交于奇数次，对应逻辑 X 与 Z 的反对易结构；相应几何问题可用图算法求解。",
+          "在 LR 的 1<α<2 范围，论文给出 d_X∼N^(1−2/d_s)、d_Z∼(ln N)^Δ，Δ⁻¹=log₂(2/α)。有限 N 时提高连接可改善 d_X、降低 d_Z，产生最佳中间参数；但足够大 N 后，多对数增长的绕行扇区会成为瓶颈，不能把短尺寸距离增长读成渐近线性距离。"
         ],
         "techniques": [
-          "Laplacian 谱、cut/percolation、tableau、有限尺寸标度与图距离。"
+          "先将图割的总连接权重表示为 Laplacian 二次型，用谱 gap 的尺度推断阻断割概率。再把演化稳定子 tableau 转成局域 Clifford 等价的图态；二分熵是相应跨分区邻接块在 F₂ 上的秩，从而把传播和渗流团簇联系起来。",
+          "在两个微观结构不同的图族上调节长程指数，使谱维数匹配，利用有限尺寸标度比较熵、团簇和临界指数，区分谱控制的通用部分与依赖平均度的阈值。",
+          "将 CSS 逻辑距离转换为最小割与最短绕行环，在远大于完整 tableau 仿真的图规模上统计两种扇区。这个拆分直接显示何时观察到的有限尺寸收益会被另一扇区截断。"
         ],
         "assumptions": [
-          "特定图分布与 Clifford/CSS；非 Clifford、finite-rate 扩展属展望。"
+          "谱维数结论建立在论文选定的随机图分布、低能谱条件和阻断／传播 Clifford 结构上。对一般非 Clifford 门，渗流和两个独立逻辑扇区不再自动成立。",
+          "几何编码讨论使用单逻辑比特与 CSS 特例，并非高编码率 qLDPC 的普遍距离定理。作用图的稀疏性给出每周期平均 O(N) 门数，但门调度和几何距离仍决定真实深度及执行成本。"
         ],
         "limitations": [
-          "阅读谱维数、临界数值与 QEC 章节，未核查全部附录。",
-          "没有 k-design 保证、noisy encoder 阈值或最优浅层编码界。"
+          "已阅读 v1 谱分界、稳定子渗流、图族、纠错距离与有限尺寸结果；未独立复算全部附录或仿真数据。临界指数的通用性包含数值证据，不能无限外推到所有具有相同谱维数的图。",
+          "快速信息传播、体积律纠缠、远离局域探测的信息隐藏和完整纠错能力需要分别评价。本文尚未给出含噪编码电路的阈值、译码实现、有限率扩展或 unitary design 保证；多对数的弱扇区也限制渐近保护。"
         ],
         "relevance": [
-          "直接联系 random-circuit encoding 的 locality tradeoff；快速传播不能直接等同最优纠错。"
+          "适合研究随机电路编码、局域性—连接资源与纠错几何。论文提供了比平均度更细的参数，同时用切断和绕行的竞争提醒读者：传播更快可能改善一个逻辑错误通道，却损害另一个。"
         ],
         "follow_up": [
-          "延伸问题：固定图与深度后，谱维数能否约束 Choi/erasure performance？"
+          "计入连接距离、排程深度及含噪两比特门后，有限 N 的最优谱维数是否仍接近无噪几何预测？",
+          "从一个逻辑自由度扩展到有限编码率时，能否同时避免廉价割与短绕行代表，并保持稀疏可实现的连接？"
         ],
         "relevance_score": 93,
         "status": "analyzed",
         "evidence_level": "full_text_excerpt",
         "source_url": "https://arxiv.org/html/2610.12597v1",
         "model": "ChatGPT 本次会话",
-        "analyzed_at": "2026-10-12T03:17:48+00:00"
+        "analyzed_at": "2026-10-12T03:52:15+00:00"
       },
-      "selected_at": "2026-10-12T03:20:36Z"
+      "selected_at": "2026-10-12T03:20:36Z",
+      "sources": [
+        "arxiv"
+      ]
     },
     {
       "id": "2610.12447",
@@ -388,7 +440,7 @@
         "Razin A. Shaikh",
         "Aleks Kissinger"
       ],
-      "abstract": "",
+      "abstract": "Entanglement and non-stabilizerness are complementary resources underlying the complexity of quantum states, yet extracting either quantity from large quantum circuits generally requires exponentially scaling resources. In diagrammatic approaches to quantum computation, such as the ZX-calculus, both quantities likewise typically require expensive tensor contractions that are not native to graphical rewriting. Here we show that both entanglement and magic can be efficiently estimated directly from ZX-diagrams. Flow enables efficient extraction of a normal form separating a potentially extensively entangled graph-state backbone from non-Clifford Pauli gadgets. This structure yields additive upper and lower bounds on bipartite entanglement entropy, which we further tighten through a preprocessing procedure that removes or merges redundant non-Clifford contributions. The same normal form gives an upper bound on logarithmic stabilizer extent. We benchmark these methods in random unitary and monitored circuits, and a circuit combining Trotterized Hamiltonian evolution with Clifford layers, finding that the resulting bounds remain informative even at large qubit numbers, circuit depths, and internal spider counts. Our results provide scalable probes of entanglement and non-stabilizerness of ZX-diagrams and establish a bridge between ZX-calculus and quantum many-body resource characterization, with applications across quantum computing, quantum information, and condensed-matter physics.",
       "url": "https://arxiv.org/abs/2610.12447",
       "pdf_url": "https://arxiv.org/pdf/2610.12447v1",
       "published": "2026-10-08T17:58:32Z",
@@ -409,37 +461,45 @@
       },
       "first_seen_at": "2026-10-12T02:38:41Z",
       "analysis": {
-        "summary": "用ZX图的flow结构分离稳定子背景与非Clifford旋转，快速计算纠缠区间和magic上界；纠缠界有重要条件。",
-        "problem": "如何避免指数规模张量收缩，估计大线路的纠缠与非稳定子资源？",
-        "setting": "纯态制备ZX图具有flow，可化为图态后接Pauli旋转。",
+        "summary": "论文把 ZX 图改写成“图态背景＋非 Clifford Pauli 旋转”，直接估计纠缠与 magic，避免显式构造指数维量子态或进行张量收缩。贡献在于让两种资源的来源分开可读：图态可以高度纠缠而没有 magic，任意角度旋转则提供偏离稳定子的修正。需要特别区分：magic 上界是严格的一般上界；文中的较紧纠缠区间还要求旋转分支不存在特定的相干干涉。",
+        "problem": "给定大规模量子线路或 ZX 图，如何以图的规模为代价，估计某个二分割上的熵，以及稳定子模拟需要的非稳定子资源？传统张量网络即使只求粗略信息，也可能因收缩宽度或体积律纠缠而很昂贵。作者追求可以用于编译与资源诊断的快速上下界，而不是完整模拟最终态。",
+        "setting": "对象是具有 flow 结构的纯态制备 ZX 图。作者利用 flow 在多项式时间内抽取 |ψ⟩=U_N⋯U₁|G⟩，其中 |G⟩ 是图态，U_i=exp(−iφ_i P_i/2) 是 Hermitian Pauli 串旋转。图态的二分纠缠为 S₀=rank_F₂ Γ_AB，Γ_AB 是跨分割邻接子矩阵。局域旋转不会改变该分割的纠缠，跨割旋转才进入修正项。",
         "main_results": [
-          "作者给出图态割邻接矩阵的二元域秩±跨割旋转的二元熵之和作为纠缠界。",
-          "log stabilizer extent有按旋转相位累加的上界，无需分支不干涉条件。"
+          "在无相干分支干涉条件下，S₀−Σ_i h₂(sin²(φ_i/2)) ≤ S ≤ S₀＋Σ_i h₂(sin²(φ_i/2))，求和只计有效跨割旋转，并与 0≤S≤min(|A|,|B|) 的平凡界取交。小角度下，每项是约 φ_i² log(1/|φ_i|) 的量级，比一般纠缠能力界的线性角度修正更紧。",
+          "对 log stabilizer extent，得到 M≤2Σ_i log₂[√(1−|sin φ_i|)＋√(1−|cos φ_i|)]。这里纳入所有真正影响状态的旋转，不仅跨割旋转；不需要纠缠界的分支干涉假设，Clifford 角度贡献为零。此量控制稳定子分解式模拟的资源，但不是直接给出所有模拟算法的最优运行时间。",
+          "数值测试包括随机小角度 Clifford-plus-phase 线路、带中途测量的线路，以及重复 Trotter 演化。随机纠缠测试覆盖 20 比特、400 门、300 个实例，较紧区间明显比通用界更晚饱和；26 比特重复结构例子在第 64 步首次越界，揭示高阶干涉的实际影响。"
         ],
         "techniques": [
-          "flow提取、Pauli gadget合并和稳定子等价化简。"
+          "flow 将图形重写转成稳定子背景和 Pauli gadgets 的标准形。稳定子部分的熵由二元域矩阵秩计算，因此即使纠缠很大，这一部分仍然便宜；非 Clifford 部分以各旋转角度逐项计账。",
+          "纠缠证明把每个旋转展开成 cosine/sine 两个 Pauli 分支。图态稳定子轨道的平坦 Schmidt 谱，加上分支退相干与熵不确定性关系，分别产生上下界；magic 界则使用稳定子分解系数的范数估计。",
+          "预处理依次合并可交换区域内的同支撑旋转、合并相差状态稳定子的旋转、将残余 Clifford 成分推回图态，并移除可等价为单侧作用的旋转。这些化简改变的是资源界的松紧，不改变线路代表的量子态。"
         ],
         "assumptions": [
-          "纠缠界要求Pauli分支无相干干涉；flow保证提取效率。"
+          "高效抽取标准形依赖 flow；表达任意纯态与高效找到该表达是两个不同命题。非幺正、弱后选择操作不能直接套用“单侧操作不改纠缠”的推理。",
+          "较紧纠缠界要求任何相关旋转子序列的 Pauli 乘积都不能按相应奇偶相位等同于 |G⟩ 的稳定子。两两旋转不存在干涉，并不推出所有高阶乘积都无干涉。"
         ],
         "limitations": [
-          "两两合并不能认证任意大图的干涉条件；Trotter例子实际出现界失效。",
-          "已读正文normal form、纠缠界和magic界段落；附录证明未完整核查。"
+          "可扩展预处理只搜索低阶、主要是两两的融合，因此不能认证任意大图满足完整干涉条件。随机线路中的良好表现是数值证据；重复的 Trotter/Floquet 结构更容易产生危险依赖。",
+          "magic 结果给的是上界，并未计算一般态的精确最小稳定子分解。两种资源界都可能随深度变松，混态、任意测量轨迹与无 flow 图需要进一步理论。阅读范围为 v1 主文、标准形、熵界与 magic 界相关段落，未逐行复核所有附录证明。"
         ],
         "relevance": [
-          "与Clifford加magic的资源分离直接相关；magic界可用于线路资源估计。"
+          "这是一种把 Clifford 可模拟性与非 Clifford 资源分开的具体工具：可以在资源感知编译中同时监控纠缠与 magic，而不会把高度纠缠误当成非稳定子复杂度。其条件性纠缠界也提供了研究中必须明确“可计算估计”和“可认证严格界”的例子。"
         ],
         "follow_up": [
-          "研究稳定子商群中的高阶Pauli依赖，能否在特定随机线路中严格控制干涉？"
+          "可研究的问题：把 gadgets 映射到 Pauli 群模状态稳定子的商结构后，能否借助编码或拟阵方法高效发现低权重的高阶依赖，针对重复演化恢复严格认证？",
+          "复现时应同时画出精确小系统熵、通用能力界、预处理后的条件界与干涉检查结果，避免仅凭曲线贴近就宣称无条件正确。"
         ],
         "relevance_score": 86,
         "status": "analyzed",
         "evidence_level": "full_text_excerpt",
         "source_url": "https://arxiv.org/html/2610.12447v1",
         "model": "ChatGPT 本次会话",
-        "analyzed_at": "2026-10-12T03:16:11+00:00"
+        "analyzed_at": "2026-10-12T03:51:14+00:00"
       },
-      "selected_at": "2026-10-12T03:20:36Z"
+      "selected_at": "2026-10-12T03:20:36Z",
+      "sources": [
+        "arxiv"
+      ]
     },
     {
       "id": "2610.12400",
@@ -451,7 +511,7 @@
         "Shashwat Kumar",
         "Zlatko Minev"
       ],
-      "abstract": "",
+      "abstract": "Early fault-tolerant quantum algorithms are a key step in scalable quantum computing, but are ultimately constrained by residual, uncorrectable logical errors. Logical quantum error mitigation can eliminate this bias, however its standard requirements include prior noise characterization, more complex experiments, and substantial sampling overhead. Although no mitigation technique can simultaneously overcome all three constraints, we demonstrate that the first two---noise learning and need for modified circuits---can be completely bypassed for logical circuits by leveraging only syndrome records. Specifically, we introduce virtual error cancellation: a method that, unlike previous bias-free approaches, operates entirely in classical post-processing on universal quantum circuits. We develop and numerically test end-to-end protocols that reduce the sampling overhead beyond fundamental limitations of existing syndrome-aware mitigation techniques, including syndrome-based postselection. In particular, we propose a scheme that pairs the low-latency decoder used in the experiment with a high-complexity decoder run in post-processing. In numerical simulations of a distance-7 rotated surface code, we show that our full-stack dual-decoder algorithm exhibits an error that diminishes as the number of samples increases, capable of reaching more than three orders of magnitude of suppression compared to the decoded logical error rate in an experimentally achievable setting. These results establish syndrome records as a resource for correcting universal computational estimates after quantum execution.",
       "url": "https://arxiv.org/abs/2610.12400",
       "pdf_url": "https://arxiv.org/pdf/2610.12400v1",
       "published": "2026-10-08T17:43:02Z",
@@ -471,37 +531,45 @@
       },
       "first_seen_at": "2026-10-12T02:38:41Z",
       "analysis": {
-        "summary": "从现有syndrome学习噪声并对输出带符号重加权，在模型内消除逻辑Pauli偏差；无需另加校准线路。",
-        "problem": "syndrome能否同时支撑逻辑噪声辨识和低开销误差缓解？",
-        "setting": "稳定子码、Pauli噪声及独立故障的已知DEM结构；快速在线与高精度离线双decoder。",
+        "summary": "Virtual Error Cancellation（VEC）把已经执行的逻辑线路留下的综合征记录变成误差缓解资源：先从这些记录估计噪声，再给每次测量结果赋正负权重，平均抵消残余逻辑 Pauli 错误。量子实验不需额外插入抵消门，也不需独立校准线路；但是仍然需要从数据学习噪声模型。关键创新是把快速在线解码器与更强的离线解码器组合，在保持可执行性的同时增强综合征对逻辑错误的区分。",
+        "problem": "有限码距仍会留下逻辑错误，继续增大码距耗费硬件；直接丢弃高风险运行又损失样本且可能留下偏差。论文问：能否在不改变量子线路的情况下，用综合征信息实现对所有逻辑可观测量一致的误差抵消，并确定不可避免的采样代价？",
+        "setting": "给定稳定子纠错线路、每次运行的综合征 s 与逻辑测量结果 m∈{±1}。在固定恢复参考系中，残余噪声写成逻辑 Pauli 通道，其条件错误概率是向量 p(s)。估计量为 N⁻¹Σ_i w(s_i)m_i；这是对期望值的经典后处理，不是把每一份有错误的量子输出态物理恢复成理想态。",
         "main_results": [
-          "条件概率协方差可逆时，作者给出最小采样倍率1+p̄ᵀΣ⁻¹p̄。",
-          "d=7码容量模拟中，大训练预算下相对原始逻辑错误抑制超过1000倍。"
+          "无偏抵消要求 E[w]=1 且 E[w p_α]=0。由于 p_α 非负，通常需要负权重。若 p(s) 的协方差 Σ 可逆，最优权重为 w*=1−p̄ᵀΣ⁻¹(p−p̄)，最小采样倍率 C*=E[w*²]=1＋p̄ᵀΣ⁻¹p̄；所需 shots 随 C*/ε² 增长。综合征越能区分错误类别，抵消所需额外方差越小。",
+          "为避免逐个综合征计算精确后验，作者把运行分成在线与离线解码器一致的 I 扇区，以及相差逻辑 X、Y、Z 的三个扇区。同意扇区给大于一的正权重，分歧扇区给负权重；四个条件概率中心在三维错误空间中仿射独立时，能同时满足归一化与三个 Pauli 抵消约束。",
+          "距离 7 的 rotated surface code 码容量模拟中，完整的学习与双解码流程随训练样本增加降低残余偏差，可实现相对原始解码逻辑错误率超过三个数量级的抑制。论文还比较普通 logical PEC、单解码 syndrome-aware PEC 和 VEC 的采样开销；接近最佳系数的结论依赖有利的大码距噪声与解码结构。"
         ],
         "techniques": [
-          "syndrome字符的对数线性反演、decoder分区、负权重抵消。"
+          "最小方差问题转成有线性约束的权重优化：在归一化和通道抵消约束下最小化 E[w²]，利用协方差矩阵得到闭式解。扇区粗粒化则用扇区概率与条件错误中心构造有限维线性系统，避免遍历全部综合征。",
+          "噪声学习采用已知 detector error model（DEM）结构 s=He。独立故障使综合征字符 F(χ)=E[(−1)^(χ·s)] 因子化，取 −ln F 后成为 b=Aθ，θ_j=−ln(1−2p_j)。利用低权重字符、参数绑定与非负加权最小二乘，直接从计算过程中产生的记录估计故障率。",
+          "两个解码器承担不同任务：在线解码保证延迟与反馈可用，离线解码利用更高计算复杂度提供额外统计对比。VEC 保留分歧样本并让其参与抵消，与只保留同意样本的后选择机制不同。"
         ],
         "assumptions": [
-          "需要可辨识、满秩的噪声/分区模型；全线路局部分解依赖故障独立等结构。"
+          "严格消偏要求条件逻辑 Pauli 模型正确，概率估计准确，并且所用条件概率协方差或扇区线性系统具有足够秩。存在不被综合征分辨的逻辑故障时，不能凭有限记录自动完成全部噪声辨识。",
+          "DEM 学习使用预先指定的故障结构、独立机制及 p_j<1/2 等条件；全线路局部权重分解也依赖相应独立性与错误传播结构。文中“无需 noise learning”的表述应理解为无需额外校准实验，并非无需模型学习。"
         ],
         "limitations": [
-          "并非无需学习噪声，也非任意SPAM鲁棒认证；相干错误与真实线路噪声未被数值验证。",
-          "已读方法、noise learning、全线路和discussion；长附录证明未全面核查。"
+          "数值验证主要是码容量 Pauli 噪声，不能直接推成任意相干错误、强时序相关噪声或真实硬件完整线路的无偏认证。参数估计误差、漂移和秩接近退化会带来残余偏差与大权重。",
+          "逐综合征精确后验在一般解码图上可能是 #P-hard；四扇区协议降低了计算要求，也损失部分信息。读过 v1 方法、噪声学习、全线路扩展与讨论，未独立重验长附录全部证明。"
         ],
         "relevance": [
-          "直接对应你的syndrome驱动logical benchmarking与最小可辨识模型问题。"
+          "论文把“综合征包含多少逻辑噪声信息”直接连接到可辨识性、估计方差与实验预算，适合研究逻辑 benchmarking 的最小模型。评价协议时应同时报告残余偏差、抵消权重二阶矩、模型学习样本和离线解码成本。"
         ],
         "follow_up": [
-          "固定码与gadget时，哪些不可见逻辑故障使syndrome不足以确定fidelity？"
+          "可研究的问题：固定码与逻辑 gadget 后，哪些故障的综合征分布相同而逻辑作用不同？把这些不可辨识方向单独列出，才能判断真正可认证的通道参数。",
+          "复现时可在同一批记录上比较原始解码、同意后选择和 VEC，并增加模型失配及时间漂移测试，分开训练与评估样本以检查消偏是否稳定。"
         ],
         "relevance_score": 96,
         "status": "analyzed",
         "evidence_level": "full_text_excerpt",
         "source_url": "https://arxiv.org/html/2610.12400v1",
         "model": "ChatGPT 本次会话",
-        "analyzed_at": "2026-10-12T03:16:11+00:00"
+        "analyzed_at": "2026-10-12T03:51:14+00:00"
       },
-      "selected_at": "2026-10-12T03:20:36Z"
+      "selected_at": "2026-10-12T03:20:36Z",
+      "sources": [
+        "arxiv"
+      ]
     },
     {
       "id": "2610.12098",
@@ -514,7 +582,7 @@
         "Xin Wang",
         "Xiaoming Sun"
       ],
-      "abstract": "",
+      "abstract": "Protecting quantum information from noise is essential for reliable quantum computation and quantum memories. Quantum state purification addresses this challenge by processing multiple noisy copies of an unknown quantum state to produce an output state of higher fidelity. Here we establish nearly tight upper and lower bounds on the non-Clifford resources required to implement the symmetric-projection purification protocol. For $n$ copies of a $d$-dimensional system, we construct a Clifford+T circuit that block-encodes the symmetric projector with operator-norm error at most $ε$ using $\\widetilde{O}(n)$ T gates, where the tilde-$O$ notation suppresses polylogarithmic factors in $n$, $d$, and $1/ε$. Conversely, using stabilizer nullity, we prove that any Clifford+T implementation of such a block encoding with error $ε<\\frac{1}{2}\\sqrt{1-1/n}$ requires at least $2n-2$ T gates, even allowing arbitrary positive normalization and clean stabilizer ancillas. Taken together, these results establish the nearly optimal scaling of non-Clifford cost with the number of copies and uncover the fundamental resource requirements for coherent symmetry projection in quantum state purification.",
       "url": "https://arxiv.org/abs/2610.12098",
       "pdf_url": "https://arxiv.org/pdf/2610.12098v1",
       "published": "2026-10-08T15:02:34Z",
@@ -535,37 +603,46 @@
       },
       "first_seen_at": "2026-10-12T02:38:41Z",
       "analysis": {
-        "summary": "对称投影的 Clifford+T 实现具有近线性的非 Clifford 成本：作者给出 T-count Õ(n) 构造及 2n−2 下界。关键是统一算符范数近似的 block encoding，而非任意 purification channel 的普遍下界。",
-        "problem": "处理 n 份 d 维系统时，实现对称子空间投影需要多少 T 门？",
-        "setting": "Π=(1/n!)ΣπP(π)；以酉线路 block-encode 成功 Kraus 算符，允许 clean stabilizer 辅助比特。",
+        "summary": "作者为基于对称投影的量子态纯化建立几乎匹配的非 Clifford 成本上下界：处理 n 份 d 维输入时，对称投影可用 Õ(n) 个 T 门近似实现，而指定误差范围内至少需要 2n−2 个 T 门。技术亮点是只构造任务真正需要的对称扇区，而不执行完整 Schur 变换。这里的“近乎最优”针对对称投影成功 Kraus 算符的统一 block encoding；它不是所有纯化通道、所有成功率或所有硬件资源的普遍最优性。",
+        "problem": "多份带噪未知态通过对称投影可以提升条件输出保真度，但已有纯化性能理论不等于低成本容错实现。完整 Schur 变换还会解析很多本任务不需要的表示扇区。论文要确定：仅实现 Π_n,d=(1/n!)Σ_π P(π)，到底需要多少昂贵的 T 门？",
+        "setting": "n≥2、d≥2，用 Clifford+T 酉线路把对称投影放在 clean 辅助比特为零时的成功块中，按整个输入空间上的算符范数衡量近似误差。接受辅助测量后得到相应的成功 Kraus 操作；纯化成功概率依赖输入态，和这个成功块的门数是不同资源。",
         "main_results": [
-          "n,d≥2、0<ε<1/2 时，归一化为 1 的构造算符范数误差≤ε，T-count Õ(n)，辅助比特 O(n log n)；隐藏因子为 n,d,1/ε 的 polylog。",
-          "ε<(1/2)√(1−1/n) 时，任意有限正归一化及任意数量 clean stabilizer ancillas 的实现需至少 2n−2 个 T 门。"
+          "当 0<ε<1/2 时，归一化为一的构造以算符范数误差不超过 ε block-encode Π_n,d，T-count 为 Õ(n)，辅助比特 O(n log n)。Õ 隐去 n、d、1/ε 的多对数因子，因此不是完全独立于局域维数与精度的线性常数成本。",
+          "当 ε<(1/2)√(1−1/n) 时，任何满足该统一近似目标的 Clifford+T 实现至少需要 2n−2 个 T 门。下界允许任意有限正归一化和任意数量的 clean stabilizer 辅助比特；证明没有靠限制辅助空间制造线性下界。",
+          "相较论文列出的 Õ(n⁴) 高维 Schur 构造及其他更高次数的 QST/SWAP-test 路径，直接投影降低了 n 的幂次。不过这些基线实现的原语不同：完整 QST 会输出更多信息，因而比较说明任务专用节省，不能说新方法完全替代 QST。"
         ],
         "techniques": [
-          "递归 Dicke masks、可逆排序与相干 permutation routing、LCU；下界结合 stabilizer nullity 与 Pauli symmetry gap。"
+          "用平衡二叉树递归编码排列：大小 k 的节点通过重量 floor(k/2) 的二进制 mask 选出送入左子树的输入。每个节点的 mask 处于相应 Dicke 态，所有合法 mask 组合与 n! 个排列一一对应，从而相干地产生均匀排列控制，而不存储未知态的经典标签。",
+          "可逆排序网络把每个 mask 的选择作用到实际量子副本上；准备控制寄存器、受控排列，再反向取消准备，构成 linear combination of unitaries。平衡树每层涉及总计 O(n) 个位置，层数 O(log n)，结合可逆算术与旋转编译得到近线性 T-count。",
+          "下界将成功块作用在 Bell 对一半，考察向量化投影的稳定子 nullity。n 比特对称投影的 Choi 型向量只有四个 collective Pauli 稳定子，故 nullity 为 2n−2；每个 T 门至多增加一个 nullity，Clifford、clean 稳定子辅助态与计算基后选择不能提供缺失的非稳定子资源。",
+          "为了覆盖近似而不仅精确投影，证明给出非 collective Pauli 双边对称的算符范数间隙 √(1−1/n)。误差小于半个间隙时，近似成功块仍无法获得额外的这些 Pauli 对称，从而维持线性下界。"
         ],
         "assumptions": [
-          "下界针对统一算符范数准确的对称投影 block encoding；辅助资源限定为 clean stabilizer。"
+          "资源计数对象是 Clifford+T 实现，辅助工作态为 clean stabilizer。下界约束的是对称投影成功块在全部输入上的算符范数近似，不只是某个输入族的平均保真或成功概率。",
+          "对称投影作为纯化协议的性能最优性有具体噪声与任务范围；文中回顾的完全一般维数两份输入结论和更大份数数值证据不能被合并成任意噪声、任意纯化任务的最优定理。"
         ],
         "limitations": [
-          "已阅读主要定理、构造框架及范围说明节选，未逐项核查全部证明。",
-          "不覆盖仅规定概率–保真度权衡的任意 purification map；未证明深度或辅助空间同时最优，也未计入成功率导致的重复成本。"
+          "T-count 近乎最优不意味着深度、Clifford 门数、连通布局或辅助空间同时最优。若成功概率很低，重复直到成功的总调用与总 T 成本仍会增大；该因子不包含在单次 block encoding 的 Õ(n) 中。",
+          "允许 dirty ancillas、预供 magic 态、测量适应性，或仅要求较弱的概率–保真权衡，均需要重新界定任务后分析。已阅读 v1 主定理、Dicke-mask 构造及 nullity/Pauli-gap 下界段落，未逐行验证所有编译误差常数。"
         ],
         "relevance": [
-          "直接相关于 magic 最优资源成本，可参考其把任务专用下界与通用资源论区分的方式。"
+          "这是任务专用 magic 资源复杂度的清晰例子：上界利用对称性避免过度计算，下界把成功分支与 Choi 态资源连接起来。它有助于把“纯化效果更好”与“非 Clifford 代价更低”分开评价。"
         ],
         "follow_up": [
-          "研究问题：测量和适应性、dirty ancillas 或允许失败的 purification 是否可突破该 block-encoding 下界？"
+          "可研究的问题：在同一输出保真与总接受率下，比较单次 T-count、期望总 T-count、深度和辅助空间，是否仍保持近线性优势？",
+          "探索测量适应性或允许失败的更弱纯化 map 是否改变下界，并明确每次改变的是资源模型还是要求实现的算符。"
         ],
         "relevance_score": 94,
         "status": "analyzed",
         "evidence_level": "full_text_excerpt",
         "source_url": "https://arxiv.org/html/2610.12098v1",
         "model": "ChatGPT 本次会话",
-        "analyzed_at": "2026-10-12T03:17:31+00:00"
+        "analyzed_at": "2026-10-12T03:51:14+00:00"
       },
-      "selected_at": "2026-10-12T03:20:36Z"
+      "selected_at": "2026-10-12T03:20:36Z",
+      "sources": [
+        "arxiv"
+      ]
     },
     {
       "id": "2610.12015",
@@ -579,7 +656,7 @@
         "G. Massimo Palma",
         "Luca Innocenti"
       ],
-      "abstract": "",
+      "abstract": "Quantum fidelity kernels and quantum extreme learning machines share the same basic architecture: a fixed quantum device generates features that are combined through a classically trained linear model. We refer to this broad non-variational setting as quantum linear regression. A defining aspect of these models is that the quantum features are not directly available, but must be estimated from a finite number of shots. We show that finite statistics makes quantum linear regression unavoidably ill-conditioned. Ideal feature vectors are confined to a subspace determined by the dimension of the Hilbert space, whereas finite-shot estimates generically acquire components outside this subspace. Training then attempts to fit directions that disappear in the infinite-statistics limit, making the learned model increasingly sensitive to sampling noise. We analyze this mechanism for quantum extreme learning machines trained on $n_{\\rm tr}$ states with $N$ shots per state. Despite the ill-conditioning, predictions remain controlled when the training targets are exact. Finite sampling produces a systematic prediction error that decreases quadratically with $N$, while fluctuations induced by the random training measurements decrease inversely with the total training budget. Thus, unlike in standard linear regression with exactly known features, increasing the dataset size alone cannot remove the error caused by sampling noise. If the training targets are also noisy, due for instance to state-preparation errors, the otherwise hidden directions become active. The test error can then increase with $N$, a behavior that we ascribe to a form of quantum overfitting. Our results expose a fundamental tradeoff between dataset size and per-state statistics in non-variational quantum learning and provide a baseline for resource-aware training and regularization strategies.",
       "url": "https://arxiv.org/abs/2610.12015",
       "pdf_url": "https://arxiv.org/pdf/2610.12015v1",
       "published": "2026-10-08T14:12:12Z",
@@ -598,38 +675,46 @@
       },
       "first_seen_at": "2026-10-12T02:38:41Z",
       "analysis": {
-        "summary": "有限 shots 可提高经验特征矩阵的秩，使无正则化量子线性回归出现虚假方向。作者分析精确标签时偏差与方差的资源权衡，并指出标签噪声可使增加 shots 反而增大测试误差。",
-        "problem": "量子特征需要采样估计时，更多训练态和更多每态 shots 能否相互替代？",
-        "setting": "固定量子动态和 POVM 产生概率特征；n_tr 个训练态、每态 N shots，最小范数最小二乘；主要分析 overcomplete 情形 n_tr,n_out>d²。",
+        "summary": "论文解释量子线性回归中一个反直觉现象：训练时测量得越精确，未正则化模型也可能越不稳定。理想量子特征只能占据由 Hilbert 空间决定的低维子空间，有限 shots 却会制造子空间外的虚假方向；最小二乘伪逆会放大这些越来越小的方向。作者定量区分训练态数量、每态 shots、标签噪声与测试 shots：精确标签下预测仍可控；标签噪声和有限测试统计同时存在时，增加训练 shots 反而可能提高测试误差。",
+        "problem": "固定量子设备生成特征、经典线性模型学习权重时，增加训练样本和增加每个样本的测量次数能否互相替代？通常的经典回归分析把特征当成已知数字，但量子特征本身需要采样。论文追踪特征矩阵秩变化带来的奇异极限，并给出可用于预算分配的误差项。",
+        "setting": "训练 n_tr 个 d 维量子态，通过固定动态与 POVM 生成 n_out 维概率特征，每个态测 N 次。理想矩阵 P 的秩最多为 d²；主要讨论 n_tr、n_out>d² 且训练态张成算符空间、POVM 信息完备的过完备情形。采用无正则化最小范数解 Ŵ=Y P̂_N⁺，测试特征另用 M 次测量。",
         "main_results": [
-          "经验矩阵的伪逆可随 √N 增长，但精确标签及精确测试概率使奇异项在预测中消去。",
-          "在所述非退化条件下，MSE 的领先项为偏差平方 O(N⁻²) 与训练方差 O((N n_tr)⁻¹)；固定 N 仅增大数据量不能消除偏差。",
-          "标签也有噪声时，虚假方向可被激活，测试误差可能随 N 增长。"
+          "经验矩阵 P̂_N=P＋N⁻¹ᐟ²Ξ 会占据理想矩阵没有的方向，其小奇异值处于 N⁻¹ᐟ² 尺度，伪逆中相应部分可增长为 √N。精确标签与精确测试特征分别正交于相关虚假子空间，因此这个发散不自动导致预测发散；只看条件数不足以判断实际测试风险。",
+          "精确标签、无限测试统计及非退化条件下，平均平方误差的主要贡献是偏差平方 O(N⁻²) 和训练随机方差 O((N n_tr)⁻¹)。因此只增加训练态数量可以压低方差，却不能消除固定 N 的系统偏差；两者不是完全可互换的资源。",
+          "有限测试统计另产生约 1/M 的误差项。标签有独立方差 γ² 的噪声时，还出现标签噪声底与训练方差修正；在均匀 Gaussian 近似和相应维数条件下，训练与测试噪声的耦合项为 γ² N C/M，C=(n_out−d²)/(n_tr−n_out−1)。N 增长会放大该项，形成量子过拟合。",
+          "增长项需要标签噪声与有限测试 shots 同时激活虚假方向。把 M 取无穷会消除这里的 N/M 发散，因此不能把结果简化成“标签有噪声时，更多训练 shots 必然更差”。可用的最优 N 依赖测试预算、维数和噪声水平。"
         ],
         "techniques": [
-          "按物理特征/噪声子空间分块伪逆，Schur complement，误差分解与多项分布集中界。"
+          "将特征与训练空间分成物理支撑和噪声子空间，按块展开 Moore–Penrose 伪逆，用 Schur complement 隔离奇异部分。该方法解释为什么矩阵层面的 √N 发散在某些预测中消失、在另一些预测中保留下来。",
+          "一条分析路径采用均匀 Gaussian 模型获得可读的领先系数；另一条直接处理多项分布 shots，把无限测试统计误差写成确定性偏差、中心化线性波动与余项，并利用集中界控制大训练集的高概率行为。",
+          "误差分解严格区分训练特征采样、测试特征采样和标签噪声。它避免将同样表现为测试 MSE 的多个来源混为一谈，也指出给模型增加量子测量预算可能只是把瓶颈移到测试端。"
         ],
         "assumptions": [
-          "主要误差界使用精确训练标签、无限测试统计，以及物理 Gram 和噪声协方差相关块的非退化条件。"
+          "主要严格偏差–方差结果假设精确训练标签、无限测试统计，并要求归一化物理 Gram 矩阵非零谱及相关噪声协方差块有正下界；这些条件会影响误差界中的常数。",
+          "所列 N/M 放大系数来自相应 Gaussian、同方差且相互独立的标签噪声设置，并需要分母为正等维数条件。它不能直接代表任意有相关 SPAM 或任意数据分布的同一公式。"
         ],
         "limitations": [
-          "阅读模型、秩不连续机制及主误差界节选，未逐项核查 37 页补充证明。",
-          "不是所有 QML 算法的普遍不可能性；正则化比较及有限测试统计需另分析，也未建立 SPAM 鲁棒性。"
+          "结果针对固定量子特征与未正则化伪逆训练，不是全部量子机器学习算法的普遍不可能性。加入 ridge、截断小奇异值或物理子空间约束后，偏差与方差都改变，需要另行求界。",
+          "量子特征矩阵的秩限制说明不稳定机制，但没有单独证明量子方案优于或劣于最佳经典方案。已读 v1 模型、秩不连续、资源误差分解及标签噪声节选，未逐项复核全部补充证明。"
         ],
         "relevance": [
-          "研究量子态输入与测量预算，贴近用户关心的 quantum-data learning 和 shots/资源 tradeoff。"
+          "论文适合用于量子数据学习与测量预算设计：训练态个数、每态 shots 和测试 shots 应独立报告。它还提示学习经典后处理权重时必须检查物理支撑，避免把采样生成的虚假方向当成可泛化的新特征。"
         ],
         "follow_up": [
-          "研究问题：对 shadows 或测量特征学习，约束物理子空间或截断伪逆能否给出更好的总 shots 界？"
+          "可研究的问题：已知有效 Hilbert 维数时，强制权重或特征落在物理子空间，能否保留表达能力并消除 N/M 放大？与 ridge 或 truncated-SVD 应在同一总 shots 预算下比较。",
+          "复现时至少分别测试精确与带噪标签、无限与有限测试统计四种组合，观察上升误差项究竟在哪个组合出现。"
         ],
         "relevance_score": 82,
         "status": "analyzed",
         "evidence_level": "full_text_excerpt",
         "source_url": "https://arxiv.org/html/2610.12015v1",
         "model": "ChatGPT 本次会话",
-        "analyzed_at": "2026-10-12T03:17:31+00:00"
+        "analyzed_at": "2026-10-12T03:51:14+00:00"
       },
-      "selected_at": "2026-10-12T03:20:36Z"
+      "selected_at": "2026-10-12T03:20:36Z",
+      "sources": [
+        "arxiv"
+      ]
     },
     {
       "id": "2610.12001",
@@ -639,7 +724,7 @@
         "Isaac Barouch Essayag",
         "Aryeh Lev Zabokritskiy"
       ],
-      "abstract": "",
+      "abstract": "The $2\\times3$ magic rectangle is a nonlocal game in which two players match entries subject to incompatible parity constraints. We prove that its quantum value is $(1+\\sqrt{2/3})/2$ and classify all optimal strategies in arbitrary finite local dimensions, allowing general measurements. Every optimal strategy contains a maximally entangled pair of four-dimensional systems, with fixed measurements on the local state supports up to local isometries and ancillary systems. The attaining construction was previously known from quantum random access codes. An exact sum-of-squares identity gives the upper bound, and its equality relations determine the measurement algebra needed for the classification. The rectangle determines the largest magic-square score compatible with perfect prediction of Alice's first row by an adversary with quantum side information. We classify all finite-dimensional strategies attaining this score with perfect prediction and show that one minus the best compatible guessing probability has linear order in the score excess above it. The same rigidity theorem classifies all optimal three-bit random access codes that hide the full input parity.",
       "url": "https://arxiv.org/abs/2610.12001",
       "pdf_url": "https://arxiv.org/pdf/2610.12001v1",
       "published": "2026-10-08T14:06:25Z",
@@ -662,38 +747,46 @@
       },
       "first_seen_at": "2026-10-12T02:38:41Z",
       "analysis": {
-        "summary": "作者确定 2×3 magic rectangle 的精确量子值和全部有限维最优策略，并由此得到 magic square 的完美可预测阈值及阈值以上线性的随机性增长。与 nonlocal-game certification 和量子侧信息紧密相关。",
-        "problem": "不限制有限局域维数或 POVM 时，最优博弈分数能约束哪些态、测量和对手猜测概率？",
-        "setting": "均匀 2×3 rectangle；任意有限维 tensor-product 策略与 POVM，允许对手持有 quantum side information。",
+        "summary": "论文解决 2×3 magic rectangle 博弈的不限有限维最优值问题，并完整分类所有精确最优策略。此前已有四维量子策略和数值猜想，但还需证明更大 Hilbert 空间和一般 POVM 不能取得更高分。作者用精确 sum-of-squares（SOS）证书得到上界，再用等号条件恢复唯一的测量代数结构。由此还得到 magic-square 中对手可完美预测第一整行的分数阈值，以及阈值以上随机性的线性增长。",
+        "problem": "非局域博弈达到某个分数时，究竟能认证多少纠缠、哪些测量，以及对持有量子侧信息的对手隐藏多少随机性？已知低维构造只能证明可达分数，不能排除高维优势；只给分数上界也不等于自测试策略。论文把最优值、等号刚性和猜测概率三个问题连起来。",
+        "setting": "Alice 均匀收到两行之一，输出乘积为 +1 的三个符号；Bob 均匀收到三列之一，输出乘积为 −1 的两个符号，以交点一致为胜。经典值为 5/6。量子策略允许任意有限局域维数和一般 POVM；可将状态纯化并把系统 E 交给对手。值上界也覆盖 Alice/Bob 算符彼此对易的模型。",
         "main_results": [
-          "量子及 commuting-operator 值为 (1+√(2/3))/2；有限维最优策略在局域等距后含 Φ₄，测量在 occupied supports 上固定。",
-          "magic-square 完美预测 Alice 第一整行的最大分数 β₀=(2+√(2/3))/3；w≥β₀ 时 p_guess≤1−(9/2)(w−β₀)，最佳兼容随机性损失在阈值附近为 Θ(w−β₀)。",
-          "同一刚性分类刻画最优三比特 random access codes；隐私约束只隐藏完整三比特 parity，并不要求隐藏两比特 parity。"
+          "精确量子值为 ω_Q=(1＋√(2/3))/2≈0.90825，大于经典的约 0.83333。所有有限维最优策略经各自局域等距，都包含 |Φ₄⟩=(1/2)Σ_a|a,a⟩，其余系统进入辅助因子；在实际占据的局域支撑上，行、列测量固定为参考测量张量恒等。四维局域系统既必要又充分。",
+          "同一 SOS 证书证明 commuting-operator 模型不能提高值，并让 NPA 的 1＋AB 层松弛达到精确值。这是针对合法行输出与其 parity 约束的矩阵模型，不能随意删掉完整输出结构后沿用同一结论。",
+          "对于 magic-square，Alice 第一整行仍可被量子对手完美预测的最大分数为 β₀=(2＋√(2/3))/3≈0.93883。w≥β₀ 时得到 p_guess≤1−(9/2)(w−β₀)；配合显式混合构造，最佳兼容的 1−p_guess 在阈值附近为 Θ(w−β₀)，相应条件熵也呈线性阶增长。",
+          "最优策略分类还转移到三比特 random access code：编码需要隐藏完整三比特 parity，而非隐藏每个二比特 parity。论文分类该隐私模型下的最优编码，并对近似隐藏 parity 给出维数无关的分数控制。"
         ],
         "techniques": [
-          "精确 sum-of-squares 证书与等号测量代数，局域矩阵因子抽取，按对手猜测扇区比较分数。"
+          "将博弈写成 Bell 算符 S=Σ_j(D_j＋C_j)B_j，获胜概率为 1/2＋⟨S⟩/12。作者构造 2√6 I−S 的正系数算符平方和，直接给出任意维数的上界；达到最优时每个平方项都必须在状态上消失。",
+          "等号关系约束两组四输出测量，产生由 conference matrix 联系的参考基，并确定局域测量生成的矩阵代数。随后构造分开的 Alice、Bob 等距，把四维最大纠缠对从原始纯化中提取出来，同时让 Eve 留在辅助系统。",
+          "随机性证明按对手猜测扇区进行归约与替换，将可预测的第一行从 square 问题中剥离，剩余分数由 rectangle 最优值限制。超过该阈值的分数必须来自不可完全猜测的部分，产生显式线性猜测概率界。"
         ],
         "assumptions": [
-          "完整策略分类使用精确最优值和有限维；随机性界是一轮 raw key 的结论。"
+          "完整刚性分类针对精确达到最优值的有限维 tensor-product 策略，测量只在约化态实际占据的支撑上被固定，未占据子空间上的任意行为不会被该认证约束。",
+          "对手持有量子侧信息，但随机性阈值与猜测界首先是一轮、特定 raw key 的结论。RAC 的隐私条件明确限定完整三比特 parity，改变隐私要求会改变问题。"
         ],
         "limitations": [
-          "阅读核心定理、阈值归约及猜测界证明节选；未独立核查全部刚性证明或附录。",
-          "未给出完整 robust extraction theorem；猜测曲线最优系数仍开放，不能直接视为完整多轮 QKD 安全率。"
+          "SOS 也给出近最优时某些算符关系的残差控制，但这不等于已经完成完整 robust extraction theorem。实验分数有限精度下的状态距离与统计置信度，仍需进一步分析。",
+          "Θ 线性阶不意味着所有分数处的最佳猜测曲线系数已经求出。单轮原始密钥熵也不能直接当作多轮 QKD 最终安全率。已读 v1 值、刚性、阈值和猜测界相关段落，未独立验证所有代数分类步骤。"
         ],
         "relevance": [
-          "适合与用户已有 nonlocal-game 资源分离及 data hiding 比较；博弈名称中的 magic 本身不意味着非 Clifford 门成本定理。"
+          "论文提供不限维分数上界与量子侧信息认证的严格范例，对非局域博弈、data hiding 和设备独立资源问题有价值。博弈名称中的 magic 指 parity 冲突结构，本篇并不因此给出 T 门或非 Clifford magic 的成本定理。"
         ],
         "follow_up": [
-          "研究问题：加入 stabilizer/magic-free 或受限测量后，最优值与侧信息阈值如何改变？"
+          "可研究的问题：从 SOS 的近最优残差出发，能否得到具有明确误差指数和维数独立常数的鲁棒局域提取定理？",
+          "若限制测量为某种稳定子可实现集合，或进一步要求隐藏所有二比特 parity，最优分数与可预测阈值是否会严格降低？这需要作为新的受限模型求解。"
         ],
         "relevance_score": 90,
         "status": "analyzed",
         "evidence_level": "full_text_excerpt",
         "source_url": "https://arxiv.org/html/2610.12001v1",
         "model": "ChatGPT 本次会话",
-        "analyzed_at": "2026-10-12T03:17:31+00:00"
+        "analyzed_at": "2026-10-12T03:51:14+00:00"
       },
-      "selected_at": "2026-10-12T03:20:36Z"
+      "selected_at": "2026-10-12T03:20:36Z",
+      "sources": [
+        "arxiv"
+      ]
     },
     {
       "id": "2610.11658",
@@ -711,7 +804,7 @@
         "Benjamin J. Brown",
         "Robin Harper"
       ],
-      "abstract": "",
+      "abstract": "Large quantum computations require high-fidelity error-corrected memory and fault-tolerant logical operations. To achieve these with superconducting circuits, quantum processors will need many components operating with low error rates. In practice, fabrication of monolithic superconducting devices produces unavoidable heterogeneity in component performance, which the quantum computer must accommodate. We implement strategies to operate a large dynamic compass code on an array of 156 superconducting qubits arranged on a heavy-hexagonal lattice, making use of the entire monolithic quantum processor and redesigning our measurement schedule to exclude underperforming components. We demonstrate improvements of up to $35\\%$ in logical error probabilities for a memory experiment by using a noise-informed decoder combined with strategies to exclude the worst-performing qubits and couplers, along with post-selecting on shots with a low probability of leakage errors. In addition to these memory results, we also observe performance gains of up to $56\\%$ when these strategies are applied to measurement-based logic, demonstrated by stability experiments. We furthermore demonstrate high-fidelity fault-tolerant logic through lattice surgery. Through pre-selection filtering techniques, we can obtain Bell fidelities above $77\\%$, and further logical gap post-selection using exclusive decoding increases these fidelities to above $97\\%$. Our experiments demonstrate that high performance can be maintained in key elements of fault-tolerant quantum memory and logic when working on monolithic superconducting quantum processors with underperforming components, by using a suite of noise-informed quantum error correction strategies.",
       "url": "https://arxiv.org/abs/2610.11658",
       "pdf_url": "https://arxiv.org/pdf/2610.11658v1",
       "published": "2026-10-08T10:35:25Z",
@@ -731,38 +824,47 @@
       },
       "first_seen_at": "2026-10-12T02:38:41Z",
       "analysis": {
-        "summary": "156 比特 heavy-hex 实验展示缺陷排除、ACES 噪声表征及筛选如何改善逻辑存储和 lattice surgery。对你的逻辑 benchmarking 很有价值：必须明确被认证的操作与后选择条件。",
-        "problem": "大芯片的局部劣质元件和泄漏如何影响逻辑存储、逻辑测量及其可观测性能？",
-        "setting": "动态 compass code；存储用 7×7 patch，稳定性用 5×5 patch，surgery 用两个较小 patch。逻辑误差由多轮综合征后的 X/Z 输出拟合。",
+        "summary": "这是一项 156 比特 heavy-hex 超导处理器上的纠错存储与逻辑实验，重点不是寻找理想芯片，而是让大型、元件性能不均匀的芯片保持可用。作者结合动态 compass code、绕开缺陷的测量日程、ACES 噪声表征、噪声感知解码以及筛选，改善存储和 lattice surgery 的表现。最醒目的超过 97% Bell 保真属于严格筛选后的条件结果，必须与接受率一起阅读；它不是全部运行的无条件逻辑门保真。",
+        "problem": "大规模单片超导器件中，少数差比特、差耦合器和泄漏可能支配逻辑错误。仅用平均物理门保真或通用解码器，难以描述实际性能。论文测试结构调整、硬件表征和解码信息各自能改善多少，并询问这些改善是否同时覆盖量子存储、逻辑测量与纠缠生成。",
+        "setting": "实验在 IBM 的 156 比特 heavy-hex 处理器 ibm_boston 上进行。存储主要使用 7×7 dynamic compass code，稳定性实验使用 5×5 patch，lattice surgery 使用较小的两个 patch。该动态码按四步周期改变瞬时稳定子群，以适配稀疏连通；存储测不同轮数的综合征后在逻辑 X/Z 基读出，拟合每轮逻辑错误。",
         "main_results": [
-          "联合策略下存储每轮逻辑误差为 Z 4.11%、X 2.56%，相对基线改善约 32%/35%。",
-          "3×3 surgery 的 Bell 保真下界由无筛选 58.6% 到预筛选 77.3%，logical-gap 后选择可超过 97%；27% yield 的分母是已通过预筛选的 shots。"
+          "结合 ACES-informed BeliefMatching、缺陷排除与泄漏后选择后，存储每轮逻辑错误为 Z 基 4.11%、X 基 2.56%，相对基线改善约 32.3%/35.2%。不做后选择的最佳结果仍有 Z 4.4%、X 2.9%，因此改善并非全部来自丢弃样本，但筛选条件不同的结果须分别比较。",
+          "稳定性实验排除缺陷后可保持至 30 轮的错误抑制，未排除时约 12 轮开始出现平台；30 轮失败概率总体改善达到 56%。附加测量软信息主要在没有 ACES 精细噪声模型时改善表现，说明两类信息的作用存在重叠，而非简单叠加。",
+          "3×3 surgery 的 Bell 保真区间无预筛选为 58.6%–73.5%，预筛选后为 77.3%–84.5%。逻辑 gap 阈值提高到 9 可得到超过 97% 的条件保真，其 27% yield 以已通过预筛选的样本为分母。预筛选本身剔除了 86.7% 的实验开始尝试，不能把 27% 当总接受率。",
+          "阈值 8 的另一个明确例子得到 95.8%–97.8% 的保真区间，相对 yield 34.3%，计入全部过滤后的总 yield 仅 4.55%。4×3 surgery 的 gap 后选择改善较有限，显示小 patch 的最佳筛选方案不能无条件外推到其他几何尺寸。"
         ],
         "techniques": [
-          "绕过缺陷的检查日程、ACES-informed BeliefMatching、泄漏/逻辑 gap 筛选；由 XX、ZZ 相关量给 Bell 保真上下界。"
+          "缺陷排除不只是让解码器降低对差元件的信任，而是完全不使用指定差比特及邻近耦合器，重新编排 gauge checks 并形成避开它们的 superstabilizers。动态测量允许维持较低稳定子权重，从结构上减少由局部坏元件造成的错误。",
+          "ACES 从线路特定实验估计 Pauli 噪声模型，输入 BeliefMatching 的先验；读出脉冲的额外软信息则描述单次测量可信度。前者是故障分布，后者是每次读出的证据，两者在逻辑性能上的作用应独立检验。",
+          "lattice surgery 通过合并测量逻辑 XX 再分离 patch 产生逻辑 Bell 态。由于无法容错地测 YY，作者由经手术结果校正的 XX 相关 a 与 ZZ 相关 b 给区间：(a＋b)/2≤F_Bell≤(1＋min(a,b))/2；这里是状态保真界，不是完整逻辑通道层析。",
+          "预筛选检查初始泄漏与码空间准备，后选择使用 decoder 的 logical gap，即最佳逻辑扇区与相反扇区的最小匹配权重差。筛选后仍有非零 detector violations，说明接受的运行并非简单要求“综合征完全干净”。"
         ],
         "assumptions": [
-          "逻辑性能依赖固定 patch、日程、解码器与筛选规则；每轮误差来自指数拟合，并非直接测得任意逻辑通道保真。"
+          "每个性能数值绑定具体 patch、测量日程、噪声模型、解码器和筛选规则。每轮逻辑错误来自随轮数的指数拟合，不是直接认证任意输入和任意逻辑操作的平均门保真。",
+          "条件 Bell 保真对应接受子样本，筛选可能依赖额外模拟测量信息。报告资源时需包含预筛选失败、后选择拒绝、综合征轮数及读出成本。"
         ],
         "limitations": [
-          "只审阅摘要、结果和部分方法，未审阅全部附录。",
-          "条件保真不能当作无条件 gadget 保真；一个后选择阈值例子的总 yield 仅 4.55%。没有证明 SPAM 消除或长期无记忆噪声。"
+          "超过 97% 的结果不能被称为未经筛选的确定性逻辑门性能。仅测 XX、ZZ 得到的 Bell 态保真区间，也不能替代任意逻辑 gadget 的过程保真或 SPAM 鲁棒认证。",
+          "7×7 缺陷排除 patch 接近或超过平均 5×5 表现，并不代表所有更大码距都已显示指数错误抑制；较小 patch 仍可能因避开差元件而更好。读过 v1 结果、surgery 和部分方法，未全面复核附录或独立重算原始实验数据。"
         ],
         "relevance": [
-          "适合作为逻辑认证的实际模型：同时报告条件错误、接受概率与总体资源；综合征、解码先验及额外 IQ 数据承担不同信息角色。"
+          "该实验提供现实的逻辑 benchmarking 场景：综合征、表征先验、模拟读出和接受规则共同决定被测对象。最有价值的是同时比较错误、保真区间与成功率，而不是单独挑最高保真作为平台整体性能。"
         ],
         "follow_up": [
-          "哪些逻辑原语与相关量足以识别保真，并能在有界 SPAM 下控制拟合偏差？",
-          "将接受率、shots、综合征轮数和物理门调用分开计量。"
+          "可研究的问题：在固定总实验尝试数下，以“接受概率×可用逻辑输出质量”比较不同筛选策略，何时高条件保真真正带来更好的任务收益？",
+          "进一步选择足够区分逻辑噪声模型的输入与相关量，明确可认证参数及 SPAM 偏差，并把缺陷排除、噪声先验和软读出逐项消融。"
         ],
         "relevance_score": 88,
         "status": "analyzed",
         "evidence_level": "full_text_excerpt",
         "source_url": "https://arxiv.org/html/2610.11658v1",
         "model": "ChatGPT 本次会话",
-        "analyzed_at": "2026-10-12T03:18:07+00:00"
+        "analyzed_at": "2026-10-12T03:51:14+00:00"
       },
-      "selected_at": "2026-10-12T03:20:36Z"
+      "selected_at": "2026-10-12T03:20:36Z",
+      "sources": [
+        "arxiv"
+      ]
     },
     {
       "id": "2610.11540",
@@ -779,7 +881,7 @@
         "Markus Heinrich",
         "Ingo Roth"
       ],
-      "abstract": "",
+      "abstract": "Randomized benchmarking (RB) with structured circuits is experimentally scalable, but gives biased short-depth fidelity estimates because incomplete ensemble mixing introduces transient modes. Waiting for these transients to decay in deeper circuits can push the signal below the noise floor. This is a well-established obstacle, e.g. in linear cross-entropy benchmarking (LinXEB). Here we overcome this obstacle solely through classical post-processing. We introduce a one-parameter family of estimators that interpolate between the standard LinXEB-type post-processing and a new post-processing technique we call the trace filter function. Under practical assumptions, the trace filter function provably suppresses transient modes, exposing an interpretable fidelity decay at short depth, with theoretical guarantees comparable to standard RB, at the cost of an increased variance. We bound the variance, analyze the evaluation complexity of the new estimators, and develop practical post-processing algorithms. Experiments on a Rigetti superconducting processor validate the method for one-dimensional circuits of up to 12 qubits: where the standard estimator requires depth beyond a 40-layer experimental window, the trace filter function yields consistent estimates below 10 layers. Trace-filtered randomized benchmarking therefore extends reliable fidelity characterization to relevant structured circuit ensembles and short-depth regimes that are inaccessible to conventional estimators.",
       "url": "https://arxiv.org/abs/2610.11540",
       "pdf_url": "https://arxiv.org/pdf/2610.11540v1",
       "published": "2026-10-08T09:10:01Z",
@@ -802,38 +904,45 @@
       },
       "first_seen_at": "2026-10-12T02:38:41Z",
       "analysis": {
-        "summary": "最值得读：作者用 trace filter 后处理抑制结构化 random-circuit RB 的混合瞬态，使浅层也能拟合衰减。代价是更大方差及经典计算成本；这提供与你固定门认证不同的资源权衡。",
-        "problem": "1D brickwork 混合较慢，LinXEB 浅层偏差与深层信号衰弱冲突，能否仅改后处理？",
-        "setting": "记录随机线路 g 与单次 bitstring x，比较 α∈[1,3] 的过滤器；α=1 为 LinXEB 型，α=3 为 trace filter。",
+        "summary": "论文把结构化随机线路 benchmarking 的短深度偏差转化为后处理问题。作者设计一族 trace filter，在不改变实验线路和单次测量记录的情况下，压低线路尚未充分混合所产生的瞬态信号，使较浅线路也能用于提取衰减率。收益主要是减少所需线路深度；代价是统计方差和经典计算成本增加。",
+        "problem": "标准 LinXEB 型信号在结构化随机线路中通常不是立即进入单指数区间，而是具有 Bβ^(m−1)+∑Cᵢγᵢ^(m−1) 的多个衰减分量。β 是希望估计的有效噪声衰减率，γᵢ 则包含线路分布尚未混合的影响。只拟合浅层会有偏差，等待足够深又可能使有效信号衰减到噪声底以下。作者问：能否保留受限拓扑及门分布，仅通过调整每条记录的权重消除这种矛盾？",
+        "setting": "实验从 |0⟩ 出发，独立抽取门层 g₁,…,gₘ，记录总线路 g 和计算基单次结果 x。各深度上的信号是后处理函数 fα(x,g) 的样本平均，然后拟合指数衰减。主文讨论一维 brickwork 线路，理论允许时间平稳、Markovian 且依赖门的噪声。α∈[1,3] 控制过滤强度：α=1 恢复 LinXEB 型处理，α=3 是 trace filter。",
         "main_results": [
-          "局部 Clifford 对称性下，信号化为 Tr[P T^m(M)]，理想门的混合瞬态被消除；实验最多 12 比特，40 层窗口内标准方法难拟合，过滤法在 10 层以下给一致估计。",
-          "无噪声全局 Clifford 情形的方差界为 O([1+((α−1)/(α+1))²]^n)，α=3 为 O((5/4)^n)；后处理最坏即使 Clifford 也为 #P-hard。"
+          "局部 Clifford 对称性成立时，α=3 的平均信号可改写为与噪声 twirl 超算符有关的迹 Tr[P Tᵐ(M̃)]；P 选取理想 twirl 的非平凡固定点。理想门情况下其他混合模被完全压低，信号不再随混合过程改变。含噪声时的短深度解释仍依赖论文列出的对称性和噪声条件，不能无条件把任意数据拟合成单指数。",
+          "无噪声、均匀全局 Clifford 的长序列参照模型中，作者证明 Var(fα)=O([1+((α−1)/(α+1))²]ⁿ)。因此 α=3 的方差界为 O((5/4)ⁿ)，并非随 qubit 数多项式增长的通用 shots 保证。30 比特数值例子中，中间参数 α≈1.5 比两个端点更适合，说明最佳选择取决于噪声、拓扑和采样预算。",
+          "Rigetti 处理器上最多 12 比特的一维线路实验显示：标准处理在 40 层窗口内仍难进入可可靠拟合的区间，而 trace filter 在 10 层以下可给出一致的衰减估计。这是所测试线路及噪声条件下的实验结果，不能直接推广为任意规模的固定加速比。"
         ],
         "techniques": [
-          "以局部 Clifford 轨道重加权实现超算符迹；稳定子与浅层 1D 张量网络计算过滤器。"
+          "核心权重使用 ξ(α)=(I+αZ)⊗ⁿ/(1+α)ⁿ，定义 fα(x,g)=(2ⁿ+1)[⟨x|gξ(α)g†|x⟩−(1+α)^(−n)]。α=3 给不同局部 Pauli 轨道加入与轨道大小相匹配的权重，将原来的初态矩阵元变成超算符迹，从而选择性抑制混合瞬态。",
+          "经典评估采用稳定子表示或张量网络。α>1 时，即使线路全为 Clifford，最坏情况仍包含二元线性码 weight enumerator 的计算，属于 #P-hard。浅层一维线路可利用小张量网络宽度；对数深度情形有多项式算法，实际程序也利用独立样本间的并行化。",
+          "作者区分谨慎拟合与直接全窗口拟合：前者先估计进入单指数区间的最小深度，再提取 β。使用张量网络噪声模型辅助估计混合长度的步骤属于启发式；减少瞬态不意味着有限样本下可以省去拟合诊断。"
         ],
         "assumptions": [
-          "时间平稳 Markovian gate-set；twirl 保持局部 Clifford 对称性。附录 Proposition 3 的精确迹恒等式明确假设完美初态制备。"
+          "附录 Proposition 3 的精确迹恒等式明确假设完美初态制备，以及时间平稳的 Markovian gate-set 描述；相关 twirl 必须保持局部 Clifford 对称性。论文允许一定测量噪声，但该命题本身不能作为任意初态误差或每次变化的 SPAM 鲁棒性定理。",
+          "β 的保真度解释是针对指定门分布及有效平均噪声过程，并需要相应扰动条件。它与某个固定单门的完整过程保真度、任意相干非平稳噪声认证是不同任务。"
         ],
         "limitations": [
-          "只核查主文及相关命题，未独立复核全部证明。",
-          "不能直接推出任意非重复 SPAM 鲁棒、固定单门过程保真或多项式 shots；深度、shots 与总目标门调用须分别比较。"
+          "减少线路深度可能以增加 shots 为代价，也可能增加每条样本的经典计算时间。实际资源比较应同时报告总样本数、线路深度、目标门调用和后处理成本。",
+          "这里核查了主文、过滤公式、方差结果及 Proposition 3，未独立证明全部附录结论或复现硬件实验。"
         ],
         "relevance": [
-          "直接连接你的随机线路、表示论和 benchmarking；α 给出深度偏差与统计方差的权衡，局部对称性提供可借鉴结构。"
+          "这项工作适合研究随机线路、表示论和 benchmarking 的读者：它展示了如何用局部对称性改变可观察信号，同时保留原有受限线路架构。最有启发性的点是把设计空间从量子线路本身扩展到经典权重，并明确分析深度与统计误差之间的交换。"
         ],
         "follow_up": [
-          "有界且非重复初态误差怎样影响迹过滤与衰减参数？",
-          "针对重叠两层目标线路，能否选局部 Pauli 子空间降低方差，同时计入后处理和总目标门调用？"
+          "阅读时可优先检查具体实验是否满足局部 twirl 对称性，以及初态误差会在迹公式中增加什么分量。",
+          "可进一步研究局部 Pauli 子空间上的过滤器，比较它对浅层偏差、方差和总目标门调用的综合影响；这属于后续问题，论文尚未给出一般答案。"
         ],
         "relevance_score": 98,
         "status": "analyzed",
         "evidence_level": "full_text_excerpt",
         "source_url": "https://arxiv.org/html/2610.11540v1",
         "model": "ChatGPT 本次会话",
-        "analyzed_at": "2026-10-12T03:18:07+00:00"
+        "analyzed_at": "2026-10-12T03:51:36+00:00"
       },
-      "selected_at": "2026-10-12T03:20:36Z"
+      "selected_at": "2026-10-12T03:20:36Z",
+      "sources": [
+        "arxiv"
+      ]
     },
     {
       "id": "2610.10531",
@@ -844,7 +953,7 @@
         "J. Wilson Staples",
         "Jeff D. Thompson"
       ],
-      "abstract": "",
+      "abstract": "Quantum error-correcting circuits are affected by multiple physical noise mechanisms, whose contributions to logical failure must be understood to evaluate code performance and guide improvements in hardware. The individual error budget contributions for an error type $i$ can be characterized by its logical sensitivity $ν_i = \\frac{\\partial p_L}{\\partial p_i}$, which measures the response of the logical error rate $p_L$ to each physical noise parameter $p_i$. Normally, $ν_i$ is measured using linear fits such as finite differences, where $p_L$ is measured at two or more values of $p_i$ to calculate partial derivatives. In this paper, we develop a differentiable estimator to obtain all components of $\\nabla_{\\mathbf p}p_L$ simultaneously from a single Monte Carlo data set at one noise configuration, using information about the underlying fault configurations. In surface code simulations with circuit-level noise, the estimator agrees with conventional finite differences while requiring one to two orders of magnitude fewer shots to achieve the same variance. We apply this technique to quantify error budgets, resolve sensitivities at the individual qubit level, and infer effective code distance. Finally, we incorporate the sensitivities into Newton root finding to locate and trace threshold contours in multidimensional noise models. These results provide an efficient method for extracting and applying logical sensitivity information from standard quantum error correction simulations.",
       "url": "https://arxiv.org/abs/2610.10531v1",
       "pdf_url": "https://arxiv.org/pdf/2610.10531v1",
       "published": "2026-10-07T17:58:42Z",
@@ -865,39 +974,45 @@
       },
       "first_seen_at": "2026-10-09T08:13:46Z",
       "analysis": {
-        "summary": "利用一次 QEC Monte Carlo 仿真中的故障配置，同时估计逻辑错误率对各物理噪声参数的导数。它适合误差预算与模型分析；能否由实际设备的 syndrome 数据实现同类估计仍需另行研究。",
-        "problem": "如何低成本确定哪些物理噪声机制最影响逻辑失败概率 p_L？目标是逻辑灵敏度 ν_i = ∂p_L/∂p_i。",
-        "setting": "在一个固定物理噪声配置下做 QEC Monte Carlo 仿真，能够读取底层故障配置；作者以 circuit-level noise 的 surface code 验证方法。",
+        "summary": "作者把 Monte Carlo 仿真中通常被丢弃的故障配置转化为逻辑错误率的梯度信息。在一个固定噪声点采样一次，就能同时估计逻辑失败概率对多种物理误差参数的敏感度，支持逐量子比特误差预算和多参数阈值轮廓追踪。核心贡献是对物理故障分布使用 score-function 估计，而不是通过多次改变噪声率做有限差分。",
+        "problem": "逻辑敏感度 νᵢ=∂pL/∂pᵢ 描述改善第 i 类物理误差能降低多少逻辑错误。常规有限差分要在 pᵢ±h 分别仿真，因此参数数目越多，采样分摊越严重；h 太小会放大统计误差，太大又引入截断偏差。细分到空间、时间或单个故障位置后，这种成本尤其突出。论文希望从同一批逻辑错误率样本中提取完整梯度，并允许采样结束后再决定误差分组。",
+        "setting": "模型由独立抽样的随机故障机制 e 构成，每个机制的概率 Wₑ(p) 是物理参数的已知函数。每条仿真轨迹提供发生的故障集合 E，以及固定 decoder 下的逻辑失败指标 L(E)∈{0,1}。这比真实设备中通常只有 syndrome 和解码输出的信息更丰富。数值使用 Stim 的 circuit-level surface-code 仿真，比较码距 3、5、7，物理误差率约为 10⁻³–10⁻²。",
         "main_results": [
-          "作者提出从单个噪声配置的数据集同时估计整个梯度 ∇_p p_L，而非逐参数重新采样做有限差分。",
-          "所报告 surface-code 仿真中，与有限差分达到相同方差时，所需仿真样本约少 10–100 倍。",
-          "应用包括逐量子比特误差预算、有效码距推断，以及用 Newton 方法寻找多参数噪声的阈值轮廓。"
+          "式(4)将梯度写成 νᵢ=E[L(E)∂ᵢlog Prₚ(E)]，因此每条故障记录可同时贡献所有参数的梯度。对已知、可微的固定噪声模型及固定失败判据，这避免了有限差分步长造成的偏差；不需要为每个 pᵢ 额外运行两组线路仿真。",
+          "在所测试的 surface-code 配置中，与有限差分在相同总 shots 下比较，方差降低约 10–100 倍。论文的有限差分对照使用相对步长 a=0.1，并把总预算分到每种误差的两个噪声点。这是具体配置和比较规则下的优势，不是对所有 decoder、所有稀有错误概率的统一复杂度定理。",
+          "作者展示从同一数据生成按误差类型、轮次、量子比特位置及单故障细分的敏感度，并用梯度追踪不同码距逻辑错误率的交叉轮廓。后者得到的是有限码距阈值近似，而非已经证明的无限码距临界面。"
         ],
         "techniques": [
-          "故障配置计数与可微估计；将估计梯度接入 Newton 求根。"
+          "独立机制给出 Prₚ(E)=∏ₑ∈E Wₑ ∏ₑ∉E(1−Wₑ)。对数导数分解为发生故障的 ∂ᵢWₑ/Wₑ 和未发生故障的 −∂ᵢWₑ/(1−Wₑ)，再乘逻辑失败指标取平均。直观上，算法衡量某类故障在失败轨迹中出现得是否异常频繁。",
+          "若一组 Nᵢ 个独立 Bernoulli 机会直接共享概率 pᵢ，score 简化为 Mᵢ/pᵢ−(Nᵢ−Mᵢ)/(1−pᵢ)，其中 Mᵢ 是轨迹中的故障数。实际 circuit-level 模型需通过采样器的 Wₑ(p) 转换计算，不能直接把所有物理通道概率当成相同 Bernoulli 参数。",
+          "阈值追踪定义 Δ(p)=log pL(d₂,p)−log pL(d₁,p)。每个噪声点只需两个码距的数据，即可获得 Δ 和 ∇Δ；然后作 p←p−Δ∇Δ/‖∇Δ‖² 的 Newton 修正，沿与梯度正交的切向预测下一点，并依据统计误差自适应补充样本。"
         ],
         "assumptions": [
-          "可访问仿真故障配置及所用噪声模型；摘要未交代完整独立性、decoder 和参数边界条件。"
+          "故障机制需独立采样且分布可微，并能读取底层故障记录。独立机制可以包含一次造成多个 qubit 错误的事件；它不等于只能有单比特噪声。概率接近 0 或 1 时，score 的分母和统计稳定性需要另行处理。",
+          "推导将 L(E) 当成固定函数，有限差分对照也固定 decoder。若改变噪声参数时同时重新训练或调整 decoder，不能直接将该估计器理解成整个联合优化过程的总导数。"
         ],
         "limitations": [
-          "10–100 倍优势是所报告仿真的固定方差比较，不能直接解读为普适 ε 或码距复杂度定理。",
-          "摘要未给出仅依赖实验 syndrome、对未知噪声或 SPAM 鲁棒的估计保证。",
-          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+          "低逻辑错误率时仍需观察足够失败事件，方法没有消除稀有事件采样本身的成本。仿真可访问的隐藏故障也通常无法从实验 syndrome 唯一恢复。",
+          "本文报告了梯度引导的网格采样减少，但并未给出在任意维数、曲率与精度要求下的全局 Newton 收敛保证。此报告核查主文算法、数值与讨论，未独立复现仿真。"
         ],
         "relevance": [
-          "与 logical QEC 的噪声敏感度、误差预算直接相关；关键差别是这里观察到隐藏故障，而你的 logical benchmarking 希望从允许的实验数据辨识逻辑性能。"
+          "它为 QEC 噪声预算提供一套可直接加入已有仿真流程的诊断工具：先保持仿真与 decoder 不变，再增加故障计数后处理。理论研究还可用这些局部梯度识别真正限制逻辑性能的物理通道，而不是只比较总错误率。"
         ],
         "follow_up": [
-          "研究问题：给定 syndrome 或 logical-output 数据，哪些灵敏度可辨识？能否证明其相对完全故障信息的样本成本下界？"
+          "复现时应先验证采样器的 inclusive error model 概率与导数，再与少量有限差分点交叉检查。",
+          "后续可问：只观察 syndrome 时哪些灵敏度仍可辨识，损失故障信息会增加多少样本成本？这是从仿真诊断走向实验估计的关键差距。"
         ],
         "relevance_score": 88,
         "status": "analyzed",
-        "evidence_level": "abstract",
-        "source_url": "https://arxiv.org/abs/2610.10531v1",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.10531v1",
         "model": "ChatGPT 本次会话",
-        "analyzed_at": "2026-10-09T08:13:46+00:00"
+        "analyzed_at": "2026-10-12T03:51:36+00:00"
       },
-      "selected_at": "2026-10-09T08:16:39Z"
+      "selected_at": "2026-10-09T08:16:39Z",
+      "sources": [
+        "arxiv"
+      ]
     },
     {
       "id": "2610.10471",
@@ -908,7 +1023,7 @@
         "C. Muñoz",
         "I. Sainz"
       ],
-      "abstract": "",
+      "abstract": "The apparent absence of a stabilizer-specific phase-space description for qubit systems is not fundamental, but arises from fixing a state-independent discrete Wigner map. Allowing the phase-space representation to adapt to the state through a simple optimization procedure, we prove that every qubit stabilizer state admits an exact delta-function discrete Wigner representation for any fixed phase-space partition. This optimization can be implemented directly at the level of measurement statistics by selecting maximal probabilities across mutually unbiased bases forming the partition. This construction naturally leads to a non-stabilizer witness defined by the optimized value of the Wigner function at the origin. Stabilizer states saturate the universal lower bound of this witness for pure states, whereas a value strictly larger than the bound certifies non-stabilizerness. Although the witness is not a finite-size resource monotone, it becomes sharply concentrated and effectively invariant under random Clifford transformations in the large-qubit limit, suggesting an asymptotically linear growth law for broad families of non-stabilizer states. Our results restore a meaningful geometric phase-space characterization of qubit stabilizer structure and provide an operational diagnostic of non-stabilizerness.",
       "url": "https://arxiv.org/abs/2610.10471v1",
       "pdf_url": "https://arxiv.org/pdf/2610.10471v1",
       "published": "2026-10-07T17:33:58Z",
@@ -927,39 +1042,45 @@
       },
       "first_seen_at": "2026-10-09T08:13:46Z",
       "analysis": {
-        "summary": "通过让离散 Wigner 表示随状态优化，恢复 qubit stabilizer 态的相空间几何描述，并构造 non-stabilizer witness。有限尺寸下它并非资源单调量，不能直接当作 magic 成本。",
-        "problem": "固定的状态无关 Wigner 映射为何难以专门刻画 qubit stabilizer？状态依赖优化能否给出可由测量统计获得的诊断？",
-        "setting": "Qubit 系统、固定相空间 partition；优化使用构成该 partition 的 mutually unbiased bases 测量概率。纯态上讨论 witness 下界。",
+        "summary": "这篇 v1 论文用随状态调整的离散 Wigner 映射，恢复 qubit stabilizer 态的清晰相空间几何图像，并构造可从互无偏基测量概率计算的非稳定子诊断。优化后的原点值大于 1 可以认证纯态 non-stabilizerness；但任意规模下等于 1 是否必然是 stabilizer，正文仍保留为猜想。该诊断还不是有限尺寸的 magic 资源单调量。",
+        "problem": "奇素数维系统中，固定离散 Wigner 映射与 stabilizer 的正性关系非常清楚；qubit 系统无法同时获得相应的全 Clifford 协变性和全部 stabilizer 正性。作者认为部分困难来自强求同一个状态无关映射，于是利用固定相空间 partition 内的 cocycle 相位自由度，为每个状态重新选取基态与相空间曲线的对应关系。",
+        "setting": "设 d=2ⁿ，固定一套完整的 d+1 个 stabilizer mutually unbiased bases（MUBs）。在第 λ 个基中测量概率 pλκ，选最大概率结果作为该基经过原点的曲线所对应的基态。这改变 Wigner 表示的 arrangement，而不改变物理量子态。主要 witness 结论针对纯态；混合态需要不同的纯度相关解释，不能直接沿用阈值 1 的纯态认证。",
         "main_results": [
-          "作者声称每个 qubit stabilizer 态在任意固定 partition 下，都可经优化得到精确 delta-function Wigner 表示。",
-          "以优化后原点的 Wigner 值定义 witness：stabilizer 饱和纯态通用下界，严格高于下界可认证 non-stabilizerness。",
-          "大 qubit 数时，作者报告 witness 在随机 Clifford 变换下集中并近似不变；广泛态族的渐近线性增长被表述为启示。"
+          "Theorem 1 证明：对任意 stabilizer 纯态和任意固定完整 partition，分别取每个 MUB 的最大概率标签后，优化 Wigner 函数恰为 stabilizer Lagrangian 曲线 Γ 的指标函数 1Γ。这里的 delta 型定位是 Γ 上 d 个点取 1、其余点为 0，并非在单个相空间点集中了全部权重。",
+          "优化原点值 Mπ=∑λmaxκ pλκ−1。完整 MUB 的纯态二阶恒等式 ∑λκpλκ²=2 导出 Mπ≥1；stabilizer 饱和下界，所以 Mπ>1 是可靠的单向非稳定子 witness。反向命题在 v1 仅对一、二 qubit 已证明；任意 n 的全 MUB 平坦性刚性仍是 Conjecture 1，三 qubit 主要有数值支持。",
+          "对 Haar 随机纯态，作者给出 E[Mπ]=(d+1)H_d/d−1≈n ln2+γ−1，且方差随规模趋零。对固定态序列的随机 Clifford 轨道也报告集中，但中心是态依赖的轨道均值，不能一概替换成 Haar 均值。更广泛态族的线性增长部分依赖数值和启发式；严格稀疏态结论带有仿射独立支撑等条件。"
         ],
         "techniques": [
-          "在各 MUB 的测量概率中取最大值，实现状态依赖的相空间优化。"
+          "固定 partition 中原本有 d^(d+1) 个 arrangement，作者将整体选择拆成每个 MUB 内独立的最大概率选择。原点 kernel 是各基所选 rank-one projector 之和减 I，因此无需构造整个 Wigner 分布，就能算出 Mπ。",
+          "几何证明利用 stabilizer 曲线交集：stabilizer 在每个 MUB 的非零测量概率是平坦的，其支持为仿射陪集。重新选取原点标签后，Wigner 边缘分布与 Γ 的指标函数一致；完整 MUB 的层析完备性使这种边缘匹配确定整个表示。",
+          "下界来自 Mπ−1=∑λκpλκ(pmaxλ−pλκ)≥0。等号要求每个 MUB 内所有非零概率相同；从这一概率平坦性升级到任意 n 的 stabilizer 结构，正是论文明确尚未完全解决的刚性问题。Haar 平均则利用 Dirichlet 概率向量最大分量的统计。"
         ],
         "assumptions": [
-          "纯态 witness 结论与大 qubit 数行为应区分；摘要未给出具体下界、集中速率或完整采样模型。"
+          "核心认证依赖纯态及完整 stabilizer-MUB partition。仅测少数基，或把设备制备的混合态当成纯态，不会自动继承同样的下界与认证含义。",
+          "表示可以随状态改变，故不同状态的 Wigner 值并不来自一个统一固定的资源表示。Clifford 随机化下渐近集中与有限尺寸下对每个 Clifford 精确不变是不同结论。"
         ],
         "limitations": [
-          "有限尺寸 witness 不是 resource monotone；渐近 Clifford 近似不变也未给出操作任务优势。",
-          "摘要未说明噪声容忍度，以及优化和估计的总测量成本。",
-          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+          "最大概率选择虽避免双指数 arrangement 搜索，仍要访问 d+1=2ⁿ+1 个基的统计，因此不意味着多项式测量设置或 shots。有限样本下取最大值还需要控制统计偏差，正文结构定理本身不是噪声容忍的实验估计定理。",
+          "Mπ 在有限尺寸不是 free-operation monotone，也未被证明等于 magic distillation 成本或具体计算任务优势。本报告读取 pinned v1 的结构、witness 与集中结果，未独立核查所有附录证明。"
         ],
         "relevance": [
-          "连接 magic / stabilizer 与随机 Clifford，但其现有结论是状态诊断；和 adaptive Clifford data hiding 的具体区分能力之间仍需建立桥梁。"
+          "对研究 magic、stabilizer 几何及受限测量的读者，它提供一个清楚的案例：可观测概率诊断、资源单调量和操作任务优势需要分别建立。状态依赖的表示选择有助于看见结构，但必须把测量代价及有限尺寸反例保留在解释中。"
         ],
         "follow_up": [
-          "研究问题：能否将 witness 与受限测量区分优势、所需 magic 或总单拷贝样本数联系起来，并明确有限尺寸反例？"
+          "阅读优先级可放在全 MUB 平坦性猜想：一般 n 是否存在非加性支持的非稳定子平坦态？",
+          "可继续研究少量随机 stabilizer 基是否足以稳健估计或下界 Mπ，并给出对纯度和有限样本误差明确的认证条件。"
         ],
         "relevance_score": 86,
         "status": "analyzed",
-        "evidence_level": "abstract",
-        "source_url": "https://arxiv.org/abs/2610.10471v1",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.10471v1",
         "model": "ChatGPT 本次会话",
-        "analyzed_at": "2026-10-09T08:13:46+00:00"
+        "analyzed_at": "2026-10-12T03:51:36+00:00"
       },
-      "selected_at": "2026-10-09T08:16:39Z"
+      "selected_at": "2026-10-09T08:16:39Z",
+      "sources": [
+        "arxiv"
+      ]
     },
     {
       "id": "2610.09341",
@@ -969,7 +1090,7 @@
         "Bohan Lu",
         "Kenneth R. Brown"
       ],
-      "abstract": "",
+      "abstract": "We construct CSS codes with three logical qubits whose logical CCZ gate is implemented by transversal physical $T/T^{\\dagger}$ gates and whose distance is at least $3$. These codes start with $8$-divisible $X$-stabilizers defined by projective geometry, which guarantees $d_Z\\geq 3$. A SAT solver then finds three $X$-logical operators compatible with the transversal CCZ. We build codes at thirteen block lengths from $n=48$ to $n=496$, with $d_Z=3$ or $4$, and illustrate the method with the $[[48,3,3]]$ code $Q_{48}$. Additionally, we prove that no CSS code with three logical qubits, $Z$-distance at least $3$, and a quasi-transversal CCZ gate (transversal $T$ with a diagonal Clifford correction) exists below $n=39$. The $[[47,3,3]]$ code of Jacinto et al. serves as an upper bound, leaving $39\\leq n\\leq46$ open.",
       "url": "https://arxiv.org/abs/2610.09341v1",
       "pdf_url": "https://arxiv.org/pdf/2610.09341v1",
       "published": "2026-10-07T03:00:02Z",
@@ -989,38 +1110,45 @@
       },
       "first_seen_at": "2026-10-09T08:13:46Z",
       "analysis": {
-        "summary": "把射影几何给出的 8-divisible stabilizer 与 SAT 搜索结合，构造三个逻辑 qubit 上可实现 CCZ 的 CSS 码，并给出特定 quasi-transversal 模型的块长下界。",
-        "problem": "在距离要求下，多少物理 qubit 足以让三个逻辑 qubit 的 CCZ 由 transversal T/T† 实现？",
-        "setting": "CSS 码、三个逻辑 qubit；构造的码距至少 3。下界另针对 d_Z ≥ 3、transversal T 加 diagonal Clifford correction 的 quasi-transversal CCZ 模型。",
+        "summary": "作者把码构造分成两个阶段：用射影几何预先满足 X-stabilizer 的整除性和 Z 距离要求，再用 SAT 搜索三个逻辑 X 算符，使物理 T/T† 的相位恰好成为逻辑 CCZ。论文提供一批有限长度 CSS 码及 48-qubit 显式例子，并证明一个限定于 CSS 和 quasi-transversal CCZ 模型的块长下界。",
+        "problem": "CCZ 是非 Clifford 三比特门，通常通过 magic-state 资源实现。若能把它直接嵌入编码块中的 transversal 单比特 T/T†，就有机会改变非 Clifford gadget 的成本结构。难点是同时满足纠错距离和逻辑相位条件：物理相位必须不依赖 stabilizer 陪集内的代表元，只保留逻辑输入 x₁x₂x₃ 的三次相位。论文研究怎样系统寻找这样的短 CSS 码，以及哪些块长确定不可行。",
+        "setting": "CSS 码由嵌套二元码 C₂=rowspan(S)⊂C₁=rowspan([K;S]) 给出，K 的三行代表逻辑 X。逻辑基态是 Kᵀx+C₂ 上的均匀叠加。物理 T⊗ⁿ 产生 Hamming weight 模 8 的相位；目标逻辑 CCZ 对应 4x₁x₂x₃。作者区分单比特 T/T† 实现与允许额外 diagonal Clifford correction 的 quasi-transversal 模型，后者可以包含 entangling CZ。",
         "main_results": [
-          "作者构造 13 个块长的码，n 分布在 48–496，d_Z 为 3 或 4；示例为 [[48,3,3]]。",
-          "作者声称上述 quasi-transversal 模型不存在 n < 39 的码。结合既有 [[47,3,3]] 构造，39 ≤ n ≤ 46 的存在性仍开放。"
+          "论文构造 13 种块长、n=48–496 的三个逻辑 qubit CSS 码，距离为 3 或 4。48-qubit 例子 Q₄₈ 的 X-stabilizer rank 为 6，dX=16、dZ=3，总码距为 3；其逻辑 CCZ 由 26 个 T 加 22 个 T† 的物理符号图样实现。这里是一层物理相位门的代数构造，不等于完整容错流程仅需这一层。",
+          "作者证明：三个逻辑 qubit、dZ≥3 且满足指定 quasi-transversal CCZ 条件的 CSS 码，块长必须 n≥39。这个下界允许 diagonal Clifford correction，但不能外推到任意量子码、不同辅助态方案或任意非 transversal CCZ gadget。",
+          "已知 [[47,3,3]] 对照码达到 quasi-transversal 上界，却不能仅用物理 T/T† 图样实现目标 CCZ，必须保留 entangling correction。新 Q₄₈ 给出单比特 transversal 实现；39≤n≤46 的存在性仍开放，故论文没有证明 48 是所有实现模型中的最小块长。"
         ],
         "techniques": [
-          "用射影几何构造 8-divisible X-stabilizers，保障 d_Z ≥ 3；SAT 搜索兼容逻辑 CCZ 的三个 X-logical operators。"
+          "先从 PG(s−1,2) 删除 p 维子空间的非零点，得到 n=2ˢ−2ᵖ 个互异非零 syndrome 列。几何使 X-stabilizer codeword 权重具有整除结构；p≥4 的相应构造是 8-divisible。互异非零列排除一、二重量 Z 逻辑错误，使后续逻辑行搜索天然满足 dZ≥3。Q₄₈ 对应 (s,p)=(6,4)，即 63 个点减去 15 个点。",
+          "利用 |Gᵀz| mod8 的展开，只需检查单行权重、两行重叠和三行重叠；四次以上项系数被 8 整除。Campbell–Howard 条件要求逻辑三行的三重重叠为奇数，其他相关重叠满足偶性，从而留下 4x₁x₂x₃ 而消去 stabilizer 依赖。固定 S 后，SAT 主要处理 3n 个逻辑标签变量和 O(s²) 个奇偶约束。",
+          "找到满足 quasi-transversal 条件的 K 后，还需求物理符号 γ∈{0,1}ⁿ。写 T/T† 的符号为 1−2γ，条件变成 γ·c≡|c|/2−2x₁x₂x₃ mod4。这个额外可解性检验区分纯单比特图样与需 entangling correction 的码。下界则将 stabilizer 支持化成 Reed–Muller 指标多项式，再结合有限候选分类和 SAT 排除。"
         ],
         "assumptions": [
-          "块长下界依赖 CSS、三个逻辑 qubit、d_Z 条件及指定 correction 模型，不能推广到任意 CCZ 实现。"
+          "构造和下界的编码、逻辑比特数、dZ 及 correction 模型必须一并保留。8-divisible S 是构造时采用的较强条件；下界研究的 Campbell–Howard 偶性条件更广，不能将两者等同。",
+          "所列较长码的数量一般是已找到的数量下界；论文并未对所有支持完成同等规模的 exhaustive enumeration。"
         ],
         "limitations": [
-          "摘要未给出全部 X 距离、完整噪声与纠错 gadget，也未比较总 T 数、深度、ancilla 和阈值成本。",
-          "39–46 的块长间隙尚未封闭；有限码距构造不等于随块长增长的高距离码族。",
-          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+          "有限码距 3/4 及 transversal 门条件没有自动提供高距离 qLDPC 码族、解码阈值或更低总时空成本。纠错轮次、测量噪声、门前后 syndrome gadget 和恢复仍需单独研究。",
+          "本文核查了构造、符号条件、Q₄₈ 参数及下界模型，未运行 SAT 证书或独立复核全部有限分类证明。"
         ],
         "relevance": [
-          "贴近 non-Clifford logical QEC 和资源界，也为你的 CCZ benchmarking 提供可具体化的编码后目标门。"
+          "这项工作适合 non-Clifford logical QEC 和资源下界研究：几何预先保证距离、SAT 只搜索逻辑相位的分工很可复用。显式 Q₄₈ 也提供一个可用于线路级噪声仿真和逻辑门认证的具体编码目标。"
         ],
         "follow_up": [
-          "研究问题：固定编码、恢复与 CCZ gadget 后，哪些 syndrome 和 logical-output 统计可认证逻辑门保真度？应把块长、magic、shots 与 target-gate calls 分开比较。"
+          "后续可构建完整 Q₄₈ syndrome 和恢复流程，比较其逻辑 CCZ 错误率与 magic-state 方案的总 T 资源和时空体积。",
+          "理论上可优先考察 39–46 的缺口，并分别搜索 quasi-transversal 条件与纯 T/T† 符号条件，避免把不同实现模型的最小长度混为一谈。"
         ],
         "relevance_score": 89,
         "status": "analyzed",
-        "evidence_level": "abstract",
-        "source_url": "https://arxiv.org/abs/2610.09341v1",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.09341v1",
         "model": "ChatGPT 本次会话",
-        "analyzed_at": "2026-10-09T08:13:46+00:00"
+        "analyzed_at": "2026-10-12T03:51:36+00:00"
       },
-      "selected_at": "2026-10-09T08:16:39Z"
+      "selected_at": "2026-10-09T08:16:39Z",
+      "sources": [
+        "arxiv"
+      ]
     },
     {
       "id": "2610.06811",
@@ -1031,7 +1159,7 @@
         "Mark Koch",
         "Arthur Pesah"
       ],
-      "abstract": "",
+      "abstract": "We show that every intermediate state of a broad class of non-Clifford quantum error-correction circuits is a third-order phase-polynomial state, even under stochastic Pauli noise. The class includes magic state distillation and cultivation, code switching and gauge fixing, transversal non-Clifford gates with syndrome extraction, and injection of diagonal magic states. Third-order phase-polynomial states strictly generalize stabilizer states, and we prove that they are exactly the stabilizer states of the diagonal-Clifford-and-Pauli (DCP) stabilizer formalism that we introduce. We characterize these states and show that their representations can be updated in polynomial time. This yields an exact polynomial-time simulation algorithm for these circuits and, more broadly, a framework for reasoning about their internal states and about magic states in general. We provide an open-source implementation, \\texttt{merlin}, and benchmark it against existing non-Clifford simulators on distillation, cultivation, and code switching circuits. The benchmarks demonstrate improved runtime and memory scaling as the number of logical outputs grows in Bravyi-Haah distillation, and simulation of a code switching circuit beyond the reach of all other tested simulators.",
       "url": "https://arxiv.org/abs/2610.06811",
       "pdf_url": "https://arxiv.org/pdf/2610.06811v1",
       "published": "2026-10-05T17:54:39Z",
@@ -1058,37 +1186,45 @@
       },
       "first_seen_at": "2026-10-12T02:38:41Z",
       "analysis": {
-        "summary": "在受限的非-Clifford QEC 线路中，用 DCP 稳定子与三阶相位多项式追踪条件态，实现精确的多项式时间模拟。",
-        "problem": "避免多个逻辑 magic 输出造成的指数级模拟成本。",
-        "setting": "准备 |0⟩、|+⟩，使用 Pauli/CNOT/T 门、Z 型及兼容的 X 型 Pauli 测量；随机 Pauli 故障按轨迹采样。",
+        "summary": "论文找到一类包含许多非 Clifford QEC 流程、却仍可精确多项式时间模拟的线路。关键不是限制 T 门数量或逻辑 magic 输出数量，而是让每条条件分支保持三阶相位多项式（3PP）结构。作者建立与之等价的 DCP stabilizer 表示、给出兼容测量分类，并用 merlin 实现验证高输出 distillation 和 code-switching 的模拟优势。",
+        "problem": "已有非 Clifford 模拟器常能在固定少数逻辑 magic 输出时高效运行，但其稳定子分解或其他非稳定子表示可能随输出数量指数增长。高率 magic-state 协议需要同时扩大物理规模和逻辑输出，固定 k 的效率不够。作者问哪些线路可以始终保存一种紧凑的条件态表示，从而避免这种指数依赖；答案必须同时处理 syndrome 测量和 classical feedforward，不能只讨论单位演化。",
+        "setting": "允许 |0⟩、|+⟩ 制备，Pauli、CNOT、T 门，任意 Z-type Pauli 测量及兼容的 X-type Pauli 测量。3PP 态写为 |ψ⟩=2^(−r/2)∑ᵧω₈^p(y)|x₀⊕By⟩，其中 B 满列秩、支撑为二元仿射空间，p 是模 8 的加权三次多项式。每个非零概率测量结果都必须仍在这个态类中；随机 Pauli 噪声按故障轨迹采样，并要求这些轨迹保持兼容。",
         "main_results": [
-          "模拟时间关于 qubit 数和线路规模为多项式，无需限制 T 总数；每条可达分支须保持 3PP 态。",
-          "理想 X 测量为确定性或反对易于当前 Z 稳定子、反馈限于 DCP 修正时，作者证明 DCP 故障下的测量兼容性。"
+          "Theorem 2 给出 O(n³) bits 的状态表示，以及 m 个操作线路的期望运行时间 O(mn³)+Tclassical，后者单列 classical feedforward 成本。算法精确采样测量记录并维护对应条件态，还能计算指定计算基振幅、Pauli 期望值和计算基采样。该结论不依赖 T 总数或逻辑 magic 输出数固定，但依赖全部测量的兼容条件。",
+          "作者证明 3PP 态恰等于其引入的 DCP stabilizer 态。Theorem 7 给出 QEC 中有用的充分条件：理想线路中每个 X 测量确定性，或反对易于当前某个 Z 型稳定子，且结果依赖修正限制在 DCP 内，则插入 DCP 故障后测量仍兼容。这避免逐一检查所有 noisy branch，却不是任意自适应测量或任意噪声通道都可模拟的声明。",
+          "merlin 在 Bravyi–Haah 3k+8→k distillation 中显示更有利的多输出增长趋势，并完成 [[81,3,5]] code-switching 对照例子，其他所测模拟器在该例中超出 20GB 内存或报错。对单输出 distillation/cultivation，一些既有方法的每 shot 时间反而更小；实验比较说明工具互补，不能简单说 merlin 在所有场景最快。"
         ],
         "techniques": [
-          "仿射支撑上的 Z₈ 三阶相位多项式，与 DCP 稳定子表的等价表示及更新规则。"
+          "紧凑表示用仿射支撑和相位系数替代 2ⁿ 维态向量。相位可写 p=a₀+∑aᵢyᵢ+2∑bᵢⱼyᵢyⱼ+4∑cᵢⱼₖyᵢyⱼyₖ mod8。CNOT/Pauli 更新仿射坐标，T 添加相位；这些操作在加权三次类中闭合，所以只需维护 O(n³) 个系数。",
+          "Z 测量把仿射支撑与一个仿射超平面相交。X 测量则涉及 p(x⊕v)−p(x) 的离散导数和两条平移分支干涉；三阶相位的导数具有 Clifford 相位结构，作者据此判定哪些结果仍保持等幅仿射支撑，并给出多项式时间更新。",
+          "DCP 使用 Pauli 与 diagonal Clifford 的乘积作为 stabilizer，允许 S 和 CZ 等因素，突破普通 Pauli tableau 的限制。噪声兼容性证明跟踪 EΠA|ψideal⟩ 的形式：DCP 错误 E 加仿射限制 ΠA 仍能在后续允许操作下保持所需结构。"
         ],
         "assumptions": [
-          "兼容测量并非任意自适应测量；随机 Pauli 噪声也不代表一般相干噪声。"
+          "测量兼容性是实质限制。论文举例：对 |CCZ⟩ 的第一 qubit 测 X，某个结果产生六个计算基支持点，而仿射空间大小必须是 2 的幂，因此该结果离开 3PP 类。允许任意 X 测量还能通过 gadget 实现 Hadamard，从而恢复通用计算。",
+          "精确性指给定模型中单条故障与测量轨迹的采样、条件态或期望值。估计极小逻辑错误率仍需要大量轨迹；随机 Pauli/DCP 事件不代表未经说明的一般相干噪声。"
         ],
         "limitations": [
-          "仅阅读摘要与结果综述，未复核证明或运行 merlin。",
-          "通用模拟仍可能因 DCP rank 指数增长而困难；所读节选未审阅附录算法。"
+          "通用扩展采用 DCP 态线性分解，其 DCP rank 不大于 stabilizer rank，但仍可指数增长；论文没有把一般 non-Clifford 计算变成多项式模拟。任意两个 DCP 态的 overlap 也不属于 Theorem 2 已保证的高效查询。",
+          "此报告核查主文表示、Theorem 2/7、兼容测量反例和基准结果，未独立复核所有附录证明或运行 merlin；cultivation 基准还排除了 escape stage。"
         ],
         "relevance": [
-          "连接 magic、适应测量与 logical QEC：可模拟性边界由允许的测量和反馈约束决定。"
+          "对 magic 与 logical QEC 的研究者，这篇论文提供了判断模拟难点的新角度：大量非 Clifford 资源未必造成困难，破坏条件态结构的测量和反馈可能更关键。它也给高率 distillation、transversal gate 和 code switching 的线路级误差分析提供可用工具边界。"
         ],
         "follow_up": [
-          "读者建议：寻找首次破坏兼容性的物理操作，并分析其 magic 或深度成本。"
+          "实际使用前可先把完整 syndrome gadget 编译成允许门集，逐个验证理想 X 测量及反馈条件，而不是仅凭协议名称认定可模拟。",
+          "进一步可定位特定 QEC 流程首次离开 3PP 的步骤，研究少量 DCP 分解是否足以覆盖该步骤并保留可控成本。"
         ],
         "relevance_score": 89,
         "status": "analyzed",
         "evidence_level": "full_text_excerpt",
         "source_url": "https://arxiv.org/html/2610.06811v1",
         "model": "ChatGPT 本次会话",
-        "analyzed_at": "2026-10-12T02:41:58+00:00"
+        "analyzed_at": "2026-10-12T03:51:36+00:00"
       },
-      "selected_at": "2026-10-12T02:42:01Z"
+      "selected_at": "2026-10-12T02:42:01Z",
+      "sources": [
+        "arxiv"
+      ]
     }
   ],
   "pending": [
@@ -6414,7 +6550,7 @@
   },
   "is_demo": false,
   "last_collection_run": "2026-10-12T02:38:41Z",
-  "last_analysis_run": "2026-10-12T03:20:36Z",
+  "last_analysis_run": "2026-10-12T03:53:38Z",
   "last_analysis_batch": {
     "analyzed": 30,
     "selected": 13,
@@ -6429,5 +6565,10 @@
     "quantum_learning": "Quantum learning / certification",
     "data_hiding": "Quantum data / information access"
   },
-  "archive_origin": "本次 ChatGPT 会话基于官方摘要整理的起始存档；不是每日自动任务。"
+  "archive_origin": "本次 ChatGPT 会话基于官方摘要整理的起始存档；不是每日自动任务。",
+  "last_report_refresh": {
+    "at": "2026-10-12T03:53:38Z",
+    "papers": 17,
+    "description": "Detailed Chinese reports and original English abstracts; stable article URLs and RSS GUIDs."
+  }
 }

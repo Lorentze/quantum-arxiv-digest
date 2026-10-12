@@ -26,7 +26,7 @@ class RenderTests(unittest.TestCase):
                          "evidence_level": "abstract", "status": "analyzed", "model": "test-model",
                          "source_url": "https://arxiv.org/abs/2209.09267", "analyzed_at": "2026-10-09T01:01:00Z"},
         }
-        self.state = {"papers": [self.paper], "is_demo": False, "profile_title": "Guoding Liu · 量子信息理论",
+        self.state = {"papers": [self.paper], "is_demo": False, "profile_title": "PRIVATE_PROFILE_SENTINEL · 量子信息理论",
                       "topic_labels": {"logical_qec": "逻辑 QEC"}, "last_successful_run": "2026-10-09T01:02:00Z",
                       "last_run": {"fetched": 100, "selected": 1}}
 
@@ -35,17 +35,29 @@ class RenderTests(unittest.TestCase):
 
     def test_portable_site_and_subpath_feed(self):
         build_site(self.state, self.output, "https://user.github.io/quantum-arxiv-digest")
-        for filename in ("index.html", "snapshot.html", "style.css", "app.js", "papers.json", "feed.xml", "feeds/logical_qec.xml"):
+        for filename in ("index.html", "snapshot.html", "style.css", "app.js", "papers.json", "feed.xml", "feeds/logical_qec.xml", "articles/2209.09267.html"):
             self.assertTrue((self.output / filename).is_file(), filename)
         root = ET.parse(self.output / "feed.xml").getroot()
         channel = root.find("channel")
         self.assertEqual(channel.find("{http://www.w3.org/2005/Atom}link").get("href"), "https://user.github.io/quantum-arxiv-digest/feed.xml")
         item = channel.find("item")
         self.assertEqual(item.findtext("guid"), "urn:arxiv:2209.09267")
+        self.assertEqual(item.findtext("link"), "https://user.github.io/quantum-arxiv-digest/articles/2209.09267.html")
         self.assertEqual(item.findtext("pubDate"), "Fri, 09 Oct 2026 01:00:00 GMT")
         self.assertIn("2022-09-19", item.findtext("description"))
         self.assertEqual(item.findtext("category"), "逻辑 QEC")
-        self.assertIn("必要假设", item.findtext("description"))
+        self.assertIn("A &lt; B, with Pauli noise.", item.findtext("description"))
+        self.assertIn('href="https://arxiv.org/abs/2209.09267"', item.findtext("description"))
+        self.assertIn("Read the Chinese AI report", item.findtext("description"))
+        self.assertNotIn(self.paper["analysis"]["summary"], item.findtext("description"))
+        self.assertEqual(channel.findtext("language"), "en")
+        article = (self.output / "articles/2209.09267.html").read_text()
+        self.assertIn('href="https://user.github.io/quantum-arxiv-digest/articles/2209.09267.html"', article)
+        self.assertIn('href="../style.css"', article)
+        self.assertIn(self.paper["analysis"]["summary"], article)
+        self.assertIn("核心技术路线", article)
+        self.assertIn("结论成立的条件", article)
+        self.assertNotIn("<script", article)
         index = (self.output / "index.html").read_text()
         self.assertIn('href="./style.css"', index)
         self.assertIn('src="./app.js"', index)
@@ -64,6 +76,7 @@ class RenderTests(unittest.TestCase):
     def test_html_payload_is_text_and_unsafe_urls_are_removed(self):
         payload = '</script><img src=x onerror="alert(1)">&\x00'
         self.paper["title"] = payload
+        self.paper["abstract"] = payload
         self.paper["analysis"]["summary"] = payload
         self.paper["url"] = "javascript:alert(1)"
         self.paper["pdf_url"] = "data:text/html,boom"
@@ -84,7 +97,11 @@ class RenderTests(unittest.TestCase):
         self.assertNotIn("javascript:", description)
         index = (self.output / "index.html").read_text()
         self.assertNotIn('<img src=x', index)
-        self.assertIn("&lt;img", index)
+        self.assertNotIn("&lt;img", index)  # Private profile is not interpolated.
+        article = (self.output / "articles/2209.09267.html").read_text()
+        self.assertNotIn('<img src=x', article)
+        self.assertIn("&lt;img", article)
+        self.assertNotIn("javascript:", article)
         snapshot = (self.output / "snapshot.html").read_text()
         self.assertIn("\\u003c/script\\u003e", snapshot)
         self.assertNotIn('</script><img src=x', snapshot)
@@ -103,6 +120,7 @@ class RenderTests(unittest.TestCase):
         build_site(self.state, self.output, "https://user.github.io/project/")
         self.assertEqual(ET.parse(self.output / "feed.xml").findall("channel/item"), [])
         self.assertEqual(list((self.output / "feeds").glob("*.xml")), [])
+        self.assertEqual(list((self.output / "articles").glob("*.html")), [])
         self.assertFalse(json.loads((self.output / "papers.json").read_text())["is_demo"])
 
     def test_demo_is_labelled_in_rss_and_data(self):
@@ -111,8 +129,50 @@ class RenderTests(unittest.TestCase):
         build_site(self.state, self.output, "http://localhost:8000")
         channel = ET.parse(self.output / "feed.xml").find("channel")
         self.assertIn("阅读预览", channel.findtext("title"))
-        self.assertIn("不是每日自动筛选结果", channel.findtext("item/description"))
-        self.assertIn("arXiv 公告日期", channel.findtext("item/description"))
+        self.assertIn("not an automatically updated digest", channel.findtext("item/description"))
+        self.assertIn("arXiv announcement", channel.findtext("item/description"))
+        self.assertIn("真实论文阅读预览", (self.output / "articles/2209.09267.html").read_text())
+
+    def test_public_reader_has_no_private_profile_or_dashboard(self):
+        build_site(self.state, self.output, "https://user.github.io/project")
+        for path in (self.output / "index.html", self.output / "snapshot.html", self.output / "papers.json", self.output / "feed.xml", self.output / "articles/2209.09267.html"):
+            content = path.read_text()
+            self.assertNotIn("PRIVATE_PROFILE_SENTINEL", content)
+            self.assertNotIn("与你研究", content)
+        index = (self.output / "index.html").read_text()
+        for obsolete in ("status-panel", "profile-title", "total-count", "run-summary", "scope-box"):
+            self.assertNotIn(obsolete, index)
+        self.assertIn('id="local-workbench" hidden', index)
+
+    def test_arbitrary_ids_get_safe_article_paths(self):
+        self.paper["id"] = "../../outside"
+        build_site(self.state, self.output, "https://user.github.io/project")
+        public = json.loads((self.output / "papers.json").read_text())["papers"][0]
+        self.assertRegex(public["article_path"], r"^articles/paper-[a-f0-9]{16}\.html$")
+        self.assertTrue((self.output / public["article_path"]).is_file())
+        self.assertEqual(ET.parse(self.output / "feed.xml").findtext("channel/item/link"), "https://user.github.io/project/" + public["article_path"])
+
+    def test_snapshot_has_inline_report_navigation_without_article_dependency(self):
+        build_site(self.state, self.output, "https://user.github.io/project")
+        snapshot = (self.output / "snapshot.html").read_text()
+        self.assertIn("window.QRADAR_SNAPSHOT=true", snapshot)
+        self.assertIn("snapshotReport(paper)", snapshot)
+        self.assertIn('report.open = true', snapshot)
+        self.assertIn("核心技术路线", snapshot)
+        self.assertNotIn('src="./app.js"', snapshot)
+        script = (self.output / "app.js").read_text()
+        self.assertIn("articlePath(paper.article_path)", script)
+        self.assertNotIn("title.append(externalLink", script)
+
+    def test_scirate_metadata_is_allowlisted_and_only_added_to_article(self):
+        self.paper["sources"] = ["arxiv", "scirate", "private-name"]
+        self.paper["scirate"] = {"votes": 12, "range_days": 3, "url": "https://scirate.com/arxiv/2209.09267", "private_name": "MUST-NOT-BE-PUBLISHED"}
+        build_site(self.state, self.output, "https://user.github.io/project")
+        public = json.loads((self.output / "papers.json").read_text())["papers"][0]
+        self.assertEqual(public["sources"], ["arxiv", "scirate"])
+        self.assertEqual(public["scirate"]["votes"], 12)
+        self.assertNotIn("private_name", public["scirate"])
+        self.assertIn("SciRate · 12 votes", (self.output / "articles/2209.09267.html").read_text())
 
     def test_reject_nonabsolute_or_insecure_site_urls(self):
         for url in ("relative/path", "javascript:alert(1)", "http://example.com", "https://user:password@example.com", "https://example.com/?key=secret", "https://example.com/#x"):

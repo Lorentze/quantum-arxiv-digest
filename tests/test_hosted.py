@@ -8,7 +8,7 @@ from unittest.mock import patch
 from qradar.analysis import AnalysisError
 from qradar.pipeline import (StateError, atomic_json, collect_update, empty_state,
                             import_analyses, import_analysis_update, make_update, read_json)
-from test_pipeline import NOW, PROFILE, paper
+from test_pipeline import NOW, PROFILE, nominated, paper
 
 
 def item(paper_id="2610.00001", score=90):
@@ -83,6 +83,17 @@ class HostedTests(unittest.TestCase):
         self.assertEqual(result["papers"], [])
         self.assertEqual(result["screened"]["2610.00001"]["status"], "ai_rejected")
         self.assertEqual(len(result["pending"]), 1)
+
+    def test_scirate_import_publishes_valid_low_personal_relevance_report_and_preserves_abstract(self):
+        state = self.collected()
+        state["pending"][0] = nominated("2610.00001")
+        with patch.dict(os.environ, {"OPENAI_API_KEY": ""}), patch("qradar.pipeline.analyze_paper") as ai:
+            result = import_analyses(state, self.profile, {"analyses": [item(score=10)]}, now=NOW)
+        self.assertEqual([paper["id"] for paper in result["papers"]], ["2610.00001"])
+        self.assertEqual(result["papers"][0]["abstract"], "A rigorous quantum protocol.")
+        self.assertEqual(result["papers"][0]["selection_reason"], "scirate_high_votes")
+        self.assertEqual(result["screened"]["2610.00001"]["scirate_reviewed_at"], "2026-10-09T00:00:00Z")
+        ai.assert_not_called()
 
     def test_import_requires_honest_provenance_and_correct_source(self):
         state = self.collected()

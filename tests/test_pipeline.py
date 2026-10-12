@@ -37,6 +37,15 @@ def analysis(score=90) -> dict:
     return {"status": "analyzed", "relevance_score": score, "summary": "摘要", "evidence_level": "abstract"}
 
 
+def nominated(paper_id, votes=11):
+    value = paper(paper_id, "A broad quantum-physics result")
+    value["sources"] = ["scirate"]
+    value["scirate"] = {"votes": votes, "range_days": 3, "min_votes_exclusive": 10,
+                         "observed_at": "2026-10-09T00:00:00Z", "window_start": "2026-10-06",
+                         "window_end": "2026-10-08", "url": f"https://scirate.com/arxiv/{paper_id}"}
+    return value
+
+
 class PipelineTests(unittest.TestCase):
     def setUp(self):
         self.profile = copy.deepcopy(PROFILE)
@@ -91,6 +100,65 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(result["last_successful_run"], "2026-10-09T00:00:00Z")
         self.assertEqual(result["last_run"]["fetched"], 0)
         ai.assert_not_called()
+
+    def test_original_abstract_and_arxiv_source_stamp_survive_analysis(self):
+        result, _ = self.update([paper("2610.00001")])
+        self.assertEqual(result["papers"][0]["abstract"], "A rigorous quantum protocol.")
+        self.assertEqual(result["last_arxiv_collection_run"], "2026-10-09T00:00:00Z")
+        self.assertEqual(result["last_run"]["source"], "arxiv")
+
+    def test_scirate_requeues_personal_rejections_but_never_calls_ai_during_collection(self):
+        self.state["screened"] = {"2610.00001": {"status": "keyword_rejected"},
+                                  "2610.00002": {"status": "ai_rejected"},
+                                  "2610.00003": {"status": "selected", "scirate_reviewed_at": "2026-10-08T00:00:00Z"}}
+        with patch("qradar.pipeline.fetch_scirate", return_value=[nominated("2610.00001"), nominated("2610.00002"), nominated("2610.00003")]), \
+             patch("qradar.pipeline.analyze_paper") as ai:
+            result = make_update(self.state, self.profile, now=NOW, source="scirate", analyze_candidates=False)
+        self.assertEqual({item["id"] for item in result["pending"]}, {"2610.00001", "2610.00002"})
+        self.assertTrue(all(item["keyword_score"] == 0 for item in result["pending"]))
+        self.assertEqual(result["last_scirate_collection_run"], "2026-10-09T00:00:00Z")
+        self.assertIsNone(result["last_successful_run"])
+        ai.assert_not_called()
+
+    def test_scirate_duplicate_annotates_archive_and_queue_without_replacing_versions(self):
+        self.state["papers"] = [paper("2610.00001")]
+        self.state["papers"][0]["analysis"] = analysis()
+        self.state["pending"] = [paper("2610.00002")]
+        incoming = [nominated("2610.00001"), nominated("2610.00002")]
+        for item in incoming:
+            item["version"] = 3
+        with patch("qradar.pipeline.fetch_scirate", return_value=incoming):
+            result = make_update(self.state, self.profile, now=NOW, source="scirate", analyze_candidates=False)
+        self.assertEqual(len(result["papers"]), 1)
+        self.assertEqual(len(result["pending"]), 1)
+        for item in result["papers"] + result["pending"]:
+            self.assertEqual(item["version"], 1)
+            self.assertEqual(item["sources"], ["arxiv", "scirate"])
+            self.assertEqual(item["scirate"]["votes"], 11)
+        self.assertNotIn("scirate", self.state["papers"][0])
+
+    def test_scirate_evening_analysis_uses_broad_policy_and_leaves_arxiv_backlog(self):
+        self.state["pending"] = [paper("2610.00001")]
+        self.state["pending"][0]["first_seen_at"] = "2026-10-01T00:00:00Z"
+        self.state["last_successful_run"] = "2026-10-08T00:00:00Z"
+        with patch("qradar.pipeline.fetch_scirate", return_value=[nominated("2610.00002")]), \
+             patch("qradar.pipeline.analyze_paper", return_value=analysis(10)) as ai:
+            result = make_update(self.state, self.profile, now=NOW, source="scirate")
+        self.assertEqual(ai.call_args.args[0]["id"], "2610.00002")
+        self.assertEqual([item["id"] for item in result["papers"]], ["2610.00002"])
+        self.assertEqual([item["id"] for item in result["pending"]], ["2610.00001"])
+        self.assertEqual(result["papers"][0]["abstract"], "A rigorous quantum protocol.")
+        self.assertEqual(result["last_successful_run"], "2026-10-08T00:00:00Z")
+        self.assertEqual(result["last_run"]["source"], "scirate")
+        self.assertEqual(result["screened"]["2610.00002"]["status"], "selected")
+
+    def test_scirate_failed_source_and_threshold_validation_are_transactional(self):
+        original = copy.deepcopy(self.state)
+        with patch("qradar.pipeline.fetch_scirate", side_effect=SourceError("HTTP 403")), self.assertRaises(SourceError):
+            make_update(self.state, self.profile, now=NOW, source="scirate", analyze_candidates=False)
+        with patch("qradar.pipeline.fetch_scirate", return_value=[nominated("2610.00001", votes=10)]), self.assertRaises(SourceError):
+            make_update(self.state, self.profile, now=NOW, source="scirate", analyze_candidates=False)
+        self.assertEqual(self.state, original)
 
     def test_missing_key_fails_before_network_or_write(self):
         with tempfile.TemporaryDirectory() as directory, patch.dict(os.environ, {"OPENAI_API_KEY": ""}), \

@@ -12,7 +12,7 @@ from pathlib import Path
 
 from .analysis import AnalysisError, ConfigurationError, _validate_analysis, analyze_paper
 from .screening import screen_paper
-from .sources import SourceError, fetch_recent, get_paper_text
+from .sources import SourceError, fetch_recent, fetch_scirate, get_paper_text
 
 
 class StateError(ValueError):
@@ -51,6 +51,11 @@ def validate_profile(profile: dict) -> None:
     source = profile["source"]
     if not isinstance(source.get("categories"), list) or not source["categories"]:
         raise ConfigurationError("Provide source.categories")
+    scirate = source.get("scirate", {"enabled": True, "range_days": 3, "min_votes_exclusive": 10})
+    if (not isinstance(scirate, dict) or type(scirate.get("enabled", True)) is not bool
+            or type(scirate.get("range_days", 3)) is not int or scirate.get("range_days", 3) != 3
+            or type(scirate.get("min_votes_exclusive", 10)) is not int or scirate.get("min_votes_exclusive", 10) != 10):
+        raise ConfigurationError("source.scirate must specify enabled true/false, range_days 3, and min_votes_exclusive 10")
     for obj, key, default, maximum in (
         (source, "lookback_days", 7, 3650),
         (source, "max_results", 2500, 30000),
@@ -115,7 +120,7 @@ def lookback_for(state: dict, profile: dict, now: datetime, override: int | None
             raise ConfigurationError("--lookback-days must be a positive integer")
         return override
     days = profile["source"].get("lookback_days", 7)
-    last = state.get("last_successful_run")
+    last = state.get("last_arxiv_collection_run", state.get("last_successful_run"))
     if last:
         try:
             date = datetime.fromisoformat(last.replace("Z", "+00:00"))
@@ -130,8 +135,23 @@ def lookback_for(state: dict, profile: dict, now: datetime, override: int | None
     return days
 
 
+def is_scirate_candidate(paper: dict) -> bool:
+    """SciRate is a separate public-interest selection route, not a topic score."""
+    nomination = paper.get("scirate")
+    return (isinstance(nomination, dict) and type(nomination.get("votes")) is int
+            and nomination["votes"] > 10 and nomination.get("range_days") == 3)
+
+
+def _source_annotations(paper: dict, incoming: dict, source: str) -> None:
+    existing_sources = paper.get("sources", []) or ["arxiv"]
+    paper["sources"] = list(dict.fromkeys([*existing_sources, source]))
+    if source == "scirate":
+        paper["scirate"] = copy.deepcopy(incoming["scirate"])
+
+
 def make_update(state: dict, profile: dict, *, lookback_days: int | None = None,
-                now: datetime | None = None, analyze_candidates: bool = True) -> dict:
+                now: datetime | None = None, analyze_candidates: bool = True,
+                source: str = "arxiv") -> dict:
     """Return new state after all attempted analyses succeed; no writes on failure.
 
     Unanalyzed candidates remain in pending, including those outside a future
@@ -144,13 +164,24 @@ def make_update(state: dict, profile: dict, *, lookback_days: int | None = None,
         current = current.replace(tzinfo=timezone.utc)
     current = current.astimezone(timezone.utc)
     timestamp = current.isoformat(timespec="seconds").replace("+00:00", "Z")
-    days = lookback_for(state, profile, current, lookback_days)
-    fetched = fetch_recent(profile["source"]["categories"], days,
-                           profile["source"].get("max_results", 2500), now=current)
+    if source not in {"arxiv", "scirate"}:
+        raise ConfigurationError("source must be arxiv or scirate")
+    if source == "scirate":
+        if not profile["source"].get("scirate", {}).get("enabled", True):
+            raise ConfigurationError("SciRate collection is disabled in this profile")
+        if lookback_days is not None:
+            raise ConfigurationError("SciRate uses the fixed three-day source window; omit --lookback-days")
+        days = 3
+        fetched = fetch_scirate(profile["source"].get("max_results", 2500), now=current,
+                                known_papers=[*state["papers"], *state["pending"]])
+    else:
+        days = lookback_for(state, profile, current, lookback_days)
+        fetched = fetch_recent(profile["source"]["categories"], days,
+                               profile["source"].get("max_results", 2500), now=current)
     result = copy.deepcopy(state)
     result["profile_title"] = profile.get("title", "Quantum Paper Radar")
     result["topic_labels"] = {topic["id"]: topic.get("label", topic["id"]) for topic in profile["topics"]}
-    selected_ids = {paper["id"] for paper in result["papers"]}
+    selected_papers = {paper["id"]: paper for paper in result["papers"]}
     pending = {paper["id"]: paper for paper in result["pending"]}
     screened = result["screened"]
     minimum = profile["screening"].get("min_keyword_score", 3)
@@ -158,61 +189,83 @@ def make_update(state: dict, profile: dict, *, lookback_days: int | None = None,
     for raw in fetched:
         paper = copy.deepcopy(raw)
         paper_id = paper["id"]
-        if paper_id in selected_ids or paper_id in screened:
+        if source == "scirate" and not is_scirate_candidate(paper):
+            raise SourceError("SciRate returned a nomination that does not exceed ten scites")
+        if paper_id in selected_papers:
+            _source_annotations(selected_papers[paper_id], paper, source)
+            continue
+        if paper_id in pending:
+            # Preserve the queued metadata/version while attaching the second
+            # source. A duplicate cannot invalidate an in-progress analysis.
+            _source_annotations(pending[paper_id], paper, source)
+            continue
+        prior = screened.get(paper_id, {})
+        if paper_id in screened and (source == "arxiv" or prior.get("scirate_reviewed_at")):
             continue
         paper.update(screen_paper(paper, profile))
-        if paper["keyword_score"] < minimum:
+        _source_annotations(paper, paper, source)
+        if source == "arxiv" and paper["keyword_score"] < minimum:
             # Do not retain unselected abstracts in public state. This small
             # decision ledger prevents repeated paid analysis after overlap.
             screened[paper_id] = {"status": "keyword_rejected", "score": paper["keyword_score"], "at": timestamp}
             continue
         candidates += 1
+        if source == "scirate":
+            paper["selection_reason"] = "scirate_high_votes"
         paper["first_seen_at"] = pending.get(paper_id, {}).get("first_seen_at", timestamp)
         pending[paper_id] = paper
     # FIFO by first-seen day, ranked within that day's batch. The finite cap is
     # a per-run budget, not a deletion policy. Backlog size appears on the site.
     ordered = sorted(pending.values(), key=lambda p: (p.get("first_seen_at", ""), -p.get("keyword_score", 0), p["id"]))
+    if source == "scirate":
+        ordered = [paper for paper in ordered if is_scirate_candidate(paper)]
     batch = ordered[:profile["screening"].get("max_analyses_per_run", 30)] if analyze_candidates else []
     count_selected = 0
     for paper in batch:
         if profile["screening"].get("prefetch_fulltext", True):
-            source = get_paper_text(paper, max_chars=profile["ai"].get("max_source_chars", 60000))
+            reading_source = get_paper_text(paper, max_chars=profile["ai"].get("max_source_chars", 60000))
         else:
-            source = {"text": paper["abstract"], "evidence_level": "abstract", "source_url": paper["url"],
+            reading_source = {"text": paper["abstract"], "evidence_level": "abstract", "source_url": paper["url"],
                       "warnings": ["Only the supplied abstract was reviewed; proofs and detailed assumptions were not checked."]}
-        analysis = analyze_paper(paper, profile, source, profile["ai"])
-        if analysis["relevance_score"] >= profile["screening"].get("min_ai_score", 70):
+        analysis = analyze_paper(paper, profile, reading_source, profile["ai"])
+        if is_scirate_candidate(paper) or analysis["relevance_score"] >= profile["screening"].get("min_ai_score", 70):
             paper["analysis"] = analysis
             paper["selected_at"] = timestamp
-            # The archive publishes our analysis and links to the source;
-            # complete source abstracts are only needed while reviewing candidates.
-            paper["abstract"] = ""
+            if is_scirate_candidate(paper):
+                paper["selection_reason"] = "scirate_high_votes"
             result["papers"].append(paper)
             count_selected += 1
         else:
             screened[paper["id"]] = {"status": "ai_rejected", "score": analysis["relevance_score"], "at": timestamp}
+        if is_scirate_candidate(paper):
+            screened[paper["id"]] = {"status": "selected", "source": "scirate", "scirate_reviewed_at": timestamp}
         del pending[paper["id"]]
     result["pending"] = list(pending.values())
     result["papers"].sort(key=lambda p: (p.get("published", ""), p["id"]), reverse=True)
-    result["last_successful_run"] = timestamp
+    if source == "arxiv":
+        result["last_successful_run"] = timestamp
+        result["last_arxiv_collection_run"] = timestamp
+    else:
+        result["last_scirate_collection_run"] = timestamp
     result["last_collection_run"] = timestamp
     if batch:
         result["last_analysis_run"] = timestamp
     result["last_run"] = {"fetched": len(fetched), "keyword_candidates": candidates,
                           "analyzed": len(batch), "selected": count_selected, "pending": len(pending),
-                          "lookback_days": days, "date_basis": "initial_submission"}
+                          "lookback_days": days, "source": source,
+                          "date_basis": "scirate_announcement_window" if source == "scirate" else "initial_submission"}
     result["is_demo"] = False
     return result
 
 
 def collect_update(profile_path: str | Path, state_path: str | Path, output: str | Path,
-                   site_url: str, *, lookback_days: int | None = None) -> dict:
+                   site_url: str, *, lookback_days: int | None = None, source: str = "arxiv") -> dict:
     """Collect and queue candidates without a model, token, or synthetic summary."""
     from .render import build_site
     profile = read_json(profile_path)
     validate_profile(profile)
     state = load_state(state_path, profile)
-    result = make_update(state, profile, lookback_days=lookback_days, analyze_candidates=False)
+    result = make_update(state, profile, lookback_days=lookback_days, analyze_candidates=False, source=source)
     build_site(result, output, site_url)
     atomic_json(state_path, result)
     return result
@@ -281,14 +334,16 @@ def import_analyses(state: dict, profile: dict, batch: dict, *, now: datetime | 
             note = "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
             if note not in analysis["limitations"]:
                 analysis["limitations"].append(note)
-        if analysis["relevance_score"] >= profile["screening"].get("min_ai_score", 70):
+        if is_scirate_candidate(paper) or analysis["relevance_score"] >= profile["screening"].get("min_ai_score", 70):
             paper["analysis"] = analysis
             paper["selected_at"] = timestamp
-            paper["abstract"] = ""
             result["papers"].append(paper)
             selected += 1
         else:
             result["screened"][paper_id] = {"status": "ai_rejected", "score": analysis["relevance_score"], "at": timestamp}
+        if is_scirate_candidate(paper):
+            paper["selection_reason"] = "scirate_high_votes"
+            result["screened"][paper_id] = {"status": "selected", "source": "scirate", "scirate_reviewed_at": timestamp}
         del pending[paper_id]
     result["pending"] = list(pending.values())
     result["papers"].sort(key=lambda p: (p.get("published", ""), p["id"]), reverse=True)
@@ -311,7 +366,7 @@ def import_analysis_update(batch_path: str | Path, profile_path: str | Path, sta
 
 
 def run_update(profile_path: str | Path, state_path: str | Path, output: str | Path,
-               site_url: str, *, lookback_days: int | None = None) -> dict:
+               site_url: str, *, lookback_days: int | None = None, source: str = "arxiv") -> dict:
     # Fail before any fetch or state mutation when API access is unavailable.
     if not os.environ.get("OPENAI_API_KEY", "").strip():
         raise ConfigurationError("OPENAI_API_KEY is required for live updates; use qradar demo for the offline preview.")
@@ -319,7 +374,7 @@ def run_update(profile_path: str | Path, state_path: str | Path, output: str | P
     profile = read_json(profile_path)
     validate_profile(profile)
     state = load_state(state_path, profile)
-    result = make_update(state, profile, lookback_days=lookback_days)
+    result = make_update(state, profile, lookback_days=lookback_days, source=source)
     # Rendering must succeed before state is committed. GitHub only uploads
     # successful artifacts, so a failed run preserves the public site.
     build_site(result, output, site_url)

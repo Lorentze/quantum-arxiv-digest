@@ -34,6 +34,7 @@ REQUEST_TIMEOUT = 45
 MAX_ATTEMPTS = 3
 MAX_DOWNLOAD_BYTES = 40 * 1024 * 1024
 MAX_PDF_PAGES = 40
+SCIRATE_URL = "https://scirate.com/arxiv/quant-ph?range=3"
 _request_lock = threading.Lock()
 _last_request_at: float | None = None
 _ID_RE = re.compile(r"^(\d{4}\.\d{4,5}|[A-Za-z][A-Za-z0-9.-]*/\d{7})(?:v([1-9]\d*))?$")
@@ -49,13 +50,21 @@ class ResultLimitExceeded(SourceError):
 
 
 def _download(url: str) -> bytes:
-    """Serialize all arXiv requests, including retries and full-text downloads."""
+    """Serialize allowlisted source requests, including retries and full text."""
     global _last_request_at
     parsed = urllib.parse.urlsplit(url)
-    if parsed.scheme != "https" or parsed.hostname not in {
-        "arxiv.org", "export.arxiv.org", "rss.arxiv.org"
-    }:
-        raise SourceError("Downloads must use an official arXiv HTTPS endpoint")
+    if (parsed.scheme != "https" or parsed.hostname not in {
+        "arxiv.org", "export.arxiv.org", "rss.arxiv.org", "scirate.com"
+    } or parsed.username or parsed.password or parsed.port not in {None, 443}):
+        raise SourceError("Downloads must use an allowlisted arXiv or SciRate HTTPS endpoint")
+    label = "SciRate" if parsed.hostname == "scirate.com" else "arXiv"
+    if label == "SciRate":
+        query = urllib.parse.parse_qs(parsed.query)
+        if (parsed.path != "/arxiv/quant-ph" or query.get("range") != ["3"]
+                or set(query) - {"range", "date", "page"} or parsed.fragment
+                or ("page" in query and (len(query["page"]) != 1 or not re.fullmatch(r"[1-9]\d*", query["page"][0])))
+                or ("date" in query and (len(query["date"]) != 1 or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", query["date"][0])))):
+            raise SourceError("SciRate downloads must use its public three-day quant-ph feed")
     user_agent = os.environ.get("ARXIV_USER_AGENT", "QuantumArxivDigest/1.0 (research discovery)")
     request = urllib.request.Request(url, headers={"User-Agent": user_agent})
     for attempt in range(MAX_ATTEMPTS):
@@ -72,13 +81,13 @@ def _download(url: str) -> bytes:
                 with urllib.request.urlopen(request, timeout=REQUEST_TIMEOUT) as response:
                     data = response.read(MAX_DOWNLOAD_BYTES + 1)
                     if len(data) > MAX_DOWNLOAD_BYTES:
-                        raise SourceError("arXiv response exceeds the 40 MiB download limit")
+                        raise SourceError(f"{label} response exceeds the 40 MiB download limit")
                     return data
         except urllib.error.HTTPError as exc:
             if exc.code != 429 and not 500 <= exc.code < 600:
-                raise SourceError(f"arXiv returned HTTP {exc.code} for {parsed.path}") from exc
+                raise SourceError(f"{label} returned HTTP {exc.code} for {parsed.path}; no empty collection was accepted") from exc
             if attempt == MAX_ATTEMPTS - 1:
-                raise SourceError(f"arXiv returned HTTP {exc.code} after {MAX_ATTEMPTS} attempts") from exc
+                raise SourceError(f"{label} returned HTTP {exc.code} after {MAX_ATTEMPTS} attempts") from exc
             header = exc.headers.get("Retry-After") if exc.headers else None
             if header:
                 try:
@@ -89,12 +98,12 @@ def _download(url: str) -> bytes:
                     except (ValueError, TypeError):
                         retry_delay = 0.0
                 if retry_delay > 60:
-                    raise SourceError(f"arXiv requests a retry after {retry_delay:.0f}s; defer this run") from exc
+                    raise SourceError(f"{label} requests a retry after {retry_delay:.0f}s; defer this run") from exc
         except (urllib.error.URLError, TimeoutError, socket.timeout, ConnectionError) as exc:
             if attempt == MAX_ATTEMPTS - 1:
-                raise SourceError(f"arXiv connection failed after {MAX_ATTEMPTS} attempts: {exc}") from exc
+                raise SourceError(f"{label} connection failed after {MAX_ATTEMPTS} attempts: {exc}") from exc
         time.sleep(max(retry_delay, REQUEST_INTERVAL * 2**attempt))
-    raise SourceError("arXiv request did not complete")  # defensive, unreachable
+    raise SourceError(f"{label} request did not complete")  # defensive, unreachable
 
 
 def _plain(value: str) -> str:
@@ -187,6 +196,195 @@ def _parse_atom_feed(data: bytes | str) -> tuple[list[dict], dict]:
 def parse_atom(data: bytes | str) -> list[dict]:
     """Parse arXiv Atom metadata, raising on error entries or invalid content."""
     return _parse_atom_feed(data)[0]
+
+
+class _SciRateHTML(HTMLParser):
+    """Minimal DOM for the site's public feed, without third-party dependencies."""
+
+    _void = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.root = {"tag": "root", "attrs": {}, "children": []}
+        self.stack = [self.root]
+
+    def handle_starttag(self, tag, attrs):
+        if len(self.stack) > 256:
+            raise SourceError("SciRate HTML nesting exceeds the parser limit")
+        node = {"tag": tag, "attrs": dict(attrs), "children": []}
+        self.stack[-1]["children"].append(node)
+        if tag not in self._void:
+            self.stack.append(node)
+
+    def handle_startendtag(self, tag, attrs):
+        self.handle_starttag(tag, attrs)
+        if tag not in self._void:
+            self.handle_endtag(tag)
+
+    def handle_endtag(self, tag):
+        for index in range(len(self.stack) - 1, 0, -1):
+            if self.stack[index]["tag"] == tag:
+                del self.stack[index:]
+                return
+
+    def handle_data(self, data):
+        self.stack[-1]["children"].append(data)
+
+
+def _html_nodes(node):
+    yield node
+    for child in node["children"]:
+        if isinstance(child, dict):
+            yield from _html_nodes(child)
+
+
+def _html_words(node):
+    return " ".join(child if isinstance(child, str) else _html_words(child)
+                    for child in node["children"])
+
+
+def _has_class(node, name):
+    return name in (node["attrs"].get("class") or "").split()
+
+
+def parse_scirate(data: bytes | str) -> dict:
+    """Parse the real public quant-ph feed layout; challenges are source errors.
+
+    Selectors and window semantics follow SciRate's public upstream templates:
+    https://github.com/scirate/scirate/blob/main/app/views/papers/_paper.html.slim
+    https://github.com/scirate/scirate/blob/main/app/controllers/feeds_controller.rb
+    ``range=3`` means three publication dates ending at the feed's latest date.
+    Counts are current total scites, not votes cast within those three dates.
+    """
+    parser = _SciRateHTML()
+    try:
+        parser.feed(data.decode("utf-8") if isinstance(data, bytes) else data)
+    except (UnicodeError, TypeError, ValueError) as exc:
+        raise SourceError("SciRate returned unreadable HTML") from exc
+    nodes = list(_html_nodes(parser.root))
+    feeds = [node for node in nodes if node["attrs"].get("id") == "feed-page"]
+    lists = [node for node in nodes if node["tag"] == "ul" and _has_class(node, "papers")]
+    navs = [node for node in nodes if node["tag"] == "nav" and _has_class(node, "timenav")]
+    headers = [node for node in nodes if node["tag"] == "header" and _has_class(node, "feed-header")]
+    if (len(feeds) != 1 or len(lists) != 1 or not navs or not headers
+            or not any("quant-ph" in _html_words(node) for node in headers)):
+        raise SourceError("SciRate response is not a recognizable quant-ph feed; it may be blocked or its layout changed")
+    windows = set()
+    for nav in navs:
+        dates = re.findall(r"\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2}\s+\d{4}\b", _html_words(nav))
+        if len(dates) < 2 or "UTC" not in _html_words(nav):
+            raise SourceError("SciRate did not identify its three-day UTC publication window")
+        try:
+            start, end = (datetime.strptime(value, "%b %d %Y").date() for value in dates[:2])
+        except ValueError as exc:
+            raise SourceError("SciRate publication window contains an invalid date") from exc
+        if (end - start).days != 2:
+            raise SourceError("SciRate publication window is not three calendar dates")
+        windows.add((start.isoformat(), end.isoformat()))
+    if len(windows) != 1:
+        raise SourceError("SciRate returned conflicting publication windows")
+    records = []
+    for node in _html_nodes(lists[0]):
+        if node["tag"] != "li" or not _has_class(node, "paper"):
+            continue
+        descendants = list(_html_nodes(node))
+        toggles = [item for item in descendants if _has_class(item, "scite-toggle")]
+        counts = [item for item in descendants if item["tag"] == "button" and _has_class(item, "count")]
+        titles = [item for item in descendants if _has_class(item, "title")]
+        if len(toggles) != 1 or len(counts) != 1 or len(titles) != 1:
+            raise SourceError("SciRate paper is missing its identity, title, or scite count")
+        paper_id, _ = _identifier(toggles[0]["attrs"].get("data-paper-uid") or "")
+        title_links = [item for item in _html_nodes(titles[0]) if item["tag"] == "a"]
+        if len(title_links) != 1:
+            raise SourceError("SciRate paper title does not identify one paper")
+        href = title_links[0]["attrs"].get("href") or ""
+        if not href.startswith("/arxiv/") or _identifier(href[len("/arxiv/"):])[0] != paper_id:
+            raise SourceError("SciRate title and scite identity disagree")
+        count = _plain(_html_words(counts[0]))
+        if not re.fullmatch(r"\d+", count):
+            raise SourceError("SciRate returned an invalid scite count")
+        records.append({"id": paper_id, "votes": int(count)})
+    if not records and "No papers found!" not in _plain(_html_words(lists[0])):
+        raise SourceError("SciRate empty page lacks the explicit no-papers marker")
+    next_pages = []
+    for node in nodes:
+        if node["tag"] != "a" or not (_has_class(node, "next_page") or node["attrs"].get("rel") == "next"):
+            continue
+        url = urllib.parse.urlsplit(urllib.parse.urljoin(SCIRATE_URL, node["attrs"].get("href") or ""))
+        query = urllib.parse.parse_qs(url.query)
+        page = query.get("page", [""])[0]
+        if (url.scheme != "https" or url.hostname != "scirate.com" or url.path != "/arxiv/quant-ph"
+                or query.get("range") != ["3"] or not re.fullmatch(r"[1-9]\d*", page)):
+            raise SourceError("SciRate returned an invalid next-page link")
+        next_pages.append(int(page))
+    if len(set(next_pages)) > 1:
+        raise SourceError("SciRate returned conflicting next-page links")
+    start, end = windows.pop()
+    return {"papers": records, "window_start": start, "window_end": end,
+            "next_page": next_pages[0] if next_pages else None}
+
+
+def fetch_scirate(max_results: int = 2500, *, now: datetime | None = None,
+                  known_papers: list[dict] | None = None) -> list[dict]:
+    """Nominate strictly >10-scite papers, then obtain authoritative arXiv metadata.
+
+    Existing identities use their already-pinned metadata and analysis version.
+    Every unknown nomination must be returned by the official API; partial
+    responses or a blocked SciRate page abort the whole update.
+    """
+    if type(max_results) is not int or max_results < 1:
+        raise ValueError("max_results must be a positive integer")
+    current = now or datetime.now(timezone.utc)
+    if current.tzinfo is None:
+        current = current.replace(tzinfo=timezone.utc)
+    observed_at = current.astimezone(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+    records = {}
+    page_number, window, seen_count = 1, None, 0
+    while True:
+        url = SCIRATE_URL if page_number == 1 else (SCIRATE_URL + "&" + urllib.parse.urlencode({"date": window[1], "page": page_number}))
+        page = parse_scirate(_download(url))
+        bounds = (page["window_start"], page["window_end"])
+        if window is not None and bounds != window:
+            raise SourceError("SciRate publication window changed during pagination")
+        window = bounds
+        seen_count += len(page["papers"])
+        if seen_count > max_results:
+            raise ResultLimitExceeded("SciRate result budget exceeded; no partial collection was accepted")
+        for record in page["papers"]:
+            if record["id"] in records:
+                raise SourceError("SciRate pagination repeated a paper identity")
+            records[record["id"]] = record
+        next_page = page["next_page"]
+        if next_page is None:
+            break
+        if next_page != page_number + 1 or not page["papers"]:
+            raise SourceError("SciRate pagination is incomplete or out of order")
+        page_number = next_page
+    nominations = {paper_id: record for paper_id, record in records.items() if record["votes"] > 10}
+    known = {paper["id"]: paper for paper in (known_papers or [])}
+    metadata = {paper_id: known[paper_id] for paper_id in nominations if paper_id in known}
+    unknown = [paper_id for paper_id in nominations if paper_id not in metadata]
+    for start in range(0, len(unknown), 100):
+        ids = unknown[start:start + 100]
+        query = urllib.parse.urlencode({"id_list": ",".join(ids), "max_results": len(ids)})
+        papers = parse_atom(_download(API_URL + "?" + query))
+        returned = [paper["id"] for paper in papers]
+        if set(returned) != set(ids) or len(returned) != len(ids):
+            raise SourceError("Official arXiv metadata is incomplete for SciRate nominations")
+        if any("quant-ph" not in paper["categories"] or not paper["abstract"].strip() for paper in papers):
+            raise SourceError("SciRate nomination lacks official quant-ph metadata or an abstract")
+        metadata.update({paper["id"]: paper for paper in papers})
+    import copy
+    result = []
+    for paper_id, nomination in nominations.items():
+        paper = copy.deepcopy(metadata[paper_id])
+        paper["sources"] = list(dict.fromkeys([*paper.get("sources", []), "scirate"]))
+        paper["scirate"] = {"votes": nomination["votes"], "range_days": 3, "min_votes_exclusive": 10,
+                            "observed_at": observed_at, "window_start": window[0], "window_end": window[1],
+                            "url": f"https://scirate.com/arxiv/{paper_id}", "query_url": SCIRATE_URL,
+                            "date_basis": "scirate_announcement_window"}
+        result.append(paper)
+    return result
 
 
 def fetch_recent(

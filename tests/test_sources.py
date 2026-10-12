@@ -43,6 +43,107 @@ def rss(link="https://arxiv.org/abs/2610.00001", guid="oai:arXiv.org:2610.00001v
       <arxiv:announce_type>replace</arxiv:announce_type></item></channel></rss>'''
 
 
+def scirate_page(records, next_page=None):
+    # Fixture faithfully renders SciRate's MIT-licensed upstream Slim templates:
+    # app/views/papers/_paper.html.slim, feeds/show.html.slim, and
+    # feeds/_next_prev_links.html.slim at scirate/scirate main, read 2026-10-12.
+    # The live Cloudflare 403 page is tested separately as a source failure.
+    papers = []
+    for paper_id, votes in records:
+        papers.append(f'''<li class="paper tex2jax"><div class="row">
+        <div class="title"><a href="/arxiv/{paper_id}">Quantum result</a></div>
+        <div class="uid">Oct 09 2026 <a href="/arxiv/quant-ph">quant-ph</a>
+        arXiv:{paper_id}v1</div>
+        <div class="scite-toggle" data-paper-uid="{paper_id}">
+        <button class="btn scite">Scite!</button><div class="scites-count">
+        <a href="/arxiv/{paper_id}/scites" title="Number of Scites">
+        <button class="btn btn-default count">{votes}</button></a></div>
+        </div></div></li>''')
+    content = ''.join(papers) if papers else '<p>No papers found!</p>'
+    pagination = (f'<a class="next_page" rel="next" href="/arxiv/quant-ph?range=3&amp;page={next_page}">Next</a>'
+                  if next_page else '<span class="next_page disabled">Next</span>')
+    return f'''<html><div id="feed-page"><header class="feed-header">
+    <h1>Quantum Physics (quant-ph)</h1></header><div class="paperlist">
+    <ul class="papers">{content}</ul>{pagination}</div><nav class="timenav">
+    <h3>Date Published</h3><p>Oct 08 2026 &mdash; Oct 10 2026<br>UTC</p>
+    <a href="/arxiv/quant-ph?range=3">3d</a></nav></div></html>'''.encode()
+
+
+class SciRateTests(unittest.TestCase):
+    def test_real_selectors_window_and_strict_threshold(self):
+        page = scirate_page([("2610.00001", 11), ("2610.00002", 10)])
+        parsed = sources.parse_scirate(page)
+        self.assertEqual(parsed["window_start"], "2026-10-08")
+        self.assertEqual(parsed["window_end"], "2026-10-10")
+        with patch.object(sources, "_download", side_effect=[page, atom([entry("2610.00001", version=3)])]) as download:
+            papers = sources.fetch_scirate(now=datetime(2026, 10, 12, tzinfo=timezone.utc))
+        self.assertEqual([paper["id"] for paper in papers], ["2610.00001"])
+        self.assertEqual(papers[0]["version"], 3)
+        self.assertEqual(papers[0]["scirate"]["votes"], 11)
+        self.assertEqual(papers[0]["scirate"]["observed_at"], "2026-10-12T00:00:00Z")
+        self.assertEqual(parse_qs(urlsplit(download.call_args_list[1].args[0]).query)["id_list"], ["2610.00001"])
+
+    def test_empty_has_explicit_feed_evidence_and_needs_no_arxiv(self):
+        for page in (scirate_page([]), scirate_page([("2610.00001", 10)])):
+            with patch.object(sources, "_download", return_value=page) as download:
+                self.assertEqual(sources.fetch_scirate(), [])
+                self.assertEqual(download.call_count, 1)
+
+    def test_blocked_changed_or_wrong_window_is_not_empty(self):
+        invalid = [b'<html><title>Just a moment...</title></html>',
+                   scirate_page([]).replace(b'No papers found!', b''),
+                   scirate_page([]).replace(b'Oct 08 2026', b'Oct 07 2026'),
+                   scirate_page([]).replace(b'Quantum Physics (quant-ph)', b'Computer Science (cs.CC)'),
+                   scirate_page([("2610.00001", 11)]).replace(b'>11</button>', b'>unknown</button>'),
+                   scirate_page([("2610.00001", 11)]).replace(b'data-paper-uid="2610.00001"', b'data-paper-uid="2610.00002"')]
+        for data in invalid:
+            with self.subTest(data=data[:120]), self.assertRaises(sources.SourceError):
+                sources.parse_scirate(data)
+
+    def test_complete_pagination_is_pinned_to_same_publication_window(self):
+        pages = [scirate_page([("2610.00001", 40)], next_page=2),
+                 scirate_page([("2610.00002", 20)]),
+                 atom([entry("2610.00001"), entry("2610.00002")])]
+        with patch.object(sources, "_download", side_effect=pages) as download:
+            result = sources.fetch_scirate()
+        self.assertEqual(len(result), 2)
+        query = parse_qs(urlsplit(download.call_args_list[1].args[0]).query)
+        self.assertEqual(query, {"range": ["3"], "date": ["2026-10-10"], "page": ["2"]})
+
+    def test_existing_identity_preserves_version_without_metadata_refetch(self):
+        known = sources.parse_atom(atom([entry("2610.00001", version=1)]))
+        with patch.object(sources, "_download", return_value=scirate_page([("2610.00001", 19)])) as download:
+            result = sources.fetch_scirate(known_papers=known)
+        self.assertEqual(result[0]["version"], 1)
+        self.assertEqual(download.call_count, 1)
+        self.assertNotIn("scirate", known[0])
+
+    def test_missing_official_metadata_or_paging_fault_aborts(self):
+        invalid = [
+            [scirate_page([("2610.00001", 11)]), atom([])],
+            [scirate_page([("2610.00001", 11)], next_page=2), scirate_page([("2610.00001", 11)])],
+            [scirate_page([("2610.00001", 11)], next_page=3)],
+            [scirate_page([("2610.00001", 11)], next_page=2), scirate_page([]).replace(b'Oct 08', b'Oct 09').replace(b'Oct 10', b'Oct 11')],
+        ]
+        for pages in invalid:
+            with self.subTest(pages=len(pages)), patch.object(sources, "_download", side_effect=pages), self.assertRaises(sources.SourceError):
+                sources.fetch_scirate()
+
+    def test_budget_is_explicit_and_untrusted_pagination_never_downloaded(self):
+        with patch.object(sources, "_download", return_value=scirate_page([("2610.00001", 11), ("2610.00002", 12)])), self.assertRaises(sources.ResultLimitExceeded):
+            sources.fetch_scirate(max_results=1)
+        bad_link = scirate_page([("2610.00001", 11)], next_page=2).replace(b'href="/arxiv/quant-ph?range=3&amp;page=2"', b'href="https://evil.example/path?range=3&amp;page=2"')
+        with self.assertRaises(sources.SourceError):
+            sources.parse_scirate(bad_link)
+
+    def test_downloader_allows_only_documented_scirate_feed(self):
+        for url in ('https://scirate.com/api/scite/2610.00001',
+                    'https://scirate.com/arxiv/quant-ph?range=7',
+                    'https://scirate.com/arxiv/quant-ph?range=3&redirect=https://evil.example'):
+            with self.subTest(url=url), self.assertRaises(sources.SourceError):
+                sources._download(url)
+
+
 class AtomTests(unittest.TestCase):
     def test_unversioned_id_uses_versioned_document(self):
         paper = sources.parse_atom(atom([entry(version=3, unversioned=True)]))[0]

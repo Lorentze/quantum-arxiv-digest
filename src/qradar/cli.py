@@ -22,12 +22,15 @@ def parser() -> argparse.ArgumentParser:
     run.add_argument("--output", default="public")
     run.add_argument("--site-url", required=True)
     run.add_argument("--lookback-days", type=int)
+    run.add_argument("--source", choices=("arxiv", "scirate"), default="arxiv")
     collect = sub.add_parser("collect", help="Fetch and queue candidates without an AI key; publish only saved analyses")
     collect.add_argument("--profile", default="config/profile.json")
     collect.add_argument("--state", default="data/state.json")
     collect.add_argument("--output", default="public")
     collect.add_argument("--site-url", required=True)
     collect.add_argument("--lookback-days", type=int)
+    collect.add_argument("--source", choices=("arxiv", "scirate"), default="arxiv",
+                         help="arxiv: research-topic candidates; scirate: quant-ph range=3 with >10 total scites")
     imported = sub.add_parser("import-analysis", help="Validate and import ChatGPT or other external analyses without an API key")
     imported.add_argument("--batch", required=True)
     imported.add_argument("--profile", default="config/profile.json")
@@ -59,10 +62,10 @@ def main(argv: list[str] | None = None) -> int:
     args = parser().parse_args(argv)
     try:
         if args.command == "run":
-            result = run_update(args.profile, args.state, args.output, args.site_url, lookback_days=args.lookback_days)
+            result = run_update(args.profile, args.state, args.output, args.site_url, lookback_days=args.lookback_days, source=args.source)
             print(json.dumps(result["last_run"], ensure_ascii=False))
         elif args.command == "collect":
-            result = collect_update(args.profile, args.state, args.output, args.site_url, lookback_days=args.lookback_days)
+            result = collect_update(args.profile, args.state, args.output, args.site_url, lookback_days=args.lookback_days, source=args.source)
             print(json.dumps(result["last_run"], ensure_ascii=False))
         elif args.command == "import-analysis":
             result = import_analysis_update(args.batch, args.profile, args.state, args.output, args.site_url)

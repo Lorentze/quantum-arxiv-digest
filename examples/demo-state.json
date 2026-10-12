@@ -10,7 +10,7 @@
         "J. Wilson Staples",
         "Jeff D. Thompson"
       ],
-      "abstract": "",
+      "abstract": "Quantum error-correcting circuits are affected by multiple physical noise mechanisms, whose contributions to logical failure must be understood to evaluate code performance and guide improvements in hardware. The individual error budget contributions for an error type $i$ can be characterized by its logical sensitivity $ν_i = \\frac{\\partial p_L}{\\partial p_i}$, which measures the response of the logical error rate $p_L$ to each physical noise parameter $p_i$. Normally, $ν_i$ is measured using linear fits such as finite differences, where $p_L$ is measured at two or more values of $p_i$ to calculate partial derivatives. In this paper, we develop a differentiable estimator to obtain all components of $\\nabla_{\\mathbf p}p_L$ simultaneously from a single Monte Carlo data set at one noise configuration, using information about the underlying fault configurations. In surface code simulations with circuit-level noise, the estimator agrees with conventional finite differences while requiring one to two orders of magnitude fewer shots to achieve the same variance. We apply this technique to quantify error budgets, resolve sensitivities at the individual qubit level, and infer effective code distance. Finally, we incorporate the sensitivities into Newton root finding to locate and trace threshold contours in multidimensional noise models. These results provide an efficient method for extracting and applying logical sensitivity information from standard quantum error correction simulations.",
       "url": "https://arxiv.org/abs/2610.10531",
       "pdf_url": "https://arxiv.org/pdf/2610.10531v1",
       "published": "2026-10-08T04:00:00Z",
@@ -69,7 +69,7 @@
       "authors": [
         "Roi Vence-Nogueira"
       ],
-      "abstract": "",
+      "abstract": "Quantum numerical algorithms often encode a positive solution $q$ in the amplitudes of a quantum state, while the required scientific output is a normalized linear functional of $q$. Basis measurements produce probabilities determined by squared solution values, while the functional uses the solution values themselves. We study the complexity of this output-interface problem for $F_φ(q)=\\intφq\\,\\mathrm dν/\\int q\\,\\mathrm dν$ and identify a target-dependent susceptibility $χ_φ$ that governs the amount of copies of the solution state needed. For a fixed positive reference state and a neighborhood around it, the optimal number of unknown-state copies is $Θ\\!\\left(χ_0\\varepsilon^{-2}\\log(1/β)\\right)$, where $\\varepsilon$ is the absolute error tolerance and $β$ is the allowed failure probability. We show that two fixed single-copy measurements attain the same rate. We then analyze how this baseline changes when the interface retains classical information, uses adaptive allocation, supplies coherent access, or restricts the allowed solution family. Therefore $χ_φ$ quantifies a central cost of using a solution encoded in an $L^2$-normalized quantum state to estimate an $L^1$-normalized linear observable.",
       "url": "https://arxiv.org/abs/2610.08890",
       "pdf_url": "https://arxiv.org/pdf/2610.08890v1",
       "published": "2026-10-08T04:00:00Z",
@@ -108,7 +108,7 @@
           "摘要只说明研究了 coherent access / side information 的变化，不能据此宣称这些资源已带来特定指数优势。"
         ],
         "relevance": [
-          "贴近你的 quantum-data access 研究：先固定 task、accuracy 与 access model，再比较不同资源的 operational value。",
+          "贴近相关的 quantum-data access 研究：先固定 task、accuracy 与 access model，再比较不同资源的 operational value。",
           "两个 fixed single-copy measurements 的结论可作为判断更高 design order、adaptive measurement 或 quantum memory 是否改善总 sample complexity 的比较基线。"
         ],
         "follow_up": [
@@ -132,7 +132,7 @@
         "C. Mu\\~noz",
         "I. Sainz"
       ],
-      "abstract": "",
+      "abstract": "The apparent absence of a stabilizer-speci?c phase-space description for qubit systems is not fundamental, but arises from ?xing a state-independent discrete Wigner map. Allowing the phase-space representation to adapt to the state through a simple optimization procedure, we prove that every qubit stabilizer state admits an exact delta-function discrete Wigner representation for any ?xed phase-space partition. This optimization can be implemented directly at the level of measurement statistics by selecting maximal probabilities across mutually unbiased bases forming the partition. This construction naturally leads to a non-stabilizer witness de?ned by the optimized value of the Wigner function at the origin. Stabilizer states saturate the universal lower bound of this witness for pure states, whereas a value strictly larger than the bound certi?es non-stabilizerness. Although the witness is not a ?nite-size resource monotone, it becomes sharply concentrated and e?ectively invariant under random Cli?ord transformations in the large-qubit limit, suggesting an asymptotically linear growth law for broad families of non-stabilizer states. Our results restore a meaningful geometric phase-space characterization of qubit stabilizer structure and provide an operational diagnostic of non-stabilizerness.",
       "url": "https://arxiv.org/abs/2610.10471",
       "pdf_url": "https://arxiv.org/pdf/2610.10471v1",
       "published": "2026-10-08T04:00:00Z",
@@ -171,11 +171,11 @@
           "原始 RSS 摘要中部分英文字符显示为问号，保留来源原文；需要全文校对。"
         ],
         "relevance": [
-          "与你的 stabilizer / magic resource separation 相关，且将 non-stabilizerness 的抽象结构连接到可测量统计。",
+          "与相关的 stabilizer / magic resource separation 相关，且将 non-stabilizerness 的抽象结构连接到可测量统计。",
           "适合检验 restricted measurement 下能否高效认证 magic，以及优化本身是否引入隐藏的测量或计算成本。"
         ],
         "follow_up": [
-          "研究问题：在你的 restricted Clifford / local-control readout model 下，估计该 witness 的总 shots 和电路深度是多少？",
+          "研究问题：在相关的 restricted Clifford / local-control readout model 下，估计该 witness 的总 shots 和电路深度是多少？",
           "研究问题：有限尺寸非 monotonicity 的反例对实际 magic certification 有什么影响；small SPAM 与 mixed noise 下是否存在可靠 threshold？"
         ],
         "relevance_score": 90,
@@ -195,7 +195,7 @@
         "Jeonghoon Lee",
         "Taehyun Kim"
       ],
-      "abstract": "",
+      "abstract": "We present an automated method for reducing fault-tolerant circuits through fault-equivalent rewrites. Starting from a known fault-tolerant circuit, the search applies non-reducing enabling rules to expose Bell-pair reductions, each of which removes an ancilla preparation and a CNOT gate. Because every search transition preserves fault equivalence, the resulting circuits inherit the fault-tolerance properties of the input circuit. Candidate circuits are evaluated using circuit-level Monte Carlo simulation. For Shor-style syndrome extraction with the $[[7,1,3]]$ code, our method reduces one syndrome-measurement round from 30 to 18 ancilla preparations and from 54 to 42 CNOT gates. At a physical two-qubit error rate of $p = 10^{-3}$, the optimized circuit lowers the logical error rate by approximately 21% for both logical basis states. The reduction ranges from 13% to 23% over a range of $p$ spanning two orders of magnitude. We also apply the method to Steane-based dynamic syndrome extraction constructed from Goto's verified logical-$\\lvert 0 \\rangle$ preparation, in which the verification qubit serves as a flag. The search selects a circuit using four ancillas and 14 CNOT gates, matching the resource counts of the previous design but with an improved CNOT depth. Under depolarizing idle noise at $3p/10$ the selected circuit lowers the logical error rate by approximately 15% for both logical basis states, and by approximately $10%$ at $p/10$. These results demonstrate that automated fault-equivalent rewriting can identify circuits with lower resource costs or improved logical performance without separately verifying the fault tolerance of every candidate.",
       "url": "https://arxiv.org/abs/2610.09749",
       "pdf_url": "https://arxiv.org/pdf/2610.09749v1",
       "published": "2026-10-08T04:00:00Z",
@@ -233,7 +233,7 @@
           "两种 logical basis states 的错误率改善不等同于一般 logical process fidelity 的改善；摘要没有提供 SPAM-robust 实验认证。"
         ],
         "relevance": [
-          "为你的 depth / ancilla tradeoffs 提供具体 QEC task；可把 rewrite-preserved 属性与真正随噪声模型变化的 logical performance 分开。",
+          "为相关的 depth / ancilla tradeoffs 提供具体 QEC task；可把 rewrite-preserved 属性与真正随噪声模型变化的 logical performance 分开。",
           "对应 logical benchmarking 的关键 formulation：固定完整 extraction / recovery gadget，再明确到底估计 logical failure、state fidelity 还是 process fidelity。"
         ],
         "follow_up": [
@@ -256,7 +256,7 @@
         "Bohan Lu",
         "Kenneth R. Brown"
       ],
-      "abstract": "",
+      "abstract": "We construct CSS codes with three logical qubits whose logical CCZ gate is implemented by transversal physical $T/T^{\\dagger}$ gates and whose distance is at least $3$. These codes start with $8$-divisible $X$-stabilizers defined by projective geometry, which guarantees $d_Z\\geq 3$. A SAT solver then finds three $X$-logical operators compatible with the transversal CCZ. We build codes at thirteen block lengths from $n=48$ to $n=496$, with $d_Z=3$ or $4$, and illustrate the method with the $[[48,3,3]]$ code $Q_{48}$. Additionally, we prove that no CSS code with three logical qubits, $Z$-distance at least $3$, and a quasi-transversal CCZ gate (transversal $T$ with a diagonal Clifford correction) exists below $n=39$. The $[[47,3,3]]$ code of Jacinto et al. serves as an upper bound, leaving $39\\leq n\\leq46$ open.",
       "url": "https://arxiv.org/abs/2610.09341",
       "pdf_url": "https://arxiv.org/pdf/2610.09341v1",
       "published": "2026-10-08T04:00:00Z",
@@ -297,7 +297,7 @@
           "transversal physical T/T† 不代表 physical non-Clifford resource 无成本，也不能从 block length 直接推出整个 fault-tolerant computation 的 magic budget。"
         ],
         "relevance": [
-          "将 stabilizer structure、non-Clifford operation 与 QEC resource costs 结合，贴合你关心的 magic / ancilla / depth tradeoffs。",
+          "将 stabilizer structure、non-Clifford operation 与 QEC resource costs 结合，贴合该领域关心的 magic / ancilla / depth tradeoffs。",
           "下界和构造之间的明确空档适合作为科学问题筛选范例，比仅比较 heuristic performance 更有针对性。"
         ],
         "follow_up": [
@@ -325,7 +325,7 @@
     "note": "ChatGPT-authored preview from a captured official RSS announcement; no scheduled run or API call performed."
   },
   "is_demo": true,
-  "profile_title": "Guoding Liu · quantum information",
+  "profile_title": "Quantum arXiv Digest",
   "preview_date": "2026-10-08",
   "topic_labels": {
     "benchmarking": "Benchmarking / SPAM",

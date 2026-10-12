@@ -1,97 +1,44 @@
-# Quantum arXiv Digest · 量子论文雷达
+# Quantum arXiv Digest
 
-面向 Guoding Liu 研究方向的网页与本地阅读平台：收集 arXiv 新论文，保存中文技术分析，在浏览器中按主题检索，并生成 RSS。
+量子信息论文的阅读与分析平台。首页与 RSS 展示论文原始英文标题、英文 abstract 和 arXiv 链接；点击标题进入独立的中文 AI 技术报告，说明论文的问题、贡献、核心方法、适用假设和局限。
 
-**本地流程不需要 GitHub，也不需要 OpenAI API key。** 本地程序负责抓取、归档、网页和 RSS；你把它导出的分析请求交给 ChatGPT，再把 ChatGPT 返回的分析 JSON 导入网页。本地流程中的这一步需要手动完成；本机没有启用每日自动分析任务。在线版使用下方的独立 ChatGPT 任务。
+- [阅读平台](https://lorentze.github.io/quantum-arxiv-digest/)
+- [订阅 RSS](https://lorentze.github.io/quantum-arxiv-digest/feed.xml)
 
-## GitHub 网页与公开 RSS
+## 内容与更新
 
-GitHub 仓库写入授权已在 2026-10-12 实际验证。当前代码支持 GitHub Pages 发布，**Pages 已部署，ChatGPT 每日分析任务已启用**。GitHub Actions 默认只收集候选，不要求个人 OpenAI API key。
+研究方向来源覆盖 benchmarking、logical QEC、random circuits、magic/stabilizer、adaptive resources 和 quantum information access。SciRate 来源使用 [quant-ph 三日页面](https://scirate.com/arxiv/quant-ph?range=3)，只选点赞数严格大于 10 的条目；它是独立的社区精选来源，不要求命中个人研究关键词。两条来源按基础 arXiv ID 去重，同一篇论文只有一个报告和一个 RSS GUID。
 
-1. 在 [仓库 Pages 设置](https://github.com/Lorentze/quantum-arxiv-digest/settings/pages) 的 **Build and deployment → Source** 选择 **GitHub Actions**。
-2. 打开 [Daily research digest 工作流](https://github.com/Lorentze/quantum-arxiv-digest/actions/workflows/digest.yml)，运行一次；若首次 push 因 Pages 未启用而失败，启用后重跑失败任务即可。
-3. 确认 Pages 发布成功后，网站为 `https://lorentze.github.io/quantum-arxiv-digest/`，全部精选 RSS 为 `https://lorentze.github.io/quantum-arxiv-digest/feed.xml`。在发布成功前，这些是预期网址。
-4. 本仓库已验证候选抓取、真实分析、导入写回与再次 Pages 发布；每日 ChatGPT 分析任务已创建，从 2026-10-13 上午开始运行。GitHub 计划北京时间 08:17 收集，ChatGPT 任务安排在上午 09:00 启动，按精确日程执行；分析与部署完成后更新网页和 RSS。仅抓取完成不会生成新的 AI 摘要。完整分析指令见 [HOSTED_ANALYSIS.md](docs/HOSTED_ANALYSIS.md)。
+北京时间上午 09:00 启动研究方向论文分析；GitHub Actions 提前在 08:17 收集候选。晚上 19:00 收集 SciRate 三日高赞论文，并启动对应的 ChatGPT 分析任务。分析和 Pages 部署完成后，网页与 RSS 更新；任务启动时间不等于全部文章发布完成时间。
 
-正式存档从三篇本次会话分析开始，现已完成一次新候选分析并再次发布；任务创建成功与未来某轮分析成功分别记录。详细上线步骤见 [QUICKSTART.md](docs/QUICKSTART.md)。本地功能也保留如下。
+默认 hosted 模式不需要个人 OpenAI API key：Actions 收集，ChatGPT 阅读官方来源、产生分析并写回，`push` 工作流构建和发布 Pages。完整维护指令见 [HOSTED_ANALYSIS.md](docs/HOSTED_ANALYSIS.md)。原文、投票页或 GitHub 不可访问时明确报错，保留已发布内容和未处理队列；不会用空结果伪装抓取成功。
 
-## 本地启动与使用
+## 阅读与 RSS
 
-要求 **Python 3.11 或更新版本**。核心功能仅用 Python 标准库，无需安装第三方包。
+报告页保留所读论文版本和分析来源范围。中文内容解释研究问题、任务与访问模型、主要结果、核心技术、必要假设、局限、研究联系和后续问题。全文节选分析不表示证明已经独立核验。原文英文 abstract 保持独立，不用中文 AI 文本冒充原始摘要。
 
-1. 解压项目。在 Mac 上双击 `Start_Quantum_Radar.command`，Windows 上双击 `Start_Quantum_Radar.bat`。也可在项目目录打开终端，运行：
+RSS 主链接是本站 `articles/<arxiv-id>.html`，原文链接放在条目正文中。稳定 GUID 为 `urn:arxiv:<base-id>`，更新报告不会制造重复条目。已有阅读器可能缓存旧条目的 arXiv 主链接，需要刷新订阅缓存后读取新链接。
 
-   ```bash
-   PYTHONPATH=src python3 -m qradar serve --port 8765 --open
-   ```
+## 本地使用
 
-2. 浏览器打开 `http://127.0.0.1:8765/`。正式存档最初预置三篇本次 ChatGPT 会话整理的真实论文摘要，标明证据范围；它们不是每日自动运行的结果。`Preview.html` 另有五篇独立阅读示例。
-3. 在网页点击 **收集候选**。首次默认回看最近七天；关键词匹配的论文进入待分析队列。
-4. 点击 **导出待分析材料**，把下载的 `qradar-analysis-request.txt` 上传到 ChatGPT，让它按文件里的要求输出分析 JSON。
-5. 将 JSON 保存为文件，回到网页点击 **导入 ChatGPT 分析**。程序先校验批次；符合研究相关性阈值的摘要进入正式存档、网页和 RSS，其余记录为已评估。
+Python 3.11 或更新版本；核心流程只使用标准库：
 
-详细步骤和常见问题见 [本地使用说明](docs/LOCAL.md)。`--open` 只负责打开浏览器；终端窗口需保持运行。停止服务可在终端按 `Ctrl+C`，下次启动会读取原来的存档。
-
-## RSS 怎么订阅
-
-正式存档的全部精选 RSS：
-
-```text
-http://127.0.0.1:8765/feed.xml
+```bash
+PYTHONPATH=src python3 -m qradar serve --port 8765 --open
 ```
 
-网页还提供已有主题的独立 RSS，例如 `feeds/logical_qec.xml` 和 `feeds/magic_stabilizer.xml`。
+Mac / Windows 启动脚本也可使用。首页的本地工具区可收集、导出和导入 ChatGPT 分析。详情见 [LOCAL.md](docs/LOCAL.md)。本机 RSS 为 `http://127.0.0.1:8765/feed.xml`；其他设备或云端阅读器应订阅上方公开 RSS。
 
-**本地运行照样能生成 RSS。** 同一台电脑上的桌面 RSS 阅读器可以订阅这个地址，但检查更新时需要本地服务和电脑正在运行。Feedly、Inoreader 等由云端抓取的服务，以及另一台设备，无法访问你电脑的 `127.0.0.1`。如果以后希望手机、云端阅读器或其他人订阅，需要把生成的静态网页与 feed 文件放到可访问的服务器；不必使用 GitHub。
-
-RSS 只包含已经分析并选入的正式条目。单纯收集候选不会产生新的技术摘要。五篇独立预览不自动计入正式订阅。
-
-## 研究范围与技术摘要
-
-在 `config/profile.json` 修改研究主题和问题：
-
-| 主题 | 关注的问题 |
-|---|---|
-| Benchmarking / certification | SPAM-robust gate certification、randomized benchmarking、噪声与控制假设 |
-| Logical QEC | syndrome learning、logical fidelity、decoupling、浅层编码 |
-| Random circuits / designs | design order、depth、locality、ancillas、magic 成本 |
-| Magic / stabilizer | 受限操作、资源 separation、量子优势 |
-| Adaptive circuits | mid-circuit measurement、feedforward、态制备的资源 tradeoffs |
-| Quantum learning / information access | shadows、data hiding、side information、量子数据的学习与认证 |
-
-每篇技术摘要包含：**问题与 setting、主要结果、方法、必要假设、限制、与你研究的具体联系，以及后续问题**。默认中文，保留英文术语和参数；明确标注只读了 abstract，还是审阅了部分正文。技术解读不等于独立验证证明。
-
-候选按基础 arXiv ID 去重，已处理论文不会反复分析。首次回看可能产生较多候选，未处理的候选保留在队列中。当前不自动追踪已处理论文的新版本；待分析候选再次抓到时会更新元数据。
-
-## 文件与可调参数
-
-| 路径或配置 | 用途 |
-|---|---|
-| `config/profile.json` | 个性化研究主题、关键词、研究问题和排除方向 |
-| `data/state.json` | 正式摘要存档、待分析队列、去重与评估记录；建议备份 |
-| `local-public/` | 本地服务生成的网页、公开摘要 JSON 和 RSS；可重新生成 |
-| `examples/demo-state.json` | 五篇真实论文的独立阅读示例 |
-| `source.lookback_days` / `source.max_catchup_days` | 正常回看天数与自动补抓上限 |
-| `source.max_results` | 元数据完整性上限，超限明确报错 |
-| `screening.min_keyword_score` | 进入候选队列的关键词阈值 |
-| `screening.min_ai_score` | 已分析条目进入精选 feed 的相关性阈值 |
-| `screening.max_analyses_per_run` | 每批分析数量上限，默认 30 |
-
-修改 profile 影响后续候选，不会自动重分析已处理条目。随包仅包含适合用于筛选的研究偏好，不包含原始 CV、申请材料或邮箱。向 ChatGPT 上传分析请求前，也可先查看文件内容。
-
-## 命令行与可选扩展
-
-安装为命令行工具后，可使用 `qradar serve`、`collect`、`build`、`import-analysis` 等命令：
+安装 CLI：
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install .
-qradar serve --port 8765 --open
+python -m pip install '.[fulltext]'
+qradar collect --profile config/profile.json --state data/state.json --output public --site-url https://lorentze.github.io/quantum-arxiv-digest/
+qradar build --state data/state.json --output public --site-url https://lorentze.github.io/quantum-arxiv-digest/
 ```
 
-可选 API 分析流程需要从 PDF 提取正文时，可安装 `python -m pip install '.[fulltext]'`。无此依赖时，程序仍可使用 arXiv HTML 或 abstract，并标记实际取得的证据范围。
-
-如果以后有可用的模型 API key，`qradar run` 可启用程序内的 AI 调用。当前本地使用无需配置仓库、Pages 或 Secrets。有关外部发布见 [DEPLOYMENT.md](docs/DEPLOYMENT.md)。
+`config/profile.json` 配置研究筛选；`data/state.json` 保留正式报告、待分析队列和处理记录。默认每批最多处理 30 篇，未处理候选继续保留。已分析的论文不自动跟踪新版本。部署说明见 [DEPLOYMENT.md](docs/DEPLOYMENT.md)，验证说明见 [VALIDATION.md](docs/VALIDATION.md)。
 
 代码采用 [MIT License](LICENSE)，论文与源站内容遵循各自许可。
