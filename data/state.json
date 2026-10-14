@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "profile_title": "Quantum arXiv Digest",
+  "profile_title": "Quantum Paper Digest",
   "papers": [
     {
       "id": "doi:10.1038/s41534-026-01391-z",
@@ -27,7 +27,7 @@
         "doi": "10.1038/s41534-026-01391-z",
         "url": "https://www.nature.com/articles/s41534-026-01391-z",
         "published": "2026-10-12",
-        "date_basis": "publisher_rss"
+        "date_basis": "crossref_published-online"
       },
       "keyword_score": 4,
       "topics": [
@@ -83,7 +83,8 @@
         "model": "ChatGPT hosted",
         "analyzed_at": "2026-10-14T02:25:37+00:00"
       },
-      "selected_at": "2026-10-14T02:26:26Z"
+      "selected_at": "2026-10-14T02:26:26Z",
+      "doi": "10.1038/s41534-026-01391-z"
     },
     {
       "id": "doi:10.1038/s41467-026-78310-5",
@@ -168,7 +169,8 @@
         "model": "ChatGPT hosted",
         "analyzed_at": "2026-10-14T02:25:37+00:00"
       },
-      "selected_at": "2026-10-14T02:26:26Z"
+      "selected_at": "2026-10-14T02:26:26Z",
+      "doi": "10.1038/s41467-026-78310-5"
     },
     {
       "id": "2610.13880",
@@ -4812,6 +4814,1585 @@
         ]
       },
       "first_seen_at": "2026-10-12T02:38:41Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.18495",
+      "version": 1,
+      "title": "Steering the Fidelity in State Preparation on Noisy Bosonic Systems with Risk-Seeking Optimization",
+      "authors": [
+        "Riccardo Piantoni",
+        "Riccardo Pellini",
+        "Maurizio Ferrari Dacrema",
+        "Paolo Cremonesi"
+      ],
+      "abstract": "In order to execute quantum algorithms on bosonic quantum computers, it is necessary to encode their inputs into a desired target quantum state, with a process called state preparation. In real settings, state preparation methods operate in stochastic scenarios, where the prepared state is represented as a mixed state, that is a probabilistic ensemble of pure states. Therefore, existing state preparation methods optimize a variational ansatz by averaging over all possible sequences of photon loss events contained in the prepared ensemble, yielding an output state which approximates the desired target with a certain average fidelity. Such an approach, however, does not take into account directly the distribution of fidelities across states in the ensemble. In this work, we aim to maximize the fidelity of only a subset of pure states sampled from the prepared ensemble, at the cost of reducing the average fidelity overall. This trade-off is relevant when the goal is to obtain high-fidelity states with a certain probability, rather than maximizing the average fidelity of the prepared ensemble. We borrow and adapt objective functions from risk-sensitive optimization, a framework that optimizes specific characteristics of a distribution rather than only its expectation, and that has been successfully applied in Reinforcement Learning. In the considered experimental settings, our results show that the infidelities of some pure states in the prepared ensemble can be reduced by up to four orders of magnitude when using risk-seeking objectives, compared to those achieved using the standard optimization of the average fidelity. Furthermore, we show that it is possible to control the trade-off between the probability of obtaining high-fidelity states and the lowest infidelity threshold reached, providing the flexibility to select the operating point that best suits a certain application.",
+      "url": "https://arxiv.org/abs/2610.18495",
+      "pdf_url": "https://arxiv.org/pdf/2610.18495v1",
+      "published": "2026-10-13T14:52:00Z",
+      "updated": "2026-10-13T14:52:00Z",
+      "categories": [
+        "quant-ph",
+        "cs.LG"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "state preparation"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.18482",
+      "version": 1,
+      "title": "Lifting: Quantum State Discrimination Framework for Mid-Circuit Measurements",
+      "authors": [
+        "Chi Zhang",
+        "Neel Vora",
+        "Yilun Xu",
+        "Gang Huang",
+        "Fan Chen",
+        "Lei Jiang"
+      ],
+      "abstract": "Quantum computing promises new capabilities beyond classical computation. Mid-circuit measurements (MCMs) enable error correction and outcome-dependent control, but their reliability is limited by noise on superconducting hardware. These operations depend on accurate quantum state discrimination (QSD), which assigns measured signals to state labels. Neural network-based (NN-based) QSD improves this assignment, yet its error remains bounded below by the Bayes risk of the available readout distributions. A complementary challenge is state deterioration as successive measurements accumulate and circuit execution advances, making static calibration less representative of the workload. We present Lifting, a QSD framework that addresses both challenges through repetition encoding, neural decoding, and in situ calibration. Encoding supplies joint in-phase and quadrature (I-Q) readout signals from the target and auxiliary qubits, while contextual calibration trains the decoder for the conditions encountered during execution. Our theoretical analysis shows that retaining additional channels from a fixed joint distribution cannot increase Bayes risk and establishes sufficient conditions for contraction of an overlap-based upper bound. Experiments across three IBM processors evaluate the framework on repeated stabilizer measurement, parity-check, and teleportation workloads.",
+      "url": "https://arxiv.org/abs/2610.18482",
+      "pdf_url": "https://arxiv.org/pdf/2610.18482v1",
+      "published": "2026-10-13T14:43:40Z",
+      "updated": "2026-10-13T14:43:40Z",
+      "categories": [
+        "quant-ph",
+        "cs.ET",
+        "cs.LG"
+      ],
+      "keyword_score": 6,
+      "topics": [
+        "magic_stabilizer",
+        "data_hiding"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "stabilizer"
+        ],
+        "data_hiding": [
+          "state discrimination"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.18477",
+      "version": 1,
+      "title": "Experimental Realization of a C-Shunt Flux-Qubit Coupler for Controlled-Z Gates between Transmons",
+      "authors": [
+        "Weiping Yuan",
+        "Silu Zhao",
+        "Li Li",
+        "Chenglin Deng",
+        "Zhenghe Liu",
+        "Yu Liu",
+        "Tianming Li",
+        "Mingchuan Wang",
+        "Bingjie Chen",
+        "Guihan Liang",
+        "Jiacheng Song",
+        "Jinming Guo",
+        "Shuaili Wang",
+        "Mingxuan Zhou",
+        "Xiaohui Song",
+        "Kai Xu",
+        "Heng Fan",
+        "Zhongcheng Xiang",
+        "Dongning Zheng"
+      ],
+      "abstract": "Fast entangling gates and low-interaction idling require distinct operating conditions in superconducting quantum processors. We experimentally realize a transmon-C-shunt-transmon (TCT) device in which a flux-tunable, three-junction capacitively shunted flux-qubit coupler connects two transmon data qubits. The C-shunt coupler provides a flux-tunable, positively anharmonic spectrum for tailoring the interactions between the data qubits. Conditional Ramsey and swap measurements identify an idle region with near-zero residual ZZ interaction strength and suppressed transverse exchange. At this bias, simultaneous single-qubit interleaved randomized benchmarking yields X-gate fldelities above 99.7%, consistent with individual operation. A 45 ns nonadiabatic controlled-Z (CZ) gate achieves an interleaved randomized benchmarking fldelity estimate of 99.23(15)%. Numerical simulations identify coupler energy relaxation as an important limitation on CZ-gate fldelity and indicate that extending the coupler lifetime can improve gate performance. These results demonstrate the experimental feasibility of C-shunt flux-qubit couplers for combining low-interaction idling with fast entangling operations between transmon qubits.",
+      "url": "https://arxiv.org/abs/2610.18477",
+      "pdf_url": "https://arxiv.org/pdf/2610.18477v1",
+      "published": "2026-10-13T14:39:57Z",
+      "updated": "2026-10-13T14:39:57Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "benchmarking"
+      ],
+      "keyword_matches": {
+        "benchmarking": [
+          "randomized benchmarking"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.18225",
+      "version": 1,
+      "title": "PPVM: A Circuit Simulation Framework for Digital Twins of Quantum Processors",
+      "authors": [
+        "Xiu-Zhe Luo",
+        "David Plankensteiner",
+        "Kai-Hsin Wu",
+        "Rob Patterson",
+        "Alexander Schuckert",
+        "Oriol Rubies-Bigorda",
+        "Refaat Ismail",
+        "Jonhas Colina",
+        "Neelay Fruitwala",
+        "Danylo Lykov",
+        "Tyson Jones",
+        "Stefan Krastanov",
+        "Rafael Haenel",
+        "Stefan Ostermann",
+        "Sheng-Tao Wang"
+      ],
+      "abstract": "Quantum computers are approaching the early fault-tolerant regime. Verifying the next generation of quantum hardware requires joint emulation of the quantum processor, hardware noise, and classical control and decoding logic. We introduce the Programmable Pauli Virtual Machine (PPVM), an open-source framework for digital twins of quantum processors. PPVM unifies Pauli propagation and generalized tableau simulation under a common abstraction within a single virtual machine. Its bytecode supports arbitrary classical control flow, with measurement-conditioned feed-forward available in the generalized tableau backend. For neutral-atom hardware, we derive independent and correlated atom-loss channels and integrate them into both backends. We demonstrate loss-aware magic state distillation on over a thousand physical qubits and integration with classical decoding through Bloqade QEC Studio.",
+      "url": "https://arxiv.org/abs/2610.18225",
+      "pdf_url": "https://arxiv.org/pdf/2610.18225v1",
+      "published": "2026-10-13T11:54:05Z",
+      "updated": "2026-10-13T11:54:05Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 6,
+      "topics": [
+        "magic_stabilizer",
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "magic state"
+        ],
+        "adaptive_resources": [
+          "feed-forward"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.18218",
+      "version": 1,
+      "title": "Methods for Automated Equivalence Checking of Quantum Error-Correction Codes",
+      "authors": [
+        "Maxie Bichmann",
+        "Ludwig Schmid",
+        "Robert Wille"
+      ],
+      "abstract": "Quantum error-correction code and circuit construction is an active field of research, motivating automated methods for identifying equivalent designs. We develop and evaluate automated strategies for deciding whether two descriptions of quantum error-correction codes are equivalent under specified transformations. We formalize permutation equivalence for stabilizer and CSS codes and local-Clifford equivalence for stabilizer codes within a unified framework that separates physical from representation freedom. We develop three decision strategies (group-action search, isomorphism-based methods, and constraint solving), together with invariants and signatures for preprocessing. The empirical evaluation shows that no paradigm dominates across equivalence notions, code families, and parameter ranges. We therefore combine their complementary strengths in input-dependent hybrid checkers following a staged Refute-Refine-Decide architecture. Mean hybrid runtimes remain below 10 s for most evaluated structured-code cases with $n \\leq 37$; for inequivalent code instances with $n=144$, they are about 310 s for permutation and 16 s for local-Clifford equivalence.",
+      "url": "https://arxiv.org/abs/2610.18218",
+      "pdf_url": "https://arxiv.org/pdf/2610.18218v1",
+      "published": "2026-10-13T11:49:22Z",
+      "updated": "2026-10-13T11:49:22Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.18130",
+      "version": 1,
+      "title": "Distance Prediction for Quantum Codes",
+      "authors": [
+        "Nadav Schneider",
+        "Eliya Nachmani"
+      ],
+      "abstract": "The distance of a quantum code is a fundamental metric that dictates its error-correction capability. While quantum low-density parity-check (qLDPC) families such as Bivariate Bicycle (BB) codes offer a promising pathway to low-overhead fault-tolerant quantum computing, computing their distance is challenging. Current exact solvers and even search heuristics that provide a distance upper bound suffer from severe computational bottlenecks, restricting the discovery of optimal codes. In this paper, we construct a dataset of BB codes with corresponding distance upper bounds obtained through high-budget heuristic searches. We introduce BB-Net, an attention-based neural network architecture for predicting the distance of BB codes. It achieves 96.39% accuracy on the reference distances in the test set, compared with 94.86% for state-of-the-art heuristics with a budget of up to $10^{4}$ times more computational runtime. On a subset with certified exact distances, BB-Net achieves 98.94%. By relieving the distance-calculation bottleneck, BB-Net enables faster screening of large code spaces, particularly in ML-driven search pipelines, and thereby can accelerate the discovery of novel quantum error-correcting codes, an important capability for advancing scalable fault-tolerant quantum computing. Our code is publicly available: https://github.com/NadavSc/BBNet",
+      "url": "https://arxiv.org/abs/2610.18130",
+      "pdf_url": "https://arxiv.org/pdf/2610.18130v1",
+      "published": "2026-10-13T10:39:44Z",
+      "updated": "2026-10-13T10:39:44Z",
+      "categories": [
+        "quant-ph",
+        "cs.LG"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error-correcting",
+          "qLDPC"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.18124",
+      "version": 1,
+      "title": "Local error correction prolongs time-crystalline memory",
+      "authors": [
+        "Benedikt Fauseweh"
+      ],
+      "abstract": "Discrete time crystals are non-equilibrium phases of matter with spatiotemporal order and a response that breaks the time-translation symmetry of a periodic external drive. Interactions, spatial disorder and correlated random driving can in theory stabilize this order. In experiments, however, coupling to the environment limits the time crystal lifetime. Here we use stochastic local bit-flip error correction to prolong the time-crystalline response of a driven, spatially disordered two-dimensional Ising model on a superconducting quantum processor, using a repetition code with distances three and five on a honeycomb lattice with up to 68 physical qubits. Even though ancilla qubits, midcircuit syndrome measurements and decoding increase the required quantum and classical resources, the stochastic drive increases the memory decay time by a factor of up to two. At late times we observe that recovery stabilizes spatial order across the lattice. The spin-configuration distributions explain this separation, as recovery suppresses disagreeing bonds while broadening occupies completely reversed states. Syndrome measurements without correction accelerate the memory decay, demonstrating the importance of conditional correction. Our results show that local bit-flip error correction can preserve time-crystalline memory over more drive cycles than the bare dynamics.",
+      "url": "https://arxiv.org/abs/2610.18124",
+      "pdf_url": "https://arxiv.org/pdf/2610.18124v1",
+      "published": "2026-10-13T10:36:57Z",
+      "updated": "2026-10-13T10:36:57Z",
+      "categories": [
+        "quant-ph",
+        "cond-mat.str-el"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "syndrome"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "10.1088/1367-2630/aeaf0f",
+      "id": "2610.18049",
+      "version": 1,
+      "title": "Scalable long-distance quantum fan-out gates with reduced resource overhead",
+      "authors": [
+        "Wen-Qiang Liu",
+        "Hai-Rui Wei"
+      ],
+      "abstract": "Scalable long-distance quantum gates are essential for distributed quantum computation and scalable quantum networks. We propose an efficient scheme for implementing an $n$-qubit fan-out gate $C^n$ (also known as a controlled-NOT-$\\cdots$-NOT gate) across spatially separated parties. Our protocol requires only a pre-shared $n$-qubit Greenberger-Horne-Zeilinger state, $n$ local controlled-NOT (CNOT) gates, and feed-forward operations, thereby reducing both the CNOT and Hadamard gate counts by $(n-2)$ when compared with the standard decomposition-based approach. We further develop two optical architectures to implement the heralded and post-selected $n$-photon fan-out gates, respectively. These schemes require fewer single photons resources and achieve higher success probabilities than their decomposition-based counterparts, representing significant improvements. The results indicate that our approach is experimentally feasible and pave the way toward practical long-distance quantum computation.",
+      "url": "https://arxiv.org/abs/2610.18049",
+      "pdf_url": "https://arxiv.org/pdf/2610.18049v1",
+      "published": "2026-10-13T09:39:13Z",
+      "updated": "2026-10-13T09:39:13Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "feed-forward"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.18031",
+      "version": 1,
+      "title": "Optimal Lower Bound on the Sample Complexity of Coherent Classical Shadows for Mixed States",
+      "authors": [
+        "Pavel Svetlichnyy"
+      ],
+      "abstract": "We study coherent classical shadows protocols for an unknown $d$-dimensional quantum state of rank at most $r$, allowing an arbitrary joint measurement on all available copies. For observables with operator norm at most one and centered squared Frobenius norm at most $F$, we study the minumum number of copies $T$ needed for the protocol to successed with propbability $1 - δ$. We prove a lower bound on $T$, that depends both on $δ$ and the number $M$ of post-measurement observables. Denoting $\\ell=\\max\\{\\log(2M),\\log(1/δ)\\}$, we show that $T=Ω\\left(\\min\\left\\{\\frac{\\sqrt{rF\\ell}}{\\varepsilon},\\frac{(F\\ell)^{2/3}}{\\varepsilon^{4/3}}\\right\\}+\\frac{\\ell}{\\varepsilon^2}\\right)$ under the mild assumption $\\log(2M)\\lesssim d\\min\\{r,F\\}$. The lower bound nearly matches the known upper bound and matches the conjectural strengthening of the known upper bound. The proof is inspired by the framework of the proof of the lower bound for Boolean Hidden Matching. We develop a Gaussian-lift noise kernel that transfers forward and reverse Gaussian hypercontractivity to the Grassmannian, allowing us to bound the distinguishing advantage in an auxiliary game with a revealed query observable. We use Schur--Weyl structure and posterior moment bounds to control arbitrary coherent measurements on the source side.",
+      "url": "https://arxiv.org/abs/2610.18031",
+      "pdf_url": "https://arxiv.org/pdf/2610.18031v1",
+      "published": "2026-10-13T09:21:53Z",
+      "updated": "2026-10-13T09:21:53Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "quantum_learning"
+      ],
+      "keyword_matches": {
+        "quantum_learning": [
+          "sample complexity"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.18000",
+      "version": 1,
+      "title": "Development and experimental implementation of noise characterisation techniques on a superconducting quantum processor",
+      "authors": [
+        "Nelson M. M. Fernández",
+        "Francesco Grieco",
+        "Hetta Vappula",
+        "Stefano Mangini",
+        "Boris Sokolov",
+        "Elsi-Mari Borrelli",
+        "Matteo A. C. Rossi",
+        "Sergey N. Filippov",
+        "N. Walter Talarico"
+      ],
+      "abstract": "Noise characterisation not only enables error mitigation but also provides valuable information about the intrinsic performance of a quantum device, identifying dominant error contributions and bounding noise stability well beyond the aggregated calibration data. Deploying such methods on a specific hardware topology must combine efficiency and accuracy, assess noise stability, and validate the reconstructed noise model. Here we develop and implement these methods on a superconducting processor with square-lattice topology. First, we revise the cycle-benchmarking protocol and reduce the bias arising from unlearnable degrees of freedom via a regularised cost function. Second, we extend a previously developed tensor-network tomography method to match the device layout and show how its accuracy can be improved by repeated layer execution. Both methods allow approximate sublayer noise models to be extracted from parent ones. Using noise characterisation as a tool, we map the noise structure, track drift, and validate the adequacy of the learnt noise models against experimentally observed noisy estimations in benchmark physical and chemistry circuits. These results inform further improvements in the underlying technology and provide estimates of the size of noise-mitigated circuits that the device can support.",
+      "url": "https://arxiv.org/abs/2610.18000",
+      "pdf_url": "https://arxiv.org/pdf/2610.18000v1",
+      "published": "2026-10-13T09:02:36Z",
+      "updated": "2026-10-13T09:02:36Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "benchmarking"
+      ],
+      "keyword_matches": {
+        "benchmarking": [
+          "error mitigation"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.17836",
+      "version": 1,
+      "title": "A Tutorial on Quantum Amplitude Embedding with Data Re-Uploading",
+      "authors": [
+        "Hyojun Ahn",
+        "Joongheon Kim"
+      ],
+      "abstract": "Amplitude embedding lets a variational quantum model read many classical features with few qubits, but the model output is then only a quadratic form in the normalized input. Data re-uploading, which encodes the input repeatedly between trainable blocks, can be used to enrich such a model. Because every additional upload of an amplitude embedding repeats a costly state preparation, the gain that an upload buys has to be known before the gates are spent. This tutorial thus addresses the problem of explaining what data re-uploading adds to an amplitude-embedded model and how large the gain is. We express sequential re-uploading and parallel re-uploading with two copies in one notation and show that each upload raises the reachable polynomial order by two. Under one trainable circuit family and one budget of trainable parameters, simulation results show that re-uploading raises the test coefficient of determination from 0.689 to between 0.883 and 0.975 on targets of order four and from 0.337 to between 0.642 and 0.783 on targets of order six, on all ten seeds. On a quadratic target and on handwritten digits, one upload remains the best choice, and every additional upload lowers the gate error that the classifier tolerates. These results help designers match the number of uploads to the polynomial order of the task at hand.",
+      "url": "https://arxiv.org/abs/2610.17836",
+      "pdf_url": "https://arxiv.org/pdf/2610.17836v1",
+      "published": "2026-10-13T06:56:29Z",
+      "updated": "2026-10-13T06:56:29Z",
+      "categories": [
+        "quant-ph",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "state preparation"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.17722",
+      "version": 1,
+      "title": "Representation Geometry and Inductive Biases in Quantum Classifiers across Classical Visual Benchmarks",
+      "authors": [
+        "Yu Yamaoka",
+        "Weng Ian Chan",
+        "Kosuke Mitarai"
+      ],
+      "abstract": "Quantum Machine Learning (QML) has a theoretical advantage over classical algorithms for specific synthetic data that is computationally hard. However, it remains unclear whether such theoretical advantages play a meaningful role for realistic classical data, such as natural images. Quantum structural properties induced by unitary operations or entanglement introduce inductive biases that differ from those of classical models, potentially leading to distinct learning behavior on real-world data. In a fully quantum learning pipeline, classical real-world data are first encoded into quantum states via a quantum feature mapping, analogous to a classical feature extractor, and a quantum classifier then classifies the resulting states. Quantum feature mappings generate representations that are difficult to realize classically, while also inducing representation-level biases that do not necessarily match the structure of realistic data. To enable a fair comparison at the classifier level, we focus on the classifier and use classical feature extractors that already provide powerful representations for natural images. By controlling the data scale and supervision strength, we analyze how the unitary structure of quantum classifiers affects generalization, and show that their effectiveness depends strongly on the geometry of the input representations. These results indicate that quantum classifiers benefit from classical features that are aligned with quantum feature spaces. Our analysis shows that kernel alignment identifies representations compatible with quantum feature spaces, providing insights into translating classical models into quantum algorithms.",
+      "url": "https://arxiv.org/abs/2610.17722",
+      "pdf_url": "https://arxiv.org/pdf/2610.17722v1",
+      "published": "2026-10-13T04:56:50Z",
+      "updated": "2026-10-13T04:56:50Z",
+      "categories": [
+        "quant-ph",
+        "cs.LG"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "quantum_learning"
+      ],
+      "keyword_matches": {
+        "quantum_learning": [
+          "quantum learning"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.17648",
+      "version": 1,
+      "title": "Nearly Optimal Quantum Sample Complexity of Learning Fourier-Sparse Boolean Functions",
+      "authors": [
+        "Zekun Ye"
+      ],
+      "abstract": "We study the number of uniform quantum examples needed to exactly learn a Boolean function with at most $k$ nonzero Fourier coefficients. We give a learner with near-optimal $\\widetilde{O}(k)$ sample complexity independent of the input length $n$. The learner uses only separate measurements of individual examples. This improves the previous $O(k^{3/2}\\log^2 k)$ upper bound (Arunachalam, Chakraborty, Lee, Paraashar, and de Wolf, 2021). The main ingredient is a candidate set formed by symmetric differences of subsets from independent groups of Fourier samples. A multilinear majority polynomial combines unbiased random approximations into an accurate witness whose Fourier support lies in this set. Granularity then forces the set to contain the entire Fourier support, including subsets never directly sampled. For comparison, we derive the tight classical sample complexity $Θ(nk)$ by combining known sparse-recovery and lower-bound results.",
+      "url": "https://arxiv.org/abs/2610.17648",
+      "pdf_url": "https://arxiv.org/pdf/2610.17648v1",
+      "published": "2026-10-13T03:22:24Z",
+      "updated": "2026-10-13T03:22:24Z",
+      "categories": [
+        "quant-ph",
+        "cs.CC",
+        "cs.DS"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "quantum_learning"
+      ],
+      "keyword_matches": {
+        "quantum_learning": [
+          "sample complexity"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.17612",
+      "version": 1,
+      "title": "From Syndromes to Computation: A General Framework for Logical Operations in Quantum Error-Correcting Codes",
+      "authors": [
+        "Hunter Nelson",
+        "Arshag Danageozian",
+        "ChunJun Cao",
+        "Sophia E. Economou",
+        "Edwin Barnes"
+      ],
+      "abstract": "Fault-tolerant quantum computation requires error-correcting codes that not only protect quantum information but also support useful logical operations with practical physical realizations. Here we develop a general framework in which the stabilizer syndromes of commuting Pauli rotations directly organize logical-gate design. We derive an exact codespace-preservation condition valid at arbitrary rotation angles, providing a common stabilizer-level description for CSS and non-CSS codes and for both Clifford and non-Clifford operations. A particularly useful equal-syndrome specialization reduces Clifford gate design to stabilizer factorization, yields a general generator weight bound of $\\lceil d/2\\rceil$ for distance-$d$ codes, and systematically extends to logical rotations higher in the Clifford hierarchy. Applied to bivariate-bicycle (BB) and non-CSS Mirror qLDPC codes, the framework gives explicit low-weight Clifford and controlled-phase gates. Our implementations yield new low-weight gates, including an addressed $T$ gate on the $[[16,4,4]]$ BB code, $T$-type rotations on the $[[64,8,8]]$ BB code, and CCZ-, CS-, and $T$-type operations on the $[[36,6,6]]$ Mirror code. We also develop analytic constructions using Clifford algebra bases, which turn the syndrome constraints into explicit algebraic relations and provide a systematic route to logical addressability. We use this approach to analytically construct addressed CNOT, SWAP, controlled, and CCZ-type gates on recursive hypercube codes. An independent construction on middle quantum Reed--Muller codes yields C${}^r$Z gates that saturate the equal-syndrome weight bound. These results establish stabilizer syndromes as a constructive link between the stabilizer structure of a quantum code, the logical computations it can directly support, and the fault-tolerance properties of their physical realizations.",
+      "url": "https://arxiv.org/abs/2610.17612",
+      "pdf_url": "https://arxiv.org/pdf/2610.17612v1",
+      "published": "2026-10-13T02:32:10Z",
+      "updated": "2026-10-13T02:32:10Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 9,
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error-correcting",
+          "syndrome",
+          "qLDPC"
+        ],
+        "magic_stabilizer": [
+          "stabilizer",
+          "non-Clifford"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.17520",
+      "version": 1,
+      "title": "Chromatic Block-Gibbs p-Bit Decoding of QLDPC Codes",
+      "authors": [
+        "Mert Gökduman",
+        "Cyril Guyot",
+        "Henry D. Pfister"
+      ],
+      "abstract": "We introduce a parallel decoder for quantum low-density parity-check (QLDPC) codes based on probabilistic bits (p-bits), tunable stochastic binary units controlled by local fields. The idea is that predicted error configurations, interpreted as explanations of the observed syndrome, are updated stochastically using local Gibbs conditionals, while a progressively strengthened parity penalty drives the search toward syndrome-valid configurations. A coloring of the decoding graph enables parallel block updates, and independent replicas and restarts provide trajectory diversity. The best candidate encountered during the search is returned, mirroring the candidate-selection strategy of recent ensemble decoders. At the stated update budgets, the resulting logical error rates are on par with leading decoders under both code-capacity and circuit-level noise. While the total number of variable resamplings can be substantially larger than the message-update count of BP-based alternatives, the numerical results establish constraint-annealed p-bit dynamics as a competitive stochastic alternative for QLDPC decoding and motivate further study of hardware-native implementations.",
+      "url": "https://arxiv.org/abs/2610.17520",
+      "pdf_url": "https://arxiv.org/pdf/2610.17520v1",
+      "published": "2026-10-13T00:32:04Z",
+      "updated": "2026-10-13T00:32:04Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 5,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "logical error",
+          "syndrome",
+          "qLDPC"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.17500",
+      "version": 1,
+      "title": "A three-eighths upper bound on the stabilizer-rank exponent of face-center magic states",
+      "authors": [
+        "Samuel Bevins"
+      ],
+      "abstract": "We give an explicit construction proving that the exact stabilizer rank of $m$ copies of the qubit face-center magic state is $O(2^{3m/8})$. Two symmetry-related fifteen-term identities combine into a twenty-four-term decomposition at twelve copies. The balanced structure of this decomposition yields a substitution that adds eight copies at a cost of eight terms per existing term. The resulting bound $γ_T \\leq 3/8$ improves the previously published exponent $\\log_2(3)/4$.",
+      "url": "https://arxiv.org/abs/2610.17500",
+      "pdf_url": "https://arxiv.org/pdf/2610.17500v1",
+      "published": "2026-10-12T23:51:45Z",
+      "updated": "2026-10-12T23:51:45Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "magic state",
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.17459",
+      "version": 1,
+      "title": "Co-Adaptive Entropy Modeling and Rate-Distortion-Optimal Bit Allocation for Perceptual Audio Coding",
+      "authors": [
+        "Soohyun Kim",
+        "Jiwon Jeong",
+        "Marina Bosi"
+      ],
+      "abstract": "We present a perceptual audio coder in which the entropy-coding model and the bit allocation co-adapt across blocks without model side information. Mantissas are coded by a hybrid of bit packing and arithmetic coding with per-band probability models learned online. Encoder and decoder accumulate identical histograms from decoded blocks and advance the same model state. The model enters bit allocation directly: per-band rate--distortion frontiers combine measured perceptual distortion with entropy-coded rate estimates under the current model, and a dynamic program attains the exact minimum of total objective perceptual distortion for each block's budget under the model's rate estimates, with reservoir carry-over. Under a strict per-block rate, entropy-coding-aware bit allocation lowers this distortion (band noise-to-mask ratio in linear scale) by 15-24% relative to the same solver without it, and co-adaptation removes a further 3-4% (up to 15% on oboe) that a backward-adaptive coder alone cannot realize in one pass; a MUSHRA test at 80 kbps per channel confirms the ranking.",
+      "url": "https://arxiv.org/abs/2610.17459",
+      "pdf_url": "https://arxiv.org/pdf/2610.17459v1",
+      "published": "2026-10-12T22:17:57Z",
+      "updated": "2026-10-12T22:17:57Z",
+      "categories": [
+        "eess.AS",
+        "cs.IT"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "data_hiding"
+      ],
+      "keyword_matches": {
+        "data_hiding": [
+          "side information"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.17185",
+      "version": 1,
+      "title": "Error-Corrected QRAM Queries with One-Fault-Tolerant \\texttt{CSWAP} Gates",
+      "authors": [
+        "Shifan Xu",
+        "Connor T. Hann",
+        "Nathan Wiebe",
+        "Steven M. Girvin",
+        "Yongshan Ding"
+      ],
+      "abstract": "Quantum random-access memory (QRAM) enables coherent queries to classical data. However, the \\(O(N)\\) qubits required for a memory with \\(N=2^n\\) addresses make QRAM appear vulnerable to noise. Though bucket-brigade routing provides intrinsic noise resilience to reduce the error in QRAM, improving the fidelity of QRAM queries is still an important and challenging problem. We introduce a low-overhead protection framework for bucket-brigade QRAM with two complementary components. First, we propose a one-fault-tolerant repeat-until-success logical controlled-SWAP gate using the \\([[4,2,2]]\\) code under erasure noise channel. Interleaved erasure checks and local recovery correct every single erasure, so the leading logical failure probability is second order in the physical erasure error rates. Second, we exploit validity constraints of bucket-brigade routing to define local parity checks directly on the router states, without adding extra data qubits to create code redundancy. Under bit-flip noise, minimum-weight perfect matching with noiseless syndrome measurements corrects single interior faults, while open spatial boundaries retain a first-order contribution in the residual bit-flip rate. Monte Carlo simulations confirm quadratic suppression for the protected controlled-SWAP and improved depth scaling for decoded QRAM router-state snapshots. The two codes admit a concatenated realization in which the inner code supplies erasure protection and the outer code optionally corrects interior logical bit flips. Together, these results show how routing constraints and a protected non-Clifford routing gate can improve QRAM reliability under biased and erasure-dominant noise.",
+      "url": "https://arxiv.org/abs/2610.17185",
+      "pdf_url": "https://arxiv.org/pdf/2610.17185v1",
+      "published": "2026-10-12T17:54:48Z",
+      "updated": "2026-10-12T17:54:48Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 6,
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "syndrome"
+        ],
+        "magic_stabilizer": [
+          "non-Clifford"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.17145",
+      "version": 1,
+      "title": "On the Computational Complexity of Blind Quantum Machine Learning",
+      "authors": [
+        "Rex Fleur",
+        "Tzula B. Propp",
+        "Sebastian Feld"
+      ],
+      "abstract": "Can quantum advantages in computational efficiency coexist with quantum advantages in privacy? In this paper, we construct and use MasonQ, a universal brickwork transpiler, to answer this question with a resounding yes. We approach this question by bridging two seemingly disparate paradigms: universal blind quantum computation (UBQC), based on measurement-based quantum computation, and quantum machine learning (QML) algorithms such as the Harrow-Hassidim-Lloyd (HHL) algorithm and quantum recommendation systems. We provide new upper bounds on the depth of UBQC brickwork graphs, establishing that $D = \\mathcal{O}(ωn)$, where $ω$ is the circuit width and $n$ its computational gate complexity. This is enabled by our newly developed transpiler MasonQ, which maps arbitrary quantum circuits to computational brickwork graph states. Given an optimal Qiskit circuit as input, we prove optimality (up to logarithmic corrections) of the MasonQ transpiler in terms of asymptotic scaling of the total brickwork graph width and depth after decomposition into bricks, enabling systematic cost analyses of blind implementations in near-term experiments and asymptotic regimes. Leveraging MasonQ, we derive depth bounds for several representative blind quantum machine learning (B-QML) algorithms, including the quantum Fourier transform, the HHL algorithm, recommendation systems, and quantum transformers. Lastly, we analyze concrete resource estimates for near-term demonstrations of blind quantum machine learning. We propose a minimal B-QML implementation requiring only a $12$ qubit quantum server. To the best of our knowledge, MasonQ is the first functional and optimal universal circuit-to-brickwork-graph transpiler to implement the full brickwork transpilation process from first principles.",
+      "url": "https://arxiv.org/abs/2610.17145",
+      "pdf_url": "https://arxiv.org/pdf/2610.17145v1",
+      "published": "2026-10-12T17:27:35Z",
+      "updated": "2026-10-12T17:27:35Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "random_designs"
+      ],
+      "keyword_matches": {
+        "random_designs": [
+          "brickwork"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.17137",
+      "version": 1,
+      "title": "Cyclotomic Structure and Exact Recurrences in Floquet Many-Body Quantum Dynamics",
+      "authors": [
+        "Amit Anand",
+        "Dinesh Valluri",
+        "Shohini Ghose"
+      ],
+      "abstract": "Periodically driven quantum systems exhibit a wide range of complex dynamics, including chaos. Yet, at special parameter values, their evolution can recur exactly. Several quantum protocols have recently been proposed that exploit exact Floquet recurrences to demonstrate genuine quantum advantage. Such recurrences can be studied through the arithmetic structure of the Floquet unitary. In this work, we establish a necessary and sufficient arithmetic criterion for exact recurrence and determine the minimal recurrence period when one exists. Because recurrence is a global property of the unitary, it holds for every initial state. Applying our framework requires only knowledge of the number field associated with the Hamiltonian parameters. We demonstrate the method using the kicked Ising chain, establishing exact recurrences in both Clifford and non-Clifford regimes. We further show that, in the recurrent non-Clifford regime, magic--a resource for quantum computation--is generated at intermediate times and undergoes exact periodic revivals enforced by the recurrence of the full Floquet unitary. By connecting number theory, quantum many-body dynamics, and quantum information, our work shows that exact recurrence extends beyond Clifford circuits and opens new avenues for magic generation and quantum hardware benchmarking.",
+      "url": "https://arxiv.org/abs/2610.17137",
+      "pdf_url": "https://arxiv.org/pdf/2610.17137v1",
+      "published": "2026-10-12T17:23:07Z",
+      "updated": "2026-10-12T17:23:07Z",
+      "categories": [
+        "quant-ph",
+        "math.NT",
+        "nlin.CD"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "non-Clifford"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.17055",
+      "version": 1,
+      "title": "Construction of Regular Fat Linear Sets and Non-Representable q-Matroids",
+      "authors": [
+        "Yufei Qiu",
+        "Valentino Smaldore",
+        "Zhenpeng Wang",
+        "Corrado Zanella",
+        "Ferdinando Zullo"
+      ],
+      "abstract": "Let $q$ be a prime power. An $(r, i)$-regular fat $\\mathbb F_q$-linear set has exactly $r$ points of weight $i\\ge2$, called fat points. All of its remaining points have weight one, and at least one such point occurs. We solve two open problems posed by three of the authors of this paper. First, we derive divisibility constraints on the point weights using the scalar stabilizer of the defining subspace. Consequently, a regular fat linear set of rank $2i$ in $\\operatorname {PG}(1,q^n)$ has at most two or exactly $q + 1$ fat points. In the latter case, the fat points form an $\\mathbb F_q$-subline. Second, we construct higher-dimensional regular fat linear sets whose fat points do not form an $\\mathbb F_q$-subgeometry. In particular, for every $k\\geq 3$ we obtain examples of rank $2k$ whose fat locus consists of an $\\mathbb F_q$-subgeometry $\\operatorname {PG}(k-2,q)$ in $\\operatorname {PG}(k-1,q^4)$ together with one external point. This construction is then generalized further. Finally, we apply our projective-line results to $q$-matroid representability and present an infinite family of non-representable rank-two $q$-matroids arising from partial spreads.",
+      "url": "https://arxiv.org/abs/2610.17055",
+      "pdf_url": "https://arxiv.org/pdf/2610.17055v1",
+      "published": "2026-10-12T16:25:19Z",
+      "updated": "2026-10-12T16:25:19Z",
+      "categories": [
+        "math.CO",
+        "cs.IT"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "10.1103/4sn5-ngdg",
+      "id": "2610.17047",
+      "version": 1,
+      "title": "Enhanced Quantum Metrology via Saddle-Point Scrambling in Phase Space",
+      "authors": [
+        "Lei Shao",
+        "Hai-Jun Xing",
+        "Libin Fu"
+      ],
+      "abstract": "Nonlinear effects are widely utilized in quantum metrology to enhance measurement precision by leveraging complex dynamical behaviors. Here, we propose a quantum scrambling-integrated scheme that optimizes the selection of initial states and parameter encoding by exploiting the nonlinear dynamical trajectories and their geometric properties in phase space. We consider a two-mode Bose-Einstein condensate as a typical example. Within a certain parameter range, using uncorrelated spin coherent states located at saddle points and separatrices enables the measurement precision to reach the Heisenberg scaling. An analytical expression for the quantum Fisher information under long-time evolution is provided, and our analysis further reveals that the enhancement mechanism is governed by the sensitivity of the energy spectrum to parameter variations. Compared to the criticality-enhanced protocol that requires parameters to approach the critical point, our scheme offers a distinct advantage in its applicability over a broader range of parameters. Moreover, this scheme can also be applied to models that include one- and two-axis countertwisting interactions and chaotic dynamics. This Letter offers a new perspective for advancing the application of nonlinear dynamics to enhance the parameter estimation precision in quantum systems.",
+      "url": "https://arxiv.org/abs/2610.17047",
+      "pdf_url": "https://arxiv.org/pdf/2610.17047v1",
+      "published": "2026-10-12T16:18:42Z",
+      "updated": "2026-10-12T16:18:42Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "random_designs"
+      ],
+      "keyword_matches": {
+        "random_designs": [
+          "scrambling"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.17017",
+      "version": 1,
+      "title": "Photon-stimulated decay of $χ$-matched ancillas causes unheralded bit flips in bosonic codes",
+      "authors": [
+        "Aleksandr Gulkanov"
+      ],
+      "abstract": "Bosonic codes often read out their syndrome with a transmon ancilla whose computational levels $g$ and $f$ have equal parity and matched dispersive shifts: a decay $f\\to e$ is then heralded and leaves the code intact, while the direct $f\\to g$ is forbidden by parity. We show that the photons of the code open this decay at first order in the ancilla's decay rate. Dressing by the code mode lets the charge noise that limits the ancilla's $T_1$ drive a photon-stimulated Raman decay $|f,n\\rangle\\to|g,n+1\\rangle$, at $(n+1)(χ_{ge}/2g_{01})^2$ times the $f\\to e$ rate for a smooth noise spectrum. When the matching is set by the detuning, the decay costs $\\approxΓ_{fe}/α$ per gate and photon, whatever the coupling strength; a deliberate mismatch or matching by a drive lowers this cost, and a qubit ancilla has no such channel. The opened decay is unheralded and flips a cat with probability $\\approx 1/2$; being first order, it overtakes the second-order double decay $f\\to e\\to g$ as the ancilla improves. In a microscopic model of the Ocelot repetition cat code, it makes the bit-flip floor of the gates grow linearly with the cat size, by a factor 1.2-1.7 from four to ten photons, which would limit the noise bias to $\\sim 10^3$. The published gate data end at four photons and do not yet test this growth.",
+      "url": "https://arxiv.org/abs/2610.17017",
+      "pdf_url": "https://arxiv.org/pdf/2610.17017v1",
+      "published": "2026-10-12T15:58:22Z",
+      "updated": "2026-10-12T15:58:22Z",
+      "categories": [
+        "quant-ph",
+        "cond-mat.supr-con"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "syndrome"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.16707",
+      "version": 1,
+      "title": "Universal Distributed Feature Extraction Complementary to Side Information via H-Score",
+      "authors": [
+        "Yuan Xinjie",
+        "Dier Tang",
+        "Shaolun-Huang"
+      ],
+      "abstract": "This paper considers a distributed estimation system where edge nodes transmit averaged features to a center node for parameter estimation. A key challenge arises when the center node possesses auxiliary side information: how to design local extractors that are universally optimal for any downstream task, while avoiding redundancy with the side information. To tackle this problem, we orthogonally decompose the joint function space and demonstrate in the weak-dependence regime that the modal decomposition of the canonical dependence kernel's conditional-additive component yields optimal, task-independent features. We construct a distributed nested H-score to learn this decomposition and show that, under a limited feature budget, the mean-squared error (MSE) gap to the best task-specific features is determined solely by the task's alignment with the discarded, least informative modes, and vanishes to leading order for every square-integrable task once the budget is sufficient.",
+      "url": "https://arxiv.org/abs/2610.16707",
+      "pdf_url": "https://arxiv.org/pdf/2610.16707v1",
+      "published": "2026-10-12T12:43:00Z",
+      "updated": "2026-10-12T12:43:00Z",
+      "categories": [
+        "cs.IT",
+        "cs.LG",
+        "eess.SP"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "data_hiding"
+      ],
+      "keyword_matches": {
+        "data_hiding": [
+          "side information"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.16401",
+      "version": 1,
+      "title": "Magic-Free Certification of Logical Error Rates in Universal Fault-Tolerant Circuits",
+      "authors": [
+        "Gebrat Porta-San Miguel",
+        "Shahram Panahiyan",
+        "Dieter Jaksch"
+      ],
+      "abstract": "As quantum hardware enters the fault-tolerant regime, algorithms are beginning to be executed on encoded qubits, yet scalable certification of how well they run remains an open problem. Here we introduce magic-free certification, a certification protocol for universal fault-tolerant circuits that consumes no magic, the resource that generally places them beyond efficient classical simulation and is by far the most expensive element of a fault-tolerant computation. The protocol is code- and decoder-agnostic, runs interleaved with the target circuit on the same device, and has a sample complexity that grows linearly with the number of logical qubits and non-Clifford gates while remaining decoupled from the logical error rate itself. Given a predefined error tolerance $p_L^*$, the protocol determines at a chosen confidence level whether the device executes the target circuit at a logical error rate below $p_L^*$. The method relies on trap circuits, copies of the target with every magic state replaced by a stabilizer state, whose outcomes are deterministic and which, being indistinguishable from the target to stochastic Pauli noise, fail at the same rate. We illustrate the protocol in Steane-code simulations of a magic state injection gadget and a quantum Fourier transform.",
+      "url": "https://arxiv.org/abs/2610.16401",
+      "pdf_url": "https://arxiv.org/pdf/2610.16401v1",
+      "published": "2026-10-12T08:40:17Z",
+      "updated": "2026-10-12T08:40:17Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 12,
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer",
+        "quantum_learning"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "logical error"
+        ],
+        "magic_stabilizer": [
+          "magic state",
+          "stabilizer",
+          "non-Clifford",
+          "magic-free"
+        ],
+        "quantum_learning": [
+          "sample complexity"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.16379",
+      "version": 1,
+      "title": "Benchmarking a randomized quantum algorithm for estimating expectation values of molecular observables",
+      "authors": [
+        "Anna Schroeder",
+        "Gian-Luca R. Anselmetti",
+        "Matthias Degroote",
+        "Florian Dommert",
+        "Michael Kaicher",
+        "Chandan Kumar",
+        "Michael Streif",
+        "Davide Vodola"
+      ],
+      "abstract": "Randomized quantum algorithms for the estimation of expectation values of molecular observables offer a promising route to early fault-tolerant quantum advantage by trading circuit depth for an increased number of samples. However, this begs the question whether the resulting measurement overhead remains feasible for industrially relevant molecular systems. In this work, we benchmark the randomized sampling algorithm of Wang et al. [1] through numerical simulations on a hydrogen molecule and resource estimates for various active spaces of the cytochrome P450, an industry-relevant system in the pharmaceutical industry. Our numerical simulations reveal that the analytical error bounds significantly overestimate the actual sampling error, whereas the analytical bound on the required imaginary evolution time is comparatively tight, exceeding a direct DMRG estimate by roughly 44% for the active space where the comparison is feasible. The measurement overhead nevertheless remains prohibitively high: even for the smallest active spaces, the expectation-value estimation alone requires around 1010 samples, scaling to beyond 1015 for the largest active spaces considered. These results suggest that substantial improvements in measurement strategies or algorithmic scaling are necessary before randomized early-fault-tolerant algorithms become competitive for industrial quantum chemistry applications.",
+      "url": "https://arxiv.org/abs/2610.16379",
+      "pdf_url": "https://arxiv.org/pdf/2610.16379v1",
+      "published": "2026-10-12T08:28:24Z",
+      "updated": "2026-10-12T08:28:24Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "circuit depth"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.16375",
+      "version": 1,
+      "title": "Pathfinder-BP: A Low-Latency Recursive Decoder for Topological Codes",
+      "authors": [
+        "Stefano Tinelli",
+        "Francisco Lázaro",
+        "Francisco García Herrero"
+      ],
+      "abstract": "We propose Pathfinder-BP, a recursive decoder for topological quantum codes that combines belief propagation with controlled bit-flipping. An initial BP pass identifies and permanently fixes high-confidence errors. Upon convergence failure, the decoder recursively explores alternative error patterns by tentatively flipping low-confidence variables. On surface codes, Pathfinder-BP achieves a noise threshold and logical error rate comparable to minimum-weight perfect matching (MWPM). A crucial advantage of Pathfinder-BP is its highly parallelizable structure, which yields a worst-case decoding latency quasi-linear in the code distance, making it a suitable candidate for low-latency hardware implementation.",
+      "url": "https://arxiv.org/abs/2610.16375",
+      "pdf_url": "https://arxiv.org/pdf/2610.16375v1",
+      "published": "2026-10-12T08:24:30Z",
+      "updated": "2026-10-12T08:24:30Z",
+      "categories": [
+        "quant-ph",
+        "cs.IT"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "logical error"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.16215",
+      "version": 1,
+      "title": "Minimal Subsystems for Characterizing Genuine Multipartite Entanglement",
+      "authors": [
+        "Shashank Shekhar",
+        "Siddhartha Santra"
+      ],
+      "abstract": "Genuine multipartite entanglement (GME) is a valuable resource for quantum technologies, but quantifying it in many-body systems can be demanding since measures defined through optimizations over bipartitions are often assumed to require large joint measurements and many measurement settings. We introduce the concepts of GME evaluation length and GME evaluation number, which capture, respectively, the largest subsystem that must be jointly measured and the number of distinct subsystems that need to be measured to evaluate multipartite entanglement measures defined via bipartition optimizations. Taking the genuine multipartite concurrence (GMC) as a canonical example, we show that, for $N$-qubit Haar-random pure states, the GMC can be evaluated using only $N$ single-qubit purity measurements. Thus, for typical many-body states, evaluating the GMC requires considering only the $N$ single-site bipartitions, rather than the exponentially many distinct bipartitions. We further corroborate this behavior numerically for physically accessible states generated by local random quantum circuits. Our results show that the practical cost of quantifying GME can be dramatically lower than suggested by its formal definition, establishing measurement complexity as a complementary operational lens for multipartite entanglement.",
+      "url": "https://arxiv.org/abs/2610.16215",
+      "pdf_url": "https://arxiv.org/pdf/2610.16215v1",
+      "published": "2026-10-12T05:45:42Z",
+      "updated": "2026-10-12T05:45:42Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 7,
+      "topics": [
+        "random_designs",
+        "quantum_learning"
+      ],
+      "keyword_matches": {
+        "random_designs": [
+          "Haar-random"
+        ],
+        "quantum_learning": [
+          "measurement complexity"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.16150",
+      "version": 1,
+      "title": "Device-to-protocol simulation of spectrally-resolved quantum photonic circuits",
+      "authors": [
+        "Seongjin Jeon",
+        "Youngbin Kim",
+        "Joaquin Matres",
+        "Dong-Yeop Na",
+        "Young-Ik Sohn"
+      ],
+      "abstract": "Predicting quantum-photonic circuit performance requires retaining source and device physics without making photon-counting calculations prohibitively expensive. Here we present PhoQuS, a framework that combines frequency-resolved source models, electromagnetic compact models and spatially correlated fabrication variation to simulate quantum photonic circuits. Covariance-Gram reduction after full-resolution Gaussian propagation lowers readout cost while retaining dominant spectral correlations. For continuous-variable state preparation, spectral reduction accelerates photon counting by 60.4-fold in an approximate Gottesman-Kitaev-Preskill circuit. Frequency-resolved modeling guides the use of cascaded squeezing with temporal walk-off compensation, yielding 0.99 fidelity to the single-mode circuit reference and 0.98 conditional purity in lossless simulations. For discrete-variable state preparation, simulations of three-photon Greenberger-Horne-Zeilinger circuits across a virtual wafer show that component robustness alone does not predict circuit fidelity, which depends jointly on source spectra, circuit architecture and control. PhoQuS connects device physics to protocol-level performance through a unified workflow that retains spectral detail while reducing readout cost.",
+      "url": "https://arxiv.org/abs/2610.16150",
+      "pdf_url": "https://arxiv.org/pdf/2610.16150v1",
+      "published": "2026-10-12T04:20:56Z",
+      "updated": "2026-10-12T04:20:56Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "state preparation"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.16098",
+      "version": 1,
+      "title": "Noise-resistant off-resonance π-rotation realized in an NMR system",
+      "authors": [
+        "Xilong Wang",
+        "Peng Du",
+        "Tianzi Wang",
+        "Haoxue Qiao",
+        "Wenxian Zhang"
+      ],
+      "abstract": "Precise manipulation of qubits (spins) requires strong suppression of noise arising from couplings between qubits and their environment, as well as from driving field fluctuations. We propose a double-pulse sequence and an eighteen-pulse sequence to realize a single spin pi-rotation under off-resonance conditions (instead of conventional on-resonance or near-resonance conditions). It is proved that the latter sequence performs much better than the former in simultaneously suppressing both dephasing and driving field noise. As a proof of principle, we experimentally demonstrate, by implementing both sequences in an NMR spin system with a polarized initial spin state, that the off-resonance pi-rotation fidelity reaches as high as 0.9992 +/- 0.0008 for the double-pulse sequence and 0.9997 +/- 0.0006 for the eighteen-pulse sequence. In addition, the noise-tolerance range of the eighteen-pulse sequence is about 20 percent of the driving field strength, approximately three times wider than that of the double-pulse sequence. Besides its potential application in the NMR community, our proposal provides an alternative practical way to accurately control qubits by suppressing the coexisting transversal and longitudinal noises.",
+      "url": "https://arxiv.org/abs/2610.16098",
+      "pdf_url": "https://arxiv.org/pdf/2610.16098v1",
+      "published": "2026-10-12T03:05:17Z",
+      "updated": "2026-10-12T03:05:17Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "transversal"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.16018",
+      "version": 1,
+      "title": "Adaptive Entanglement Witnessing for Two-Qubit Systems",
+      "authors": [
+        "Lev Gruber",
+        "Ria Haapala",
+        "Elio Thadhani",
+        "Paco Navarro",
+        "Eritas Yang",
+        "Benjamin Hartley",
+        "Rebecca Verghese",
+        "Oscar Scholin",
+        "Isabel Godoy",
+        "Stuart Kerr",
+        "Brayden Mendoza",
+        "Alec Roberson",
+        "Theresa W. Lynn"
+      ],
+      "abstract": "Entanglement witnesses are a key instrument in determining the entanglement of unknown bipartite qubit systems without requiring a full tomography. Riccardi et al. (2020) proposed a set of two-qubit witnesses, denoted $\\{W^3\\}$, which require a set of local measurements in three bases. In this work we propose an additional set of witnesses, denoted $\\{W^5\\}$, that build on $\\{W^3\\}$ and require measurements in two additional bases. We present an adaptive two-step method that uses the measurement results obtained for $\\{W^3\\}$ to select which $W^5$ to evaluate. We computationally demonstrate that our adaptive two-step protocol can identify 72% of entangled states generated according to the methods of Roik et al. (2021) while requiring measurements in only five of the nine bases needed for full quantum tomography. Additionally, we experimentally verify the behavior of both sets of witnesses using polarization-entangled photon pairs.",
+      "url": "https://arxiv.org/abs/2610.16018",
+      "pdf_url": "https://arxiv.org/pdf/2610.16018v1",
+      "published": "2026-10-12T00:34:29Z",
+      "updated": "2026-10-12T00:34:29Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "quantum_learning"
+      ],
+      "keyword_matches": {
+        "quantum_learning": [
+          "quantum tomography"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.15975",
+      "version": 1,
+      "title": "Scalable Exact Non-Pauli Noise Simulation for Fault-Tolerant Quantum Circuits",
+      "authors": [
+        "Yuewen Hou",
+        "Gokul Subramanian Ravi"
+      ],
+      "abstract": "Fault-tolerant quantum design relies on simulating noisy quantum error correction (QEC) circuits with hundreds to thousands of physical qubits and large circuit depths. High-throughput stabilizer simulators, such as Stim, are the de facto tools for this regime. However, these simulators typically support only Clifford gates and stochastic Pauli noise. As a result, more realistic device noise models-such as coherent control errors and thermal relaxation-are often approximated using Pauli Twirling. This replacement offers speed but can introduce inaccuracies. To address this, we propose QuasiStim for scalable exact QEC simulation of realistic noise, with QuasiFold as a compiler frontend and DeltaFrame as a sampling backend. QuasiFold lowers sampling overhead by merging equivalent non-Pauli sites in the quantum circuit. DeltaFrame samples the resulting stabilizer trajectories by reusing precomputed predicted references instead of resimulating the full tableau for each shot. QuasiFold can reduce the number of shots by over $100\\times$ on bivariate-bicycle (BB) codes. Compared to a per-shot tableau simulator, DeltaFrame is $166\\times$--$1331\\times$ faster on rotated surface-code memory under coherent $R_Z$ noise as $d$ grows from 5 to 35. QuasiStim also makes the PTA bias measurable: the gap is non-negligible and varies with noise strength, decoder, and circuit schedule. QuasiStim will be open-sourced upon publication at https://github.com/isaachyw/QuasiStim",
+      "url": "https://arxiv.org/abs/2610.15975",
+      "pdf_url": "https://arxiv.org/pdf/2610.15975v1",
+      "published": "2026-10-11T23:18:56Z",
+      "updated": "2026-10-11T23:18:56Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 10,
+      "topics": [
+        "benchmarking",
+        "logical_qec",
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "benchmarking": [
+          "Pauli twirling"
+        ],
+        "logical_qec": [
+          "quantum error correction"
+        ],
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.15955",
+      "version": 1,
+      "title": "Quantum simultaneous decoding via pretty-good measurements of tilted states",
+      "authors": [
+        "Mark M. Wilde"
+      ],
+      "abstract": "A multiple-access channel transmits messages from several senders to one receiver. For quantum outputs, the receiver must distinguish states depending on all messages, while tests for different decoding errors may not commute. In this paper, we give a self-contained account of simultaneous decoding, in which one joint measurement recovers the messages at the established achievable rates using independent codebooks. The proof combines Sen's tilted-subspace method with Cheng's analysis of the pretty-good measurement, a standard measurement for distinguishing quantum states. Auxiliary labels close to a common reference state separate the geometric directions associated with different errors. A Gram-matrix bound then allows separately chosen binary tests to certify the performance of one measurement. The labels are removed from the completed decoder, leading to a deterministic packing theorem that applies to finite state ensembles, including unequal priors. We develop the two-sender case first, with worked examples and figures, before treating any fixed number of senders. Sharper finite-error guarantees for the same decoder are developed separately, with sharp bounds for two specified steps of the analysis rather than a claim of globally optimal decoding. Applications recover known achievable rates for unassisted and entanglement-assisted classical communication, distributed classical compression with quantum side information, and coherent-state communication through a beamsplitter or passive multiport device. The common proof makes the geometric mechanism and its quantitative consequences available without repeating the construction for each application.",
+      "url": "https://arxiv.org/abs/2610.15955",
+      "pdf_url": "https://arxiv.org/pdf/2610.15955v1",
+      "published": "2026-10-11T22:21:58Z",
+      "updated": "2026-10-11T22:21:58Z",
+      "categories": [
+        "quant-ph",
+        "cs.IT"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "data_hiding"
+      ],
+      "keyword_matches": {
+        "data_hiding": [
+          "side information"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.15893",
+      "version": 1,
+      "title": "Local-dimension-invariant low-density parity-check stabilizer codes",
+      "authors": [
+        "Md. Shahinul Islam",
+        "Aaryan Reza",
+        "Lane G. Gunderman"
+      ],
+      "abstract": "The protection of quantum information in systems leveraging more than two basis states (qudits) is an ongoing challenge. A tool for transforming the plethora of qubit stabilizer codes into qudit stabilizer codes is the local-dimension-invariant (LDI) extension to the stabilizer formalism. A drawback of the LDI method is that generally in order to ensure the distance of the resultant code is at least preserved the newly selected local-dimension will need to be any prime bigger than a large cutoff value. In this work we consider the repercussions of this large cutoff value, then by focusing on quantum low-density parity-check (qLDPC) codes we are able to bring down this cutoff value. Notably, we are able to reduce it in some cases to the initial local-dimension and for arbitrary CSS qubit-derived codes to singly exponential in $d$ with no dependence on the number of logicals $k$. This reduces the size of the caveat in LDI forms in their distance preservation condition.",
+      "url": "https://arxiv.org/abs/2610.15893",
+      "pdf_url": "https://arxiv.org/pdf/2610.15893v1",
+      "published": "2026-10-11T20:18:20Z",
+      "updated": "2026-10-11T20:18:20Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 6,
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "qLDPC"
+        ],
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.15857",
+      "version": 1,
+      "title": "Low-Latency Belief-Propagation Decoding of Quantum LDPC Codes with Reinforcement-Learned Scheduling",
+      "authors": [
+        "Mohsen Moradi",
+        "Ghilas Aissou",
+        "Taejoon Kim",
+        "Remi A. Chou",
+        "David G. M. Mitchell"
+      ],
+      "abstract": "Belief propagation (BP) is attractive for quantum low-density parity-check (QLDPC) decoding because of its low complexity and low latency, but short cycles and degeneracy can limit its error-correction performance. Reinforcement-learned sequential scheduling (RL-S) substantially improves this performance by adapting the variable node (VN) update order, although Q-table storage and heap-based selection introduce additional overhead. We propose bucket RL-S (B-RL-S), which quantizes learned Q-values into integer priorities and schedules VN updates using dynamically maintained first-in, first-out buckets. Without retraining or changing the BP message updates, B-RL-S reduces policy storage and refreshes only priorities affected by local residual syndrome changes. A fixed number of priority levels enables constant-time VN selection and queue relocation. For the $[[288,12,18]]$ bivariate bicycle code over the depolarizing channel at $p=0.05$, B-RL-S with eight priority levels achieves approximately one fifth the block error rate (BLER) of flooding BP followed by order-10 ordered-statistics decoding. The respective caps are $1000$ sequential iterations for B-RL-S and $1000$ flooding iterations for the BP stage of the reference decoder. These results highlight strong error correction with inexpensive scheduling and no additional post-processing stage.",
+      "url": "https://arxiv.org/abs/2610.15857",
+      "pdf_url": "https://arxiv.org/pdf/2610.15857v1",
+      "published": "2026-10-11T19:23:58Z",
+      "updated": "2026-10-11T19:23:58Z",
+      "categories": [
+        "cs.IT"
+      ],
+      "keyword_score": 5,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "syndrome",
+          "qLDPC",
+          "quantum LDPC"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.15609",
+      "version": 1,
+      "title": "Proposal for a multi-ion optical clock with hundreds of ions",
+      "authors": [
+        "Pavel Kamenskikh",
+        "Vasiliy Smirnov",
+        "Ilya Gerasin",
+        "Ilya Semerikov",
+        "Wei Zhang"
+      ],
+      "abstract": "Scaling trapped-ion optical clocks to hundreds of ions remains a major challenge due to inhomogeneous frequency shifts in large ion crystals. Here, we propose a circular surface-trap architecture for a multi-ion optical clock with hundreds of ions. The rotational symmetry of the ion crystal suppresses the main sources of inhomogeneity, quadrupole shift.We investigate the feasibility of a clock based on a ring crystal of 400 $^{40}\\mathrm{Ca}^{+}$ ions and propose a suitable experimental setup configuration. We have shown that circular configuration of ions leads to suppression by two orders of magnitude of the quadrupole shift comparing to the linear trap. Combined with stray-field compensation and dynamical decoupling techniques, this architecture provides a pathway toward multi-ion optical clocks with fractional frequency uncertainty at the $10^{-18}$ level and an expected 20-fold improvement in frequency stability compared to single ion clocks.",
+      "url": "https://arxiv.org/abs/2610.15609",
+      "pdf_url": "https://arxiv.org/pdf/2610.15609v1",
+      "published": "2026-10-11T13:33:36Z",
+      "updated": "2026-10-11T13:33:36Z",
+      "categories": [
+        "physics.atom-ph",
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "decoupling"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.15586",
+      "version": 1,
+      "title": "Riemannian Formulation of Sample-Based Quantum Krylov Solvers for Elliptic Problems: Energy-Norm Guarantees and Duct-Flow Applications",
+      "authors": [
+        "Doyeol \"David\" Ahn",
+        "Byeongyong Park"
+      ],
+      "abstract": "Sample-based quantum linear solvers measure quantum Krylov states $e^{-iAT}|b\\rangle$ and reconstruct the solution of $Ax=b$ classically on the observed basis states. We develop this approach for positive-definite systems that arise from elliptic partial differential equations. We show that the sampling guarantees hold in any fixed basis with an efficient transform. We then replace the variational reconstruction by a Galerkin solve on the sampled set. For this reconstruction we derive expected and high-probability energy-norm error bounds, a sample complexity in terms of the smallest sampling probability on an essential set, a computable residual certificate, and a support-completeness theorem for the dephased outcome law. We formulate the method for elliptic problems on Riemannian cross sections. In two dimensions the stiffness matrix is metric-independent in conformal coordinates, and curved vessels lead to the same matrix class. Killing symmetries of the cross section give selection rules for the measurement outcomes, and the Lie derivative of the metric gives first-order bounds for geometric perturbations. We separate operator approximations, whose effect we bound, from sampler approximations, which affect coverage but not the target. As examples we treat the implicit step of pulsatile flow in elliptic, lens-shaped, and curved ducts. In simulations of up to 12 qubits, the number of Fourier modes required for 1% error grows from 14 to 60 while the number of unknowns grows from 64 to 4096. A classical residual-greedy selection is nevertheless more efficient than quantum sampling in all cases studied, consistent with the low measured sampling efficiency. On a six-qubit trapped-ion processor, the measured outcome laws follow a replacement-noise model whose strength grows by about 0.6% per two-qubit gate, and a parity selection rule rejects shots at the predicted rate.",
+      "url": "https://arxiv.org/abs/2610.15586",
+      "pdf_url": "https://arxiv.org/pdf/2610.15586v1",
+      "published": "2026-10-11T12:56:52Z",
+      "updated": "2026-10-11T12:56:52Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "quantum_learning"
+      ],
+      "keyword_matches": {
+        "quantum_learning": [
+          "sample complexity"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.15083",
+      "version": 1,
+      "title": "Generative learning of time series with holographic quantum circuit sampling",
+      "authors": [
+        "Bingzhi Zhang",
+        "Matthew W. Lee",
+        "Tom Finke",
+        "Quntao Zhuang"
+      ],
+      "abstract": "Quantum generative models face growing qubit requirements and concentrated loss landscapes when learning long time series. Here we introduce holographic quantum circuit sampling (HQCS), which combines mid-circuit measurements, qubit reuse and independently parameterized temporal blocks to generate trajectories with a fixed number of qubits. For Haar-random HQCS and a normalized exponential kernel, we prove inverse-polynomial bounds on maximum mean discrepancy loss variance, contrasting with exponential concentration in global Haar-random generators. For generic members of a family of nonstationary Markov processes, temporal parameterization reduces exact-generation gate counts from quadratic to linear in sequence length relative to a specified class of repeated shared-block generators. Simulations demonstrate learning of Gaussian autoregressive processes and historical Volatility Index (VIX) trajectories, with the latter achieving over tenfold lower maximum mean discrepancy than the tested classical benchmarks. These results establish a framework for quantum time-series generation with fixed qubit requirements and provable avoidance of exponential loss concentration as sequence length grows.",
+      "url": "https://arxiv.org/abs/2610.15083",
+      "pdf_url": "https://arxiv.org/pdf/2610.15083v1",
+      "published": "2026-10-10T17:32:27Z",
+      "updated": "2026-10-10T17:32:27Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "random_designs"
+      ],
+      "keyword_matches": {
+        "random_designs": [
+          "Haar-random"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.15021",
+      "version": 1,
+      "title": "Entanglement detection in dynamical quantum systems",
+      "authors": [
+        "Xingjian Zhang",
+        "Jiayi Wu",
+        "Jue Xu",
+        "Qi Zhao"
+      ],
+      "abstract": "Quantum science and engineering increasingly target the exploitation and control of large-scale dynamical systems. As system size grows, novel phenomena and quantum advantages emerge, but the resulting many-body dynamics become correspondingly harder to monitor and characterize. In particular, the underlying Hamiltonian often lacks symmetries, and the induced many-body dynamics quickly become hard to track. Focusing on one of the most important quantum features---entanglement---we demonstrate that, for a broad class of common Hamiltonian models, one can design effective witnesses that detect both the presence and structure of entanglement over relatively long evolution times. Inspired by stabilizer-based simulation, we track the evolution of generalized stabilizers of the underlying state and use them to construct linear entanglement witnesses. Through numerical experiments on Heisenberg-type Hamiltonians with up to twelve qubits, we show that the required number of measurement settings can be kept at a modest scale as the system size increases, and entanglement detection remains effective over evolution times that significantly exceed those accessible to naive approaches. The corresponding calculations can be carried out largely symbolically. Furthermore, unlike accurate state simulation, the stabilizer-based design of entanglement witnesses can be performed in a much more coarse-grained, digitized manner. We hope these results will stimulate further exploration of the quantum control of large systems.",
+      "url": "https://arxiv.org/abs/2610.15021",
+      "pdf_url": "https://arxiv.org/pdf/2610.15021v1",
+      "published": "2026-10-10T15:56:36Z",
+      "updated": "2026-10-10T15:56:36Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.14778",
+      "version": 1,
+      "title": "Avoiding Defects within Heavy-Hexagon Architecture",
+      "authors": [
+        "Hansol Kim",
+        "Younghun Kwon"
+      ],
+      "abstract": "When implementing scalable fault-tolerant quantum computing using superconducting quantum processors, one of the critical challenges to overcome is the presence of defective qubits arising from fabrication and calibration imperfections. A defect on a specific qubit severely restricts the connectivity between adjacent qubits, disrupts stabilizer measurements, induces frequent detection events, and consequently inflates the logical error rate. To mitigate this issue, various strategies have been proposed, such as syndrome extraction circuits based on stabilizer folding and the construction of super-stabilizers via gauge operators. However, these methods have primarily been developed for architectures with relatively high connectivity of 3 to 4. Furthermore, experimental demonstrations showing an actual reduction in logical error rates in the presence of physical hardware defects have been lacking. In this work, we propose a defect-avoidance scheme tailored for the heavy-hexagon architecture, which features a lower connectivity of 2 to 3. While previous approaches required four measurement cycles to measure all gauge operators comprising a super-stabilizer, our proposed scheme completes all gauge measurements within only two cycles. We experimentally validate this approach on IBM quantum hardware by identifying physical defects and implementing the defect-avoidance circuits. As a result, avoiding the defect yields an approximately 10\\% reduction in the logical error rate per cycle for both logical $X$ and $Z$ errors. These findings demonstrate that defects in superconducting hardware can be successfully handled even under the constrained connectivity of heavy-hexagon lattices, and that defect avoidance substantially reduces logical errors on real quantum hardware.",
+      "url": "https://arxiv.org/abs/2610.14778",
+      "pdf_url": "https://arxiv.org/pdf/2610.14778v1",
+      "published": "2026-10-10T10:02:47Z",
+      "updated": "2026-10-10T10:02:47Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 7,
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "logical error",
+          "syndrome"
+        ],
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.14758",
+      "version": 1,
+      "title": "Clifford Invariants and Three-Copy Quantum Tests",
+      "authors": [
+        "Xingya Fan",
+        "Yongzhi Luan"
+      ],
+      "abstract": "We give an explicit treatment of the third tensor power of the Clifford representation on $n$ qutrits, for $n\\geq2$. This representation has five pairwise inequivalent irreducible constituents, with multiplicities $1,1,1,1,2$. The decomposition reduces the Clifford twirl of a tensor cube to four real parameters. Two of them are spectral moments of the input. The other two are cubic invariants expressed as sums of cubes of the Weyl characteristic function and the discrete Wigner function. On trace-one Hermitian matrices, the invariant polynomials of degree at most three are spanned by the constant function and four algebraically independent functions. These functions do not separate Clifford orbits. For pure inputs a single parameter suffices. We recover its range and the characterization of its maximum by stabilizer states. We bound the stabilizer fidelity, determine full separability across the three copies in the symmetric family, and recover the criterion for a complex projective $3$-design. We classify the jointly invariant quantum Boolean functions. For stabilizer testing and for testing unknown observables we give explicit bounds on copies and queries. We also give character formulas for the finite projective Clifford groups and record the complete character table for two qutrits.",
+      "url": "https://arxiv.org/abs/2610.14758",
+      "pdf_url": "https://arxiv.org/pdf/2610.14758v1",
+      "published": "2026-10-10T09:26:55Z",
+      "updated": "2026-10-10T09:26:55Z",
+      "categories": [
+        "quant-ph",
+        "math.GR",
+        "math.RT"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.14424",
+      "version": 1,
+      "title": "Exponential Quantum Advantage in Stationary Signal Sensing",
+      "authors": [
+        "Sojeong Park",
+        "Changhun Oh"
+      ],
+      "abstract": "Sensing time-varying signals is essential for precision measurement and for characterizing fluctuations in physical systems. In this work, we show that quantum entanglement provides an exponential advantage in the acquisition time required to learn the temporal statistics of a stationary classical signal. The task is to estimate the characteristic function of joint displacements on selected bosonic modes within a fixed-duration window, using continuous measurements of one signal realization. We present an entanglement-assisted scheme based on two-mode squeezed probes and local Bell measurements with protected idlers, and bound its acquisition time accounting for readout noise and correlations between signal windows. For a strictly stationary pulse family, it achieves polynomial acquisition time at inverse-polynomial accuracy with logarithmic squeezing and polynomial photon number. On the other hand, we prove that any local idler-free protocols require acquisition time exponential in the number of selected temporal modes per window. This lower bound holds for both sequentially prepared and arbitrarily temporally entangled probes, allowing non-Gaussian inputs and measurements and causal classical feedback, as long as each output is measured destructively within its time bin. These results establish an exponential quantum learning advantage for a single continuously monitored stationary signal, with the sensing cost measured by total acquisition time.",
+      "url": "https://arxiv.org/abs/2610.14424",
+      "pdf_url": "https://arxiv.org/pdf/2610.14424v1",
+      "published": "2026-10-10T00:43:09Z",
+      "updated": "2026-10-10T00:43:09Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "quantum_learning"
+      ],
+      "keyword_matches": {
+        "quantum_learning": [
+          "quantum learning"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.14192",
+      "version": 1,
+      "title": "Lifting an $[n,k,d]$ Binary Linear Code to an $[[n,k,d]]$ Quantum Stabilizer Code",
+      "authors": [
+        "Thamadathil Aswanth",
+        "Navin Kashyap"
+      ],
+      "abstract": "The codeword stabilized (CWS) framework provides a systematic method for constructing quantum error correcting codes from a simple undirected graph and a classical code. When the underlying classical code is linear, the resulting quantum code is a stabilizer code. In this work, we investigate the conditions under which an arbitrary $[n,k,d]$ classical binary linear code can be lifted to an $[[n,k,d]]$ quantum stabilizer code using the CWS framework. We analyze the random CWS code constructed from a given $[n,k,d]$ binary linear code $\\mathcal{C}$ and an Erdős-Rényi random graph $\\mathrm{G}(n, \\frac12)$. We establish a lower bound on the probability that the resulting quantum code preserves the minimum distance $d$ of the classical code. This probabilistic analysis yields a Gilbert-Varshamov-type condition on the $n,k,d$ parameters of the classical code that guarantees the existence of a graph resulting in a quantum code with the same $n,k,d$ parameters.",
+      "url": "https://arxiv.org/abs/2610.14192",
+      "pdf_url": "https://arxiv.org/pdf/2610.14192v1",
+      "published": "2026-10-09T18:07:19Z",
+      "updated": "2026-10-09T18:07:19Z",
+      "categories": [
+        "quant-ph",
+        "cs.IT"
+      ],
+      "keyword_score": 6,
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correcting"
+        ],
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.14125",
+      "version": 1,
+      "title": "Hamiltonian-Dependent Compressibility and Physical Preservation in Approximate Quantum Compilation using Tensor Networks",
+      "authors": [
+        "Dohyun Kim",
+        "Namshik Han"
+      ],
+      "abstract": "Approximate quantum compilation (AQC) using tensor networks provides a promising route to reducing the circuit resources required for quantum simulation. However, the factors governing the compressibility of many-body dynamics and the extent to which compressed circuits retain physically relevant information on quantum hardware remain poorly understood. We investigate these questions using AQCtensor for an 80-qubit one-dimensional anisotropic XYZ Heisenberg chain initialized in a Néel state. By varying the exchange anisotropy and external magnetic field, we find that compression performance changes systematically with the anisotropic coupling configuration and field orientation. These variations are strongly associated with a nested-commutator measure related to second-order Trotter error, with corresponding directional trends also reflected in the target-state MPS bond dimension. For an 80-qubit quantum-hardware evaluation, AQCtensor compresses a 10-repetition target evolution to 5 repetitions while retaining a target-state fidelity of 0.995474, reducing the total circuit depth by 45.9% and the two-qubit gate count by 47.6%. The compressed circuit exhibits comparable behavior across magnetization, nearest-neighbor correlation, and Hamiltonian expectation measurements, while process-level diagnostics and local reduced-state tomography provide complementary characterization beyond these observables. Together, these results link AQCtensor compressibility to Hamiltonian commutator structure and target-state complexity and demonstrate substantial circuit reduction while retaining physically relevant features in an 80-qubit quantum-hardware experiment.",
+      "url": "https://arxiv.org/abs/2610.14125",
+      "pdf_url": "https://arxiv.org/pdf/2610.14125v1",
+      "published": "2026-10-09T10:48:21Z",
+      "updated": "2026-10-09T10:48:21Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "circuit depth"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-10-14T04:59:39Z"
+    },
+    {
+      "id": "doi:10.1103/d7b9-ctw2",
+      "version": 1,
+      "title": "Tripartite Haar Random State Has No Bipartite Entanglement",
+      "authors": [
+        "Zhi Li, Takato Mori, and Beni Yoshida"
+      ],
+      "abstract": "We show that no Einstein-Podolsky-Rosen (EPR)–like bipartite entanglement can be distilled from a tripartite Haar random state | Ψ ⟩ A B C by local unitaries or local operations when each subsystem A , B , or C has fewer than half of the total qubits. Specifically, we derive an upper bound on the probability of sampling a state with EPR-like entanglement at a given EPR fidelity tolerance, showing a doubly exponential suppression in the number of qubits. Our proof relies on a simple volume argument supplemented by an ε -net argument and concentration of measure. Viewing | Ψ ⟩ A B C as a bipartite quantum error-correcting code C → A B , this implies that neither output subsystem A nor B supports any nontrivial logical operator. We also establish general constraints on the structure of tripartite entanglement in Haar random states, showing that W- or Greenberger-Horne-Zeilinger–like entanglement cannot be distilled and that nontrivial global symmetries are absent. Finally, we discuss a physical interpretation in the AdS/CFT correspondence, indicating that a connected entanglement wedge does not necessarily imply bipartite entanglement, contrary to a previous belief.",
+      "abstract_basis": "crossref_abstract",
+      "abstract_source_url": "https://api.crossref.org/journals/2160-3308/works?filter=from-online-pub-date%3A2026-10-11%2Cuntil-online-pub-date%3A2026-10-14%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
+      "url": "https://journals.aps.org/prx/abstract/10.1103/d7b9-ctw2",
+      "pdf_url": "",
+      "published": "2026-10-13T10:00:00Z",
+      "updated": "2026-10-13T10:00:00Z",
+      "categories": [],
+      "sources": [
+        "prx"
+      ],
+      "publication": {
+        "journal_id": "prx",
+        "journal": "Physical Review X",
+        "doi": "10.1103/d7b9-ctw2",
+        "url": "https://journals.aps.org/prx/abstract/10.1103/d7b9-ctw2",
+        "published": "2026-10-13T10:00:00Z",
+        "date_basis": "publisher_rss"
+      },
+      "keyword_score": 7,
+      "topics": [
+        "logical_qec",
+        "random_designs"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error-correcting"
+        ],
+        "random_designs": [
+          "Haar random"
+        ]
+      },
+      "first_seen_at": "2026-10-14T04:59:39Z"
     }
   ],
   "screened": {
@@ -7503,13 +9084,11 @@
     },
     "doi:10.1103/vp11-s9sl": {
       "status": "awaiting_publication",
-      "at": "2026-10-14T02:26:26Z"
+      "at": "2026-10-14T04:59:39Z"
     },
     "doi:10.1103/4xr6-2w3d": {
-      "status": "keyword_rejected",
-      "score": 0,
-      "at": "2026-10-14T02:26:26Z",
-      "metadata_fingerprint": "87577c2d6b1a7eed20b6bc237f5bd86b2deb81afafad6dcee5955f34c4335e45"
+      "status": "awaiting_publication",
+      "at": "2026-10-14T04:59:39Z"
     },
     "doi:10.1103/d1cq-gj9p": {
       "status": "keyword_rejected",
@@ -7532,8 +9111,8 @@
     "doi:10.1038/s41467-026-78155-y": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-14T02:26:26Z",
-      "metadata_fingerprint": "8e66abcc684e8d0674ce0821aab912b3aa55890558d215efe5fa0c0f6b60fd1e"
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "0cb814d26f3e74123b864f3182a3c3cb55a7f751851ed194c881a05335862f83"
     },
     "doi:10.1038/s41467-026-78271-9": {
       "status": "keyword_rejected",
@@ -7544,20 +9123,20 @@
     "doi:10.1038/s41467-026-78512-x": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-14T02:26:26Z",
-      "metadata_fingerprint": "b5d0fdab3136d0142386166f4f8746e9d2fecba03ad4cfd6167d7d0a27a43269"
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "cfdcfe61d0bee32d9f5480ff9c4e5cece09fc76bf592474fbde24ae956b8affe"
     },
     "doi:10.1038/s41467-026-74719-0": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-14T02:26:26Z",
-      "metadata_fingerprint": "7b0e76925fd35bbedbc5f530ca0f4b53fb5b9b98ce581ba5624f09c6e6d9a786"
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "bb8f1f20e55096095cf87007f13590243a3ef4fbbdf7c2f98a5e180b1932de75"
     },
     "doi:10.1038/s41467-026-78305-2": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-14T02:26:26Z",
-      "metadata_fingerprint": "c3aca1cbc3b10eaeea744c3eede50bceeec46229b2edda8a38300eb21c06a88f"
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "0b98c05708d0e35ad32e8a3b2c124d84ecbcad4d09127de7b4da8a8969c6452c"
     },
     "doi:10.1038/s41467-026-78119-2": {
       "status": "keyword_rejected",
@@ -7928,31 +9507,1437 @@
     "doi:10.1038/s41534-026-01384-y": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-14T02:26:26Z",
-      "metadata_fingerprint": "4afd955c62493153abb0d9c40f92a4e29c399fd38ba7a25efc7667ec53a9f9b5"
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "065663aa22a3f74eea47323371f1d6fba2e0bb6c4a06db7e93c040d3d5da85bc"
     },
     "doi:10.1038/s41534-026-01396-8": {
       "status": "keyword_rejected",
       "score": 0,
       "at": "2026-10-14T02:26:26Z",
       "metadata_fingerprint": "392e25018f01dd47e7477895be826ffd6fbaca90713f6647dee16a99a6cb2f82"
+    },
+    "2610.18527": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.18474": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.18409": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.18401": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.18365": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.18362": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.18288": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.18267": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.18245": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.18237": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.18236": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.18203": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.18202": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.18184": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.18131": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.18061": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.18029": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.18028": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.18021": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17971": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17949": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17943": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17934": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17923": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17911": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17897": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17887": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17883": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17871": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17855": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17834": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17826": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17790": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17785": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17773": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17755": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17736": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17708": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17683": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17682": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17664": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17655": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17632": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17599": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17592": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17583": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17581": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17570": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17499": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17475": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17470": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17464": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17454": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17453": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17447": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17395": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17367": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17351": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17334": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17328": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17322": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17300": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17286": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17269": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17257": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17236": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17228": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17225": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17219": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17198": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17193": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17176": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17170": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17163": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17156": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17120": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17100": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17088": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17058": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17050": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17038": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17025": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.17006": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16976": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16939": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16926": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16915": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16889": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16882": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16871": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16864": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16854": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16827": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16819": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16797": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16796": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16770": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16719": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16702": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16699": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16687": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16683": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16673": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16643": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16638": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16628": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16626": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16613": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16609": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16561": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16556": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16549": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16535": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16512": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16497": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16493": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16481": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16468": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16390": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16389": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16363": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16358": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16351": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16328": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16317": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16286": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16283": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16270": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16267": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16240": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16233": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16210": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16209": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16207": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16198": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16181": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16153": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16138": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16126": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16124": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16121": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16072": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16069": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16064": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16062": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16055": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16046": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16033": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16032": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.16020": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15976": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15972": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15909": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15905": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15879": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15877": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15874": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15868": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15847": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15842": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15815": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15791": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15783": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15774": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15771": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15767": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15749": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15748": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15746": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15743": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15716": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15701": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15664": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15663": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15656": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15655": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15654": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15641": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15631": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15601": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15554": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15549": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15546": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15535": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15530": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15526": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15490": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15480": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15478": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15475": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15430": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15423": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15420": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15413": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15402": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15377": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15364": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15329": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15317": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15312": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15306": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15252": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15249": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15233": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15210": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15199": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15192": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15184": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15148": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15110": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.15057": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14954": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14938": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14905": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14890": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14882": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14788": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14785": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14765": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14665": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14641": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14615": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14602": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14591": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14580": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14545": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14533": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14516": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14472": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14467": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14454": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14451": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14435": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14425": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14413": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14411": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14387": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14361": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14358": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14308": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14263": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14259": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14208": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14202": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14177": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14171": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14165": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14139": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14126": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14108": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14107": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14088": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14081": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14079": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14070": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "2610.14062": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "doi:10.1103/1kr5-jlcb": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "0429d01d41ea618472287e00db623fb313b28b25b168cf2b966794c1d1ae97f2"
+    },
+    "doi:10.1103/74gr-cq5n": {
+      "status": "awaiting_publication",
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "doi:10.1103/x4f8-pfj2": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "772971cae227b263aa55a2803a83d557deb8591175a251a9c55950d2d537d310"
+    },
+    "doi:10.1103/wx56-plcm": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "751e8c4f4cb2f0fc7e8438193e523877221391e3f3e8413447924f0a97d1f691"
+    },
+    "doi:10.1103/qygr-6xcg": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "0ba3370277c7e28eb37e2bc188f24bb6b814d143732c13af4ab06584ed60fb81"
+    },
+    "doi:10.1103/qpsf-nlp9": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "085b037a0283f66df7db8fe30cbd092c2b237f0fecced3c5fc5de92f334ac365"
+    },
+    "doi:10.1103/lz37-crg1": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "75fbc21d8d764a40c2616fcb74c80c044caa7865d719e96a76e936f672b851d2"
+    },
+    "doi:10.1103/jj8p-zmw2": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "24d1d089181309ae18bf44adc5a4974b18d56a62eab1c1e4efdb2b37c0af1b79"
+    },
+    "doi:10.1103/c9c4-xnrv": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "92d867804de4f4592c51c8c1f41ecdfbcb54f086e088db159afac636dc27fa5b"
+    },
+    "doi:10.1103/xlxf-y4vg": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "9836d7f274845f44e4fde7dc7745eed9c71345ba445224510f86b16eb3ae2c70"
+    },
+    "doi:10.1103/szcj-44xj": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "15fa9c9bb00c295f12aa50da1be615dfcb8f812669dca631c1e7dcaff1d4b25e"
+    },
+    "doi:10.1103/p9t6-8nzn": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "b6dd981842e5646affcadff4596a3ad1560ee7d78a29d2aa3d3dd5ba1ec487d5"
+    },
+    "doi:10.1103/p38y-wyrj": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "81a7a82c2341f9803ff1a55a8b3ec9b27625e9ec20aaad8b8f910faaf18588d7"
+    },
+    "doi:10.1103/nn4l-qvyj": {
+      "status": "awaiting_publication",
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "doi:10.1103/jkkp-z93h": {
+      "status": "awaiting_publication",
+      "at": "2026-10-14T04:59:39Z"
+    },
+    "doi:10.1103/hlk5-589d": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "2a9684713506fb9e8ccf66b1c7a7e171fc1b3314fb9f6923b40abcb6c42e9456"
+    },
+    "doi:10.1103/h2lm-whld": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "35ed5c56a0af3b0359b712b7bea9cfa34d37040756490d19a208d3cbfacbb940"
+    },
+    "doi:10.1103/bzz4-ggnm": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "73c0fe65b56ddb5016d3816ddf9161c7a14ffe40b922051b016ecd486368f4ed"
+    },
+    "doi:10.1103/b8qp-v38m": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "7554fc7087b9bfa2fec64a7253ee1a33f8ceca315ea738372e784533e74685a6"
+    },
+    "doi:10.1103/6524-bj1x": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "cacf14fdfabf3e4df87f2f665b188b0ab9e182c973e00219a50b56270bd728fb"
+    },
+    "doi:10.1103/63ng-lf5t": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "d3c93d5d69b47dcab6dbff3df7a759f6eb0db87243a891c4dbc9c6d875bf5bb3"
+    },
+    "doi:10.1103/25gn-bfgw": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T04:59:39Z",
+      "metadata_fingerprint": "c5ffdc718f1bc20e69f24c1523883b19acf6df85c25c491cf31ddb61e3891f4a"
     }
   },
-  "last_successful_run": "2026-10-13T06:51:03Z",
+  "last_successful_run": "2026-10-14T04:59:39Z",
   "last_run": {
-    "fetched": 420,
-    "keyword_candidates": 0,
-    "analyzed": 2,
-    "selected": 2,
-    "pending": 27,
+    "fetched": 618,
+    "keyword_candidates": 44,
+    "analyzed": 0,
+    "selected": 0,
+    "pending": 72,
     "lookback_days": 7,
-    "source": "journals",
+    "source": "all",
     "date_basis": "initial_submission",
-    "journal_fetched": 81,
-    "journal_queued": 2
+    "journal_fetched": 102,
+    "journal_queued": 1
   },
   "is_demo": false,
-  "last_collection_run": "2026-10-14T02:26:26Z",
+  "last_collection_run": "2026-10-14T04:59:39Z",
   "last_analysis_run": "2026-10-14T02:26:26Z",
   "last_analysis_batch": {
     "analyzed": 2,
@@ -7974,232 +10959,229 @@
     "papers": 17,
     "description": "Detailed Chinese reports and original English abstracts; stable article URLs and RSS GUIDs."
   },
-  "last_arxiv_collection_run": "2026-10-13T06:51:03Z",
+  "last_arxiv_collection_run": "2026-10-14T04:59:39Z",
   "publication_reviews_pending": [],
   "journal_source_status": {
     "nature": {
       "journal": "Nature",
       "status": "ok",
-      "checked_at": "2026-10-14T02:21:59.221057Z",
       "window_start": "2026-10-11",
       "window_end": "2026-10-14",
+      "checked_at": "2026-10-14T04:59:39.013403Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://www.nature.com/nature.rss",
           "status": "ok",
-          "http_status": 200,
           "research_records": 7
         }
       ],
       "warnings": [],
-      "coverage": "Live official RSS responses from this turn; supplemented by already probed Crossref online-publication records. Rolling feed limits and late metadata deposits may omit papers.",
       "crossref": {
         "status": "ok",
-        "http_status": 200,
-        "total_results": 93,
-        "date_basis": "published-online",
-        "source_url": "https://api.crossref.org/journals/1476-4687/works?filter=from-online-pub-date%3A2026-10-07%2Cuntil-online-pub-date%3A2026-10-14%2Ctype%3Ajournal-article&rows=100&sort=published-online&order=desc"
+        "total_results": 26,
+        "returned_research_records": 3,
+        "date_basis": "published-online"
       },
-      "collected": 3
+      "collected": 3,
+      "abstract_enrichment_attempts": 0,
+      "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "science": {
       "journal": "Science",
-      "status": "partial",
-      "checked_at": "2026-10-14T02:21:59.221057Z",
+      "status": "ok",
       "window_start": "2026-10-11",
       "window_end": "2026-10-14",
+      "checked_at": "2026-10-14T04:59:39.013403Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://feeds.science.org/rss/science.xml",
           "status": "ok",
-          "http_status": 200,
           "research_records": 22
         },
         {
           "url": "https://feeds.science.org/rss/science-aop.xml",
           "status": "ok",
-          "http_status": 200,
           "research_records": 14
         }
       ],
-      "warnings": [
-        "HTTP Error 429: Too Many Requests"
-      ],
-      "coverage": "Live official RSS responses from this turn; supplemented by already probed Crossref online-publication records. Rolling feed limits and late metadata deposits may omit papers.",
+      "warnings": [],
       "crossref": {
-        "status": "skipped",
-        "http_status": 429,
-        "error": "HTTP Error 429: Too Many Requests"
+        "status": "ok",
+        "total_results": 0,
+        "returned_research_records": 0,
+        "date_basis": "published-online"
       },
-      "collected": 0
+      "collected": 0,
+      "abstract_enrichment_attempts": 0,
+      "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "nature_physics": {
       "journal": "Nature Physics",
-      "status": "partial",
-      "checked_at": "2026-10-14T02:21:59.221057Z",
+      "status": "ok",
       "window_start": "2026-10-11",
       "window_end": "2026-10-14",
+      "checked_at": "2026-10-14T04:59:39.013403Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://www.nature.com/nphys.rss",
           "status": "ok",
-          "http_status": 200,
           "research_records": 8
         }
       ],
-      "warnings": [
-        "HTTP Error 429: Too Many Requests"
-      ],
-      "coverage": "Live official RSS responses from this turn; supplemented by already probed Crossref online-publication records. Rolling feed limits and late metadata deposits may omit papers.",
+      "warnings": [],
       "crossref": {
-        "status": "skipped",
-        "http_status": 429,
-        "error": "HTTP Error 429: Too Many Requests"
+        "status": "ok",
+        "total_results": 3,
+        "returned_research_records": 3,
+        "date_basis": "published-online"
       },
-      "collected": 3
+      "collected": 3,
+      "abstract_enrichment_attempts": 1,
+      "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "prx": {
       "journal": "Physical Review X",
-      "status": "partial",
-      "checked_at": "2026-10-14T02:21:59.221057Z",
+      "status": "ok",
       "window_start": "2026-10-11",
       "window_end": "2026-10-14",
+      "checked_at": "2026-10-14T04:59:39.013403Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://feeds.aps.org/rss/recent/prx.xml",
           "status": "ok",
-          "http_status": 200,
           "research_records": 97
         }
       ],
-      "warnings": [
-        "HTTP Error 429: Too Many Requests"
-      ],
-      "coverage": "Live official RSS responses from this turn; supplemented by already probed Crossref online-publication records. Rolling feed limits and late metadata deposits may omit papers.",
+      "warnings": [],
       "crossref": {
-        "status": "skipped",
-        "http_status": 429,
-        "error": "HTTP Error 429: Too Many Requests"
+        "status": "ok",
+        "total_results": 3,
+        "returned_research_records": 3,
+        "date_basis": "published-online"
       },
-      "collected": 0
+      "collected": 3,
+      "abstract_enrichment_attempts": 1,
+      "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "prl": {
       "journal": "Physical Review Letters",
-      "status": "partial",
-      "checked_at": "2026-10-14T02:21:59.221057Z",
+      "status": "ok",
       "window_start": "2026-10-11",
       "window_end": "2026-10-14",
+      "checked_at": "2026-10-14T04:59:39.013403Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://feeds.aps.org/rss/recent/prl.xml",
           "status": "ok",
-          "http_status": 200,
           "research_records": 99
         }
       ],
-      "warnings": [
-        "HTTP Error 429: Too Many Requests"
-      ],
-      "coverage": "Live official RSS responses from this turn; supplemented by already probed Crossref online-publication records. Rolling feed limits and late metadata deposits may omit papers.",
+      "warnings": [],
       "crossref": {
-        "status": "skipped",
-        "http_status": 429,
-        "error": "HTTP Error 429: Too Many Requests"
+        "status": "ok",
+        "total_results": 20,
+        "returned_research_records": 20,
+        "date_basis": "published-online"
       },
-      "collected": 0
+      "collected": 20,
+      "abstract_enrichment_attempts": 4,
+      "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "prx_quantum": {
       "journal": "PRX Quantum",
       "status": "ok",
-      "checked_at": "2026-10-14T02:21:59.221057Z",
       "window_start": "2026-10-11",
       "window_end": "2026-10-14",
+      "checked_at": "2026-10-14T04:59:39.013403Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://feeds.aps.org/rss/recent/prxquantum.xml",
           "status": "ok",
-          "http_status": 200,
           "research_records": 99
         }
       ],
       "warnings": [],
-      "coverage": "Live official RSS responses from this turn; supplemented by already probed Crossref online-publication records. Rolling feed limits and late metadata deposits may omit papers.",
       "crossref": {
         "status": "ok",
-        "http_status": 200,
-        "total_results": 10,
-        "date_basis": "published-online",
-        "source_url": "https://api.crossref.org/journals/2691-3399/works?filter=from-online-pub-date%3A2026-10-07%2Cuntil-online-pub-date%3A2026-10-14%2Ctype%3Ajournal-article&rows=100&sort=published-online&order=desc"
+        "total_results": 3,
+        "returned_research_records": 3,
+        "date_basis": "published-online"
       },
-      "collected": 3
+      "collected": 3,
+      "abstract_enrichment_attempts": 2,
+      "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "nature_communications": {
       "journal": "Nature Communications",
       "status": "partial",
-      "checked_at": "2026-10-14T02:21:59.221057Z",
       "window_start": "2026-10-11",
       "window_end": "2026-10-14",
+      "checked_at": "2026-10-14T04:59:39.013403Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://www.nature.com/ncomms.rss",
-          "status": "ok",
-          "http_status": 200,
-          "research_records": 7
+          "status": "skipped",
+          "error": "Journal feed is malformed XML"
         }
       ],
       "warnings": [
-        "Crossref probe used rows100, result cap reached; production uses rows1000."
+        "Journal feed is malformed XML"
       ],
-      "coverage": "Live official RSS responses from this turn; supplemented by already probed Crossref online-publication records. Rolling feed limits and late metadata deposits may omit papers.",
       "crossref": {
         "status": "ok",
-        "http_status": 200,
-        "total_results": 192,
-        "date_basis": "published-online",
-        "source_url": "https://api.crossref.org/journals/2041-1723/works?filter=from-online-pub-date%3A2026-10-07%2Cuntil-online-pub-date%3A2026-10-14%2Ctype%3Ajournal-article&rows=100&sort=published-online&order=desc"
+        "total_results": 71,
+        "returned_research_records": 67,
+        "date_basis": "published-online"
       },
-      "collected": 69
+      "collected": 67,
+      "abstract_enrichment_attempts": 0,
+      "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "npj_quantum_information": {
       "journal": "npj Quantum Information",
-      "status": "ok",
-      "checked_at": "2026-10-14T02:21:59.221057Z",
+      "status": "partial",
       "window_start": "2026-10-11",
       "window_end": "2026-10-14",
+      "checked_at": "2026-10-14T04:59:39.013403Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://www.nature.com/npjqi.rss",
-          "status": "ok",
-          "http_status": 200,
-          "research_records": 8
+          "status": "skipped",
+          "error": "Journal feed is malformed XML"
         }
       ],
-      "warnings": [],
-      "coverage": "Live official RSS responses from this turn; supplemented by already probed Crossref online-publication records. Rolling feed limits and late metadata deposits may omit papers.",
+      "warnings": [
+        "Journal feed is malformed XML"
+      ],
       "crossref": {
         "status": "ok",
-        "http_status": 200,
-        "total_results": 5,
-        "date_basis": "published-online",
-        "source_url": "https://api.crossref.org/journals/2056-6387/works?filter=from-online-pub-date%3A2026-10-07%2Cuntil-online-pub-date%3A2026-10-14%2Ctype%3Ajournal-article&rows=100&sort=published-online&order=desc"
+        "total_results": 3,
+        "returned_research_records": 3,
+        "date_basis": "published-online"
       },
-      "collected": 3
+      "collected": 3,
+      "abstract_enrichment_attempts": 3,
+      "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     }
   },
-  "last_journal_collection_run": "2026-10-14T02:26:26Z",
+  "last_journal_collection_run": "2026-10-14T04:59:39Z",
   "last_journal_run": {
-    "fetched": 81,
-    "queued": 2,
-    "merged": 0,
+    "fetched": 102,
+    "queued": 1,
+    "merged": 2,
     "publication_reviews_pending": 0,
     "successful_sources": 8
+  },
+  "arxiv_source_status": {
+    "status": "ok",
+    "checked_at": "2026-10-14T04:59:39Z"
   }
 }
