@@ -4,8 +4,6 @@ on:
   schedule:
     # UTC 00:17 = Beijing 08:17. Collect before the 09:00 ChatGPT task.
     - cron: "17 0 * * *"
-    # UTC 11:00 = Beijing 19:00. SciRate's three publication dates, >10 scites.
-    - cron: "0 11 * * *"
   workflow_dispatch:
   push:
     branches: [main]
@@ -30,7 +28,7 @@ jobs:
       # Hosted: Actions collects; a separate ChatGPT task analyzes the queue.
       # API mode is opt-in and requires the repository's own API credentials.
       DIGEST_MODE: ${{ vars.DIGEST_MODE || 'hosted' }}
-      COLLECTION_SOURCE: ${{ github.event.schedule == '0 11 * * *' && 'scirate' || 'arxiv' }}
+      COLLECTION_SOURCE: all
     steps:
       - name: Check out the production branch
         uses: actions/checkout@v6
@@ -69,11 +67,10 @@ jobs:
           state = json.loads(Path('data/state.json').read_text(encoding='utf-8'))
           profile = json.loads(Path('config/profile.json').read_text(encoding='utf-8'))
           first = not (state.get('last_collection_run') or state.get('last_successful_run'))
-          first_scirate = (profile['source'].get('scirate', {}).get('enabled', True)
-                           and not state.get('last_scirate_collection_run'))
+          first_journals = (profile['source'].get('journals', {}).get('enabled', False)
+                            and not state.get('last_journal_collection_run'))
           with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as file:
-              file.write('collect=' + str(first).lower() + '\n')
-              file.write('scirate=' + str(first_scirate).lower() + '\n')
+              file.write('collect=' + str(first or first_journals).lower() + '\n')
           PY
 
       - name: Validate API configuration for a live update
@@ -94,13 +91,13 @@ jobs:
           SITE_URL: ${{ steps.pages.outputs.base_url }}
         run: |
           qradar run \
-            --source "$COLLECTION_SOURCE" \
+            --source arxiv \
             --profile config/profile.json \
             --site-url "$SITE_URL" \
             --state data/state.json \
             --output public
 
-      - name: Collect papers for ChatGPT analysis without an API key
+      - name: Collect arXiv and journal papers for ChatGPT analysis without an API key
         if: env.DIGEST_MODE == 'hosted' && (github.event_name != 'push' || steps.bootstrap.outputs.collect == 'true')
         env:
           SITE_URL: ${{ steps.pages.outputs.base_url }}
@@ -111,33 +108,6 @@ jobs:
             --site-url "$SITE_URL" \
             --state data/state.json \
             --output public
-
-      - name: Try the first SciRate collection from the GitHub runner
-        id: scirate_bootstrap
-        if: github.event_name == 'push' && env.DIGEST_MODE == 'hosted' && steps.bootstrap.outputs.scirate == 'true'
-        # A blocked new source must not prevent publication of refreshed reports.
-        # qradar writes state only after the complete source and render succeed.
-        continue-on-error: true
-        env:
-          SITE_URL: ${{ steps.pages.outputs.base_url }}
-        run: |
-          qradar collect \
-            --source scirate \
-            --profile config/profile.json \
-            --site-url "$SITE_URL" \
-            --state data/state.json \
-            --output public
-
-      - name: Record the first SciRate source result
-        if: always() && github.event_name == 'push' && steps.bootstrap.outputs.scirate == 'true'
-        env:
-          SOURCE_OUTCOME: ${{ steps.scirate_bootstrap.outcome }}
-        run: |
-          if [ "$SOURCE_OUTCOME" = success ]; then
-            echo 'SciRate source read completed. New >10-scite candidates are queued for the 19:00 ChatGPT analysis task.' >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo 'SciRate source read did not complete; see the collector log. A source error or HTTP 403 is not an empty result. Existing reports will still be published, and the 19:00 schedule will retry.' >> "$GITHUB_STEP_SUMMARY"
-          fi
 
       - name: Render the saved archive after a code or profile change
         if: github.event_name == 'push'
@@ -156,7 +126,7 @@ jobs:
           import xml.etree.ElementTree as ET
           site = Path('public')
           assert (site / 'index.html').stat().st_size > 0
-          feeds = [site / 'feed.xml', *sorted((site / 'feeds').glob('*.xml'))]
+          feeds = [site / 'feed.xml', *sorted((site / 'feeds').rglob('*.xml'))]
           for path in feeds:
               root = ET.parse(path).getroot()
               assert root.tag == 'rss', f'Invalid RSS root: {path}'
@@ -164,7 +134,7 @@ jobs:
           PY
 
       - name: Save successful live results
-        if: github.event_name != 'push' || steps.bootstrap.outputs.collect == 'true' || steps.scirate_bootstrap.outcome == 'success'
+        if: github.event_name != 'push' || steps.bootstrap.outputs.collect == 'true'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -220,4 +190,5 @@ jobs:
         run: |
           echo '### Pages deployment failed' >> "$GITHUB_STEP_SUMMARY"
           echo 'The digest build completed, but this run did not publish the new artifact. Check Pages source and deployment environment permissions; rerun the failed job.' >> "$GITHUB_STEP_SUMMARY"
+
 

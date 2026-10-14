@@ -18,8 +18,51 @@ _ASSETS = Path(__file__).with_name("assets")
 _ATOM = "http://www.w3.org/2005/Atom"
 ET.register_namespace("atom", _ATOM)
 _TEXT_FIELDS = ("summary", "problem", "setting", "evidence_level", "source_url", "model", "analyzed_at", "status")
-_LIST_FIELDS = ("main_results", "techniques", "assumptions", "limitations", "relevance", "follow_up")
-_TITLE = "Quantum arXiv Digest"
+_LIST_FIELDS = ("main_results", "techniques", "assumptions", "limitations", "relevance", "follow_up", "publication_significance")
+_TITLE = "Quantum Paper Digest"
+_SOURCE_LABELS = {
+    "arxiv": "arXiv", "nature": "Nature", "science": "Science",
+    "nature_physics": "Nature Physics", "prx": "PRX", "prl": "PRL",
+    "prx_quantum": "PRX Quantum", "nature_communications": "Nature Communications",
+    "npj_quantum_information": "npj Quantum Information",
+}
+
+
+def _arxiv_id(paper: dict) -> str:
+    explicit = _text(paper.get("arxiv_id"))
+    if explicit and re.fullmatch(r"(?:[0-9]{4}\.[0-9]{4,5}|[a-z-]+/[0-9]{7})", explicit):
+        return explicit
+    return "" if paper["id"].startswith("doi:") else paper["id"]
+
+
+def _paper_identity(paper: dict) -> str:
+    if paper["id"].startswith("doi:"):
+        return "DOI:" + ((paper.get("publication") or {}).get("doi") or paper["id"].removeprefix("doi:"))
+    arxiv_id = _arxiv_id(paper)
+    if arxiv_id:
+        return "arXiv:" + arxiv_id + f"v{paper['version']}"
+    return paper["id"]
+
+
+def _arxiv_url(paper: dict) -> str:
+    arxiv_id = _arxiv_id(paper)
+    if not arxiv_id:
+        return ""
+    if not paper["id"].startswith("doi:"):
+        return paper["url"]
+    return paper.get("arxiv_url") or "https://arxiv.org/abs/" + arxiv_id
+
+
+def _date_labels(paper: dict) -> list[tuple[str, str]]:
+    labels = []
+    if not paper["id"].startswith("doi:"):
+        label = "arXiv announcement" if "announcement" in paper.get("date_basis", "") else "First submitted"
+        labels.append((label, paper["published"]))
+    publication = paper.get("publication") or {}
+    published = publication.get("published") or (paper["published"] if paper["id"].startswith("doi:") else "")
+    if published:
+        labels.append(("Journal publication", published))
+    return labels
 
 
 def _text(value) -> str:
@@ -74,6 +117,10 @@ def _date(value: str) -> datetime | None:
 
 def _public_paper(paper: dict) -> dict:
     result = {key: _text(paper.get(key)) for key in ("id", "title", "abstract", "published", "updated", "selected_at", "date_basis")}
+    if paper.get("abstract_basis") in {"publisher_feed_excerpt", "crossref_abstract", "publisher_abstract", "missing"}:
+        result["abstract_basis"] = paper["abstract_basis"]
+    if paper.get("abstract_source_url"):
+        result["abstract_source_url"] = _safe_url(_text(paper.get("abstract_source_url")))
     result["version"] = paper.get("version", 1) if type(paper.get("version", 1)) is int else 1
     result.update({key: _strings(paper.get(key)) for key in ("authors", "categories", "topics")})
     result.update({key: _safe_url(_text(paper.get(key))) for key in ("url", "pdf_url")})
@@ -85,17 +132,28 @@ def _public_paper(paper: dict) -> dict:
     analysis["source_url"] = _safe_url(analysis["source_url"])
     result["analysis"] = analysis
     result["article_path"] = _article_path(result["id"])
-    result["sources"] = [name for name in _strings(paper.get("sources")) if name in {"arxiv", "scirate"}]
-    nomination = paper.get("scirate")
-    if isinstance(nomination, dict) and type(nomination.get("votes")) is int and nomination["votes"] > 10:
-        result["scirate"] = {"votes": nomination["votes"]}
-        for key in ("observed_at", "window_start", "window_end"):
-            result["scirate"][key] = _text(nomination.get(key))
-        if nomination.get("range_days") == 3:
-            result["scirate"]["range_days"] = 3
-        nomination_url = _safe_url(_text(nomination.get("url")))
-        if nomination_url and urlsplit(nomination_url).hostname == "scirate.com":
-            result["scirate"]["url"] = nomination_url
+    arxiv_id = _text(paper.get("arxiv_id"))
+    if re.fullmatch(r"(?:[0-9]{4}\.[0-9]{4,5}|[a-z-]+/[0-9]{7})", arxiv_id):
+        result["arxiv_id"] = arxiv_id
+        result["arxiv_url"] = _safe_url(_text(paper.get("arxiv_url")))
+        if type(paper.get("arxiv_version")) is int and paper["arxiv_version"] > 0:
+            result["arxiv_version"] = paper["arxiv_version"]
+    publication = paper.get("publication")
+    if isinstance(publication, dict) and publication.get("journal_id") in _SOURCE_LABELS and publication.get("journal_id") != "arxiv":
+        result["publication"] = {key: _text(publication.get(key)) for key in ("journal_id", "doi", "published", "date_basis")}
+        result["publication"]["journal"] = _SOURCE_LABELS[publication["journal_id"]]
+        result["publication"]["url"] = _safe_url(_text(publication.get("url")))
+    result["sources"] = list(dict.fromkeys(name for name in _strings(paper.get("sources")) if name in _SOURCE_LABELS))
+    if not result["id"].startswith("doi:") and "arxiv" not in result["sources"]:
+        result["sources"].insert(0, "arxiv")
+    if result.get("publication"):
+        journal_id = result["publication"]["journal_id"]
+        if journal_id not in result["sources"]:
+            result["sources"].append(journal_id)
+    review = paper.get("publication_review")
+    if isinstance(review, dict):
+        result["publication_review"] = {key: _text(review.get(key)) for key in ("evidence_level", "analyzed_at", "model", "doi")}
+        result["publication_review"]["source_url"] = _safe_url(_text(review.get("source_url")))
     return result
 
 
@@ -114,15 +172,23 @@ def _description(paper: dict, demo: bool, base: str) -> str:
     if demo:
         chunks.append("<p><strong>Reading preview; not an automatically updated digest.</strong></p>")
     if paper.get("abstract"):
+        if paper.get("abstract_basis") == "publisher_feed_excerpt":
+            chunks.append('<p lang="en"><strong>Publisher feed excerpt</strong> (may be truncated; not the full original abstract).</p>')
         chunks.append(f'<p lang="en">{esc(paper["abstract"])}</p>')
     else:
         chunks.append("<p>The original abstract is not available in this entry.</p>")
     authors = ", ".join(paper["authors"])
-    chunks.append(f"<p>{esc(authors)} · arXiv:{esc(paper['id'])}v{paper['version']}</p>")
-    date_label = "arXiv announcement" if "announcement" in paper.get("date_basis", "") else "First submitted"
-    chunks.append(f"<p>{date_label}: {esc(paper['published'])}</p>")
-    if paper["url"]:
-        chunks.append(f'<p><a href="{esc(paper["url"], quote=True)}">arXiv</a></p>')
+    chunks.append(f"<p>{esc(authors)} · {esc(_paper_identity(paper))}</p>")
+    chunks.append("<p>" + " · ".join(esc(_SOURCE_LABELS[source]) for source in paper["sources"]) + "</p>")
+    for label, value in _date_labels(paper):
+        chunks.append(f"<p>{label}: {esc(value)}</p>")
+    arxiv_url = _arxiv_url(paper)
+    if arxiv_url:
+        chunks.append(f'<p><a href="{esc(arxiv_url, quote=True)}">arXiv</a></p>')
+    publication = paper.get("publication") or {}
+    publisher_url = publication.get("url") or (paper["url"] if paper["id"].startswith("doi:") else "")
+    if publisher_url:
+        chunks.append(f'<p><a href="{esc(publisher_url, quote=True)}">{esc(publication.get("journal", "Publisher"))}</a></p>')
     chunks.append(f'<p><a href="{esc(base + paper["article_path"], quote=True)}">Read the Chinese AI report</a></p>')
     return "\n".join(chunks)
 
@@ -136,6 +202,7 @@ def _report_sections(paper: dict) -> str:
                        ("setting", "模型、任务与评价指标"), ("main_results", "主要贡献与结果"),
                        ("techniques", "核心技术路线"), ("assumptions", "结论成立的条件"),
                        ("limitations", "局限与证据边界"), ("relevance", "相关研究与意义"),
+                       ("publication_significance", "为何适合该期刊（分析判断）"),
                        ("follow_up", "进一步阅读与开放问题")):
         value = analysis.get(key)
         if not value:
@@ -144,6 +211,19 @@ def _report_sections(paper: dict) -> str:
             content = "<ul>" + "".join("<li>" + esc(item) + "</li>" for item in value) + "</ul>"
         else:
             content = "".join("<p>" + esc(paragraph) + "</p>" for paragraph in re.split(r"\n\s*\n", value) if paragraph.strip())
+        if key == "publication_significance":
+            review = paper.get("publication_review") or {}
+            provenance = []
+            scope = {"full_text_excerpt": "论文正文节选", "abstract": "论文摘要"}.get(review.get("evidence_level"), "已标注来源")
+            if review:
+                provenance.append("本节依据" + scope)
+                if review.get("source_url"):
+                    provenance.append(f'<a href="{esc(review["source_url"], quote=True)}" target="_blank" rel="noopener noreferrer">发表版本 ↗</a>')
+                if review.get("analyzed_at"):
+                    provenance.append("分析时间 " + esc(review["analyzed_at"]))
+            content = '<p class="assessment-note">根据论文贡献与期刊定位的分析，不代表编辑或审稿人的实际决定。</p>' + content
+            if provenance:
+                content += '<p class="assessment-provenance">' + " · ".join(provenance) + "</p>"
         sections.append(f'<section class="report-section" aria-labelledby="{key}"><h2 id="{key}">{label}</h2>{content}</section>')
     return "\n".join(sections)
 
@@ -153,12 +233,17 @@ def _article_html(paper: dict, base: str, demo: bool) -> str:
     analysis = paper["analysis"]
     scope = "论文正文节选" if analysis.get("evidence_level") == "full_text_excerpt" else "论文摘要" if analysis.get("evidence_level") == "abstract" else "已标注的论文来源"
     links = ['<a href="../">全部文章</a>', '<a href="../feed.xml">RSS</a>']
-    if paper["url"]:
-        links.append(f'<a href="{esc(paper["url"], quote=True)}" target="_blank" rel="noopener noreferrer">arXiv ↗</a>')
+    arxiv_url = _arxiv_url(paper)
+    if arxiv_url:
+        links.append(f'<a href="{esc(arxiv_url, quote=True)}" target="_blank" rel="noopener noreferrer">arXiv ↗</a>')
+    publication = paper.get("publication") or {}
+    publisher_url = publication.get("url") or (paper["url"] if paper["id"].startswith("doi:") else "")
+    if publisher_url:
+        links.append(f'<a href="{esc(publisher_url, quote=True)}" target="_blank" rel="noopener noreferrer">{esc(publication.get("journal", "Publisher"))} ↗</a>')
     if paper["pdf_url"]:
         links.append(f'<a href="{esc(paper["pdf_url"], quote=True)}" target="_blank" rel="noopener noreferrer">PDF ↗</a>')
-    date = (_date(paper["published"]).date().isoformat() if _date(paper["published"]) else paper["published"])
-    provenance = [f"arXiv:{esc(paper['id'])}v{paper['version']}", "依据" + scope]
+    date_text = " · ".join(label + ": " + (_date(value).date().isoformat() if _date(value) else value) for label, value in _date_labels(paper))
+    provenance = [esc(_paper_identity(paper)), "依据" + scope]
     if analysis.get("analyzed_at"):
         provenance.append("分析时间 " + esc(analysis["analyzed_at"]))
     if analysis.get("model"):
@@ -167,11 +252,9 @@ def _article_html(paper: dict, base: str, demo: bool) -> str:
     if source:
         provenance.append(f'<a href="{esc(source, quote=True)}" target="_blank" rel="noopener noreferrer">本次阅读的论文版本 ↗</a>')
     preview = '<p class="notice">真实论文阅读预览 · 非自动更新</p>' if demo else ""
-    nomination = paper.get("scirate") or {}
-    nomination_text = f'SciRate · {nomination["votes"]} votes' if nomination.get("votes") else ""
-    if nomination_text and nomination.get("url"):
-        nomination_text = f'<a href="{esc(nomination["url"], quote=True)}" target="_blank" rel="noopener noreferrer">{nomination_text} ↗</a>'
-    nomination_meta = f'<p class="paper-meta" lang="en">{nomination_text}</p>' if nomination_text else ""
+    source_badges = '<div class="source-badges" lang="en">' + "".join(f'<span class="source-badge">{esc(_SOURCE_LABELS[source])}</span>' for source in paper["sources"]) + "</div>"
+    abstract_heading = "Publisher feed excerpt" if paper.get("abstract_basis") == "publisher_feed_excerpt" else "Original abstract"
+    abstract_note = '<p lang="en" class="abstract-evidence">May be truncated; not the full original abstract.</p>' if paper.get("abstract_basis") == "publisher_feed_excerpt" else ""
     return f'''<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -193,12 +276,12 @@ def _article_html(paper: dict, base: str, demo: bool) -> str:
         <p class="eyebrow">AI 中文技术阅读报告</p>
         <h1 lang="en">{esc(paper['title'])}</h1>
         <p class="authors" lang="en">{esc(', '.join(paper['authors']))}</p>
-        <p class="paper-meta">arXiv:{esc(paper['id'])}v{paper['version']} · {esc(date)} · 依据{scope}</p>
-        {nomination_meta}
+        {source_badges}
+        <p class="paper-meta">{esc(_paper_identity(paper))} · {esc(date_text)} · 依据{scope}</p>
       </header>
       {preview}
       <div id="report" class="report">{_report_sections(paper)}</div>
-      <details class="original-abstract"><summary>Original abstract</summary><p lang="en">{esc(paper['abstract']) if paper['abstract'] else 'The original abstract is not available in this entry.'}</p></details>
+      <details class="original-abstract"><summary>{abstract_heading}</summary>{abstract_note}<p lang="en">{esc(paper['abstract']) if paper['abstract'] else 'The original abstract is not available in this entry.'}</p></details>
       <footer class="article-provenance">{' · '.join(provenance)}</footer>
     </article>
   </main>
@@ -229,7 +312,7 @@ def _write_feed(path: Path, papers: list[dict], data: dict, base: str, feed_path
         item = ET.SubElement(channel, "item")
         ET.SubElement(item, "title").text = paper["title"]
         ET.SubElement(item, "link").text = base + paper["article_path"]
-        ET.SubElement(item, "guid", isPermaLink="false").text = "urn:arxiv:" + paper["id"]
+        ET.SubElement(item, "guid", isPermaLink="false").text = "urn:" + paper["id"] if paper["id"].startswith("doi:") else "urn:arxiv:" + paper["id"]
         # RSS publication is the first digest selection, not the original arXiv
         # submission: a catch-up run may add an old paper to the feed today.
         date = _date(paper.get("selected_at")) or _date(paper["analysis"].get("analyzed_at")) or _date(paper["published"])
@@ -237,6 +320,8 @@ def _write_feed(path: Path, papers: list[dict], data: dict, base: str, feed_path
             ET.SubElement(item, "pubDate").text = format_datetime(date, usegmt=True)
         for topic in paper["topics"]:
             ET.SubElement(item, "category").text = data["topic_labels"].get(topic, topic)
+        for source in paper["sources"]:
+            ET.SubElement(item, "category").text = _SOURCE_LABELS[source]
         ET.SubElement(item, "description").text = _description(paper, data["is_demo"], base)
     ET.indent(root, space="  ")
     ET.ElementTree(root).write(path, encoding="utf-8", xml_declaration=True)
@@ -253,7 +338,7 @@ def build_site(state: dict, output: Path | str, site_url: str) -> None:
     destination = Path(output)
     destination.mkdir(parents=True, exist_ok=True)
     papers = [_public_paper(p) for p in state.get("papers", []) if _is_analyzed(p)]
-    papers.sort(key=lambda p: (p.get("published", ""), p["id"]), reverse=True)
+    papers.sort(key=lambda p: ((p.get("publication") or {}).get("published") or p.get("published", ""), p["id"]), reverse=True)
     topics = sorted({topic for paper in papers for topic in paper["topics"]})
     labels = state.get("topic_labels") or {}
     split_runs = "last_collection_run" in state or "last_analysis_run" in state
@@ -270,6 +355,8 @@ def build_site(state: dict, output: Path | str, site_url: str) -> None:
         "site_url": base,
         "topic_labels": {topic: _text(labels.get(topic, topic)) for topic in topics},
         "topic_feeds": {topic: "feeds/" + _slug(topic) + ".xml" for topic in topics},
+        "source_labels": dict(_SOURCE_LABELS),
+        "source_feeds": {source: "feeds/sources/" + source + ".xml" for source in _SOURCE_LABELS},
     }
     (destination / "papers.json").write_text(json.dumps(data, ensure_ascii=False, indent=2, allow_nan=False) + "\n", encoding="utf-8")
     index = (_ASSETS / "index.html").read_text(encoding="utf-8")
@@ -297,6 +384,14 @@ def build_site(state: dict, output: Path | str, site_url: str) -> None:
             path.unlink()
     for topic, relative_path in data["topic_feeds"].items():
         _write_feed(destination / relative_path, [p for p in papers if topic in p["topics"]], data, base, relative_path, data["topic_labels"][topic])
+    source_feed_dir = feed_dir / "sources"
+    source_feed_dir.mkdir(exist_ok=True)
+    active_sources = {Path(path).name for path in data["source_feeds"].values()}
+    for path in source_feed_dir.glob("*.xml"):
+        if path.name not in active_sources:
+            path.unlink()
+    for source, relative_path in data["source_feeds"].items():
+        _write_feed(destination / relative_path, [p for p in papers if source in p["sources"]], data, base, relative_path, _SOURCE_LABELS[source])
     # An additional self-contained artifact opens directly from disk. Embed
     # escaped JSON rather than executing paper text; app.js still uses only DOM
     # text nodes. The hosted version retains its restrictive external-file CSP.
@@ -306,3 +401,4 @@ def build_site(state: dict, output: Path | str, site_url: str) -> None:
     snapshot = snapshot.replace('  <script src="./app.js" defer></script>', "  <script>window.QRADAR_SNAPSHOT=true;window.QRADAR_DATA=" + embedded_data + ";</script>")
     snapshot = snapshot.replace("</body>", "  <script>" + (_ASSETS / "app.js").read_text(encoding="utf-8") + "</script>\n</body>")
     (destination / "snapshot.html").write_text(snapshot, encoding="utf-8")
+

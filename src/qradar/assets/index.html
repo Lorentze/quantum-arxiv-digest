@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Quantum research papers, original English abstracts and Chinese AI technical reports.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'">
-  <title>Quantum arXiv Digest</title>
-  <link rel="alternate" type="application/rss+xml" title="Quantum arXiv Digest RSS" href="{{SITE_URL}}feed.xml">
+  <title>Quantum Paper Digest</title>
+  <link rel="alternate" type="application/rss+xml" title="Quantum Paper Digest RSS" href="{{SITE_URL}}feed.xml">
   <link rel="stylesheet" href="./style.css">
   <script src="./app.js" defer></script>
 </head>
@@ -14,7 +14,7 @@
   <a class="skip-link" href="#paper-list">跳到文章列表</a>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="./">Quantum arXiv Digest</a>
+      <a class="brand" href="./">Quantum Paper Digest</a>
       <nav aria-label="主导航"><a id="current-feed" href="./feed.xml">RSS</a><button type="button" class="text-button" id="copy-feed">复制 RSS</button></nav>
     </div>
   </header>
@@ -27,6 +27,7 @@
     <form class="toolbar" id="filter-form" role="search">
       <label class="search-wrap" for="search"><span class="sr-only">搜索标题、作者或技术关键词</span><input id="search" type="search" placeholder="搜索论文 / Search papers" autocomplete="off"></label>
       <label class="select-wrap"><span class="sr-only">研究主题</span><select id="topic-filter"><option value="">全部主题</option></select></label>
+      <label class="select-wrap source-select"><span class="sr-only">文章来源</span><select id="source-filter"><option value="">全部来源</option></select></label>
     </form>
     <div class="list-caption"><p id="result-caption" role="status" aria-live="polite">正在读取文章…</p><p class="copy-status" id="copy-status" role="status"></p></div>
     <section class="paper-list" id="paper-list" tabindex="-1" aria-label="论文文章"></section>
@@ -42,3 +43,4 @@
   <footer class="site-footer shell"><p>AI 阅读报告 · 分析依据逐篇标注</p><p id="updated-at"></p></footer>
 </body>
 </html>
+

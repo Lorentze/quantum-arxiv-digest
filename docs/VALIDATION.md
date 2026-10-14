@@ -1,28 +1,11 @@
-# 验证范围（更新于 2026-10-12）
+# Validation
 
-## 文章平台与 SciRate 来源更新
+Current arXiv and journal version:
 
-- 91 项标准库测试通过，覆盖站内报告链接、RSS GUID 稳定性、英文原摘要、HTML 转义、本机报告路径、SciRate 三日窗口、严格 >10 票、分页完整性、跨来源去重和失败保持原状态。
-- 已有 17 篇文章恢复原始英文 abstract，并从各自 pinned v1 官方 arXiv 正文补充中文技术报告。通过真实 importer 在隔离副本中验证全部分析与来源；生产的 87 条 pending、screened、收集成功时间和首次 selected_at 完整保留。
-- 本地构建生成 17 个独立详情页。全部总 RSS / 主题 RSS 主链接指向相应站内页；公开页面与预览没有私人姓名品牌。
-- 上午 09:00 的既有 ChatGPT 精确任务已更新报告要求；晚间 19:00 的 SciRate 精确任务已创建并启用，时区 Asia/Shanghai。晚间实际发表仍需来源抓取、分析和部署完成。
-- 当前本地 SciRate 请求实际返回 HTTP 403 / Cloudflare challenge；CLI 明确失败且状态文件字节保持不变，未记录为成功空结果。首次发布会再从 GitHub Actions 运行环境尝试抓取；结果以实际 workflow 日志为准。
+- Official RSS endpoints for all eight requested journals were fetched and parsed successfully on 2026-10-14. Journal metadata supplements sometimes returned 429; those endpoint failures were explicitly recorded as partial source coverage and were not retried.
+- Real recent metadata were screened; two articles were analyzed using official Nature publisher reference PDFs with explicit excerpt/version limitations, then passed the production importer.
+- Regression tests cover RSS1/RSS2/Atom parsing, publication rather than deposit dates, journal independence on source errors, delayed abstract reconsideration, DOI/preprint deduplication with author checks, accepted-only deferral, source-bound analysis provenance, atomic imports, stable legacy GUIDs, source feeds, escaping and publisher-excerpt labels.
+- Website build, all generated RSS files including source feeds, report paths and JavaScript syntax were checked. Browser screenshot verification was unavailable because no browser binary was installed.
+- SciRate is disabled in profile, its evening workflow cron is removed, and the hosted evening task is paused. Daily collection remains 08:17 Asia/Shanghai; the daily hosted analysis task remains 09:00.
 
-## 已完成
-
-- 官方 quant-ph RSS 的 2026-10-08 公告含 145 条；四个配置分类的真实七天 arXiv API 分页检索返回 747 条独立元数据，关键词筛选得到 158 条候选。抓取量不等于 AI 精选量。
-- 抓取、API 格式、队列、分析导入、网页与 RSS 共 73 项标准库测试通过。其中 9 项使用实际本地 HTTP 服务验证抓取、导出、导入、RSS 与失败处理；arXiv 传输使用离线夹具，未调用 AI API。
-- 本地服务仅监听 127.0.0.1；支持候选收集、导出自包含 ChatGPT 分析请求、导入经校验的分析 JSON。导入包含当前 ID、版本与来源校验；错误批次保留原存档。
-- 独立的本地服务测试覆盖 Host/Origin 检查、请求体大小、路径边界和抓取失败。服务关闭后不留下后台测试进程。
-- 正式起始存档含本次会话重新读取官方 v1 摘要后整理的三篇真实论文，analysis.model 标为「ChatGPT 本次会话」，evidence_level 为 abstract；未把演示数据改名作为自动结果。原文来源见 STARTER_SOURCES.md。
-- 五篇独立 demo 仍标为预览。正式三篇和演示五篇均可生成网页与 RSS，RSS XML 解析通过，JavaScript 与 Mac 启动脚本语法检查通过。
-
-## 尚未验证或启用
-
-- 未在用户的 Mac 上实际双击启动；需要 Python 3.11 或更新版本。启动包使用标准库，不要求第三方安装。
-- 未进行浏览器实机视觉检查；当前验证覆盖静态资源、交互脚本语法、生成数据与 HTTP/RSS 链路。
-- 本地没有开启定时抓取或无人值守 AI 分析。GitHub Actions 每日抓取已配置，Pages 首次部署已成功；ChatGPT 分析任务已于 2026-10-12 创建并启用，首次安排在 2026-10-13 北京时间 09:00，使用精确日程；旧浮动任务已暂停。ChatGPT 文件分析与本地 JSON 导入目前需要手动完成。
-- 本地 URL 仅供运行服务的同一台电脑订阅；GitHub Pages 的公开 RSS 已随首次成功部署生成。实际云端首次抓取 609 条元数据、118 条候选；新分析 2610.06811v1 已完成写回与 Pages 再发布。随后最新一轮 30 篇完成正文/摘要分析、ID/版本/provenance 校验和 RSS 构建：13 篇精选、17 篇筛除，存档为 17 篇、待分析 87 篇。详见 2026-10-12-ROUND.md。
-- 可选 API 客户端仍保留，但没有真实付费模型调用；本地默认流程不使用它。
-
-2026-10-12 已在 Lorentze/quantum-arxiv-digest 成功提交 .gitignore，证明连接写入可用；项目源码与部署配置随本次提交上传。GitHub 测试、实际候选收集、分析导入写回和 Pages build/deploy 都已成功。尚未观察首轮后台定时分析，不能将任务创建等同于未来各轮都成功。GitHub 仍不是本地启动条件。收集、分析和发布的时间与状态分别记录；不能把候选入队或保存文件报告为每日自动更新。
+Deployment success must be checked from the actual GitHub Pages job, not inferred from a commit alone.

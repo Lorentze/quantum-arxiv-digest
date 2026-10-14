@@ -3,6 +3,174 @@
   "profile_title": "Quantum arXiv Digest",
   "papers": [
     {
+      "id": "doi:10.1038/s41534-026-01391-z",
+      "version": 1,
+      "title": "Exponential advantage in continuous-variable quantum state learning",
+      "authors": [
+        "Eugen Coroi",
+        "Changhun Oh"
+      ],
+      "abstract": "We study how entangled measurements, reflected states, and input-state classicality determine the sample complexity of learning bosonic continuous-variable quantum states through their characteristic function. We first analyze a simple entanglement-free protocol and show that its sample complexity is exponential in the number of modes n for general inputs. We then prove that this exponential scaling is intrinsic through three complementary lower bounds: one excluding entangled measurements, one for reflection-symmetric inputs, and one excluding reflected states even when entangled measurements on finitely many copies are allowed. Next, we show that the classicality parameter s max quantitatively determines when this barrier can be softened: positive classicality can reduce the entanglement-free sample cost, and for fully classical states heterodyne learning matches the ϵ -scaling of a Bell-measurement (BM) scheme. Finally, combining reflected states with a two-copy entangled measurement yields sample complexity independent of n . These results identify when entanglement-free strategies already suffice and when, within the resource models analyzed here, efficient continuous-variable state learning requires the full BM resource combination of entangled measurements and reflected-state access.",
+      "abstract_basis": "publisher_abstract",
+      "abstract_source_url": "https://www.nature.com/articles/s41534-026-01391-z",
+      "url": "https://www.nature.com/articles/s41534-026-01391-z",
+      "pdf_url": "",
+      "published": "2026-10-12",
+      "updated": "2026-10-12",
+      "categories": [],
+      "sources": [
+        "npj_quantum_information"
+      ],
+      "publication": {
+        "journal_id": "npj_quantum_information",
+        "journal": "npj Quantum Information",
+        "doi": "10.1038/s41534-026-01391-z",
+        "url": "https://www.nature.com/articles/s41534-026-01391-z",
+        "published": "2026-10-12",
+        "date_basis": "publisher_rss"
+      },
+      "keyword_score": 4,
+      "topics": [
+        "quantum_learning"
+      ],
+      "keyword_matches": {
+        "quantum_learning": [
+          "quantum state learning",
+          "sample complexity"
+        ]
+      },
+      "first_seen_at": "2026-10-14T02:26:26Z",
+      "analysis": {
+        "summary": "这篇工作把连续变量态学习的优势拆成三个可区分的资源：跨副本纠缠测量、反射态访问，以及输入态的经典性。关键结果是，特定学习任务中，单副本测量即使自适应也有模式数的指数样本壁垒，而两副本 Bell 测量加反射态可去掉模式数依赖。不过这里学习的是特征函数，允许逐点正负号不确定性，不能直接理解为完整态层析。",
+        "problem": "在无限维玻色系统中，量子学习的样本优势究竟来自纠缠测量、额外态访问，还是输入的非经典性？只给出一个高效协议还不足以回答，需要把这些资源分别拿走并证明相应下界。",
+        "setting": "目标是 n 模未知态的位移特征函数 χρ(α)。所有测量结束后才给出查询 α，范围为 |α|²≤κn；对每个查询，以至少 1−δ 的概率输出加性 ε 近似，允许逐点 ± 号。分别比较单副本自适应测量、至多 K 副本的联合测量，以及是否提供与原态对应的反射态。",
+        "main_results": [
+          "一般输入下，禁止跨副本纠缠测量导致指数样本复杂度；即使允许反射副本与完全自适应策略，下界仍成立。作者还针对反射对称输入建立独立下界，排除分离仅由额外反射态假设造成的解释。",
+          "缺少反射态时，联合测量也未必有效：正文定理的范围为 n≥8、ε<0.245、K≤0.22/ε、κ≥1/0.99，在这个模型内样本仍指数增长。该结论没有覆盖任意多副本联合测量。",
+          "两副本 Bell 测量结合反射态的样本成本为 O(ε⁻⁴ log(1/δ))，与 n 无关。完全经典的输入也能通过 heterodyne 测量达到相同 ε 阶数，说明量子资源的优势依赖输入承诺。"
+        ],
+        "techniques": [
+          "heterodyne 的逆 Fourier 估计要乘上 exp(|α|²/2)，这会放大统计噪声。Bell 测量则通过线性光学与 homodyne 读出，直接构造 χρ(α)² 的无偏估计量，再转成允许正负号的 χρ 近似。",
+          "下界把学习归约为随机隐藏查询的假设检验：构造特征函数含三峰或五峰的态族，测量结束后揭示查询位置，再上界任意受限自适应策略的输出分布距离。",
+          "经典性参数 smax 用 s-ordered 准概率非负性定义。正经典性给出特征函数的 Gaussian 尾界，较大查询可直接输出零，从而缩小实际需要估计的区域。"
+        ],
+        "assumptions": [
+          "反射态是学习模型中另行授予的资源，相关反射变换已知；复杂度没有计入为任意未知输入制造反射副本的成本。",
+          "学习保证针对测量后到来的查询，并允许符号歧义；它不同于预先已知单个可观测量的估计，也不承诺同时对连续域全部查询成立的统一误差。"
+        ],
+        "limitations": [
+          "Bell 数据仅确定 χρ²，逐点符号尚未恢复；因此不能直接推出符号敏感的保真度估计或完整 Wigner 重构。",
+          "ε⁻⁴ 上界与一般 ε⁻² 下界还存在精度差距；反射态获取、实验噪声及任意大联合测量的资源代价需要另作分析。",
+          "依据为出版社公开的 Article in Press／已接受稿 PDF，正文读取截取前 60000 字符；补充材料和完整证明未核查，最终版本可能继续编辑。"
+        ],
+        "relevance": [
+          "直接关联量子数据学习、测量访问与样本复杂度下界。查询在测量后到达的设定也提供了研究经典侧信息时序与受限测量分离的具体连续变量例子。"
+        ],
+        "follow_up": [
+          "能否在相同测量后查询模型中以少量额外资源恢复符号，并保留 n 无关的样本成本？",
+          "将反射态制备与存储计入总成本后，资源分离是否仍然成立；单副本随机测量能否利用结构承诺降低成本？"
+        ],
+        "relevance_score": 94,
+        "publication_significance": [
+          "以下为依据论文结果的学术判断，不是对编辑或审稿人实际决定的解释。",
+          "新意在于把“量子学习更快”变成资源可分辨的结论：分别证明纠缠测量与反射态的作用，并给出经典性控制的例外；上下界共同支撑一个明确的操作图景。",
+          "技术难点是无限维态空间和自适应读出。可实现的线性光学上界与专门构造的假设检验下界相结合，使论证超出单一协议的数值改进，符合 npj Quantum Information 的量子信息研究定位。",
+          "可发表价值应理解为特定学习任务的资源分离；符号歧义及反射访问假设限制了更广泛的层析或实验优势主张。"
+        ],
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://www.nature.com/articles/s41534-026-01391-z_reference.pdf",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-10-14T02:25:37+00:00"
+      },
+      "selected_at": "2026-10-14T02:26:26Z"
+    },
+    {
+      "id": "doi:10.1038/s41467-026-78310-5",
+      "version": 1,
+      "title": "Continuous-time noise mitigation in analogue quantum simulation",
+      "authors": [
+        "Gabriele Bressanini",
+        "Yue Ma",
+        "Michael Hanks",
+        "Hyukjoon Kwon",
+        "M. S. Kim"
+      ],
+      "abstract": "Analogue quantum simulators offer a promising route to explore quantum many-body dynamics beyond classical reach in the near term. However, their vulnerability to noise limits the accuracy of simulations. Here, we establish a continuous-time framework for mitigating noise in analogue quantum simulation. Our protocol fully preserves the continuous-time nature by avoiding any active control or measurement of the system during the dynamics, while achieving exact noise cancellation. This requires a small number of ancillary qubits, whose interaction with the system, combined with classical post-processing of joint measurement data, is tailored to cancel the effect of noise. Furthermore, the protocol is Hamiltonian-independent and robust to realistic ancilla noise. This work points to a promising direction for achieving high-fidelity analogue quantum simulation in the presence of noise.",
+      "abstract_basis": "crossref_abstract",
+      "abstract_source_url": "https://api.crossref.org/journals/2041-1723/works?filter=from-online-pub-date%3A2026-10-07%2Cuntil-online-pub-date%3A2026-10-14%2Ctype%3Ajournal-article&rows=100&sort=published-online&order=desc",
+      "url": "https://www.nature.com/articles/s41467-026-78310-5",
+      "pdf_url": "",
+      "published": "2026-10-12",
+      "updated": "2026-10-12",
+      "categories": [],
+      "sources": [
+        "nature_communications"
+      ],
+      "publication": {
+        "journal_id": "nature_communications",
+        "journal": "Nature Communications",
+        "doi": "10.1038/s41467-026-78310-5",
+        "url": "https://www.nature.com/articles/s41467-026-78310-5",
+        "published": "2026-10-12",
+        "date_basis": "crossref_published-online"
+      },
+      "keyword_score": 4,
+      "topics": [
+        "benchmarking"
+      ],
+      "keyword_matches": {
+        "benchmarking": [
+          "noise mitigation"
+        ]
+      },
+      "first_seen_at": "2026-10-14T02:26:26Z",
+      "analysis": {
+        "summary": "作者提出原生连续时间的误差缓解方法：增加辅助比特并工程化系统—辅助的联合耗散，把理想演化保存在联合态的非对角块中，最后通过联合测量和经典重标定恢复无噪声可观测量期望值。方案无需中途脉冲或测量，且不依赖目标 Hamiltonian；代价是噪声模型与耗散控制要求，以及通常随时间和系统大小指数增长的采样开销。",
+        "problem": "模拟量子动力学时，Hamiltonian 与耗散一般不对易，不能简单在演化前后套一个逆噪声通道。数字式误差缓解又会引入离散化或中途控制，问题是能否保持连续演化并精确消除期望值中的噪声偏差。",
+        "setting": "有限维系统按 Lindblad 方程演化，目标是恢复任意系统可观测量 A 的理想期望值。主构造在初始时加入 |+⟩ 辅助比特，持续运行额外联合 dissipators，末态测量 A⊗σx，再作经典处理。原则上一个辅助比特足够，但它必须能与所需系统部分耦合。",
+        "main_results": [
+          "联合态的非对角块满足理想 Hamiltonian 演化加标量衰减：W01(t)=exp(−2at)U(t)ρ(0)U(t)†/2。因此 exp(2at)⟨A⊗σx⟩ 恢复目标期望值，a 由噪声算符的 ∑k Lk†Lk 决定。",
+          "在所需联合耗散实现正确时，构造适用于任意目标 Hamiltonian，也可推广到时间依赖情形。它恢复的是统计量，不是把系统的实际约化态变回理想态。",
+          "常见辅助比特 dephasing、amplitude damping 及 Pauli 噪声可并入额外重标定。数值例子包括 Heisenberg 模型磁化、淬火后的 Loschmidt echo，以及 Floquet 动力学的谱特征。"
+        ],
+        "techniques": [
+          "直接加入负 dissipator 不构成物理过程；作者改用正的联合 Lindblad 项，其中包含 Lk⊗σz 和由 S=aI−∑kLk†Lk≥0 构造的补偿项。对角块可继续受噪声影响，而非对角块留下理想动力学。",
+          "末态辅助 σx 读出提取这两个非对角块，指数重标定取消标量衰减。也可用 A=I 的辅助信号估计衰减，形成期望值比值；有限采样的比值统计需另外处理。",
+          "当 ∑kLk†Lk 正比于 I，例如 Pauli jump operators，补偿项简化，联合噪声可通过随机 Hamiltonian 集成；更一般情形需要耗散工程与额外快衰减辅助系统。"
+        ],
+        "assumptions": [
+          "主精确结论采用 Markovian Lindblad 模型，要求已学习或物理建模的主要 jump operators，并能正确实现对应联合耗散。Hamiltonian-independent 不等于无需噪声表征。",
+          "辅助噪声的鲁棒性针对正文分析的噪声类型与重标定；未知或失配的噪声仍可造成残余偏差，不能直接理解为任意噪声或 SPAM 鲁棒认证。"
+        ],
+        "limitations": [
+          "精确去偏会放大方差。正文给出通常的采样开销约 exp(4at)，达到加性 ε 精度的 shots 随 exp(4at)log(2/δ)/ε² 增长；局域噪声的朴素全局方案也会随系统大小指数增长。",
+          "单辅助比特虽省数量，却可能需要广泛连接及多体耗散。多辅助方案与局域／分块观测可降低开销，但不能将其理解为任意任务的普遍低成本保证。",
+          "依据为出版社公开的 Article in Press／已接受稿 PDF，读取前 60000 字符；未核查补充材料，实验可实现性讨论也不等于真实设备的验证。"
+        ],
+        "relevance": [
+          "联系噪声表征、benchmarking 与可靠量子模拟：已学习噪声信息被转换为精度保证。特别值得比较所需控制、辅助比特、shots 与残余偏差，而非只看形式上的噪声抵消。"
+        ],
+        "follow_up": [
+          "针对局域观测与可实现联合耗散，能否证明更紧的采样成本，并明确何时优于数字式误差缓解？",
+          "能否把噪声表征误差和非重复 SPAM 误差纳入总精度界，避免指数重标定把小校准误差放大？"
+        ],
+        "relevance_score": 86,
+        "publication_significance": [
+          "以下为基于论文内容的解释性判断，不代表已知的编辑或审稿意见。",
+          "主要概念贡献是把非物理的逆耗散嵌入物理联合动力学的非对角块，让原生连续时间模拟获得精确的期望值去偏；它回答了非对易动力学下的具体障碍。",
+          "意义超出单个量子算法：方案衔接开放系统、耗散工程与多体动力学观测，并展示对几类物理信号的恢复，因此具有 Nature Communications 所重视的跨领域物理联系。",
+          "发表价值主要来自框架与控制思路，而非宣称误差缓解变成廉价的容错计算。指数采样开销、噪声知识和工程条件仍是实际适用范围的核心限制。"
+        ],
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://www.nature.com/articles/s41467-026-78310-5_reference.pdf",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-10-14T02:25:37+00:00"
+      },
+      "selected_at": "2026-10-14T02:26:26Z"
+    },
+    {
       "id": "2610.13880",
       "version": 1,
       "title": "Bicycle Race: small two-block codes on the Pareto frontier",
@@ -7296,25 +7464,499 @@
       "status": "ai_rejected",
       "score": 66,
       "at": "2026-10-14T01:16:10Z"
+    },
+    "doi:10.1038/s41586-026-11257-1": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "a0fb4994100bc749322d679f60e3898b84bfbae5e34c93f3f58e1cd4c3bb223e"
+    },
+    "doi:10.1038/s41586-026-11255-3": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "d8d385d5460116abf407ce060b201d3a539cb55fd8f097c9a21e44cb6fec0eb6"
+    },
+    "doi:10.1038/s41586-026-11250-8": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "3e67c8863c076186cb326eb44bb39128bb286b3e0c2b9f0fd59548e4b752519e"
+    },
+    "doi:10.1038/s41567-026-03483-1": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "1c9b3cfd6510fab8d93e5d9053e090012fcfca8cd509adf6608b97bcad8348a2"
+    },
+    "doi:10.1038/s41567-026-03427-9": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "cd6720cce5463a4f0dbdf9521a9c9c4b59d8e507d3efc17523d764af0d64b220"
+    },
+    "doi:10.1038/s41567-026-03487-x": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "a625ab611836b22596bdd07a34e5001928b3c4596bac2233936544593747bbc0"
+    },
+    "doi:10.1103/vp11-s9sl": {
+      "status": "awaiting_publication",
+      "at": "2026-10-14T02:26:26Z"
+    },
+    "doi:10.1103/4xr6-2w3d": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "87577c2d6b1a7eed20b6bc237f5bd86b2deb81afafad6dcee5955f34c4335e45"
+    },
+    "doi:10.1103/d1cq-gj9p": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "7ba05a4c0cea0721166fafaf9d1da9207a5285391ea9cfe6dd45ff8673a4bab2"
+    },
+    "doi:10.1038/s41467-026-78706-3": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "16452ee70f457779fc5327ab37ebd34f88101f4ea5f5456209560a463f42cd4f"
+    },
+    "doi:10.1038/s41467-026-77262-0": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "75b3bb52b8620546ee9ce9d6abca75e5f35cde7616f963e0ee52cf60b2dd2711"
+    },
+    "doi:10.1038/s41467-026-78155-y": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "8e66abcc684e8d0674ce0821aab912b3aa55890558d215efe5fa0c0f6b60fd1e"
+    },
+    "doi:10.1038/s41467-026-78271-9": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "ee4d0622941413fb469cbe864a8fded0060149aece1f3df182e989b1184fd817"
+    },
+    "doi:10.1038/s41467-026-78512-x": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "b5d0fdab3136d0142386166f4f8746e9d2fecba03ad4cfd6167d7d0a27a43269"
+    },
+    "doi:10.1038/s41467-026-74719-0": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "7b0e76925fd35bbedbc5f530ca0f4b53fb5b9b98ce581ba5624f09c6e6d9a786"
+    },
+    "doi:10.1038/s41467-026-78305-2": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "c3aca1cbc3b10eaeea744c3eede50bceeec46229b2edda8a38300eb21c06a88f"
+    },
+    "doi:10.1038/s41467-026-78119-2": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "5f3283a9ee87f39cfa086c514301c057cf5cfa66c446c7c919c8284b271fd185"
+    },
+    "doi:10.1038/s41467-026-78378-z": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "6cf392b9a764b305dd9d75fa3b8bd3ac3bbbc46f24a97c011fa52593e3585b3f"
+    },
+    "doi:10.1038/s41467-026-77472-6": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "b26ad555723268c8cf686cf906895f2c7a0179b7d8c7b4598b693f97eaf6709e"
+    },
+    "doi:10.1038/s41467-026-78658-8": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "4264d9771d603789aaf6031ff3812e940b7972ad2c4b60689073072952bd4e81"
+    },
+    "doi:10.1038/s41467-026-78515-8": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "a9fd08ce68750bb223f1ac507005cba7bd62d31814463a67537ac24d63aba9dc"
+    },
+    "doi:10.1038/s41467-026-78169-6": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "7e10ed82f54491437d2b124b4321f0d0b7c5314f88a4887399d4d785ca1db0fe"
+    },
+    "doi:10.1038/s41467-026-77832-2": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "64dff0b5b486038ebd32215abff1bdae89116e1bd6bc034b6c95171257779887"
+    },
+    "doi:10.1038/s41467-026-78383-2": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "b1160e7a2a12d687bd6f5f292725bc440a8a7094441842beea4b922f41e61306"
+    },
+    "doi:10.1038/s41467-026-78491-z": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "325253883a8447dd01d063d40ccde86d7d06f3fc30303c1d334d75169ccf526f"
+    },
+    "doi:10.1038/s41467-026-78451-7": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "eb75e55a58583fa280caebda78a70bba949496b55a63d01acfc0c57fef2f9edd"
+    },
+    "doi:10.1038/s41467-026-78227-z": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "6d9847321b4850595df3f4c1872dee9b09fb2dbd2756dfe8078679b4c0175c65"
+    },
+    "doi:10.1038/s41467-026-78318-x": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "c7ea88a100b14c351a646e0048571cd31701d06eb82eada08598fb34d96d2312"
+    },
+    "doi:10.1038/s41467-026-78137-0": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "f529b3c0077aa759011a0453f952d86ef0c07d973f054c2cb527c111fe79d65f"
+    },
+    "doi:10.1038/s41467-026-78351-w": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "1d6e34b8762eb588031a8fee4fde54cc44c1826857fa9fe3f36687f4fe62f353"
+    },
+    "doi:10.1038/s41467-026-78527-4": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "755b8bd05dcd847e377fee7958d7587153af108648469d5e3e28123cbf1c60a4"
+    },
+    "doi:10.1038/s41467-026-78556-z": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "bb0d908edd4e7ea20deee7309685bf27cda7eb859b2a5e61699179d6a3725622"
+    },
+    "doi:10.1038/s41467-026-78440-w": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "04948b72afb8e1508ff5ef1cfe9e80f78c5c33bdcd70d8568b5f38cd9755d598"
+    },
+    "doi:10.1038/s41467-026-78437-5": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "4d96f295cc9105f50f37e5311e43b9c3c4a96d5d2203ab393ed1f304c579e705"
+    },
+    "doi:10.1038/s41467-026-78115-6": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "2288a2a1093d737cc29644bcbedbd48b21d7ee05bec67092df371199f6542f83"
+    },
+    "doi:10.1038/s41467-026-78645-z": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "ecf20b4d67d008f50bc77c729c7e97630c2ca973766294181a8cc7a5e32734ee"
+    },
+    "doi:10.1038/s41467-026-78642-2": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "1f4e2435bd5b1a8535e0da8aa0fdc35e977e918923c0e32428fa4e33018e40fd"
+    },
+    "doi:10.1038/s41467-026-78445-5": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "c93cda2e89fb1301e35ee4333743fc1bdaef8297e6ec180d969535eea4c6335d"
+    },
+    "doi:10.1038/s41467-026-77976-1": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "71ec2b9a2937d5811a108b43be2006bdb37eaf656469dcacdda351ec4b4b1e4f"
+    },
+    "doi:10.1038/s41467-026-78587-6": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "a72f81832b359f3c9e7827c064f3e1dfb1bf0f8101f7f20dce733b503f456b5d"
+    },
+    "doi:10.1038/s41467-026-78186-5": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "ad9cb1c767f8c64f62ef9dee08965e0e28e9f4af9171ce5e029a641bb6e513f5"
+    },
+    "doi:10.1038/s41467-026-78581-y": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "243faea94969dfd683b32542c349da82323859581767c15eefac1655736b9f6b"
+    },
+    "doi:10.1038/s41467-026-78549-y": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "97c36f88d9e837fc54c07ecccedf9ca080af0346c92ce9ddf94a466ae8e97943"
+    },
+    "doi:10.1038/s41467-026-78534-5": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "deec0f932408599caa6ac589447f3bcb478eecabc28193dd8d31702ddeece882"
+    },
+    "doi:10.1038/s41467-026-78757-6": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "bb3cbb9caccda4fbcceb15de0619d60acf5b013fa78e20e4338a272dab9c5fa5"
+    },
+    "doi:10.1038/s41467-026-78635-1": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "8dee738ec604a6e44ceb523227f62457ea007d773937a1964e602adf18b2667b"
+    },
+    "doi:10.1038/s41467-026-78284-4": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "8894650f9d0e64d6883d8bbe13a5e5fcf2885abe9d4027f5e39b97232ac11a27"
+    },
+    "doi:10.1038/s41467-026-78560-3": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "bf503314c2fde1a678faa76c0fdd5eddfff1a31d7e42de518c06121ef79f3bd0"
+    },
+    "doi:10.1038/s41467-026-78399-8": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "a1b07fd10ac63cc538db31aab8de3ec44598328242eeb43e74637ec78635537f"
+    },
+    "doi:10.1038/s41467-026-76388-5": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "407f991375ad6f2b2b3d22f3503713180ce692b5663989d47aa2979b095ab220"
+    },
+    "doi:10.1038/s41467-026-78632-4": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "9baef0c512f865067006437fd360e04982b0dbe9afa203d18e1ee7143b55e80f"
+    },
+    "doi:10.1038/s41467-026-78608-4": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "87196ead8ce9767963393d8142f74adf5bbe8ef52428712fb586f1a81196c607"
+    },
+    "doi:10.1038/s41467-026-78528-3": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "deb07e93792094ca260fbbe1b4297bb4fb24cd81900ce1a5e279229121abfb9b"
+    },
+    "doi:10.1038/s41467-026-78071-1": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "d27e8fa64695eee642736ff82246334dc4f4a368668bc43752c69c67227c78a9"
+    },
+    "doi:10.1038/s41467-026-78369-0": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "0343f0a268449165d1797224c6a8a25a023df191dd4bb787ade071dec2928ff5"
+    },
+    "doi:10.1038/s41467-026-78418-8": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "3e89c412b6649591494cd7ec41e3a8f41542ec55dca86397f53b6964409d1f8a"
+    },
+    "doi:10.1038/s41467-026-78617-3": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "4be14a3945c8e38e860f0e215934596d36c57fccb995c4a0a284a7f129ac4e5a"
+    },
+    "doi:10.1038/s41467-026-77234-4": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "37519ad3448f4a92310ec87890ea306ff0e5ac42fd08fb8768f3d0c295f8b2bd"
+    },
+    "doi:10.1038/s41467-026-78303-4": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "aebe8bcf282335551387421f2c1443339bd7e3bc42b4364e8fe0edd3bf680c31"
+    },
+    "doi:10.1038/s41467-026-78478-w": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "74cbd4c9f05fe331ef4e0a3f9d870d7a857230a968a498ca145e71322dd07bab"
+    },
+    "doi:10.1038/s41467-026-78241-1": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "b7a7b29895947b731a865a47d4eda0c23f3db56f56a8f63d7bb6c04280afaf46"
+    },
+    "doi:10.1038/s41467-026-78613-7": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "473b74460146b2b80b75a256977b79752b7409dc4e42ae6a7b21685ecfab14b5"
+    },
+    "doi:10.1038/s41467-026-78431-x": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "a5bfa9236d99cd16f3690a08b10555b221e417d449ea4a0281ad561d31587aa7"
+    },
+    "doi:10.1038/s41467-026-78225-1": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "b2ae2450c5985fcc84dcc5fd9439019e12a7a4d7be1e0cd3505678ed836caabf"
+    },
+    "doi:10.1038/s41467-026-78389-w": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "b018c56eccd96bffed5505c0a517ce3262d4406ce3f64bfa2dd6fed0d144b997"
+    },
+    "doi:10.1038/s41467-026-78397-w": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "ae32b526530b1125e33f71350755f38652859b8b8f1ea7db3977301196ab35aa"
+    },
+    "doi:10.1038/s41467-026-78598-3": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "8d896d3227050053781d72c7c07d4bfe57c900a4b9f178ff5012e022a833532d"
+    },
+    "doi:10.1038/s41467-026-78648-w": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "74288f233fd6b7d611354e1b8fd13f63110e66c0bb4e27e1c8baa1faebc78a99"
+    },
+    "doi:10.1038/s41467-026-78603-9": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "0ee46596c369a91a225971223efcee769bf6a894f25b325cb6799abc18eff1a9"
+    },
+    "doi:10.1038/s41467-026-78575-w": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "299a82049dab8640e5342f9d1b793590f625b0fffb1b520043f87c8426da785d"
+    },
+    "doi:10.1038/s41467-026-78101-y": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "462d5a17a5bc655c5343b772a537179ab25d2f65a91de5c631eb963539328035"
+    },
+    "doi:10.1038/s41467-026-78616-4": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "bf04ab0ab5540e23fc114ecf2e364705822750de47e79b9c8c1827578eaa6db9"
+    },
+    "doi:10.1038/s41467-026-77962-7": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "7d89dede3cf8e54b4ecbe1b359cff535a92cc93688fd504b9ac226bade1a1494"
+    },
+    "doi:10.1038/s41467-026-78580-z": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "63e642f8b8f15907a2d7b6633aca0da708c2b94dd072eec9da3599386d3f9440"
+    },
+    "doi:10.1038/s41467-026-78555-0": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "ca68c33b08eb8e6d6ddd9330283cf533ab155484cd632aaad2d7bc35516e3111"
+    },
+    "doi:10.1038/s41467-026-78017-7": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "f69896ac78f1e3e0cba34ea486049a180d0b86a403f12e1f6f34198eee0e52c1"
+    },
+    "doi:10.1038/s41467-026-78507-8": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "eec769bd8bd6691fee682b396ef5555f44bc5a9481b03168c8422e40f15d31b9"
+    },
+    "doi:10.1038/s41534-026-01384-y": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "4afd955c62493153abb0d9c40f92a4e29c399fd38ba7a25efc7667ec53a9f9b5"
+    },
+    "doi:10.1038/s41534-026-01396-8": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-10-14T02:26:26Z",
+      "metadata_fingerprint": "392e25018f01dd47e7477895be826ffd6fbaca90713f6647dee16a99a6cb2f82"
     }
   },
   "last_successful_run": "2026-10-13T06:51:03Z",
   "last_run": {
     "fetched": 420,
     "keyword_candidates": 0,
-    "analyzed": 30,
-    "selected": 19,
+    "analyzed": 2,
+    "selected": 2,
     "pending": 27,
     "lookback_days": 7,
-    "source": "arxiv",
-    "date_basis": "initial_submission"
+    "source": "journals",
+    "date_basis": "initial_submission",
+    "journal_fetched": 81,
+    "journal_queued": 2
   },
   "is_demo": false,
-  "last_collection_run": "2026-10-13T06:51:03Z",
-  "last_analysis_run": "2026-10-14T01:16:10Z",
+  "last_collection_run": "2026-10-14T02:26:26Z",
+  "last_analysis_run": "2026-10-14T02:26:26Z",
   "last_analysis_batch": {
-    "analyzed": 30,
-    "selected": 19,
+    "analyzed": 2,
+    "selected": 2,
     "pending": 27
   },
   "topic_labels": {
@@ -7332,5 +7974,232 @@
     "papers": 17,
     "description": "Detailed Chinese reports and original English abstracts; stable article URLs and RSS GUIDs."
   },
-  "last_arxiv_collection_run": "2026-10-13T06:51:03Z"
+  "last_arxiv_collection_run": "2026-10-13T06:51:03Z",
+  "publication_reviews_pending": [],
+  "journal_source_status": {
+    "nature": {
+      "journal": "Nature",
+      "status": "ok",
+      "checked_at": "2026-10-14T02:21:59.221057Z",
+      "window_start": "2026-10-11",
+      "window_end": "2026-10-14",
+      "date_basis": "publication_date",
+      "feeds": [
+        {
+          "url": "https://www.nature.com/nature.rss",
+          "status": "ok",
+          "http_status": 200,
+          "research_records": 7
+        }
+      ],
+      "warnings": [],
+      "coverage": "Live official RSS responses from this turn; supplemented by already probed Crossref online-publication records. Rolling feed limits and late metadata deposits may omit papers.",
+      "crossref": {
+        "status": "ok",
+        "http_status": 200,
+        "total_results": 93,
+        "date_basis": "published-online",
+        "source_url": "https://api.crossref.org/journals/1476-4687/works?filter=from-online-pub-date%3A2026-10-07%2Cuntil-online-pub-date%3A2026-10-14%2Ctype%3Ajournal-article&rows=100&sort=published-online&order=desc"
+      },
+      "collected": 3
+    },
+    "science": {
+      "journal": "Science",
+      "status": "partial",
+      "checked_at": "2026-10-14T02:21:59.221057Z",
+      "window_start": "2026-10-11",
+      "window_end": "2026-10-14",
+      "date_basis": "publication_date",
+      "feeds": [
+        {
+          "url": "https://feeds.science.org/rss/science.xml",
+          "status": "ok",
+          "http_status": 200,
+          "research_records": 22
+        },
+        {
+          "url": "https://feeds.science.org/rss/science-aop.xml",
+          "status": "ok",
+          "http_status": 200,
+          "research_records": 14
+        }
+      ],
+      "warnings": [
+        "HTTP Error 429: Too Many Requests"
+      ],
+      "coverage": "Live official RSS responses from this turn; supplemented by already probed Crossref online-publication records. Rolling feed limits and late metadata deposits may omit papers.",
+      "crossref": {
+        "status": "skipped",
+        "http_status": 429,
+        "error": "HTTP Error 429: Too Many Requests"
+      },
+      "collected": 0
+    },
+    "nature_physics": {
+      "journal": "Nature Physics",
+      "status": "partial",
+      "checked_at": "2026-10-14T02:21:59.221057Z",
+      "window_start": "2026-10-11",
+      "window_end": "2026-10-14",
+      "date_basis": "publication_date",
+      "feeds": [
+        {
+          "url": "https://www.nature.com/nphys.rss",
+          "status": "ok",
+          "http_status": 200,
+          "research_records": 8
+        }
+      ],
+      "warnings": [
+        "HTTP Error 429: Too Many Requests"
+      ],
+      "coverage": "Live official RSS responses from this turn; supplemented by already probed Crossref online-publication records. Rolling feed limits and late metadata deposits may omit papers.",
+      "crossref": {
+        "status": "skipped",
+        "http_status": 429,
+        "error": "HTTP Error 429: Too Many Requests"
+      },
+      "collected": 3
+    },
+    "prx": {
+      "journal": "Physical Review X",
+      "status": "partial",
+      "checked_at": "2026-10-14T02:21:59.221057Z",
+      "window_start": "2026-10-11",
+      "window_end": "2026-10-14",
+      "date_basis": "publication_date",
+      "feeds": [
+        {
+          "url": "https://feeds.aps.org/rss/recent/prx.xml",
+          "status": "ok",
+          "http_status": 200,
+          "research_records": 97
+        }
+      ],
+      "warnings": [
+        "HTTP Error 429: Too Many Requests"
+      ],
+      "coverage": "Live official RSS responses from this turn; supplemented by already probed Crossref online-publication records. Rolling feed limits and late metadata deposits may omit papers.",
+      "crossref": {
+        "status": "skipped",
+        "http_status": 429,
+        "error": "HTTP Error 429: Too Many Requests"
+      },
+      "collected": 0
+    },
+    "prl": {
+      "journal": "Physical Review Letters",
+      "status": "partial",
+      "checked_at": "2026-10-14T02:21:59.221057Z",
+      "window_start": "2026-10-11",
+      "window_end": "2026-10-14",
+      "date_basis": "publication_date",
+      "feeds": [
+        {
+          "url": "https://feeds.aps.org/rss/recent/prl.xml",
+          "status": "ok",
+          "http_status": 200,
+          "research_records": 99
+        }
+      ],
+      "warnings": [
+        "HTTP Error 429: Too Many Requests"
+      ],
+      "coverage": "Live official RSS responses from this turn; supplemented by already probed Crossref online-publication records. Rolling feed limits and late metadata deposits may omit papers.",
+      "crossref": {
+        "status": "skipped",
+        "http_status": 429,
+        "error": "HTTP Error 429: Too Many Requests"
+      },
+      "collected": 0
+    },
+    "prx_quantum": {
+      "journal": "PRX Quantum",
+      "status": "ok",
+      "checked_at": "2026-10-14T02:21:59.221057Z",
+      "window_start": "2026-10-11",
+      "window_end": "2026-10-14",
+      "date_basis": "publication_date",
+      "feeds": [
+        {
+          "url": "https://feeds.aps.org/rss/recent/prxquantum.xml",
+          "status": "ok",
+          "http_status": 200,
+          "research_records": 99
+        }
+      ],
+      "warnings": [],
+      "coverage": "Live official RSS responses from this turn; supplemented by already probed Crossref online-publication records. Rolling feed limits and late metadata deposits may omit papers.",
+      "crossref": {
+        "status": "ok",
+        "http_status": 200,
+        "total_results": 10,
+        "date_basis": "published-online",
+        "source_url": "https://api.crossref.org/journals/2691-3399/works?filter=from-online-pub-date%3A2026-10-07%2Cuntil-online-pub-date%3A2026-10-14%2Ctype%3Ajournal-article&rows=100&sort=published-online&order=desc"
+      },
+      "collected": 3
+    },
+    "nature_communications": {
+      "journal": "Nature Communications",
+      "status": "partial",
+      "checked_at": "2026-10-14T02:21:59.221057Z",
+      "window_start": "2026-10-11",
+      "window_end": "2026-10-14",
+      "date_basis": "publication_date",
+      "feeds": [
+        {
+          "url": "https://www.nature.com/ncomms.rss",
+          "status": "ok",
+          "http_status": 200,
+          "research_records": 7
+        }
+      ],
+      "warnings": [
+        "Crossref probe used rows100, result cap reached; production uses rows1000."
+      ],
+      "coverage": "Live official RSS responses from this turn; supplemented by already probed Crossref online-publication records. Rolling feed limits and late metadata deposits may omit papers.",
+      "crossref": {
+        "status": "ok",
+        "http_status": 200,
+        "total_results": 192,
+        "date_basis": "published-online",
+        "source_url": "https://api.crossref.org/journals/2041-1723/works?filter=from-online-pub-date%3A2026-10-07%2Cuntil-online-pub-date%3A2026-10-14%2Ctype%3Ajournal-article&rows=100&sort=published-online&order=desc"
+      },
+      "collected": 69
+    },
+    "npj_quantum_information": {
+      "journal": "npj Quantum Information",
+      "status": "ok",
+      "checked_at": "2026-10-14T02:21:59.221057Z",
+      "window_start": "2026-10-11",
+      "window_end": "2026-10-14",
+      "date_basis": "publication_date",
+      "feeds": [
+        {
+          "url": "https://www.nature.com/npjqi.rss",
+          "status": "ok",
+          "http_status": 200,
+          "research_records": 8
+        }
+      ],
+      "warnings": [],
+      "coverage": "Live official RSS responses from this turn; supplemented by already probed Crossref online-publication records. Rolling feed limits and late metadata deposits may omit papers.",
+      "crossref": {
+        "status": "ok",
+        "http_status": 200,
+        "total_results": 5,
+        "date_basis": "published-online",
+        "source_url": "https://api.crossref.org/journals/2056-6387/works?filter=from-online-pub-date%3A2026-10-07%2Cuntil-online-pub-date%3A2026-10-14%2Ctype%3Ajournal-article&rows=100&sort=published-online&order=desc"
+      },
+      "collected": 3
+    }
+  },
+  "last_journal_collection_run": "2026-10-14T02:26:26Z",
+  "last_journal_run": {
+    "fetched": 81,
+    "queued": 2,
+    "merged": 0,
+    "publication_reviews_pending": 0,
+    "successful_sources": 8
+  }
 }

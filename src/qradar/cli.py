@@ -14,7 +14,7 @@ from .sources import SourceError, fetch_recent
 
 
 def parser() -> argparse.ArgumentParser:
-    root = argparse.ArgumentParser(description="Personalized quantum-information arXiv digest")
+    root = argparse.ArgumentParser(description="Quantum-information paper digest with arXiv and journal sources")
     sub = root.add_subparsers(dest="command", required=True)
     run = sub.add_parser("run", help="Fetch, analyze and publish a live update; API key required")
     run.add_argument("--profile", default="config/profile.json")
@@ -29,8 +29,8 @@ def parser() -> argparse.ArgumentParser:
     collect.add_argument("--output", default="public")
     collect.add_argument("--site-url", required=True)
     collect.add_argument("--lookback-days", type=int)
-    collect.add_argument("--source", choices=("arxiv", "scirate"), default="arxiv",
-                         help="arxiv: research-topic candidates; scirate: quant-ph range=3 with >10 total scites")
+    collect.add_argument("--source", choices=("arxiv", "journals", "all"), default="all",
+                         help="Collect relevant arXiv papers, enabled journal sources, or both")
     imported = sub.add_parser("import-analysis", help="Validate and import ChatGPT or other external analyses without an API key")
     imported.add_argument("--batch", required=True)
     imported.add_argument("--profile", default="config/profile.json")
@@ -98,3 +98,4 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

@@ -179,6 +179,7 @@ def _parse_atom_feed(data: bytes | str) -> tuple[list[dict], dict]:
         if not title:
             raise SourceError(f"arXiv entry {paper_id} has no title")
         papers.append({
+            "doi": _xml_text(entry.find(ARXIV + "doi")),
             "id": paper_id,
             "version": version,
             "title": title,
@@ -660,3 +661,4 @@ def get_paper_text(paper: dict, max_chars: int = 60000) -> dict:
         "text": abstract[:max_chars], "evidence_level": "abstract",
         "source_url": f"https://arxiv.org/abs/{paper_id}v{version}", "warnings": warnings,
     }
+

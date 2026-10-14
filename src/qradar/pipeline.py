@@ -13,6 +13,8 @@ from pathlib import Path
 from .analysis import AnalysisError, ConfigurationError, _validate_analysis, analyze_paper
 from .screening import screen_paper
 from .sources import SourceError, fetch_recent, fetch_scirate, get_paper_text
+from .journal_pipeline import (apply_publication_reviews, merge_journal_collection,
+                               same_paper, valid_source_url)
 
 
 class StateError(ValueError):
@@ -56,6 +58,21 @@ def validate_profile(profile: dict) -> None:
             or type(scirate.get("range_days", 3)) is not int or scirate.get("range_days", 3) != 3
             or type(scirate.get("min_votes_exclusive", 10)) is not int or scirate.get("min_votes_exclusive", 10) != 10):
         raise ConfigurationError("source.scirate must specify enabled true/false, range_days 3, and min_votes_exclusive 10")
+    journals = source.get("journals", {"enabled": False})
+    if not isinstance(journals, dict) or type(journals.get("enabled", False)) is not bool:
+        raise ConfigurationError("source.journals.enabled must be true or false")
+    if type(journals.get("lookback_days", 3)) is not int or not 1 <= journals.get("lookback_days", 3) <= 30:
+        raise ConfigurationError("Journal lookback_days must be between 1 and 30")
+    if "sources" in journals:
+        from .journals import JOURNALS
+        ids = set()
+        if not isinstance(journals["sources"], list):
+            raise ConfigurationError("Journal sources must be an array")
+        for item in journals["sources"]:
+            if (not isinstance(item, dict) or item.get("id") not in JOURNALS
+                    or item["id"] in ids or type(item.get("enabled", True)) is not bool):
+                raise ConfigurationError("Journal sources must have unique supported ids and boolean enabled")
+            ids.add(item["id"])
     for obj, key, default, maximum in (
         (source, "lookback_days", 7, 3650),
         (source, "max_results", 2500, 30000),
@@ -164,8 +181,31 @@ def make_update(state: dict, profile: dict, *, lookback_days: int | None = None,
         current = current.replace(tzinfo=timezone.utc)
     current = current.astimezone(timezone.utc)
     timestamp = current.isoformat(timespec="seconds").replace("+00:00", "Z")
+    if source in {"journals", "all"}:
+        if analyze_candidates:
+            raise ConfigurationError("Journal/all updates use collect then import-analysis; hosted mode needs no API key")
+        if source == "all":
+            try:
+                result = make_update(state, profile, lookback_days=lookback_days, now=current,
+                                     analyze_candidates=False, source="arxiv")
+                result["arxiv_source_status"] = {"status": "ok", "checked_at": timestamp}
+            except SourceError as exc:
+                result = copy.deepcopy(state)
+                result["arxiv_source_status"] = {"status": "failed", "checked_at": timestamp, "error": str(exc)}
+        else:
+            result = copy.deepcopy(state)
+        from .journals import fetch_journals
+        settings = profile["source"].get("journals", {"enabled": False})
+        days = lookback_days or settings.get("lookback_days", 3)
+        collected = fetch_journals(settings, now=current, lookback_days=days)
+        result = merge_journal_collection(result, profile, collected, now=current)
+        result["profile_title"] = profile.get("title", "Quantum Paper Digest")
+        result["topic_labels"] = {t["id"]: t.get("label", t["id"]) for t in profile["topics"]}
+        if source == "all":
+            result["last_run"]["source"] = "all"
+        return result
     if source not in {"arxiv", "scirate"}:
-        raise ConfigurationError("source must be arxiv or scirate")
+        raise ConfigurationError("source must be arxiv, journals or all")
     if source == "scirate":
         if not profile["source"].get("scirate", {}).get("enabled", True):
             raise ConfigurationError("SciRate collection is disabled in this profile")
@@ -189,6 +229,15 @@ def make_update(state: dict, profile: dict, *, lookback_days: int | None = None,
     for raw in fetched:
         paper = copy.deepcopy(raw)
         paper_id = paper["id"]
+        if source == "arxiv":
+            matches = [x for x in [*result["papers"], *pending.values()]
+                       if x.get("publication") and same_paper(x, paper)]
+            if len(matches) == 1 and matches[0]["id"] != paper_id:
+                existing = matches[0]
+                existing.update({"arxiv_id": paper_id, "arxiv_version": paper.get("version", 1),
+                                 "arxiv_url": paper["url"]})
+                existing["sources"] = list(dict.fromkeys([*existing.get("sources", []), "arxiv"]))
+                continue
         if source == "scirate" and not is_scirate_candidate(paper):
             raise SourceError("SciRate returned a nomination that does not exceed ten scites")
         if paper_id in selected_papers:
@@ -279,8 +328,11 @@ def import_analyses(state: dict, profile: dict, batch: dict, *, now: datetime | 
     """
     validate_profile(profile)
     entries = batch.get("analyses") if isinstance(batch, dict) else None
-    if not isinstance(entries, list) or not entries:
-        raise StateError("Analysis batch must contain a non-empty analyses array")
+    reviews = batch.get("publication_reviews", []) if isinstance(batch, dict) else []
+    if entries is None:
+        entries = []
+    if not isinstance(entries, list) or not isinstance(reviews, list) or not (entries or reviews):
+        raise StateError("Analysis batch must contain non-empty analyses or publication_reviews")
     current = now or datetime.now(timezone.utc)
     if current.tzinfo is None:
         current = current.replace(tzinfo=timezone.utc)
@@ -293,7 +345,7 @@ def import_analyses(state: dict, profile: dict, batch: dict, *, now: datetime | 
     text_fields = ("summary", "problem", "setting")
     list_fields = ("main_results", "techniques", "assumptions", "limitations", "relevance", "follow_up")
     core_fields = text_fields + list_fields + ("relevance_score",)
-    allowed = set(core_fields) | {"evidence_level", "source_url", "model", "analyzed_at", "status", "token_usage"}
+    allowed = set(core_fields) | {"publication_significance", "evidence_level", "source_url", "model", "analyzed_at", "status", "token_usage"}
     from urllib.parse import urlsplit
     for entry in entries:
         paper_id = entry.get("id") if isinstance(entry, dict) else None
@@ -306,7 +358,12 @@ def import_analyses(state: dict, profile: dict, batch: dict, *, now: datetime | 
         value = entry.get("analysis")
         if not isinstance(value, dict) or set(value) - allowed:
             raise AnalysisError("Imported analysis contains unexpected fields")
-        analysis = _validate_analysis({key: copy.deepcopy(value[key]) for key in core_fields if key in value})
+        fields = core_fields + (("publication_significance",) if "publication_significance" in value else ())
+        analysis = _validate_analysis({key: copy.deepcopy(value[key]) for key in fields if key in value})
+        if (paper.get("publication", {}).get("stage") or paper.get("publication", {}).get("publication_stage")) == "accepted_manuscript":
+            raise AnalysisError("Accepted-only manuscripts cannot be imported as formal journal publications")
+        if paper.get("publication") and not analysis.get("publication_significance"):
+            raise AnalysisError("Published-paper analysis must include publication_significance")
         if value.get("status") != "analyzed" or value.get("evidence_level") not in {"abstract", "full_text_excerpt"}:
             raise AnalysisError("Imported analysis must be analyzed with an explicit evidence level")
         if not isinstance(value.get("model"), str) or not value["model"].strip():
@@ -318,15 +375,8 @@ def import_analyses(state: dict, profile: dict, batch: dict, *, now: datetime | 
         except (ValueError, AttributeError, TypeError) as exc:
             raise AnalysisError("Imported analyzed_at must be a timezone-aware ISO timestamp") from exc
         url = value.get("source_url", "")
-        try:
-            parsed = urlsplit(url)
-            if (parsed.scheme != "https" or parsed.hostname not in {"arxiv.org", "export.arxiv.org"}
-                    or parsed.username or parsed.password or parsed.query or parsed.fragment
-                    or parsed.path not in {f"/abs/{paper_id}", f"/abs/{paper_id}v{paper['version']}",
-                                           f"/html/{paper_id}v{paper['version']}", f"/pdf/{paper_id}v{paper['version']}"}):
-                raise ValueError("source mismatch")
-        except (ValueError, TypeError) as exc:
-            raise AnalysisError("Imported source_url must identify this queued paper on official arXiv") from exc
+        if not valid_source_url(paper, url):
+            raise AnalysisError("Imported source_url must identify this queued paper on official arXiv, publisher or exact DOI metadata")
         analysis.update({"status": "analyzed", "evidence_level": value["evidence_level"],
                          "source_url": url, "model": value["model"].strip(),
                          "analyzed_at": date.astimezone(timezone.utc).isoformat(timespec="seconds")})
@@ -348,7 +398,10 @@ def import_analyses(state: dict, profile: dict, batch: dict, *, now: datetime | 
     result["pending"] = list(pending.values())
     result["papers"].sort(key=lambda p: (p.get("published", ""), p["id"]), reverse=True)
     result["last_analysis_run"] = timestamp
+    result = apply_publication_reviews(result, reviews, now=current)
     result["last_analysis_batch"] = {"analyzed": len(entries), "selected": selected, "pending": len(pending)}
+    if reviews:
+        result["last_analysis_batch"]["publication_reviews"] = len(reviews)
     result["last_run"] = {**result.get("last_run", {}), **result["last_analysis_batch"]}
     result["topic_labels"] = {topic["id"]: topic.get("label", topic["id"]) for topic in profile["topics"]}
     return result
@@ -380,3 +433,4 @@ def run_update(profile_path: str | Path, state_path: str | Path, output: str | P
     build_site(result, output, site_url)
     atomic_json(state_path, result)
     return result
+

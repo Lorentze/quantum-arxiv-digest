@@ -29,7 +29,12 @@
     if (detailed) Object.assign(options, {hour: "2-digit", minute: "2-digit", hour12: false});
     return new Intl.DateTimeFormat("zh-CN", options).format(parsed);
   };
-  const state = {data: null, topic: "", query: "", eventsBound: false, localEventsBound: false, local: null, busy: false};
+  const state = {data: null, topic: "", source: "", query: "", eventsBound: false, localEventsBound: false, local: null, busy: false};
+  const sourceName = (source) => state.data.source_labels[source] || source;
+  const paperSources = (paper) => strings(paper.sources).length ? strings(paper.sources) : String(paper.id).startsWith("doi:") ? [] : ["arxiv"];
+  const arxivId = (paper) => paper.arxiv_id || (String(paper.id).startsWith("doi:") ? "" : paper.id);
+  const publicationDate = (paper) => paper.publication && paper.publication.published || paper.published;
+  const feedPath = () => state.source ? state.data.source_feeds[state.source] || "feed.xml" : state.topic ? state.data.topic_feeds[state.topic] || "feed.xml" : "feed.xml";
 
   async function localRequest(path, payload) {
     const options = {cache: "no-store", credentials: "same-origin"};
@@ -171,10 +176,24 @@
       ["setting", "模型、任务与评价指标"], ["main_results", "主要贡献与结果"],
       ["techniques", "核心技术路线"], ["assumptions", "结论成立的条件"],
       ["limitations", "局限与证据边界"], ["relevance", "相关研究与意义"],
+      ["publication_significance", "为何适合该期刊（分析判断）"],
       ["follow_up", "进一步阅读与开放问题"],
     ]) {
       const value = Array.isArray(analysis[key]) ? strings(analysis[key]) : analysis[key];
-      if (value && (!Array.isArray(value) || value.length)) content.append(section(label, value));
+      if (value && (!Array.isArray(value) || value.length)) {
+        const block = section(label, value);
+        if (key === "publication_significance") {
+          block.insertBefore(node("p", "根据论文贡献与期刊定位的分析，不代表编辑或审稿人的实际决定。", "assessment-note"), block.children[1]);
+          const review = paper.publication_review;
+          if (review) {
+            const provenance = node("p", "本节" + scopeLabel(review), "assessment-provenance");
+            if (safeUrl(review.source_url)) provenance.append(" · ", externalLink("发表版本 ↗", review.source_url));
+            if (review.analyzed_at) provenance.append(" · 分析时间 " + date(review.analyzed_at, true));
+            block.append(provenance);
+          }
+        }
+        content.append(block);
+      }
     }
     details.append(content);
     return details;
@@ -200,7 +219,14 @@
       return link;
     };
     title.append(reportLink(paper.title || "Untitled paper"));
-    const metadata = node("p", "arXiv:" + paper.id + " · " + date(paper.published), "paper-meta");
+    const sourceBadges = node("div", undefined, "source-badges");
+    sourceBadges.lang = "en";
+    for (const source of paperSources(paper)) sourceBadges.append(node("span", sourceName(source), "source-badge"));
+    const dates = [];
+    if (!String(paper.id).startsWith("doi:")) dates.push((String(paper.date_basis || "").includes("announcement") ? "arXiv announcement" : "First submitted") + " " + date(paper.published));
+    if (paper.publication && paper.publication.published) dates.push("Journal publication " + date(paper.publication.published));
+    else if (String(paper.id).startsWith("doi:")) dates.push("Journal publication " + date(paper.published));
+    const metadata = node("p", dates.join(" · "), "paper-meta");
     metadata.lang = "en";
     const authors = strings(paper.authors);
     const authorText = authors.length > 4 ? authors.slice(0, 4).join(", ") + ", et al." : authors.join(", ");
@@ -209,18 +235,27 @@
     authorLine.title = authors.join(", ");
     const abstract = node("p", paper.abstract || "The original abstract is not available in this entry.", "abstract");
     abstract.lang = "en";
+    const abstractLabel = paper.abstract && paper.abstract_basis === "publisher_feed_excerpt" ? node("p", "Publisher feed excerpt (may be truncated; not the full original abstract).", "abstract-evidence") : null;
+    if (abstractLabel) abstractLabel.lang = "en";
     const links = node("div", undefined, "paper-links");
-    if (safeUrl(paper.url)) links.append(externalLink("arXiv ↗", paper.url));
+    const id = arxivId(paper);
+    const preprintUrl = String(paper.id).startsWith("doi:") ? paper.arxiv_url || id && "https://arxiv.org/abs/" + id : paper.url;
+    if (id && safeUrl(preprintUrl)) links.append(externalLink("arXiv ↗", preprintUrl));
+    const publication = paper.publication || {};
+    const publisherUrl = publication.url || (String(paper.id).startsWith("doi:") ? paper.url : "");
+    if (safeUrl(publisherUrl)) links.append(externalLink((publication.journal || "Publisher") + " ↗", publisherUrl));
     links.append(reportLink("阅读 AI 中文报告 →"));
-    article.append(metadata, title, authorLine, abstract, links);
+    article.append(sourceBadges, metadata, title, authorLine);
+    if (abstractLabel) article.append(abstractLabel);
+    article.append(abstract, links);
     if (report) article.append(report);
     return article;
   }
 
   function searchable(paper) {
     const analysis = paper.analysis || {};
-    return [paper.title, paper.abstract, ...strings(paper.authors), ...strings(paper.topics).map(topicName), analysis.summary, analysis.problem, analysis.setting,
-      ...["main_results", "techniques", "assumptions", "limitations", "relevance", "follow_up"].flatMap((key) => strings(analysis[key]))].join(" ").toLocaleLowerCase();
+    return [paper.title, paper.abstract, ...strings(paper.authors), ...strings(paper.topics).map(topicName), ...paperSources(paper).map(sourceName), analysis.summary, analysis.problem, analysis.setting,
+      ...["main_results", "techniques", "assumptions", "limitations", "relevance", "follow_up", "publication_significance"].flatMap((key) => strings(analysis[key]))].join(" ").toLocaleLowerCase();
   }
 
   function updateTopics() {
@@ -232,20 +267,27 @@
       selector.append(option);
     }
     selector.value = state.topic;
-    const path = state.topic ? state.data.topic_feeds[state.topic] : "feed.xml";
-    $("current-feed").href = "./" + path;
-    $("current-feed").textContent = state.topic ? "主题 RSS" : "RSS";
+    const sourceSelector = $("source-filter");
+    sourceSelector.replaceChildren();
+    for (const source of ["", ...Object.keys(state.data.source_labels)]) {
+      const option = node("option", source ? sourceName(source) : "全部来源");
+      option.value = source;
+      sourceSelector.append(option);
+    }
+    sourceSelector.value = state.source;
+    $("current-feed").href = "./" + feedPath();
+    $("current-feed").textContent = state.source ? "来源 RSS" : state.topic ? "主题 RSS" : "RSS";
   }
 
   function render() {
     updateTopics();
-    const papers = state.data.papers.filter((paper) => (!state.topic || strings(paper.topics).includes(state.topic)) && (!state.query || searchable(paper).includes(state.query.toLocaleLowerCase())));
-    papers.sort((left, right) => (Date.parse(right.published) || 0) - (Date.parse(left.published) || 0) || String(left.id).localeCompare(String(right.id)));
-    $("result-caption").textContent = papers.length + " articles" + (state.topic ? " · " + topicName(state.topic) : "");
+    const papers = state.data.papers.filter((paper) => (!state.topic || strings(paper.topics).includes(state.topic)) && (!state.source || paperSources(paper).includes(state.source)) && (!state.query || searchable(paper).includes(state.query.toLocaleLowerCase())));
+    papers.sort((left, right) => (Date.parse(publicationDate(right)) || 0) - (Date.parse(publicationDate(left)) || 0) || String(left.id).localeCompare(String(right.id)));
+    $("result-caption").textContent = papers.length + " articles" + (state.source ? " · " + sourceName(state.source) : "") + (state.topic ? " · " + topicName(state.topic) : "");
     $("paper-list").replaceChildren(...papers.map(card));
     $("empty-state").hidden = papers.length > 0;
     $("reset-filters").hidden = state.data.papers.length === 0;
-    $("empty-message").textContent = state.data.papers.length ? "尝试其他关键词或主题。" : "完成分析的文章将在这里发布。";
+    $("empty-message").textContent = state.data.papers.length ? "尝试其他关键词、主题或来源。" : "完成分析的文章将在这里发布。";
   }
 
   function init(data) {
@@ -253,6 +295,8 @@
     state.data = data;
     data.topic_labels = data.topic_labels || {};
     data.topic_feeds = data.topic_feeds || {};
+    data.source_labels = data.source_labels || {arxiv: "arXiv"};
+    data.source_feeds = data.source_feeds || {};
     $("demo-notice").hidden = !data.is_demo;
     $("updated-at").textContent = data.last_analysis_run ? "更新于 " + date(data.last_analysis_run, true) + " 北京时间" : "";
     render();
@@ -260,12 +304,13 @@
     state.eventsBound = true;
     $("search").addEventListener("input", (event) => { state.query = event.target.value.trim(); render(); });
     $("topic-filter").addEventListener("change", (event) => { state.topic = event.target.value; render(); });
+    $("source-filter").addEventListener("change", (event) => { state.source = event.target.value; render(); });
     $("filter-form").addEventListener("submit", (event) => event.preventDefault());
     $("reset-filters").addEventListener("click", () => {
-      state.topic = ""; state.query = ""; $("search").value = ""; render();
+      state.topic = ""; state.source = ""; state.query = ""; $("search").value = ""; render();
     });
     $("copy-feed").addEventListener("click", async () => {
-      const path = state.topic ? state.data.topic_feeds[state.topic] : "feed.xml";
+      const path = feedPath();
       const url = new URL(path, state.local ? location.origin + "/" : data.site_url).href;
       try {
         await navigator.clipboard.writeText(url);
@@ -291,3 +336,4 @@
     $("reset-filters").hidden = true;
   });
 })();
+

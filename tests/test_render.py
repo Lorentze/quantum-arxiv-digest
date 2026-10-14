@@ -164,15 +164,120 @@ class RenderTests(unittest.TestCase):
         self.assertIn("articlePath(paper.article_path)", script)
         self.assertNotIn("title.append(externalLink", script)
 
-    def test_scirate_metadata_is_allowlisted_and_only_added_to_article(self):
+    def test_scirate_is_removed_and_legacy_records_default_to_arxiv(self):
         self.paper["sources"] = ["arxiv", "scirate", "private-name"]
         self.paper["scirate"] = {"votes": 12, "range_days": 3, "url": "https://scirate.com/arxiv/2209.09267", "private_name": "MUST-NOT-BE-PUBLISHED"}
         build_site(self.state, self.output, "https://user.github.io/project")
         public = json.loads((self.output / "papers.json").read_text())["papers"][0]
-        self.assertEqual(public["sources"], ["arxiv", "scirate"])
-        self.assertEqual(public["scirate"]["votes"], 12)
-        self.assertNotIn("private_name", public["scirate"])
-        self.assertIn("SciRate · 12 votes", (self.output / "articles/2209.09267.html").read_text())
+        self.assertEqual(public["sources"], ["arxiv"])
+        self.assertNotIn("scirate", public)
+        self.assertNotIn("SciRate", (self.output / "articles/2209.09267.html").read_text())
+        self.paper.pop("sources")
+        build_site(self.state, self.output, "https://user.github.io/project")
+        self.assertEqual(json.loads((self.output / "papers.json").read_text())["papers"][0]["sources"], ["arxiv"])
+
+    def test_journal_only_identity_source_feeds_and_publication_assessment(self):
+        self.paper.update({"id": "doi:10.1038/s41567-026-00001-2", "version": 1,
+                           "url": "https://www.nature.com/articles/s41567-026-00001-2", "pdf_url": "",
+                           "published": "2026-10-14T00:00:00Z", "sources": ["nature_physics"],
+                           "publication": {"journal_id": "nature_physics", "journal": "Nature Physics",
+                                           "doi": "10.1038/s41567-026-00001-2", "published": "2026-10-14T00:00:00Z",
+                                           "date_basis": "publisher_rss", "url": "https://www.nature.com/articles/s41567-026-00001-2"}})
+        self.paper["analysis"]["publication_significance"] = ["给出可检验的资源界，并联系量子计算的可行性。"]
+        build_site(self.state, self.output, "https://user.github.io/project")
+        data = json.loads((self.output / "papers.json").read_text())
+        public = data["papers"][0]
+        self.assertEqual(public["sources"], ["nature_physics"])
+        self.assertEqual(data["profile_title"], "Quantum Paper Digest")
+        self.assertEqual(data["source_feeds"]["nature_physics"], "feeds/sources/nature_physics.xml")
+        self.assertEqual(len(data["source_labels"]), 9)
+        for source, relative in data["source_feeds"].items():
+            self.assertTrue((self.output / relative).is_file(), source)
+        item = ET.parse(self.output / "feed.xml").find("channel/item")
+        self.assertEqual(item.findtext("guid"), "urn:doi:10.1038/s41567-026-00001-2")
+        self.assertIn("Nature Physics", [c.text for c in item.findall("category")])
+        self.assertIn("Journal publication", item.findtext("description"))
+        self.assertIn("DOI:10.1038/s41567-026-00001-2", item.findtext("description"))
+        self.assertNotIn("arXiv:", item.findtext("description"))
+        article = (self.output / public["article_path"]).read_text()
+        self.assertIn("为何适合该期刊（分析判断）", article)
+        self.assertIn("不代表编辑或审稿人的实际决定", article)
+        self.assertIn("Nature Physics ↗", article)
+        self.assertNotIn("arXiv ↗", article)
+        self.assertNotIn("First submitted", article)
+        self.assertIn('id="source-filter"', (self.output / "index.html").read_text())
+        self.assertIn("paperSources(paper).includes(state.source)", (self.output / "app.js").read_text())
+        self.assertEqual(len(ET.parse(self.output / data["source_feeds"]["nature_physics"]).findall("channel/item")), 1)
+        self.assertEqual(ET.parse(self.output / data["source_feeds"]["arxiv"]).findall("channel/item"), [])
+
+    def test_journal_match_preserves_arxiv_guid_and_independent_provenance(self):
+        self.paper["sources"] = ["arxiv", "prx_quantum"]
+        self.paper["publication"] = {"journal_id": "prx_quantum", "journal": "Untrusted journal name",
+                                     "doi": "10.1103/example", "published": "2026-10-14T00:00:00Z",
+                                     "date_basis": "publisher_rss", "url": "https://journals.aps.org/prxquantum/abstract/10.1103/example"}
+        self.paper["analysis"]["publication_significance"] = ["<img src=x onerror=alert(1)> 理论界与物理问题的联系。"]
+        self.paper["publication_review"] = {"evidence_level": "abstract", "source_url": "https://journals.aps.org/prxquantum/abstract/10.1103/example",
+                                             "analyzed_at": "2026-10-14T01:00:00Z", "model": "test", "doi": "10.1103/example", "private": "DO-NOT-PUBLISH"}
+        build_site(self.state, self.output, "https://user.github.io/project")
+        public = json.loads((self.output / "papers.json").read_text())["papers"][0]
+        self.assertEqual(public["publication"]["journal"], "PRX Quantum")
+        self.assertNotIn("private", public["publication_review"])
+        item = ET.parse(self.output / "feed.xml").find("channel/item")
+        self.assertEqual(item.findtext("guid"), "urn:arxiv:2209.09267")
+        self.assertIn("First submitted", item.findtext("description"))
+        self.assertIn("Journal publication", item.findtext("description"))
+        article = (self.output / "articles/2209.09267.html").read_text()
+        self.assertIn("arXiv ↗", article)
+        self.assertIn("PRX Quantum ↗", article)
+        self.assertIn("本节依据论文摘要", article)
+        self.assertIn("2026-10-14T01:00:00Z", article)
+        self.assertNotIn("<img src=x", article)
+        self.assertIn("&lt;img src=x", article)
+        self.assertNotIn("DO-NOT-PUBLISH", article)
+        self.paper["publication"]["url"] = "javascript:alert(1)"
+        self.paper["publication_review"]["source_url"] = "javascript:alert(1)"
+        build_site(self.state, self.output, "https://user.github.io/project")
+        self.assertNotIn("javascript:", (self.output / "articles/2209.09267.html").read_text())
+
+    def test_journal_first_matching_preprint_keeps_doi_and_separate_arxiv_link(self):
+        self.paper.update({"id": "doi:10.1126/example", "sources": ["science", "arxiv"], "arxiv_id": "2209.09267", "arxiv_version": 3,
+                           "arxiv_url": "https://arxiv.org/abs/2209.09267v3", "url": "https://www.science.org/doi/10.1126/example",
+                           "publication": {"journal_id": "science", "doi": "10.1126/example", "url": "https://www.science.org/doi/10.1126/example",
+                                           "published": "2026-10-14T00:00:00Z"}})
+        build_site(self.state, self.output, "https://user.github.io/project")
+        public = json.loads((self.output / "papers.json").read_text())["papers"][0]
+        article = (self.output / public["article_path"]).read_text()
+        self.assertIn("DOI:10.1126/example", article)
+        self.assertNotIn("arXiv:doi:", article)
+        self.assertIn('href="https://arxiv.org/abs/2209.09267v3"', article)
+        self.assertIn("Science ↗", article)
+        self.assertEqual(ET.parse(self.output / "feed.xml").findtext("channel/item/guid"), "urn:doi:10.1126/example")
+
+    def test_publisher_feed_excerpt_is_not_labelled_as_original_abstract(self):
+        self.paper.update({"id": "doi:10.1103/example", "sources": ["prx"], "abstract_basis": "publisher_feed_excerpt",
+                           "abstract_source_url": "https://feeds.aps.org/rss/recent/prx.xml",
+                           "publication": {"journal_id": "prx", "doi": "10.1103/example", "published": "2026-10-14",
+                                           "url": "https://journals.aps.org/prx/abstract/10.1103/example"}})
+        build_site(self.state, self.output, "https://user.github.io/project")
+        public = json.loads((self.output / "papers.json").read_text())["papers"][0]
+        self.assertEqual(public["abstract_basis"], "publisher_feed_excerpt")
+        self.assertEqual(public["abstract_source_url"], "https://feeds.aps.org/rss/recent/prx.xml")
+        article = (self.output / public["article_path"]).read_text()
+        self.assertIn("<summary>Publisher feed excerpt</summary>", article)
+        self.assertNotIn("<summary>Original abstract</summary>", article)
+        self.assertIn("not the full original abstract", article)
+        description = ET.parse(self.output / "feed.xml").findtext("channel/item/description")
+        self.assertIn("Publisher feed excerpt", description)
+        self.assertIn("not the full original abstract", description)
+        script = (self.output / "app.js").read_text()
+        self.assertIn('paper.abstract_basis === "publisher_feed_excerpt"', script)
+        self.paper["abstract_basis"] = "publisher_abstract"
+        self.paper["abstract_source_url"] = "javascript:alert(1)"
+        build_site(self.state, self.output, "https://user.github.io/project")
+        public = json.loads((self.output / "papers.json").read_text())["papers"][0]
+        self.assertEqual(public["abstract_source_url"], "")
+        self.assertIn("<summary>Original abstract</summary>", (self.output / public["article_path"]).read_text())
+        self.assertNotIn("Publisher feed excerpt", ET.parse(self.output / "feed.xml").findtext("channel/item/description"))
 
     def test_reject_nonabsolute_or_insecure_site_urls(self):
         for url in ("relative/path", "javascript:alert(1)", "http://example.com", "https://user:password@example.com", "https://example.com/?key=secret", "https://example.com/#x"):
@@ -223,3 +328,4 @@ class RenderTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

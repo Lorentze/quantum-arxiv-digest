@@ -26,7 +26,7 @@ from .sources import SourceError
 MAX_BODY_BYTES = 8 * 1024 * 1024
 _PUBLIC_FILES = {"index.html", "app.js", "style.css", "papers.json", "feed.xml", "snapshot.html"}
 _PAPER_KEYS = ("id", "version", "title", "authors", "abstract", "categories", "published",
-               "updated", "url", "pdf_url", "topics", "keyword_score")
+               "updated", "url", "pdf_url", "topics", "keyword_score", "publication", "sources", "arxiv_id", "arxiv_version", "abstract_basis")
 
 
 def analysis_request(profile: dict, state: dict) -> str:
@@ -43,6 +43,8 @@ def analysis_request(profile: dict, state: dict) -> str:
     properties = {key: {"type": "string", "minLength": 1} for key in string_fields}
     properties.update({key: {"type": "array", "items": {"type": "string", "minLength": 1}}
                        for key in list_fields})
+    required_content = list(properties)
+    properties["publication_significance"] = {"type": "array", "items": {"type": "string", "minLength": 1}}
     properties.update({"relevance_score": {"type": "integer", "minimum": 0, "maximum": 100},
                        "evidence_level": {"enum": ["abstract", "full_text_excerpt"]},
                        "source_url": {"type": "string"}, "model": {"type": "string", "minLength": 1},
@@ -54,7 +56,7 @@ def analysis_request(profile: dict, state: dict) -> str:
                   "required": ["id", "version", "analysis"], "properties": {
                       "id": {"type": "string"}, "version": {"type": "integer"},
                       "analysis": {"type": "object", "additionalProperties": False,
-                                   "required": list(properties), "properties": properties}}}}}}
+                                   "required": [k for k in properties if k != "publication_significance"], "properties": properties}}}}}}
     timestamp = datetime.now(timezone.utc).isoformat(timespec="seconds")
     source_limit = profile.get("ai", {}).get("max_source_chars", 60000)
     if type(source_limit) is not int or source_limit < 1:
@@ -66,7 +68,7 @@ def analysis_request(profile: dict, state: dict) -> str:
     else:
         reading_scope = ("本研究画像关闭了正文预取；本批仅依据下方摘要，evidence_level 必须设为 abstract。"
                          "不要声称阅读正文或核查了证明。")
-    instructions = f"""请按以下研究画像阅读这批真实 arXiv 候选，生成中文技术分析，并返回可下载的 JSON 文件。
+    instructions = f"""请按以下研究画像阅读这批真实 arXiv 和期刊候选，生成中文技术分析，并返回可下载的 JSON 文件。
 导出时间：{timestamp}。当前队列 {len(pending)} 篇；本批 {len(selected)} 篇。
 
 阅读要求：
@@ -75,7 +77,7 @@ def analysis_request(profile: dict, state: dict) -> str:
 3. 写面向量子信息研究读者的详细中文技术报告：summary 先简洁说明论文做了什么；problem 和 setting 定义研究问题、关键对象、任务与访问模型；main_results 给出主要结果及适用的参数、误差或复杂度标度；techniques 解释核心机制及证明或算法各步为何有用；assumptions、limitations、relevance、follow_up 分别说明必要条件、证据边界、一般研究意义和开放问题。正文证据充分时，各字段合计约 1200–1800 个中文字；只有摘要时按证据适当缩短，绝不为凑篇幅补造细节。区分作者结论、你的判断和后续建议；没有依据的细节明确说未确认。不要写私人姓名或“与你研究”的称呼。
 4. 根据研究画像给出 0–100 的相关性分数。低相关论文也可返回分析；低于 {profile['screening'].get('min_ai_score', 70)} 分的条目会记为已筛除，不进入精选或 RSS。不要凑出高分。
 5. 仅返回本批真实 id 和对应 version，不能增加论文、修改元数据或重复 id。可以先返回部分已完成的分析，其余保留在队列。
-6. source_url 必须是该论文的 https://arxiv.org/abs/ID（可带本版本 vN），或 https://arxiv.org/html/IDvN、https://arxiv.org/pdf/IDvN。不附查询参数或片段。
+6. source_url 对 arXiv 必须指向该版本的官方摘要、HTML 或 PDF；对期刊必须指向 publication.url 或对应 DOI 的 https://api.crossref.org/works/DOI。只能填写实际阅读的来源。期刊论文还须提供非空 publication_significance 列表，分析新意、技术突破和物理意义，并明确这是阅读后的判断，不代表编辑真实决定。
 7. model 填写实际分析来源，例如 ChatGPT；已知具体模型时如实填写，未知时不要猜测。analyzed_at 填实际完成时间，采用带时区 ISO 8601 格式；status 必须为 analyzed。
 8. 返回下方 schema 对应的纯 JSON，顶层只有 analyses。字符串不能为空；没有确定内容的列表可以为空。不要把 Markdown 代码围栏放入 JSON 文件。
 
@@ -270,7 +272,8 @@ class LocalHandler(BaseHTTPRequestHandler):
                     if days is not None and (type(days) is not int or not 1 <= days <= 3650):
                         raise StateError("lookback_days must be an integer between 1 and 3650")
                     result = collect_update(self.server.profile_path, self.server.state_path,
-                                            self.server.output, self.server.site_url, lookback_days=days)
+                                            self.server.output, self.server.site_url, lookback_days=days,
+                                            source="all" if read_json(self.server.profile_path)["source"].get("journals", {}).get("enabled", False) else "arxiv")
                     summary = {"last_run": result["last_run"]}
                 else:
                     # The existing importer validates the entire batch before
@@ -304,3 +307,4 @@ def serve(profile_path: str | Path, state_path: str | Path, output: str | Path,
             server.serve_forever()
         except KeyboardInterrupt:
             print("\nLocal reader stopped.", flush=True)
+

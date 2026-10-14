@@ -146,6 +146,10 @@ def _messages(paper: dict, profile: dict, source: dict, settings: dict):
         "characters across the report when sufficient source material is available; use fewer for abstract-only "
         "evidence rather than padding or inventing details. Write for a general research readership without names "
         "or references to a private user. Keep main_results to at most six bullets and other lists to at most four. "
+        "For a formally published article, add publication_significance: explain the concrete novelty, "
+        "technical obstacle overcome, physical significance and scope relative to the named journal. "
+        "Explicitly frame this as a source-grounded inference, not knowledge of editors' or referees' reasons. "
+        "Avoid inferring importance solely from journal prestige, and state if the source is too limited to assess novelty. "
         "Return only the JSON object conforming to the provided schema."
     )
     # Only paper metadata needed for scientific interpretation is transmitted.
@@ -156,7 +160,7 @@ def _messages(paper: dict, profile: dict, source: dict, settings: dict):
             for key in ("background", "research_questions", "topics", "exclusions")
         },
         "paper_metadata": {
-            key: paper[key] for key in ("id", "arxiv_id", "title", "authors", "abstract", "categories") if key in paper
+            key: paper[key] for key in ("id", "arxiv_id", "title", "authors", "abstract", "categories", "publication") if key in paper
         },
         "source": {
             "evidence_level": evidence,
@@ -254,7 +258,7 @@ def _extract_text(result: dict, style: str) -> str:
 
 
 def _validate_analysis(value) -> dict:
-    if not isinstance(value, dict) or set(value) != _CONTENT_FIELDS:
+    if not isinstance(value, dict) or (set(value) - {"publication_significance"}) != _CONTENT_FIELDS:
         raise AnalysisError("AI analysis has missing or unexpected fields.")
     for field in _TEXT_FIELDS:
         if not isinstance(value[field], str) or not value[field].strip() or len(value[field]) > 12000:
@@ -267,6 +271,12 @@ def _validate_analysis(value) -> dict:
         if any(not isinstance(item, str) or not item.strip() or len(item) > 12000 for item in items):
             raise AnalysisError(f"AI analysis field {field} contains invalid text.")
         value[field] = [item.strip() for item in items]
+    if "publication_significance" in value:
+        items = value["publication_significance"]
+        if (not isinstance(items, list) or len(items) > 6
+                or any(not isinstance(x, str) or not x.strip() or len(x) > 12000 for x in items)):
+            raise AnalysisError("publication_significance must be a short list of non-empty text")
+        value["publication_significance"] = [x.strip() for x in items]
     score = value["relevance_score"]
     if type(score) is not int or not 0 <= score <= 100:
         raise AnalysisError("AI relevance_score must be an integer from 0 to 100.")
@@ -292,7 +302,12 @@ def analyze_paper(paper: dict, profile: dict, source: dict, settings: dict) -> d
         raise ConfigurationError("api_style must be responses or chat_completions.")
     max_tokens = _positive_integer(settings.get("max_output_tokens", 3500), "max_output_tokens")
     messages, truncated = _messages(paper, profile, source, settings)
-    schema_format = {"name": "quantum_paper_analysis", "schema": _SCHEMA, "strict": True}
+    schema = _SCHEMA
+    if paper.get("publication"):
+        schema = {**_SCHEMA, "properties": {**_SCHEMA["properties"],
+            "publication_significance": {"type": "array", "items": {"type": "string"}}},
+            "required": [*_SCHEMA["required"], "publication_significance"]}
+    schema_format = {"name": "quantum_paper_analysis", "schema": schema, "strict": True}
     if style == "responses":
         payload = {
             "model": model, "input": messages, "store": False,
@@ -345,3 +360,4 @@ def analyze_paper(paper: dict, profile: dict, source: dict, settings: dict) -> d
         "token_usage": token_usage,
     })
     return analysis
+
