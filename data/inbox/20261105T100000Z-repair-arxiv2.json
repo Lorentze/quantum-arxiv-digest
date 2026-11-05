@@ -1,0 +1,343 @@
+{
+  "analyses": [
+    {
+      "id": "2611.06154",
+      "version": 1,
+      "analysis": {
+        "summary": "把量子码中局域弱测量产生的非局域信息推断问题映射到经典自旋模型，利用对称性与关联不等式约束哪些逻辑信息可以同时被学习。",
+        "problem": "局域测量记录带有噪声；问题是它们在长距离上是否仍包含某类非局域可观测量的信息，以及不同可学习量之间是否存在结构性约束。",
+        "setting": "考虑拓扑 stabilizer codes 和有限群 quantum double models 的弱测量 Bayesian inference。波函数形变强度与 Gaussian 测量强度匹配时，复制模型出现增强对称性。",
+        "main_results": [
+          "作者借助对测量记录平均的关联函数恒等式与铁磁关联不等式，得到可学习性层级：两个可观测量若在长距离仍可学习，其乘积也须可学习。",
+          "例子包括 rank-2 toric code 和 X-cube；对非阿贝尔 quantum double，表示与融合规则在适当正性条件下进一步限制可学习信息。"
+        ],
+        "techniques": [
+          "先把噪声测量后的推断变为经典关联函数，再用复制模型对称性建立恒等式，最后用关联不等式推导逻辑量之间的约束。"
+        ],
+        "assumptions": [
+          "增强对称性的论证使用匹配的形变与测量强度；非阿贝尔推广需要正性条件。"
+        ],
+        "limitations": [
+          "摘要未给出有限尺寸误差、所需 copies 或可执行推断算法的复杂度，不能把学习相图直接等同于高效 tomography。",
+          "仅阅读精确 v1 版本的官方摘要，未核查正文证明、完整假设和数值实验细节。"
+        ],
+        "relevance": [
+          "与受限测量下信息访问和量子码可学习性直接相关，提供通过结构性关系分析测量能力的路径。"
+        ],
+        "follow_up": [
+          "读者建议：核查可学习性的操作性定义，并区分信息存在、样本复杂度与经典后处理可行性。"
+        ],
+        "relevance_score": 85,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:30:40+00:00",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.06154v1"
+      }
+    },
+    {
+      "id": "2611.06136",
+      "version": 1,
+      "analysis": {
+        "summary": "摘要展示 QCCD 离子阱搬运过程中的鲁棒单比特几何门，属于量子控制实验的邻近方向；本轮不收录长报告。",
+        "problem": "离子搬运引入频偏和控制误差。",
+        "setting": "室温平面离子阱，采用可优化路径的非循环几何门方案。",
+        "main_results": [
+          "作者报告动态噪声抑制，并在最多 33 个离子的系统中验证鲁棒性。"
+        ],
+        "techniques": [
+          "路径优化的非循环 geometric gates。"
+        ],
+        "assumptions": [
+          "结论针对指定 QCCD 控制实现。"
+        ],
+        "limitations": [
+          "摘要未建立固定未知多比特门的 SPAM-robust certification 或统计资源保证。",
+          "仅阅读精确 v1 版本的官方摘要，未核查正文证明、完整假设和数值实验细节。"
+        ],
+        "relevance": [
+          "只与门控制及 fidelity 指标相邻，未明确对应平台核心的认证模型或资源界，因此相关性低于精选阈值。"
+        ],
+        "follow_up": [],
+        "relevance_score": 52,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:30:40+00:00",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.06136v1"
+      }
+    },
+    {
+      "id": "2611.06119",
+      "version": 1,
+      "analysis": {
+        "summary": "T-by-T sampling 把 Clifford+T 电路的精确采样归约为按 T-count 逐步增加的振幅计算，减少大量 Clifford 门带来的额外振幅求值。",
+        "problem": "已有逐门采样中的振幅求值次数可随 Hadamard 等非单项式门数量增长，即使真正的非 Clifford 资源很少，也可能需要许多调用。",
+        "setting": "输入为 T-count 为 t 的 Clifford+T 电路，目标为 exact classical sampling。振幅计算可与低 stabilizer-rank 分解结合，但振幅求值本身仍有代价。",
+        "main_results": [
+          "作者将一次采样归约为 2t 次振幅求值，对应逐步具有 1,2,…,t 个 T 门的电路；求值次数独立于外围 Clifford 结构。",
+          "摘要报告在 magic-state cultivation 电路上可于数秒内生成样本，演示中 escape 达到 distance 19。"
+        ],
+        "techniques": [
+          "按非 Clifford 资源而非全部非单项式门推进采样，避免显式计算昂贵的 marginal probabilities。"
+        ],
+        "assumptions": [
+          "精确采样性能仍取决于相应振幅的计算方法和 T-count。"
+        ],
+        "limitations": [
+          "2t 是振幅调用次数，并非总运行时间为 O(t)，也没有推出任意 BQP 电路的高效经典模拟。",
+          "演示速度是具体电路实例的结果，不是所有同距离 QEC 电路的统一复杂度保证。",
+          "仅阅读精确 v1 版本的官方摘要，未核查正文证明、完整假设和数值实验细节。"
+        ],
+        "relevance": [
+          "直接连接 magic / stabilizer 资源与经典采样复杂度，尤其适合 Clifford 主体庞大、T 门较少的容错模拟。"
+        ],
+        "follow_up": [
+          "读者建议：分开比较振幅调用次数、单次振幅成本和预处理成本，核查其对自适应测量的适用范围。"
+        ],
+        "relevance_score": 96,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:30:40+00:00",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.06119v1"
+      }
+    },
+    {
+      "id": "2611.06073",
+      "version": 1,
+      "analysis": {
+        "summary": "提出非自适应单拷贝浅层 Clifford tomography：同时控制样本数、不同测量设置数与经典后处理成本。",
+        "problem": "Tomography 的 copies 开销与切换测量设置的开销不同；目标是在浅电路测量下保留最优纯态样本标度，同时显著复用设置。",
+        "setting": "任意 n 比特纯态，d=2^n；误差为 infidelity 1−|⟨ψ|ψ̂⟩|²≤ε，高概率成功，测量逐 copy 进行且非自适应。",
+        "main_results": [
+          "作者声称 copies 为 O(d/ε)，设置数为 Õ(1)，每个 Clifford 测量电路深度为 O(log n)。",
+          "按测量基保存结果直方图，给定直方图后的 classical post-processing 为 Õ(d)。"
+        ],
+        "techniques": [
+          "Shadow bootstrapping 用当前估计降低后续 residual estimation 方差；每阶段仅需常数个新设置，以逐阶段提高重建精度。"
+        ],
+        "assumptions": [
+          "结论针对纯态；摘要中 nonadaptive 指的是量子测量设置，迭代使用当前估计属于后处理。"
+        ],
+        "limitations": [
+          "Õ 记号隐藏的对数参数、失败概率和电路连接几何在摘要中未说明，不能据此声称一维最近邻深度界。",
+          "设置数少并未消除 O(d/ε) 的 copies 成本；对一般 n 比特纯态仍随 n 指数增长。",
+          "仅阅读精确 v1 版本的官方摘要，未核查正文证明、完整假设和数值实验细节。"
+        ],
+        "relevance": [
+          "与单拷贝学习、Clifford 测量及设置复用直接相关，清楚展示 copies、测量深度与设置数应分别记账。"
+        ],
+        "follow_up": [
+          "读者建议：检查 Õ(1) 隐藏哪些对数，以及纯态 promise 失配时能否得到鲁棒或 agnostic 保证。"
+        ],
+        "relevance_score": 98,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:30:40+00:00",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.06073v1"
+      }
+    },
+    {
+      "id": "2611.05941",
+      "version": 1,
+      "analysis": {
+        "summary": "通过互补轨道基的 rotate–sample–unrotate 改善 QSCI determinant discovery；有测量预算方面的联系，但本轮不列入核心精选。",
+        "problem": "有限 shots 容易反复采到高概率电子构型，遗漏有用 determinants。",
+        "setting": "已制备电子态在互补轨道框架下采样，再于有限 selected-CI 空间中对角化。",
+        "main_results": [
+          "N₂ 拉伸构型中作者报告 5,000 shots 达化学精度，对照 conventional QSCI 为 20,000。"
+        ],
+        "techniques": [
+          "用初始波函数与 residual 构造轨道框架，激发态结合 GQE。"
+        ],
+        "assumptions": [
+          "改进依赖具体轨道选择和分子实例。"
+        ],
+        "limitations": [
+          "摘要给出实例提升，未建立 fermionic shadows、design order 或一般总样本复杂度 separation。",
+          "仅阅读精确 v1 版本的官方摘要，未核查正文证明、完整假设和数值实验细节。"
+        ],
+        "relevance": [
+          "与测量设置和有限-shot discovery 邻近，但不足以支撑平台核心研究问题的直接联系。"
+        ],
+        "follow_up": [],
+        "relevance_score": 58,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:30:40+00:00",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.05941v1"
+      }
+    },
+    {
+      "id": "2611.05867",
+      "version": 1,
+      "analysis": {
+        "summary": "通过不携带逻辑态信息的修正 Pauli frame，模拟通用容错电路中的误差传播、detector outcomes 与译码是否失败，避开完整逻辑输出采样。",
+        "problem": "非 Clifford 门使传统误差跟踪更复杂；评估容错性能却未必需要知道理想逻辑计算的输出分布。",
+        "setting": "随机 Pauli 噪声、高 fault distance 的容错电路；逻辑 non-Clifford operations 通过物理 T、CS、CCZ 实现。",
+        "main_results": [
+          "作者声称可高效跟踪错误并准确采样所有 detector outcomes；译码后检查 Pauli frame 是否仍逻辑平凡以判定成功。",
+          "允许部分由逻辑测量控制的自适应操作，但相应逻辑测量的结果分布必须已知。"
+        ],
+        "techniques": [
+          "将错误 frame 与逻辑计算信息解耦，并利用非逻辑测量分布独立于逻辑态这一性质构造采样。"
+        ],
+        "assumptions": [
+          "要求随机 Pauli 噪声、指定非 Clifford 实现及高 fault distance；不能略去自适应结果分布已知这一条件。"
+        ],
+        "limitations": [
+          "摘要未给出各参数的运行时标度，也未说明一般相干或相关噪声是否可覆盖。",
+          "此方法检测 decoding failures，不能采样无噪声逻辑电路输出，不能解释为普遍高效模拟 universal quantum computation。",
+          "仅阅读精确 v1 版本的官方摘要，未核查正文证明、完整假设和数值实验细节。"
+        ],
+        "relevance": [
+          "直接相关于 logical QEC 的性能评估、受限可访问信息及非 Clifford 电路模拟，明确区分逻辑错误统计和计算输出。"
+        ],
+        "follow_up": [
+          "读者建议：核查 frame 的构造如何保持逻辑平凡，并比较该错误率与特定 logical fidelity 指标的关系。"
+        ],
+        "relevance_score": 92,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:30:40+00:00",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.05867v1"
+      }
+    },
+    {
+      "id": "2611.05792",
+      "version": 1,
+      "analysis": {
+        "summary": "用 resolvent 形式的后向归纳处理跨轮持续存在的量子记忆，给出 adaptive quantum property estimation 的样本数与保留维数权衡。",
+        "problem": "跨轮量子记忆和自适应测量产生大量依赖路径的状态；直接优化测量树很难获得只依赖记忆规模的下界。",
+        "setting": "从未知态的独立 copies 同时估计一族 Tr(Oρ)，加性精度 ε；允许任意自适应 instruments 和无限制 memory lifetime，成本参数为保留维数 K。",
+        "main_results": [
+          "作者借对称化线性规划声称，对 D²−1 个 Paulis 得到 Ω(D/(Kε²)) 权衡。",
+          "当 K=⌊√n⌋ 时，对 w=⌈log₂n⌉ 权重 Pauli strings 和二次 Majorana cross-correlations 分别得到 Ω(3^w/ε²) 与 Ω(n²/[ε²(1+ln n)²])。"
+        ],
+        "techniques": [
+          "Resolvent regularization 消去内部 memory trajectories，把下界转为由目标 observables 计算的代数 certificate；对称性进一步降为多项式大小 LP。"
+        ],
+        "assumptions": [
+          "下界针对给定可观测量族与 persistent memory 维数约束，不是任意量子任务的统一结论。"
+        ],
+        "limitations": [
+          "摘要未列出完整成功概率、可观测量归一化与各界适用区间，需正文确认。",
+          "维数 K 与记忆 qubit 数 log₂K 不同；“与无记忆估计器近似匹配”也依赖具体 observable family。",
+          "仅阅读精确 v1 版本的官方摘要，未核查正文证明、完整假设和数值实验细节。"
+        ],
+        "relevance": [
+          "直接涉及 adaptivity、quantum memory 与样本复杂度的资源分离；Majorana 例子也贴近 fermionic readout。"
+        ],
+        "follow_up": [
+          "读者建议：检查 certificate 的操作性归约，以及可否用于区分单拷贝无记忆与持续小记忆的具体 learning 任务。"
+        ],
+        "relevance_score": 97,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:30:40+00:00",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.05792v1"
+      }
+    },
+    {
+      "id": "2611.05782",
+      "version": 1,
+      "analysis": {
+        "summary": "论文研究 polariton 模拟器的 XY 优化动力学；decoupling 是经典幅相解耦，此次关键词召回与量子信息 decoupling 不同。",
+        "problem": "极化激元网络受幅相耦合和局域极小点困扰。",
+        "setting": "Driven-dissipative analog XY spin simulation。",
+        "main_results": [
+          "作者提出高阶非线性损耗和弱 Hermitian pulses 改善优化。"
+        ],
+        "techniques": [
+          "密度重标度、重整化群分析及多阶段脉冲。"
+        ],
+        "assumptions": [
+          "结论针对所研究的 analog dynamics 与测试实例。"
+        ],
+        "limitations": [
+          "不涉及 unitary designs、量子纠错的 decoupling theorem 或量子信息样本复杂度保证。",
+          "仅阅读精确 v1 版本的官方摘要，未核查正文证明、完整假设和数值实验细节。"
+        ],
+        "relevance": [
+          "与核心研究问题无明确联系，不纳入精选。"
+        ],
+        "follow_up": [],
+        "relevance_score": 14,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:30:40+00:00",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.05782v1"
+      }
+    },
+    {
+      "id": "2611.05722",
+      "version": 1,
+      "analysis": {
+        "summary": "论文聚焦量子计算系统的安全监测与软件控制栈攻击检测；虽涉及 syndrome 和 QEC，但不是逻辑保真度认证或资源分离研究。",
+        "problem": "防范 syndrome/decoder pipeline 和经典控制栈受到篡改。",
+        "setting": "多个统计与行为探测器，结合模拟和 IBM Heron 设备评估。",
+        "main_results": [
+          "作者提出按 syndrome 统计、decoder confidence 与输出偏差等发出异常指示。"
+        ],
+        "techniques": [
+          "诚实运行基线校准与多探测器显著性检验。"
+        ],
+        "assumptions": [
+          "检测效果依赖所建基线与所测攻击模型。"
+        ],
+        "limitations": [
+          "摘要中的显著性阈值不等于任意攻击下零误报或完整安全证明。",
+          "仅阅读精确 v1 版本的官方摘要，未核查正文证明、完整假设和数值实验细节。"
+        ],
+        "relevance": [
+          "任务主要是网络/软件安全工程，不满足平台核心信息论问题的直接相关性标准。"
+        ],
+        "follow_up": [],
+        "relevance_score": 38,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:30:40+00:00",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.05722v1"
+      }
+    },
+    {
+      "id": "2611.05626",
+      "version": 1,
+      "analysis": {
+        "summary": "这是经典 generative compressed sensing 的信号恢复理论，关键词 sample complexity 与量子学习无直接对应。",
+        "problem": "从线性测量恢复生成网络像空间中的信号。",
+        "setting": "具有 ReLU 隐层与 sigmoid 输出的经典网络。",
+        "main_results": [
+          "作者给出无需 expansivity 的统一恢复测量数标度。"
+        ],
+        "techniques": [
+          "生成先验下的高概率恢复分析。"
+        ],
+        "assumptions": [
+          "信号位于给定生成网络范围且远离输出饱和端点。"
+        ],
+        "limitations": [
+          "未研究量子态、量子测量或量子信息资源。",
+          "仅阅读精确 v1 版本的官方摘要，未核查正文证明、完整假设和数值实验细节。"
+        ],
+        "relevance": [
+          "无具体量子信息方法或操作性联系，不纳入精选。"
+        ],
+        "follow_up": [],
+        "relevance_score": 8,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:30:40+00:00",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.05626v1"
+      }
+    }
+  ]
+}
