@@ -339,6 +339,504 @@
     },
     {
       "doi": "",
+      "id": "2611.06154",
+      "version": 1,
+      "title": "Statistical mechanics and hierarchy of learnability in quantum codes: From generalized symmetries to non-Abelian topological orders",
+      "authors": [
+        "Hiromi Ebisu",
+        "Masazumi Honda"
+      ],
+      "abstract": "Local weak measurements provide noisy information about observables encoded in a quantum code. We formulate the corresponding Bayesian inference problem for a broad class of topological stabilizer codes by mapping it to classical spin models with generalized symmetries. When the wavefunction deformation and Gaussian measurement strengths coincide, the replicated model acquires an enlarged symmetry. We use this symmetry to derive exact identities among correlators averaged over measurement records that quantify the learnability of nonlocal observables associated with fractionalized excitations. Together with correlation inequalities in the associated clean ferromagnetic models, these identities establish hierarchies of learnability: if two observables remain learnable at long distances, their product must also remain learnable. We demonstrate these relations in the rank-2 toric code and the X-cube model, whose classical descriptions exhibit modulated and subsystem symmetries, respectively. We further extend the analysis to finite group quantum double models, including non-Abelian ones. We derive exact relations between learnability and correlations in the corresponding classical models, and show that the representation structure and fusion rules of anyons impose further constraints under suitable positivity conditions. These results constrain which types of nonlocal information can be learned simultaneously, providing a guide to learning phase diagrams in quantum codes under local weak measurements.",
+      "url": "https://arxiv.org/abs/2611.06154",
+      "pdf_url": "https://arxiv.org/pdf/2611.06154v1",
+      "published": "2026-11-04T08:35:38Z",
+      "updated": "2026-11-04T08:35:38Z",
+      "categories": [
+        "cond-mat.stat-mech",
+        "cond-mat.str-el",
+        "hep-lat",
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-05T06:55:35Z",
+      "analysis": {
+        "summary": "把量子码中局域弱测量产生的非局域信息推断问题映射到经典自旋模型，利用对称性与关联不等式约束哪些逻辑信息可以同时被学习。",
+        "problem": "局域测量记录带有噪声；问题是它们在长距离上是否仍包含某类非局域可观测量的信息，以及不同可学习量之间是否存在结构性约束。",
+        "setting": "考虑拓扑 stabilizer codes 和有限群 quantum double models 的弱测量 Bayesian inference。波函数形变强度与 Gaussian 测量强度匹配时，复制模型出现增强对称性。",
+        "main_results": [
+          "作者借助对测量记录平均的关联函数恒等式与铁磁关联不等式，得到可学习性层级：两个可观测量若在长距离仍可学习，其乘积也须可学习。",
+          "例子包括 rank-2 toric code 和 X-cube；对非阿贝尔 quantum double，表示与融合规则在适当正性条件下进一步限制可学习信息。"
+        ],
+        "techniques": [
+          "先把噪声测量后的推断变为经典关联函数，再用复制模型对称性建立恒等式，最后用关联不等式推导逻辑量之间的约束。"
+        ],
+        "assumptions": [
+          "增强对称性的论证使用匹配的形变与测量强度；非阿贝尔推广需要正性条件。"
+        ],
+        "limitations": [
+          "摘要未给出有限尺寸误差、所需 copies 或可执行推断算法的复杂度，不能把学习相图直接等同于高效 tomography。",
+          "仅阅读精确 v1 版本的官方摘要，未核查正文证明、完整假设和数值实验细节。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与受限测量下信息访问和量子码可学习性直接相关，提供通过结构性关系分析测量能力的路径。"
+        ],
+        "follow_up": [
+          "读者建议：核查可学习性的操作性定义，并区分信息存在、样本复杂度与经典后处理可行性。"
+        ],
+        "relevance_score": 85,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.06154v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:30:40+00:00"
+      },
+      "selected_at": "2026-11-05T08:34:34Z"
+    },
+    {
+      "doi": "10.4204/EPTCS.456.8",
+      "id": "2611.06119",
+      "version": 1,
+      "title": "Classical Clifford+T Sampling without Computing Marginals",
+      "authors": [
+        "Mark Koch"
+      ],
+      "abstract": "We introduce a new exact classical sampling algorithm for Clifford+T circuits, called T-by-T sampling. For a circuit with T-count t, it reduces sampling to evaluating 2t amplitudes of circuits with successively increasing T-counts 1,2,...,t, without the need to compute costly marginal probabilities. Crucially, the number of amplitude evaluations is completely independent of the surrounding Clifford structure. This makes T-by-T sampling well suited for use together with low-rank stabiliser decompositions, which enable efficient amplitude evaluations as long as the T-count is not too high. In that sense, T-by-T sampling is an improvement over the gate-by-gate sampling technique introduced by Bravyi, Gosset, and Liu (Phys. Rev. Lett. 128, 2022), where the number of amplitudes instead scales with the number of non-monomial operations such as Hadamard gates, which can remain large even in circuits with low stabiliser rank. Concretely, T-by-T sampling offers significant speedups in regimes where T gates are embedded within large Clifford computations. This makes it well suited for applications such as simulating quantum error correction experiments, which typically have lower T complexity but involve extensive Clifford operations and measurements. In particular, we show how T-by-T sampling allows us to take samples from recent end-to-end magic state cultivation circuits with escape up to distance 19 in a couple of seconds.",
+      "url": "https://arxiv.org/abs/2611.06119",
+      "pdf_url": "https://arxiv.org/pdf/2611.06119v1",
+      "published": "2026-11-04T08:05:59Z",
+      "updated": "2026-11-04T08:05:59Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 8,
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction"
+        ],
+        "magic_stabilizer": [
+          "magic state",
+          "stabiliser",
+          "T-count"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-05T06:55:35Z",
+      "analysis": {
+        "summary": "T-by-T sampling 把 Clifford+T 电路的精确采样归约为按 T-count 逐步增加的振幅计算，减少大量 Clifford 门带来的额外振幅求值。",
+        "problem": "已有逐门采样中的振幅求值次数可随 Hadamard 等非单项式门数量增长，即使真正的非 Clifford 资源很少，也可能需要许多调用。",
+        "setting": "输入为 T-count 为 t 的 Clifford+T 电路，目标为 exact classical sampling。振幅计算可与低 stabilizer-rank 分解结合，但振幅求值本身仍有代价。",
+        "main_results": [
+          "作者将一次采样归约为 2t 次振幅求值，对应逐步具有 1,2,…,t 个 T 门的电路；求值次数独立于外围 Clifford 结构。",
+          "摘要报告在 magic-state cultivation 电路上可于数秒内生成样本，演示中 escape 达到 distance 19。"
+        ],
+        "techniques": [
+          "按非 Clifford 资源而非全部非单项式门推进采样，避免显式计算昂贵的 marginal probabilities。"
+        ],
+        "assumptions": [
+          "精确采样性能仍取决于相应振幅的计算方法和 T-count。"
+        ],
+        "limitations": [
+          "2t 是振幅调用次数，并非总运行时间为 O(t)，也没有推出任意 BQP 电路的高效经典模拟。",
+          "演示速度是具体电路实例的结果，不是所有同距离 QEC 电路的统一复杂度保证。",
+          "仅阅读精确 v1 版本的官方摘要，未核查正文证明、完整假设和数值实验细节。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接连接 magic / stabilizer 资源与经典采样复杂度，尤其适合 Clifford 主体庞大、T 门较少的容错模拟。"
+        ],
+        "follow_up": [
+          "读者建议：分开比较振幅调用次数、单次振幅成本和预处理成本，核查其对自适应测量的适用范围。"
+        ],
+        "relevance_score": 96,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.06119v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:30:40+00:00"
+      },
+      "selected_at": "2026-11-05T08:34:34Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.06073",
+      "version": 1,
+      "title": "Shadow bootstrapping: Nearly minimal-setting pure-state tomography with shallow Clifford measurements",
+      "authors": [
+        "Gyungmin Cho",
+        "Dohun Kim"
+      ],
+      "abstract": "We present a pure-state tomography algorithm that uses a nearly minimal number of measurement settings while achieving optimal sample complexity with nonadaptive single-copy shallow Clifford measurements. For an arbitrary $n$-qubit pure state $|ψ\\rangle \\in \\mathbb{C}^{d}$, where $d=2^n$, the algorithm uses $O(d/ε)$ copies and $\\widetilde{O}(1)$ measurement settings to output a state vector $|\\hatψ\\rangle$ satisfying $1-|\\langleψ|\\hatψ\\rangle|^2\\leε$ with high probability. Each measurement is implemented by a Clifford circuit of depth $O(\\log n)$. Reusing each measurement setting allows the data to be stored compactly as per-basis outcome histograms. Given these histograms, classical post-processing runs in $\\widetilde{O}(d)$ time. Our key technique, \\textit{shadow bootstrapping}, uses the current estimate to reduce the variance of subsequent residual estimation, enabling progressively more accurate reconstruction with only a constant number of new measurement settings per stage.",
+      "url": "https://arxiv.org/abs/2611.06073",
+      "pdf_url": "https://arxiv.org/pdf/2611.06073v1",
+      "published": "2026-11-04T07:18:36Z",
+      "updated": "2026-11-04T07:18:36Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 6,
+      "topics": [
+        "magic_stabilizer",
+        "quantum_learning"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "Clifford circuit"
+        ],
+        "quantum_learning": [
+          "sample complexity"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-05T06:55:35Z",
+      "analysis": {
+        "summary": "提出非自适应单拷贝浅层 Clifford tomography：同时控制样本数、不同测量设置数与经典后处理成本。",
+        "problem": "Tomography 的 copies 开销与切换测量设置的开销不同；目标是在浅电路测量下保留最优纯态样本标度，同时显著复用设置。",
+        "setting": "任意 n 比特纯态，d=2^n；误差为 infidelity 1−|⟨ψ|ψ̂⟩|²≤ε，高概率成功，测量逐 copy 进行且非自适应。",
+        "main_results": [
+          "作者声称 copies 为 O(d/ε)，设置数为 Õ(1)，每个 Clifford 测量电路深度为 O(log n)。",
+          "按测量基保存结果直方图，给定直方图后的 classical post-processing 为 Õ(d)。"
+        ],
+        "techniques": [
+          "Shadow bootstrapping 用当前估计降低后续 residual estimation 方差；每阶段仅需常数个新设置，以逐阶段提高重建精度。"
+        ],
+        "assumptions": [
+          "结论针对纯态；摘要中 nonadaptive 指的是量子测量设置，迭代使用当前估计属于后处理。"
+        ],
+        "limitations": [
+          "Õ 记号隐藏的对数参数、失败概率和电路连接几何在摘要中未说明，不能据此声称一维最近邻深度界。",
+          "设置数少并未消除 O(d/ε) 的 copies 成本；对一般 n 比特纯态仍随 n 指数增长。",
+          "仅阅读精确 v1 版本的官方摘要，未核查正文证明、完整假设和数值实验细节。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与单拷贝学习、Clifford 测量及设置复用直接相关，清楚展示 copies、测量深度与设置数应分别记账。"
+        ],
+        "follow_up": [
+          "读者建议：检查 Õ(1) 隐藏哪些对数，以及纯态 promise 失配时能否得到鲁棒或 agnostic 保证。"
+        ],
+        "relevance_score": 98,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.06073v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:30:40+00:00"
+      },
+      "selected_at": "2026-11-05T08:34:34Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.05867",
+      "version": 1,
+      "title": "Efficiently tracking errors and outcomes in universal quantum circuits",
+      "authors": [
+        "Thomas R. Scruby",
+        "Julio C. Magdalena de la Fuente"
+      ],
+      "abstract": "We present a method for efficient simulation of error propagation and decoding in universal fault-tolerant quantum circuits under stochastic Pauli noise, requiring only that the circuit has a high fault distance and that all logical non-Clifford operations are implemented by physical T, CS and CCZ gates. This is achieved using modified Pauli frame-based error tracking in which the frame contains no logical information. Decoding success is identified by verifying that the Pauli frame is still logically trivial after decoding. Using the results of Ref. [1] and the observation that the distribution of non-logical measurement outcomes in the circuit is independent of the logical state, we show that we can accurately sample all detector outcomes. Our approach can also simulate circuits containing adaptive operations conditioned on logical measurements, provided these measurements have a known outcome distribution. This applies to the majority of adaptive operations such as state teleportation and preparation by measurement. Our method only detects decoding failures and so is consistent with complexity-theoretic expectations as it cannot be used to sample from the noiseless outcome distribution of the logical circuit.",
+      "url": "https://arxiv.org/abs/2611.05867",
+      "pdf_url": "https://arxiv.org/pdf/2611.05867v1",
+      "published": "2026-11-04T03:01:26Z",
+      "updated": "2026-11-04T03:01:26Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "non-Clifford"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-05T06:55:35Z",
+      "analysis": {
+        "summary": "通过不携带逻辑态信息的修正 Pauli frame，模拟通用容错电路中的误差传播、detector outcomes 与译码是否失败，避开完整逻辑输出采样。",
+        "problem": "非 Clifford 门使传统误差跟踪更复杂；评估容错性能却未必需要知道理想逻辑计算的输出分布。",
+        "setting": "随机 Pauli 噪声、高 fault distance 的容错电路；逻辑 non-Clifford operations 通过物理 T、CS、CCZ 实现。",
+        "main_results": [
+          "作者声称可高效跟踪错误并准确采样所有 detector outcomes；译码后检查 Pauli frame 是否仍逻辑平凡以判定成功。",
+          "允许部分由逻辑测量控制的自适应操作，但相应逻辑测量的结果分布必须已知。"
+        ],
+        "techniques": [
+          "将错误 frame 与逻辑计算信息解耦，并利用非逻辑测量分布独立于逻辑态这一性质构造采样。"
+        ],
+        "assumptions": [
+          "要求随机 Pauli 噪声、指定非 Clifford 实现及高 fault distance；不能略去自适应结果分布已知这一条件。"
+        ],
+        "limitations": [
+          "摘要未给出各参数的运行时标度，也未说明一般相干或相关噪声是否可覆盖。",
+          "此方法检测 decoding failures，不能采样无噪声逻辑电路输出，不能解释为普遍高效模拟 universal quantum computation。",
+          "仅阅读精确 v1 版本的官方摘要，未核查正文证明、完整假设和数值实验细节。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接相关于 logical QEC 的性能评估、受限可访问信息及非 Clifford 电路模拟，明确区分逻辑错误统计和计算输出。"
+        ],
+        "follow_up": [
+          "读者建议：核查 frame 的构造如何保持逻辑平凡，并比较该错误率与特定 logical fidelity 指标的关系。"
+        ],
+        "relevance_score": 92,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.05867v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:30:40+00:00"
+      },
+      "selected_at": "2026-11-05T08:34:34Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.05792",
+      "version": 1,
+      "title": "Structural Lower Bounds for Quantum Property Estimation with Persistent Memory",
+      "authors": [
+        "Ye Tao",
+        "Hong Shen"
+      ],
+      "abstract": "In quantum property estimation, an experimenter estimates $\\operatorname{Tr}(Oρ)$ for a family of observables from independent copies of an unknown state $ρ$ simultaneously to additive error $ε$. While quantum memory can dramatically reduce sample complexity, understanding the power of a modest register that remains coherent throughout an adaptive experiment has remained an open challenge because existing frameworks require optimizing over the infinite space of measurement trees. We overcome this barrier by developing a backward-induction framework based on operator resolvents. Rather than tracking path-dependent memory states across rounds, resolvent regularization cancels internal memory trajectories exactly, reducing the lower bound to an algebraic certificate computed directly from the target observables with sharp $Ω(1/ε^2)$ scaling. Our structural rule charges only the retained dimension $K$ under arbitrary adaptive instruments and unrestricted memory lifetime. Via symmetry reductions, it yields polynomial-size linear programs that establish the optimal linear $Ω(D/(Kε^2))$ trade-off for the $D^2-1$ Paulis, eliminating the cubic loss in prior bounds. For growing weight-$w$ Pauli strings ($w=\\lceil\\log_2 n\\rceil$) and quadratic Majorana cross-correlations, it proves lower bounds of $Ω(3^w/ε^2)$ and $Ω(n^2/(ε^2(1+\\ln n)^2))$ against an indefinitely persistent memory of dimension $K=\\lfloor\\sqrt n\\rfloor$. These bounds match memoryless or commuting estimators within polylogarithmic factors, demonstrating that rank constraints on the persistent register fundamentally throttle observable overlap and prevent a modest coherent memory from overcoming the sample complexity barrier.",
+      "url": "https://arxiv.org/abs/2611.05792",
+      "pdf_url": "https://arxiv.org/pdf/2611.05792v1",
+      "published": "2026-11-04T00:58:33Z",
+      "updated": "2026-11-04T00:58:33Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "quantum_learning"
+      ],
+      "keyword_matches": {
+        "quantum_learning": [
+          "sample complexity"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-05T06:55:35Z",
+      "analysis": {
+        "summary": "用 resolvent 形式的后向归纳处理跨轮持续存在的量子记忆，给出 adaptive quantum property estimation 的样本数与保留维数权衡。",
+        "problem": "跨轮量子记忆和自适应测量产生大量依赖路径的状态；直接优化测量树很难获得只依赖记忆规模的下界。",
+        "setting": "从未知态的独立 copies 同时估计一族 Tr(Oρ)，加性精度 ε；允许任意自适应 instruments 和无限制 memory lifetime，成本参数为保留维数 K。",
+        "main_results": [
+          "作者借对称化线性规划声称，对 D²−1 个 Paulis 得到 Ω(D/(Kε²)) 权衡。",
+          "当 K=⌊√n⌋ 时，对 w=⌈log₂n⌉ 权重 Pauli strings 和二次 Majorana cross-correlations 分别得到 Ω(3^w/ε²) 与 Ω(n²/[ε²(1+ln n)²])。"
+        ],
+        "techniques": [
+          "Resolvent regularization 消去内部 memory trajectories，把下界转为由目标 observables 计算的代数 certificate；对称性进一步降为多项式大小 LP。"
+        ],
+        "assumptions": [
+          "下界针对给定可观测量族与 persistent memory 维数约束，不是任意量子任务的统一结论。"
+        ],
+        "limitations": [
+          "摘要未列出完整成功概率、可观测量归一化与各界适用区间，需正文确认。",
+          "维数 K 与记忆 qubit 数 log₂K 不同；“与无记忆估计器近似匹配”也依赖具体 observable family。",
+          "仅阅读精确 v1 版本的官方摘要，未核查正文证明、完整假设和数值实验细节。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接涉及 adaptivity、quantum memory 与样本复杂度的资源分离；Majorana 例子也贴近 fermionic readout。"
+        ],
+        "follow_up": [
+          "读者建议：检查 certificate 的操作性归约，以及可否用于区分单拷贝无记忆与持续小记忆的具体 learning 任务。"
+        ],
+        "relevance_score": 97,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.05792v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:30:40+00:00"
+      },
+      "selected_at": "2026-11-05T08:34:34Z"
+    },
+    {
+      "id": "doi:10.1038/s41534-026-01401-0",
+      "version": 1,
+      "title": "Fault-tolerant quantum error correction for constant-excitation stabilizer codes under coherent noise",
+      "authors": [
+        "Ching-Yi Lai",
+        "Pei-Hao Liou",
+        "Yingkai Ouyang"
+      ],
+      "abstract": "Collective coherent (CC) noise poses challenges for fault-tolerant error correction (FTEC), as it is not captured by conventional stochastic noise models. Constant-excitation (CE) codes are inherently immune to CC errors, but a fault-tolerant framework for operating these codes under circuit-level noise has not yet been established. Here, we develop an FTEC framework for CE CSS codes based on dual-rail concatenation. We show that conventional transversal CNOT gates violate the CE constraint and develop CE-preserving logical CNOT gates together with modified Shor- and Steane-type syndrome extraction schemes using zero-controlled NOT gates and CE-compatible ancilla states. We further develop an extended stabilizer simulation algorithm that tracks both stochastic and CC noise. Using this framework, we identify small distance-3 CE CSS codes demonstrate that the [[14, 1, 3]] code maintains robust performance under coherent noise. Our results establish a fault-tolerant framework for CE codes under circuit-level noise and demonstrate their potential for quantum processors affected by CC noise.",
+      "abstract_basis": "crossref_abstract",
+      "abstract_source_url": "https://api.crossref.org/journals/2056-6387/works?filter=from-online-pub-date%3A2026-11-02%2Cuntil-online-pub-date%3A2026-11-05%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
+      "url": "https://www.nature.com/articles/s41534-026-01401-0",
+      "pdf_url": "",
+      "published": "2026-11-02",
+      "updated": "2026-11-02",
+      "categories": [],
+      "sources": [
+        "npj_quantum_information"
+      ],
+      "publication": {
+        "journal_id": "npj_quantum_information",
+        "journal": "npj Quantum Information",
+        "doi": "10.1038/s41534-026-01401-0",
+        "url": "https://www.nature.com/articles/s41534-026-01401-0",
+        "published": "2026-11-02",
+        "date_basis": "publisher_rss"
+      },
+      "keyword_score": 8,
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction",
+          "syndrome",
+          "transversal"
+        ],
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "first_seen_at": "2026-11-03T06:54:52Z",
+      "doi": "10.1038/s41534-026-01401-0",
+      "analysis": {
+        "summary": "论文为 constant-excitation（CE）CSS codes 构造电路层面的容错纠错流程，使编码态对集体相干噪声的保护能延伸到逻辑门与 syndrome 提取。核心问题是操作过程也必须保持编码所依赖的对称性。",
+        "problem": "CE 码能抵御 collective coherent noise，但常规容错操作可能破坏 CE 条件。作者要补上从静态保护性质到可运行 FTEC 电路之间的缺口。",
+        "setting": "采用 dual-rail concatenation 的 CE CSS 编码，考虑同时包含随机与集体相干分量的电路层噪声，研究逻辑 CNOT 和 Shor/Steane 型 syndrome extraction。",
+        "main_results": [
+          "作者指出通常的 transversal CNOT 会违反 CE 约束，并提出 CE-preserving 的逻辑 CNOT。",
+          "改造 syndrome 提取线路，使用 zero-controlled NOT 和与 CE 条件相容的辅助态。",
+          "扩展 stabilizer simulation 以同时跟踪 stochastic 与 collective coherent noise；给出小规模 distance-3 码，并报告 [[14,1,3]] 码在所研究相干噪声下保持稳健性能。"
+        ],
+        "techniques": [
+          "用 dual-rail 拼接组织固定激发数结构；再逐项调整逻辑门、辅助态和 syndrome 电路，使保护机制在操作时仍可使用。",
+          "将噪声建模与 stabilizer 跟踪结合，评估电路级而非仅存储级的纠错表现。"
+        ],
+        "assumptions": [
+          "保护针对集体相干噪声的特定结构，不能直接推广为对任意相关噪声免疫。",
+          "实现依赖 CE-compatible ancilla states 及相应受控门。"
+        ],
+        "limitations": [
+          "本条仅依据出版商公开摘要；尚未核查证明、门级故障假设、伪阈值及辅助态准备成本。",
+          "出版商标明该在线版本仍可能进一步编辑，不能视为最终 Version of Record 已完成排版。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与非 Pauli 噪声下 logical QEC、操作与保护子空间是否相容的问题直接相关。"
+        ],
+        "follow_up": [
+          "读者建议：重点核查 syndrome 回路中的故障传播，以及集体相干误差在多轮纠错时的处理假设。"
+        ],
+        "relevance_score": 93,
+        "publication_significance": [
+          "以下是依据摘要的阅读判断，非编辑或审稿人的实际理由：工作把 CE 码的噪声免疫性质推进到具体容错操作框架，障碍与解决对象明确，契合 npj Quantum Information 的量子信息方法研究。",
+          "逻辑门、syndrome 提取与模拟工具构成互相支撑的技术组成；但仅凭摘要不能评价证明完备性或与既有 CE 方案相比的全部增量。"
+        ],
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://www.nature.com/articles/s41534-026-01401-0",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:47+00:00"
+      },
+      "selected_at": "2026-11-05T08:34:34Z"
+    },
+    {
+      "id": "doi:10.1103/q4lp-htgw",
+      "version": 1,
+      "title": "Rare-Event Quantum Sensing Using Logical Qubits",
+      "authors": [
+        "Robert Ott, Torsten V. Zache, Soonwon Choi, Adam M. Kaufman, and Hannes Pichler"
+      ],
+      "abstract": "We present a novel protocol to detect rare signals in a noisy environment using quantum error correction (QEC). The key feature of our protocol is the discrimination between signal and noise through distinct higher-order correlations, realized by the nonlinear processing that occurs during syndrome extraction in QEC. In this scheme, QEC has two effects. First, it sacrifices part of the signal ε by recording a reduced, stochastic, logical phase ϕ L = O ( ε 3 ) . Second, it corrects the physical noise and extends the (logical) coherence time for signal acquisition. For rare signals occurring at random times in the presence of local Markovian noise, we explicitly demonstrate an improved sensitivity of our approach over more conventional sensing strategies.",
+      "abstract_basis": "crossref_abstract",
+      "abstract_source_url": "https://api.crossref.org/journals/1079-7114/works?filter=from-online-pub-date%3A2026-10-30%2Cuntil-online-pub-date%3A2026-11-02%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
+      "url": "https://journals.aps.org/prl/abstract/10.1103/q4lp-htgw",
+      "pdf_url": "",
+      "published": "2026-10-30T10:00:00Z",
+      "updated": "2026-10-30T10:00:00Z",
+      "categories": [],
+      "sources": [
+        "prl"
+      ],
+      "publication": {
+        "journal_id": "prl",
+        "journal": "Physical Review Letters",
+        "doi": "10.1103/q4lp-htgw",
+        "url": "https://journals.aps.org/prl/abstract/10.1103/q4lp-htgw",
+        "published": "2026-10-30T10:00:00Z",
+        "date_basis": "publisher_rss"
+      },
+      "keyword_score": 4,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction",
+          "syndrome"
+        ]
+      },
+      "first_seen_at": "2026-10-31T05:51:49Z",
+      "doi": "10.1103/q4lp-htgw",
+      "analysis": {
+        "summary": "论文利用 QEC 的 syndrome 提取非线性处理，在噪声背景中辨认稀有信号。它接受逻辑信号变弱，以换取更长的逻辑相干时间和更好的最终灵敏度。",
+        "problem": "常规 sensing 中稀有随机信号易被局域噪声淹没。关键是能否利用信号与噪声不同的高阶相关结构，而不只比较瞬时信号幅度。",
+        "setting": "随机时刻出现的稀有信号，叠加 local Markovian noise；比较逻辑量子比特 sensing 与常规策略。",
+        "main_results": [
+          "作者声称，syndrome 提取中的非线性处理能利用高阶相关性区分信号与噪声。",
+          "该处理把原信号参数 ε 转为随机逻辑相位 φ_L=O(ε³)，同时纠错延长信号积累时间；在论文指定稀有事件模型中展示灵敏度改进。"
+        ],
+        "techniques": [
+          "将 QEC 用作相关结构选择性处理：逻辑信号保留较弱的高阶响应，背景物理误差受到压制。"
+        ],
+        "assumptions": [
+          "结论针对稀有信号与局域 Markovian 噪声；摘要未给出普适噪声模型下的保证。"
+        ],
+        "limitations": [
+          "仅阅读正式发表版本摘要，未核查推导、最优 sensing 时间与纠错循环成本。",
+          "φ_L 的阶数是作者所述有效逻辑响应，不能据此单独推断总 Fisher information 或普适的超越标准量子极限。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接体现 logical primitive、syndrome 信息处理与操作性优势之间的联系。"
+        ],
+        "follow_up": [
+          "读者建议：比较总 sensing 时间、syndrome 测量开销及信号出现率约束，确认灵敏度收益的适用区间。"
+        ],
+        "relevance_score": 84,
+        "publication_significance": [
+          "以下为阅读判断而非编辑决定：把纠错视为辨认高阶相关结构的机制，解释了为何削弱信号仍可能提高探测能力，具有清晰物理信息，契合 PRL 对跨领域物理结论的重视。",
+          "摘要提供可检验的立方响应与噪声条件，但尚不足以评估与所有已有 sensing 策略的最优性比较。"
+        ],
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://journals.aps.org/prl/abstract/10.1103/q4lp-htgw",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:47+00:00"
+      },
+      "selected_at": "2026-11-05T08:34:34Z"
+    },
+    {
+      "doi": "",
       "id": "2610.18482",
       "version": 1,
       "title": "Lifting: Quantum State Discrimination Framework for Mid-Circuit Measurements",
@@ -15046,58 +15544,6 @@
       ]
     },
     {
-      "id": "doi:10.1038/s41586-026-11147-6",
-      "version": 1,
-      "title": "A single-molecule spin–photon interface",
-      "authors": [
-        "Simon Roggors",
-        "Thomas Unden",
-        "Anna Aubele",
-        "Paul Mentzel",
-        "Gregor Bayer",
-        "Alon Salhov",
-        "Jochen Scharpf",
-        "Martin B. Plenio",
-        "Alex Retzker",
-        "Fedor Jelezko",
-        "Tim R. Eichhorn",
-        "Tobias A. Schaub",
-        "Matthias Pfender",
-        "Philipp Neumann",
-        "Ilai Schwartz"
-      ],
-      "abstract": "Optical interfaces that connect long-lived spin qubits to photons are a central requirement for quantum networking and distributed quantum information processing. At present, solid-state atomic defects are leading candidates because of their inherent spin and optical coherence 1,2 . Building on these advancements, synthetically tailored molecular systems represent a fundamental change in the field, using precise atomic control and consistent bottom-up assembly 3,4 . However, a molecular platform that concurrently satisfies the demands of a robust spin–photon interface—namely, the combination of bright fluorescence, high spectral stability and long ground-state spin lifetimes—has yet to be realized at the single-molecule level. Here we show that a triplet ground-state carbene molecule, embedded within a structurally matched host crystal, functions as a robust spin–photon interface with single-molecule addressability. The system exhibits narrow ZPLs, spectral stability over more than an hour, spin-selective optical transitions and single-molecule optically detected magnetic resonance. Coherent control yields millisecond-scale dynamical-decoupling coherence and tens-of-milliseconds spin relaxation at a temperature of 4.5 K. These results establish molecular qubits as a viable platform for single-emitter quantum optics 5,6 while preserving the advantages of bottom-up chemical design 7 and processable materials 8–10 .",
-      "abstract_basis": "crossref_abstract",
-      "abstract_source_url": "https://api.crossref.org/journals/1476-4687/works?filter=from-online-pub-date%3A2026-10-28%2Cuntil-online-pub-date%3A2026-10-31%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
-      "url": "https://www.nature.com/articles/s41586-026-11147-6",
-      "pdf_url": "",
-      "published": "2026-10-28",
-      "updated": "2026-10-28",
-      "categories": [],
-      "sources": [
-        "nature"
-      ],
-      "publication": {
-        "journal_id": "nature",
-        "journal": "Nature",
-        "doi": "10.1038/s41586-026-11147-6",
-        "url": "https://www.nature.com/articles/s41586-026-11147-6",
-        "published": "2026-10-28",
-        "date_basis": "publisher_rss"
-      },
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "decoupling"
-        ]
-      },
-      "first_seen_at": "2026-10-29T05:54:14Z",
-      "doi": "10.1038/s41586-026-11147-6"
-    },
-    {
       "id": "doi:10.1038/s41534-026-01403-y",
       "version": 1,
       "title": "Scalable neural decoders for practical real-time quantum error correction",
@@ -16615,324 +17061,6 @@
       "first_seen_at": "2026-10-30T05:55:37Z"
     },
     {
-      "id": "doi:10.1038/s41467-026-78824-y",
-      "version": 1,
-      "title": "Aberrant thymic architecture and enhanced interferon signaling in Down syndrome",
-      "authors": [
-        "Trent Hall",
-        "Andrew Schild",
-        "Lei Li",
-        "Heather Sheppard",
-        "Hannah Chasteen",
-        "Yutian Liu",
-        "Anitria Cotton",
-        "Rashid Mehmood",
-        "Felipe Segato Dezem",
-        "Jason Hodges",
-        "Matthew Lear",
-        "Bailey Fountain",
-        "Yiping Fan",
-        "Jeffrey Gossett",
-        "Guolian Kang",
-        "Gabriela Gheorghe",
-        "Jeremy Chase Crawford",
-        "Paul Thomas",
-        "Yongqiang Feng",
-        "Gang Wu",
-        "Jasmine Plummer",
-        "Umar Boston",
-        "John D. Crispino"
-      ],
-      "abstract": "",
-      "abstract_basis": "missing",
-      "abstract_source_url": "https://api.crossref.org/journals/2041-1723/works?filter=from-online-pub-date%3A2026-10-27%2Cuntil-online-pub-date%3A2026-10-30%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
-      "url": "https://www.nature.com/articles/s41467-026-78824-y",
-      "pdf_url": "",
-      "published": "2026-10-29",
-      "updated": "2026-10-29",
-      "categories": [],
-      "sources": [
-        "nature_communications"
-      ],
-      "publication": {
-        "journal_id": "nature_communications",
-        "journal": "Nature Communications",
-        "doi": "10.1038/s41467-026-78824-y",
-        "url": "https://www.nature.com/articles/s41467-026-78824-y",
-        "published": "2026-10-29",
-        "date_basis": "crossref_published-online"
-      },
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "syndrome"
-        ]
-      },
-      "first_seen_at": "2026-10-30T05:55:37Z",
-      "doi": "10.1038/s41467-026-78824-y"
-    },
-    {
-      "id": "doi:10.1103/q4lp-htgw",
-      "version": 1,
-      "title": "Rare-Event Quantum Sensing Using Logical Qubits",
-      "authors": [
-        "Robert Ott, Torsten V. Zache, Soonwon Choi, Adam M. Kaufman, and Hannes Pichler"
-      ],
-      "abstract": "We present a novel protocol to detect rare signals in a noisy environment using quantum error correction (QEC). The key feature of our protocol is the discrimination between signal and noise through distinct higher-order correlations, realized by the nonlinear processing that occurs during syndrome extraction in QEC. In this scheme, QEC has two effects. First, it sacrifices part of the signal ε by recording a reduced, stochastic, logical phase ϕ L = O ( ε 3 ) . Second, it corrects the physical noise and extends the (logical) coherence time for signal acquisition. For rare signals occurring at random times in the presence of local Markovian noise, we explicitly demonstrate an improved sensitivity of our approach over more conventional sensing strategies.",
-      "abstract_basis": "crossref_abstract",
-      "abstract_source_url": "https://api.crossref.org/journals/1079-7114/works?filter=from-online-pub-date%3A2026-10-30%2Cuntil-online-pub-date%3A2026-11-02%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
-      "url": "https://journals.aps.org/prl/abstract/10.1103/q4lp-htgw",
-      "pdf_url": "",
-      "published": "2026-10-30T10:00:00Z",
-      "updated": "2026-10-30T10:00:00Z",
-      "categories": [],
-      "sources": [
-        "prl"
-      ],
-      "publication": {
-        "journal_id": "prl",
-        "journal": "Physical Review Letters",
-        "doi": "10.1103/q4lp-htgw",
-        "url": "https://journals.aps.org/prl/abstract/10.1103/q4lp-htgw",
-        "published": "2026-10-30T10:00:00Z",
-        "date_basis": "publisher_rss"
-      },
-      "keyword_score": 4,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction",
-          "syndrome"
-        ]
-      },
-      "first_seen_at": "2026-10-31T05:51:49Z",
-      "doi": "10.1103/q4lp-htgw"
-    },
-    {
-      "id": "doi:10.1103/jsr3-2r5t",
-      "version": 1,
-      "title": "Constructing Arbitrary Coherent Rearrangements in Optical Lattices",
-      "authors": [
-        "Alexander Roth, Liyang Qiu, Timon Hilker, Titus Franz, and Philipp M. Preiss"
-      ],
-      "abstract": "Coherent control of motional degrees of freedom of ultracold atoms in optical lattices offers a promising route toward programmable quantum dynamics with massive particles. We propose and analyze a scheme for implementing coherent rearrangement of ultracold atoms, corresponding to arbitrary unitary transformations on single-particle motional states. Exploiting an analogy between dynamics in optical superlattices and discrete linear optics, we employ the Clements scheme to systematically construct any global N -dimensional single-particle unitary from tunneling and phase shifts in arrays of double wells. Tunneling is controlled globally, while local operations are achieved through site-resolved potential shifts. We numerically investigate the susceptibility of the scheme to intensity noise and addressing crosstalk. We identify key subroutines enabled by this unitary construction, including the discrete Fourier transform and the implementation of non-native Hamiltonians. Extending the scheme to two dimensions enables all-to-all atomic rearrangement with a circuit depth that scales sublinearly with the atom number, providing a high-density and highly scalable approach to atom rearrangement.",
-      "abstract_basis": "crossref_abstract",
-      "abstract_source_url": "https://api.crossref.org/journals/2691-3399/works?filter=from-online-pub-date%3A2026-10-30%2Cuntil-online-pub-date%3A2026-11-02%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
-      "url": "https://journals.aps.org/prxquantum/abstract/10.1103/jsr3-2r5t",
-      "pdf_url": "",
-      "published": "2026-10-30T10:00:00Z",
-      "updated": "2026-10-30T10:00:00Z",
-      "categories": [],
-      "sources": [
-        "prx_quantum"
-      ],
-      "publication": {
-        "journal_id": "prx_quantum",
-        "journal": "PRX Quantum",
-        "doi": "10.1103/jsr3-2r5t",
-        "url": "https://journals.aps.org/prxquantum/abstract/10.1103/jsr3-2r5t",
-        "published": "2026-10-30T10:00:00Z",
-        "date_basis": "publisher_rss"
-      },
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "circuit depth"
-        ]
-      },
-      "first_seen_at": "2026-10-31T05:51:49Z",
-      "doi": "10.1103/jsr3-2r5t"
-    },
-    {
-      "id": "doi:10.1038/s41467-026-78592-9",
-      "version": 1,
-      "title": "Ancestry-specific and multi-ancestry genome-wide association studies of restless legs syndrome",
-      "authors": [
-        "Fulya Akçimen",
-        "Miranda Medeiros",
-        "Katie L. J. Cederberg",
-        "Marzieh Khani",
-        "Andrew B. Roth",
-        "Mike A. Nalls",
-        "Sara Bandres-Ciga",
-        "Patrick A. Dion",
-        "Guy Rouleau",
-        "Emmanuel Mignot"
-      ],
-      "abstract": "Restless legs syndrome is a neurological disorder that disrupts sleep and quality of life, but its genetics have mostly been studied in individuals of European ancestry. Here, we perform GWAS of restless legs syndrome using data from individuals of African, Latin American, and European ancestry, followed by a multi-ancestry meta-analysis. We leverage biobank-based cohorts that established RLS diagnosis using validated clinical criteria, allowing for precise phenotypic characterization. We perform ancestry-specific association studies and post-GWAS analyses to prioritize candidate genes. Our analyses reveal ancestry differences in the genetics of restless legs syndrome. At the MEIS1 and BTBD9 loci, lead variants showed lower allele frequencies and did not reach genome-wide significance in African ancestry. We identify ancestry-specific and shared risk loci, including novel associations near GYPC/TEX51 and PRIMA1 in African ancestry and ISX in Latin American ancestry. The European meta-analysis identifies 11 additional loci and replicates 50 previously reported associations. The combined multi-ancestry analysis finds ten new loci. This multi-ancestry study broadens the genetic understanding of restless legs syndrome, and the absence or reduced frequency of key European restless legs syndrome alleles in individuals of African ancestry provides insights into known epidemiological differences.",
-      "abstract_basis": "crossref_abstract",
-      "abstract_source_url": "https://api.crossref.org/journals/2041-1723/works?filter=from-online-pub-date%3A2026-10-30%2Cuntil-online-pub-date%3A2026-11-02%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
-      "url": "https://www.nature.com/articles/s41467-026-78592-9",
-      "pdf_url": "",
-      "published": "2026-10-30",
-      "updated": "2026-10-30",
-      "categories": [],
-      "sources": [
-        "nature_communications"
-      ],
-      "publication": {
-        "journal_id": "nature_communications",
-        "journal": "Nature Communications",
-        "doi": "10.1038/s41467-026-78592-9",
-        "url": "https://www.nature.com/articles/s41467-026-78592-9",
-        "published": "2026-10-30",
-        "date_basis": "crossref_published-online"
-      },
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "syndrome"
-        ]
-      },
-      "first_seen_at": "2026-10-31T05:51:49Z",
-      "doi": "10.1038/s41467-026-78592-9"
-    },
-    {
-      "id": "doi:10.1038/s41467-026-79210-4",
-      "version": 1,
-      "title": "Excess type I interferon disrupts developmental crosstalk and promotes premature distalization in trisomy 21 lungs",
-      "authors": [
-        "Randa Belgacemi",
-        "ChinYi Chu",
-        "Antony Hoarau",
-        "Rujuta Shinde",
-        "Ian A. Glass",
-        "Gail Deutsch",
-        "Denise Al Alam",
-        "Thomas J. Mariani",
-        "Soula Danopoulos"
-      ],
-      "abstract": "Pulmonary complications are a primary cause of morbidity and mortality in children with Down Syndrome resulting from Trisomy 21 (T21). We recently described congenital lung anomalies associated with T21, yet the underlying mechanisms remain elusive. Type I interferon (IFN-I) signaling is consistently hyperactivated in many T21 tissues. IFN-I is recognized as a key regulator of immune cell activation and differentiation, with an under-appreciated role in tissue development. In this study we examine the effects of over-activation and repression of IFN-I signaling in developing human lung tissues. Single-cell RNA sequencing indicates that IFN treatment of tissue explants largely recapitulates transcriptional changes associated with altered epithelial differentiation in T21 lungs. Lineage-specific cell co-culture experiments confirm that mesenchyme-driven IFN-I hyperactivation promotes epithelial bud remodeling, shifts progenitor cell identity, and suggests the induction of AT2-like programs. Our data show that IFN-I is necessary and sufficient to drive T21-related lung pathologies and provide a model system enabling therapeutic discovery.",
-      "abstract_basis": "crossref_abstract",
-      "abstract_source_url": "https://api.crossref.org/journals/2041-1723/works?filter=from-online-pub-date%3A2026-11-01%2Cuntil-online-pub-date%3A2026-11-04%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
-      "url": "https://www.nature.com/articles/s41467-026-79210-4",
-      "pdf_url": "",
-      "published": "2026-11-01",
-      "updated": "2026-11-01",
-      "categories": [],
-      "sources": [
-        "nature_communications"
-      ],
-      "publication": {
-        "journal_id": "nature_communications",
-        "journal": "Nature Communications",
-        "doi": "10.1038/s41467-026-79210-4",
-        "url": "https://www.nature.com/articles/s41467-026-79210-4",
-        "published": "2026-11-01",
-        "date_basis": "crossref_published-online"
-      },
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "syndrome"
-        ]
-      },
-      "first_seen_at": "2026-11-01T06:15:27Z",
-      "doi": "10.1038/s41467-026-79210-4"
-    },
-    {
-      "id": "doi:10.1038/s41467-026-78664-w",
-      "version": 1,
-      "title": "Exceptional bound states in the continuum in a passive terahertz metasurface",
-      "authors": [
-        "Chen Chen",
-        "Ziyi Liu",
-        "Jianfei Li",
-        "Junhan Zhou",
-        "Yuanhang Jiang",
-        "Ying Wang",
-        "Zhongxiang Zhou",
-        "Hongyu Liu",
-        "Jingfeng Yao",
-        "Gui-Geng Liu",
-        "Chengxun Yuan"
-      ],
-      "abstract": "Exceptional bound states in the continuum (EP-BICs) are hybrid singularities in non-Hermitian systems that uniquely combine the non-radiating characteristic of bound states in the continuum (BICs) with the enhanced sensitivity of exceptional points (EPs). However, their experimental realization remains challenging because existing proposals typically require precise external excitation to control the loss and coupling strength. Here, we experimentally demonstrate an EP-BIC in a fully passive terahertz metasurface. Through simple geometric rotation, we modulate the internal coupling of two resonator modes to drive an isolated EP to coalesce with a line of BICs and finally form an EP-BIC, as clearly traced by transmission spectra measurements. Near-field terahertz scanning further observes the uniform phase distribution of EP-BIC, confirming its decoupling from incident light. Finally, the sensor performance of EP-BIC is demonstrated in water mist detection and exhibits a distinct dip response that enables unambiguous signal identification, in contrast to the weak and spectrally crowded peak of conventional EP. Our work establishes a practical and robust platform for EP-BICs, opening avenues for ultra-sensitive photonic sensing.",
-      "abstract_basis": "crossref_abstract",
-      "abstract_source_url": "https://api.crossref.org/journals/2041-1723/works?filter=from-online-pub-date%3A2026-10-29%2Cuntil-online-pub-date%3A2026-11-01%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
-      "url": "https://www.nature.com/articles/s41467-026-78664-w",
-      "pdf_url": "",
-      "published": "2026-10-29",
-      "updated": "2026-10-29",
-      "categories": [],
-      "sources": [
-        "nature_communications"
-      ],
-      "publication": {
-        "journal_id": "nature_communications",
-        "journal": "Nature Communications",
-        "doi": "10.1038/s41467-026-78664-w",
-        "url": "https://www.nature.com/articles/s41467-026-78664-w",
-        "published": "2026-10-29",
-        "date_basis": "crossref_published-online"
-      },
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "decoupling"
-        ]
-      },
-      "first_seen_at": "2026-11-01T06:15:27Z"
-    },
-    {
-      "id": "doi:10.1038/s41534-026-01325-9",
-      "version": 1,
-      "title": "Efficient multi-basis quantum position verification secure against generalized adversaries",
-      "authors": [
-        "Wen Yu Kon",
-        "Ignatius William Primaatmaja",
-        "Kaushik Chakraborty",
-        "Charles Lim"
-      ],
-      "abstract": "Quantum position verification (QPV) enables multiple verifiers to certify a prover’s location using quantum communication and physical assumptions. With experimental demonstrations of QPV becoming increasingly feasible, enhancing the practicality and security of QPV protocols is more important than ever. In this work, we make three key contributions toward this goal. First, we introduce a robust QPV protocol in which the verifier’s state preparation is independent of channel loss, improving reliability in real-world conditions. Second, we refine existing security analysis techniques to bolster protocol resilience against experimental imperfections. Third, we identify and address some implicit assumptions present in existing security analyses, providing a framework to eliminate such assumptions. Additionally, as an example of QPV application beyond location verification, we illustrate how QPV can be leveraged for authenticating classical communication in quantum key distribution.",
-      "abstract_basis": "crossref_abstract",
-      "abstract_source_url": "https://api.crossref.org/journals/2056-6387/works?filter=from-online-pub-date%3A2026-10-31%2Cuntil-online-pub-date%3A2026-11-03%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
-      "url": "https://www.nature.com/articles/s41534-026-01325-9",
-      "pdf_url": "",
-      "published": "2026-10-31",
-      "updated": "2026-10-31",
-      "categories": [],
-      "sources": [
-        "npj_quantum_information"
-      ],
-      "publication": {
-        "journal_id": "npj_quantum_information",
-        "journal": "npj Quantum Information",
-        "doi": "10.1038/s41534-026-01325-9",
-        "url": "https://www.nature.com/articles/s41534-026-01325-9",
-        "published": "2026-10-31",
-        "date_basis": "crossref_published-online"
-      },
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "state preparation"
-        ]
-      },
-      "first_seen_at": "2026-11-01T06:15:27Z",
-      "doi": "10.1038/s41534-026-01325-9"
-    },
-    {
       "doi": "",
       "id": "2610.41986",
       "version": 1,
@@ -18402,90 +18530,6 @@
       "first_seen_at": "2026-11-03T06:54:52Z"
     },
     {
-      "id": "doi:10.1103/v3td-r5q6",
-      "version": 1,
-      "title": "Incoherent Imaging with Spatially Structured Quantum Probes",
-      "authors": [
-        "Anthony J. Brady, Zihao Gong, Alexey V. Gorshkov, and Saikat Guha"
-      ],
-      "abstract": "Incoherent imaging, including fluorescence and absorption microscopy, is often hindered by weak signals and resolution limits—notoriously, Rayleigh’s curse. We introduce a framework for incoherent quantum imaging in the perturbative (weak-signal) regime that leverages spatially structured quantum probes and multiplexed quantum readout to overcome these limitations. We propose a novel protocol that maps absorption and fluorescence onto distinct idler and signal modes that carry thermal-like signatures characteristic of passive imaging. This yields an explicit architecture for simultaneous absorption and fluorescence imaging at the quantum limit and allows passive-imaging methods to be directly repurposed for active quantum imaging. As a corollary, we show that subdiffraction absorption imaging with quantum probes evades Rayleigh’s curse, whereas classical probes remain provably afflicted. Remarkably, the same protocol supports displacement-field reconstruction of multiple quadratures (e.g., oscillators’ positions) and pertains to both conventional and subdiffraction imaging. We further identify Fock states in a structured spatial mode basis as a non-Gaussian alternative with comparable performance. Though primarily developed for optical imaging, our framework suggests broad applications to phononic and acoustic imaging, and to reconstructing forces, fields, or charge distributions with an array of mechanical oscillators.",
-      "abstract_basis": "crossref_abstract",
-      "abstract_source_url": "https://api.crossref.org/journals/2160-3308/works?filter=from-online-pub-date%3A2026-11-02%2Cuntil-online-pub-date%3A2026-11-05%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
-      "url": "https://journals.aps.org/prx/abstract/10.1103/v3td-r5q6",
-      "pdf_url": "",
-      "published": "2026-11-02T10:00:00Z",
-      "updated": "2026-11-02T10:00:00Z",
-      "categories": [],
-      "sources": [
-        "prx"
-      ],
-      "publication": {
-        "journal_id": "prx",
-        "journal": "Physical Review X",
-        "doi": "10.1103/v3td-r5q6",
-        "url": "https://journals.aps.org/prx/abstract/10.1103/v3td-r5q6",
-        "published": "2026-11-02T10:00:00Z",
-        "date_basis": "publisher_rss"
-      },
-      "keyword_score": 3,
-      "topics": [
-        "quantum_learning"
-      ],
-      "keyword_matches": {
-        "quantum_learning": [
-          "quantum readout"
-        ]
-      },
-      "first_seen_at": "2026-11-03T06:54:52Z",
-      "doi": "10.1103/v3td-r5q6"
-    },
-    {
-      "id": "doi:10.1038/s41534-026-01401-0",
-      "version": 1,
-      "title": "Fault-tolerant quantum error correction for constant-excitation stabilizer codes under coherent noise",
-      "authors": [
-        "Ching-Yi Lai",
-        "Pei-Hao Liou",
-        "Yingkai Ouyang"
-      ],
-      "abstract": "Collective coherent (CC) noise poses challenges for fault-tolerant error correction (FTEC), as it is not captured by conventional stochastic noise models. Constant-excitation (CE) codes are inherently immune to CC errors, but a fault-tolerant framework for operating these codes under circuit-level noise has not yet been established. Here, we develop an FTEC framework for CE CSS codes based on dual-rail concatenation. We show that conventional transversal CNOT gates violate the CE constraint and develop CE-preserving logical CNOT gates together with modified Shor- and Steane-type syndrome extraction schemes using zero-controlled NOT gates and CE-compatible ancilla states. We further develop an extended stabilizer simulation algorithm that tracks both stochastic and CC noise. Using this framework, we identify small distance-3 CE CSS codes demonstrate that the [[14, 1, 3]] code maintains robust performance under coherent noise. Our results establish a fault-tolerant framework for CE codes under circuit-level noise and demonstrate their potential for quantum processors affected by CC noise.",
-      "abstract_basis": "crossref_abstract",
-      "abstract_source_url": "https://api.crossref.org/journals/2056-6387/works?filter=from-online-pub-date%3A2026-11-02%2Cuntil-online-pub-date%3A2026-11-05%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
-      "url": "https://www.nature.com/articles/s41534-026-01401-0",
-      "pdf_url": "",
-      "published": "2026-11-02",
-      "updated": "2026-11-02",
-      "categories": [],
-      "sources": [
-        "npj_quantum_information"
-      ],
-      "publication": {
-        "journal_id": "npj_quantum_information",
-        "journal": "npj Quantum Information",
-        "doi": "10.1038/s41534-026-01401-0",
-        "url": "https://www.nature.com/articles/s41534-026-01401-0",
-        "published": "2026-11-02",
-        "date_basis": "publisher_rss"
-      },
-      "keyword_score": 8,
-      "topics": [
-        "logical_qec",
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction",
-          "syndrome",
-          "transversal"
-        ],
-        "magic_stabilizer": [
-          "stabilizer"
-        ]
-      },
-      "first_seen_at": "2026-11-03T06:54:52Z",
-      "doi": "10.1038/s41534-026-01401-0"
-    },
-    {
       "doi": "",
       "id": "2611.05375",
       "version": 1,
@@ -19450,352 +19494,6 @@
         "arxiv"
       ],
       "first_seen_at": "2026-11-04T06:34:03Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.06154",
-      "version": 1,
-      "title": "Statistical mechanics and hierarchy of learnability in quantum codes: From generalized symmetries to non-Abelian topological orders",
-      "authors": [
-        "Hiromi Ebisu",
-        "Masazumi Honda"
-      ],
-      "abstract": "Local weak measurements provide noisy information about observables encoded in a quantum code. We formulate the corresponding Bayesian inference problem for a broad class of topological stabilizer codes by mapping it to classical spin models with generalized symmetries. When the wavefunction deformation and Gaussian measurement strengths coincide, the replicated model acquires an enlarged symmetry. We use this symmetry to derive exact identities among correlators averaged over measurement records that quantify the learnability of nonlocal observables associated with fractionalized excitations. Together with correlation inequalities in the associated clean ferromagnetic models, these identities establish hierarchies of learnability: if two observables remain learnable at long distances, their product must also remain learnable. We demonstrate these relations in the rank-2 toric code and the X-cube model, whose classical descriptions exhibit modulated and subsystem symmetries, respectively. We further extend the analysis to finite group quantum double models, including non-Abelian ones. We derive exact relations between learnability and correlations in the corresponding classical models, and show that the representation structure and fusion rules of anyons impose further constraints under suitable positivity conditions. These results constrain which types of nonlocal information can be learned simultaneously, providing a guide to learning phase diagrams in quantum codes under local weak measurements.",
-      "url": "https://arxiv.org/abs/2611.06154",
-      "pdf_url": "https://arxiv.org/pdf/2611.06154v1",
-      "published": "2026-11-04T08:35:38Z",
-      "updated": "2026-11-04T08:35:38Z",
-      "categories": [
-        "cond-mat.stat-mech",
-        "cond-mat.str-el",
-        "hep-lat",
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "magic_stabilizer": [
-          "stabilizer"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.06136",
-      "version": 1,
-      "title": "Robust Geometric Gates for QCCD Architecture",
-      "authors": [
-        "Xin Zhang",
-        "Yi Tao",
-        "Hong Yang Wang",
-        "Gang Fan",
-        "Jie Zhang",
-        "Wei Wu",
-        "Ting Chen",
-        "Chun Wang Wu",
-        "Yi Xie",
-        "Ping Xing Chen"
-      ],
-      "abstract": "The trapped-ion quantum charge-coupled device (QCCD) is a promising route toward scalable quantum computing. However, the frequency offset during shuttling operations introduce significant decoherence and control errors, severely degrading gate fidelity on transported ions. Here, using a room-temperature planar chip trap, we demonstrate a robust and universal single-qubit gate set in the QCCD architecture. Based on a recently proposed path-optimizable noncyclic geometric scheme, we show that dynamic noise is strongly suppressed even when multiple shuttling operations are interleaved with gate execution, achieving substantially higher fidelities than conventional dynamical gates. This robustness is further validated in a multi-ion system containing up to 33 qubits. With inherent robustness and adaptability to varying shuttle distances and ion numbers, our work offers a plug-and-play solution for building robust quantum primitives for the QCCD platform.",
-      "url": "https://arxiv.org/abs/2611.06136",
-      "pdf_url": "https://arxiv.org/pdf/2611.06136v1",
-      "published": "2026-11-04T08:21:46Z",
-      "updated": "2026-11-04T08:21:46Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "benchmarking"
-      ],
-      "keyword_matches": {
-        "benchmarking": [
-          "gate fidelity"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
-    },
-    {
-      "doi": "10.4204/EPTCS.456.8",
-      "id": "2611.06119",
-      "version": 1,
-      "title": "Classical Clifford+T Sampling without Computing Marginals",
-      "authors": [
-        "Mark Koch"
-      ],
-      "abstract": "We introduce a new exact classical sampling algorithm for Clifford+T circuits, called T-by-T sampling. For a circuit with T-count t, it reduces sampling to evaluating 2t amplitudes of circuits with successively increasing T-counts 1,2,...,t, without the need to compute costly marginal probabilities. Crucially, the number of amplitude evaluations is completely independent of the surrounding Clifford structure. This makes T-by-T sampling well suited for use together with low-rank stabiliser decompositions, which enable efficient amplitude evaluations as long as the T-count is not too high. In that sense, T-by-T sampling is an improvement over the gate-by-gate sampling technique introduced by Bravyi, Gosset, and Liu (Phys. Rev. Lett. 128, 2022), where the number of amplitudes instead scales with the number of non-monomial operations such as Hadamard gates, which can remain large even in circuits with low stabiliser rank. Concretely, T-by-T sampling offers significant speedups in regimes where T gates are embedded within large Clifford computations. This makes it well suited for applications such as simulating quantum error correction experiments, which typically have lower T complexity but involve extensive Clifford operations and measurements. In particular, we show how T-by-T sampling allows us to take samples from recent end-to-end magic state cultivation circuits with escape up to distance 19 in a couple of seconds.",
-      "url": "https://arxiv.org/abs/2611.06119",
-      "pdf_url": "https://arxiv.org/pdf/2611.06119v1",
-      "published": "2026-11-04T08:05:59Z",
-      "updated": "2026-11-04T08:05:59Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 8,
-      "topics": [
-        "logical_qec",
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction"
-        ],
-        "magic_stabilizer": [
-          "magic state",
-          "stabiliser",
-          "T-count"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.06073",
-      "version": 1,
-      "title": "Shadow bootstrapping: Nearly minimal-setting pure-state tomography with shallow Clifford measurements",
-      "authors": [
-        "Gyungmin Cho",
-        "Dohun Kim"
-      ],
-      "abstract": "We present a pure-state tomography algorithm that uses a nearly minimal number of measurement settings while achieving optimal sample complexity with nonadaptive single-copy shallow Clifford measurements. For an arbitrary $n$-qubit pure state $|ψ\\rangle \\in \\mathbb{C}^{d}$, where $d=2^n$, the algorithm uses $O(d/ε)$ copies and $\\widetilde{O}(1)$ measurement settings to output a state vector $|\\hatψ\\rangle$ satisfying $1-|\\langleψ|\\hatψ\\rangle|^2\\leε$ with high probability. Each measurement is implemented by a Clifford circuit of depth $O(\\log n)$. Reusing each measurement setting allows the data to be stored compactly as per-basis outcome histograms. Given these histograms, classical post-processing runs in $\\widetilde{O}(d)$ time. Our key technique, \\textit{shadow bootstrapping}, uses the current estimate to reduce the variance of subsequent residual estimation, enabling progressively more accurate reconstruction with only a constant number of new measurement settings per stage.",
-      "url": "https://arxiv.org/abs/2611.06073",
-      "pdf_url": "https://arxiv.org/pdf/2611.06073v1",
-      "published": "2026-11-04T07:18:36Z",
-      "updated": "2026-11-04T07:18:36Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 6,
-      "topics": [
-        "magic_stabilizer",
-        "quantum_learning"
-      ],
-      "keyword_matches": {
-        "magic_stabilizer": [
-          "Clifford circuit"
-        ],
-        "quantum_learning": [
-          "sample complexity"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.05941",
-      "version": 1,
-      "title": "Rotated-Frame Determinant Discovery for Ground- and Excited-State Quantum Selected Configuration Interaction",
-      "authors": [
-        "Yukihiro Okuno"
-      ],
-      "abstract": "Quantum Selected Configuration Interaction (QSCI) constructs a variational determinant space from measurements of a prepared electronic state, but finite-shot sampling can repeatedly observe high-probability determinants, limiting efficient discovery of configurations important for an accurate selected-CI description. We introduce rotate--sample--unrotate (RSU) determinant discovery, in which the same state is sampled in complementary orbital frames and the observed rotated determinants generate a finite set of candidates in the canonical basis. The Hamiltonian is then diagonalized in an orthonormal selected-CI space without enumerating the full determinant space. State-targeted orbital frames are constructed from an initial selected-CI wavefunction and its external residual. For excited states, we combine RSU with the generative quantum eigensolver (GQE) to prepare target-specific sampling states. Candidate GQE circuits are evaluated by classical selected-CI diagonalization in finite sampled spaces, so the quantum procedure requires only state preparation and determinant sampling. For N$_2$, exact-state controls isolate the determinant-discovery effect: at the stretched geometry, residual-natural-orbital RSU reaches chemical accuracy with 5,000 shots, compared with 20,000 shots for conventional QSCI. The improvement persists with approximate GQE-prepared states and is also observed for target excited states. These results demonstrate improved finite-shot determinant discovery in QSCI for both ground and excited states.",
-      "url": "https://arxiv.org/abs/2611.05941",
-      "pdf_url": "https://arxiv.org/pdf/2611.05941v1",
-      "published": "2026-11-04T04:29:17Z",
-      "updated": "2026-11-04T04:29:17Z",
-      "categories": [
-        "quant-ph",
-        "cond-mat.str-el"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "state preparation"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.05867",
-      "version": 1,
-      "title": "Efficiently tracking errors and outcomes in universal quantum circuits",
-      "authors": [
-        "Thomas R. Scruby",
-        "Julio C. Magdalena de la Fuente"
-      ],
-      "abstract": "We present a method for efficient simulation of error propagation and decoding in universal fault-tolerant quantum circuits under stochastic Pauli noise, requiring only that the circuit has a high fault distance and that all logical non-Clifford operations are implemented by physical T, CS and CCZ gates. This is achieved using modified Pauli frame-based error tracking in which the frame contains no logical information. Decoding success is identified by verifying that the Pauli frame is still logically trivial after decoding. Using the results of Ref. [1] and the observation that the distribution of non-logical measurement outcomes in the circuit is independent of the logical state, we show that we can accurately sample all detector outcomes. Our approach can also simulate circuits containing adaptive operations conditioned on logical measurements, provided these measurements have a known outcome distribution. This applies to the majority of adaptive operations such as state teleportation and preparation by measurement. Our method only detects decoding failures and so is consistent with complexity-theoretic expectations as it cannot be used to sample from the noiseless outcome distribution of the logical circuit.",
-      "url": "https://arxiv.org/abs/2611.05867",
-      "pdf_url": "https://arxiv.org/pdf/2611.05867v1",
-      "published": "2026-11-04T03:01:26Z",
-      "updated": "2026-11-04T03:01:26Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "magic_stabilizer": [
-          "non-Clifford"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.05792",
-      "version": 1,
-      "title": "Structural Lower Bounds for Quantum Property Estimation with Persistent Memory",
-      "authors": [
-        "Ye Tao",
-        "Hong Shen"
-      ],
-      "abstract": "In quantum property estimation, an experimenter estimates $\\operatorname{Tr}(Oρ)$ for a family of observables from independent copies of an unknown state $ρ$ simultaneously to additive error $ε$. While quantum memory can dramatically reduce sample complexity, understanding the power of a modest register that remains coherent throughout an adaptive experiment has remained an open challenge because existing frameworks require optimizing over the infinite space of measurement trees. We overcome this barrier by developing a backward-induction framework based on operator resolvents. Rather than tracking path-dependent memory states across rounds, resolvent regularization cancels internal memory trajectories exactly, reducing the lower bound to an algebraic certificate computed directly from the target observables with sharp $Ω(1/ε^2)$ scaling. Our structural rule charges only the retained dimension $K$ under arbitrary adaptive instruments and unrestricted memory lifetime. Via symmetry reductions, it yields polynomial-size linear programs that establish the optimal linear $Ω(D/(Kε^2))$ trade-off for the $D^2-1$ Paulis, eliminating the cubic loss in prior bounds. For growing weight-$w$ Pauli strings ($w=\\lceil\\log_2 n\\rceil$) and quadratic Majorana cross-correlations, it proves lower bounds of $Ω(3^w/ε^2)$ and $Ω(n^2/(ε^2(1+\\ln n)^2))$ against an indefinitely persistent memory of dimension $K=\\lfloor\\sqrt n\\rfloor$. These bounds match memoryless or commuting estimators within polylogarithmic factors, demonstrating that rank constraints on the persistent register fundamentally throttle observable overlap and prevent a modest coherent memory from overcoming the sample complexity barrier.",
-      "url": "https://arxiv.org/abs/2611.05792",
-      "pdf_url": "https://arxiv.org/pdf/2611.05792v1",
-      "published": "2026-11-04T00:58:33Z",
-      "updated": "2026-11-04T00:58:33Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "quantum_learning"
-      ],
-      "keyword_matches": {
-        "quantum_learning": [
-          "sample complexity"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.05782",
-      "version": 1,
-      "title": "Emergent Incompressibility in Polariton Condensates for Scalable XY Spin Simulation",
-      "authors": [
-        "Chengyong Yu",
-        "Youya Xu",
-        "Xuan Ye",
-        "Yan Zhou",
-        "Sanjib Ghosh"
-      ],
-      "abstract": "Driven-dissipative polariton networks offer a powerful analog platform for simulating continuous-spin Hamiltonians. However, their practical scalability is fundamentally limited by amplitude-phase coupling and metastable trapping in highly frustrated energy landscapes. Here, we present an \\textit{in situ} dual-enhancement mechanism to address these bottlenecks without requiring external site-specific fine-tuning. First, a renormalization-group analysis based on density rescaling shows that higher-order nonlinear loss drives the condensates toward an incompressible regime, intrinsically suppressing amplitude fluctuations and enforcing phase-only dynamics. For macroscopic XY networks (up to 10,000 spins), this phase-amplitude decoupling yields a more than 50-fold reduction in energy, while simultaneously shrinking the standard deviation by a factor of six. More generally, it restores the extensive scaling of the optimized XY energy with system size. Second, to navigate the rugged, nonconvex energy landscape, we introduce weak Hermitian pulses. When implemented through a multistage protocol, these pulses enable repeated escapes from local minima and drive the system to deeper energy minima. Benchmarking shows an increasing advantage with system size, with the polariton simulator outperforming the classical Monte Carlo-SQP baseline in every sampled macroscopic realization. Our work provides a physical framework for scalable polariton analog computing.",
-      "url": "https://arxiv.org/abs/2611.05782",
-      "pdf_url": "https://arxiv.org/pdf/2611.05782v1",
-      "published": "2026-11-04T00:38:44Z",
-      "updated": "2026-11-04T00:38:44Z",
-      "categories": [
-        "cond-mat.mes-hall",
-        "nlin.AO",
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "decoupling"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.05722",
-      "version": 1,
-      "title": "Trinetra.Q: Statistical and Behavioral Detection of Attacks on the Quantum-Error-Correction Layer and Classical Control Stack of Quantum Computing Systems",
-      "authors": [
-        "Garrv Sipani"
-      ],
-      "abstract": "Most quantum-computer security work targets physical-layer attacks on qubits, while two surfaces remain inadequately defended: the quantum-error-correction (QEC) syndrome-and-decoder pipeline, and the classical control and software stack that runs it. Tampering on these surfaces can corrupt a computation while the physical error rate appears normal, and can stay within a single-circuit integrity tolerance. We present Trinetra.Q, a detection layer of cooperating detectors, each monitoring a statistical or behavioral property of quantum-domain data against an envelope calibrated from honest operation, and raising an indication only on a statistically significant deviation. The detectors cover (A) QEC integrity over per-stabilizer firing rates, syndrome defect-count, and repeated-syndrome rate; (B) decoder confidence over the margin between minimum-weight error explanations in distinct logical classes; (C) behavioral output divergence, flagging crosstalk-class and novel attacks by their effect on a victim's output relative to a matched control; (D) control-stack tampering via known-answer canary circuits, built to be indistinguishable to a resident implant, with a cross-job consistency statistic; and (E) compilation/execution integrity. Each gates on significance, so honest operation raises no alarm. We evaluate in faithful simulation and on three production IBM Heron processors, and bound the physical attack surface with a systematic negative map: most physical-layer attacks return statistically null, the exception an implemented, measured within-job feed-forward covert-channel primitive. Every detector is also evaluated against an adaptive attacker with full knowledge of it. To our knowledge this is the first unified statistical-and-behavioral detection layer for the QEC layer and classical control stack of a quantum computing system, demonstrated on production hardware.",
-      "url": "https://arxiv.org/abs/2611.05722",
-      "pdf_url": "https://arxiv.org/pdf/2611.05722v1",
-      "published": "2026-11-03T22:50:14Z",
-      "updated": "2026-11-03T22:50:14Z",
-      "categories": [
-        "quant-ph",
-        "cs.CR"
-      ],
-      "keyword_score": 9,
-      "topics": [
-        "logical_qec",
-        "magic_stabilizer",
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "syndrome"
-        ],
-        "magic_stabilizer": [
-          "stabilizer"
-        ],
-        "adaptive_resources": [
-          "feed-forward"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.05626",
-      "version": 1,
-      "title": "Exact signal recovery from generative priors with sigmoid output activation",
-      "authors": [
-        "Matthew S. Scott",
-        "Yaniv Plan",
-        "Özgür Yılmaz"
-      ],
-      "abstract": "We show exact signal recovery in generative compressed sensing for feedforward neural networks with piecewise-linear activations and a final sigmoid activation, with no assumption of expansivity. Consider a ReLU network of depth $d$ with a sigmoid final activation, whose input layer, of dimension $k$, is the narrowest, and let $K$ be the geometric mean of the widths of its layers. We show that, with high probability, all signals of the range whose entries lie in $[δ, 1 - δ]$ are uniformly recovered from $m \\gtrsim k(d \\log(K/k) + \\log(1+\\log(1/δ)))$ measurements.",
-      "url": "https://arxiv.org/abs/2611.05626",
-      "pdf_url": "https://arxiv.org/pdf/2611.05626v1",
-      "published": "2026-11-03T21:15:34Z",
-      "updated": "2026-11-03T21:15:34Z",
-      "categories": [
-        "cs.IT",
-        "eess.SP",
-        "stat.ML"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "feedforward"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
     },
     {
       "doi": "",
@@ -40863,6 +40561,71 @@
       "status": "ai_rejected",
       "score": 0,
       "at": "2026-11-05T08:33:34Z"
+    },
+    "2611.06136": {
+      "status": "ai_rejected",
+      "score": 52,
+      "at": "2026-11-05T08:34:34Z"
+    },
+    "2611.05941": {
+      "status": "ai_rejected",
+      "score": 58,
+      "at": "2026-11-05T08:34:34Z"
+    },
+    "2611.05782": {
+      "status": "ai_rejected",
+      "score": 14,
+      "at": "2026-11-05T08:34:34Z"
+    },
+    "2611.05722": {
+      "status": "ai_rejected",
+      "score": 38,
+      "at": "2026-11-05T08:34:34Z"
+    },
+    "2611.05626": {
+      "status": "ai_rejected",
+      "score": 8,
+      "at": "2026-11-05T08:34:34Z"
+    },
+    "doi:10.1103/v3td-r5q6": {
+      "status": "ai_rejected",
+      "score": 62,
+      "at": "2026-11-05T08:34:34Z"
+    },
+    "doi:10.1038/s41467-026-79210-4": {
+      "status": "ai_rejected",
+      "score": 0,
+      "at": "2026-11-05T08:34:34Z"
+    },
+    "doi:10.1038/s41534-026-01325-9": {
+      "status": "ai_rejected",
+      "score": 58,
+      "at": "2026-11-05T08:34:34Z"
+    },
+    "doi:10.1103/jsr3-2r5t": {
+      "status": "ai_rejected",
+      "score": 48,
+      "at": "2026-11-05T08:34:34Z"
+    },
+    "doi:10.1038/s41467-026-78592-9": {
+      "status": "ai_rejected",
+      "score": 0,
+      "at": "2026-11-05T08:34:34Z"
+    },
+    "doi:10.1038/s41467-026-78824-y": {
+      "status": "ai_rejected",
+      "score": 0,
+      "at": "2026-11-05T08:34:34Z"
+    },
+    "doi:10.1038/s41467-026-78664-w": {
+      "status": "ai_rejected",
+      "score": 6,
+      "at": "2026-11-05T08:34:34Z"
+    },
+    "doi:10.1038/s41586-026-11147-6": {
+      "status": "ai_rejected",
+      "score": 22,
+      "at": "2026-11-05T08:34:34Z"
     }
   },
   "last_successful_run": "2026-11-05T06:55:35Z",
@@ -40870,8 +40633,8 @@
     "fetched": 725,
     "keyword_candidates": 26,
     "analyzed": 10,
-    "selected": 5,
-    "pending": 396,
+    "selected": 2,
+    "pending": 376,
     "lookback_days": 7,
     "source": "all",
     "date_basis": "initial_submission",
@@ -40880,11 +40643,11 @@
   },
   "is_demo": false,
   "last_collection_run": "2026-11-05T06:55:35Z",
-  "last_analysis_run": "2026-11-05T08:33:34Z",
+  "last_analysis_run": "2026-11-05T08:34:34Z",
   "last_analysis_batch": {
     "analyzed": 10,
-    "selected": 5,
-    "pending": 396
+    "selected": 2,
+    "pending": 376
   },
   "topic_labels": {
     "benchmarking": "Benchmarking / SPAM",
