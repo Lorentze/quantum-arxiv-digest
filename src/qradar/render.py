@@ -351,6 +351,7 @@ def build_site(state: dict, output: Path | str, site_url: str) -> None:
         "last_successful_run": _text(state.get("last_successful_run")) or None,
         "last_collection_run": _text(collection_time) or None,
         "last_analysis_run": _text(analysis_time) or None,
+        "pending_count": len(state.get("pending", [])) + len(state.get("publication_reviews_pending", [])),
         "last_run": {key: value for key in ("fetched", "keyword_candidates", "analyzed", "selected", "pending") if type(value := (state.get("last_run") or {}).get(key)) is int},
         "site_url": base,
         "topic_labels": {topic: _text(labels.get(topic, topic)) for topic in topics},

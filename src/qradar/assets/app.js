@@ -299,6 +299,11 @@
     data.source_feeds = data.source_feeds || {};
     $("demo-notice").hidden = !data.is_demo;
     $("updated-at").textContent = data.last_analysis_run ? "更新于 " + date(data.last_analysis_run, true) + " 北京时间" : "";
+    const analysisTime = Date.parse(data.last_analysis_run || "");
+    const staleAnalysis = !data.is_demo && data.pending_count > 0 &&
+      (!Number.isFinite(analysisTime) || Date.now() - analysisTime > 48 * 60 * 60 * 1000);
+    $("analysis-notice").hidden = !staleAnalysis;
+    $("analysis-notice").textContent = staleAnalysis ? "AI 分析已超过 48 小时未更新，候选论文正在等待处理。页面日期以实际完成的分析为准。" : "";
     render();
     if (state.eventsBound) return;
     state.eventsBound = true;

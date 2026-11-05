@@ -37,6 +37,14 @@ def parser() -> argparse.ArgumentParser:
     imported.add_argument("--state", default="data/state.json")
     imported.add_argument("--output", default="public")
     imported.add_argument("--site-url", required=True)
+    hosted = sub.add_parser("hosted-sync", help="Validate small hosted-analysis batches, export a chunked queue and build the site")
+    hosted.add_argument("--profile", default="config/profile.json")
+    hosted.add_argument("--state", default="data/state.json")
+    hosted.add_argument("--inbox", default="data/inbox")
+    hosted.add_argument("--receipts", default="data/analysis_receipts")
+    hosted.add_argument("--queue", default="data/hosted")
+    hosted.add_argument("--output", default="public")
+    hosted.add_argument("--site-url", required=True)
     local = sub.add_parser("serve", help="Open a local webpage with candidate collection, analysis import and local RSS; no API key")
     local.add_argument("--profile", default="config/profile.json")
     local.add_argument("--state", default="data/state.json")
@@ -70,6 +78,24 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "import-analysis":
             result = import_analysis_update(args.batch, args.profile, args.state, args.output, args.site_url)
             print(json.dumps(result["last_analysis_batch"], ensure_ascii=False))
+        elif args.command == "hosted-sync":
+            from .hosted import export_hosted_queue, prepare_inbox
+            from .pipeline import load_state
+            from .render import build_site
+            profile = read_json(args.profile)
+            validate_profile(profile)
+            state = load_state(args.state, profile)
+            result, receipts = prepare_inbox(state, profile, args.inbox, args.receipts)
+            # GitHub commits state, receipts and queue together only after this
+            # whole command succeeds. Invalid batches never reach publication.
+            build_site(result, Path(args.output), args.site_url)
+            manifest = export_hosted_queue(result, profile, args.queue)
+            if receipts:
+                atomic_json(args.state, result)
+                for name, receipt in receipts.items():
+                    atomic_json(Path(args.receipts) / name, receipt)
+            print(json.dumps({"imported_batches": len(receipts), "counts": manifest["counts"],
+                              "analysis_health": manifest["analysis_health"]}, ensure_ascii=False))
         elif args.command == "serve":
             from .local import serve
             serve(args.profile, args.state, args.output, args.port, open_browser=args.open_browser)

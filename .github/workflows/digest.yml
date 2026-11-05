@@ -109,15 +109,29 @@ jobs:
             --state data/state.json \
             --output public
 
-      - name: Render the saved archive after a code or profile change
-        if: github.event_name == 'push'
+      - name: Import hosted analyses and export the small reading queue
         env:
           SITE_URL: ${{ steps.pages.outputs.base_url }}
         run: |
-          qradar build \
+          qradar hosted-sync \
+            --profile config/profile.json \
             --state data/state.json \
             --output public \
             --site-url "$SITE_URL"
+
+      - name: Check that AI analysis is still updating
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          manifest = json.loads(Path('data/hosted/manifest.json').read_text(encoding='utf-8'))
+          health = manifest['analysis_health']
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as file:
+              file.write('### AI analysis health\n' + json.dumps(health, ensure_ascii=False) + '\n')
+          if health['status'] == 'stale':
+              print('::warning::AI analysis is overdue. Candidate collection and Pages deployment do not confirm that the ChatGPT analysis task succeeded.')
+          PY
 
       - name: Validate the generated site and RSS
         run: |
@@ -134,11 +148,13 @@ jobs:
           PY
 
       - name: Save successful live results
-        if: github.event_name != 'push' || steps.bootstrap.outputs.collect == 'true'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/state.json
+          git add data/state.json data/hosted
+          if [ -d data/analysis_receipts ]; then
+            git add data/analysis_receipts
+          fi
           if ! git diff --cached --quiet; then
             git commit -m 'Update research review queues and digest archive'
             # Do not force-push: concurrent human edits must be preserved.
