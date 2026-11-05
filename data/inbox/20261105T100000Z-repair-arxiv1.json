@@ -1,0 +1,315 @@
+{
+  "analyses": [
+    {
+      "id": "2611.06909",
+      "version": 1,
+      "analysis": {
+        "summary": "作者在可精确合成的单比特 dyadic Clifford–cyclotomic 模型中，把三种资源层级联系起来：Bloch 矩阵所需的最小实分圆域、实现该信道的最浅门字母表，以及 stabilizer 辅助实现所需的最深 dyadic program-state 层级。这里的“depth”指代数资源层级，不能当作线路并行深度或 magic-state 数量。",
+        "problem": "精确合成通常先固定门集，再优化门数；本文先问目标信道究竟必须使用多精细的旋转角或资源态，能否通过自适应 Pauli 测量把所需资源层级降低。",
+        "setting": "目标是属于 dyadic Clifford–cyclotomic 并集的单比特幺正信道，忽略全局相位。免费操作包含 Clifford、stabilizer ancilla、Pauli 测量、经典 feed-forward 和丢弃；资源态可以任意有限次使用，且只来自声明的 dyadic 层级。",
+        "main_results": [
+          "作者证明相对交定理：在已知可合成的门群内，Bloch 矩阵落入较浅实分圆域，等价于该信道可用较浅门字母表精确合成。",
+          "对该并集中的非 Clifford 信道，作者得到 Fdepth(U)=Adepth(U)=Rdepth(U)。在最小字母表确定后，已有固定门集最优合成给出最少 primitive rotation 数。"
+        ],
+        "techniques": [
+          "以 Pauli 期望值生成的域作为不变量：Clifford 只置换并改变符号，Pauli 测量产生 dyadic 线性组合，分支归一化只取商，因此有限自适应 stabilizer 处理不能添加该域之外的代数数。",
+          "用 Bloch/Pauli-transfer 表示消除全局相位，并把已有 canonical form 的分母指数信息与实分圆域逐层下降结合；资源态注入及倍角纠正给出匹配实现。"
+        ],
+        "assumptions": [
+          "这是 exact synthesis 的结论，目标预先属于指定可合成并集；仅有域包含关系并不刻画所有 SO(3,K_D) 矩阵。",
+          "不允许免费提供含有额外代数参数的外部控制；协议必须是有限的。"
+        ],
+        "limitations": [
+          "本条阅读了自动提取的 arXiv HTML，公式和图像可能有抽取损失，未独立核验全部证明。",
+          "最小资源层级不同于最小 magic 数量；本文不能直接给出一般多比特线路的 T-count 下界，也没有误差容忍的近似版本。"
+        ],
+        "relevance": [
+          "与 magic、stabilizer 和 ancilla/adaptivity 的资源关系直接相关，提供了标量 magic monotone 之外的代数障碍。"
+        ],
+        "follow_up": [
+          "读者建议：检查相同域不变量在有催化资源与小但非零实现误差时是否还能转化为定量界；近似情形不能直接沿用 exact 障碍。"
+        ],
+        "relevance_score": 87,
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.06909v1",
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:22Z"
+      }
+    },
+    {
+      "id": "2611.06819",
+      "version": 1,
+      "analysis": {
+        "summary": "该文用训练得到的 GFlowNet 搜索有限尺寸 lifted-product qLDPC 码，评价每次昂贵评估能发现多少高分新码。",
+        "problem": "进行摘要级主题相关性筛选。",
+        "setting": "仅阅读该 arXiv v1 的官方摘要。",
+        "main_results": [],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "仅依据摘要，未核查正文证明及完整假设。"
+        ],
+        "relevance": [
+          "与 qLDPC 有对象层面的联系，但主结果为 180 比特码上的启发式搜索比较，未建立 logical characterization、编码深度或资源下界；不进入本轮精选。"
+        ],
+        "follow_up": [],
+        "relevance_score": 64,
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.06819v1",
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:22Z"
+      }
+    },
+    {
+      "id": "2611.06698",
+      "version": 1,
+      "analysis": {
+        "summary": "该文对小型 Max-Cut 图比较一个参数线路与 depth-one QAOA 及经典重启。",
+        "problem": "进行摘要级主题相关性筛选。",
+        "setting": "仅阅读该 arXiv v1 的官方摘要。",
+        "main_results": [],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "仅依据摘要，未核查正文证明及完整假设。"
+        ],
+        "relevance": [
+          "关键词 circuit depth 未对应所配置的深度下界、随机线路、design 或测量资源问题；不同后处理评分也不能直接视为一般量子优势，因此不进入精选。"
+        ],
+        "follow_up": [],
+        "relevance_score": 20,
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.06698v1",
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:22Z"
+      }
+    },
+    {
+      "id": "2611.06630",
+      "version": 1,
+      "analysis": {
+        "summary": "该文研究 QCBM 在有限 shots 下的分布泛化，并用有限预算自适应选择噪声/缓解强度。",
+        "problem": "进行摘要级主题相关性筛选。",
+        "setting": "仅阅读该 arXiv v1 的官方摘要。",
+        "main_results": [],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "仅依据摘要，未核查正文证明及完整假设。"
+        ],
+        "relevance": [
+          "虽有噪声收缩复杂度与 regret 的理论内容，主要任务仍是经典数据的生成学习，偏离当前 quantum-data learning 和 gate/logical certification 主线，本轮不进入精选。"
+        ],
+        "follow_up": [],
+        "relevance_score": 58,
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.06630v1",
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:22Z"
+      }
+    },
+    {
+      "id": "2611.06605",
+      "version": 1,
+      "analysis": {
+        "summary": "本文从 syndrome detector 的统计数据中发现原始 detector error model（DEM）缺失的相关错误机制，再把新机制及其 logical effect 接回现有 decoder。关键变化是扩充模型支持的错误类型，而非仅调优已有边的概率。",
+        "problem": "即使 decoder 的权重校准准确，缺少真实相关错误机制也会限制逻辑性能。新超边既要由数据支持，又要有逻辑含义和可供 correlated matching 使用的分解。",
+        "setting": "研究 surface-code quantum memory；输入为已有 DEM 与 detector-firing 数据，比较相同 correlated-matching decoder 在有无模型扩充时的逻辑错误率。作者同时使用含相关噪声的模拟与 Google 公开实验数据。",
+        "main_results": [
+          "作者在 SI1000 参数 p=10^{-3}、另加近邻数据比特 XX 相关错误概率 3×10^{-4} 的模拟中报告：距离 7–15 的拟合抑错参数 Lambda 提高约 20%，距离 15 的逻辑错误率降低约 75%。",
+          "在所用实验数据中，相对已有校准 DEM，作者报告距离 5–7 的 Lambda 提高约 9%，距离 7 的逻辑错误率降低约 14%；这些是该数据与 decoder 条件下的比较。"
+        ],
+        "techniques": [
+          "将已有机制两两组合作为候选，先用 pairwise detector correlations 快速过滤，再直接估计高阶相关以验证候选，控制搜索空间及有限样本伪相关。",
+          "从 constituent mechanisms 继承 logical effect 与低阶分解，使新增 hyperedge 可被现有 correlated graph decoder 消费。跨轮重复机制可共享概率参数，但这要求相应错误率基本稳定。"
+        ],
+        "assumptions": [
+          "候选支持由已有机制的组合限定，不能保证找出任意未知物理错误。",
+          "把跨轮 logical failure 换算为每轮错误率时，文中使用恒定且独立的逻辑错误率及可忽略 SPAM 等假设。"
+        ],
+        "limitations": [
+          "本条依据前 45000 字符的自动 HTML 节选，后续附录与细节可能未覆盖，公式和图像可能有抽取损失；数值结果未独立复现。",
+          "这是数据驱动模型改进的性能验证，不是一般噪声下 SPAM-robust logical-fidelity certification 或统一样本复杂度定理。"
+        ],
+        "relevance": [
+          "与利用 syndrome 数据识别 logical noise、相关噪声建模以及模型失配下的 characterization 直接相关。"
+        ],
+        "follow_up": [
+          "读者建议：分离“发现机制所需的 shots”与 decoder 改进幅度，并检验漂移、训练/测试分离和遗漏机制对 logical-fidelity 推断的影响。"
+        ],
+        "relevance_score": 91,
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.06605v1",
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:22Z"
+      }
+    },
+    {
+      "id": "2611.06469",
+      "version": 1,
+      "analysis": {
+        "summary": "作者把一类三维平移不变局域 stabilizer code 的部分自纠错性质，归结为可从生成多项式计算的代数几何条件。机制是用曲线边界处的 valuation 限制带电激发的移动，进而建立 no-strings 性质、对数能垒及低温寿命保证。",
+        "problem": "已有自纠错分析经常需要逐个模型验证 topological order 和 no-strings 条件。本文希望直接由局域稳定子相互作用的多项式表示得到可计算的充分判据。",
+        "setting": "主要对象是用二元 Laurent 多项式 f,g 指定的三维 trivariate bicycle 码族，采用周期边界，系统含 2L^3 个物理比特；热噪声模型为指定的局域 Pauli Davies dynamics。",
+        "main_results": [
+          "作者给出充分条件：生成理想适当、gcd(f,g)=1，并且每个相关不可约分支的 valuation matrix 具有列满秩 3。结合有效恢复，可推出部分自纠错。",
+          "证明路线得到逻辑能垒 Omega(log L)，并找到包括近邻、稳定子权重低至 6 的实例。部分自纠错指温度依赖的有限尺寸窗口及适当选择尺寸时的低温 super-Arrhenius 寿命。"
+        ],
+        "techniques": [
+          "将 syndrome 端点间的位移写成单项式 x^a y^b z^c；在代数曲线规范化射影闭包的边界上取零极阶，把位移向量映射为 valuation matrix 的乘积。",
+          "满秩把边界阶数约束转回空间位移约束，从而证明 uniform no-strings condition；再结合局域 topological order 与可多项式时间运行的恢复程序获得寿命结论。"
+        ],
+        "assumptions": [
+          "判据针对指定 TB 码族和局域 Davies 热动力学；低温寿命结论依赖相应恢复及尺寸条件。",
+          "gcd、最小素理想和边界规范化等对象必须满足文中的代数条件；标题中的 universality 不表示覆盖任意三维量子码。"
+        ],
+        "limitations": [
+          "本条依据前 45000 字符的自动 HTML 节选，后部补充证明可能未覆盖；未独立验证代数几何推导或寿命估计。",
+          "部分自纠错并非在固定正温下把尺寸无限增大即可无限延长寿命；也不等价于一般 circuit-level 或非马尔可夫噪声下的容错定理。"
+        ],
+        "relevance": [
+          "与局域 stabilizer 结构、量子存储、可恢复性和 QEC 的数学构造相连，适合作为被动保护方向的理论参考。"
+        ],
+        "follow_up": [
+          "读者建议：区分判据的充分性与必要性，进一步比较简单局域相互作用带来的实际收益和 Davies/低温假设的强度。"
+        ],
+        "relevance_score": 84,
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.06469v1",
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:22Z"
+      }
+    },
+    {
+      "id": "2611.06291",
+      "version": 1,
+      "analysis": {
+        "summary": "本文把 coherent error 的累积写成广义 Pauli 空间中的向量轨迹，通过确定性选择 twirling 序列来诱导误差抵消。它连接连续脉冲控制和离散 randomized compiling，但正文展示的优化与示例不能读成任意长线路、任意噪声下的恒定误差保证。",
+        "problem": "随机 twirling 能改变相干误差累积的统计行为，却不为每个抽到的线路提供相同表现。作者问：如果已知或估计局部门的相干误差，能否主动选择 twirling，使指定线路的总误差更小。",
+        "setting": "把线路分成 easy/hard layers，用前后修正 T^c U_0 T=U_0 保持理想运算。主要分析将单比特层视为理想，并在低阶误差或 Magnus 展开中追踪各层相干误差。",
+        "main_results": [
+          "作者在 GHZ、iSWAP 及 CNOT 相关示例中展示确定性路径优化和脉冲控制的组合收益；其 O(1)、O(sqrt(N)) 对比描述误差轨迹距离，不应直接当作总 infidelity 或 diamond error 的同类普适界。",
+          "当 hard gate 是 Clifford 且 twirl 为 Pauli 时，修正仍为 Pauli，可吸收到相邻单比特层。文中明确保留额外门时长、重校准和硬件实现成本的可能性。"
+        ],
+        "techniques": [
+          "把每层误差从 local reference frame 共轭到统一 Pauli 坐标系，总低阶误差成为各步向量之和；twirling 改变步向量方向，搜索抵消序列。",
+          "对随机 twirling 的平均信道作扰动展开，将有效 Pauli 噪声率联系到脉冲级误差系数；闭合脉冲误差轨迹与离散层级随机化因而可以互补。"
+        ],
+        "assumptions": [
+          "需要可利用的相干噪声结构与控制模型。对一般时间噪声，完整误差系数取决于噪声加权积分，不能仅看无权几何轨迹。",
+          "一般 hard gate 的修正不一定是易实现的单比特门；Pauli 修正闭合的简单论证使用 Clifford hard layer。"
+        ],
+        "limitations": [
+          "本条阅读自动提取 HTML 正文，公式/图像可能不完整，未独立核验扰动展开及数值。",
+          "正文承认大规模任意线路的确定性序列优化有指数规模的组合瓶颈；未给出针对任意线路的高效优化与统一 O(1) 总误差定理。",
+          "该工作是误差抑制/编译方法，不能直接代替只访问固定 noisy target gate 的 SPAM-robust benchmarking 保证。"
+        ],
+        "relevance": [
+          "与 gate calibration、noise tailoring、可信单比特控制和 coherent error 的累积直接相关，可用于比较随机化与确定性编译的访问和成本假设。"
+        ],
+        "follow_up": [
+          "读者建议：在相同 shots、单比特控制和噪声漂移条件下比较随机与确定性方法，并将序列优化的经典开销和噪声表征成本单独计入。"
+        ],
+        "relevance_score": 94,
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.06291v1",
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:22Z"
+      }
+    },
+    {
+      "id": "2611.06260",
+      "version": 1,
+      "analysis": {
+        "summary": "作者将最简单的 2-to-1 entanglement-distillation 测量结果作为后续 surface-code 解码的 soft information，使“失败”输出也能保留使用。收益来自条件错误概率被 decoder 利用，而非声称不后选择即可提高输出 Bell 对的平均 fidelity。",
+        "problem": "短浅的 error-detecting distillation 通常需要 postselection，导致等待和随机调度；无后选择的 error-correcting distillation 又常需要更多 Bell 对和深线路。本文探索保留简单电路、用测量信息改进整体 logical performance。",
+        "setting": "分布式 surface-code 的 remote lattice surgery；每站每轮有两个独立、同 fidelity 的 isotropic Bell 对，distillation 的局域操作和测量取理想。用现象学噪声模型模拟整体逻辑错误率。",
+        "main_results": [
+          "作者在只包含 Bell-pair 噪声的模拟中报告：初始 Bell 对 infidelity 的阈值从约 15% 提高到约 18%。这个比较属于文中的评价任务与模型。",
+          "随机选择 X/Z distillation，并联合调整 syndrome rounds r 和选择概率 q，可进一步减少 seam errors 的影响；增加 rounds 增加运行时间，也会累积 bulk errors。"
+        ],
+        "techniques": [
+          "即使 distillation 的测量结果为失败，也保留输出。把成功/失败条件下的 X、Z 错误概率交给 matching-based decoder，利用结果揭示的错误信息。",
+          "X 和 Z 两种 distillation 偏向互补错误类型；利用 surface code 的时空错误不对称性，通过 q 与 r 的联合选择平衡两类逻辑失败。"
+        ],
+        "assumptions": [
+          "两份输入 Bell 对独立同分布、局域 distillation 操作理想；完整噪声模拟不是一般硬件 circuit-level 模型。",
+          "“无 postselection”仍需 distillation 测量结果的经典处理和条件解码；同时每轮消耗两份 raw Bell 对。"
+        ],
+        "limitations": [
+          "本条依据前 45000 字符自动 HTML 节选，可能遗漏后续参考文献/附录，公式和图像可能抽取不全；模拟未独立复现。",
+          "文中将不同输入 fidelity 等扩展留待后续，因此不应把阈值或开销收益直接迁移到有本地门噪声、非独立链路与硬件调度约束的设备。"
+        ],
+        "relevance": [
+          "与 syndrome/classical side information、逻辑操作性能和测量资源之间的关系直接相连，展示了条件信息能在不提高平均物理 fidelity 的情况下改善 logical outcome。"
+        ],
+        "follow_up": [
+          "读者建议：比较含真实局域门噪声和等待噪声时的总 Bell-pair 消耗、时间与逻辑错误率，区分信息利用收益和额外资源收益。"
+        ],
+        "relevance_score": 84,
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.06260v1",
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:22Z"
+      }
+    },
+    {
+      "id": "2611.06216",
+      "version": 1,
+      "analysis": {
+        "summary": "该文提出并实验实现超导比特复位用的片上耗散器。",
+        "problem": "进行摘要级主题相关性筛选。",
+        "setting": "仅阅读该 arXiv v1 的官方摘要。",
+        "main_results": [],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "仅依据摘要，未核查正文证明及完整假设。"
+        ],
+        "relevance": [
+          "具体硬件复位与器件设计是主线；使用 process tomography 不等于提供新的 SPAM-robust characterization 或理论资源结论，本轮不进入精选。"
+        ],
+        "follow_up": [],
+        "relevance_score": 32,
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.06216v1",
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:22Z"
+      }
+    },
+    {
+      "id": "2611.06205",
+      "version": 1,
+      "analysis": {
+        "summary": "该文研究水声信道上的生成式图像通信与经典 side information。",
+        "problem": "进行摘要级主题相关性筛选。",
+        "setting": "仅阅读该 arXiv v1 的官方摘要。",
+        "main_results": [],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "仅依据摘要，未核查正文证明及完整假设。"
+        ],
+        "relevance": [
+          "这里的 side information 是经典图像通信资源，与量子态区分、测量时序或 quantum data hiding 无直接联系，属于关键词误召回。"
+        ],
+        "follow_up": [],
+        "relevance_score": 0,
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.06205v1",
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:22Z"
+      }
+    }
+  ]
+}
