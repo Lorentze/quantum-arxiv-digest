@@ -1,0 +1,321 @@
+{
+  "analyses": [
+    {
+      "id": "doi:10.1103/v3td-r5q6",
+      "version": 1,
+      "analysis": {
+        "summary": "论文提出弱信号条件下的量子成像框架，以空间结构化探针及多模读出处理吸收和荧光成像；属于与量子测量相邻的方向，本轮不纳入精选。",
+        "problem": "弱信号和衍射分辨率限制如何影响量子成像。",
+        "setting": "扰动性弱信号、空间模式探针及量子光学读出。",
+        "main_results": [
+          "摘要声称量子探针能避免亚衍射吸收成像中的 Rayleigh’s curse。"
+        ],
+        "techniques": [
+          "将吸收和荧光信息映射至不同 signal/idler 模式。"
+        ],
+        "assumptions": [
+          "弱信号扰动区间。"
+        ],
+        "limitations": [
+          "仅阅读确切 DOI 的公开摘要，未核查正文及量子/经典探针对比的详细资源约束。"
+        ],
+        "relevance": [
+          "与读出优势相关，但摘要未建立与固定门认证、logical QEC、design 阶数或单拷贝学习复杂度的具体联系，相关性低于收录门槛。"
+        ],
+        "follow_up": [],
+        "relevance_score": 62,
+        "publication_significance": [
+          "本次仅做主题筛选；因不满足平台的具体研究范围，不对其 PRX 发表原因进行展开判断。"
+        ],
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:47Z",
+        "evidence_level": "abstract",
+        "source_url": "https://api.crossref.org/works/10.1103/v3td-r5q6"
+      }
+    },
+    {
+      "id": "doi:10.1038/s41534-026-01401-0",
+      "version": 1,
+      "analysis": {
+        "summary": "论文为 constant-excitation（CE）CSS codes 构造电路层面的容错纠错流程，使编码态对集体相干噪声的保护能延伸到逻辑门与 syndrome 提取。核心问题是操作过程也必须保持编码所依赖的对称性。",
+        "problem": "CE 码能抵御 collective coherent noise，但常规容错操作可能破坏 CE 条件。作者要补上从静态保护性质到可运行 FTEC 电路之间的缺口。",
+        "setting": "采用 dual-rail concatenation 的 CE CSS 编码，考虑同时包含随机与集体相干分量的电路层噪声，研究逻辑 CNOT 和 Shor/Steane 型 syndrome extraction。",
+        "main_results": [
+          "作者指出通常的 transversal CNOT 会违反 CE 约束，并提出 CE-preserving 的逻辑 CNOT。",
+          "改造 syndrome 提取线路，使用 zero-controlled NOT 和与 CE 条件相容的辅助态。",
+          "扩展 stabilizer simulation 以同时跟踪 stochastic 与 collective coherent noise；给出小规模 distance-3 码，并报告 [[14,1,3]] 码在所研究相干噪声下保持稳健性能。"
+        ],
+        "techniques": [
+          "用 dual-rail 拼接组织固定激发数结构；再逐项调整逻辑门、辅助态和 syndrome 电路，使保护机制在操作时仍可使用。",
+          "将噪声建模与 stabilizer 跟踪结合，评估电路级而非仅存储级的纠错表现。"
+        ],
+        "assumptions": [
+          "保护针对集体相干噪声的特定结构，不能直接推广为对任意相关噪声免疫。",
+          "实现依赖 CE-compatible ancilla states 及相应受控门。"
+        ],
+        "limitations": [
+          "本条仅依据出版商公开摘要；尚未核查证明、门级故障假设、伪阈值及辅助态准备成本。",
+          "出版商标明该在线版本仍可能进一步编辑，不能视为最终 Version of Record 已完成排版。"
+        ],
+        "relevance": [
+          "与非 Pauli 噪声下 logical QEC、操作与保护子空间是否相容的问题直接相关。"
+        ],
+        "follow_up": [
+          "读者建议：重点核查 syndrome 回路中的故障传播，以及集体相干误差在多轮纠错时的处理假设。"
+        ],
+        "relevance_score": 93,
+        "publication_significance": [
+          "以下是依据摘要的阅读判断，非编辑或审稿人的实际理由：工作把 CE 码的噪声免疫性质推进到具体容错操作框架，障碍与解决对象明确，契合 npj Quantum Information 的量子信息方法研究。",
+          "逻辑门、syndrome 提取与模拟工具构成互相支撑的技术组成；但仅凭摘要不能评价证明完备性或与既有 CE 方案相比的全部增量。"
+        ],
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:47Z",
+        "evidence_level": "abstract",
+        "source_url": "https://www.nature.com/articles/s41534-026-01401-0"
+      }
+    },
+    {
+      "id": "doi:10.1038/s41467-026-79210-4",
+      "version": 1,
+      "analysis": {
+        "summary": "研究唐氏综合征胎肺发育中的干扰素信号，与量子信息主题无关，不收录。",
+        "problem": "疾病相关肺组织异常的细胞机制。",
+        "setting": "人肺组织、单细胞转录组及细胞共培养。",
+        "main_results": [],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "仅依据确切 DOI 的公开摘要完成相关性筛选。"
+        ],
+        "relevance": [
+          "syndrome 在此指医学综合征，不是量子纠错 syndrome；属于关键词误召回。"
+        ],
+        "follow_up": [],
+        "relevance_score": 0,
+        "publication_significance": [
+          "主题无关，本次不分析其期刊发表价值。"
+        ],
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:47Z",
+        "evidence_level": "abstract",
+        "source_url": "https://api.crossref.org/works/10.1038/s41467-026-79210-4"
+      }
+    },
+    {
+      "id": "doi:10.1038/s41534-026-01325-9",
+      "version": 1,
+      "analysis": {
+        "summary": "研究多基量子位置验证的损耗鲁棒性和安全假设，属于量子密码协议；与当前平台的具体研究问题关联不足，不收录。",
+        "problem": "如何在损耗与实验不完美下验证位置并澄清对手模型。",
+        "setting": "多验证者、量子通信及带物理限制的对手。",
+        "main_results": [
+          "摘要提出使验证者制备独立于信道损耗的协议，并修正部分已有安全分析中的隐含假设。"
+        ],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "仅据确切 DOI 的公开摘要筛选，未阅读安全证明。"
+        ],
+        "relevance": [
+          "存在信息访问与安全模型的相邻联系，但摘要未呈现与 stabilizer/magic、design 或测量资源分离的具体方法联系。"
+        ],
+        "follow_up": [],
+        "relevance_score": 58,
+        "publication_significance": [
+          "主题相关性低于门槛；不因发表于 npj Quantum Information 就展开发表原因分析。"
+        ],
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:47Z",
+        "evidence_level": "abstract",
+        "source_url": "https://api.crossref.org/works/10.1038/s41534-026-01325-9"
+      }
+    },
+    {
+      "id": "doi:10.1103/q4lp-htgw",
+      "version": 1,
+      "analysis": {
+        "summary": "论文利用 QEC 的 syndrome 提取非线性处理，在噪声背景中辨认稀有信号。它接受逻辑信号变弱，以换取更长的逻辑相干时间和更好的最终灵敏度。",
+        "problem": "常规 sensing 中稀有随机信号易被局域噪声淹没。关键是能否利用信号与噪声不同的高阶相关结构，而不只比较瞬时信号幅度。",
+        "setting": "随机时刻出现的稀有信号，叠加 local Markovian noise；比较逻辑量子比特 sensing 与常规策略。",
+        "main_results": [
+          "作者声称，syndrome 提取中的非线性处理能利用高阶相关性区分信号与噪声。",
+          "该处理把原信号参数 ε 转为随机逻辑相位 φ_L=O(ε³)，同时纠错延长信号积累时间；在论文指定稀有事件模型中展示灵敏度改进。"
+        ],
+        "techniques": [
+          "将 QEC 用作相关结构选择性处理：逻辑信号保留较弱的高阶响应，背景物理误差受到压制。"
+        ],
+        "assumptions": [
+          "结论针对稀有信号与局域 Markovian 噪声；摘要未给出普适噪声模型下的保证。"
+        ],
+        "limitations": [
+          "仅阅读正式发表版本摘要，未核查推导、最优 sensing 时间与纠错循环成本。",
+          "φ_L 的阶数是作者所述有效逻辑响应，不能据此单独推断总 Fisher information 或普适的超越标准量子极限。"
+        ],
+        "relevance": [
+          "直接体现 logical primitive、syndrome 信息处理与操作性优势之间的联系。"
+        ],
+        "follow_up": [
+          "读者建议：比较总 sensing 时间、syndrome 测量开销及信号出现率约束，确认灵敏度收益的适用区间。"
+        ],
+        "relevance_score": 84,
+        "publication_significance": [
+          "以下为阅读判断而非编辑决定：把纠错视为辨认高阶相关结构的机制，解释了为何削弱信号仍可能提高探测能力，具有清晰物理信息，契合 PRL 对跨领域物理结论的重视。",
+          "摘要提供可检验的立方响应与噪声条件，但尚不足以评估与所有已有 sensing 策略的最优性比较。"
+        ],
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:47Z",
+        "evidence_level": "abstract",
+        "source_url": "https://journals.aps.org/prl/abstract/10.1103/q4lp-htgw"
+      }
+    },
+    {
+      "id": "doi:10.1103/jsr3-2r5t",
+      "version": 1,
+      "analysis": {
+        "summary": "研究光晶格中单粒子运动模式的可编程幺正重排；属于硬件控制与确定性单粒子变换，当前不收录。",
+        "problem": "如何通过隧穿及局域相位实现任意单粒子幺正。",
+        "setting": "光学超晶格、双阱阵列、强度噪声和寻址串扰。",
+        "main_results": [
+          "利用线性光学分解类比构造单粒子幺正，并研究二维重排。"
+        ],
+        "techniques": [
+          "Clements 分解与隧穿/相位控制。"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "仅据确切 DOI 的公开摘要筛选。"
+        ],
+        "relevance": [
+          "这里的 circuit depth 不直接对应多量子比特 unitary design 或 magic/ancilla 资源代价；缺少具体方法联系。"
+        ],
+        "follow_up": [],
+        "relevance_score": 48,
+        "publication_significance": [
+          "本次因主题偏离不展开 PRX Quantum 的期刊适配分析。"
+        ],
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:47Z",
+        "evidence_level": "abstract",
+        "source_url": "https://api.crossref.org/works/10.1103/jsr3-2r5t"
+      }
+    },
+    {
+      "id": "doi:10.1038/s41467-026-78592-9",
+      "version": 1,
+      "analysis": {
+        "summary": "研究不宁腿综合征的多祖源遗传关联，与量子信息无关，不收录。",
+        "problem": "疾病风险位点与祖源差异。",
+        "setting": "GWAS 与多祖源 meta-analysis。",
+        "main_results": [],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "仅依据确切 DOI 的公开摘要完成相关性筛选。"
+        ],
+        "relevance": [
+          "syndrome 为医学名词，非量子纠错 syndrome，属于误召回。"
+        ],
+        "follow_up": [],
+        "relevance_score": 0,
+        "publication_significance": [
+          "主题无关，不对期刊发表价值展开分析。"
+        ],
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:47Z",
+        "evidence_level": "abstract",
+        "source_url": "https://api.crossref.org/works/10.1038/s41467-026-78592-9"
+      }
+    },
+    {
+      "id": "doi:10.1038/s41467-026-78824-y",
+      "version": 1,
+      "analysis": {
+        "summary": "研究唐氏综合征婴儿胸腺的细胞图谱和干扰素通路，与量子信息主题无关，不收录。",
+        "problem": "胸腺结构变化与自身免疫倾向的关系。",
+        "setting": "单细胞 RNA 测序和空间转录组。",
+        "main_results": [],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "依据出版商公开摘要筛选，未研究生物医学结论。"
+        ],
+        "relevance": [
+          "syndrome 指医学综合征，与量子错误 syndrome 无关。"
+        ],
+        "follow_up": [],
+        "relevance_score": 0,
+        "publication_significance": [
+          "主题无关，不展开该期刊发表价值判断。"
+        ],
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:47Z",
+        "evidence_level": "abstract",
+        "source_url": "https://www.nature.com/articles/s41467-026-78824-y"
+      }
+    },
+    {
+      "id": "doi:10.1038/s41467-026-78664-w",
+      "version": 1,
+      "analysis": {
+        "summary": "研究被动太赫兹超表面的 exceptional bound state in the continuum 及传感，缺少与当前量子信息任务的直接联系，不收录。",
+        "problem": "如何在无需精确外部激发的被动结构中实现特殊非厄米模式。",
+        "setting": "太赫兹超表面、谐振模式、传输谱和水雾探测。",
+        "main_results": [],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "仅依据确切 DOI 的公开摘要筛选。"
+        ],
+        "relevance": [
+          "decoupling 在此为光学模式与入射场脱耦，并非量子信息 decoupling theorem；属于关键词误召回。"
+        ],
+        "follow_up": [],
+        "relevance_score": 6,
+        "publication_significance": [
+          "主题无关，不因 Nature Communications 来源而展开长报告。"
+        ],
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:47Z",
+        "evidence_level": "abstract",
+        "source_url": "https://api.crossref.org/works/10.1038/s41467-026-78664-w"
+      }
+    },
+    {
+      "id": "doi:10.1038/s41586-026-11147-6",
+      "version": 1,
+      "analysis": {
+        "summary": "报道可单分子寻址的 spin–photon interface，重点是分子材料和光谱/相干性能，当前不收录。",
+        "problem": "如何在单分子平台同时实现光学稳定性与自旋相干。",
+        "setting": "晶体中的分子自旋与光学接口。",
+        "main_results": [],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "仅阅读出版商公开摘要，未评估具体实验。"
+        ],
+        "relevance": [
+          "虽有量子网络应用背景，但摘要未涉及门认证、logical QEC 或信息访问资源分离；dynamical decoupling 不能当作编码 decoupling 的直接关联。"
+        ],
+        "follow_up": [],
+        "relevance_score": 22,
+        "publication_significance": [
+          "与平台具体研究问题关联较弱，不因发表于 Nature 而收录或展开发表价值分析。"
+        ],
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:47Z",
+        "evidence_level": "abstract",
+        "source_url": "https://www.nature.com/articles/s41586-026-11147-6"
+      }
+    }
+  ]
+}
