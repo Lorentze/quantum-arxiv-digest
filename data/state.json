@@ -4,6 +4,341 @@
   "papers": [
     {
       "doi": "",
+      "id": "2611.06909",
+      "version": 1,
+      "title": "Arithmetic Depth, Minimal Gate Alphabets, and Exact Program-State Resources for Single-Qubit Dyadic Programs",
+      "authors": [
+        "Tony Newton",
+        "Dan-Adrian German"
+      ],
+      "abstract": "Resource analyses for quantum programs commonly provide safe upper bounds on qubits, gates, or non-Clifford operations. We study a single-qubit dyadic fragment in which the deepest exact resource layer can instead be inferred exactly. Starting from the normalized-midpoint misty-state syntax, we define dyadic program states and the real cyclotomic tower $K_D=\\mathbb Q(2\\cos(π/2^D))$. For the projective single-qubit Clifford-cyclotomic tower $\\widehat G_D\\subseteq SO(3)$, we prove the relative intersection law $\\widehat G_D\\cap SO(3,K_d)=\\widehat G_d$ for $d\\le D$. Combining this descent theorem with an arithmetic-closure invariant for adaptive stabilizer processing yields $\\mathrm{Fdepth}(U)=\\mathrm{Adepth}(U)=\\mathrm{Rdepth}(U)$: the smallest real cyclotomic field containing the Bloch matrix of an exactly synthesizable channel, the shallowest dyadic gate alphabet realizing it up to global phase, and the shallowest dyadic program-state layer sufficient for exact stabilizer-assisted implementation coincide. At that common minimum, known fixed-alphabet synthesis gives minimum primitive-rotation count. We package the result as an exact static resource effect and outline a certificate-producing compiler.",
+      "url": "https://arxiv.org/abs/2611.06909",
+      "pdf_url": "https://arxiv.org/pdf/2611.06909v1",
+      "published": "2026-11-04T18:56:04Z",
+      "updated": "2026-11-04T18:56:04Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "stabilizer",
+          "non-Clifford"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-05T06:55:35Z",
+      "analysis": {
+        "summary": "作者在可精确合成的单比特 dyadic Clifford–cyclotomic 模型中，把三种资源层级联系起来：Bloch 矩阵所需的最小实分圆域、实现该信道的最浅门字母表，以及 stabilizer 辅助实现所需的最深 dyadic program-state 层级。这里的“depth”指代数资源层级，不能当作线路并行深度或 magic-state 数量。",
+        "problem": "精确合成通常先固定门集，再优化门数；本文先问目标信道究竟必须使用多精细的旋转角或资源态，能否通过自适应 Pauli 测量把所需资源层级降低。",
+        "setting": "目标是属于 dyadic Clifford–cyclotomic 并集的单比特幺正信道，忽略全局相位。免费操作包含 Clifford、stabilizer ancilla、Pauli 测量、经典 feed-forward 和丢弃；资源态可以任意有限次使用，且只来自声明的 dyadic 层级。",
+        "main_results": [
+          "作者证明相对交定理：在已知可合成的门群内，Bloch 矩阵落入较浅实分圆域，等价于该信道可用较浅门字母表精确合成。",
+          "对该并集中的非 Clifford 信道，作者得到 Fdepth(U)=Adepth(U)=Rdepth(U)。在最小字母表确定后，已有固定门集最优合成给出最少 primitive rotation 数。"
+        ],
+        "techniques": [
+          "以 Pauli 期望值生成的域作为不变量：Clifford 只置换并改变符号，Pauli 测量产生 dyadic 线性组合，分支归一化只取商，因此有限自适应 stabilizer 处理不能添加该域之外的代数数。",
+          "用 Bloch/Pauli-transfer 表示消除全局相位，并把已有 canonical form 的分母指数信息与实分圆域逐层下降结合；资源态注入及倍角纠正给出匹配实现。"
+        ],
+        "assumptions": [
+          "这是 exact synthesis 的结论，目标预先属于指定可合成并集；仅有域包含关系并不刻画所有 SO(3,K_D) 矩阵。",
+          "不允许免费提供含有额外代数参数的外部控制；协议必须是有限的。"
+        ],
+        "limitations": [
+          "本条阅读了自动提取的 arXiv HTML，公式和图像可能有抽取损失，未独立核验全部证明。",
+          "最小资源层级不同于最小 magic 数量；本文不能直接给出一般多比特线路的 T-count 下界，也没有误差容忍的近似版本。"
+        ],
+        "relevance": [
+          "与 magic、stabilizer 和 ancilla/adaptivity 的资源关系直接相关，提供了标量 magic monotone 之外的代数障碍。"
+        ],
+        "follow_up": [
+          "读者建议：检查相同域不变量在有催化资源与小但非零实现误差时是否还能转化为定量界；近似情形不能直接沿用 exact 障碍。"
+        ],
+        "relevance_score": 87,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.06909v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:22+00:00"
+      },
+      "selected_at": "2026-11-05T08:33:34Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.06605",
+      "version": 1,
+      "title": "Discovering correlated error mechanisms: data-driven augmentation of detector error models improving decoding",
+      "authors": [
+        "Zohar Schwartzman-Nowik",
+        "Matthew P. Stafford",
+        "Boris M. Varbanov",
+        "Joan Camps"
+      ],
+      "abstract": "Accurate decoder priors are essential for high-performance quantum error correction. Theoretical noise models inevitably omit physically relevant error mechanisms, most notably correlated errors, which appear consistently in experimental error budgets yet are absent from standard models. We introduce a data-driven method for augmenting detector error models (DEMs) by discovering entirely new error mechanisms directly from experimental detector-firing statistics, going beyond most existing approaches that merely refine the probabilities of already-known mechanisms. Our method generates candidates by combining pairs of existing mechanisms as building blocks, then filters and validates them using pairwise and higher-order detector correlations. Crucially, this construction provides each newly discovered mechanism with a well-defined logical effect derived from the constituent error mechanisms, enabling its direct use in decoding. Furthermore, each mechanism is accompanied by a natural decomposition into lower-order components, preserving compatibility with the original decoder. This is particularly valuable in settings that rely on correlated graph-based decoders such as correlated matching. We evaluate the method on surface-code simulations with correlated noise and correlated-matching decoding, demonstrating that, in a realistic near-term noise scenario, DEM augmentation increases the Lambda parameter by 20% across code distances 7-15 and reduces the logical error rate by 75% at code distance 15 relative to the unaugmented DEM. On experimental data from Google's superconducting device, the augmented DEM increases the Lambda parameter by 9% across code distances 5-7 and yields a reduction of 14% in logical error rate over the baseline for distance 7. To our knowledge, this is the first data-driven DEM augmentation method that produces decomposed hyperedges with assigned logical effects.",
+      "url": "https://arxiv.org/abs/2611.06605",
+      "pdf_url": "https://arxiv.org/pdf/2611.06605v1",
+      "published": "2026-11-04T14:55:49Z",
+      "updated": "2026-11-04T14:55:49Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction",
+          "logical error"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-05T06:55:35Z",
+      "analysis": {
+        "summary": "本文从 syndrome detector 的统计数据中发现原始 detector error model（DEM）缺失的相关错误机制，再把新机制及其 logical effect 接回现有 decoder。关键变化是扩充模型支持的错误类型，而非仅调优已有边的概率。",
+        "problem": "即使 decoder 的权重校准准确，缺少真实相关错误机制也会限制逻辑性能。新超边既要由数据支持，又要有逻辑含义和可供 correlated matching 使用的分解。",
+        "setting": "研究 surface-code quantum memory；输入为已有 DEM 与 detector-firing 数据，比较相同 correlated-matching decoder 在有无模型扩充时的逻辑错误率。作者同时使用含相关噪声的模拟与 Google 公开实验数据。",
+        "main_results": [
+          "作者在 SI1000 参数 p=10^{-3}、另加近邻数据比特 XX 相关错误概率 3×10^{-4} 的模拟中报告：距离 7–15 的拟合抑错参数 Lambda 提高约 20%，距离 15 的逻辑错误率降低约 75%。",
+          "在所用实验数据中，相对已有校准 DEM，作者报告距离 5–7 的 Lambda 提高约 9%，距离 7 的逻辑错误率降低约 14%；这些是该数据与 decoder 条件下的比较。"
+        ],
+        "techniques": [
+          "将已有机制两两组合作为候选，先用 pairwise detector correlations 快速过滤，再直接估计高阶相关以验证候选，控制搜索空间及有限样本伪相关。",
+          "从 constituent mechanisms 继承 logical effect 与低阶分解，使新增 hyperedge 可被现有 correlated graph decoder 消费。跨轮重复机制可共享概率参数，但这要求相应错误率基本稳定。"
+        ],
+        "assumptions": [
+          "候选支持由已有机制的组合限定，不能保证找出任意未知物理错误。",
+          "把跨轮 logical failure 换算为每轮错误率时，文中使用恒定且独立的逻辑错误率及可忽略 SPAM 等假设。"
+        ],
+        "limitations": [
+          "本条依据前 45000 字符的自动 HTML 节选，后续附录与细节可能未覆盖，公式和图像可能有抽取损失；数值结果未独立复现。",
+          "这是数据驱动模型改进的性能验证，不是一般噪声下 SPAM-robust logical-fidelity certification 或统一样本复杂度定理。"
+        ],
+        "relevance": [
+          "与利用 syndrome 数据识别 logical noise、相关噪声建模以及模型失配下的 characterization 直接相关。"
+        ],
+        "follow_up": [
+          "读者建议：分离“发现机制所需的 shots”与 decoder 改进幅度，并检验漂移、训练/测试分离和遗漏机制对 logical-fidelity 推断的影响。"
+        ],
+        "relevance_score": 91,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.06605v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:22+00:00"
+      },
+      "selected_at": "2026-11-05T08:33:34Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.06469",
+      "version": 1,
+      "title": "Universally Certifying Partially Self-Correcting Quantum Memories in 3D Translation-Invariant Stabilizer Codes",
+      "authors": [
+        "Chong-Yuan Xu",
+        "Yong Xu"
+      ],
+      "abstract": "Achieving passive protection of quantum information at finite temperature is a central problem at the intersection of quantum information and quantum many-body physics. Yet a general, computable criterion for determining self-correcting behavior directly from the form of local interactions remains elusive. Here we develop a unified algebraic-geometric framework for certifying partial self-correction in three-dimensional translation-invariant local stabilizer codes, encompassing the cubic code as a special case. From the algebraic curves defined by the codes' defining polynomials, we construct valuation matrices on the boundaries of their normalized projective closures and derive a computable rank criterion. Together with a polynomial-time decoder, this criterion guarantees super-Arrhenius memory lifetimes for code families satisfying it under the specified local Davies dynamics. We apply the framework to certify several classes of partially self-correcting quantum memories, including nearest-neighbor models with stabilizer weight as low as six and long memory lifetimes at modest system sizes. These results establish an algebraic-geometric connection between local stabilizer structure and the recoverability of quantum information at finite temperature, providing a systematic approach to certifying and designing passive quantum memories.",
+      "url": "https://arxiv.org/abs/2611.06469",
+      "pdf_url": "https://arxiv.org/pdf/2611.06469v1",
+      "published": "2026-11-04T13:06:00Z",
+      "updated": "2026-11-04T13:06:00Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-05T06:55:35Z",
+      "analysis": {
+        "summary": "作者把一类三维平移不变局域 stabilizer code 的部分自纠错性质，归结为可从生成多项式计算的代数几何条件。机制是用曲线边界处的 valuation 限制带电激发的移动，进而建立 no-strings 性质、对数能垒及低温寿命保证。",
+        "problem": "已有自纠错分析经常需要逐个模型验证 topological order 和 no-strings 条件。本文希望直接由局域稳定子相互作用的多项式表示得到可计算的充分判据。",
+        "setting": "主要对象是用二元 Laurent 多项式 f,g 指定的三维 trivariate bicycle 码族，采用周期边界，系统含 2L^3 个物理比特；热噪声模型为指定的局域 Pauli Davies dynamics。",
+        "main_results": [
+          "作者给出充分条件：生成理想适当、gcd(f,g)=1，并且每个相关不可约分支的 valuation matrix 具有列满秩 3。结合有效恢复，可推出部分自纠错。",
+          "证明路线得到逻辑能垒 Omega(log L)，并找到包括近邻、稳定子权重低至 6 的实例。部分自纠错指温度依赖的有限尺寸窗口及适当选择尺寸时的低温 super-Arrhenius 寿命。"
+        ],
+        "techniques": [
+          "将 syndrome 端点间的位移写成单项式 x^a y^b z^c；在代数曲线规范化射影闭包的边界上取零极阶，把位移向量映射为 valuation matrix 的乘积。",
+          "满秩把边界阶数约束转回空间位移约束，从而证明 uniform no-strings condition；再结合局域 topological order 与可多项式时间运行的恢复程序获得寿命结论。"
+        ],
+        "assumptions": [
+          "判据针对指定 TB 码族和局域 Davies 热动力学；低温寿命结论依赖相应恢复及尺寸条件。",
+          "gcd、最小素理想和边界规范化等对象必须满足文中的代数条件；标题中的 universality 不表示覆盖任意三维量子码。"
+        ],
+        "limitations": [
+          "本条依据前 45000 字符的自动 HTML 节选，后部补充证明可能未覆盖；未独立验证代数几何推导或寿命估计。",
+          "部分自纠错并非在固定正温下把尺寸无限增大即可无限延长寿命；也不等价于一般 circuit-level 或非马尔可夫噪声下的容错定理。"
+        ],
+        "relevance": [
+          "与局域 stabilizer 结构、量子存储、可恢复性和 QEC 的数学构造相连，适合作为被动保护方向的理论参考。"
+        ],
+        "follow_up": [
+          "读者建议：区分判据的充分性与必要性，进一步比较简单局域相互作用带来的实际收益和 Davies/低温假设的强度。"
+        ],
+        "relevance_score": 84,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.06469v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:22+00:00"
+      },
+      "selected_at": "2026-11-05T08:33:34Z"
+    },
+    {
+      "doi": "10.1088/2058-9565/ae9b3b",
+      "id": "2611.06291",
+      "version": 1,
+      "title": "Bridging Pulse and Circuit Levels: A Geometric Framework for Deterministic Error Suppression",
+      "authors": [
+        "Junkai Zeng",
+        "Hao Liang",
+        "Yong-Ju Hai",
+        "Xiu-Hao Deng"
+      ],
+      "abstract": "Quantum errors in noisy environments remain a major obstacle to advancing quantum information technology. Standard quantum error correction requires massive ancillary qubit overhead, motivating the need for hardware-efficient mitigation strategies. In this work, we propose a framework for dynamical quantum error correction at the circuit level, requiring no logical encoding or ancillary qubits. By extending a geometric framework (originally developed for creating dynamical error-correcting gates at the control pulse level) to the discrete dynamics of digital circuits, we map the accumulation of coherent errors to trajectories in a high-dimensional error space. We demonstrate that inserting deterministically optimized twirling gate sequences actively shapes these trajectories, utilizing destructive interference to keep the accumulated error bounded with error scaling $\\mathcal{O}(1)$. This deterministic path-shaping suppresses circuit errors fundamentally differently than the stochastic random-walk behavior of standard randomized compiling with error scaling $\\mathcal{O}(\\sqrt{N})$. Furthermore, we show that this circuit-level dynamical correction synergizes with pulse-level robust control, providing an analytical bridge between continuous noise dynamics and discrete quantum compilation. This research illuminates pathways to achieving highly noise-resistant quantum circuits prior to the era of fault tolerance.",
+      "url": "https://arxiv.org/abs/2611.06291",
+      "pdf_url": "https://arxiv.org/pdf/2611.06291v1",
+      "published": "2026-11-04T10:26:55Z",
+      "updated": "2026-11-04T10:26:55Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-05T06:55:35Z",
+      "analysis": {
+        "summary": "本文把 coherent error 的累积写成广义 Pauli 空间中的向量轨迹，通过确定性选择 twirling 序列来诱导误差抵消。它连接连续脉冲控制和离散 randomized compiling，但正文展示的优化与示例不能读成任意长线路、任意噪声下的恒定误差保证。",
+        "problem": "随机 twirling 能改变相干误差累积的统计行为，却不为每个抽到的线路提供相同表现。作者问：如果已知或估计局部门的相干误差，能否主动选择 twirling，使指定线路的总误差更小。",
+        "setting": "把线路分成 easy/hard layers，用前后修正 T^c U_0 T=U_0 保持理想运算。主要分析将单比特层视为理想，并在低阶误差或 Magnus 展开中追踪各层相干误差。",
+        "main_results": [
+          "作者在 GHZ、iSWAP 及 CNOT 相关示例中展示确定性路径优化和脉冲控制的组合收益；其 O(1)、O(sqrt(N)) 对比描述误差轨迹距离，不应直接当作总 infidelity 或 diamond error 的同类普适界。",
+          "当 hard gate 是 Clifford 且 twirl 为 Pauli 时，修正仍为 Pauli，可吸收到相邻单比特层。文中明确保留额外门时长、重校准和硬件实现成本的可能性。"
+        ],
+        "techniques": [
+          "把每层误差从 local reference frame 共轭到统一 Pauli 坐标系，总低阶误差成为各步向量之和；twirling 改变步向量方向，搜索抵消序列。",
+          "对随机 twirling 的平均信道作扰动展开，将有效 Pauli 噪声率联系到脉冲级误差系数；闭合脉冲误差轨迹与离散层级随机化因而可以互补。"
+        ],
+        "assumptions": [
+          "需要可利用的相干噪声结构与控制模型。对一般时间噪声，完整误差系数取决于噪声加权积分，不能仅看无权几何轨迹。",
+          "一般 hard gate 的修正不一定是易实现的单比特门；Pauli 修正闭合的简单论证使用 Clifford hard layer。"
+        ],
+        "limitations": [
+          "本条阅读自动提取 HTML 正文，公式/图像可能不完整，未独立核验扰动展开及数值。",
+          "正文承认大规模任意线路的确定性序列优化有指数规模的组合瓶颈；未给出针对任意线路的高效优化与统一 O(1) 总误差定理。",
+          "该工作是误差抑制/编译方法，不能直接代替只访问固定 noisy target gate 的 SPAM-robust benchmarking 保证。"
+        ],
+        "relevance": [
+          "与 gate calibration、noise tailoring、可信单比特控制和 coherent error 的累积直接相关，可用于比较随机化与确定性编译的访问和成本假设。"
+        ],
+        "follow_up": [
+          "读者建议：在相同 shots、单比特控制和噪声漂移条件下比较随机与确定性方法，并将序列优化的经典开销和噪声表征成本单独计入。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.06291v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:22+00:00"
+      },
+      "selected_at": "2026-11-05T08:33:34Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.06260",
+      "version": 1,
+      "title": "Connection of surface code patches based on entanglement distillation without postselection",
+      "authors": [
+        "Moeto Mishima",
+        "Toshihiko Sasaki",
+        "Yasunari Suzuki",
+        "Koji Azuma",
+        "Masato Koashi"
+      ],
+      "abstract": "Distributed quantum computing is a promising approach for overcoming the scalability limitations of fault-tolerant quantum computing. Entanglement distillation, a process that extracts higher-fidelity entangled states from noisy ones, plays a key role in distributed quantum computing. However, simple distillation protocols typically rely on postselection, which poses practical challenges for implementation. Here, we propose a scheme for distributed surface-code quantum computing that benefits from entanglement distillation even without postselection. Numerical simulations show that the logical error rates in the proposed scheme are lower than those in the setting without distillation. Additionally, we demonstrate that the logical error rates can be suppressed further by exploiting the asymmetry between spacelike and timelike errors in the surface code. The proposed scheme offers a practical and simple approach to distributed quantum computing with surface codes.",
+      "url": "https://arxiv.org/abs/2611.06260",
+      "pdf_url": "https://arxiv.org/pdf/2611.06260v1",
+      "published": "2026-11-04T10:11:13Z",
+      "updated": "2026-11-04T10:11:13Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "logical error"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-05T06:55:35Z",
+      "analysis": {
+        "summary": "作者将最简单的 2-to-1 entanglement-distillation 测量结果作为后续 surface-code 解码的 soft information，使“失败”输出也能保留使用。收益来自条件错误概率被 decoder 利用，而非声称不后选择即可提高输出 Bell 对的平均 fidelity。",
+        "problem": "短浅的 error-detecting distillation 通常需要 postselection，导致等待和随机调度；无后选择的 error-correcting distillation 又常需要更多 Bell 对和深线路。本文探索保留简单电路、用测量信息改进整体 logical performance。",
+        "setting": "分布式 surface-code 的 remote lattice surgery；每站每轮有两个独立、同 fidelity 的 isotropic Bell 对，distillation 的局域操作和测量取理想。用现象学噪声模型模拟整体逻辑错误率。",
+        "main_results": [
+          "作者在只包含 Bell-pair 噪声的模拟中报告：初始 Bell 对 infidelity 的阈值从约 15% 提高到约 18%。这个比较属于文中的评价任务与模型。",
+          "随机选择 X/Z distillation，并联合调整 syndrome rounds r 和选择概率 q，可进一步减少 seam errors 的影响；增加 rounds 增加运行时间，也会累积 bulk errors。"
+        ],
+        "techniques": [
+          "即使 distillation 的测量结果为失败，也保留输出。把成功/失败条件下的 X、Z 错误概率交给 matching-based decoder，利用结果揭示的错误信息。",
+          "X 和 Z 两种 distillation 偏向互补错误类型；利用 surface code 的时空错误不对称性，通过 q 与 r 的联合选择平衡两类逻辑失败。"
+        ],
+        "assumptions": [
+          "两份输入 Bell 对独立同分布、局域 distillation 操作理想；完整噪声模拟不是一般硬件 circuit-level 模型。",
+          "“无 postselection”仍需 distillation 测量结果的经典处理和条件解码；同时每轮消耗两份 raw Bell 对。"
+        ],
+        "limitations": [
+          "本条依据前 45000 字符自动 HTML 节选，可能遗漏后续参考文献/附录，公式和图像可能抽取不全；模拟未独立复现。",
+          "文中将不同输入 fidelity 等扩展留待后续，因此不应把阈值或开销收益直接迁移到有本地门噪声、非独立链路与硬件调度约束的设备。"
+        ],
+        "relevance": [
+          "与 syndrome/classical side information、逻辑操作性能和测量资源之间的关系直接相连，展示了条件信息能在不提高平均物理 fidelity 的情况下改善 logical outcome。"
+        ],
+        "follow_up": [
+          "读者建议：比较含真实局域门噪声和等待噪声时的总 Bell-pair 消耗、时间与逻辑错误率，区分信息利用收益和额外资源收益。"
+        ],
+        "relevance_score": 84,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.06260v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-05T08:31:22+00:00"
+      },
+      "selected_at": "2026-11-05T08:33:34Z"
+    },
+    {
+      "doi": "",
       "id": "2610.18482",
       "version": 1,
       "title": "Lifting: Quantum State Discrimination Framework for Mid-Circuit Measurements",
@@ -19115,344 +19450,6 @@
         "arxiv"
       ],
       "first_seen_at": "2026-11-04T06:34:03Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.06909",
-      "version": 1,
-      "title": "Arithmetic Depth, Minimal Gate Alphabets, and Exact Program-State Resources for Single-Qubit Dyadic Programs",
-      "authors": [
-        "Tony Newton",
-        "Dan-Adrian German"
-      ],
-      "abstract": "Resource analyses for quantum programs commonly provide safe upper bounds on qubits, gates, or non-Clifford operations. We study a single-qubit dyadic fragment in which the deepest exact resource layer can instead be inferred exactly. Starting from the normalized-midpoint misty-state syntax, we define dyadic program states and the real cyclotomic tower $K_D=\\mathbb Q(2\\cos(π/2^D))$. For the projective single-qubit Clifford-cyclotomic tower $\\widehat G_D\\subseteq SO(3)$, we prove the relative intersection law $\\widehat G_D\\cap SO(3,K_d)=\\widehat G_d$ for $d\\le D$. Combining this descent theorem with an arithmetic-closure invariant for adaptive stabilizer processing yields $\\mathrm{Fdepth}(U)=\\mathrm{Adepth}(U)=\\mathrm{Rdepth}(U)$: the smallest real cyclotomic field containing the Bloch matrix of an exactly synthesizable channel, the shallowest dyadic gate alphabet realizing it up to global phase, and the shallowest dyadic program-state layer sufficient for exact stabilizer-assisted implementation coincide. At that common minimum, known fixed-alphabet synthesis gives minimum primitive-rotation count. We package the result as an exact static resource effect and outline a certificate-producing compiler.",
-      "url": "https://arxiv.org/abs/2611.06909",
-      "pdf_url": "https://arxiv.org/pdf/2611.06909v1",
-      "published": "2026-11-04T18:56:04Z",
-      "updated": "2026-11-04T18:56:04Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "magic_stabilizer": [
-          "stabilizer",
-          "non-Clifford"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.06819",
-      "version": 1,
-      "title": "GFlowQEC: Generative Flow Networks that Learn to Sample Quantum LDPC Codes",
-      "authors": [
-        "Nuno Batista",
-        "Gabriel Falcao",
-        "Penousal Machado"
-      ],
-      "abstract": "Choosing a quantum error-correcting code for a real device means scoring candidates with circuit-level simulations so slow that only a few hundred can be run. So every evaluation counts, and a search is judged by how many good codes it finds per paid evaluation. Quantum LDPC codes built from a few group elements protect many logical qubits, but good ones are rare in a huge space. We introduce GFlowQEC, to our knowledge the first generative flow network (GFlowNet) for quantum code design. It builds a code one group element at a time and learns to propose codes in proportion to a power of their score. We train it once on scores from earlier searches, freeze it, and let it propose lifted-product codes with 180 physical qubits, scored by their distances. Ranking ten of its draws per paid call, it finds more than twice as many new top-scoring codes (inequivalent to any it was trained on) as tuned parallel tempering, even when tempering starts from GFlowQEC's training codes. It finds more than three and a half times as many as a supervised screen ranking ten random candidates per call. When both rank a hundred, the screen beats GFlowQEC, and does best ranking GFlowQEC's draws. Soft Q-learning, which shares the GFlowNet's optimal policy, does as well at one noise bias and better at the other, so the gain does not depend on the GFlowNet's training loss. Trained proposers can make a budget of expensive evaluations go further when good codes are rare.",
-      "url": "https://arxiv.org/abs/2611.06819",
-      "pdf_url": "https://arxiv.org/pdf/2611.06819v1",
-      "published": "2026-11-04T17:31:57Z",
-      "updated": "2026-11-04T17:31:57Z",
-      "categories": [
-        "quant-ph",
-        "cs.LG"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error-correcting",
-          "quantum LDPC"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.06698",
-      "version": 1,
-      "title": "QASPA-MaxCut on Unweighted Graphs: Edge Encoding and QAOA Restarts",
-      "authors": [
-        "Dmytro Sapozhnyk"
-      ],
-      "abstract": "Max-Cut is a common testbed for near-term quantum optimization because it has a simple Ising Hamiltonian, established classical baselines, and a parameterized quantum circuit whose performance depends on the outer classical optimizer. This paper develops QASPA-MaxCut, a shift-phase circuit for Max-Cut that encodes graph edges through controlled $R_y$ rotations of the form $\\mathrm{CX}_{ij}R_y(θ_{ij})\\mathrm{CX}_{ij}$. We derive the exact two-qubit algebra of the edge block, trace an unweighted four-vertex example, and compare one-layer QASPA-MaxCut with depth-one QAOA by exact state-vector simulation. The protocol uses seed 42, evaluates connected backbone-augmented random graphs with additional-edge probabilities $p_{\\mathrm{edge}}\\in\\{0.1,0.3,0.5,0.7\\}$, and adds nineteen custom unweighted topologies. The QASPA-MaxCut score is reported after the algorithm's classical selection stage: the four leading QASPA bit strings are evaluated by the Max-Cut objective, and the best cut is retained. The QAOA score is the expected approximation ratio after local optimization, reported as a best-of-$k$ curve over one to ten restarts. In these small exact simulations, fixed-angle QASPA-MaxCut produces reported group-mean selection ratios between $0.955$ and $1.000$, the topology-level readout is unchanged in the retained finite-shot checks under the rule $\\lceil 0.03047\\cdot 2^n+1016.2\\rceil$, and depth-one QAOA improves with additional classical restarts while remaining lower than the QASPA selection score in the reported mean summaries. This comparison motivates further study of the classical search budget needed to obtain competitive Max-Cut samples at shallow circuit depth.",
-      "url": "https://arxiv.org/abs/2611.06698",
-      "pdf_url": "https://arxiv.org/pdf/2611.06698v1",
-      "published": "2026-11-04T16:01:20Z",
-      "updated": "2026-11-04T16:01:20Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "circuit depth"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.06630",
-      "version": 1,
-      "title": "Noise-regularized training of quantum circuit Born machines under a finite shot budget",
-      "authors": [
-        "Hoang M. Ngo",
-        "Quan Nguyen",
-        "Jung Taek Seo",
-        "Wanli Xing",
-        "My T. Thai"
-      ],
-      "abstract": "Quantum circuit Born machines (QCBMs) can learn distributions that are hard to sample from classically, but their value depends on generalizing from finite training data. Here, we study how hardware noise affects this generalization. We show that, for any noise process, the generalization gap of a QCBM trained with the maximum mean discrepancy is bounded by the complexity of the distributions the noisy model can reach. Scrambled local Pauli noise contracts this complexity but biases the model towards the uniform distribution, so residual noise acts as a regularizer whose optimal strength can be intermediate. We propose GENIE, a framework that realizes a chosen noise level with capped error mitigation and selects it during training from held-out data within a fixed execution budget, with provably bounded regret. In simulations on synthetic and census data, GENIE stays close to the best of four noise-control strategies, whereas every fixed noise level falls short in many settings.",
-      "url": "https://arxiv.org/abs/2611.06630",
-      "pdf_url": "https://arxiv.org/pdf/2611.06630v1",
-      "published": "2026-11-04T15:13:20Z",
-      "updated": "2026-11-04T15:13:20Z",
-      "categories": [
-        "quant-ph",
-        "cs.AI",
-        "cs.LG"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "benchmarking"
-      ],
-      "keyword_matches": {
-        "benchmarking": [
-          "error mitigation"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.06605",
-      "version": 1,
-      "title": "Discovering correlated error mechanisms: data-driven augmentation of detector error models improving decoding",
-      "authors": [
-        "Zohar Schwartzman-Nowik",
-        "Matthew P. Stafford",
-        "Boris M. Varbanov",
-        "Joan Camps"
-      ],
-      "abstract": "Accurate decoder priors are essential for high-performance quantum error correction. Theoretical noise models inevitably omit physically relevant error mechanisms, most notably correlated errors, which appear consistently in experimental error budgets yet are absent from standard models. We introduce a data-driven method for augmenting detector error models (DEMs) by discovering entirely new error mechanisms directly from experimental detector-firing statistics, going beyond most existing approaches that merely refine the probabilities of already-known mechanisms. Our method generates candidates by combining pairs of existing mechanisms as building blocks, then filters and validates them using pairwise and higher-order detector correlations. Crucially, this construction provides each newly discovered mechanism with a well-defined logical effect derived from the constituent error mechanisms, enabling its direct use in decoding. Furthermore, each mechanism is accompanied by a natural decomposition into lower-order components, preserving compatibility with the original decoder. This is particularly valuable in settings that rely on correlated graph-based decoders such as correlated matching. We evaluate the method on surface-code simulations with correlated noise and correlated-matching decoding, demonstrating that, in a realistic near-term noise scenario, DEM augmentation increases the Lambda parameter by 20% across code distances 7-15 and reduces the logical error rate by 75% at code distance 15 relative to the unaugmented DEM. On experimental data from Google's superconducting device, the augmented DEM increases the Lambda parameter by 9% across code distances 5-7 and yields a reduction of 14% in logical error rate over the baseline for distance 7. To our knowledge, this is the first data-driven DEM augmentation method that produces decomposed hyperedges with assigned logical effects.",
-      "url": "https://arxiv.org/abs/2611.06605",
-      "pdf_url": "https://arxiv.org/pdf/2611.06605v1",
-      "published": "2026-11-04T14:55:49Z",
-      "updated": "2026-11-04T14:55:49Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction",
-          "logical error"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.06469",
-      "version": 1,
-      "title": "Universally Certifying Partially Self-Correcting Quantum Memories in 3D Translation-Invariant Stabilizer Codes",
-      "authors": [
-        "Chong-Yuan Xu",
-        "Yong Xu"
-      ],
-      "abstract": "Achieving passive protection of quantum information at finite temperature is a central problem at the intersection of quantum information and quantum many-body physics. Yet a general, computable criterion for determining self-correcting behavior directly from the form of local interactions remains elusive. Here we develop a unified algebraic-geometric framework for certifying partial self-correction in three-dimensional translation-invariant local stabilizer codes, encompassing the cubic code as a special case. From the algebraic curves defined by the codes' defining polynomials, we construct valuation matrices on the boundaries of their normalized projective closures and derive a computable rank criterion. Together with a polynomial-time decoder, this criterion guarantees super-Arrhenius memory lifetimes for code families satisfying it under the specified local Davies dynamics. We apply the framework to certify several classes of partially self-correcting quantum memories, including nearest-neighbor models with stabilizer weight as low as six and long memory lifetimes at modest system sizes. These results establish an algebraic-geometric connection between local stabilizer structure and the recoverability of quantum information at finite temperature, providing a systematic approach to certifying and designing passive quantum memories.",
-      "url": "https://arxiv.org/abs/2611.06469",
-      "pdf_url": "https://arxiv.org/pdf/2611.06469v1",
-      "published": "2026-11-04T13:06:00Z",
-      "updated": "2026-11-04T13:06:00Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "magic_stabilizer": [
-          "stabilizer"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
-    },
-    {
-      "doi": "10.1088/2058-9565/ae9b3b",
-      "id": "2611.06291",
-      "version": 1,
-      "title": "Bridging Pulse and Circuit Levels: A Geometric Framework for Deterministic Error Suppression",
-      "authors": [
-        "Junkai Zeng",
-        "Hao Liang",
-        "Yong-Ju Hai",
-        "Xiu-Hao Deng"
-      ],
-      "abstract": "Quantum errors in noisy environments remain a major obstacle to advancing quantum information technology. Standard quantum error correction requires massive ancillary qubit overhead, motivating the need for hardware-efficient mitigation strategies. In this work, we propose a framework for dynamical quantum error correction at the circuit level, requiring no logical encoding or ancillary qubits. By extending a geometric framework (originally developed for creating dynamical error-correcting gates at the control pulse level) to the discrete dynamics of digital circuits, we map the accumulation of coherent errors to trajectories in a high-dimensional error space. We demonstrate that inserting deterministically optimized twirling gate sequences actively shapes these trajectories, utilizing destructive interference to keep the accumulated error bounded with error scaling $\\mathcal{O}(1)$. This deterministic path-shaping suppresses circuit errors fundamentally differently than the stochastic random-walk behavior of standard randomized compiling with error scaling $\\mathcal{O}(\\sqrt{N})$. Furthermore, we show that this circuit-level dynamical correction synergizes with pulse-level robust control, providing an analytical bridge between continuous noise dynamics and discrete quantum compilation. This research illuminates pathways to achieving highly noise-resistant quantum circuits prior to the era of fault tolerance.",
-      "url": "https://arxiv.org/abs/2611.06291",
-      "pdf_url": "https://arxiv.org/pdf/2611.06291v1",
-      "published": "2026-11-04T10:26:55Z",
-      "updated": "2026-11-04T10:26:55Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.06260",
-      "version": 1,
-      "title": "Connection of surface code patches based on entanglement distillation without postselection",
-      "authors": [
-        "Moeto Mishima",
-        "Toshihiko Sasaki",
-        "Yasunari Suzuki",
-        "Koji Azuma",
-        "Masato Koashi"
-      ],
-      "abstract": "Distributed quantum computing is a promising approach for overcoming the scalability limitations of fault-tolerant quantum computing. Entanglement distillation, a process that extracts higher-fidelity entangled states from noisy ones, plays a key role in distributed quantum computing. However, simple distillation protocols typically rely on postselection, which poses practical challenges for implementation. Here, we propose a scheme for distributed surface-code quantum computing that benefits from entanglement distillation even without postselection. Numerical simulations show that the logical error rates in the proposed scheme are lower than those in the setting without distillation. Additionally, we demonstrate that the logical error rates can be suppressed further by exploiting the asymmetry between spacelike and timelike errors in the surface code. The proposed scheme offers a practical and simple approach to distributed quantum computing with surface codes.",
-      "url": "https://arxiv.org/abs/2611.06260",
-      "pdf_url": "https://arxiv.org/pdf/2611.06260v1",
-      "published": "2026-11-04T10:11:13Z",
-      "updated": "2026-11-04T10:11:13Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "logical error"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.06216",
-      "version": 1,
-      "title": "Resetting a Superconducting Qubit with a Compact Colder Resistive Dissipator below the Qubit Frequency",
-      "authors": [
-        "Jiajia Tian",
-        "Meiling Li",
-        "Weijie Sun",
-        "Yanjun Ma",
-        "Zhenyu Mi",
-        "Fei Yan",
-        "Huikai Xu",
-        "Pei Liu",
-        "Guangming Xue",
-        "Haifeng Yu"
-      ],
-      "abstract": "Efficient qubit reset has become a key requirement for large-scale superconducting quantum processors, as initialization fidelity increasingly lags behind gate performance and quantum error correction demands rapid, high-fidelity state re-initialization. This work proposes a compact on-chip dissipator consisting of two transmon dissipation modes and a thin-film resistor, and experimentally demonstrates an unconditional reset protocol. With no additional control lines and negligible impact on the qubit $T_1$, the effective temperature of the transmon qubit is reduced from $49$~mK to $35$~mK. Quantum process tomography is employed to benchmark the reset process, achieving a process error of $0.0028$. This reset protocol is robust to pulse parameter deviations, thereby relaxing calibration requirements. The dissipator architecture provides a practical, calibration-friendly reset solution for large-scale superconducting quantum processors.",
-      "url": "https://arxiv.org/abs/2611.06216",
-      "pdf_url": "https://arxiv.org/pdf/2611.06216v1",
-      "published": "2026-11-04T09:28:08Z",
-      "updated": "2026-11-04T09:28:08Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.06205",
-      "version": 1,
-      "title": "Cross-Modal Semantic Successive Refinement for Generative Image Communication over Underwater Acoustic Channels",
-      "authors": [
-        "Xu Pei",
-        "Bin Wang",
-        "Guangxu Zhu",
-        "Yi Zhang",
-        "Haiyan Fan"
-      ],
-      "abstract": "Underwater acoustic communication faces challenges such as limited available bandwidth and complex channel environments, which impose demanding requirements on efficient image transmission and reliable reconstruction. To address these challenges, this paper proposes a generative image communication framework based on cross-modal semantic successive refinement. At the transmitter, text descriptions, compact bottleneck features, and visual side information compressed by residual vector quantization are transmitted. At the receiver, text and bottleneck features are first fused to predict a base estimate of the intermediate visual representation. The received RVQ indices are then used to recover supplementary visual information and perform residual correction, followed by image reconstruction using a one-step Pixel Mean Flow model. During training, a CLIP-based text-image semantic consistency constraint is introduced to preserve the semantic correspondence between generated results and the original text descriptions. During transmission, protection resources are allocated according to the importance of different information branches and RVQ quantization stages. Simulations using COCO 2017 images and measured underwater acoustic channel records from Watermark show that text and bottleneck features provide complementary semantic and structural conditions, RVQ visual side information further improves reconstruction quality, and layered unequal error protection helps improve recovery at low SNRs. Code-rate allocation experiments reveal a tradeoff between the reliability of fundamental conditions and visual-detail reconstruction under a limited visual-feature coding budget, providing guidance for allocating protection resources in underwater acoustic image transmission.",
-      "url": "https://arxiv.org/abs/2611.06205",
-      "pdf_url": "https://arxiv.org/pdf/2611.06205v1",
-      "published": "2026-11-04T09:21:25Z",
-      "updated": "2026-11-04T09:21:25Z",
-      "categories": [
-        "cs.IT",
-        "cs.CV"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "data_hiding"
-      ],
-      "keyword_matches": {
-        "data_hiding": [
-          "side information"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-05T06:55:35Z"
     },
     {
       "doi": "",
@@ -40841,15 +40838,40 @@
       "score": 0,
       "at": "2026-11-05T06:55:35Z",
       "metadata_fingerprint": "55fb18977bcbad0a353f15db3a4e10c3de6a646eb5fd59db8d0cf9b883b452fc"
+    },
+    "2611.06819": {
+      "status": "ai_rejected",
+      "score": 64,
+      "at": "2026-11-05T08:33:34Z"
+    },
+    "2611.06698": {
+      "status": "ai_rejected",
+      "score": 20,
+      "at": "2026-11-05T08:33:34Z"
+    },
+    "2611.06630": {
+      "status": "ai_rejected",
+      "score": 58,
+      "at": "2026-11-05T08:33:34Z"
+    },
+    "2611.06216": {
+      "status": "ai_rejected",
+      "score": 32,
+      "at": "2026-11-05T08:33:34Z"
+    },
+    "2611.06205": {
+      "status": "ai_rejected",
+      "score": 0,
+      "at": "2026-11-05T08:33:34Z"
     }
   },
   "last_successful_run": "2026-11-05T06:55:35Z",
   "last_run": {
     "fetched": 725,
     "keyword_candidates": 26,
-    "analyzed": 0,
-    "selected": 0,
-    "pending": 406,
+    "analyzed": 10,
+    "selected": 5,
+    "pending": 396,
     "lookback_days": 7,
     "source": "all",
     "date_basis": "initial_submission",
@@ -40858,11 +40880,11 @@
   },
   "is_demo": false,
   "last_collection_run": "2026-11-05T06:55:35Z",
-  "last_analysis_run": "2026-10-15T01:10:29Z",
+  "last_analysis_run": "2026-11-05T08:33:34Z",
   "last_analysis_batch": {
-    "analyzed": 28,
-    "selected": 21,
-    "pending": 44
+    "analyzed": 10,
+    "selected": 5,
+    "pending": 396
   },
   "topic_labels": {
     "benchmarking": "Benchmarking / SPAM",
