@@ -6,7 +6,7 @@ import unittest
 from datetime import timedelta
 from pathlib import Path
 
-from qradar.hosted import analysis_health, export_hosted_queue, prepare_inbox
+from qradar.hosted import analysis_health, collection_request_due, export_hosted_queue, prepare_inbox
 from qradar.pipeline import StateError, atomic_json, empty_state, import_analyses
 from qradar.analysis import AnalysisError
 from test_hosted import item
@@ -83,6 +83,39 @@ class HandoffTests(unittest.TestCase):
         self.state["pending"] = []
         self.state["last_analysis_run"] = None
         self.assertFalse(analysis_health(self.state, now=NOW)["stale"])
+
+    def test_current_beijing_day_request_triggers_only_when_unattempted(self):
+        requests = self.root / "requests"
+        atomic_json(requests / "2026-10-09.json", {"date": "2026-10-09", "source": "all"})
+        self.state["last_collection_run"] = "2026-10-08T00:00:00Z"
+        self.assertTrue(collection_request_due(self.state, requests, now=NOW))
+        # UTC previous evening is already today's date in Beijing.
+        self.state["last_collection_run"] = "2026-10-08T17:00:00Z"
+        self.assertFalse(collection_request_due(self.state, requests, now=NOW))
+
+    def test_old_request_is_ignored_and_failed_attempt_prevents_retry(self):
+        requests = self.root / "requests"
+        atomic_json(requests / "2026-10-08.json", {"date": "2026-10-08", "source": "all"})
+        self.assertFalse(collection_request_due(self.state, requests, now=NOW))
+        atomic_json(requests / "2026-10-09.json", {"date": "2026-10-09", "source": "all"})
+        self.state["last_collection_run"] = "2026-10-08T00:00:00Z"
+        self.state["arxiv_source_status"] = {"status": "failed", "checked_at": "2026-10-09T00:00:00Z"}
+        self.assertFalse(collection_request_due(self.state, requests, now=NOW))
+
+    def test_invalid_current_request_is_rejected_even_if_collection_is_fresh(self):
+        requests = self.root / "requests"
+        path = requests / "2026-10-09.json"
+        invalid = [{"date": "2026-10-09", "source": "arxiv"},
+                   {"date": "2026-10-08", "source": "all"},
+                   {"date": "2026-10-09", "source": "all", "force": True},
+                   {"date": 20261009, "source": "all"}]
+        for payload in invalid:
+            atomic_json(path, payload)
+            with self.subTest(payload=payload), self.assertRaises(StateError):
+                collection_request_due(self.state, requests, now=NOW)
+        path.write_text("not JSON")
+        with self.assertRaises(StateError):
+            collection_request_due(self.state, requests, now=NOW)
 
     def test_inbox_preserves_archive_collection_unrelated_fields_and_guid_identity(self):
         original = import_analyses(self.state, self.profile, {"analyses": [item()]}, now=NOW)

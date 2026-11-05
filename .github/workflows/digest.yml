@@ -56,7 +56,7 @@ jobs:
             *) echo '::error::DIGEST_MODE must be hosted or api.'; exit 1 ;;
           esac
 
-      - name: Detect the first candidate collection
+      - name: Detect bootstrap or a requested candidate refresh
         id: bootstrap
         if: github.event_name == 'push' && env.DIGEST_MODE == 'hosted'
         run: |
@@ -64,13 +64,15 @@ jobs:
           import json
           import os
           from pathlib import Path
+          from qradar.hosted import collection_request_due
           state = json.loads(Path('data/state.json').read_text(encoding='utf-8'))
           profile = json.loads(Path('config/profile.json').read_text(encoding='utf-8'))
           first = not (state.get('last_collection_run') or state.get('last_successful_run'))
           first_journals = (profile['source'].get('journals', {}).get('enabled', False)
                             and not state.get('last_journal_collection_run'))
+          requested = collection_request_due(state, 'data/collection_requests')
           with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as file:
-              file.write('collect=' + str(first or first_journals).lower() + '\n')
+              file.write('collect=' + str(first or first_journals or requested).lower() + '\n')
           PY
 
       - name: Validate API configuration for a live update

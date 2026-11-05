@@ -10,6 +10,7 @@ import hashlib
 import json
 from datetime import datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from .pipeline import StateError, atomic_json, import_analyses, read_json
 
@@ -27,6 +28,45 @@ def _stamp(value: datetime) -> str:
 
 def _bytes(value: dict) -> bytes:
     return (json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n").encode("utf-8")
+
+
+def collection_request_due(state: dict, requests_dir: str | Path, *, now: datetime | None = None) -> bool:
+    """Honor one current Beijing-day collection request, including failed attempts.
+
+    Old files are inert. Attempt timestamps prevent an all-source failure from
+    turning later report pushes into repeated source requests on the same day.
+    """
+    current = _now(now)
+    beijing = ZoneInfo("Asia/Shanghai")
+    today = current.astimezone(beijing).date().isoformat()
+    path = Path(requests_dir) / (today + ".json")
+    if not path.exists():
+        return False
+    try:
+        request = read_json(path)
+    except (ValueError, OSError) as exc:
+        raise StateError("Collection request is not a readable JSON object") from exc
+    if not isinstance(request, dict) or set(request) != {"date", "source"} or request != {"date": today, "source": "all"}:
+        raise StateError("Collection request must contain only today's Beijing date and source='all'")
+    attempts = [state.get("last_collection_run")]
+    arxiv = state.get("arxiv_source_status") or {}
+    if isinstance(arxiv, dict):
+        attempts.append(arxiv.get("checked_at"))
+    journals = state.get("journal_source_status") or {}
+    if isinstance(journals, dict):
+        attempts.extend(value.get("checked_at") for value in journals.values() if isinstance(value, dict))
+    for value in attempts:
+        if not value:
+            continue
+        try:
+            date = datetime.fromisoformat(value.replace("Z", "+00:00"))
+            if date.tzinfo is None or date > current:
+                raise ValueError
+        except (ValueError, TypeError, AttributeError) as exc:
+            raise StateError("Invalid collection attempt timestamp") from exc
+        if date.astimezone(beijing).date().isoformat() == today:
+            return False
+    return True
 
 
 def analysis_health(state: dict, *, now: datetime | None = None) -> dict:
