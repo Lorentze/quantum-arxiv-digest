@@ -1,0 +1,352 @@
+{
+  "analyses": [
+    {
+      "id": "2611.05561",
+      "version": 1,
+      "analysis": {
+        "summary": "研究 SPAM gauge 如何限制量子动力学学习，并利用相干结构缩小不可辨识性。",
+        "problem": "未知制备和测量会使不同动力学参数产生相同数据。",
+        "setting": "一般 channels、Lindbladian，以及保持或接近相干形式的动力学。",
+        "main_results": [
+          "作者用 generalized pattern-transfer graph 的环结构刻画可学习参数组合，并构造 SPAM-robust 协议。",
+          "相干结构可把连续 gauge 压缩为离散甚至平凡选择；相应条件下相干系数及多类耗散参数可逐个学习。"
+        ],
+        "techniques": [
+          "图的环结构；物理结构对 gauge 的约束。"
+        ],
+        "assumptions": [
+          "逐参数结论依赖相干或近相干模型。"
+        ],
+        "limitations": [
+          "仅审阅官方摘要；未核查正文证明和摘要未说明的假设。",
+          "摘要未给出近相干阈值、shots、序列长度或 target-call 开销；不能据此声称固定门认证已达到最优。"
+        ],
+        "relevance": [
+          "直接对应 SPAM-robust characterization 与可辨识性问题。"
+        ],
+        "follow_up": [
+          "读者建议：核查近目标 unitary 模型的误差量与固定门访问条件。"
+        ],
+        "relevance_score": 100,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-06T01:02:54.488Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.05561v1"
+      }
+    },
+    {
+      "id": "2611.05526",
+      "version": 1,
+      "analysis": {
+        "summary": "将表示论重数空间用作精确纠错编码，最优维数由 Kostka multiplicity 决定。",
+        "problem": "指定噪声代数下，哪些空间能够无损承载逻辑信息？",
+        "setting": "projective line 上 cyclic/argyle quiver moduli 导出的有限维系统及 monodromy 噪声。",
+        "main_results": [
+          "噪声作用于 Specht 因子，重置该因子可恢复重数空间中的编码态。",
+          "平衡三环每条边含 t 个零点时，最优逻辑维数为 t+1；t=1 给出六 sheets 上的 qubit。"
+        ],
+        "techniques": [
+          "Young permutation modules；Specht 分解。"
+        ],
+        "assumptions": [
+          "纠错保证针对完整 monodromy algebra。"
+        ],
+        "limitations": [
+          "仅审阅官方摘要；未核查正文证明和摘要未说明的假设。",
+          "模型外噪声可能保持测量统计却要求不同恢复；不是一般局域物理噪声的阈值结论。"
+        ],
+        "relevance": [
+          "与 noiseless subsystems、表示论纠错及恢复可辨识性相关。"
+        ],
+        "follow_up": [
+          "读者建议：检查噪声代数是否可由可实现的物理信道生成。"
+        ],
+        "relevance_score": 73,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-06T01:02:54.490Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.05526v1"
+      }
+    },
+    {
+      "id": "2611.05502",
+      "version": 1,
+      "analysis": {
+        "summary": "magic injection 在 transversal 架构中也能限制时空相关解码的典型体积。",
+        "problem": "反向传播逻辑测量会让解码图随线路体积增长。",
+        "setting": "transversal Clifford 门加 magic-state injection 的随机容错线路。",
+        "main_results": [
+          "逐次解码、提交修正并移除已处理 syndrome 后，中途测量的平均解码体积趋于由 injection 密度决定的稳态。",
+          "作者报告大解码实例指数受抑，且不同连接与 Clifford ensemble 中有类似行为。"
+        ],
+        "techniques": [
+          "测量反向传播；顺序解码与 syndrome 复用控制。"
+        ],
+        "assumptions": [
+          "典型行为基于研究的随机线路 ensembles。"
+        ],
+        "limitations": [
+          "仅审阅官方摘要；未核查正文证明和摘要未说明的假设。",
+          "摘要未提供指数常数和最坏情形时间；不能等同所有算法的常数解码复杂度。"
+        ],
+        "relevance": [
+          "连接 magic、adaptive measurements 与 logical QEC 的经典资源。"
+        ],
+        "follow_up": [
+          "读者建议：核查注入密度趋零时的稳态尺度及失败概率。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-06T01:02:54.491Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.05502v1"
+      }
+    },
+    {
+      "id": "2611.05489",
+      "version": 1,
+      "analysis": {
+        "summary": "以加权图和射影几何描述素数维 stabilizer codes。",
+        "problem": "把 stabilizer 代数转换为可构造、可计算距离的几何对象。",
+        "setting": "[[n,k,d]]_p codes，p 为素数。",
+        "main_results": [
+          "构造含 n-k 个顶点及两个不相交 k 元独立集的加权图。",
+          "用 quantum sets of lines 几何刻画最小距离，并给出两种构造操作及小参数等价类计数。"
+        ],
+        "techniques": [
+          "有限域加权图；射影空间中的线集。"
+        ],
+        "assumptions": [
+          "素数维 qudits。"
+        ],
+        "limitations": [
+          "仅审阅官方摘要；未核查正文证明和摘要未说明的假设。",
+          "未报告新的渐近 rate-distance 优势或容错门资源界。"
+        ],
+        "relevance": [
+          "可辅助 stabilizer 结构和编码构造研究。"
+        ],
+        "follow_up": [
+          "读者建议：比较几何距离判据与 Pauli weight 计算的成本。"
+        ],
+        "relevance_score": 78,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-06T01:02:54.491Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.05489v1"
+      }
+    },
+    {
+      "id": "2611.05479",
+      "version": 1,
+      "analysis": {
+        "summary": "fermionic Gaussian states 的输出统计与 Haar 态不同，碰撞概率收敛需要近二次深度。",
+        "problem": "普通 Porter–Thomas 或线性 XEB 能否正确评估自由费米线路？",
+        "setting": "有/无粒子数守恒的随机 Gaussian states、Clifford Gaussian states 与 1D brickwork matchgates。",
+        "main_results": [
+          "作者导出 fermionic Porter–Thomas 类比；大系统概率呈 log-normal，反集中带多项式损失。",
+          "collision probability 的收敛深度被严格证明需近二次增长；单弧近似显示扩散后慢弛豫。",
+          "理想自由费米采样也可有较大 linear XEB，作者提出具有精确费米归一化的 log-based benchmark。"
+        ],
+        "techniques": [
+          "arcs/loops 映射；单弧近似；碰撞概率分析。"
+        ],
+        "assumptions": [
+          "Gaussian/matchgate 限制不可删去。"
+        ],
+        "limitations": [
+          "仅审阅官方摘要；未核查正文证明和摘要未说明的假设。",
+          "摘要未给出精确深度定理及精度参数；不自动推出高阶 design 或 shadows 总样本优势。"
+        ],
+        "relevance": [
+          "直接联系 fermionic designs、random circuits 与 benchmarking。"
+        ],
+        "follow_up": [
+          "读者建议：核查碰撞矩收敛能否导出单拷贝估计方差界。"
+        ],
+        "relevance_score": 99,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-06T01:02:54.492Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.05479v1"
+      }
+    },
+    {
+      "id": "2611.05375",
+      "version": 1,
+      "analysis": {
+        "summary": "研究远离 stabilizer 极限、接近相变的 toric code ground space 是否仍可用裸 stabilizer 测量纠错。",
+        "problem": "强量子涨落下，标准 syndrome 读出是否破坏可恢复信息？",
+        "setting": "横场 toric code；独立 bit-flip 与 phase-flip decoherence。",
+        "main_results": [
+          "作者构造测量后最优解码，并数值观察接近临界点仍有有限阈值。",
+          "phase-flip 情形中，测量后最优阈值在整个拓扑相内不依赖横场。"
+        ],
+        "techniques": [
+          "利用 stoquasticity 映射到受约束经典 lattice gauge theory，再做 Monte Carlo。"
+        ],
+        "assumptions": [
+          "最优性限定为先测量 stabilizers 的策略类。"
+        ],
+        "limitations": [
+          "仅审阅官方摘要；未核查正文证明和摘要未说明的假设。",
+          "所有策略中的全局最优性只有理论证据，作者明确没有严格证明；摘要未给阈值数值。"
+        ],
+        "relevance": [
+          "对应近似编码和受限测量恢复的性能比较。"
+        ],
+        "follow_up": [
+          "读者建议：区分 postmeasurement optimum 与任意 recovery 的最优保真度。"
+        ],
+        "relevance_score": 92,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-06T01:03:53.939Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.05375v1"
+      }
+    },
+    {
+      "id": "2611.05460",
+      "version": 1,
+      "analysis": {
+        "summary": "通过可开关的参数调制耦合，降低 bosonic control 中 ancilla 错误传播。",
+        "problem": "常开 dispersive interaction 同时带来强控制和噪声传播。",
+        "setting": "超导 bosonic modes 与辅助 qubits。",
+        "main_results": [
+          "闲置时解耦，工作时激活具有设计对称性的 hybridization。",
+          "作者主张该控制原语可抵抗 ancilla decay 与 dephasing。"
+        ],
+        "techniques": [
+          "参数激活；耦合对称性设计。"
+        ],
+        "assumptions": [
+          "依赖特定 light-matter 控制实现。"
+        ],
+        "limitations": [
+          "仅审阅官方摘要；未核查正文证明和摘要未说明的假设。",
+          "摘要没有给逻辑错误率、容错阈值或门认证保证；也没有可泛化的 ancilla 资源定理。"
+        ],
+        "relevance": [
+          "与 QEC 中 ancilla 引入的相关错误有具体联系。"
+        ],
+        "follow_up": [
+          "读者建议：检查噪声传播信道及单次 ancilla fault 的剩余效应。"
+        ],
+        "relevance_score": 73,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-06T01:03:53.939Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.05460v1"
+      }
+    },
+    {
+      "id": "2611.05355",
+      "version": 1,
+      "analysis": {
+        "summary": "不收录：核心是经典自然语言任务的可解释 transformer。",
+        "problem": "分析词语贡献与分类输出的关系。",
+        "setting": "经典 e-SNLI 数据及光学/qubit 编译演示。",
+        "main_results": [
+          "摘要未建立 quantum-data learning 的样本或访问优势。"
+        ],
+        "techniques": [
+          "Born 形式 attention；integrated gradients。"
+        ],
+        "assumptions": [
+          "任务输入是经典文本。"
+        ],
+        "limitations": [
+          "仅审阅官方摘要；未核查正文证明和摘要未说明的假设。",
+          "仅凭 qubit 实现和测量表述不足以匹配研究问题。"
+        ],
+        "relevance": [
+          "与目标量子信息任务联系弱，低于收录阈值。"
+        ],
+        "follow_up": [],
+        "relevance_score": 12,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-06T01:03:53.940Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.05355v1"
+      }
+    },
+    {
+      "id": "2611.05303",
+      "version": 1,
+      "analysis": {
+        "summary": "oracle 结果限制了从 proofs of quantumness 推出经典复杂性或密码学困难性的论证。",
+        "problem": "某些量子优势原语是否必然蕴含经典 NP 困难或单向函数？",
+        "setting": "分别使用 classical oracle 和 unitary oracle 的相对化模型。",
+        "main_results": [
+          "作者给出 P=NP、BQP=PSPACE 且 proofs of quantumness 存在的 classical-oracle 世界。",
+          "另有 BQP=QCMA 而 quantum-verifier oblivious state preparation 存在的 unitary-oracle 世界。"
+        ],
+        "techniques": [
+          "oracle separations。"
+        ],
+        "assumptions": [
+          "结论是相对化障碍。"
+        ],
+        "limitations": [
+          "仅审阅官方摘要；未核查正文证明和摘要未说明的假设。",
+          "不是无 oracle 世界中的复杂性塌缩；不提供一般 BQP 的 subexponential simulation。"
+        ],
+        "relevance": [
+          "帮助严格界定 quantum advantage 和信息访问原语的复杂性含义。"
+        ],
+        "follow_up": [
+          "读者建议：检查拟用的 reduction 是否 relativizing。"
+        ],
+        "relevance_score": 85,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-06T01:03:53.940Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.05303v1"
+      }
+    },
+    {
+      "id": "2611.05233",
+      "version": 1,
+      "analysis": {
+        "summary": "动态选择测量时长可同时降低 logical cycle time 和 logical error rate。",
+        "problem": "最优单 qubit readout fidelity 的时长不一定最优于整个纠错周期。",
+        "setting": "多轮 QEC 组成的 logical cycles，利用实时剩余错误预算。",
+        "main_results": [
+          "作者按剩余轮数与错误预算选下一轮测量延迟。",
+          "评估中 LCT 平均缩短 1.69 倍、最多 2.29 倍；LER 平均为基线 0.46 倍、最好 0.13 倍。"
+        ],
+        "techniques": [
+          "实时 latency scheduling。"
+        ],
+        "assumptions": [
+          "结果依赖被评估的码、噪声与测量延迟模型。"
+        ],
+        "limitations": [
+          "仅审阅官方摘要；未核查正文证明和摘要未说明的假设。",
+          "不把实验评估提升成一般阈值或无条件容错保证；摘要未列所有基线配置。"
+        ],
+        "relevance": [
+          "具体连接自适应 syndrome 访问与 logical performance。"
+        ],
+        "follow_up": [
+          "读者建议：核查模型漂移和经典控制延迟是否计入。"
+        ],
+        "relevance_score": 83,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-06T01:03:53.941Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.05233v1"
+      }
+    }
+  ]
+}
