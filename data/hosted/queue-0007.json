@@ -4,6 +4,126 @@
       "kind": "analysis",
       "paper": {
         "doi": "",
+        "id": "2610.24344",
+        "version": 1,
+        "title": "FTWeave: Composing Logical Execution, Real-Time Decoding, and Magic-State Supply in Tightly Integrated Quantum-Classical Systems",
+        "authors": [
+          "Panayiotis Christou",
+          "Shuwen Kan",
+          "Ying Mao"
+        ],
+        "abstract": "Fault-tolerant quantum applications depend on both decoded measurement information and a continuing supply of magic states. While an operation waits for either, its logical data require protection that produces more syndrome data and decoding work. Architects must provision the quantum and classical parts of the machine together, before complete systems are available to measure. FTWeave is a system-level simulator for this architectural exploration. It accepts OpenQASM 2/3 circuits, CUDA-Q Logical compiler artifacts, Stim circuits, and provider-derived physical inputs through adapters that preserve operation and measurement dependencies. Users bind these inputs to quantum resources, classical processors, memory, communication, and factory configurations. One event timeline determines application progress, resource ownership, and continuing protection. This supplies the system model needed to connect circuit and decoder evidence to application performance. Controlled demand studies and complete multiplier and Ising circuits show why the coupling changes provisioning decisions. A fixed-work approximation predicts a 3.55x multiplier speedup from additional factories where the coupled model gives almost none. Explicit ownership also changes useful capacity: increasing decoder workers alone has no benefit in a storage-constrained case, while increasing workers and feedback entries together gives 4.93x speedup. Selected color and hypergraph-product code mappings take 53-90% longer under decoder service variability, despite an unchanged mean. These comparisons identify useful resource combinations and distinguish protection work from the elapsed lifetime of quantum data.",
+        "url": "https://arxiv.org/abs/2610.24344",
+        "pdf_url": "https://arxiv.org/pdf/2610.24344v1",
+        "published": "2026-10-17T00:23:54Z",
+        "updated": "2026-10-17T00:23:54Z",
+        "categories": [
+          "quant-ph",
+          "cs.PF"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "syndrome"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-20T04:57:05Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.24213",
+        "version": 1,
+        "title": "Generalized Svetlichny Inequalities as a Cross-Platform Benchmark for Quantum Processors",
+        "authors": [
+          "Andrés Camilo Granda Arango",
+          "Giuseppe Sergioli",
+          "Luigi Iapichino",
+          "Tobias Valentin Bauer",
+          "Carlo Cuccu",
+          "Roberto Giuntini"
+        ],
+        "abstract": "A cross-platform benchmark should be device-independent yet sensitive to imperfections accumulated during execution. Building on prior work, we formulate and validate a protocol through demonstrations based on generalized Svetlichny inequality violations (a simulation, rather than a loophole-free certification, of multipartite nonlocality) for larger subsystem sizes. We apply it unchanged to three processors, the trapped-ion Marmot and IBEX Q1 (both manufactured by AQT) and the superconducting Euro-Q-Exa System 1 (IQM), using identical GHZ-state circuits with fixed theoretical measurement settings from N=2 to N=10 qubits. Both trapped-ion processors sustain violations up to ten qubits, while the superconducting processor loses them beyond six qubits under unmitigated (raw) conditions; readout-error mitigation recovers violations up to eight qubits, with a substantial fraction of the degradation attributable to measurement imperfections. These processors provide a heterogeneous testbed for validating the protocol's cross-platform applicability and discriminating power, demonstrating its practicality as a common framework for assessing collective quantum performance.",
+        "url": "https://arxiv.org/abs/2610.24213",
+        "pdf_url": "https://arxiv.org/pdf/2610.24213v1",
+        "published": "2026-10-16T20:35:43Z",
+        "updated": "2026-10-16T20:35:43Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 4,
+        "topics": [
+          "benchmarking"
+        ],
+        "keyword_matches": {
+          "benchmarking": [
+            "error mitigation"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-20T04:57:05Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.24212",
+        "version": 1,
+        "title": "Optimal robust single-qubit gates in superconducting quantum processors",
+        "authors": [
+          "Tangyou Huang",
+          "Anuj Aggarwal",
+          "Jingjun Zhu",
+          "Akshay Gaikwad",
+          "David Niepce",
+          "Marcus Rommel",
+          "Andreas Nylander",
+          "Amr Osman",
+          "Anita Fadavi Rousari",
+          "Janka Biznárová",
+          "Stéphane Guérin",
+          "Gheorghe Sorin Paraoanu",
+          "Anton Frisk Kockum",
+          "Giovanna Tancredi"
+        ],
+        "abstract": "Fault-tolerant quantum computing requires high-fidelity quantum gates that are resilient to control errors and device imperfections. Here, we develop energy-optimal control pulses for single-qubit gates that are simultaneously robust against frequency detuning and waveform inhomogeneities while also suppressing leakage outside the computational subspace. Combining the optimized pulse envelopes with an adaptive control scheme, we experimentally demonstrate optimal robust gates on a superconducting quantum processor. For a gate duration of 90ns, we achieve fidelities above 99.9% for the X gate and 99.6% for Hadamard-type gates. For the X gate, we maintain fidelities above 99.5% for simultaneous drive-amplitude variations up to 20% and qubit detuning up to 4 MHz. This robustness outperforms that of conventional Gaussian pulses by an order of magnitude, without much difference in peak gate fidelity. These results establish a route towards robust single-qubit control in large-scale quantum processors, advancing the development of fault-tolerant quantum computing.",
+        "url": "https://arxiv.org/abs/2610.24212",
+        "pdf_url": "https://arxiv.org/pdf/2610.24212v1",
+        "published": "2026-10-16T20:34:48Z",
+        "updated": "2026-10-16T20:34:48Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 4,
+        "topics": [
+          "benchmarking"
+        ],
+        "keyword_matches": {
+          "benchmarking": [
+            "gate fidelity"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-20T04:57:05Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
         "id": "2610.24077",
         "version": 1,
         "title": "Quantum error correction well below the color code threshold",
@@ -1731,160 +1851,6 @@
         "keyword_matches": {
           "quantum_learning": [
             "sample complexity"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-16T04:38:00Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.21047",
-        "version": 1,
-        "title": "Agent-assisted experimental strategy transfer across quantum processors",
-        "authors": [
-          "Shi-Yao Hou",
-          "Zipeng Wu",
-          "Chao Zhang",
-          "Guanru Feng",
-          "Keren Li",
-          "Jingen Xiang"
-        ],
-        "abstract": "Progress in quantum hardware requires a growing volume of experiments across diverse devices, straining the capacity of human experts. Automation remains challenging because device differences and drift can render workflows developed on one processor unsuitable for another. Here we present an agent-assisted experimental strategy for conducting experiments across three-qubit nuclear magnetic resonance processors. Developed on one processor and applied sequentially to four others, the strategy uses an agent to assess experimental evidence, select subsequent measurements and adapt procedures, with operators providing instrument preparation and physical intervention. Using three-qubit Grover state preparation as a common task, each deployment combined device-specific calibration, control-pulse optimization and measurement. The experimental strategy was refined through sequential deployment, and all four processors ultimately produced outputs dominated by their respective marked states. The marked-state populations of the reconstructed dominant eigenstates ranged from \\(0.910\\) to \\(0.959\\), with relative deviations below \\(3.8\\%\\) from the ideal value of 0.945. These results demonstrate that an agent-assisted experimental strategy can be reused and refined across processors to realize a common quantum task, providing a basis for scaling experimental practice beyond individual devices.",
-        "url": "https://arxiv.org/abs/2610.21047",
-        "pdf_url": "https://arxiv.org/pdf/2610.21047v1",
-        "published": "2026-10-15T00:46:07Z",
-        "updated": "2026-10-15T00:46:07Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "adaptive_resources"
-        ],
-        "keyword_matches": {
-          "adaptive_resources": [
-            "state preparation"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-16T04:38:00Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "id": "doi:10.1038/s41567-026-03468-0",
-        "version": 1,
-        "title": "Reaction–diffusion competition drives anomalous relaxation of vitrimers",
-        "authors": [
-          "Makayla R. Branham-Ferrari",
-          "Shinian Cheng",
-          "Alexei P. Sokolov",
-          "David S. Simmons"
-        ],
-        "abstract": "Vitrimers—polymers that form covalent networks—show glassy behaviour with viscosity decoupled from structural relaxation. This decoupling is now found to originate from a competition between chemical exchange reactions and diffusion processes.",
-        "abstract_basis": "publisher_feed_excerpt",
-        "abstract_source_url": "https://www.nature.com/nphys.rss",
-        "url": "https://www.nature.com/articles/s41567-026-03468-0",
-        "pdf_url": "",
-        "published": "2026-10-15",
-        "updated": "2026-10-15",
-        "categories": [],
-        "sources": [
-          "nature_physics"
-        ],
-        "publication": {
-          "journal_id": "nature_physics",
-          "journal": "Nature Physics",
-          "doi": "10.1038/s41567-026-03468-0",
-          "url": "https://www.nature.com/articles/s41567-026-03468-0",
-          "published": "2026-10-15",
-          "date_basis": "publisher_rss"
-        },
-        "keyword_score": 3,
-        "topics": [
-          "logical_qec"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "decoupling"
-          ]
-        },
-        "first_seen_at": "2026-10-17T04:34:51Z",
-        "doi": "10.1038/s41567-026-03468-0"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.20987",
-        "version": 1,
-        "title": "Practical wavelength selection for quantum-augmented networks over shared optical fiber",
-        "authors": [
-          "Nitin Jha",
-          "Prateek Paudel",
-          "Abhishek Parakh"
-        ],
-        "abstract": "In a quantum augmented network, sharing optical fiber with classical traffic requires quantum wavelength selection to balance logical fidelity, block acceptance, and classical data reception. Here we develop a wavelength-selection framework for an error-corrected three-stage quantum communication protocol. Under a thermal-background model with independent errors, an ideal one-photon receiver, and ideal recovery, we derive an accepted qubit channel and a key-independent lower bound on logical entanglement fidelity. Combining this bound with block acceptance gives an entanglement-fidelity yield bound, which we maximize over evaluated wavelengths subject to fidelity and classical link-budget requirements. For the Steane [[7,1,3]] code at 5 km per traversal and -10 dBm per classical channel, the largest fidelity certificate occurs near 1537 nm, whereas the largest yield bound occurs near 1551 nm. Along the 1.25 Gb/s classical link budget with 0.2% base error, the optimized yield bound falls below 10^-6 near 10 km per traversal, while fidelity remains certified at 0.99 or higher at longer spans. These results distinguish fidelity and yield constraints and identify certified operating regions for quantum-augmented networks sharing optical fiber.",
-        "url": "https://arxiv.org/abs/2610.20987",
-        "pdf_url": "https://arxiv.org/pdf/2610.20987v1",
-        "published": "2026-10-14T22:01:42Z",
-        "updated": "2026-10-14T22:01:42Z",
-        "categories": [
-          "quant-ph",
-          "cs.CR",
-          "cs.NI"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "logical_qec"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "logical fidelity"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-16T04:38:00Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.20855",
-        "version": 1,
-        "title": "Perfect and peak state transfer on IBM quantum hardware",
-        "authors": [
-          "Priscilla Awuah",
-          "Krystal Guo"
-        ],
-        "abstract": "We run continuous-time quantum walks with perfect and peak state transfer on a present-day superconducting quantum processor, IBM Quantum's $156$-qubit Heron device ibm_kingston, deliberately without error correction or error mitigation. Perfect state transfer and its relaxations have been studied extensively in algebraic graph theory, where one can prove exactly which graphs move a quantum state from one vertex to another with probability one (or with the largest probability the graph allows, in the case of peak state transfer), and at what time. Our experiments cover perfect state transfer on the hypercubes $Q_2 = C_4$ and $Q_3$, and on the Hamming-weighted paths $\\mathrm{HP}_n$, the equitable-partition quotients of the hypercubes $Q_n$, for $n$ up to $20$; peak state transfer on the $X_n$ family for $n$ up to $11$; and, for comparison, moving the state along a path of qubits by a sequence of SWAP gates.",
-        "url": "https://arxiv.org/abs/2610.20855",
-        "pdf_url": "https://arxiv.org/pdf/2610.20855v1",
-        "published": "2026-10-14T19:45:34Z",
-        "updated": "2026-10-14T19:45:34Z",
-        "categories": [
-          "quant-ph",
-          "math.CO"
-        ],
-        "keyword_score": 4,
-        "topics": [
-          "benchmarking"
-        ],
-        "keyword_matches": {
-          "benchmarking": [
-            "error mitigation"
           ]
         },
         "sources": [

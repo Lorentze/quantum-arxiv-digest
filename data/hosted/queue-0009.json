@@ -4,6 +4,166 @@
       "kind": "analysis",
       "paper": {
         "doi": "",
+        "id": "2610.16401",
+        "version": 1,
+        "title": "Magic-Free Certification of Logical Error Rates in Universal Fault-Tolerant Circuits",
+        "authors": [
+          "Gebrat Porta-San Miguel",
+          "Shahram Panahiyan",
+          "Dieter Jaksch"
+        ],
+        "abstract": "As quantum hardware enters the fault-tolerant regime, algorithms are beginning to be executed on encoded qubits, yet scalable certification of how well they run remains an open problem. Here we introduce magic-free certification, a certification protocol for universal fault-tolerant circuits that consumes no magic, the resource that generally places them beyond efficient classical simulation and is by far the most expensive element of a fault-tolerant computation. The protocol is code- and decoder-agnostic, runs interleaved with the target circuit on the same device, and has a sample complexity that grows linearly with the number of logical qubits and non-Clifford gates while remaining decoupled from the logical error rate itself. Given a predefined error tolerance $p_L^*$, the protocol determines at a chosen confidence level whether the device executes the target circuit at a logical error rate below $p_L^*$. The method relies on trap circuits, copies of the target with every magic state replaced by a stabilizer state, whose outcomes are deterministic and which, being indistinguishable from the target to stochastic Pauli noise, fail at the same rate. We illustrate the protocol in Steane-code simulations of a magic state injection gadget and a quantum Fourier transform.",
+        "url": "https://arxiv.org/abs/2610.16401",
+        "pdf_url": "https://arxiv.org/pdf/2610.16401v1",
+        "published": "2026-10-12T08:40:17Z",
+        "updated": "2026-10-12T08:40:17Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 12,
+        "topics": [
+          "logical_qec",
+          "magic_stabilizer",
+          "quantum_learning"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "logical error"
+          ],
+          "magic_stabilizer": [
+            "magic state",
+            "stabilizer",
+            "non-Clifford",
+            "magic-free"
+          ],
+          "quantum_learning": [
+            "sample complexity"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-14T04:59:39Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.16379",
+        "version": 1,
+        "title": "Benchmarking a randomized quantum algorithm for estimating expectation values of molecular observables",
+        "authors": [
+          "Anna Schroeder",
+          "Gian-Luca R. Anselmetti",
+          "Matthias Degroote",
+          "Florian Dommert",
+          "Michael Kaicher",
+          "Chandan Kumar",
+          "Michael Streif",
+          "Davide Vodola"
+        ],
+        "abstract": "Randomized quantum algorithms for the estimation of expectation values of molecular observables offer a promising route to early fault-tolerant quantum advantage by trading circuit depth for an increased number of samples. However, this begs the question whether the resulting measurement overhead remains feasible for industrially relevant molecular systems. In this work, we benchmark the randomized sampling algorithm of Wang et al. [1] through numerical simulations on a hydrogen molecule and resource estimates for various active spaces of the cytochrome P450, an industry-relevant system in the pharmaceutical industry. Our numerical simulations reveal that the analytical error bounds significantly overestimate the actual sampling error, whereas the analytical bound on the required imaginary evolution time is comparatively tight, exceeding a direct DMRG estimate by roughly 44% for the active space where the comparison is feasible. The measurement overhead nevertheless remains prohibitively high: even for the smallest active spaces, the expectation-value estimation alone requires around 1010 samples, scaling to beyond 1015 for the largest active spaces considered. These results suggest that substantial improvements in measurement strategies or algorithmic scaling are necessary before randomized early-fault-tolerant algorithms become competitive for industrial quantum chemistry applications.",
+        "url": "https://arxiv.org/abs/2610.16379",
+        "pdf_url": "https://arxiv.org/pdf/2610.16379v1",
+        "published": "2026-10-12T08:28:24Z",
+        "updated": "2026-10-12T08:28:24Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "adaptive_resources"
+        ],
+        "keyword_matches": {
+          "adaptive_resources": [
+            "circuit depth"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-14T04:59:39Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.16375",
+        "version": 1,
+        "title": "Pathfinder-BP: A Low-Latency Recursive Decoder for Topological Codes",
+        "authors": [
+          "Stefano Tinelli",
+          "Francisco Lázaro",
+          "Francisco García Herrero"
+        ],
+        "abstract": "We propose Pathfinder-BP, a recursive decoder for topological quantum codes that combines belief propagation with controlled bit-flipping. An initial BP pass identifies and permanently fixes high-confidence errors. Upon convergence failure, the decoder recursively explores alternative error patterns by tentatively flipping low-confidence variables. On surface codes, Pathfinder-BP achieves a noise threshold and logical error rate comparable to minimum-weight perfect matching (MWPM). A crucial advantage of Pathfinder-BP is its highly parallelizable structure, which yields a worst-case decoding latency quasi-linear in the code distance, making it a suitable candidate for low-latency hardware implementation.",
+        "url": "https://arxiv.org/abs/2610.16375",
+        "pdf_url": "https://arxiv.org/pdf/2610.16375v1",
+        "published": "2026-10-12T08:24:30Z",
+        "updated": "2026-10-12T08:24:30Z",
+        "categories": [
+          "quant-ph",
+          "cs.IT"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "logical error"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-14T04:59:39Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.16215",
+        "version": 1,
+        "title": "Minimal Subsystems for Characterizing Genuine Multipartite Entanglement",
+        "authors": [
+          "Shashank Shekhar",
+          "Siddhartha Santra"
+        ],
+        "abstract": "Genuine multipartite entanglement (GME) is a valuable resource for quantum technologies, but quantifying it in many-body systems can be demanding since measures defined through optimizations over bipartitions are often assumed to require large joint measurements and many measurement settings. We introduce the concepts of GME evaluation length and GME evaluation number, which capture, respectively, the largest subsystem that must be jointly measured and the number of distinct subsystems that need to be measured to evaluate multipartite entanglement measures defined via bipartition optimizations. Taking the genuine multipartite concurrence (GMC) as a canonical example, we show that, for $N$-qubit Haar-random pure states, the GMC can be evaluated using only $N$ single-qubit purity measurements. Thus, for typical many-body states, evaluating the GMC requires considering only the $N$ single-site bipartitions, rather than the exponentially many distinct bipartitions. We further corroborate this behavior numerically for physically accessible states generated by local random quantum circuits. Our results show that the practical cost of quantifying GME can be dramatically lower than suggested by its formal definition, establishing measurement complexity as a complementary operational lens for multipartite entanglement.",
+        "url": "https://arxiv.org/abs/2610.16215",
+        "pdf_url": "https://arxiv.org/pdf/2610.16215v1",
+        "published": "2026-10-12T05:45:42Z",
+        "updated": "2026-10-12T05:45:42Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 7,
+        "topics": [
+          "random_designs",
+          "quantum_learning"
+        ],
+        "keyword_matches": {
+          "random_designs": [
+            "Haar-random"
+          ],
+          "quantum_learning": [
+            "measurement complexity"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-14T04:59:39Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
         "id": "2610.16150",
         "version": 1,
         "title": "Device-to-protocol simulation of spectrally-resolved quantum photonic circuits",
