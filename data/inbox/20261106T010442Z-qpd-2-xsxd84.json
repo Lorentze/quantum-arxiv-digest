@@ -1,0 +1,121 @@
+{
+  "analyses": [
+    {
+      "id": "doi:10.1103/9msw-jw53",
+      "version": 1,
+      "analysis": {
+        "summary": "用 scrambling、双向 teleportation 与 recovery 构造 collective degrees of freedom 之间的 SWAP。",
+        "problem": "缺少 universal local control 时如何实现相干信息交换？",
+        "setting": "全局相互作用系统，提出 Dicke model 实现路线。",
+        "main_results": [
+          "将 Hayden–Preskill 型 recovery 和 teleportation 反向并行执行，实现双向状态交换。",
+          "作者区分 information spreading、entanglement 与 chaos 在传输和恢复中的作用。"
+        ],
+        "techniques": [
+          "双向并行恢复与传态。"
+        ],
+        "assumptions": [
+          "依赖协议所需的集体控制和资源。"
+        ],
+        "limitations": [
+          "仅审阅官方摘要；未核查正文证明和摘要未说明的假设。",
+          "正式摘要可读，正文有订阅限制；未核查 fidelity、时间或 ancilla 成本。"
+        ],
+        "relevance": [
+          "与 scrambling 的操作性用途和受限控制相关。"
+        ],
+        "follow_up": [
+          "读者建议：核查近似 scrambling 的误差如何传到 gate fidelity。"
+        ],
+        "relevance_score": 86,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-06T01:04:26.452Z",
+        "evidence_level": "abstract",
+        "source_url": "https://journals.aps.org/prl/abstract/10.1103/9msw-jw53",
+        "publication_significance": [
+          "阅读推断，非编辑理由：把信息恢复思想转化成受限控制下的具体门协议，并联系 Dicke 实现，显示概念与实验路线的结合，适合 Physical Review Letters 的集中物理结果形式。",
+          "仅摘要证据；未审阅可实现性细节或相对先行协议的完整比较。"
+        ]
+      }
+    },
+    {
+      "id": "doi:10.1103/tzn2-h5nk",
+      "version": 1,
+      "analysis": {
+        "summary": "总 magic 守恒的 Clifford dynamics 仍可产生可区分的 magic 空间传播尺度。",
+        "problem": "缺少普通局域 observable，如何定义并跟踪 magic 的分布？",
+        "setting": "局部注入 nonstabilizerness 的低 magic 态及 unitary Clifford circuits。",
+        "main_results": [
+          "作者以 bipartite magic gauge 严格连接 canonical representation 与空间分布。",
+          "提出两个操作性长度；早期以不同、由 entanglement velocity 设定的速度弹道增长是数值证据，随后 delocalize。"
+        ],
+        "techniques": [
+          "stabilizer QEC 结构；bipartite canonical representation。"
+        ],
+        "assumptions": [
+          "低 magic 表示与所考察 Clifford dynamics。"
+        ],
+        "limitations": [
+          "仅审阅官方摘要；未核查正文证明和摘要未说明的假设。",
+          "不能把数值 ballistic law 写为一般严格输运定理；页面未提取正文证明。"
+        ],
+        "relevance": [
+          "联系 magic、scrambling 和 QEC 的时空结构。"
+        ],
+        "follow_up": [
+          "读者建议：比较两个长度与 local design 误差的联系。"
+        ],
+        "relevance_score": 98,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-06T01:04:26.453Z",
+        "evidence_level": "abstract",
+        "source_url": "https://journals.aps.org/prl/abstract/10.1103/tzn2-h5nk",
+        "publication_significance": [
+          "阅读推断，非编辑理由：用纠错结构克服 magic 缺少局域可观测量的困难，并提出有操作意义的尺度，适合 Physical Review Letters 中资源理论与多体动力学交叉主题。",
+          "严格表示结果与数值传播结果的证据层次不同；摘要不足以评价证明质量及全部先行比较。"
+        ]
+      }
+    },
+    {
+      "id": "doi:10.1103/y6x3-348l",
+      "version": 1,
+      "analysis": {
+        "summary": "三次重复 midcircuit measurements 可学习保留 backaction correlations 的约化 instrument。",
+        "problem": "confusion matrix 只表征 classical readout，不能充分描述后续状态扰动。",
+        "setting": "单 qubit Z-twirled MCM instrument，maximally mixed input。",
+        "main_results": [
+          "三次 MCM 的 bit strings 决定全部可学习参数，但仍有一个不可识别 gauge。",
+          "physicality 给出 gauge-aware error intervals；IBM 实现中 Pauli observable prediction 相对 confusion-matrix 模型改善约 100 倍。"
+        ],
+        "techniques": [
+          "自洽 instrument learning；physicality 约束。"
+        ],
+        "assumptions": [
+          "依赖 Z twirl 与约化 instrument 模型。"
+        ],
+        "limitations": [
+          "仅审阅官方摘要；未核查正文证明和摘要未说明的假设。",
+          "三次是单条测量序列长度，不是三 shots；摘要未给 shots 或一般 SPAM 鲁棒界。正文有订阅限制。"
+        ],
+        "relevance": [
+          "直接涉及 SPAM 分离、MCM backaction 与 syndrome extraction。"
+        ],
+        "follow_up": [
+          "读者建议：核查时间相关漂移及 gauge 区间的置信度。"
+        ],
+        "relevance_score": 99,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-06T01:04:26.454Z",
+        "evidence_level": "abstract",
+        "source_url": "https://journals.aps.org/prl/abstract/10.1103/y6x3-348l",
+        "publication_significance": [
+          "阅读推断，非实际编辑理由：在极短序列中刻画传统 readout 模型遗漏的关联，同时给出硬件预测改进，契合 Physical Review Letters 的紧凑方法突破与物理验证。",
+          "约 100 倍是所报告预测任务的改善，不是普适样本节省；仅摘要不足以判断证明与基线完整性。"
+        ]
+      }
+    }
+  ]
+}
