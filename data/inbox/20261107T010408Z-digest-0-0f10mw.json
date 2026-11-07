@@ -1,0 +1,344 @@
+{
+  "analyses": [
+    {
+      "id": "2611.08488",
+      "version": 1,
+      "analysis": {
+        "summary": "构造一般二维非手征拓扑序的 syndrome extraction 与在线恢复，给出 circuit-level threshold。",
+        "problem": "一般非 Abelian 相缺少从微观操作到解码的完整容错论证。",
+        "setting": "Turaev–Viro/string-net 型非手征二维 bosonic topological orders；local stochastic circuit noise。",
+        "main_results": [
+          "作者构造局域量子 channels 的测量/修正线路与多项式时间 classical decoder。",
+          "引言声称噪声低于常数量级阈值时，逻辑信息可保存 quasi-stretched-exponentially long；经典处理假定足够快速。"
+        ],
+        "techniques": [
+          "时空 path integral；聚类 anyon worldlines；逐步移动到 cluster base point。"
+        ],
+        "assumptions": [
+          "限定非手征体系及 local stochastic 噪声。"
+        ],
+        "limitations": [
+          "只读摘要与引言片段；未审阅完整阈值证明、常数及 logical-gate 扩展。"
+        ],
+        "relevance": [
+          "直接连接 syndrome extraction、在线自适应纠错与 non-Clifford 实现路线。"
+        ],
+        "follow_up": [
+          "读者建议：比较 syndrome-history 时间窗与经典解码 latency。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:01:22.641Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.08488v1"
+      }
+    },
+    {
+      "id": "2611.08444",
+      "version": 1,
+      "analysis": {
+        "summary": "热损耗下 boson/fermion sampling 可在明确分布条件下被高精度经典模拟。",
+        "problem": "sampling quantum advantage 对固定损耗是否稳健？",
+        "setting": "Fock、固定均匀 squeezing 的 Gaussian boson sampling，以及 magic-input fermion sampling。",
+        "main_results": [
+          "固定非零总损耗率下，对 Haar interferometers 高概率存在 inverse-polynomial TV error 的多项式采样。",
+          "用较弱 flatness 假设替代 Haar 时得到准多项式算法；逐层固定热损耗加 logarithmic depth 时为多项式。"
+        ],
+        "techniques": [
+          "统一热损耗模拟框架；输出平坦性。"
+        ],
+        "assumptions": [
+          "保证依赖特定模型、Haar 典型性或 flatness。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "不是任意 BQP simulation，TV error 不等于相对误差；总体损耗与每层损耗须区分。"
+        ],
+        "relevance": [
+          "联系 magic、噪声与量子优势的可模拟边界。"
+        ],
+        "follow_up": [
+          "读者建议：核查 fermionic magic-input 类及 flatness 的验证成本。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:01:22.642Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.08444v1"
+      }
+    },
+    {
+      "id": "2611.08424",
+      "version": 1,
+      "analysis": {
+        "summary": "不收录：主要讨论无序 XX 链的 Mpemba 弛豫加速。",
+        "problem": "未知 disorder 下抑制慢模的初态设计。",
+        "setting": "强退相干、resistor-chain 映射。",
+        "main_results": [
+          "有限 resistance variance 时残余 overlap 呈 L^-1/2 伸缩。"
+        ],
+        "techniques": [
+          "inverse-generator identity。"
+        ],
+        "assumptions": [
+          "特定无序与强退相干模型。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "没有明确 benchmarking、design、QEC 或量子数据学习保证。"
+        ],
+        "relevance": [
+          "state preparation 关键词相关，但与当前研究问题联系不足。"
+        ],
+        "follow_up": [],
+        "relevance_score": 48,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:01:22.642Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.08424v1"
+      }
+    },
+    {
+      "id": "2611.08310",
+      "version": 1,
+      "analysis": {
+        "summary": "固定测量基时，recovery gates 的选取会同时影响 process tomography 的可辨识性和精度。",
+        "problem": "标准 minimum-weight decoder 不一定最适于逻辑信道层析。",
+        "setting": "3、5、7 qubit repetition codes；固定测量基、Pauli recovery。",
+        "main_results": [
+          "穷举及双素数 modular rank 给出最小门计数 0、1、5；对应一阶解码计数 6、10、14。",
+          "作者报告 7 qubit 全解码会丢失三个 rank 维度；3 qubit 的精度与门数可呈 U 形。",
+          "特定良态点达到 10 mrad rms 需 1.2×10^7 shots；该估计不可推广为统一样本复杂度。"
+        ],
+        "techniques": [
+          "exhaustive recovery enumeration；exact rank。"
+        ],
+        "assumptions": [
+          "固定基约束是门计数作为真实资源的前提。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "未核查 SPAM、漂移与硬件时间估算；并非一般门认证最优性定理。"
+        ],
+        "relevance": [
+          "直接对应 logical tomography 的恢复选择与 shot 资源。"
+        ],
+        "follow_up": [
+          "读者建议：核查可辨识 rank 与最小奇异值的区别。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:01:22.642Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.08310v1"
+      }
+    },
+    {
+      "id": "2611.08298",
+      "version": 1,
+      "analysis": {
+        "summary": "不收录：量子网络架构 Perspective，强调量子现象参与网络功能。",
+        "problem": "网络不只运送 entanglement，也可直接利用它设计连接功能。",
+        "setting": "量子互联网与跨节点资源。",
+        "main_results": [
+          "摘要讨论 path superposition 与 entanglement-induced connectivity。"
+        ],
+        "techniques": [
+          "概念性架构分析。"
+        ],
+        "assumptions": [
+          "非具体认证或学习任务。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "没有当前目标所需的定量资源/访问分离。"
+        ],
+        "relevance": [
+          "与研究范围交集不足。"
+        ],
+        "follow_up": [],
+        "relevance_score": 35,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:01:22.643Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.08298v1"
+      }
+    },
+    {
+      "id": "2611.08247",
+      "version": 1,
+      "analysis": {
+        "summary": "同时给出下界及等重逻辑故障证据，严格认证 code/circuit distance。",
+        "problem": "启发式发现的低重错误只是上界，容易被误当精确距离。",
+        "setting": "大规模 stabilizer codes 与 quantum-memory circuit fault mechanisms。",
+        "main_results": [
+          "作者将距离写成 tropical partition functions，以动态规划和 bounded-weight search 计算。",
+          "报告认证至 31,200 qubit codes 和 8×10^5 fault mechanisms；审计 26 篇中 10 篇存在距离高估或不紧上界。",
+          "特定 two-gross standard schedule 的 circuit distance 被报告为 16 而非假定 18；改排程以额外 timestep 换回 18。"
+        ],
+        "techniques": [
+          "rank-based DP；relaxation；匹配上下界。"
+        ],
+        "assumptions": [
+          "精确认证针对被列出的 codes、circuits、fault models。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "未独立复算证书；码距不直接决定某一噪声率下逻辑保真度。"
+        ],
+        "relevance": [
+          "直接支持逻辑性能评估、syndrome schedule 与资源核算。"
+        ],
+        "follow_up": [
+          "读者建议：检查证书是否涵盖测量故障和时间边界。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:01:22.643Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.08247v1"
+      }
+    },
+    {
+      "id": "2611.08242",
+      "version": 1,
+      "analysis": {
+        "summary": "不收录：研究 collective Otto engine 的有限时间热力学。",
+        "problem": "相同 Gibbs 固定点下，通过不同 relaxation 路径控制功和涨落。",
+        "setting": "非谐集体自旋热机与 structured reservoirs。",
+        "main_results": [
+          "作者比较 transport routing 对 mean work 和 precision 的影响。"
+        ],
+        "techniques": [
+          "edge-current identities；counting statistics。"
+        ],
+        "assumptions": [
+          "特定热机模型。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "没有 quantum readout/sample complexity 或 QEC 的具体联系。"
+        ],
+        "relevance": [
+          "Gibbs-state 关键词不足以收录。"
+        ],
+        "follow_up": [],
+        "relevance_score": 20,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:01:56.642Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.08242v1"
+      }
+    },
+    {
+      "id": "2611.08220",
+      "version": 1,
+      "analysis": {
+        "summary": "不收录：QDiff 面向 quantum software stack 的 differential testing。",
+        "problem": "测试 compiler、simulator 与 controller 的一致性。",
+        "setting": "程序等价变换与输出分布比较。",
+        "main_results": [
+          "通过程序变体和执行筛选寻找软件错误。"
+        ],
+        "techniques": [
+          "source-to-source transformations；distribution tests。"
+        ],
+        "assumptions": [
+          "软件测试场景。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "不提供物理门认证或 SPAM-robust guarantee。"
+        ],
+        "relevance": [
+          "属于当前排除的软件工程范围。"
+        ],
+        "follow_up": [],
+        "relevance_score": 5,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:01:56.642Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.08220v1"
+      }
+    },
+    {
+      "id": "2611.08172",
+      "version": 1,
+      "analysis": {
+        "summary": "固定有限域上的显式代数几何码族满足统一 three-fold product expansion。",
+        "problem": "好 qLDPC、QLTC 与 transversal non-Clifford 构造需要比 robust testability 更强的局部码性质。",
+        "setting": "Garcia–Stichtenoth tower 上 F_729 的 one-point evaluation codes。",
+        "main_results": [
+          "作者对 N_i=728·27^(i−1)、pole order floor(N_i/5) 的三重码证明与 i 无关的 expansion constant。",
+          "其 dual family 的 rate 趋于 109/130，relative distance 至少 8/65。",
+          "给出 degree/genus 充分条件并扩展到阶数至少 512 的非素有限域。"
+        ],
+        "techniques": [
+          "曲线三重积；line bundle；support localization。"
+        ],
+        "assumptions": [
+          "这些数值是 classical constituent codes 参数。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "不能直接宣称由此得到同样参数的 quantum code；Lean 验证未独立检查。"
+        ],
+        "relevance": [
+          "为 qLDPC 和 transversal magic gate 构造提供关键假设。"
+        ],
+        "follow_up": [
+          "读者建议：追踪代入量子构造后 locality 与常数损失。"
+        ],
+        "relevance_score": 90,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:01:56.642Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.08172v1"
+      }
+    },
+    {
+      "id": "2611.08152",
+      "version": 1,
+      "analysis": {
+        "summary": "非 unitary OTOC 将测量导致的信号衰减与 scrambling front 区分。",
+        "problem": "含局域测量时，传统 unitary butterfly 诊断如何改变？",
+        "setting": "Haar-random brickwork qudit circuits；局部投影测量；infinite-temperature ensemble average。",
+        "main_results": [
+          "transfer matrix 分析得到依赖测量率的渐近指数衰减；热力学极限稀疏测量下近似 Gaussian。",
+          "Monte Carlo、量子模拟和 trapped-ion 实验区分 unitary/nonunitary 行为。"
+        ],
+        "techniques": [
+          "transfer matrices；OTOC estimation。"
+        ],
+        "assumptions": [
+          "解析保证是特定 ensemble 平均和温度条件。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "不是一般噪声门保真度的 SPAM-robust estimator；摘要未给 shot 开销。"
+        ],
+        "relevance": [
+          "直接连接 random circuits、scrambling 与 noise diagnostics。"
+        ],
+        "follow_up": [
+          "读者建议：核查非unitary 归一化及 measurement backaction 的访问方式。"
+        ],
+        "relevance_score": 89,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:01:56.643Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.08152v1"
+      }
+    }
+  ]
+}
