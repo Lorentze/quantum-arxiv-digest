@@ -1,0 +1,119 @@
+{
+  "analyses": [
+    {
+      "id": "doi:10.1103/45dj-n19c",
+      "version": 1,
+      "analysis": {
+        "summary": "不收录：transient stochastic resetting 加速一般开放多体系统的稳态弛豫。",
+        "problem": "通过有限时间随机 reset 抑制慢弛豫。",
+        "setting": "few-body systems 和一阶相变附近的 many-body examples。",
+        "main_results": [
+          "作者报告部分例子显著甚至指数加速；设计只需目标的少量宏观信息。"
+        ],
+        "techniques": [
+          "stochastic resets；Mpemba 类机制。"
+        ],
+        "assumptions": [
+          "需访问可执行的指定 reset state。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "没有与当前 design、QEC、认证或量子数据任务的直接定量联系；正文受订阅限制。"
+        ],
+        "relevance": [
+          "虽有 state preparation 关键词，未达收录阈值。"
+        ],
+        "follow_up": [],
+        "relevance_score": 52,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:02:49.616Z",
+        "evidence_level": "abstract",
+        "source_url": "https://journals.aps.org/prl/abstract/10.1103/45dj-n19c",
+        "publication_significance": [
+          "不收录原因：主题联系不足；不据期刊名推断其发表适配性。"
+        ]
+      }
+    },
+    {
+      "id": "doi:10.1103/989h-xjqv",
+      "version": 1,
+      "analysis": {
+        "summary": "从 bulk stabilizers 的算符代数系统构造 gapped boundaries 与 defects。",
+        "problem": "周期边界上设计的拓扑码如何转为开放边界的可实现模型？",
+        "setting": "二维 topological Pauli stabilizer codes；素数及合数维 Z_d qudits。",
+        "main_results": [
+          "识别 boundary gauge/anyon/string operators，再用 condensation 与 completion 消除边界 local logical operators。",
+          "建立 bulk-boundary 对应；translation-invariant 情形用 Laurent polynomials 及 Hermite/Smith normal forms 化为有限矩阵任务。",
+          "作者演示多种 topological codes，并应用到 bivariate bicycle codes。"
+        ],
+        "techniques": [
+          "operator algebra；anyon condensation；normal forms。"
+        ],
+        "assumptions": [
+          "特定拓扑稳定子结构；自动化化简依赖 translation invariance。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "不是普适 planar qLDPC 参数最优构造；只读摘要，未审阅分类证明和数值实例。"
+        ],
+        "relevance": [
+          "直接支持 stabilizer boundaries、logical QEC 与容错操作构造。"
+        ],
+        "follow_up": [
+          "读者建议：核查开放边界后 rate-distance 与物理连接开销。"
+        ],
+        "relevance_score": 92,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:02:49.616Z",
+        "evidence_level": "abstract",
+        "source_url": "https://journals.aps.org/prxquantum/abstract/10.1103/989h-xjqv",
+        "publication_significance": [
+          "阅读推断，非实际编辑理由：把拓扑 bulk 数据转化为显式微观边界，克服从抽象拓扑到可用码构造的障碍；统一性和量子纠错用途符合 PRX Quantum 的跨方法量子信息范围。",
+          "证据限于官方摘要与例子描述，未核查证明质量及相对先行分类的完整新颖性。"
+        ]
+      }
+    },
+    {
+      "id": "doi:10.1103/51mt-ghpn",
+      "version": 1,
+      "analysis": {
+        "summary": "在 conditional mutual information 指数衰减的假设下，用 local shadows 重建全局多 qubit channel。",
+        "problem": "局部 observable 易测，但全局 process description 通常成本高。",
+        "setting": "1D states/channels；Choi-state trace-norm reconstruction error。",
+        "main_results": [
+          "作者证明样本数对系统规模和 inverse error 为多项式。",
+          "局域 tomography 加局部最优 recovery maps 完成拼接；tensor-network 数值重建至 50 qubits。",
+          "演示 process fidelity、Choi purity、Pauli-weight-resolved process matrix 诊断。"
+        ],
+        "techniques": [
+          "local shadow tomography；convex optimization recovery；tensor networks。"
+        ],
+        "assumptions": [
+          "CMI exponential decay 是关键假设。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "Choi trace norm 不可直接当 diamond norm；摘要未给 SPAM robustness 或多项式次数，未审阅证明。"
+        ],
+        "relevance": [
+          "直接联系 local-to-global certification、decoupling/recovery 与 sample complexity。"
+        ],
+        "follow_up": [
+          "读者建议：检查 noisy target gate 的 Choi state 是否满足可验证的 CMI 衰减条件。"
+        ],
+        "relevance_score": 98,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:02:49.617Z",
+        "evidence_level": "abstract",
+        "source_url": "https://journals.aps.org/prxquantum/abstract/10.1103/51mt-ghpn",
+        "publication_significance": [
+          "阅读推断，非实际编辑理由：以明确的相关性条件连接可测局部数据和全局信道信息，结合严格保证与 50-qubit 数值例子，契合 PRX Quantum 的 characterization/learning 方法研究。",
+          "仅摘要证据，不能据此判断证明质量、完整先行比较或普适硬件适用性。"
+        ]
+      }
+    }
+  ]
+}
