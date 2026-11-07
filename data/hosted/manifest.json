@@ -1,29 +1,30 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-07T01:04:55Z",
-  "last_collection_run": "2026-11-07T01:00:22Z",
+  "generated_at": "2026-11-07T06:06:49Z",
+  "last_collection_run": "2026-11-07T06:05:50Z",
   "last_analysis_run": "2026-11-07T01:04:55Z",
   "arxiv_source_status": {
-    "status": "failed",
-    "checked_at": "2026-11-07T01:00:22Z",
-    "error": "arXiv connection failed after 3 attempts: The read operation timed out"
+    "status": "ok",
+    "checked_at": "2026-11-07T06:05:50Z"
   },
   "journal_source_status": {
     "nature": {
       "journal": "Nature",
-      "status": "ok",
+      "status": "partial",
       "window_start": "2026-11-04",
       "window_end": "2026-11-07",
-      "checked_at": "2026-11-07T01:00:22.117529Z",
+      "checked_at": "2026-11-07T06:05:50.387316Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://www.nature.com/nature.rss",
-          "status": "ok",
-          "research_records": 30
+          "status": "skipped",
+          "error": "Journal endpoint redirected outside the official allowlist"
         }
       ],
-      "warnings": [],
+      "warnings": [
+        "Journal endpoint redirected outside the official allowlist"
+      ],
       "crossref": {
         "status": "ok",
         "total_results": 76,
@@ -31,7 +32,7 @@
         "date_basis": "published-online"
       },
       "collected": 31,
-      "abstract_enrichment_attempts": 3,
+      "abstract_enrichment_attempts": 1,
       "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "science": {
@@ -39,7 +40,7 @@
       "status": "ok",
       "window_start": "2026-11-04",
       "window_end": "2026-11-07",
-      "checked_at": "2026-11-07T01:00:22.117529Z",
+      "checked_at": "2026-11-07T06:05:50.387316Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -69,7 +70,7 @@
       "status": "ok",
       "window_start": "2026-11-04",
       "window_end": "2026-11-07",
-      "checked_at": "2026-11-07T01:00:22.117529Z",
+      "checked_at": "2026-11-07T06:05:50.387316Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -94,7 +95,7 @@
       "status": "ok",
       "window_start": "2026-11-04",
       "window_end": "2026-11-07",
-      "checked_at": "2026-11-07T01:00:22.117529Z",
+      "checked_at": "2026-11-07T06:05:50.387316Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -119,7 +120,7 @@
       "status": "ok",
       "window_start": "2026-11-04",
       "window_end": "2026-11-07",
-      "checked_at": "2026-11-07T01:00:22.117529Z",
+      "checked_at": "2026-11-07T06:05:50.387316Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -144,7 +145,7 @@
       "status": "ok",
       "window_start": "2026-11-04",
       "window_end": "2026-11-07",
-      "checked_at": "2026-11-07T01:00:22.117529Z",
+      "checked_at": "2026-11-07T06:05:50.387316Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -169,7 +170,7 @@
       "status": "ok",
       "window_start": "2026-11-04",
       "window_end": "2026-11-07",
-      "checked_at": "2026-11-07T01:00:22.117529Z",
+      "checked_at": "2026-11-07T06:05:50.387316Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -181,31 +182,29 @@
       "warnings": [],
       "crossref": {
         "status": "ok",
-        "total_results": 98,
-        "returned_research_records": 87,
+        "total_results": 102,
+        "returned_research_records": 91,
         "date_basis": "published-online"
       },
-      "collected": 87,
+      "collected": 91,
       "abstract_enrichment_attempts": 3,
       "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "npj_quantum_information": {
       "journal": "npj Quantum Information",
-      "status": "partial",
+      "status": "ok",
       "window_start": "2026-11-04",
       "window_end": "2026-11-07",
-      "checked_at": "2026-11-07T01:00:22.117529Z",
+      "checked_at": "2026-11-07T06:05:50.387316Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://www.nature.com/npjqi.rss",
-          "status": "skipped",
-          "error": "Journal endpoint redirected outside the official allowlist"
+          "status": "ok",
+          "research_records": 8
         }
       ],
-      "warnings": [
-        "Journal endpoint redirected outside the official allowlist"
-      ],
+      "warnings": [],
       "crossref": {
         "status": "ok",
         "total_results": 0,
@@ -226,7 +225,7 @@
     "status": "ok",
     "stale": false,
     "backlog": 355,
-    "age_hours": 0.0,
+    "age_hours": 5.03,
     "threshold_hours": 48
   },
   "chunks": [
