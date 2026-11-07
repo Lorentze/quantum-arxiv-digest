@@ -1,0 +1,345 @@
+{
+  "analyses": [
+    {
+      "id": "2611.08040",
+      "version": 1,
+      "analysis": {
+        "summary": "不收录：单 qubit 可变能隙的有效热力学与热机循环。",
+        "problem": "如何对 spectral-control coordinate 定义功与压力。",
+        "setting": "Δ(V)=Δ0/V 的 Gibbs qubit。",
+        "main_results": [
+          "建立 thermodynamic relations，并核算非被动态准备成本。"
+        ],
+        "techniques": [
+          "Helmholtz 势；Legendre 关系。"
+        ],
+        "assumptions": [
+          "特定 qubit Hamiltonian。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "无量子学习、单基 readout 或认证的新方法。"
+        ],
+        "relevance": [
+          "与当前研究任务关联弱。"
+        ],
+        "follow_up": [],
+        "relevance_score": 15,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:01:56.643Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.08040v1"
+      }
+    },
+    {
+      "id": "2611.07800",
+      "version": 1,
+      "analysis": {
+        "summary": "不收录：CQITE 构造受约束 imaginary-time 的截断 operator pool。",
+        "problem": "在固定 expectation constraints 下近似 ground-state dynamics。",
+        "setting": "Krylov space 与 nested anti-commutators。",
+        "main_results": [
+          "固定截断阶的 operator pool 大小对系统规模多项式。"
+        ],
+        "techniques": [
+          "Krylov characterization；static operator pool。"
+        ],
+        "assumptions": [
+          "固定截断阶。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "未给随目标误差的统一资源保证，未直接连接 design、shadow 或 QEC。"
+        ],
+        "relevance": [
+          "主要是变分 ground-state preparation，未达到当前收录阈值。"
+        ],
+        "follow_up": [],
+        "relevance_score": 52,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:01:56.643Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.07800v1"
+      }
+    },
+    {
+      "id": "2611.07545",
+      "version": 1,
+      "analysis": {
+        "summary": "operator magic 的 Rényi 指数决定 Top-χ Pauli 截断能否对所有输入态控制期望值误差。",
+        "problem": "Hilbert–Schmidt tail 小不必意味着 spectral-norm error 小。",
+        "setting": "Hermitian Heisenberg operators，2^-N tr(O²)=1；保留绝对值最大的 χ 个 Pauli 系数。",
+        "main_results": [
+          "作者给出 logarithmic OSE 在 0<α<1/2 下保证 uniform efficient approximability，而 α≥1/2 存在反例。",
+          "适当 low-average ensembles 可把充分区间扩展到 0<α<1；独立随机符号下另有高概率 spectral-norm 结论。",
+          "volume-law 高阶 OSE 阻碍固定误差的高效截断；文章区分紧凑表示与寻找系数的计算问题。"
+        ],
+        "techniques": [
+          "Pauli coefficient tails；不同误差范数；Top-χ approximation。"
+        ],
+        "assumptions": [
+          "uniform-over-states、ensemble-average 与 random-sign 三种保证不可混用。"
+        ],
+        "limitations": [
+          "本轮仅读摘要、引言和定义片段；未逐项核查证明、iterative error accumulation 或符号独立假设的物理适用性。"
+        ],
+        "relevance": [
+          "直接联系 magic、Pauli simulation、信息访问与近似精度标准。"
+        ],
+        "follow_up": [
+          "读者建议：检查研究中的物理 ensemble 是否有 random-sign 假设，不能把可压缩性当完整模拟算法。"
+        ],
+        "relevance_score": 98,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:01:56.644Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.07545v1"
+      }
+    },
+    {
+      "id": "2611.07400",
+      "version": 1,
+      "analysis": {
+        "summary": "purity bootstrap 把有限系统谱信息提升为大系统近简并分裂与谱隙控制。",
+        "problem": "有限尺寸证据怎样约束热力学极限的低能结构？",
+        "setting": "space-time dual Gibbs states；高维 spin/fermionic systems。",
+        "main_results": [
+          "作者将 symmetry generator/twist 的时空对偶用于近简并态。",
+          "所研究 toric-code-in-field 与 TFIM 区间中，四/两个低能态分裂分别上界 e^-cL、e^-cL²，且上方 gap 非零。"
+        ],
+        "techniques": [
+          "purity inequalities；space-time rotation。"
+        ],
+        "assumptions": [
+          "需满足有限系统计算及 bootstrap 的具体条件。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "摘要未核查有限计算证书，也不提供 logical recovery 或噪声阈值。"
+        ],
+        "relevance": [
+          "与拓扑量子存储的低能稳定性和 purity 方法有具体联系。"
+        ],
+        "follow_up": [
+          "读者建议：检查该证书如何与存储噪声模型衔接。"
+        ],
+        "relevance_score": 78,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:01:56.644Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.07400v1"
+      }
+    },
+    {
+      "id": "2611.07361",
+      "version": 1,
+      "analysis": {
+        "summary": "不收录：经典语音增强与无线 semantic communication。",
+        "problem": "用 neural autoencoder 分离语音和噪声。",
+        "setting": "经典通信数据、S-DSA。",
+        "main_results": [
+          "摘要报告训练与测试策略改进。"
+        ],
+        "techniques": [
+          "semantic decoupling；joint training。"
+        ],
+        "assumptions": [
+          "经典信号处理。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "decoupling 在此并非量子信息的 decoupling theorem。"
+        ],
+        "relevance": [
+          "关键词误匹配，无目标量子任务。"
+        ],
+        "follow_up": [],
+        "relevance_score": 0,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:01:56.645Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.07361v1"
+      }
+    },
+    {
+      "id": "2611.07144",
+      "version": 1,
+      "analysis": {
+        "summary": "dithered BP 针对 qLDPC circuit-level decoding 的振荡和 trapping。",
+        "problem": "普通 BP 可能不收敛或陷入错误候选。",
+        "setting": "distance-11 rotated surface code 与 distance-12 bivariate-bicycle code 的 circuit-level noise。",
+        "main_results": [
+          "结合 quantum-adapted sign flips 与随机 prior perturbations，作者报告优于 BP/BP+OSD+CS-10，并在部分区间匹敌或超过 Relay-BP。",
+          "平均乘法数减少约 98%，代价是适度增加加法；消除 node-level RNG。"
+        ],
+        "techniques": [
+          "dithering；chained prior perturbation。"
+        ],
+        "assumptions": [
+          "数值比较限于给定 codes、噪声及 decoder 设置。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "算术操作数不是实测 latency，也不证明渐近阈值。"
+        ],
+        "relevance": [
+          "与实时 syndrome decoding 及逻辑性能有关。"
+        ],
+        "follow_up": [
+          "读者建议：比较总控制延迟和高百分位运行时间。"
+        ],
+        "relevance_score": 84,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:02:49.613Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.07144v1"
+      }
+    },
+    {
+      "id": "2611.07102",
+      "version": 1,
+      "analysis": {
+        "summary": "measurement basis 的结构匹配可消除 sample-based subspace solver 的系统误差底。",
+        "problem": "增大 shots 无法补救测量得到的子空间缺失关键结构。",
+        "setting": "磁化等离子体热传导的 energy-norm Galerkin solution；field-aligned basis。",
+        "main_results": [
+          "作者证明包含 poloidal-mode-zero block 的对齐子空间误差受与 anisotropy 差值平方根成反比的界控制。",
+          "computational basis 缺失 flux-surface 节点时产生非消失误差底；所报告十 qubit 实验中对齐测量 768 shots 的 median error 为 7.0×10^-6。"
+        ],
+        "techniques": [
+          "结构化基变换；Galerkin error bounds；QFT readout。"
+        ],
+        "assumptions": [
+          "依赖 PDE 结构、子空间包含条件和指定误差范数。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "未核查完整态准备成本；不能据实验数值推导一般量子数据样本优势。"
+        ],
+        "relevance": [
+          "提供测量访问改变可恢复信息的具体、带保证例子。"
+        ],
+        "follow_up": [
+          "读者建议：区分消除系统偏差与降低统计方差。"
+        ],
+        "relevance_score": 81,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:02:49.614Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.07102v1"
+      }
+    },
+    {
+      "id": "2611.07062",
+      "version": 1,
+      "analysis": {
+        "summary": "额外逻辑 stabilizer constraints 与分层解码实现 rate/protection tradeoff。",
+        "problem": "固定 block length 下如何灵活保护部分逻辑 qubits？",
+        "setting": "primary qLDPC code 加 Logical Protection Code；BP 失败后启用 HLLD。",
+        "main_results": [
+          "LPC syndrome 生成候选逻辑错误，再条件化 BP；选择 syndrome-consistent candidates 中最低 Hamming weight。",
+          "短 repetition LPC 每个 syndrome 有两个假设；同一 LA code 上相对普通 BP 的 LER 改善最高为 81%、75%、69%，分别对应三个被测 code families。"
+        ],
+        "techniques": [
+          "logical constraints；hypothesis-conditioned BP。"
+        ],
+        "assumptions": [
+          "数值使用短 repetition LPC；比较 decoder 时总码保持相同。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "rate sacrifice 与 decoder gain 应分开；摘要没有通用阈值。"
+        ],
+        "relevance": [
+          "与 logical syndrome 可辨识性和 qLDPC 资源相关。"
+        ],
+        "follow_up": [
+          "读者建议：检查噪声模型、逻辑测量成本及候选失败情况。"
+        ],
+        "relevance_score": 87,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:02:49.614Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.07062v1"
+      }
+    },
+    {
+      "id": "2611.07021",
+      "version": 1,
+      "analysis": {
+        "summary": "强 system-bath coupling 可用单个冷却周期准备自由费米基态及热态。",
+        "problem": "弱耦合制备慢，需在 transfer 与非绝热 heating 间取舍。",
+        "setting": "可调 ancilla 能级和时变耦合；free fermions 的 two-level scattering reduction。",
+        "main_results": [
+          "作者构造 Möbius–Ingham protocols，主张无隙体系最优 error scaling、有隙体系 leading heating error 近指数压低。",
+          "单周期 thermal-state preparation 的构造针对 free fermions；另有 interacting systems 数值演示。"
+        ],
+        "techniques": [
+          "二能级散射；time-dependent cooling control。"
+        ],
+        "assumptions": [
+          "ancilla 与动态控制不是免费资源。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "single-shot 指单周期，不代表单次 measurement shot；摘要未给精确误差表达式和所有实现资源。"
+        ],
+        "relevance": [
+          "与 Gibbs preparation 的时间/辅助系统资源取舍有具体关系。"
+        ],
+        "follow_up": [
+          "读者建议：核查物理周期时间与 circuit depth 的对应。"
+        ],
+        "relevance_score": 79,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:02:49.615Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.07021v1"
+      }
+    },
+    {
+      "id": "2611.07017",
+      "version": 1,
+      "analysis": {
+        "summary": "symmetry enrichment 可在特定电噪声模型下实现无阈值 toric-code memory。",
+        "problem": "可否利用非 Abelian 对称性给 anyon 额外保护？",
+        "setting": "honeycomb toric code 耦合 Sp(N) rotors；electric anyons 携带 fundamental representation。",
+        "main_results": [
+          "作者构造 efficient minimum-weight decoder；N≥40 是保守充分条件，对任意 bond error probability p∈[0,1]，logical error 随尺寸指数下降。",
+          "构造还讨论 SU(N) 等其他对称性。"
+        ],
+        "techniques": [
+          "non-Abelian symmetry enrichment；minimum-weight decoding。"
+        ],
+        "assumptions": [
+          "特定 incoherent electric noise，不是任意 Pauli/circuit-level noise。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "rotor local dimension 和 symmetry-preserving 实现代价需核查；不能宣称一般无阈值容错。"
+        ],
+        "relevance": [
+          "连接 symmetry resources 与量子存储噪声限制。"
+        ],
+        "follow_up": [
+          "读者建议：检验对称性破坏噪声是否恢复普通阈值。"
+        ],
+        "relevance_score": 92,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-07T01:02:49.615Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.07017v1"
+      }
+    }
+  ]
+}
