@@ -1,0 +1,358 @@
+{
+  "analyses": [
+    {
+      "id": "doi:10.1103/gfv4-qc3s",
+      "version": 1,
+      "analysis": {
+        "summary": "用 detectability lemma 的局域更新替代完整 Lindbladian simulation，降低 Gibbs preparation 的算法成本。",
+        "problem": "准备热态的代价不仅取决于 relaxation gap，也包含实现整个耗散演化的开销。",
+        "setting": "由 M 个局域项构成的 Lindbladians；另讨论 frustration-free ground-state projection 和局域 commuting Hamiltonians。",
+        "main_results": [
+          "作者主张绕开 Lindbladian simulation 可减少 O(M) 因子的成本。",
+          "detectability-lemma operator 与 QSVT 结合，对 frustration-free projection 的 gap dependence 得到平方加速；在局域 commuting Gibbs sampler 上得到 Lindbladian gap 的平方改善。"
+        ],
+        "techniques": [
+          "detectability lemma；quantum singular value transformation。"
+        ],
+        "assumptions": [
+          "commuting Gibbs 应用与更一般投影结果的假设不能互换。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "只读正式摘要和 popular summary；未核查 oracle、ancilla、温度、精度与初态 overlap 的完整成本，未提取正文。"
+        ],
+        "relevance": [
+          "可用于比较 Gibbs preparation 的时间和辅助系统资源。"
+        ],
+        "follow_up": [
+          "读者建议：核查局域更新的可实现性及总 gate complexity，避免把 gap 改善直接当总深度改善。"
+        ],
+        "relevance_score": 89,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-08T00:59:16.122Z",
+        "evidence_level": "abstract",
+        "source_url": "https://journals.aps.org/prxquantum/abstract/10.1103/gfv4-qc3s",
+        "publication_significance": [
+          "阅读推断，非实际编辑/审稿理由：把多体数学工具变为可实现局域更新和投影算法，解决完整耗散模拟的额外开销，并连接 gap amplification；具有明确的量子算法意义，适合 PRX Quantum 的方法范围。",
+          "仅摘要证据，不能判断全部先行比较、证明质量和资源模型是否同口径。"
+        ]
+      }
+    },
+    {
+      "id": "doi:10.1103/m4dt-9rkf",
+      "version": 1,
+      "analysis": {
+        "summary": "用相位相差 π 的 twin pulse sequences 抑制共模脉冲面积误差。",
+        "problem": "系统性控制误差会限制 dynamical decoupling 的实际效果。",
+        "setting": "解析 T2n sequence family；exact resonance 及有限 detuning 的区别。",
+        "main_results": [
+          "作者主张 exact resonance 时 π-phase pairing 对共模 systematic pulse-area error 全阶抵消。",
+          "再选 constituent phases 来提高 detuning suppression order，并给任意序列长度的解析相位公式；两种 transmon 平台的 population plateaus 与理论一致。"
+        ],
+        "techniques": [
+          "π-phase twin pairing；解析 pulse phase design。"
+        ],
+        "assumptions": [
+          "全阶抵消限定 exact resonance 与共模误差。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "正文受订阅限制；population robustness 不能替代完整 gate fidelity 或 SPAM-robust certification；未核查总脉冲时间和有限带宽。"
+        ],
+        "relevance": [
+          "为控制误差与认证模型中的系统偏差提供具体基线。"
+        ],
+        "follow_up": [
+          "读者建议：检查漂移和 pulse-dependent errors 是否破坏共模假设。"
+        ],
+        "relevance_score": 73,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-08T00:59:16.122Z",
+        "evidence_level": "abstract",
+        "source_url": "https://journals.aps.org/prl/abstract/10.1103/m4dt-9rkf",
+        "publication_significance": [
+          "阅读推断，非实际编辑理由：简洁的配对对称性给出任意长度解析控制方案，并以两类硬件验证鲁棒平台，契合 Physical Review Letters 集中呈现物理机制的形式。",
+          "只读摘要，无法确认最优阶数的比较范围、证明及完整实验误差预算。"
+        ]
+      }
+    },
+    {
+      "id": "doi:10.1103/7kd1-kxxz",
+      "version": 1,
+      "analysis": {
+        "summary": "不收录：主要是开放多体系统低谱的 tensor-network 数值方法。",
+        "problem": "从 steady state 扩展到 Lindbladian low-lying modes。",
+        "setting": "complex-time Krylov framework，应用于 driven Bose–Hubbard model。",
+        "main_results": [
+          "作者以 finite-size scaling 给出 KPZ 类超扩散及异常加速弛豫的证据。"
+        ],
+        "techniques": [
+          "complex-time Krylov；tensor networks。"
+        ],
+        "assumptions": [
+          "模型与有限尺寸分析。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "摘要未建立与目标 QEC、gate certification、design 或量子数据学习任务的直接联系。"
+        ],
+        "relevance": [
+          "state preparation 和 spectral gap 的泛关联不足以达到收录阈值。"
+        ],
+        "follow_up": [],
+        "relevance_score": 48,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-08T00:59:16.123Z",
+        "evidence_level": "abstract",
+        "source_url": "https://journals.aps.org/prx/abstract/10.1103/7kd1-kxxz",
+        "publication_significance": [
+          "不收录原因是与当前研究问题联系不足；不据期刊名推断发表适配性。"
+        ]
+      }
+    },
+    {
+      "id": "2611.07010",
+      "version": 1,
+      "analysis": {
+        "summary": "不收录：关于 holographic entanglement dynamics 的长篇学位论文。",
+        "problem": "强耦合 QFT 中非平衡 entanglement/reflected entropy 如何演化？",
+        "setting": "AdS/CFT、sine-square deformation 与 membrane effective theory。",
+        "main_results": [
+          "摘要讨论 reflected entropy 和 multipartite entanglement 的动态结构。"
+        ],
+        "techniques": [
+          "holography；entanglement membrane。"
+        ],
+        "assumptions": [
+          "特定 QFT 与晚时大区域有效描述。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "没有明确量子信息任务中的 circuit/design、sample complexity 或 recovery 保证。"
+        ],
+        "relevance": [
+          "scrambling 关键词命中，但与当前操作性研究问题关联较弱。"
+        ],
+        "follow_up": [],
+        "relevance_score": 45,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-08T00:59:16.123Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.07010v1"
+      }
+    },
+    {
+      "id": "2611.03521",
+      "version": 1,
+      "analysis": {
+        "summary": "不收录：把标准 continuous-variable tomography 的表示等价性推广到 Schwartz spaces。",
+        "problem": "Wigner、characteristic functions 与 position/momentum marginals 是否等价表征态？",
+        "setting": "Schwartz-space 数学框架。",
+        "main_results": [
+          "作者建立几种态表示的等价刻画，并解释为自由或 harmonic evolution 下的位置分布。"
+        ],
+        "techniques": [
+          "函数空间与层析变换。"
+        ],
+        "assumptions": [
+          "连续变量及特定函数空间。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "没有实际样本复杂度、噪声鲁棒性或受限测量优势。"
+        ],
+        "relevance": [
+          "与当前 learning/certification 任务联系不足。"
+        ],
+        "follow_up": [],
+        "relevance_score": 48,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-08T00:59:16.123Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.03521v1"
+      }
+    },
+    {
+      "id": "2611.03469",
+      "version": 2,
+      "analysis": {
+        "summary": "连续 blind stabilizer measurements 中，Lindbladian eigenmode encoding 可避免短时相干性的线性衰减。",
+        "problem": "Hamiltonian 与 dissipative errors 竞争会产生不利于逻辑相干性的 exceptional points。",
+        "setting": "queued v2；continuous stabilizer measurement；[[5,1,3]] code 实例。",
+        "main_results": [
+          "作者主张弱错误率区间 exceptional points 的出现受 code distance 约束。",
+          "通过相位优化编码取消 logical coherence 的 linear short-time decay，并在 exceptional point 附近改善 logical π-rotation fidelity。"
+        ],
+        "techniques": [
+          "Liouvillian spectral analysis；eigenmode-based encoding。"
+        ],
+        "assumptions": [
+          "短时消线性项不等于所有时间最优；额外错误通道限定为弱噪声。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "仅读 v2 摘要；未审阅测量强度、误差类别、代码距离限制的精确定理和完整恢复成本。"
+        ],
+        "relevance": [
+          "直接连接 logical encoding、连续测量与噪声依赖性能。"
+        ],
+        "follow_up": [
+          "读者建议：核查该编码是否优化完整 logical channel fidelity，而非单个 coherence 分量。"
+        ],
+        "relevance_score": 86,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-08T00:59:16.123Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.03469v2"
+      }
+    },
+    {
+      "id": "2611.03422",
+      "version": 1,
+      "analysis": {
+        "summary": "并行 resettable bath ancillas 把 1D 非对易 Gibbs preparation 的已证演化时间降到近线性 n。",
+        "problem": "单 ancilla system-bath sampler 的既有证明有较高系统规模开销。",
+        "setting": "局域维数 2^q、bounded nearest-neighbor interactions；任意固定正温度、任意初态。",
+        "main_results": [
+          "作者给出 trace-norm error 0<ε≤1/2 下，expected total Hamiltonian evolution time 为 Õ(n/ε)。",
+          "比较基线为 single-ancilla 算法的 Õ(n^6/ε)；新算法每个 site 并行耦合 4^q−1 个可重置 bath qubits。",
+          "Gibbs-weighted L² bounds 同时控制单轮误差和 stationarity defect；随机演化产生的 dephasing 用于处理 extensive Lamb shift。"
+        ],
+        "techniques": [
+          "parallel system-bath interactions；randomized evolution。"
+        ],
+        "assumptions": [
+          "温度和局域维数固定时，总辅助 qubits 为 Θ(n)。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "expected Hamiltonian evolution time 不是 gates、depth 或最坏情形执行时间；摘要未给温度依赖常数及 reset costs。"
+        ],
+        "relevance": [
+          "具体展示 ancilla 与 thermalization time 的资源取舍。"
+        ],
+        "follow_up": [
+          "读者建议：将 Hamiltonian evolution、reset 与控制访问成本统一核算。"
+        ],
+        "relevance_score": 88,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-08T00:59:55.030Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.03422v1"
+      }
+    },
+    {
+      "id": "2611.03397",
+      "version": 1,
+      "analysis": {
+        "summary": "不收录：经典 binary perceptron 中 online algorithms 的解空间限制。",
+        "problem": "在线不可撤销选择能否找到 isolated solutions？",
+        "setting": "随机 Gaussian half-spaces 与 Hamming isolation。",
+        "main_results": [
+          "作者证明 online algorithm 找到 isolated solution 的概率为 o(1)。"
+        ],
+        "techniques": [
+          "exchangeability；anti-concentration。"
+        ],
+        "assumptions": [
+          "经典在线算法模型。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "与量子数据访问、magic 或测量 adaptivity 没有具体连接。"
+        ],
+        "relevance": [
+          "anti-concentration 不是此处研究的量子随机线路任务。"
+        ],
+        "follow_up": [],
+        "relevance_score": 0,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-08T00:59:55.031Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.03397v1"
+      }
+    },
+    {
+      "id": "2611.03128",
+      "version": 1,
+      "analysis": {
+        "summary": "用 BP marginals 引导 Tesseract 的 A* 搜索，降低 qLDPC 解码的搜索努力。",
+        "problem": "高精度搜索解码会随物理错误率和码规模迅速变慢。",
+        "setting": "三个 bivariate-bicycle codes：[[72,12,6]]、[[90,8,10]]、[[144,12,12]]；circuit-level noise。",
+        "main_results": [
+          "BP hard decision 若匹配 detector syndrome 则直接接受，否则用 trust-weighted marginals 改变搜索优先级，但保持 channel-prior path cost。",
+          "可用 BP 初始化残余搜索并撤销错误初始化；搜索上限触发时 fallback。",
+          "作者报告低物理错误率下 expanded nodes 最多减少超过两个数量级，LER 仍接近 Tesseract。"
+        ],
+        "techniques": [
+          "damped sum-product BP；A*；residual search。"
+        ],
+        "assumptions": [
+          "数值结果针对指定码及噪声；直接接受匹配 syndrome 的候选不自动保证最优恢复。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "节点数下降不等同 wall-clock latency 或 worst-case complexity；未检查代码和 full noise model。"
+        ],
+        "relevance": [
+          "与 logical decoding 的精度/经典运行资源取舍有明确联系。"
+        ],
+        "follow_up": [
+          "读者建议：比较 tail latency、内存和 fallback 频率。"
+        ],
+        "relevance_score": 84,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-08T00:59:55.031Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.03128v1"
+      }
+    },
+    {
+      "id": "2611.07003",
+      "version": 1,
+      "analysis": {
+        "summary": "允许 parity-preserving 非 Gaussian 局域幺正后，自由费米态的 nonlocal magic 可从线性降到对数；这并不减少被忽略的局域操作自身的 magic 成本。",
+        "problem": "Gaussian 态可高效经典模拟却在 qubit 表示下有 extensive magic，需分清总资源与跨分区不可局域消除的资源。",
+        "setting": "v1 的摘要、引言及定义片段；双分区 definite-parity pure fermionic states。nonlocal measure 对各侧 parity-even unitaries 优化，包括非 Gaussian 操作。",
+        "main_results": [
+          "作者比较 Gaussian restriction 与完整 parity-preserving local-unitary optimization：至多三个 BCS pairs 时 Gaussian 操作已最优，从四对起不再总成立。",
+          "文中将 Bell-pair overlap 写成 Schmidt spectrum 的选择问题；最优化的 fidelity 是平方 overlap。一般态可达到至少 0.478/√(C_E+5)，C_E 为纠缠 Hamiltonian 的方差。",
+          "free-fermion pairs 的 C_E 可加、每对至多约 0.44，因而得到至少 1/√m 量级的 stabilizer fidelity。对远离 product/Bell 极限的 partially entangled pairs，作者讨论从 extensive 到 logarithmic 的 scaling。"
+        ],
+        "techniques": [
+          "parity-resolved Schmidt spectrum；BCS normal form；Fock-state permutations；entanglement capacity。"
+        ],
+        "assumptions": [
+          "局域操作只指不跨 A/B，允许各侧内部的非 Gaussian、多模操作；它们不保证浅层或低 T-count。",
+          "partially entangled pairs 的 occupations 需与 0、1/2、1 保持固定间隔，才能作相应 extensive 比较。"
+        ],
+        "limitations": [
+          "仅读正文前部，未审阅后续定理证明、Supplemental Material 和全部 finite-size constants；没有检查构造局域幺正的算法复杂度。",
+          "不能把 nonlocal magic 的对数界解释为原始态总 T-count 或 stabilizer rank 的对数/多项式上界；该资源定义优化掉了局域成本。"
+        ],
+        "relevance": [
+          "直接涉及 fermionic resources、magic 的操作依赖性及与 classical simulability 的区别。"
+        ],
+        "follow_up": [
+          "读者建议：比较 Gaussian-only、parity-even unrestricted 和几何局域浅层控制三种操作集。",
+          "读者建议：检验要用于 design 的资源成本是否包含这些局域非 Gaussian 幺正。"
+        ],
+        "relevance_score": 98,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-08T00:59:55.032Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.07003v1"
+      }
+    }
+  ]
+}
