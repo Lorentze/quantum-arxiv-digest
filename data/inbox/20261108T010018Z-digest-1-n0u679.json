@@ -1,0 +1,40 @@
+{
+  "analyses": [
+    {
+      "id": "2611.02972",
+      "version": 1,
+      "analysis": {
+        "summary": "qLDPC shuttling 的优化目标应考虑最大等待/移动距离，而不只总路程。",
+        "problem": "Gross code 的非局域 parity checks 在可移动 spin qubits 上引入移动与闲置噪声。",
+        "setting": "v1，[[144,12,12]] memory experiments；square grid 与含双对角线的 octagrid；三种 routing strategies。",
+        "main_results": [
+          "作者数值发现最小化最大移动距离的策略比最小化总路程更好；起始 layout 的影响较弱。",
+          "加入 diagonals 在强调 shuttling noise 的参数范围内可使 LER 改善近两个数量级；不能理解成所有参数都有该收益。",
+          "所读方法段把移动/闲置误差按 linear、exponential、Gaussian 三类距离规律扫描，另关联 SPAM、2Q errors 与 base physical error rate。"
+        ],
+        "techniques": [
+          "tick-wise routing；weighted perfect matching；circuit-level memory simulation。"
+        ],
+        "assumptions": [
+          "假设 operation sites 足够实现 theoretical tick；正文给定 shuttling velocity、edge spacing 与 gate time。"
+        ],
+        "limitations": [
+          "仅读摘要、引言及部分方法段；未复跑模拟或审阅全部 appendix。",
+          "不是一般最优 routing 证明或硬件演示；新增连接的额外噪声未必在各实现中免费。"
+        ],
+        "relevance": [
+          "具体连接 locality、syndrome circuit scheduling 和 logical memory performance。"
+        ],
+        "follow_up": [
+          "读者建议：检查降低最大路程是否也改善 total cycle duration，以及 diagonal 控制带来的额外错误。"
+        ],
+        "relevance_score": 83,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-08T00:59:55.032Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.02972v1"
+      }
+    }
+  ]
+}
