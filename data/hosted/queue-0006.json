@@ -4,339 +4,6 @@
       "kind": "analysis",
       "paper": {
         "doi": "",
-        "id": "2610.26471",
-        "version": 1,
-        "title": "End-to-End Optimization of Partial Fault Tolerance in Neutral-Atom Arrays",
-        "authors": [
-          "Stefano Veroni",
-          "Aydin Deger",
-          "Andrew J. Daley"
-        ],
-        "abstract": "Fault-tolerant (FT) quantum computation offers a pathway to quantum advantage, but its realization is hindered by its significant overhead. The partially FT \"STAR\" architecture reduces the cost of universal computation at the price of relaxing FT requirements for non-Clifford operations, increasing exposure to hardware noise. Therefore, maximizing its performance and applicability demands careful co-design with the underlying hardware. In this work we investigate the co-design of the STAR architecture with neutral-atom platforms, connecting the underlying atomic physics to logical error modeling and application-level performance. At the physical level, we identify a favorable noise bias in $^{171}\\mathrm{Yb}$ Rydberg gates, and show how it can be enhanced through error-selective pulse optimization. At the logical level, we identify an intrinsic error suppression mechanism, yielding vanishing logical coherent noise in leading order. Detailed circuit-level simulations of surface code implementations show more than an order of magnitude reduction in logical error relative to previous estimates. As a concrete target application, we focus on the Fermi-Hubbard model with periodic boundaries, for which we design a simulation circuit particularly suited to early implementations. We quantify the resource tradeoff of partially and fully FT approaches to gate synthesis, with the former showing approximately an order of magnitude reduction in state-injection depth, and an even larger reduction in Clifford resources. Comparing with classical and fully FT approaches, we identify regimes where partial fault tolerance provides both lower overheads and lower error rates. In our estimates, this is accessible with moderate error rates $p\\sim 10^{-3}$ and a few thousand qubits, underlining that for these types of problems, partial FT approaches provide a compelling pathway to early quantum advantage.",
-        "url": "https://arxiv.org/abs/2610.26471",
-        "pdf_url": "https://arxiv.org/pdf/2610.26471v1",
-        "published": "2026-10-19T14:18:12Z",
-        "updated": "2026-10-19T14:18:12Z",
-        "categories": [
-          "quant-ph",
-          "cond-mat.quant-gas",
-          "physics.atom-ph"
-        ],
-        "keyword_score": 6,
-        "topics": [
-          "logical_qec",
-          "magic_stabilizer"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "logical error"
-          ],
-          "magic_stabilizer": [
-            "non-Clifford"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-20T04:57:05Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.26413",
-        "version": 1,
-        "title": "Two-qubit cryo-CMOS control of a spin register in diamond",
-        "authors": [
-          "H. B. van Ommen",
-          "N. E. Fakkel",
-          "M. van Riggelen",
-          "J. Yun",
-          "L. A. Enthoven",
-          "M. A. B. ElBadry",
-          "F. Sebastiano",
-          "M. Babaie",
-          "T. H. Taminiau"
-        ],
-        "abstract": "Utility-scale quantum technologies will not only require a well-performing quantum platform, but also classical control hardware that is scalable, efficient, and meets the design requirements set by the quantum system of interest. One approach is the application of silicon CMOS technology, a highly scalable and mature technology, to design application-specific integrated circuits (ASIC) that are optimized for the quantum system. In this work, we present two-qubit control of electron and nuclear spins in NV centres in diamond, using a cryogenic CMOS qubit controller integrated with a diamond quantum device in a cryostat. Using Gate Set Tomography (GST) we characterize the performance of the single-qubit gates on both electron- and carbon nuclear spins, and analyze the limiting noise processes. We use dynamical decoupling to engineer a two-qubit gate, and estimate $F_\\text{2q,avg} = 95(2)\\%$ for the electron-nuclear two-qubit gate fidelity. Our demonstration of cryo-CMOS-driven two-qubit gates is a key step towards highly-integrated quantum devices based on colour centres.",
-        "url": "https://arxiv.org/abs/2610.26413",
-        "pdf_url": "https://arxiv.org/pdf/2610.26413v1",
-        "published": "2026-10-19T13:47:18Z",
-        "updated": "2026-10-19T13:47:18Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 7,
-        "topics": [
-          "benchmarking",
-          "logical_qec"
-        ],
-        "keyword_matches": {
-          "benchmarking": [
-            "gate fidelity"
-          ],
-          "logical_qec": [
-            "decoupling"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-20T04:57:05Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.26381",
-        "version": 1,
-        "title": "Higher-order Parity Constraints for Quantum Approximate Optimization",
-        "authors": [
-          "Anita Weidinger",
-          "Glen Bigan Mbeng",
-          "Roeland ter Hoeven",
-          "Wolfgang Lechner"
-        ],
-        "abstract": "The Parity Architecture was originally introduced in the context of quantum optimization algorithms to overcome hardware connectivity constraints. Here, we show that its benefits extend beyond this role by identifying specific parity transformations that enhance the success probability of the Quantum Approximate Optimization Algorithm (QAOA) for optimization problems defined on hardware-native and sparse graphs. Numerical simulations suggest that this enhancement originates from the higher-order operators introduced by the Parity representation, which accelerate the propagation of correlations across the physical device. We investigate this mechanism for the Signed Max-Cut problem on 3-regular graph instances and demonstrate its practical relevance on IBM Heron quantum processors. QAOA parameters are first classically optimized on small training instances containing up to 14 vertices and subsequently transferred to larger instances executed on quantum hardware. We consider Signed Max-Cut instances of up to 40 vertices and find that, together with an error mitigation technique, the parity-based QAOA identifies the optimal solutions for all the considered 40-vertex instances, whereas the conventional QAOA fails under the same conditions.",
-        "url": "https://arxiv.org/abs/2610.26381",
-        "pdf_url": "https://arxiv.org/pdf/2610.26381v1",
-        "published": "2026-10-19T13:32:26Z",
-        "updated": "2026-10-19T13:32:26Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 4,
-        "topics": [
-          "benchmarking"
-        ],
-        "keyword_matches": {
-          "benchmarking": [
-            "error mitigation"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-20T04:57:05Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.27010",
-        "version": 1,
-        "title": "Robust Latent Variable Graphical Models: Exact Recovery and Fundamental Limits",
-        "authors": [
-          "Chuansen Peng",
-          "Xiaojing Shen"
-        ],
-        "abstract": "We study robust estimation of a Gaussian precision matrix that decomposes as a sparse matrix minus a symmetric, possibly indefinite, low-rank matrix, a structure that arises when latent-variable marginalization is combined with conditioning on linear measurements. The proposed convex estimator replaces the sample covariance by the centered Gaussian measure-transformed (MT) covariance, which preserves the signed graph of the sparse component under the nominal model, and penalizes the low-rank component by the nuclear norm of a congruence transform, an atomic norm that encodes structural side information. Our main result is a primal--dual witness theorem: under restricted invertibility and irrepresentability conditions on the Fisher information, the raw convex optimizer is unique, has no false edges, recovers the signs of all sufficiently strong edges, and has exactly the true rank and inertia. These conditions reduce to the graphical-lasso conditions when the low-rank part is absent, and we verify them from primitive incoherence and near-isotropy assumptions. Over a class on which they hold uniformly, we prove information-theoretic limits for Frobenius estimation, signed graph recovery, and inertia recovery. In particular, inertia recovery requires $N\\gtrsim p/ν_{\\min}^2$ samples, where $ν_{\\min}$ is the smallest nonzero eigenvalue modulus of the low-rank part; the spectral beta-min condition of the witness theorem is necessary up to a $\\sqrt{\\log p}$ factor; and the Frobenius risk attains the minimax rate up to a factor $\\sqrt{μ(1+\\min\\{d,r\\})\\log p}$, where $μ$ is the incoherence parameter, $d$ the maximal degree, and $r$ the rank. We further quantify robustness under Huber contamination, with a bias bound that is sharp for the MT functional and vanishes for remote outliers, and give a globally convergent linearized ADMM with closed-form updates.",
-        "url": "https://arxiv.org/abs/2610.27010",
-        "pdf_url": "https://arxiv.org/pdf/2610.27010v1",
-        "published": "2026-10-19T11:19:49Z",
-        "updated": "2026-10-19T11:19:49Z",
-        "categories": [
-          "stat.ML",
-          "cs.IT",
-          "cs.LG"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "data_hiding"
-        ],
-        "keyword_matches": {
-          "data_hiding": [
-            "side information"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-21T04:56:40Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.25657",
-        "version": 1,
-        "title": "Quantum State Search with Classical Interactive Advice",
-        "authors": [
-          "Mohammed Barhoush"
-        ],
-        "abstract": "We study whether a quantum verifier can find a hidden quantum state by exchanging classical messages with an unbounded prover who knows the state. The verifier has access to a reflection oracle about the target. For a Haar-random $n$-qubit target, we prove that achieving constant average fidelity with the target requires $(q+1)^2(B+1)=Ω(2^n)$, where $q$ is the number of verifier queries and $B$ is the total prover-to-verifier communication. The bound allows arbitrary classical interaction and unrestricted computation between queries. Our proof extends the lower bound of Aaronson and Kuperberg from a single classical proof to an arbitrary classical interaction. As a result, we obtain a quantum-oracle separation of UniqueQMA from QCIP with polynomially many classical messages. In particular, we give a unitary oracle $\\mathcal{U}$ such that there exists a language $L\\in\\mathrm{UniqueQMA}^{\\mathcal{U}}$ but $L\\notin\\mathrm{QCIP}^{\\mathcal{U}}$. We further give an oracle construction for a notion known as QMA-QCIP[2] gap problem. This gives average case hardness for a QMA language under classical access to a QCIP[2] decision oracle and is used in establishing negative results on witness encryption and quantum indistinguishability obfuscation.",
-        "url": "https://arxiv.org/abs/2610.25657",
-        "pdf_url": "https://arxiv.org/pdf/2610.25657v1",
-        "published": "2026-10-19T02:03:35Z",
-        "updated": "2026-10-19T02:03:35Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 4,
-        "topics": [
-          "random_designs"
-        ],
-        "keyword_matches": {
-          "random_designs": [
-            "Haar-random"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-20T04:57:05Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.25518",
-        "version": 1,
-        "title": "Randomness Certification from Statistically Hiding Commitments",
-        "authors": [
-          "Ilya Merkulov",
-          "Rotem Arnon"
-        ],
-        "abstract": "Randomness certification aims to guarantee that the output of an untrusted quantum device contains genuine randomness that remains unpredictable even given quantum side information held by an adversary. For a classical verifier interacting with a single quantum device, such a guarantee cannot rely on the physical separation underlying standard Bell tests and must instead follow from computational restrictions on the prover. Building on the framework of Computational Bell Inequalities, we distinguish classical and quantum virtual-input hiding, showing that the former suffices for proofs of quantumness, whereas the latter enables randomness certification against quantum side information. Our main technical contribution is to establish quantum virtual-input hiding for a commitment-based protocol derived from the proof of quantumness from one-way-functions by Morimae and Yamakawa. We show that statistical hiding together with ordinary computational binding against quantum polynomial-time senders suffices, without requiring stronger quantum binding notions such as sum-binding or collapse-binding. This yields a randomness-certification protocol from post-quantum statistically hiding bit commitments. In particular, existing constructions of such commitments from post-quantum one-way permutations imply that post-quantum one-way permutations suffice for randomness certification. We further instantiate our construction using quantum-secure trapdoor claw-free functions, obtaining an efficient classical verifier, and in the quantum random oracle model, obtaining randomness certification without additional computational assumptions but with an inefficient verifier. These instantiations separate the cryptographic properties sufficient for randomness certification from the additional structure required for efficient verification within our commitment-based framework.",
-        "url": "https://arxiv.org/abs/2610.25518",
-        "pdf_url": "https://arxiv.org/pdf/2610.25518v1",
-        "published": "2026-10-18T20:22:34Z",
-        "updated": "2026-10-18T20:22:34Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "data_hiding"
-        ],
-        "keyword_matches": {
-          "data_hiding": [
-            "side information"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-20T04:57:05Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.25472",
-        "version": 1,
-        "title": "Topological Quantum Gates on FCIs with Bounded Quantum Geometry",
-        "authors": [
-          "Hisham Sati",
-          "Urs Schreiber"
-        ],
-        "abstract": "Two-band 2D fractional Chern insulators (FCIs) have recently been shown, in principle, to admit unusual anyonic order, associated with Bloch Hopfions localized in momentum space. Here we show that bounding the integrated quantum metric along one primitive Brillouin-zone cycle may refine this topological order to $|C|$ distinct braiding observables, cyclically permuted by lattice translations, for Chern numbers $|C| > 1$. The cyclic structure entails mildly non-abelian braiding phases and otherwise matches the spectral flow exhibited by the FCI's hybrid Wannier states, with the metric bound equivalently a bound on the states' real-space spread. We give a classification of quantum gates in principle implementable on this topological order; among them we find the non-Clifford T-gate and the non-Clifford entangling CCZ-gate. This points to novel pathways to fault-tolerant quantum processes within the known orbital structure of FCIs, potentially informing experimental searches towards hardware for future topological quantum computers.",
-        "url": "https://arxiv.org/abs/2610.25472",
-        "pdf_url": "https://arxiv.org/pdf/2610.25472v1",
-        "published": "2026-10-18T18:58:20Z",
-        "updated": "2026-10-18T18:58:20Z",
-        "categories": [
-          "quant-ph",
-          "cond-mat.str-el",
-          "math-ph"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "magic_stabilizer"
-        ],
-        "keyword_matches": {
-          "magic_stabilizer": [
-            "non-Clifford"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-20T04:57:05Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.25471",
-        "version": 1,
-        "title": "\\textit{In situ} certification of multiparticle indistinguishability in a generic interferometer",
-        "authors": [
-          "Valery Shchesnovich"
-        ],
-        "abstract": "We propose a scalable and efficient \\textit{in situ} method for assessing the multiparticle indistinguishability of identical bosons or fermions in quantum interference experiments on linear interferometers by harnessing quantum parallelism and the bunching/anti-bunching tendencies of these particles. The proposed certification method can be applied to any generic linear interferometer. For particles occupying distinct input ports of a Haar-random unitary interferometer, the number of experimental runs required to attain a prescribed statistical precision is polynomial in the number of particles, the interferometer size, and the inverse precision, with high probability. Our method is robust under losses: for uniform particle losses, the polynomial scaling is preserved when the inverse single-particle survival probability is polynomially bounded. Our scheme is especially suitable for certifying the indistinguishability of single photons in large-scale interference experiments, such as Boson Sampling in the regime of quantum advantage over classical computation.",
-        "url": "https://arxiv.org/abs/2610.25471",
-        "pdf_url": "https://arxiv.org/pdf/2610.25471v1",
-        "published": "2026-10-18T18:55:32Z",
-        "updated": "2026-10-18T18:55:32Z",
-        "categories": [
-          "quant-ph",
-          "math-ph",
-          "physics.atom-ph"
-        ],
-        "keyword_score": 4,
-        "topics": [
-          "random_designs"
-        ],
-        "keyword_matches": {
-          "random_designs": [
-            "Haar-random"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-20T04:57:05Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.25315",
-        "version": 1,
-        "title": "Exact quantum Hamming-weight computation at optimal depth and minimum width",
-        "authors": [
-          "Wei Zi",
-          "Pei Yuan",
-          "Junhong Nie"
-        ],
-        "abstract": "Hamming-weight computation and symmetric Boolean functions are basic primitives for quantum arithmetic and state preparation, where circuit depth and qubit overhead matter. We construct an exact circuit computing the Hamming weight of an $n$-qubit register with depth $O(\\log n)$ and size $O(n\\log n)$, using only the $n$ input qubits and $m=\\lceil\\log_2(n+1)\\rceil$ binary output qubits. The circuit uses arbitrary one-qubit gates and CNOTs with all-to-all connectivity. Both depth and total width are optimal. Our constructions combine tree structures and pipelining, temporarily using input qubits as workspace. We also give exact circuits for every symmetric Boolean function with the same depth and size bounds, using only $m$ ancillary qubits returned to zero. Finally, we apply the counter to exact preparation of balanced Dicke states for even $n$. With only $O(\\log n)$ ancillary qubits, we obtain expected depth $O(\\log^2 n)$ using measurements and classical feedforward, and depth $O(n^{1/4}\\log n)$ using unitary gates alone.",
-        "url": "https://arxiv.org/abs/2610.25315",
-        "pdf_url": "https://arxiv.org/pdf/2610.25315v1",
-        "published": "2026-10-18T14:47:17Z",
-        "updated": "2026-10-18T14:47:17Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 5,
-        "topics": [
-          "adaptive_resources"
-        ],
-        "keyword_matches": {
-          "adaptive_resources": [
-            "feedforward",
-            "circuit depth",
-            "state preparation"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-20T04:57:05Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
         "id": "2610.25310",
         "version": 1,
         "title": "Anomalously fast heating of ground states in dephased $SU(N)$ spin systems",
@@ -1627,6 +1294,543 @@
         "keyword_matches": {
           "data_hiding": [
             "state distinguishability"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-16T04:38:00Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.21987",
+        "version": 1,
+        "title": "Quantum control of solid state qubits via Reinforcement Learning",
+        "authors": [
+          "Dennis Herb",
+          "Mirko Rossini",
+          "Sabine Wölk",
+          "Joachim Ankerhold",
+          "Dominik Maile",
+          "Alessio Belenchia"
+        ],
+        "abstract": "The use of reinforcement learning (RL) in the design of quantum control strategies for pulse level control of NISQ era quantum devices is attracting growing interest. Model-free RL, not requiring preexisting knowledge of the physical system, acts as a black-box optimization tool well suited for noisy devices. In this work, we provide a simulation-based analysis of the performance of model-free RL for state preparation and qubit gate design in a challenging setup: indirect control of NV nuclear spins in a spin-bath. In particular, the spin-bath is modeled via the generalized cluster correlation expansion accounting for magnetic impurities and intra-bath interactions. We analyze the performance of the RL agents by performing simulations with minimally observable environments and noisy, sparse rewards as introduced in (Phys. Rev. X 12, 011059), and compare them to other state-of-the-art black-box optimization tools.",
+        "url": "https://arxiv.org/abs/2610.21987",
+        "pdf_url": "https://arxiv.org/pdf/2610.21987v1",
+        "published": "2026-10-15T14:36:16Z",
+        "updated": "2026-10-15T14:36:16Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "adaptive_resources"
+        ],
+        "keyword_matches": {
+          "adaptive_resources": [
+            "state preparation"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-16T04:38:00Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.21907",
+        "version": 1,
+        "title": "Selected Stabilizer Subspaces for Compact Many-Body Wave Functions",
+        "authors": [
+          "Maria-Andreea Filip",
+          "George H. Booth"
+        ],
+        "abstract": "Selected configuration interaction (SCI) obtains accurate many-body solutions by variationally diagonalising the Hamiltonian in a sparse, iteratively selected set of configurations, but can lose compactness when the target state has broad configurational support. We introduce selected stabilizer interaction (SSI), a fully classical, SCI-inspired method that instead iteratively constructs a nonorthogonal subspace spanned by a systematically enlargeable set of selected stabilizer states. A single stabilizer, generated by Clifford operations, can encode a structured superposition of (possibly exponentially) many configurations, shifting the relevant compression from configurational to stabilizer sparsity. We benchmark ground-state energies, fidelities, superposition degrees and required expansion lengths against exact diagonalization and equivalent SCI schemes for the transverse-field Ising, XXZ Heisenberg, and Hubbard models, finding particularly strong compression from the stabilizer representation in the spin models, and increasing advantage with system size for these systems. The results establish a proof of principle for heuristic selected stabilizer diagonalization, while also identifying particular challenges in symmetry handling and effective exploration of the stabilizer space.",
+        "url": "https://arxiv.org/abs/2610.21907",
+        "pdf_url": "https://arxiv.org/pdf/2610.21907v1",
+        "published": "2026-10-15T13:57:48Z",
+        "updated": "2026-10-15T13:57:48Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "magic_stabilizer"
+        ],
+        "keyword_matches": {
+          "magic_stabilizer": [
+            "stabilizer"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-16T04:38:00Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.21879",
+        "version": 1,
+        "title": "One generation of the Standard Model as a quantum error-correcting code",
+        "authors": [
+          "Shiroman Prakash",
+          "K. L. Ramya"
+        ],
+        "abstract": "Together with a right-handed neutrino, the fermions of one generation of the Standard Model are labelled by five bits, a combinatorial structure tied to anomaly cancellation. We make this precise. Anomaly cancellation is the vanishing of a cubic form, the defining property of triorthogonal codes, the quantum error-correcting codes behind magic state distillation. Removing the right-handed neutrino gives a $[[15,1,3]]_p$ code for every prime $p$, including the Bravyi-Kitaev code for $p = 2$. For qutrits it is the unique shortest distance-three triorthogonal code.",
+        "url": "https://arxiv.org/abs/2610.21879",
+        "pdf_url": "https://arxiv.org/pdf/2610.21879v1",
+        "published": "2026-10-15T13:45:52Z",
+        "updated": "2026-10-15T13:45:52Z",
+        "categories": [
+          "hep-th",
+          "cs.IT",
+          "hep-ph",
+          "quant-ph"
+        ],
+        "keyword_score": 6,
+        "topics": [
+          "logical_qec",
+          "magic_stabilizer"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "quantum error-correcting"
+          ],
+          "magic_stabilizer": [
+            "magic state"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-16T04:38:00Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.21853",
+        "version": 1,
+        "title": "Superconducting circuits host two-level systems with lifetimes exceeding one second",
+        "authors": [
+          "Mathieu Féchant",
+          "Phillip Lenhard",
+          "Nicolas Gosling",
+          "Ritika Dhundhwal",
+          "Denis Bénâtre",
+          "Wolfgang Wernsdorfer",
+          "Thomas Reisinger",
+          "Ioan M. Pop"
+        ],
+        "abstract": "Understanding the microscopic environment of superconducting qubits is a central challenge for quantum technologies. Parasitic two-level systems (TLSs) of various microscopic origins are ubiquitous and limit qubit performance through decoherence, frequency drifts, and leakage. Recently, long-lived TLSs with lifetimes exceeding those of state-of-the-art qubits have been shown to induce correlated qubit dynamics, with direct implications for quantum error correction. Here, we perform wide-band quantum-jump correlation spectroscopy on flux-tunable transmon qubits and identify microscopic degrees of freedom that outlive the qubit by orders of magnitude. Pump-probe measurements at varying detunings from these objects reveal intrinsic lifetimes exceeding one second. Their weak coupling to the qubit, in the kilohertz range, is consistent with positional defects described by the standard tunneling model, without excluding other microscopic origins such as magnetic spin impurities or trapped quasiparticles. More broadly, these results establish superconducting qubits as a sensitive probe of exceptionally long-lived microscopic degrees of freedom and open a route toward their controlled access and functionalization.",
+        "url": "https://arxiv.org/abs/2610.21853",
+        "pdf_url": "https://arxiv.org/pdf/2610.21853v1",
+        "published": "2026-10-15T13:31:00Z",
+        "updated": "2026-10-15T13:31:00Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "quantum error correction"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-16T04:38:00Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "id": "doi:10.1126/science.aee7961",
+        "version": 1,
+        "title": "Magic state cultivation on a superconducting quantum processor",
+        "authors": [
+          "E. Rosenfeld",
+          "C. Gidney",
+          "G. Roberts",
+          "A. Morvan",
+          "N. Lacroix",
+          "D. Kafri",
+          "J. Marshall",
+          "M. Li",
+          "V. Sivak",
+          "D. Abanin",
+          "A. Abbas",
+          "R. Acharya",
+          "L. Aghababaie Beni",
+          "G. Aigeldinger",
+          "R. Alcaraz",
+          "S. Alcaraz",
+          "T. I. Andersen",
+          "M. Ansmann",
+          "F. Arute",
+          "K. Arya",
+          "W. Askew",
+          "N. Astrakhantsev",
+          "J. Atalaya",
+          "R. Babbush",
+          "B. Ballard",
+          "J. C. Bardin",
+          "H. Bates",
+          "A. Bengtsson",
+          "M. Bigdeli Karimi",
+          "A. Bilmes",
+          "S. Bilodeau",
+          "F. Borjans",
+          "J. Bovaird",
+          "D. Bowers",
+          "L. Brill",
+          "P. Brooks",
+          "M. Broughton",
+          "D. A. Browne",
+          "B. Buchea",
+          "B. B. Buckley",
+          "T. Burger",
+          "B. Burkett",
+          "N. Bushnell",
+          "J. Busnaina",
+          "A. Cabrera",
+          "J. Campero",
+          "H.-S. Chang",
+          "S. Chen",
+          "Z. Chen",
+          "B. Chiaro",
+          "L.-Y. Chih",
+          "A. Y. Cleland",
+          "B. Cochrane",
+          "M. Cockrell",
+          "J. Cogan",
+          "P. Conner",
+          "H. Cook",
+          "R. G. Cortiñas",
+          "W. Courtney",
+          "A. L. Crook",
+          "B. Curtin",
+          "M. Damyanov",
+          "S. Das",
+          "D. M. Debroy",
+          "S. Demura",
+          "P. Donohoe",
+          "I. Drozdov",
+          "A. Dunsworth",
+          "V. Ehimhen",
+          "A. Eickbusch",
+          "A. Moshe Elbag",
+          "L. Ella",
+          "M. Elzouka",
+          "D. Enriquez",
+          "C. Erickson",
+          "L. Faoro",
+          "V. S. Ferreira",
+          "M. Flores",
+          "L. Flores Burgos",
+          "S. Fontes",
+          "E. Forati",
+          "J. Ford",
+          "B. Foxen",
+          "M. Fukami",
+          "A. Wing Lun Fung",
+          "L. Fuste",
+          "S. Ganjam",
+          "G. Garcia",
+          "C. Garrick",
+          "R. Gasca",
+          "H. Gehring",
+          "R. Geiger",
+          "É. Genois",
+          "W. Giang",
+          "D. Gilboa",
+          "J. E. Goeders",
+          "E. C. Gonzales",
+          "R. Gosula",
+          "S. J. de Graaf",
+          "A. Grajales Dau",
+          "D. Graumann",
+          "J. Grebel",
+          "A. Greene",
+          "J. A. Gross",
+          "J. Guerrero",
+          "L. Le Guevel",
+          "T. Ha",
+          "S. Habegger",
+          "T. Hadick",
+          "A. Hadjikhani",
+          "M. C. Hamilton",
+          "M. Hansen",
+          "M. P. Harrigan",
+          "S. D. Harrington",
+          "J. Hartshorn",
+          "S. Heslin",
+          "P. Heu",
+          "O. Higgott",
+          "R. Hiltermann",
+          "J. Hilton",
+          "H.-Y. Huang",
+          "M. Hucka",
+          "C. Hudspeth",
+          "A. Huff",
+          "W. J. Huggins",
+          "L. B. Ioffe",
+          "E. Jeffrey",
+          "S. Jevons",
+          "Z. Jiang",
+          "X. Jin",
+          "C. Joshi",
+          "P. Juhas",
+          "A. Kabel",
+          "H. Kang",
+          "K. Kang",
+          "A. H. Karamlou",
+          "R. Kaufman",
+          "K. Kechedzhi",
+          "T. Khattar",
+          "M. Khezri",
+          "S. Kim",
+          "P. V. Klimov",
+          "C. M. Knaut",
+          "B. Kobrin",
+          "A. N. Korotkov",
+          "F. Kostritsa",
+          "J. M. Kreikebaum",
+          "R. Kudo",
+          "B. Kueffler",
+          "A. Kumar",
+          "V. D. Kurilovich",
+          "V. Kutsko",
+          "T. Lange-Dei",
+          "B. W. Langley",
+          "P. Laptev",
+          "K.-M. Lau",
+          "E. Leavell",
+          "J. Ledford",
+          "J. Lee",
+          "K. Lee",
+          "B. J. Lester",
+          "W. Leung",
+          "L. Li",
+          "W. Yan Li",
+          "A. T. Lill",
+          "W. P. Livingston",
+          "M. T. Lloyd",
+          "A. Locharla",
+          "L. De Lorenzo",
+          "E. Lucero",
+          "D. Lundahl",
+          "A. Lunt",
+          "S. Madhuk",
+          "A. Maiti",
+          "A. Maloney",
+          "S. Mandrà",
+          "L. S. Martin",
+          "O. Martin",
+          "E. Mascot",
+          "P. Masih Das",
+          "D. Maslov",
+          "M. Mathews",
+          "C. Maxfield",
+          "J. R. McClean",
+          "M. McEwen",
+          "S. Meeks",
+          "A. Megrant",
+          "K. C. Miao",
+          "Z. K. Minev",
+          "R. Molavi",
+          "S. Molina",
+          "S. Montazeri",
+          "C. Neill",
+          "M. Newman",
+          "A. Nguyen",
+          "M. Nguyen",
+          "C.-H. Ni",
+          "M. Yuezhen Niu",
+          "N. Noll",
+          "L. Oas",
+          "W. D. Oliver",
+          "R. Orosco",
+          "K. Ottosson",
+          "A. Pagano",
+          "A. Di Paolo",
+          "S. Peek",
+          "D. Peterson",
+          "A. Pizzuto",
+          "E. Portoles",
+          "R. Potter",
+          "O. Pritchard",
+          "L. Pryadko",
+          "M. Qian",
+          "C. Quintana",
+          "G. Ramachandran",
+          "A. Ranadive",
+          "M. J. Reagor",
+          "R. Resnick",
+          "D. M. Rhodes",
+          "D. Riley",
+          "R. Rodriguez",
+          "E. Ropes",
+          "L. B. De Rose",
+          "E. Rosenberg",
+          "D. Rosenstock",
+          "E. Rossi",
+          "P. Roushan",
+          "D. A. Rower",
+          "R. Salazar",
+          "K. Sankaragomathi",
+          "M. Can Sarihan",
+          "M. Schaefer",
+          "S. Schroeder",
+          "H. F. Schurkus",
+          "A. Shahingohar",
+          "M. J. Shearn",
+          "A. Shorter",
+          "N. Shutty",
+          "V. Shvarts",
+          "S. Small",
+          "W. C. Smith",
+          "D. A. Sobel",
+          "B. Spells",
+          "S. Springer",
+          "G. Sterling",
+          "J. Suchard",
+          "A. Szasz",
+          "A. Sztein",
+          "M. Taylor",
+          "J. Priyanka Thiruraman",
+          "D. Thor",
+          "D. Timucin",
+          "E. Tomita",
+          "A. Torres",
+          "M. M. Torunbalci",
+          "H. Tran",
+          "A. Vaishnav",
+          "J. Vargas",
+          "S. Vdovichev",
+          "G. Vidal",
+          "B. Villalonga",
+          "C. Vollgraff Heidweiller",
+          "M. Voorhees",
+          "S. Waltman",
+          "J. Waltz",
+          "S. X. Wang",
+          "D. Wang",
+          "B. Ware",
+          "J. D. Watson",
+          "Y. Wei",
+          "T. Weidel",
+          "T. White",
+          "K. Wong",
+          "B. W. K. Woo",
+          "C. J. Wood",
+          "M. Woodson",
+          "C. Xing",
+          "Z. J. Yao",
+          "P. Yeh",
+          "B. Ying",
+          "J. Yoo",
+          "N. Yosri",
+          "E. Young",
+          "G. Young",
+          "A. Zalcman",
+          "R. Zhang",
+          "Y. Zhang",
+          "N. Zhu",
+          "N. Zobrist",
+          "Z. Zou",
+          "H. Neven",
+          "S. Boixo",
+          "C. Jones",
+          "J. Kelly",
+          "A. Bourassa",
+          "K. J. Satzinger"
+        ],
+        "abstract": "Fault-tolerant quantum computing requires a universal gate set, but the necessary non-Clifford gates represent a significant resource cost for most quantum error correction architectures. Magic state cultivation offers an efficient alternative to resource-intensive distillation protocols; however, testing the proposal’s assumptions represents a challenging departure from quantum memory experiments. We present an experimental study of magic state cultivation on a superconducting quantum processor. We implement cultivation, including code-switching into a surface code, and develop a fault-tolerant measurement protocol to bound the magic state fidelity. Cultivation reduces the error by a factor of 40, with a state fidelity of at least 0.9999(1) (retaining 8% of attempts). Our results experimentally establish magic state cultivation as a viable solution to one of quantum computing’s most important challenges.",
+        "abstract_basis": "crossref_abstract",
+        "abstract_source_url": "https://api.crossref.org/journals/1095-9203/works?filter=from-online-pub-date%3A2026-10-15%2Cuntil-online-pub-date%3A2026-10-18%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
+        "url": "https://www.science.org/doi/10.1126/science.aee7961",
+        "pdf_url": "",
+        "published": "2026-10-15T13:01:00Z",
+        "updated": "2026-10-15T13:01:00Z",
+        "categories": [],
+        "sources": [
+          "science"
+        ],
+        "publication": {
+          "journal_id": "science",
+          "journal": "Science",
+          "doi": "10.1126/science.aee7961",
+          "url": "https://www.science.org/doi/10.1126/science.aee7961",
+          "published": "2026-10-15T13:01:00Z",
+          "date_basis": "publisher_rss"
+        },
+        "keyword_score": 7,
+        "topics": [
+          "logical_qec",
+          "magic_stabilizer"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "quantum error correction"
+          ],
+          "magic_stabilizer": [
+            "magic state",
+            "non-Clifford"
+          ]
+        },
+        "first_seen_at": "2026-10-16T04:38:00Z",
+        "doi": "10.1126/science.aee7961"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.21801",
+        "version": 1,
+        "title": "Three-axis Active Magnetic Compensation with Spatial Feedforward Matrix Decoupling and Hysteresis PI Regulation for Suppressing Zeeman Decoherence of Cold Atom Quantum Memories",
+        "authors": [
+          "Ya Li",
+          "Xiao-Long Zou",
+          "Xiang-Yao Liang",
+          "Chang-Qing Niu",
+          "Xin Guo",
+          "Wei-Zhe Qiao",
+          "You-Xing Chen"
+        ],
+        "abstract": "Cold-atom quantum memories require a near-zero magnetic environment (residual field <1 microtesla) to mitigate Zeeman decoherence. Conventional three-axis active compensation suffers from inter-coil crosstalk and geomagnetic drift, which degrade the uniformity and long-term stability of the zero-field region. To address this, we propose a spatiotemporally cooperative feedback-controlled suppression architecture for magnetic interference. An integrally printed three-dimensional orthogonal coil frame mechanically suppresses inter-axis flux leakage. A spatial feedforward inverse matrix is introduced to algorithmically eliminate first-order cross-coupling. A dual-threshold hysteresis incremental-PI controller filters magnetometer quantization fluctuations and avoids frequent small jitter adjustments of coil driving currents. Hardware ablation experiments, long-duration stability tests and spatial magnetic-field mapping were conducted. Experimental results show that during a 714.4 s continuous steady-hold stage, the mean and maximum residual fields at the central point reach 0.112 microtesla and 0.224 microtesla, respectively. The overlapping Allan deviations of all three components remain below 5 nT for averaging times of 1.9-178.2 s. Based on differential-ferrofluid lattice-scan measurements combined with centre-constrained quadratic vector reconstruction and soft Maxwell regularization, a weak-field spatial distribution with an RMS variation of 5.65 microtesla is fitted within a spherical region of interest of radius 5 mm, where 67.5% of the model volume meets the sub-5 microtesla coverage criterion. For a prolate ellipsoidal region matching the atomic-cloud distribution with full axis lengths of 10, 5, and 5 mm, the upper field bound within 93.7% of the volume is 2.68 microtesla.",
+        "url": "https://arxiv.org/abs/2610.21801",
+        "pdf_url": "https://arxiv.org/pdf/2610.21801v1",
+        "published": "2026-10-15T12:50:16Z",
+        "updated": "2026-10-15T12:50:16Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 6,
+        "topics": [
+          "logical_qec",
+          "adaptive_resources"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "decoupling"
+          ],
+          "adaptive_resources": [
+            "feedforward"
           ]
         },
         "sources": [
