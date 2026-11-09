@@ -1,0 +1,320 @@
+{
+  "analyses": [
+    {
+      "id": "2611.01520",
+      "version": 1,
+      "analysis": {
+        "summary": "stationarity test 将局域 Hamiltonian learning 的温度依赖改善为 e^{O(β)}。",
+        "problem": "既有高温以外学习界中的 e^{poly(β)} 代价是否可降低？",
+        "setting": "n-qubit D-dimensional finite-range Hamiltonian；已知 β≥1 的 Gibbs 或受控 thermal-metastable copies。",
+        "main_results": [
+          "作者给 coefficient ℓ∞ error ε、failure δ 下 copies 为 Õ(e^{O(β)}ε^-2 log(n/δ))，总时间再乘 n。",
+          "单拷贝测量支撑半径 O(β²+β log(1/ε))；不是单 qubit product readout。",
+          "metastable 版本要求 local drift ζ≤exp(-Cβ^{2D+1})，且目标误差高于 Õ(e^{O(β)}ζ) floor。"
+        ],
+        "techniques": [
+          "smooth frequency filter；Fisher-information coercivity；projected SGD。"
+        ],
+        "assumptions": [
+          "已知温度、有限作用范围与 geometry 条件。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "仅摘要，未检查 optimality 的比较域及局部测量实施成本；这是 copy access learning，不是固定门 benchmarking。"
+        ],
+        "relevance": [
+          "直接对应 quantum learning 的样本、局域测量与 drift 取舍。"
+        ],
+        "follow_up": [
+          "读者建议：比较允许的测量球与实验单基 readout 的访问差异。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:04:05.397Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.01520v1"
+      }
+    },
+    {
+      "id": "2611.01434",
+      "version": 1,
+      "analysis": {
+        "summary": "任意固定非零 uniform loss 下，特定 boson sampling 模型可在 Haar 平均意义经典高效采样。",
+        "problem": "高 photon counts 是否足以维持 sampling hardness？",
+        "setting": "distinct single-photon Fock inputs 加 vacuum；equal bounded squeezing 的 Gaussian boson sampling。",
+        "main_results": [
+          "作者利用高阶 photon correlations 的损耗抑制，构造对规模和 inverse TV error 多项式的 sampler。",
+          "误差对 Haar-random interferometers 平均；线性增长的 detected photons 仍不排除此类模拟。"
+        ],
+        "techniques": [
+          "low-correlation-order approximation。"
+        ],
+        "assumptions": [
+          "固定 loss rate 的渐近极限；限定输入态和平均误差。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "不覆盖任意 interferometer、vanishing loss 或一般 BQP；TV error 不等于相对误差。"
+        ],
+        "relevance": [
+          "具体联系噪声、反集中与 computational advantage 的限制。"
+        ],
+        "follow_up": [
+          "读者建议：比较平均误差与高概率保证之间是否有额外损失。"
+        ],
+        "relevance_score": 86,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:04:05.398Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.01434v1"
+      }
+    },
+    {
+      "id": "2611.03484",
+      "version": 1,
+      "analysis": {
+        "summary": "把 leftover hashing 的 seed 平均安全界转成坏 seed 的失败概率控制。",
+        "problem": "一次抽取后复用 seed 时，平均保证不足以说明每个固定 seed 都安全。",
+        "setting": "almost two-universal hashing，对手持 quantum side information；blockwise reuse。",
+        "main_results": [
+          "作者主张单轮输出 δ-close-to-uniform 的失败概率至多 (ε/δ)^2。",
+          "k 轮 blockwise guarantee 的失败概率界为 ((2k−1)ε/δ)^2，并讨论非理想 hash families。"
+        ],
+        "techniques": [
+          "quantum leftover hashing；bad-seed tail bounds。"
+        ],
+        "assumptions": [
+          "ε 是相应 leftover-hash 平均界，δ 是目标安全距离；不能当无条件任意 seed 保证。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "只读官方 HTML 摘要；未审阅 seed/source 独立性、跨轮依赖和非理想家族扩展的完整条件。"
+        ],
+        "relevance": [
+          "与 quantum side information 和固定随机选择的操作保证有关。"
+        ],
+        "follow_up": [
+          "读者建议：核查与单次抽取 design 的概率保证相比，是否采用相同平均/条件化口径。"
+        ],
+        "relevance_score": 82,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:04:50.895Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/html/2611.03484v1"
+      }
+    },
+    {
+      "id": "2611.03089",
+      "version": 1,
+      "analysis": {
+        "summary": "不收录：fermionic reservoirs 下 mean-force Gibbs state 的二阶耦合修正。",
+        "problem": "超出极弱耦合时 bare Gibbs approximation 如何失效？",
+        "setting": "generic fermionic system、thermal reservoir 与 arbitrary chemical potential。",
+        "main_results": [
+          "作者推导 particle/hole channel 修正，并与数值模型比较。"
+        ],
+        "techniques": [
+          "KMS relation；mode reduced state。"
+        ],
+        "assumptions": [
+          "second-order perturbation。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "未给 learning/readout、QEC 或设计资源的新保证。"
+        ],
+        "relevance": [
+          "与当前研究问题联系不足；Gibbs-state 关键词不是充分收录理由。"
+        ],
+        "follow_up": [],
+        "relevance_score": 42,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:04:50.896Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/html/2611.03089v1"
+      }
+    },
+    {
+      "id": "2611.02339",
+      "version": 1,
+      "analysis": {
+        "summary": "用 sparse concatenated factor graphs 表示接近 CSS hashing bound 的码，而不把它们直接等同稀疏物理 checks。",
+        "problem": "接近容量通常要求 dense parity checks，与 bounded-degree 图实现存在张力。",
+        "setting": "memoryless Pauli channels；separate bit/phase maximum-likelihood decoding。",
+        "main_results": [
+          "作者构造 LDPC/LDGM/GIRA components 的 CSS ensembles，证明两解码分量同时可靠。",
+          "达到任意接近 CSS hashing rate，并保持 bounded graphical complexity。"
+        ],
+        "techniques": [
+          "average weight-distribution bounds；Miller–Burshtein analysis。"
+        ],
+        "assumptions": [
+          "ML decoding 假设与 graphical sparsity 均需保留。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "只读 HTML 摘要；未审阅参数及证明。bounded graph degree 不自动提供 efficient iterative decoding 或浅层 noisy syndrome extraction。"
+        ],
+        "relevance": [
+          "联系 hashing benchmark、编码结构与实现资源。"
+        ],
+        "follow_up": [
+          "读者建议：检查间接 syndrome extraction 是否需要额外 ancillas 和高权重有效 checks。"
+        ],
+        "relevance_score": 88,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:04:50.897Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/html/2611.02339v1"
+      }
+    },
+    {
+      "id": "2611.02296",
+      "version": 1,
+      "analysis": {
+        "summary": "以大量 ancillas 换取 analytic-function data loading 的近平方深度改善。",
+        "problem": "QROM、diagonal block-encoding 和态准备是否能突破既有线性 depth？",
+        "setting": "n qubits 离散 D-dimensional hypercube 上 analytic functions，Clifford+T circuits。",
+        "main_results": [
+          "作者给 error 2^{-Ω(n/D)} 下 depth O(√(n log₂ n/D))。",
+          "代价为 2^{O(√(nD log₂ n))} ancillas；常数依赖函数的 analytic properties。"
+        ],
+        "techniques": [
+          "sparse Walsh–Hadamard transforms；piecewise Taylor approximations。"
+        ],
+        "assumptions": [
+          "函数类与变量维数、离散精度应一起核算。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "只读 HTML 摘要/引言；不是总 gate count 或 magic 同时最优，未检查 connectivity/ancilla initialization。"
+        ],
+        "relevance": [
+          "具体呈现 depth–ancilla tradeoff，适于资源比较。"
+        ],
+        "follow_up": [
+          "读者建议：固定统一精度时比较含辅助 qubits 的总空间和 T-count。"
+        ],
+        "relevance_score": 84,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:04:50.897Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/html/2611.02296v1"
+      }
+    },
+    {
+      "id": "2611.01995",
+      "version": 1,
+      "analysis": {
+        "summary": "不收录：SHARP 是面向 OpenQASM 的硬件可配置静态验证框架。",
+        "problem": "ISA 更新时如何让验证引擎保持可维护？",
+        "setting": "软件规则、ISA descriptions 与 compiler validation。",
+        "main_results": [
+          "作者通过数据驱动规则解耦硬件描述和验证。"
+        ],
+        "techniques": [
+          "rule-based static analysis。"
+        ],
+        "assumptions": [
+          "程序级有效性验证。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "不提供 physical gate certification 或量子资源定理。"
+        ],
+        "relevance": [
+          "属于当前排除的软件工程范围。"
+        ],
+        "follow_up": [],
+        "relevance_score": 0,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:04:50.898Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/html/2611.01995v1"
+      }
+    },
+    {
+      "id": "2611.02095",
+      "version": 1,
+      "analysis": {
+        "summary": "物理 interaction order 决定强噪声下维持任意正 steady-state magic 所需的 reset-rate onset。",
+        "problem": "扩大 controller 或加入 noisy ancillas 能否降低从 stabilizer convex hull 外产生稳态的控制成本？",
+        "setting": "全体 qubits 均受 depolarization γ；Hamiltonian 至多 k-body、每 site strength budget J；local stabilizer replacement resets，k≥2。",
+        "main_results": [
+          "作者以 exact global stabilizer decomposition 给所有有限 controller 的排除界，再用 k-qubit module 匹配 onset exponent。J/γ→0、k 固定时，max reset rate、total rate 和等价 Lindblad budget 的 onset 均为 Θ_k(γ(γ/J)^{1/(k−1)})。",
+          "两体 sharp coefficient 1/(2√2) 对每个固定 N≥2 的 mixed-target/heterogeneous 模型成立；对 growing N 的 uniform 结论另有限定为 pure Pauli targets/common rates 等所述情形。",
+          "physical two-body couplings 加 noisy mediator 不会因有效高阶 Hamiltonian 就绕开两体 bound。"
+        ],
+        "techniques": [
+          "positive stabilizer reconstruction；hafnian geometry；random-order forest expansion。"
+        ],
+        "assumptions": [
+          "onset 仅要求任意大于零的 magic，不固定资源量或密度。",
+          "J 与 k 预算针对完整物理装置，包括 auxiliaries。"
+        ],
+        "limitations": [
+          "本轮读取摘要及主文模型/结果片段，未核查 Supplemental Material 的证明和数值代码。",
+          "一般 growing mixed-target class 的 sharp coefficient 尚未闭合；不能将 fixed-size 常数无条件推广到所有网络。",
+          "这是 rate budget，不是离散 T-count、design magic cost 或完整计算优势定理。"
+        ],
+        "relevance": [
+          "直接连接 magic、interaction locality、ancillas 与 noise resource bounds。"
+        ],
+        "follow_up": [
+          "读者建议：区分 magic onset、固定 magic density 与可用于计算的资源产率。"
+        ],
+        "relevance_score": 98,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:04:50.899Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.02095v1"
+      }
+    },
+    {
+      "id": "2611.01592",
+      "version": 1,
+      "analysis": {
+        "summary": "连续 QEC 中的 terminal decisions 和计算这些 decisions 所需的 causal persistent memory 是不同资源。",
+        "problem": "测量历史的哪些区别必须保留到 recovery，模型误差又会怎样影响收益？",
+        "setting": "open continuous process tensors 与 causal instruments、conditional recovery；monitored stabilizer codes。",
+        "main_results": [
+          "common-optimal-correction criterion 判断记录能否无损合并，并给 separated CSS inference 的分解。",
+          "指定 finite-strength counting model 中五个 persistent classical states 达完整记录最优；同隐藏错误 schedule 的 two-window diffusive model 虽仅九个 terminal labels，精确 causal recovery 却需无界 memory。",
+          "diffusive case 中 m 个 persistent states 的 optimal fidelity deficit 为 Θ(m^-2)；主文还提出在有界 response/control 资源下对同一 controller class 的 uniform stability。"
+        ],
+        "techniques": [
+          "record-conditioned optimal recovery；finite-state causal compression；quantizers；process–instrument contraction。"
+        ],
+        "assumptions": [
+          "五态/九标签/逆平方规律针对所构造模型，不是所有 continuous QEC 的通用常数。",
+          "persistent states 是离散 memory cardinality，不是连续 Bayesian statistic 的变量个数。"
+        ],
+        "limitations": [
+          "只读摘要、引言及任务边界片段；未审阅 memory theorem、stability inequalities 和逻辑 T 路径的全部证明。",
+          "允许的 terminal CPTP recovery、固定 decoder 和中途控制应分别比较，不能把 gate task 的收益都归于最终恢复。"
+        ],
+        "relevance": [
+          "直接对应 side-information timing、adaptive resources 与 logical recovery。"
+        ],
+        "follow_up": [
+          "读者建议：核查目标固定 noisy gate 模型允许哪些记录和中途干预。",
+          "读者建议：比较近似有限 memory 时，process estimation error 与量化误差的合成。"
+        ],
+        "relevance_score": 96,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:04:50.900Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.01592v1"
+      }
+    }
+  ]
+}
