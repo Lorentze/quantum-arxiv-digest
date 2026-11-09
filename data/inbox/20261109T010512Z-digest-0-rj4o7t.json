@@ -1,0 +1,357 @@
+{
+  "analyses": [
+    {
+      "id": "doi:10.1103/3qlc-bqv9",
+      "version": 1,
+      "analysis": {
+        "summary": "利用高温 thermalization、全局旋转与响应分解，实验重建工程化多体 Hamiltonian 的相对系数。",
+        "problem": "真实固体自旋网络控制有限，多体相互作用参数难以直接测量。",
+        "setting": "periodic driving 的 solid-state nuclear spin system；两次相同 thermalization 中间夹 tunable global rotation。",
+        "main_results": [
+          "作者对旋转角响应做 SO(3) Fourier transform 和 PCA，恢复全部二体项及部分三、四体项的相对系数。",
+          "摘要声称协议对 Hamiltonian 参数个数为多项式伸缩。"
+        ],
+        "techniques": [
+          "thermalization–rotation–thermalization；Fourier/PCA。"
+        ],
+        "assumptions": [
+          "依赖 engineered effective Hamiltonian 与高温 thermalization 的实验访问。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "正文受订阅限制；没有从摘要核实 shots、尺度绝对校准或 SPAM robustness。",
+          "这是 Hamiltonian tomography，不是仅访问固定 noisy gate 的无逆门认证。"
+        ],
+        "relevance": [
+          "与受限控制下 characterization 和测量访问有具体方法联系。"
+        ],
+        "follow_up": [
+          "读者建议：核查响应可辨识性、整体比例因子及非理想 thermalization 的偏差。"
+        ],
+        "relevance_score": 83,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:03:33.470Z",
+        "evidence_level": "abstract",
+        "source_url": "https://journals.aps.org/prl/abstract/10.1103/3qlc-bqv9",
+        "publication_significance": [
+          "阅读推断，非实际编辑理由：用 thermalization 结构与全局控制突破固体多体模型的参数识别障碍，具有明确实验与 characterization 意义，符合 Physical Review Letters 聚焦物理方法进展的形式。",
+          "仅摘要证据，未评价证明质量、全量先行比较及实验误差预算。"
+        ]
+      }
+    },
+    {
+      "id": "doi:10.1103/6jd1-s1b3",
+      "version": 1,
+      "analysis": {
+        "summary": "将信号编码为 oscillator phase-space 几何面积，并用 squeezing 放大以超越 SQL。",
+        "problem": "如何减少 sensing 对 oscillator 初态纯度的依赖？",
+        "setting": "coupled qubit–oscillator systems；longitudinal 和 dispersive coupling。",
+        "main_results": [
+          "作者主张协议独立于 oscillator 初态，适用于高温或 logical error-corrected states。",
+          "讨论 qubit Markovian noise 的鲁棒性，以及 force sensing、coupling measurement 与 pulse calibration。"
+        ],
+        "techniques": [
+          "geometrical phase；squeezed phase-space area。"
+        ],
+        "assumptions": [
+          "SQL 比较依赖具体物理资源口径。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "仅摘要，正文受限；未核查 squeezing、总作用时间、shots 和 readout 成本。",
+          "初态无关并不等于 SPAM-free，也不是任意热态单基 QFI 捕获定理。"
+        ],
+        "relevance": [
+          "与温度鲁棒 readout 和 calibration 的任务连接明确，作为辅助 metrology 条目收录。"
+        ],
+        "follow_up": [
+          "读者建议：对照总能量/作用时间相同的 SQL 基线。"
+        ],
+        "relevance_score": 74,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:03:33.471Z",
+        "evidence_level": "abstract",
+        "source_url": "https://journals.aps.org/prl/abstract/10.1103/6jd1-s1b3",
+        "publication_significance": [
+          "阅读推断，非实际编辑理由：用几何相位把高温兼容性和 squeezing gain 结合，并联系实际校准任务，具有量子传感物理意义，适合 Physical Review Letters 的机制导向结果。",
+          "仅摘要证据，不能判断相对既有几何 sensing 协议的新颖性和完整资源优势。"
+        ]
+      }
+    },
+    {
+      "id": "2611.04496",
+      "version": 1,
+      "analysis": {
+        "summary": "不收录：以 broken-symmetry Hartree–Fock reference 改善化学体系 SQD 能量。",
+        "problem": "reference state 会影响采样 ansatz 和 configuration recovery。",
+        "setting": "iron–sulfur clusters 与大规模经典子空间后处理。",
+        "main_results": [
+          "作者报告与 DMRG 能量的数值比较和外推。"
+        ],
+        "techniques": [
+          "BS-UHF；SQD；configuration recovery。"
+        ],
+        "assumptions": [
+          "具体 active spaces 与数值流程。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "摘要未给可迁移的 shadow/measurement complexity 或 fermionic design 保证。"
+        ],
+        "relevance": [
+          "属于没有直接量子信息测量方法联系的化学计算，低于收录阈值。"
+        ],
+        "follow_up": [],
+        "relevance_score": 22,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:03:33.471Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.04496v1"
+      }
+    },
+    {
+      "id": "2611.04432",
+      "version": 1,
+      "analysis": {
+        "summary": "不收录：PINEM interactions 与 free drift 实现 free-electron sideband 的通用控制。",
+        "problem": "有限操作序列能否逼近有限输入子空间到完整 sideband 空间的 isometry？",
+        "setting": "ideal electron-sideband Hilbert space，并有有限能散的数值优化。",
+        "main_results": [
+          "作者给出任意精度近似的 controllability 结论，涵盖 state preparation、unitary gates 和 encoding。"
+        ],
+        "techniques": [
+          "alternating PINEM and drift。"
+        ],
+        "assumptions": [
+          "平台特定控制模型。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "摘要没有目标 depth/ancilla/magic 资源界、认证或 QEC 方法。"
+        ],
+        "relevance": [
+          "通用控制与研究问题只有宽泛关联。"
+        ],
+        "follow_up": [],
+        "relevance_score": 50,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:03:33.471Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.04432v1"
+      }
+    },
+    {
+      "id": "2611.04381",
+      "version": 1,
+      "analysis": {
+        "summary": "promise-free approximate circuit membership 对多种距离和免费操作集呈 PP-hard。",
+        "problem": "知道接近免费操作是否易于求最小 gate/magic 成本？",
+        "setting": "输入门集可实现 Clifford+T；S 为 identity、Clifford-only 或 generalized permutation 的相关集合。",
+        "main_results": [
+          "作者在宽误差区间建立 PP-hardness；部分 trace-based 情形覆盖所有非平凡 ε。",
+          "由 membership 推得 total、non-Clifford 或 superposition gate count/depth 优化的 PP-hardness。"
+        ],
+        "techniques": [
+          "complexity reductions；promise-free membership。"
+        ],
+        "assumptions": [
+          "各 S、metric、ε 的域不同，不能混为统一定理。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "不直接给每个线路的 magic 下界；不排除特定设计架构的显式高效构造。"
+        ],
+        "relevance": [
+          "与 magic minimization、编译和资源下界的算法困难性直接相关。"
+        ],
+        "follow_up": [
+          "读者建议：核查近似 metric 与相对 design 保证是否匹配。"
+        ],
+        "relevance_score": 87,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:03:33.472Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.04381v1"
+      }
+    },
+    {
+      "id": "2611.04179",
+      "version": 1,
+      "analysis": {
+        "summary": "用量化优先级与 FIFO buckets 降低 reinforcement-learned qLDPC decoder 的调度硬件成本。",
+        "problem": "heap-based RL-S 调度会带来额外硬件开销。",
+        "setting": "[[288,12,18]] bivariate-bicycle code；BP、RL-S 与 BRL-S 的综合比较。",
+        "main_results": [
+          "2/4/8 priority levels 的设计中，作者报告 FPGA LUT 降约 68–72%。",
+          "ASIC synthesis 的面积降约 63–67%，estimated power 降约 64–69%。"
+        ],
+        "techniques": [
+          "bucket scheduling；quantized priorities。"
+        ],
+        "assumptions": [
+          "报告的是指定 decoder 实现和综合条件。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "面积和估计功耗并非容错阈值或实际端到端 latency；摘要未列精度保持范围。"
+        ],
+        "relevance": [
+          "有明确实时 QEC 解码联系，作为实现成本参考条目收录。"
+        ],
+        "follow_up": [
+          "读者建议：检查相同 LER 下吞吐与最坏 latency，避免只比较综合面积。"
+        ],
+        "relevance_score": 72,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:03:33.472Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.04179v1"
+      }
+    },
+    {
+      "id": "2611.03851",
+      "version": 1,
+      "analysis": {
+        "summary": "不收录：PINN 在已知动力学模型中优化单、双 qubit control pulses。",
+        "problem": "在控制约束下合成高保真目标门。",
+        "setting": "Schrödinger/Lindblad 模型；Hadamard 与 CNOT。",
+        "main_results": [
+          "作者以 MUB 训练、Haar 输入验证，在仿真中报告较低 average infidelity，并压缩控制参数。"
+        ],
+        "techniques": [
+          "physics-informed neural nets；Chebyshev pulse expansion。"
+        ],
+        "assumptions": [
+          "已知模型及可调整时变控制。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "不是学习未知固定 noisy gate；未给 SPAM-robust guarantee 或通用样本界。"
+        ],
+        "relevance": [
+          "与当前固定门认证模型不匹配，模型驱动控制优化关联不足。"
+        ],
+        "follow_up": [],
+        "relevance_score": 55,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:04:05.396Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.03851v1"
+      }
+    },
+    {
+      "id": "2611.03811",
+      "version": 1,
+      "analysis": {
+        "summary": "coherent errors 可把 surface-code 态推向 Markov length 发散的长程纠缠临界区。",
+        "problem": "噪声后的量子信息存活与局部可恢复性如何由混态结构刻画？",
+        "setting": "topological codes、higher-form symmetry、honeycomb surface code。",
+        "main_results": [
+          "作者证明保持 higher-form symmetry 与非零 coherent information 时，generic logical input 的 noisy state 长程纠缠。",
+          "将有限 Markov length 的 local recovery 推广到 locally parameterized families，涵盖 Lindbladian、coherent error 加 syndrome dephasing 和 thermal states。",
+          "把 CMI 与 Majorana network conductance 相联系。"
+        ],
+        "techniques": [
+          "coherent information；Markov length；local recovery。"
+        ],
+        "assumptions": [
+          "对称性、generic logical inputs 与 locally parameterized family 条件需保留。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "仅摘要，未核查相边界、恢复误差和复杂度；长程纠缠不自动等于可高效纠错。"
+        ],
+        "relevance": [
+          "直接联系 QEC、coherent noise 与 recovery/CMI 方法。"
+        ],
+        "follow_up": [
+          "读者建议：核查 Markov length 发散是否阻碍目标局域 recovery。"
+        ],
+        "relevance_score": 96,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:04:05.396Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.03811v1"
+      }
+    },
+    {
+      "id": "2611.03329",
+      "version": 1,
+      "analysis": {
+        "summary": "用 Hamiltonian perturbation bounds 与 Lean 证书检查设备低能空间是否保留目标码空间。",
+        "problem": "工程化相互作用含有 unwanted terms，不能仅凭目标 Hamiltonian 假定码成立。",
+        "setting": "八 qubit toric-code array 的 device model；隔离低能态与 subspace overlap。",
+        "main_results": [
+          "作者比较 strength-sum、anticommuting Pauli grouping 与 diagonalization；grouping bound 更紧。",
+          "实例中在 leakage budget 内寻找参数，并验证四个孤立低能态接近 ideal code space。"
+        ],
+        "techniques": [
+          "spectral/subspace perturbation；Pauli grouping；formal verification。"
+        ],
+        "assumptions": [
+          "证书针对定义的 effective device Hamiltonian。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "未审阅 Lean 公理、代码与模型误差；低能 subspace 保留不是 noisy circuit threshold 或 logical fidelity 的完整保证。"
+        ],
+        "relevance": [
+          "不是纯软件工程，具体针对 QEC 编码空间稳定性。"
+        ],
+        "follow_up": [
+          "读者建议：核查未建模耦合与驱动近似误差如何进入证书。"
+        ],
+        "relevance_score": 75,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:04:05.397Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.03329v1"
+      }
+    },
+    {
+      "id": "2611.02963",
+      "version": 1,
+      "analysis": {
+        "summary": "显式 full-rank lossless expanders 导出好 qLDPC 与线性范围 small-set confinement。",
+        "problem": "某些 quantum memory 分析还要求具体 X/Z check matrices 满行秩。",
+        "setting": "finite 2-group action、binary adjacency matrices、balanced-product codes。",
+        "main_results": [
+          "作者以 fixed-size orbit matrix 检测 rank，并用 sparse gadget factor 在控制 expansion 损失下补足 rank。",
+          "代入 balanced product 得到 asymptotically good qLDPC，指定 check matrices full-row-rank 且满足 small-set soundness。",
+          "在所引用 memory framework 及其动力学假设下，充分低固定温度 lifetime guarantee 为 exp(Ω(N))。"
+        ],
+        "techniques": [
+          "2-group Cayley/Ramanujan graphs；rank-preserving balanced product。"
+        ],
+        "assumptions": [
+          "memory lifetime 是带外部 dynamical assumptions 的推论。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明和摘要未说明的假设。",
+          "不能写成任意物理热浴下 self-correcting memory；small-set qLTC 不等于所有错误范围全局 soundness。"
+        ],
+        "relevance": [
+          "直接关联 qLDPC、confinement 与长时量子存储。"
+        ],
+        "follow_up": [
+          "读者建议：核查动力学假设及 noisy syndrome 电路是否纳入。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-09T01:04:05.397Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.02963v1"
+      }
+    }
+  ]
+}
