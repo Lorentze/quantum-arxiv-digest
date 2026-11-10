@@ -1,0 +1,221 @@
+{
+  "analyses": [
+    {
+      "id": "2611.01360",
+      "version": 1,
+      "analysis": {
+        "summary": "作者为 abelian Pauli stabilizer codes 提出不依赖具体 decoder 的 logical-class diagnostic layer，检验给定 syndrome family 中的恢复是否对所有编码输入保持作用，避免将 syndrome 消失误当作逻辑正确。",
+        "problem": "同 syndrome 的物理错误可以落入不同逻辑类，decoder 的候选修正可能无 syndrome 却产生逻辑误差。",
+        "setting": "声明的 same-syndrome error family；supercharge 辅助表述及其 exact binary diagnostic 版本。",
+        "main_results": [
+          "二元形式区分 check violation、无害 stabilizer residual 和 syndrome-silent logical action，CSS 有两 sector 表述。",
+          "两个记录相容候选的相对逻辑类可在线计算；在 Steane code 验证，并提出 Gross qLDPC 的 static–circuit bridge audit。"
+        ],
+        "techniques": [
+          "nilpotent supercharge；graded commutators；残差按 stabilizer 取商。"
+        ],
+        "assumptions": [
+          "faithful window 的保证依赖已声明错误族；相对类消去未知 fault。"
+        ],
+        "limitations": [
+          "仅读取官方摘要，未审阅正文证明及摘要未说明的假设。",
+          "并不意味着识别实际发生的未知错误或测出绝对逻辑 fidelity。",
+          "软件使用不增加物理 qubits；形式中的 fermionic ancilla register 不能混同于实机必需 ancilla。",
+          "正文和电路桥接审计细节未审。"
+        ],
+        "relevance": [
+          "直接关联固定码和恢复的逻辑正确性及可识别性。"
+        ],
+        "follow_up": [
+          "读者建议：检查哪些错误族可由真实噪声假设覆盖，及 syndrome 历史能否支撑所需声明。"
+        ],
+        "relevance_score": 88,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-10T01:04:19.689Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.01360v1"
+      }
+    },
+    {
+      "id": "2611.01180",
+      "version": 1,
+      "analysis": {
+        "summary": "论文利用 dual-rail 或 spin-locked transmon 编码，降低 metamaterial 共享模式产生的 spectator 纠缠，并用 two-tone cross-resonance 实现纠缠门与 joint parity measurement，为非局部 QEC 连接提供具体元件。",
+        "problem": "裸 transmon 的 dispersive spectator coupling 需要延长门的 decoupling，限制共享模式扩展。",
+        "setting": "编码 transmons 通过 metamaterial waveguide 相连；两 dual-rail transmons、三 resonators 的模拟。",
+        "main_results": [
+          "编码使所述耦合在逆 detuning 中由二阶降为四阶。",
+          "mode lifetime 30 μs 下，transmon relaxation 被 herald 为 erasure 后，152 ns 门 infidelity 为 1.4×10⁻³，主导残差为 photon loss。",
+          "150 μs lifetime 和80 MHz耦合的参数估计，在10⁻³预算下允许13 qubits/25 resonators。"
+        ],
+        "techniques": [
+          "编码抑制 dispersive coupling；Mølmer–Sørensen interaction；选择性并行 parity readout。"
+        ],
+        "assumptions": [
+          "heralded erasure 与未标记误差分开；扩展估算使用比模拟大5倍的 mode lifetime。"
+        ],
+        "limitations": [
+          "仅读取官方摘要，未审阅正文证明及摘要未说明的假设。",
+          "门时长受 mode spacing 限制；photon loss 随门时长增加。",
+          "这是模拟及规模估算，未给出实际 decoder 下的 logical fidelity 或阈值。"
+        ],
+        "relevance": [
+          "硬件工作与 QEC parity primitive 和 erasure 模型有明确联系。"
+        ],
+        "follow_up": [
+          "读者建议：将 erasure rate、残余相干误差与测量误差一起代入固定码恢复评估。"
+        ],
+        "relevance_score": 75,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-10T01:04:19.690Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.01180v1"
+      }
+    },
+    {
+      "id": "2611.00985",
+      "version": 1,
+      "analysis": {
+        "summary": "作者建立两类互补 normal factor graphs：quantum-code NFG 描述 stabilizer/normalizer label codes，quantum-probability NFG 描述编码、噪声和测量概率；double-edge formulation 连接两者。",
+        "problem": "把经典 factor graph 方法用于量子码，需要同时处理自正交约束与量子概率结构。",
+        "setting": "stabilizer 和 entanglement-assisted codes，应用于 convolutional、tail-biting 与两类 LDPC stabilizer codes。",
+        "main_results": [
+          "图结构用于建立自正交性、由 component codes 构码，并识别 encoding/decoding circuits。",
+          "概率表示扩展到 entanglement-assisted codes。"
+        ],
+        "techniques": [
+          "normal factor graph；label-code duality；double-edge representation。"
+        ],
+        "assumptions": [
+          "两类图表达不同对象，不应把标签约束图等同于全部量子概率。"
+        ],
+        "limitations": [
+          "仅读取官方摘要，未审阅正文证明及摘要未说明的假设。",
+          "本次读取 HTML 的摘要，正文与附录证明未审。",
+          "摘要未报告更优阈值、实际解码速度或样本复杂度，表示框架本身不保证这些优势。"
+        ],
+        "relevance": [
+          "与 stabilizer 构造、编码及 syndrome 概率建模直接相关。"
+        ],
+        "follow_up": [
+          "读者建议：选一个小型简并码比较两类图对逻辑类概率的表达。"
+        ],
+        "relevance_score": 84,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-10T01:04:19.690Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/html/2611.00985v1"
+      }
+    },
+    {
+      "id": "2611.09594",
+      "version": 1,
+      "analysis": {
+        "summary": "作者在固定 Clifford interactions 的离散 quantum convolution channels 中，将 environmental magic 与 quantum-capacity superactivation 联系起来：两个单独量子容量为零的 channel 联用后可传量子信息。",
+        "problem": "需要区分造成联合通信能力的资源与单通道本身的容量。",
+        "setting": "所选 convolution couplings；mixed magic environment；half-erasure 及 self-complementary convolution auxiliary。",
+        "main_results": [
+          "构造主通道具正 private capacity、PPT Choi state，因而 quantum capacity 为零。",
+          "half-erasure 经 Smith–Yard mechanism 激活；有限 block 编码/解码让 convolution auxiliary 也实现可激活的高维 erasure channel。",
+          "activated capacity 由主环境的 modified relative entropy of magic 上界；所述通道对任一侧换成 stabilizer mixture 后联合容量归零。"
+        ],
+        "techniques": [
+          "离散 quantum convolution；PPT 与 private information；有限 block 转换。"
+        ],
+        "assumptions": [
+          "magic 必要性限于该实现及固定相互作用，不能推广为所有 superactivation 的必要条件。"
+        ],
+        "limitations": [
+          "仅读取官方摘要，未审阅正文证明及摘要未说明的假设。",
+          "HTML 摘要已读，构造、容量界与证明未审；不提供未见的数值速率。",
+          "非零 private capacity 不能等同单通道 quantum capacity 为正。"
+        ],
+        "relevance": [
+          "直接给出 magic 与通信任务 operational advantage 的联系。"
+        ],
+        "follow_up": [
+          "读者建议：核对激活所需的 block length、辅助系统维度及界的归一化。"
+        ],
+        "relevance_score": 93,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-10T01:04:19.691Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/html/2611.09594v1"
+      }
+    },
+    {
+      "id": "2611.09604",
+      "version": 1,
+      "analysis": {
+        "summary": "本文允许测量输出随机决定所区分的 partition，因而在某些非正交态集合上实现总成功率一的无误 subset discrimination。它并非确定辨识每个非正交输入态。",
+        "problem": "固定 partition 的无误区分成功率通常小于一；放宽问题的输出类型能否保留有用信息？",
+        "setting": "已知纯态 ensemble，通过 Gram matrix 分解实现不同 subset divisions 的量子操作。",
+        "main_results": [
+          "摘要提出用于 basis reconciliation 的替代 key-sifting 思路，可在特定态集合和多 bases 设置达到 unit sifting probability。",
+          "正文三态例中不同 partition 的成功分支共同覆盖全部事件，但不能预先指定哪一种 partition 成功。"
+        ],
+        "techniques": [
+          "Gram matrix convex decomposition；将失败分支继续用于其他 filtering。"
+        ],
+        "assumptions": [
+          "接受 partition 的随机性；并非固定目标的确定性 USD。"
+        ],
+        "limitations": [
+          "仅读摘要及正文的 Gram 分解和三态例片段，未审后续推广、附录 Kraus 构造或密码安全证明。",
+          "sifting probability 一不自动意味着 secret-key rate 一或安全性。"
+        ],
+        "relevance": [
+          "直接关联测量输出允许什么信息、以及访问任务变化产生的优势。"
+        ],
+        "follow_up": [
+          "读者建议：在固定 partition 与随机 partition 的同一输入 ensemble 下分列成功率与可得信息。"
+        ],
+        "relevance_score": 84,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-10T01:04:19.691Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.09604v1"
+      }
+    },
+    {
+      "id": "2611.00874",
+      "version": 1,
+      "analysis": {
+        "summary": "作者在 noisy superconducting hardware 实现 correction-free multicopy teleportation 与 quantum program retrieval。资源是额外输入态副本和集体测量电路，而不是无成本绕过 no-programming theorem。",
+        "problem": "不依赖未知 U 的接收端校正限制了普通 program-state retrieval 的成功率。",
+        "setting": "k 个相同未知纯态输入；将集体 measurement basis 映射到计算基，通过 unitary completion 和电路分解实现。",
+        "main_results": [
+          "正文给出理想最优成功率 p(d,k)=k/[d(k−1+d)]，k=1 时为1/d²，k→∞ 趋于1/d。",
+          "摘要报告一、二 qubit 输入、k=2和3的实验 fidelity 高于0.85；正文提示最大测试副本数时硬件噪声会压低优势。"
+        ],
+        "techniques": [
+          "collective measurement；unitary completion；quantum Shannon/isometry decomposition。"
+        ],
+        "assumptions": [
+          "额外输入 copies 是真实资源；program storage 与 retrieval 阶段分开。"
+        ],
+        "limitations": [
+          "仅读摘要、引言和协议概要片段；未审完整实验表格、shots、误差条和附录。",
+          "条件输出 fidelity 与无条件成功概率须分列，不能把 copies 数当成未知 U 的总调用数。"
+        ],
+        "relevance": [
+          "直接涉及 quantum-data access、编程资源及深度代价。"
+        ],
+        "follow_up": [
+          "读者建议：在相同总输入制备和 U 调用预算下比较成功率、深度及条件 fidelity。"
+        ],
+        "relevance_score": 82,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-10T01:04:19.692Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.00874v1"
+      }
+    }
+  ]
+}
