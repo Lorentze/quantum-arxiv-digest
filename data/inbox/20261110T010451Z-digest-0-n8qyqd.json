@@ -1,0 +1,361 @@
+{
+  "analyses": [
+    {
+      "id": "doi:10.1103/kjvf-jgqj",
+      "version": 1,
+      "analysis": {
+        "summary": "论文研究每次未知动力学调用都至少持续 T 时的 Hamiltonian learning。作者用较长演化模拟迭代学习所需的连续控制，再归约为稀疏纯态 tomography；对对数稀疏 Hamiltonian，在任意常数 T 下仍给出总演化时间 1/ε 的 Heisenberg 标度。",
+        "problem": "以往近最优学习依赖任意短演化，有限控制带宽与瞬态脉冲误差使该访问假设难以实现。",
+        "setting": "未知 Hamiltonian 的动力学查询有固定最短时长；分别讨论对数稀疏与多项式稀疏多体系统。",
+        "main_results": [
+          "对数稀疏情形保持总演化时间的最优精度标度。",
+          "多项式稀疏情形给出最短演化时长与总演化时间的定量权衡，放宽短时要求需多项式代价。"
+        ],
+        "techniques": [
+          "下界时长演化模拟连续控制；稀疏纯态层析。"
+        ],
+        "assumptions": [
+          "常数最短时长 T；稀疏结构是复杂度结论的条件。"
+        ],
+        "limitations": [
+          "仅读取官方摘要，未审阅正文证明及摘要未说明的假设。",
+          "摘要没有给出精度范数、shot 数、查询次数或多项式次数；总演化时间不能当作 target-call 数。",
+          "未建立对非重复 SPAM 的鲁棒性，也不能直接视为固定噪声门认证。"
+        ],
+        "relevance": [
+          "直接关联受限动力学访问下的学习与认证资源问题。"
+        ],
+        "follow_up": [
+          "读者建议：核对连续控制模拟所需可信操作，并分列总时间、查询次数和测量样本。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-10T01:02:27.124Z",
+        "evidence_level": "abstract",
+        "source_url": "https://journals.aps.org/prxquantum/abstract/10.1103/kjvf-jgqj",
+        "publication_significance": [
+          "阅读推断，非实际编辑或审稿理由：新意在于将短时访问限制纳入近最优学习，障碍是有限带宽条件下如何获得有效残差动力学。",
+          "摘要给出的理论标度与稀疏性分层具有控制和学习的物理意义，连接量子算法与实验访问模型，符合 PRX Quantum 的量子信息方法议题；仅凭摘要无法判断证明质量、完整先前工作比较或真实期刊录用原因。"
+        ]
+      }
+    },
+    {
+      "id": "2611.09760",
+      "version": 1,
+      "analysis": {
+        "summary": "作者提出确定性 amplitude encoding，将多控制 multiplexer 简化为一、二比特门，在深度与保真度间调节。两条路线分别使用 Boolean control minimization 和单 ancilla 的 Walsh–Hadamard 角谱分解；不需 amplitude amplification 或 mid-circuit measurement。",
+        "problem": "数据加载成本可能吞没后续算法优势，需要把输入制备深度本身计入资源。",
+        "setting": "任意复数据或可查询函数，以 tensor networks 压缩表示；数值深度基准采用 all-to-all 连通性。",
+        "main_results": [
+          "混合方法相对 Qiskit 默认制备法，在相同态保真度下报告最高数量级的深度改善。",
+          "在方格连通性的 IQM 硬件演示，并使用少量 noise mitigation。"
+        ],
+        "techniques": [
+          "删除冗余控制的 Boolean 化；Walsh–Hadamard spectrum 合成；tensor-network 表示。"
+        ],
+        "assumptions": [
+          "压缩表示及函数结构影响可扩展性；第二条路线使用一个 ancilla。"
+        ],
+        "limitations": [
+          "仅读取官方摘要，未审阅正文证明及摘要未说明的假设。",
+          "摘要无统一最坏情形深度界或完整预处理成本，不能推出任意数据均有端到端加速。",
+          "all-to-all 数值深度与方格硬件路由成本应分开。"
+        ],
+        "relevance": [
+          "直接涉及深度、ancilla 与制备误差的权衡。"
+        ],
+        "follow_up": [
+          "读者建议：逐项计入经典压缩、路由和任意旋转的容错合成成本。"
+        ],
+        "relevance_score": 84,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-10T01:02:27.125Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.09760v1"
+      }
+    },
+    {
+      "id": "2611.09538",
+      "version": 1,
+      "analysis": {
+        "summary": "论文把 quotient quantum codes 解释为 twisted compactification：将母码按 deck transformation 与对称性折叠，联系逻辑自由度、距离及逻辑门。该视角覆盖 balanced-product、bivariate-bicycle、genon 等码。",
+        "problem": "需要系统理解商构造中新增逻辑算符以及扭曲背景如何产生非 Clifford 逻辑操作。",
+        "setting": "Pauli stabilizer 母码的 monomial quotient，以及 higher-form/cup-product symmetry 的对角纠缠 dressing。",
+        "main_results": [
+          "transfer theorem 从母码给出逻辑 qudit、算符与距离界，Tate cohomology 计数新增逻辑算符。",
+          "摘要给出 RP³ 上的逻辑 CCZ 例子，以及从 [[768,2,9]] 起的线性距离码；其 p+ip pump 的逻辑作用为 T，允许 Clifford 因子。"
+        ],
+        "techniques": [
+          "twisted compactification；有限覆盖；cohomology 与拓扑响应。"
+        ],
+        "assumptions": [
+          "dressed quotient 要求有限覆盖消去背景；T 门识别依赖所述 spin-topological response。"
+        ],
+        "limitations": [
+          "仅读取官方摘要，未审阅正文证明及摘要未说明的假设。",
+          "76 页正文和证明未审；线性距离不自动给出阈值、低开销或可实施的有限深度门。",
+          "finite-time quasi-local evolution 与严格局部门电路须区分。"
+        ],
+        "relevance": [
+          "连接 QEC、逻辑门及非 Clifford 资源。"
+        ],
+        "follow_up": [
+          "读者建议：检查 locality、系统尺寸与门时间之间的精确关系。"
+        ],
+        "relevance_score": 88,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-10T01:02:27.125Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.09538v1"
+      }
+    },
+    {
+      "id": "2611.09322",
+      "version": 1,
+      "analysis": {
+        "summary": "作者将近 Gaussian 混态 tomography 视为模型失配下的学习：trace-distance 保证分开不可消除的 Gaussian 近似误差和矩估计的统计误差，避免把全部误差归于有限样本。",
+        "problem": "随机相位噪声可将 Gaussian 输入变成非 Gaussian 混态，仅估计均值和 covariance 并不保证重构真实输出。",
+        "setting": "用一阶矩与 covariance 重建；heterodyne 观测满足显式 sub-Gaussian 条件。",
+        "main_results": [
+          "covariance inverse 有界时，统计项对矩误差线性依赖，改进早期 covariance 误差平方根依赖。",
+          "Fock 截断给出内在近似误差的可收敛上下界。",
+          "所需样本对扣除近似误差后剩余统计容差呈平方反比，并计入 heralding 的估计尝试开销。"
+        ],
+        "techniques": [
+          "Gaussian trace-distance bounds；Fock-space truncation；heterodyne concentration。"
+        ],
+        "assumptions": [
+          "有界 covariance inverse；sub-Gaussian 尾条件；所验证例子有界输入 squeezing。"
+        ],
+        "limitations": [
+          "仅读取官方摘要，未审阅正文证明及摘要未说明的假设。",
+          "不能把总容差直接代入平方反比而忽略模型偏差。",
+          "摘要未给出所有维数、能量和成功概率因子；证明未审。"
+        ],
+        "relevance": [
+          "直接关联 quantum-data learning、测量样本与访问资源。"
+        ],
+        "follow_up": [
+          "读者建议：核对总尝试数与成功 heralded copies 的换算，并测试接近统计尾条件失效的情形。"
+        ],
+        "relevance_score": 92,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-10T01:02:27.126Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.09322v1"
+      }
+    },
+    {
+      "id": "2611.09105",
+      "version": 1,
+      "analysis": {
+        "summary": "这是共享 tunable coupler 的三 transmon 架构数值可行性研究。摘要强调目标门表现依赖 spectator 初态，尚未给出完整计算空间上的认证方法；与本项目关注的认证协议和逻辑 QEC 保证关联有限，予以低相关筛除。",
+        "problem": "共享 coupler 会影响目标对之外的 qubit。",
+        "setting": "三固定频率 transmon 加单 tunable coupler，三能级 Hamiltonian 演化。",
+        "main_results": [
+          "virtual Z 修正后，spectator 与 coupler 均在基态的目标对块 fidelity 为 0.9943、0.9834、0.9907。"
+        ],
+        "techniques": [
+          "flux modulation 与 pulse optimization。"
+        ],
+        "assumptions": [
+          "所报数值限于指定基态输入输出块。"
+        ],
+        "limitations": [
+          "仅读取官方摘要，未审阅正文证明及摘要未说明的假设。",
+          "不能当作全三比特门或逻辑 fidelity；无 SPAM 稳健认证与阈值分析。"
+        ],
+        "relevance": [
+          "主要贡献为一般硬件控制优化，未达到当前收录相关度门槛。"
+        ],
+        "follow_up": [],
+        "relevance_score": 58,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-10T01:03:21.110Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.09105v1"
+      }
+    },
+    {
+      "id": "2611.08844",
+      "version": 1,
+      "analysis": {
+        "summary": "论文检验 NaCs 双分子 dipolar-exchange gate 的光谱校准与模型截断是否足以预测完整门。重要警示是单跃迁的高转移率不能替代完整 logical map 的一致性。",
+        "problem": "以少数光谱和有效基底校准得到的模型，可能掩盖多能级动力学误差。",
+        "setting": "在 N=0,1 转动流形构建 128 态分子 Hamiltonian，用三条亮 microwave 跃迁拟合两个光学参数，并与另四条线比较。",
+        "main_results": [
+          "光偏振角增加 0.1°，固定载频的计算 fidelity 从 94.64% 降至 1.09%；重新调谐载频和目标 Rabi 后恢复至 89.31%。",
+          "两个孤立 transfer probability 约 98.45% 的控制，其完整门 fidelity 相差超过 11 个百分点；11 与25态模型相位对齐后的 logical map 接近。"
+        ],
+        "techniques": [
+          "多基底比较；projected propagator 误差的充分界。"
+        ],
+        "assumptions": [
+          "结论针对指定 coherent Hamiltonian，而非完整噪声实验。"
+        ],
+        "limitations": [
+          "仅读取官方摘要，未审阅正文证明及摘要未说明的假设。",
+          "扩大基底的 fidelity 变化非单调；摘要没有误差界具体形式，未审其证明。"
+        ],
+        "relevance": [
+          "与门表征中 baseline 选择和模型误差有具体联系。"
+        ],
+        "follow_up": [
+          "读者建议：把实验可测的 transfer data 与完整过程误差之间的缺口单独量化。"
+        ],
+        "relevance_score": 73,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-10T01:03:21.111Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.08844v1"
+      }
+    },
+    {
+      "id": "2611.08744",
+      "version": 1,
+      "analysis": {
+        "summary": "作者报告 192 个显式 binary stabilizer codes，经标准 propagation rules 改进 Grassl 表 1,873 项。核心机制是随机 Clifford 编码后 expurgation：将少量逻辑算符升为 stabilizers，排除低权逻辑算符。",
+        "problem": "有限长度量子码表的已有下界未必由最佳显式构造达到。",
+        "setting": "码长 53≤n≤254、距离 5≤d≤13；比较相同 (n,k) 的表中距离下界。",
+        "main_results": [
+          "161 个码提高距离1，31个提高2；190个由随机编码和 expurgation 得到，2个由 puncturing 后修复。",
+          "作者以最多约 4×10¹³ 个 Pauli 的 meet-in-the-middle 穷举证下界，并以权重 d 的逻辑算符证上界，声称全部距离精确。"
+        ],
+        "techniques": [
+          "random Clifford encoder；expurgation；first-moment count；显式证书。"
+        ],
+        "assumptions": [
+          "穷举与证书针对所列具体码。"
+        ],
+        "limitations": [
+          "仅读取官方摘要，未审阅正文证明及摘要未说明的假设。",
+          "独立 checker 和证书未运行；摘要的精确距离仍是作者主张。",
+          "距离改进不意味着高效解码、局部校验或更好逻辑阈值。"
+        ],
+        "relevance": [
+          "具体结合随机编码、stabilizer 结构和有限长度 QEC。"
+        ],
+        "follow_up": [
+          "读者建议：核验代表性证书，再比较校验权重与解码复杂度。"
+        ],
+        "relevance_score": 88,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-10T01:03:21.111Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.08744v1"
+      }
+    },
+    {
+      "id": "2611.08620",
+      "version": 1,
+      "analysis": {
+        "summary": "本文以 stabilizer states 的 matroid bases 及其 switchings 重述 graph local complementation，解释 local Clifford 等价中的图操作，并讨论 vertex-minors 与 local Pauli measurement statistics。",
+        "problem": "纯图描述中的邻域取补不易直接显示 stabilizer 结构和测量含义。",
+        "setting": "graph states、local Clifford equivalence 与 multimatroids 的结构性介绍。",
+        "main_results": [
+          "bases/switchings 可揭示 vertex-minors 和 Pauli 测量统计，并简化若干已有证明。"
+        ],
+        "techniques": [
+          "matroid basis switching；图与 stabilizer 表示转换。"
+        ],
+        "assumptions": [
+          "对象限于所讨论的 stabilizer/graph-state 结构。"
+        ],
+        "limitations": [
+          "仅读取官方摘要，未审阅正文证明及摘要未说明的假设。",
+          "摘要未声称新的量子优势、样本界或复杂度改善；未审证明实例。"
+        ],
+        "relevance": [
+          "有助于 stabilizer 计算及测量资源分析，但主要价值为结构统一。"
+        ],
+        "follow_up": [
+          "读者建议：用一个小 graph-state Pauli 测量例子核对两种表示的转换。"
+        ],
+        "relevance_score": 80,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-10T01:03:21.112Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.08620v1"
+      }
+    },
+    {
+      "id": "2611.08586",
+      "version": 1,
+      "analysis": {
+        "summary": "作者在两 qubits 上比较 SRE、min/max-relative entropy of magic 和 logarithmic free robustness，指出最大 magic 态及由极值导出的物理结论依赖度量选择。",
+        "problem": "高能和核物理应用常只用 SRE，然而 nonstabilizerness 没有唯一度量。",
+        "setting": "四种 magic measures，以及 Møller scattering 中由最小 magic 推断弱混合角的做法。",
+        "main_results": [
+          "作者声称精确确定四种度量的最大 magic 态，且结果不同。",
+          "min-relative entropy 给出能量依赖的角；max-relative entropy 与 logarithmic free robustness 给出各能量下 sin²θW=1/4。"
+        ],
+        "techniques": [
+          "对 stabilizer states 的优化；非解析结构比较。"
+        ],
+        "assumptions": [
+          "结论在所研究两比特体系和散射设置内。"
+        ],
+        "limitations": [
+          "仅读取官方摘要，未审阅正文证明及摘要未说明的假设。",
+          "精确证明未审；极值所得角不是实验测量结论。",
+          "不能把某度量数值直接换成 T-count 或蒸馏成本。"
+        ],
+        "relevance": [
+          "直接提醒 magic operational resource 与度量选择的区别。"
+        ],
+        "follow_up": [
+          "读者建议：比较各度量对应的资源操作和任务单调性，再解读其物理极值。"
+        ],
+        "relevance_score": 83,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-10T01:03:21.112Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.08586v1"
+      }
+    },
+    {
+      "id": "2611.04526",
+      "version": 1,
+      "analysis": {
+        "summary": "这篇综述讨论 rare-earth-ion crystals 的长寿命存储机制和实验进展。虽涉及 dynamical decoupling，但摘要没有具体的设计阶数、量子学习访问或逻辑纠错保证，未达到本项目收录门槛。",
+        "problem": "如何延长固态光量子存储寿命。",
+        "setting": "重点为 zero-first-order-Zeeman transition、decoupling 和存储实验。",
+        "main_results": [
+          "区分小时级 spin coherence、分钟至小时 light storage 与分钟级 single-photon quantum storage。"
+        ],
+        "techniques": [
+          "物理机制与实验综述。"
+        ],
+        "assumptions": [
+          "上述三类寿命口径不同。"
+        ],
+        "limitations": [
+          "仅读取官方摘要，未审阅正文证明及摘要未说明的假设。",
+          "本次仅读 arXiv:2611.04526v1 摘要，不假定与正式版完全相同。"
+        ],
+        "relevance": [
+          "主要是存储平台综述，缺少当前研究问题所需的任务或严格资源联系。"
+        ],
+        "follow_up": [],
+        "relevance_score": 48,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-10T01:03:21.113Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.04526v1",
+        "publication_significance": [
+          "低相关筛除：摘要主要综述材料平台和存储寿命，不据此推断 Quantum Frontiers 的实际编辑理由或期刊适配性。"
+        ]
+      }
+    }
+  ]
+}
