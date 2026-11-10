@@ -22517,6 +22517,871 @@
         "arxiv"
       ],
       "first_seen_at": "2026-11-09T06:44:20Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.12882",
+      "version": 1,
+      "title": "Chiral waveguide model for error-correctable quantum computation",
+      "authors": [
+        "Zixiang Hong"
+      ],
+      "abstract": "We develop a first-principles framework connecting microscopic waveguide scattering to quantum error correction and algorithmic performance. For polarization-encoded single photons interacting with an ensemble of two-level atoms in a chiral waveguide, we derive an effective polarization quantum channel by tracing out the frequency degree of freedom. Using this channel as the physical noise model for a rotated planar code, we observe threshold behavior as the number of atoms $N$ and the atom-waveguide coupling strength $Γ$ are varied. An asymptotic analysis of the microscopic scattering model explains the threshold scaling with $NΓ/σ$, where $σ$ is the photon spectral bandwidth. For identical, lossless atoms with symmetric real coupling and a photon spectrum centered at resonance, the effective noise is strongly biased toward $X$ errors. We then incorporate the resulting logical errors into quantum phase estimation and demonstrate that the noise bias can guide circuit design. In particular, a Hadamard-basis implementation reduces sensitivity to the dominant error, improving algorithmic performance.",
+      "url": "https://arxiv.org/abs/2611.12882",
+      "pdf_url": "https://arxiv.org/pdf/2611.12882v1",
+      "published": "2026-11-09T18:59:36Z",
+      "updated": "2026-11-09T18:59:36Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.12876",
+      "version": 1,
+      "title": "The simulability frontiers of photonic quantum computing",
+      "authors": [
+        "Jean Senellart",
+        "Benjamin Stott",
+        "Stephen Wein",
+        "Esperanza Cuenca Gomez",
+        "Pascale Senellart",
+        "Shane Mansfield",
+        "Pierre-Emmanuel Emeriau"
+      ],
+      "abstract": "Estimates of when photonic devices outgrow classical simulation are hard to compare: even for single-photon boson sampling, quoted thresholds range from 50 to 98 photons, as they rest on different tasks and assumptions. We propose as a common unit the time a classical computer needs to draw one sample from the device's exact output distribution, up to floating-point rounding. Only exactness applies equally to every kind of light, since the cost of approximate sampling depends on the accuracy required. The simulability frontier is the device size at which our fastest exact sampler produces one sample per second on a fixed machine; this device size increases with better hardware and algorithms. As the time per sample grows exponentially with the number of detected photons, doubling the machine speed moves the frontier by about one photon, whereas a better algorithm changes the growth rate. We measure the frontier with photonic-engines, an open-source GPU library of exact samplers for single photons, entangled photons from quantum emitters, vacuum-single-photon superpositions and squeezed light. Each sampler is validated against a simulator sharing no code with it. On one NVIDIA H100 GPU, with Haar-random interferometers, twice as many modes as photonic inputs and photon-number-resolving detectors, the frontier lies at 38.3 single photons and at 31.0 entangled photons from one emitter. For squeezed light, a timing model fitted to measurements places it at 41.5 squeezed photonic inputs of mean photon number 0.5. For our samplers, coherence alone makes simulation harder: sources that emit a photon with probability one half reach 64.2 when vacuum and photon are mixed incoherently, as for lossy single photons, but only 50.0 when they are in coherent superposition. Feed-forward from mid-circuit measurement of up to three modes lowers the single-photon frontier only from 38.3 to 38.1.",
+      "url": "https://arxiv.org/abs/2611.12876",
+      "pdf_url": "https://arxiv.org/pdf/2611.12876v1",
+      "published": "2026-11-09T18:58:02Z",
+      "updated": "2026-11-09T18:58:02Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 8,
+      "topics": [
+        "random_designs",
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "random_designs": [
+          "Haar-random"
+        ],
+        "adaptive_resources": [
+          "mid-circuit measurement",
+          "feed-forward"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.12833",
+      "version": 1,
+      "title": "GARI++: A General-Purpose Decoder for Quantum Error Correction",
+      "authors": [
+        "Arshpreet Singh Maan",
+        "Francisco Garcia-Herrero",
+        "Daniel Bascones",
+        "Valentin Savin",
+        "Alexandru Paler"
+      ],
+      "abstract": "We present GARI++, a two-stage decoding pipeline achieving accuracy competitive with the state of the art across surface, bivariate bicycle and color codes without relying on ensembles. The first stage uses GARI, a normalized min-sum decoder with random serial scheduling on the GARI transformed matrix. The second stage decoder is used only for the cases that the first stage does not converge, and the decoder is configurable based on the choice of the QEC code. The first stage pipelines towards the second stage both the residual syndrome and the soft information. GARI++ pipelining is predictive, meaning that GARI++ chooses the first stage iteration outputs which are expected to deliver the best accuracy in the second stage. GARI++ motivates a hybrid FPGA-CPU architecture for real-time decoding. For example, under uniform circuit-level depolarising noise with a physical error rate of 0.001, the FPGA implementation of GARI achieves average latencies per round ranging from $201 ns$ to $11.8μs$ for surface code distances between 7 and 25. At the same time, due to the very low weight residuals output by the first stage, the average residual decoding time per round remains near constant and below one microsecond on a single Apple M2 core for surface code distances even up to 51 when using Union-Find and accuracy on par with correlated MWPM.",
+      "url": "https://arxiv.org/abs/2611.12833",
+      "pdf_url": "https://arxiv.org/pdf/2611.12833v1",
+      "published": "2026-11-09T18:31:41Z",
+      "updated": "2026-11-09T18:31:41Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction",
+          "syndrome"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.12779",
+      "version": 1,
+      "title": "Unified architecture for arbitrary two-qubit gates with neutral atoms",
+      "authors": [
+        "Nader Mostaan",
+        "Peter Schmelcher",
+        "Rick Mukherjee"
+      ],
+      "abstract": "We propose a unified architecture for two-qubit gates in neutral-atom quantum processors which allows the implementation of the complete set of two-qubit gates. Our approach rests on a single resource that unlocks the entire gate set: an XXZ interaction with tunable anisotropy, combined only with single-qubit operations. We introduce a Rydberg-atom realization of the tunable XXZ interaction and combine it with optimally controlled global microwave pulses to implement the B, QFT, iSWAP, and $\\sqrt{\\mathrm{iSWAP}}$ gates, as well as a continuous gate family interpolating from CZ to iSWAP via the B gate. This work allows the implementation of any two-qubit gate natively in neutral-atom platforms, enabling flexible switching between instruction sets to reduce circuit depth and compilation overhead in quantum algorithm implementation.",
+      "url": "https://arxiv.org/abs/2611.12779",
+      "pdf_url": "https://arxiv.org/pdf/2611.12779v1",
+      "published": "2026-11-09T17:51:21Z",
+      "updated": "2026-11-09T17:51:21Z",
+      "categories": [
+        "quant-ph",
+        "math-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "circuit depth"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.12720",
+      "version": 1,
+      "title": "Spin Shuttling Through Quantum-Dot Based Chiral Molecular Bridges: Gauge Constraints, Holonomy, and Quantum Gates",
+      "authors": [
+        "Amitoj S. Miglani",
+        "Rajdeep R. Dwivedi",
+        "Balsant S. Tiwari",
+        "Vishvendra S. Poonia"
+      ],
+      "abstract": "Chiral molecular bridges between silicon quantum dots can provide novel two-qubit entangling resources via the chirality-induced spin-selectivity (CISS) effect. We evaluate this using Makhlin invariants. Modeling a phase-coherent bridge as an $\\mathrm{SU}(2)$-valued hopping between two spins, a Schrieffer-Wolff reduction yields a twisted exchange interaction $J \\mathbf{S}_1 \\cdot \\mathbf{R} \\mathbf{S}_2$, whose Dzyaloshinskii-Moriya and symmetric anisotropic parts are fixed by a single bridge angle $α$. Using the Kaplan-Shekhtman-Entin-Wohlman-Aharony (KSEA) gauge argument, we prove this interaction is locally equivalent to isotropic exchange; thus, a single chiral bond does not constitute a new entangling class. Breaking this gauge symmetry reveals genuine chiral utility: chiral exchange converts a uniform transverse field into a synthetic gradient, bringing the two-qubit propagator within $7\\times10^{-4}$ of the CNOT class in invariant space 4.7 times faster than an equivalent orthogonal gradient. Shuttling a spin through bridges with non-collinear axes implements a non-Abelian $\\mathrm{SU}(2)$ holonomy, yielding rotationally non-reciprocal transport and closed-loop geometric gates that suppress dynamical-phase noise to second order. To address the unsettled microscopic origin of CISS, we introduce a unified transport channel combining coherent rotation, a direction-reversing spin filter, and pointer-basis dephasing. This model obeys an exact $\\tanh$ composition law for pumped polarization and a closed-form transverse decay law, yielding four observables that experimentally over-determine the bridge's coherent fraction $F_c$. Finally, we quantify silicon-specific hardware constraints, establishing the Landau-Zener valley-adiabaticity window ($E_v \\geq 2.1\\sqrt{\\hbar v}$) and charge-noise limit ($σ_J/J \\leq 3\\%$) required for $99\\%$ gate fidelity.",
+      "url": "https://arxiv.org/abs/2611.12720",
+      "pdf_url": "https://arxiv.org/pdf/2611.12720v1",
+      "published": "2026-11-09T17:05:32Z",
+      "updated": "2026-11-09T17:05:32Z",
+      "categories": [
+        "cond-mat.mes-hall",
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "benchmarking"
+      ],
+      "keyword_matches": {
+        "benchmarking": [
+          "gate fidelity"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.12549",
+      "version": 1,
+      "title": "The finite projective classification of complex spinors via momentum maps",
+      "authors": [
+        "Bartłomiej Sikorski",
+        "Adam Sawicki"
+      ],
+      "abstract": "We describe the projective orbits of complex spinors from the point of view of the momentum map. We treat the irreducible spin modules in odd dimensions 1,3,5,7,9,11 and the half-spin modules in even dimensions 2,4,6,8,10,12,14, which are the only cases with finitely many orbits. In the Clifford--Fock model, we construct representatives as sums of pure basis spinors, and the coefficients are chosen so that the representative is a critical point of the squared norm of the momentum map. The resulting momentum values in a fixed Weyl chamber distinguish the orbits. Completeness follows from Vinberg's theory of graded Lie algebras and stabilizer actions, independently of the classical spinor classifications. We recover the classical counts of 1,1,1,2,3,5 orbits in the odd cases and 1,1,1,2,2,4,9 in the even cases, and compute the projective dimension of every orbit. In dimension fourteen we also determine the closure order of the orbits, using the fact that the minimum of the squared momentum norm increases strictly under degeneration.",
+      "url": "https://arxiv.org/abs/2611.12549",
+      "pdf_url": "https://arxiv.org/pdf/2611.12549v1",
+      "published": "2026-11-09T15:19:30Z",
+      "updated": "2026-11-09T15:19:30Z",
+      "categories": [
+        "math-ph",
+        "math.RT",
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.12236",
+      "version": 1,
+      "title": "Commuting-check gauging for fault-tolerant logical measurements",
+      "authors": [
+        "Zongyuan Wang"
+      ],
+      "abstract": "Gauging turns a logical operator into a product of local checks, providing a route to logical measurement and lattice surgery. These checks can fail to commute outside the code space, so measuring one can randomize the outcome of another. In this work, we introduce completion qubits that make the checks commute for Clifford $\\mathbb{Z}_2$ symmetries of qubit stabilizer codes. Adding one completion qubit per noncommuting pair preserves the gauged code space and its distance while keeping the checks Clifford. Completion also preserves the low-density parity-check property with a constant-factor qubit overhead. We generalize completion to qudits and establish bounds on the Clifford-hierarchy level of the completed checks in prime dimensions. Global commutation ensures that a fault-free round fixes the syndrome until the next fault and allows us to bound fault propagation independently of the number of measurement rounds. For qubit codes, we show that gauging and ungauging a distance-$d$ parent code implements a logical measurement with circuit fault distance $Ω(d)$ in $O(d)$ rounds. We demonstrate the construction by gauging two toric codes into the $D(D_4)$ quantum double and back, with an explicit circuit whose circuit fault distance equals the parent code distance. Our results provide a framework for fault-tolerant logical measurements using commuting checks, with applications to magic-state preparation by lattice surgery.",
+      "url": "https://arxiv.org/abs/2611.12236",
+      "pdf_url": "https://arxiv.org/pdf/2611.12236v1",
+      "published": "2026-11-09T11:27:18Z",
+      "updated": "2026-11-09T11:27:18Z",
+      "categories": [
+        "quant-ph",
+        "cond-mat.str-el"
+      ],
+      "keyword_score": 9,
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer",
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "syndrome"
+        ],
+        "magic_stabilizer": [
+          "stabilizer"
+        ],
+        "adaptive_resources": [
+          "state preparation"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.12190",
+      "version": 1,
+      "title": "High Rate Quantum Block Turbo Codes",
+      "authors": [
+        "Khaled Jebari",
+        "Luiz Anet Neto",
+        "Ramesh Pyndiah",
+        "Jean-Louis de Bougrenet de la Tocnaye"
+      ],
+      "abstract": "Quantum Block Turbo Code is an iterative decoding technique for concatenated quantum error correction codes in product form. In this paper, we study new high rate quantum block turbo codes with different constituent codes. We examine the impact of the change of codes parameters and the order of constituent codes on turbo performance.",
+      "url": "https://arxiv.org/abs/2611.12190",
+      "pdf_url": "https://arxiv.org/pdf/2611.12190v1",
+      "published": "2026-11-09T10:47:35Z",
+      "updated": "2026-11-09T10:47:35Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.12098",
+      "version": 1,
+      "title": "A Universal Fault-Tolerant Quantum Computing Architecture with Globally Driven Atom Arrays",
+      "authors": [
+        "Zhihao Zhang",
+        "Shuaifan Cao",
+        "Xinyang Yu",
+        "Yanyan Chen",
+        "Yueyang Min",
+        "Yingzhou Li",
+        "Zhongcheng Yu",
+        "Lei Feng",
+        "Xiaopeng Li"
+      ],
+      "abstract": "Scalable quantum computation requires reconciling programmability with simple, high-fidelity control. Here, we propose a universal fault-tolerant architecture using globally driven dual-species atom arrays. In a hybrid neutral-atom system, interspecies Rydberg interactions enable qubit addressability without locally addressed quantum gates. We construct a universal native instruction set, Global Rydberg Atom Instruction Language (GRAIL), and show that crosstalk errors can be suppressed to the $10^{-4}$ level. We compile surface-code error correction and magic state cultivation into GRAIL, and parallelize the compilation to suppress crosstalk. Under a hardware-inferred circuit-level noise model, we obtain an error-correction threshold of $1.43\\%$ for the resulting quantum memory and a logical error rate below $10^{-9}$ for magic states cultivated at an experimentally accessible Rydberg Rabi frequency. By replacing local gate addressing with atom-mediated selectivity, this architecture removes the associated calibration requirements, offering a route to simpler control for large-scale fault-tolerant neutral-atom computation.",
+      "url": "https://arxiv.org/abs/2611.12098",
+      "pdf_url": "https://arxiv.org/pdf/2611.12098v1",
+      "published": "2026-11-09T09:18:12Z",
+      "updated": "2026-11-09T09:18:12Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 6,
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "logical error"
+        ],
+        "magic_stabilizer": [
+          "magic state"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.11974",
+      "version": 1,
+      "title": "Polynomial Sample Complexity of Noninteractive Simulation over Finite Alphabets",
+      "authors": [
+        "Haoran Wang"
+      ],
+      "abstract": "We study noninteractive simulation from a finite correlated source. Alice and Bob observe independent copies of the source and generate outputs without communication. We give a quantitative construction for arbitrary finite output alphabets: for every fixed source, a joint law that is simulable with arbitrarily many samples can be approximated using a number of samples polynomial jointly in the output alphabet sizes and the inverse accuracy. We first study binary outputs. A one-sided Wright--Fisher comparison gives a source-dependent explicit exponent and a finite-head Gaussian-threshold representation. We then handle arbitrary finite output alphabets through averaged influence regularity, simplex-preserving Gaussian moment lifting, and a common Gaussian projection for all correlated-prefix states. The sample exponent is independent of the output alphabet sizes. For a concrete biased binary source we certify an explicit exponent below $19$.",
+      "url": "https://arxiv.org/abs/2611.11974",
+      "pdf_url": "https://arxiv.org/pdf/2611.11974v1",
+      "published": "2026-11-09T06:58:40Z",
+      "updated": "2026-11-09T06:58:40Z",
+      "categories": [
+        "cs.CC",
+        "cs.IT"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "quantum_learning"
+      ],
+      "keyword_matches": {
+        "quantum_learning": [
+          "sample complexity"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.11858",
+      "version": 1,
+      "title": "Rotational Encoding of Objective Functions for Quantum Optimization",
+      "authors": [
+        "Sonia Yang",
+        "Ali Al-Bayaty",
+        "Shanyan Chen",
+        "Marek Perkowski"
+      ],
+      "abstract": "In this paper, we introduce the Angular Rotational Counter (ARC), a novel approach to represent objective functions that can be decomposed as a weighted sum of Boolean functions. ARC encodes the objective as an accumulated sum of quantum rotations onto a single-qubit register instead of a multi-qubit register used in much of the previous literature. We mathematically establish and experimentally validate that these rotations sum to the objective value for all possible solutions and derive the relationship between the resulting measurement probabilities and the objective. This design was applied to construct a quantum oracle for the state assignment problem of finite automata and state machines using a weighted Hamming distance cost function, which is a special case of the quadratic assignment problem. We evaluate this oracle design on 26 benchmarks and compare it with corresponding Boolean-based oracles on four cost metrics. Across these benchmarks, the oracle with ARC produces a mean reduction in the qubit count of 20.8%, gate count of 89.3%, circuit depth of 92.4%, and quantum cost of 90.6%. These results demonstrate substantial reductions in circuit cost for the evaluated benchmarks and establish rotational encoding as a promising approach for representing objective functions in optimization based on quantum search algorithms.",
+      "url": "https://arxiv.org/abs/2611.11858",
+      "pdf_url": "https://arxiv.org/pdf/2611.11858v1",
+      "published": "2026-11-09T04:29:35Z",
+      "updated": "2026-11-09T04:29:35Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "circuit depth"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.11759",
+      "version": 1,
+      "title": "An optimal quantum strategy for the $2$-hat game",
+      "authors": [
+        "Georgios Baziotis",
+        "Sang-Jun Park",
+        "Sang-Gyun Youn"
+      ],
+      "abstract": "We study the two-player hat game as a two-input, three-output non-local game. We calculate the quantum commuting value and show that it coincides with the quantum one. In particular, we show that \\[ω_{\\rm q}(H_2)=ω_{\\mathrm{qc}}(H_2)=\\frac{15+\\sqrt{33}}{36}\\approx 0.576238.\\] We achieve the optimal quantum advantage using a shared non-maximally entangled qutrit state. To establish optimality, we exploit the game's symmetry under the dihedral group $D_8$ and apply its representation theory to substantially reduce the complexity of the underlying matrix problem. We also determine the no-signalling value $ω_{\\mathrm{ns}}(H_2)=2/3$.",
+      "url": "https://arxiv.org/abs/2611.11759",
+      "pdf_url": "https://arxiv.org/pdf/2611.11759v1",
+      "published": "2026-11-09T01:58:36Z",
+      "updated": "2026-11-09T01:58:36Z",
+      "categories": [
+        "quant-ph",
+        "math-ph",
+        "math.OA"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "non-local game"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.11754",
+      "version": 1,
+      "title": "Advantage Distillation in Paired-State Quantum Key Distribution",
+      "authors": [
+        "Luis Adrián Lizama-Pérez",
+        "José Mauricio López-Romero"
+      ],
+      "abstract": "We investigate advantage distillation for paired-state Loop-Back quantum key distribution, with a fixed optical station serving a lightweight portable terminal. Alice prepares two polarization-encoded pulses, Bob selects and applies a polarization filter to each pulse, and Alice infers his selections from the returned detection pattern. The proposed advantage-distillation step selects consistent blocks of three two-bit records using two independent public parity checks on a minimal connected graph. The closing edge of a parity polygon is shown to be redundant: any spanning tree of the same vertices has the same acceptance set. We derive exact acceptance probabilities, residual-error laws, and retention rates. Under independent bit errors, the three-record filter reduces the leading error term from e to e^2, while its cost in discarded records and public information is accounted for explicitly. A modular security theorem bounds the additional guessing advantage available to an adversary after syndrome disclosure and block acceptance, including arbitrary quantum side information. We also evaluate a specified single-photon passive-tap optical channel, obtaining a positive conditional entropy bound and exact accepted-block security quantities. This parity-based advantage-distillation step detects discrepancies by postselection; it does not correct individual errors and is intended to precede conventional reconciliation. The architecture suggests two further directions: hybrid filtering and reconciliation, and key establishment between portable users accessing a shared quantum station.",
+      "url": "https://arxiv.org/abs/2611.11754",
+      "pdf_url": "https://arxiv.org/pdf/2611.11754v1",
+      "published": "2026-11-09T01:50:30Z",
+      "updated": "2026-11-09T01:50:30Z",
+      "categories": [
+        "quant-ph",
+        "cs.CR"
+      ],
+      "keyword_score": 6,
+      "topics": [
+        "logical_qec",
+        "data_hiding"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "syndrome"
+        ],
+        "data_hiding": [
+          "side information"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.11568",
+      "version": 1,
+      "title": "Spin entanglement in $pp$ and $pA$ collisions: high-energy TMD effects and fragmentation probes",
+      "authors": [
+        "Michael Fucilla"
+      ],
+      "abstract": "Spin-spin correlations of a quark-antiquark pair produced in proton-proton or proton-Ion collisions are investigated in $k_T$-factorization within the shockwave formalism. We construct the full spin-density matrix of both inclusive and diffractive channels in the limit in which the two quarks are back-to-back. In the inclusive channel, due to linearly polarized gluons, we show that a $\\cos (2 φ)$-modulation of the concurrence, stabilizer Rényi entropy, and quantum discord emerges and depends on the interplay between six small-$x$ gluon TMDs. The modulation is predicted to be maximally strong and independent of the transverse momentum imbalance, $q$, from a dilute (BFKL) perspective, while it is considerably suppressed by saturation effects. In diffraction, we observe that the pair is always entangled and exhibits the same properties found in diffractive DIS. We explain how these properties follow directly from the exclusive and eikonal nature of the Pomeron exchange. We trace this behavior to a spin-density matrix of rank at most two with maximally mixed marginals. For this class of states, entanglement and Bell nonlocality coincide even when the state is mixed, while the explicit form of the light-front helicity amplitudes ensures that both persist in the whole phase space. We suggest accessing the spin correlations in unpolarized hadron collisions through the Collins and dihadron fragmentation functions. We point out that, in inclusive production, for massless quarks, suitably chosen double-Collins asymmetries provide promising entanglement witnesses.",
+      "url": "https://arxiv.org/abs/2611.11568",
+      "pdf_url": "https://arxiv.org/pdf/2611.11568v1",
+      "published": "2026-11-08T19:31:21Z",
+      "updated": "2026-11-08T19:31:21Z",
+      "categories": [
+        "hep-ph",
+        "hep-ex",
+        "nucl-ex",
+        "nucl-th",
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.11420",
+      "version": 1,
+      "title": "Universal robust nonadiabatic geometric quantum computation with shortened composite pulses on superconducting circuits",
+      "authors": [
+        "Cheng-Yun Ding",
+        "Na Kuang",
+        "Yu Jin",
+        "Li Tang",
+        "Rui Huang",
+        "Li-Hua Zhang"
+      ],
+      "abstract": "The nonadiabatic geometric quantum computation (NGQC) using the nonadiabatic geometric phases is a promising strategy to realize the high-fidelity quantum operation for large-scale quantum processing. However, conventional NQGC schemes combining with optimal control techniques to further improve the gate fidelity and robustness usually either comes at the cost of prolonged gate time or require complex pulse control and only are limited to several certain specific quantum gates or/and for a certain type error source. Thus, implementing universal and robust geometric gates with simple control while further suppressing gate times remains a major challenge. Here, we propose a scheme for universal robust geometric gates with shortened composite pulses, where the pulse control is simple and enough available evolution parameters can be utilized to effectively reduce the sensitivity to universal systematic errors. Numerical simulations demonstrate that our universal geometric gates set exhibit much stronger error resilience than their conventional single-loop counterparts. Finally, we also verify the robustness advantage of our scheme on realistic superconducting quantum circuits with experimentally demonstrated technology. Therefore, our work paves an alternative way to achieve high-fidelity and robust geometric quantum computation against multiple errors.",
+      "url": "https://arxiv.org/abs/2611.11420",
+      "pdf_url": "https://arxiv.org/pdf/2611.11420v1",
+      "published": "2026-11-08T14:33:57Z",
+      "updated": "2026-11-08T14:33:57Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "benchmarking"
+      ],
+      "keyword_matches": {
+        "benchmarking": [
+          "gate fidelity"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.11409",
+      "version": 1,
+      "title": "Linear Set Reconciliation with $O(d)$ Additive Redundancy",
+      "authors": [
+        "Tianren Liu",
+        "Rui Xu",
+        "Tong Yang",
+        "Kangyang Zhou"
+      ],
+      "abstract": "In set reconciliation, two parties holding sets $A, B \\subseteq [n]$ with $|A \\triangle B| \\le d$ seek to recover their symmetric difference from short $\\mathbb{F}_2$-linear sketches, which is equivalent to recovering a $d$-sparse vector $x = \\mathbf{1}_{A \\triangle B} \\in \\mathbb{F}_2^n$ from its syndrome $Hx \\in \\mathbb{F}_2^m$. While the information-theoretic counting bound requires $L(n,d) := \\log \\sum_{i=0}^d \\binom{n}{i} = d\\log(n/d) + Θ(d)$ bits, existing polynomial-time schemes either use at least $d\\lceil\\log(n+1)\\rceil$ bits (algebraic sketches, leaving an $Ω(d\\log d)$-bit gap) or incur a multiplicative $(1+δ)L(n,d)$ overhead (peeling-based sketches), raising the question of whether $L(n,d) + O(d)$ bits is achievable with fast updates and decoding. We construct a public-coin randomized $\\mathbb{F}_2$-linear sketch of length $L(n,d) + O(d) + λ\\log^{O(1)} n$ that recovers each fixed input of weight at most $d$ with probability at least $1 - 2^{-λ}$, with $\\log^{O(1)} n$ update time and $d\\exp(O((\\log\\log n)^2)) = dn^{o(1)}$ worst-case decoding time. In particular, for $n \\le 2^{\\operatorname{polylog}(d)}$ and $λ\\le d^{1-Ω(1)}$, this achieves $L(n,d) + O(d)$ bits with $\\operatorname{polylog}(d)$ update time and $d^{1+o(1)}$ decoding time. Our construction encodes $d$ permuted rows via randomly scaled Pinsketch syndromes and sketches the resulting bit array column by column. Decoding columns sequentially from prefix predictions cancels recovered rows and exposes undecided rows as decoder-side hints, reducing each column to a hinted sparse recovery problem that we solve via a recursive sketch, HintSketch.",
+      "url": "https://arxiv.org/abs/2611.11409",
+      "pdf_url": "https://arxiv.org/pdf/2611.11409v1",
+      "published": "2026-11-08T14:23:57Z",
+      "updated": "2026-11-08T14:23:57Z",
+      "categories": [
+        "cs.DS",
+        "cs.IT"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "syndrome"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.11405",
+      "version": 1,
+      "title": "Industrial RPCVD growth of high-purity 28Si epilayers with 29Si content below 30 ppm for high-fidelity electron spin qubits",
+      "authors": [
+        "Zhenzhen Kong",
+        "Weizhu Liao",
+        "Ning Chu",
+        "Yiwen Zhang",
+        "Ying Zhang",
+        "Jixuan Li",
+        "Changyang Xu",
+        "Yongliang Hao",
+        "Yi Zhou",
+        "Yanpeng Song",
+        "Xiaomeng Liu",
+        "Hailing Wang",
+        "Xiangsheng Wang",
+        "Jinbiao Liu",
+        "Chao Zhao",
+        "Hao Meng",
+        "Gang Cao",
+        "Guo-Ping Guo",
+        "Hai-Ou Li",
+        "Guilei Wang"
+      ],
+      "abstract": "Silicon quantum-dot spin qubits are among the most promising routes to large-scale quantum computation, but the residual 29Si nuclear spins in natural silicon impose a hyperfine dephasing limit that must be overcome by isotopic purification. Here, we report the epitaxial growth of high-purity 28Si on float-zone silicon using an industrial reduced-pressure chemical vapor deposition (RPCVD) system. Secondary-ion mass spectrometry (SIMS) confirms an 28Si isotopic purity of 99.997%, with the 29Si concentration below 30 ppm. Through a systematic vacuum annealing matrix (850-1150 C), combined with atomic force microscopy and SIMS, we investigate the defect-mediated decomposition of the native oxide and the injection of non-equilibrium vacancies. We identify a thermal-budget window below 950 C within which the thin-layer structure of 28Si remains intact. At 1.5 K, magnetotransport measurements reveal a peak Hall mobility of 12,858 cm^2 V^-1 s^-1 and a quantum scattering lifetime of 0.659 ps, corresponding to a single-particle level broadening of 499 micro-eV. A double quantum dot fabricated on this platform exhibits a T2* of 0.62 us, a Hahn-echo coherence time of 28.8 us, and single-qubit gate fidelities of up to 99.9% measured by randomized benchmarking. Our results establish industrial RPCVD as a promising route toward high-coherence, high-fidelity silicon spin qubits.",
+      "url": "https://arxiv.org/abs/2611.11405",
+      "pdf_url": "https://arxiv.org/pdf/2611.11405v1",
+      "published": "2026-11-08T14:20:18Z",
+      "updated": "2026-11-08T14:20:18Z",
+      "categories": [
+        "cond-mat.mes-hall",
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "benchmarking"
+      ],
+      "keyword_matches": {
+        "benchmarking": [
+          "randomized benchmarking"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.10796",
+      "version": 1,
+      "title": "BP-based qLDPC Decoding under Long-range Correlated Noise: Trapping Configurations and Prior Mismatch",
+      "authors": [
+        "Abhinav Dangi",
+        "Avhishek Chatterjee"
+      ],
+      "abstract": "We study the robustness of two state-of-the-art BP-based qLDPC decoders, Relay-BP and beam search, designed for independent noise when applied to spatially correlated noise with unchanged single-mechanism error probabilities. We generate correlated errors with a hidden Gaussian Markov random field, which lets us control the strength and range of the correlation while keeping every marginal error probability exact. This setting complements correlation-aware decoding: it asks how existing decoders perform when their assumed joint error model is mismatched. Across multiple tested circuits and code instances that we simulated, we observe that correlations can change logical error rates by orders of magnitude, reduce the finite-size distance advantage, and alter the relative ranking of Relay-BP, beam search, and BP-OSD. On one of the two tested circuits, Relay-BP and beam search become worse than BP-OSD, and increasing relay memory or beam width does not compensate for the degradation. Configuration analysis indicates that correlation primarily increases the probability of trapping configurations that are known to challenge these decoders; at matched error weight, correlated errors still cause decoding failures several times more often than i.i.d. errors. Finally, supplying the decoders with the marginals conditioned on the hidden field recovers most of the lost performance in the tested settings identifying prior mismatch as a major contributor to performance degradation under correlation.",
+      "url": "https://arxiv.org/abs/2611.10796",
+      "pdf_url": "https://arxiv.org/pdf/2611.10796v1",
+      "published": "2026-11-07T15:19:59Z",
+      "updated": "2026-11-07T15:19:59Z",
+      "categories": [
+        "cs.IT",
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "logical error",
+          "qLDPC"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.10593",
+      "version": 1,
+      "title": "Markov-Shielded Typicality for Thermal Quantum States",
+      "authors": [
+        "Atsushi Iwaki",
+        "Chisa Hotta"
+      ],
+      "abstract": "Pure states of quantum many-body systems at thermal equilibrium are known to be typical, in a sense that a randomly chosen pure state from an appropriate energy shell reproduces the Gibbs-state expectation values of most observables acting on a small subsystem. However, such typical states are intrinsically stochastic, conventionally generated from the random high-temperature state, suffer from statistical fluctuations, and do not provide a continuous connection to the ground state. Here, we introduce a deterministic variational framework for constructing a Markov-Shielded Typical (MST) state, a unique thermal pure-state representative whose local reduced density matrices closely approximate those of the Gibbs state, from the ground state up to infinite-temperature limit. Our approach reformulates free-energy minimization by replacing the nonlocal von Neumann entropy with a local, computationally tractable Markov entropy, where we establish rigorous upper and lower bounds of MST free energy to lie in the very vicinity of the thermal free energy. This framework extends the concept of typicality to deterministic pure-state representations of thermal equilibrium, offering a scalable wave-function approach with potential applications to both classical and quantum computing.",
+      "url": "https://arxiv.org/abs/2611.10593",
+      "pdf_url": "https://arxiv.org/pdf/2611.10593v1",
+      "published": "2026-11-07T09:01:09Z",
+      "updated": "2026-11-07T09:01:09Z",
+      "categories": [
+        "cond-mat.stat-mech",
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "quantum_learning"
+      ],
+      "keyword_matches": {
+        "quantum_learning": [
+          "Gibbs state"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.10588",
+      "version": 1,
+      "title": "Initialization masks overcome decoding obstructions in compressed QAOA",
+      "authors": [
+        "Emilio Semre",
+        "Steven Frankel"
+      ],
+      "abstract": "In compressed quantum optimization, a variational state is converted into a classical assignment by decoding noncommuting observables. We show that this step creates structural restrictions that changing the initialization can remove, even when increasing circuit depth cannot. For an explicit infinite family of connected cubic graphs on $n=3r$ vertices, with a fixed Pauli encoding and deterministic sign decoder, every all-plus QAOA circuit has cut at most $2r$, at every finite depth and every real angle sequence. A uniform signed product-state mask at fixed depth-one angles has expected cut $13r/4$, an additive advantage $5n/12$; an infinite subfamily admits an optimal mask. A second construction retains a linear depth-one separation under weak weighted couplings, a bounded cost-angle domain and a specified production-encoder ordering. Noiseless simulations then test classical mask selection before energy optimization. On 1,699 random cubic MaxCut instances, one selected mask achieves mean ratio $0.9100$, versus $0.7067$ for the all-plus $X$ baseline and $0.9125$ for the best of $r^2$ separately optimized random masks. On complete cohorts of weighted MaxCut, sparse Ising, Max-2-XOR and Max-2-SAT, the selected mask also improves on the baseline at every size, but it trails the pool at small sizes and leads it significantly only at the larger MaxCut and Ising sizes. Finite-pool order statistics separate the effect of selection from that of drawing a random mask. The results distinguish decoded expressivity from optimized energy and empirical performance; they do not establish a quantum computational advantage.",
+      "url": "https://arxiv.org/abs/2611.10588",
+      "pdf_url": "https://arxiv.org/pdf/2611.10588v1",
+      "published": "2026-11-07T08:52:37Z",
+      "updated": "2026-11-07T08:52:37Z",
+      "categories": [
+        "quant-ph",
+        "cs.CC"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "circuit depth"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.10529",
+      "version": 1,
+      "title": "Beyond the Mean Gap: What Transferred-Angle QAOA Retains on a Superconducting Processor",
+      "authors": [
+        "Sanim Yousuf Fahim",
+        "Mohammad Arif Hossain"
+      ],
+      "abstract": "Hardware executions of the quantum approximate optimization algorithm (QAOA) are often validated by comparing the device's mean cost with a simulation, a check that can miss what matters for optimization. Under global depolarization, the mean normalized gap and the floor-corrected probability of every set of bitstrings, the optimum included, retain the same fraction of their noiseless improvement over uniform sampling. We test this prediction with depth-2, transferred-angle QAOA circuits for binary subproblems of an alternating-direction decomposition on the IBM Heron processor \\texttt{ibm\\_marrakesh}, with and without dynamical decoupling and twirling. At 12 qubits, the main-family circuits retained 29\\% to 46\\% of their mean-gap improvement but only 5\\% to 15\\% of their probability of the optimum, lower on at least nine of ten instances per run. Near-optimal bitstrings were lost about as much as the optimum, whereas the avoidance of poor bitstrings was retained best. In the first submission, a device-matched noise model reproduced the pattern but overestimated the retention of the optimum five- to eightfold. On a rugged planted family, the device found the optimum in 62\\% of 768-shot blocks (noiseless: 98\\%), within the range of local heuristics. Validations of optimization circuits should report retention of the optimum and of near-optimal sets.",
+      "url": "https://arxiv.org/abs/2611.10529",
+      "pdf_url": "https://arxiv.org/pdf/2611.10529v1",
+      "published": "2026-11-07T07:00:23Z",
+      "updated": "2026-11-07T07:00:23Z",
+      "categories": [
+        "quant-ph",
+        "cs.AI"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "decoupling"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.10481",
+      "version": 1,
+      "title": "A trace costs one quantifier: the exact complexity of perfect play in nonlocal games",
+      "authors": [
+        "Seth Douglas",
+        "Nidhal Mghirbi"
+      ],
+      "abstract": "Given a finite nonlocal game, can the players win with certainty? We prove that the existence of a perfect normal spatial strategy is $Σ^0_2$-complete, even when restricted to games of value one, so it cannot be decided even with an oracle for the halting problem. This is strictly harder than perfect play in the finite-dimensional and commuting-operator models, which are $Σ^0_1$-complete and $Π^0_1$-complete. Within the commuting model, the existence of a perfect normal strategy with a finite or semifinite von Neumann host is $Σ^0_2$-complete, whereas for every fixed type $\\mathrm{III}_λ$ subtype it has the same $Π^0_1$-complete language as unrestricted commuting play. A trace thus costs one existential number quantifier: the hardness constructions force every perfect strategy to choose a finite clock period or a finite tree depth. Spatial $Σ^0_2$-completeness also holds when finite entanglement entropy is required, and both forms are formally verified in Lean. For every computable $0<α<1$, perfect spatial play with $\\mathrm{Tr}\\,h^α<\\infty$ for the reduced density $h$ is $Σ^0_2$-complete as well; these conditions form a strict ladder between finite rank and finite entropy. We also prove $Σ^0_2$-completeness for one-shot zero-error communication with normal entanglement, and construct a finite channel with zero-error codes of a given size each of which needs infinite entanglement entropy.",
+      "url": "https://arxiv.org/abs/2611.10481",
+      "pdf_url": "https://arxiv.org/pdf/2611.10481v1",
+      "published": "2026-11-07T05:07:46Z",
+      "updated": "2026-11-07T05:07:46Z",
+      "categories": [
+        "quant-ph",
+        "math.LO",
+        "math.OA"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "nonlocal game"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.10295",
+      "version": 1,
+      "title": "Dynamical Light-Matter Coupling with Protected Superconducting Oscillators",
+      "authors": [
+        "Fernando Valadares"
+      ],
+      "abstract": "Superconducting circuits hosting long-lived bosonic modes are an excellent platform for emulating the dynamics of light and matter and exploiting them for quantum information processing. The space of accessible dynamics is greatly extended by introducing the frequency tunability of artificial atoms, whereby the interactions with the light field of a microwave cavity can be modified on demand. However, using external flux bias to control the frequency of transmons introduces significant losses to coupled cavities, reducing their single-photon lifetimes to a few tens of $μ$s. These imperfections compromise the usefulness of the bosonic mode, which loses its ability to store and manipulate the quantum information of many-photon states. This thesis investigates the issue and demonstrates how to enhance the flux control of microwave cavities without compromising protection. Several hardware solutions were explored, including off-plane remote flux sources routed by a magnetic hose, and lithographically printed on-chip lines equipped with multiple stages of filtering. These developments equip the systems with broadband flux control and photon lifetimes of several hundred $μ$s. They enable the real-time manipulation of the two central parameters of the Rabi model: detuning and coupling strength. This flexibility translates into operational primitives of interest, such as the calibration of nonlinearities to different interaction regimes, the activation of parametric resonances with adjustable coupling strengths, and the use of number-selective transmon-cavity transitions for qudit state preparation and control. These results lay the groundwork for exploring richer synthetic light-matter systems, controlling cavities with more complex nonlinear circuits, and engineering driven-dissipative systems with applications in quantum computation and sensing.",
+      "url": "https://arxiv.org/abs/2611.10295",
+      "pdf_url": "https://arxiv.org/pdf/2611.10295v1",
+      "published": "2026-11-06T22:45:18Z",
+      "updated": "2026-11-06T22:45:18Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "state preparation"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.10283",
+      "version": 1,
+      "title": "Regev's Reduction Reaches Reconstruction",
+      "authors": [
+        "Stephen P. Jordan",
+        "Quynh T. Nguyen",
+        "Leo Zhou"
+      ],
+      "abstract": "Regev's reduction uses a quantum Fourier transform to carry out reductions between various problems related to lattices and codes. We apply it to the problem of sampling from Gibbs distributions of certain classical spin glass Hamiltonians, which can equivalently be thought of as cost functions for average-case instances of an optimization problem called $D$-regular max-$k$-LINSAT. This problem becomes hard at low temperature. Here, we use a quantum decoding algorithm called Belief Propagation with Quantum Messages (BPQM) to solve the decoding problem arising from Regev's reduction. Our main contribution is a proof that the minimum temperature reachable using Regev+BPQM is exactly equal to the reconstruction threshold temperature for noisy channels transmitting signals on a tree network. This equality can be understood via Renes' duality between classical and quantum channels, which we use to show that quantum decoding is possible exactly when classical reconstruction on the dual problem is impossible. M{é}zard and Montanari identified this reconstruction temperature with a dynamical glass transition predicted by the one-step replica-symmetry breaking (1RSB) cavity equation. It is conjectured that local samplers such as Metropolis Monte Carlo and Glauber dynamics cannot equilibrate efficiently below this reconstruction temperature but may do so above it; our large numerical experiments show close agreement with this prediction across hundreds of different problem parameters. Therefore, our results rigorously show that Regev+BPQM reaches a temperature for which, to our knowledge, there is no matching classical guarantee, and brings Regev+BPQM to the conjectured limit of efficient Gibbs sampling by classical local dynamics.",
+      "url": "https://arxiv.org/abs/2611.10283",
+      "pdf_url": "https://arxiv.org/pdf/2611.10283v1",
+      "published": "2026-11-06T22:28:54Z",
+      "updated": "2026-11-06T22:28:54Z",
+      "categories": [
+        "quant-ph",
+        "cond-mat.dis-nn",
+        "cs.DS"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "quantum_learning"
+      ],
+      "keyword_matches": {
+        "quantum_learning": [
+          "Gibbs sampling"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.10282",
+      "version": 1,
+      "title": "Experimental visual quantum state discrimination",
+      "authors": [
+        "A. Duplinskiy",
+        "M. J. Filipovich",
+        "A. I. Lvovsky"
+      ],
+      "abstract": "Almost all solutions to vision tasks $\\unicode{x2014}$ offered by nature and technology alike $\\unicode{x2014}$ rely on capturing an image using a lens or a similar optical instrument, followed by computational analysis by neurons of a brain or a digital computer. This approach is inherently suboptimal in photon-limited and noisy conditions, where critical information is irreversibly lost at the measurement stage. We address this gap by introducing AI-driven optimization of quantum measurements on the incoming photons, learning how to extract the maximum possible information for a given computer vision task from each incoming photon. The trained measurement consists of a diffractive optical neural network (DONN) followed by a detector array. We train the DONN with a quantum information-theoretic objective that maximizes the rate at which the discrimination error decays as photons accumulate. The resulting measurement achieves exponentially lower error than both direct imaging and a DONN optimized for single-photon discrimination. We validate the advantage in a noiseless setting as well as a photon-counting experiment with an electron-multiplying CCD with the noise corresponding to $10^4$ photons per single signal photon, where the measurement also learns to mitigate the detector noise.",
+      "url": "https://arxiv.org/abs/2611.10282",
+      "pdf_url": "https://arxiv.org/pdf/2611.10282v1",
+      "published": "2026-11-06T22:28:18Z",
+      "updated": "2026-11-06T22:28:18Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "data_hiding"
+      ],
+      "keyword_matches": {
+        "data_hiding": [
+          "state discrimination"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z"
     }
   ],
   "screened": {
@@ -45560,8 +46425,8 @@
     "doi:10.1103/g32f-j6q2": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-11-10T01:00:50Z",
-      "metadata_fingerprint": "cd2c62ea8d8e03338ad633f4441aefc95e888153a4e355616664abf225ea0d23"
+      "at": "2026-11-10T07:25:28Z",
+      "metadata_fingerprint": "4a7df010335973e24088ecf052d670939e983abc2dd607f99be115749192e394"
     },
     "doi:10.1103/f92d-w6fn": {
       "status": "keyword_rejected",
@@ -45577,7 +46442,7 @@
     },
     "doi:10.1103/zmky-pr37": {
       "status": "awaiting_publication",
-      "at": "2026-11-10T01:00:50Z"
+      "at": "2026-11-10T07:25:28Z"
     },
     "doi:10.1103/yhmm-fwgy": {
       "status": "keyword_rejected",
@@ -45605,7 +46470,7 @@
     },
     "doi:10.1103/phl4-j4gs": {
       "status": "awaiting_publication",
-      "at": "2026-11-10T01:00:50Z"
+      "at": "2026-11-10T07:25:28Z"
     },
     "doi:10.1103/kny3-9tsz": {
       "status": "keyword_rejected",
@@ -45621,7 +46486,7 @@
     },
     "doi:10.1103/h8zh-qlw5": {
       "status": "awaiting_publication",
-      "at": "2026-11-10T01:00:50Z"
+      "at": "2026-11-10T07:25:28Z"
     },
     "doi:10.1103/gg78-7mg3": {
       "status": "keyword_rejected",
@@ -45655,7 +46520,7 @@
     },
     "doi:10.1103/683f-3qxt": {
       "status": "awaiting_publication",
-      "at": "2026-11-10T01:00:50Z"
+      "at": "2026-11-10T07:25:28Z"
     },
     "doi:10.1103/2hcb-wyvc": {
       "status": "keyword_rejected",
@@ -45671,7 +46536,7 @@
     },
     "doi:10.1103/13wt-lzjm": {
       "status": "awaiting_publication",
-      "at": "2026-11-10T01:00:50Z"
+      "at": "2026-11-10T07:25:28Z"
     },
     "doi:10.1038/s41467-026-79237-7": {
       "status": "keyword_rejected",
@@ -45760,23 +46625,766 @@
       "status": "ai_rejected",
       "score": 48,
       "at": "2026-11-10T01:06:45Z"
+    },
+    "2611.12888": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12859": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12850": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12795": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12784": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12783": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12782": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12773": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12757": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12753": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12746": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12738": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12718": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12714": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12701": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12672": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12658": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12651": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12618": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12609": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12600": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12589": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12576": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12546": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12537": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12520": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12514": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12494": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12481": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12480": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12471": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12400": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12325": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12321": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12280": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12279": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12247": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12229": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12223": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12126": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.12049": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11990": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11966": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11961": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11935": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11920": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11852": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11849": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11832": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11822": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11768": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11760": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11748": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11747": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11713": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11707": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11655": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11647": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11626": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11624": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11595": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11590": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11572": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11557": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11537": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11508": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11501": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11488": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11476": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11468": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11461": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11446": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11445": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11430": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11428": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11419": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11412": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11395": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11393": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11375": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11356": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11343": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11333": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11262": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11245": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11224": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11219": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11180": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11175": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11157": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11097": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11086": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11084": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11065": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11049": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11044": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11038": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11021": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.11018": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10988": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10952": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10946": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10933": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10915": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10912": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10903": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10887": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10846": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10829": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10827": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10817": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10801": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10793": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10767": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10766": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10743": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10724": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10687": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10685": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10670": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10640": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10615": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10580": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10569": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10567": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10544": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10527": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10524": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10507": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10500": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10351": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10330": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10302": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10298": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10289": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10274": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10269": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10252": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10206": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10146": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10119": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10112": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10076": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10052": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "2611.10039": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z"
+    },
+    "doi:10.1038/s41467-026-79316-9": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z",
+      "metadata_fingerprint": "9435591d1616460c18209b2eaf469bf08ebf79ccc637953cda3c1e15d23600f6"
+    },
+    "doi:10.1038/s41467-026-78712-5": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z",
+      "metadata_fingerprint": "03515eaeea313556784fa7d5bd5e5794b2566eab3b77e0c54c731eeb419312bd"
+    },
+    "doi:10.1038/s41534-026-01375-z": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-10T07:25:28Z",
+      "metadata_fingerprint": "7783f530b903f24bfd8a11d25d80059597706b36425ca56c50c6df7d23595b3a"
     }
   },
-  "last_successful_run": "2026-11-09T06:44:20Z",
+  "last_successful_run": "2026-11-10T07:25:28Z",
   "last_run": {
-    "fetched": 586,
-    "keyword_candidates": 11,
-    "analyzed": 6,
-    "selected": 6,
-    "pending": 320,
+    "fetched": 630,
+    "keyword_candidates": 25,
+    "analyzed": 0,
+    "selected": 0,
+    "pending": 345,
     "lookback_days": 7,
     "source": "all",
     "date_basis": "initial_submission",
-    "journal_fetched": 73,
+    "journal_fetched": 76,
     "journal_queued": 0
   },
   "is_demo": false,
-  "last_collection_run": "2026-11-10T01:00:50Z",
+  "last_collection_run": "2026-11-10T07:25:28Z",
   "last_analysis_run": "2026-11-10T01:06:45Z",
   "last_analysis_batch": {
     "analyzed": 6,
@@ -45798,7 +47406,7 @@
     "papers": 17,
     "description": "Detailed Chinese reports and original English abstracts; stable article URLs and RSS GUIDs."
   },
-  "last_arxiv_collection_run": "2026-11-09T06:44:20Z",
+  "last_arxiv_collection_run": "2026-11-10T07:25:28Z",
   "publication_reviews_pending": [],
   "journal_source_status": {
     "nature": {
@@ -45806,7 +47414,7 @@
       "status": "ok",
       "window_start": "2026-11-07",
       "window_end": "2026-11-10",
-      "checked_at": "2026-11-10T01:00:50.562357Z",
+      "checked_at": "2026-11-10T07:25:28.098464Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -45831,7 +47439,7 @@
       "status": "ok",
       "window_start": "2026-11-07",
       "window_end": "2026-11-10",
-      "checked_at": "2026-11-10T01:00:50.562357Z",
+      "checked_at": "2026-11-10T07:25:28.098464Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -45861,7 +47469,7 @@
       "status": "partial",
       "window_start": "2026-11-07",
       "window_end": "2026-11-10",
-      "checked_at": "2026-11-10T01:00:50.562357Z",
+      "checked_at": "2026-11-10T07:25:28.098464Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -45888,7 +47496,7 @@
       "status": "ok",
       "window_start": "2026-11-07",
       "window_end": "2026-11-10",
-      "checked_at": "2026-11-10T01:00:50.562357Z",
+      "checked_at": "2026-11-10T07:25:28.098464Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -45913,7 +47521,7 @@
       "status": "ok",
       "window_start": "2026-11-07",
       "window_end": "2026-11-10",
-      "checked_at": "2026-11-10T01:00:50.562357Z",
+      "checked_at": "2026-11-10T07:25:28.098464Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -45938,7 +47546,7 @@
       "status": "ok",
       "window_start": "2026-11-07",
       "window_end": "2026-11-10",
-      "checked_at": "2026-11-10T01:00:50.562357Z",
+      "checked_at": "2026-11-10T07:25:28.098464Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -45963,7 +47571,7 @@
       "status": "ok",
       "window_start": "2026-11-07",
       "window_end": "2026-11-10",
-      "checked_at": "2026-11-10T01:00:50.562357Z",
+      "checked_at": "2026-11-10T07:25:28.098464Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -45975,11 +47583,11 @@
       "warnings": [],
       "crossref": {
         "status": "ok",
-        "total_results": 37,
-        "returned_research_records": 34,
+        "total_results": 39,
+        "returned_research_records": 36,
         "date_basis": "published-online"
       },
-      "collected": 34,
+      "collected": 36,
       "abstract_enrichment_attempts": 2,
       "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
@@ -45988,7 +47596,7 @@
       "status": "partial",
       "window_start": "2026-11-07",
       "window_end": "2026-11-10",
-      "checked_at": "2026-11-10T01:00:50.562357Z",
+      "checked_at": "2026-11-10T07:25:28.098464Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -46002,26 +47610,25 @@
       ],
       "crossref": {
         "status": "ok",
-        "total_results": 0,
-        "returned_research_records": 0,
+        "total_results": 1,
+        "returned_research_records": 1,
         "date_basis": "published-online"
       },
-      "collected": 0,
+      "collected": 1,
       "abstract_enrichment_attempts": 0,
       "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     }
   },
-  "last_journal_collection_run": "2026-11-10T01:00:50Z",
+  "last_journal_collection_run": "2026-11-10T07:25:28Z",
   "last_journal_run": {
-    "fetched": 73,
+    "fetched": 76,
     "queued": 0,
     "merged": 0,
     "publication_reviews_pending": 0,
     "successful_sources": 8
   },
   "arxiv_source_status": {
-    "status": "failed",
-    "checked_at": "2026-11-10T01:00:50Z",
-    "error": "arXiv returned HTTP 429 after 3 attempts"
+    "status": "ok",
+    "checked_at": "2026-11-10T07:25:28Z"
   }
 }
