@@ -1,46 +1,45 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-09T06:45:15Z",
-  "last_collection_run": "2026-11-09T06:44:20Z",
+  "generated_at": "2026-11-10T01:02:44Z",
+  "last_collection_run": "2026-11-10T01:00:50Z",
   "last_analysis_run": "2026-11-09T01:05:44Z",
   "arxiv_source_status": {
-    "status": "ok",
-    "checked_at": "2026-11-09T06:44:20Z"
+    "status": "failed",
+    "checked_at": "2026-11-10T01:00:50Z",
+    "error": "arXiv returned HTTP 429 after 3 attempts"
   },
   "journal_source_status": {
     "nature": {
       "journal": "Nature",
-      "status": "partial",
-      "window_start": "2026-11-06",
-      "window_end": "2026-11-09",
-      "checked_at": "2026-11-09T06:44:20.536890Z",
+      "status": "ok",
+      "window_start": "2026-11-07",
+      "window_end": "2026-11-10",
+      "checked_at": "2026-11-10T01:00:50.562357Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://www.nature.com/nature.rss",
-          "status": "skipped",
-          "error": "Journal endpoint redirected outside the official allowlist"
+          "status": "ok",
+          "research_records": 20
         }
       ],
-      "warnings": [
-        "Journal endpoint redirected outside the official allowlist"
-      ],
+      "warnings": [],
       "crossref": {
         "status": "ok",
-        "total_results": 9,
-        "returned_research_records": 1,
+        "total_results": 8,
+        "returned_research_records": 0,
         "date_basis": "published-online"
       },
-      "collected": 1,
+      "collected": 0,
       "abstract_enrichment_attempts": 0,
       "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "science": {
       "journal": "Science",
       "status": "ok",
-      "window_start": "2026-11-06",
-      "window_end": "2026-11-09",
-      "checked_at": "2026-11-09T06:44:20.536890Z",
+      "window_start": "2026-11-07",
+      "window_end": "2026-11-10",
+      "checked_at": "2026-11-10T01:00:50.562357Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -51,7 +50,7 @@
         {
           "url": "https://feeds.science.org/rss/science-aop.xml",
           "status": "ok",
-          "research_records": 12
+          "research_records": 13
         }
       ],
       "warnings": [],
@@ -67,35 +66,37 @@
     },
     "nature_physics": {
       "journal": "Nature Physics",
-      "status": "ok",
-      "window_start": "2026-11-06",
-      "window_end": "2026-11-09",
-      "checked_at": "2026-11-09T06:44:20.536890Z",
+      "status": "partial",
+      "window_start": "2026-11-07",
+      "window_end": "2026-11-10",
+      "checked_at": "2026-11-10T01:00:50.562357Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://www.nature.com/nphys.rss",
-          "status": "ok",
-          "research_records": 8
+          "status": "skipped",
+          "error": "Journal endpoint redirected outside the official allowlist"
         }
       ],
-      "warnings": [],
+      "warnings": [
+        "Journal endpoint redirected outside the official allowlist"
+      ],
       "crossref": {
         "status": "ok",
-        "total_results": 1,
-        "returned_research_records": 1,
+        "total_results": 5,
+        "returned_research_records": 5,
         "date_basis": "published-online"
       },
-      "collected": 1,
+      "collected": 5,
       "abstract_enrichment_attempts": 0,
       "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "prx": {
       "journal": "Physical Review X",
       "status": "ok",
-      "window_start": "2026-11-06",
-      "window_end": "2026-11-09",
-      "checked_at": "2026-11-09T06:44:20.536890Z",
+      "window_start": "2026-11-07",
+      "window_end": "2026-11-10",
+      "checked_at": "2026-11-10T01:00:50.562357Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -107,20 +108,20 @@
       "warnings": [],
       "crossref": {
         "status": "ok",
-        "total_results": 1,
-        "returned_research_records": 1,
+        "total_results": 4,
+        "returned_research_records": 4,
         "date_basis": "published-online"
       },
-      "collected": 1,
+      "collected": 4,
       "abstract_enrichment_attempts": 0,
       "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "prl": {
       "journal": "Physical Review Letters",
       "status": "ok",
-      "window_start": "2026-11-06",
-      "window_end": "2026-11-09",
-      "checked_at": "2026-11-09T06:44:20.536890Z",
+      "window_start": "2026-11-07",
+      "window_end": "2026-11-10",
+      "checked_at": "2026-11-10T01:00:50.562357Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -132,20 +133,20 @@
       "warnings": [],
       "crossref": {
         "status": "ok",
-        "total_results": 27,
-        "returned_research_records": 26,
+        "total_results": 28,
+        "returned_research_records": 28,
         "date_basis": "published-online"
       },
-      "collected": 26,
-      "abstract_enrichment_attempts": 9,
+      "collected": 28,
+      "abstract_enrichment_attempts": 6,
       "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "prx_quantum": {
       "journal": "PRX Quantum",
       "status": "ok",
-      "window_start": "2026-11-06",
-      "window_end": "2026-11-09",
-      "checked_at": "2026-11-09T06:44:20.536890Z",
+      "window_start": "2026-11-07",
+      "window_end": "2026-11-10",
+      "checked_at": "2026-11-10T01:00:50.562357Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -157,47 +158,45 @@
       "warnings": [],
       "crossref": {
         "status": "ok",
-        "total_results": 3,
-        "returned_research_records": 3,
+        "total_results": 1,
+        "returned_research_records": 1,
         "date_basis": "published-online"
       },
-      "collected": 3,
-      "abstract_enrichment_attempts": 1,
+      "collected": 1,
+      "abstract_enrichment_attempts": 0,
       "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "nature_communications": {
       "journal": "Nature Communications",
-      "status": "partial",
-      "window_start": "2026-11-06",
-      "window_end": "2026-11-09",
-      "checked_at": "2026-11-09T06:44:20.536890Z",
+      "status": "ok",
+      "window_start": "2026-11-07",
+      "window_end": "2026-11-10",
+      "checked_at": "2026-11-10T01:00:50.562357Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://www.nature.com/ncomms.rss",
-          "status": "skipped",
-          "error": "Journal endpoint redirected outside the official allowlist"
+          "status": "ok",
+          "research_records": 5
         }
       ],
-      "warnings": [
-        "Journal endpoint redirected outside the official allowlist"
-      ],
+      "warnings": [],
       "crossref": {
         "status": "ok",
-        "total_results": 51,
-        "returned_research_records": 48,
+        "total_results": 37,
+        "returned_research_records": 34,
         "date_basis": "published-online"
       },
-      "collected": 48,
-      "abstract_enrichment_attempts": 1,
+      "collected": 34,
+      "abstract_enrichment_attempts": 2,
       "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "npj_quantum_information": {
       "journal": "npj Quantum Information",
       "status": "partial",
-      "window_start": "2026-11-06",
-      "window_end": "2026-11-09",
-      "checked_at": "2026-11-09T06:44:20.536890Z",
+      "window_start": "2026-11-07",
+      "window_end": "2026-11-10",
+      "checked_at": "2026-11-10T01:00:50.562357Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -229,7 +228,7 @@
     "status": "ok",
     "stale": false,
     "backlog": 336,
-    "age_hours": 5.66,
+    "age_hours": 23.95,
     "threshold_hours": 48
   },
   "chunks": [
