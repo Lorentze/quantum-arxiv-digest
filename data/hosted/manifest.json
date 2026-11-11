@@ -1,12 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-11T01:06:54Z",
-  "last_collection_run": "2026-11-11T01:03:07Z",
+  "generated_at": "2026-11-11T06:35:59Z",
+  "last_collection_run": "2026-11-11T06:35:02Z",
   "last_analysis_run": "2026-11-11T01:06:15Z",
   "arxiv_source_status": {
-    "status": "failed",
-    "checked_at": "2026-11-11T01:03:07Z",
-    "error": "arXiv returned HTTP 429 after 3 attempts"
+    "status": "ok",
+    "checked_at": "2026-11-11T06:35:02Z"
   },
   "journal_source_status": {
     "nature": {
@@ -14,7 +13,7 @@
       "status": "ok",
       "window_start": "2026-11-08",
       "window_end": "2026-11-11",
-      "checked_at": "2026-11-11T01:03:07.632091Z",
+      "checked_at": "2026-11-11T06:35:02.192427Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -39,7 +38,7 @@
       "status": "ok",
       "window_start": "2026-11-08",
       "window_end": "2026-11-11",
-      "checked_at": "2026-11-11T01:03:07.632091Z",
+      "checked_at": "2026-11-11T06:35:02.192427Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -66,19 +65,21 @@
     },
     "nature_physics": {
       "journal": "Nature Physics",
-      "status": "ok",
+      "status": "partial",
       "window_start": "2026-11-08",
       "window_end": "2026-11-11",
-      "checked_at": "2026-11-11T01:03:07.632091Z",
+      "checked_at": "2026-11-11T06:35:02.192427Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://www.nature.com/nphys.rss",
-          "status": "ok",
-          "research_records": 8
+          "status": "skipped",
+          "error": "Journal endpoint redirected outside the official allowlist"
         }
       ],
-      "warnings": [],
+      "warnings": [
+        "Journal endpoint redirected outside the official allowlist"
+      ],
       "crossref": {
         "status": "ok",
         "total_results": 5,
@@ -86,7 +87,7 @@
         "date_basis": "published-online"
       },
       "collected": 5,
-      "abstract_enrichment_attempts": 1,
+      "abstract_enrichment_attempts": 0,
       "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "prx": {
@@ -94,7 +95,7 @@
       "status": "ok",
       "window_start": "2026-11-08",
       "window_end": "2026-11-11",
-      "checked_at": "2026-11-11T01:03:07.632091Z",
+      "checked_at": "2026-11-11T06:35:02.192427Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -119,7 +120,7 @@
       "status": "ok",
       "window_start": "2026-11-08",
       "window_end": "2026-11-11",
-      "checked_at": "2026-11-11T01:03:07.632091Z",
+      "checked_at": "2026-11-11T06:35:02.192427Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -144,7 +145,7 @@
       "status": "ok",
       "window_start": "2026-11-08",
       "window_end": "2026-11-11",
-      "checked_at": "2026-11-11T01:03:07.632091Z",
+      "checked_at": "2026-11-11T06:35:02.192427Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -169,7 +170,7 @@
       "status": "ok",
       "window_start": "2026-11-08",
       "window_end": "2026-11-11",
-      "checked_at": "2026-11-11T01:03:07.632091Z",
+      "checked_at": "2026-11-11T06:35:02.192427Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -181,11 +182,11 @@
       "warnings": [],
       "crossref": {
         "status": "ok",
-        "total_results": 31,
-        "returned_research_records": 28,
+        "total_results": 32,
+        "returned_research_records": 29,
         "date_basis": "published-online"
       },
-      "collected": 28,
+      "collected": 29,
       "abstract_enrichment_attempts": 0,
       "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
@@ -194,7 +195,7 @@
       "status": "partial",
       "window_start": "2026-11-08",
       "window_end": "2026-11-11",
-      "checked_at": "2026-11-11T01:03:07.632091Z",
+      "checked_at": "2026-11-11T06:35:02.192427Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -219,56 +220,61 @@
   },
   "counts": {
     "published": 165,
-    "pending": 328,
+    "pending": 349,
     "publication_reviews_pending": 0
   },
   "analysis_health": {
     "status": "ok",
     "stale": false,
-    "backlog": 328,
-    "age_hours": 0.01,
+    "backlog": 349,
+    "age_hours": 5.5,
     "threshold_hours": 48
   },
   "chunks": [
     {
       "path": "queue-0001.json",
-      "count": 43,
-      "bytes": 100526
+      "count": 42,
+      "bytes": 101014
     },
     {
       "path": "queue-0002.json",
       "count": 45,
-      "bytes": 101884
+      "bytes": 102206
     },
     {
       "path": "queue-0003.json",
-      "count": 42,
-      "bytes": 99859
+      "count": 45,
+      "bytes": 102022
     },
     {
       "path": "queue-0004.json",
-      "count": 44,
-      "bytes": 101719
+      "count": 43,
+      "bytes": 102211
     },
     {
       "path": "queue-0005.json",
       "count": 43,
-      "bytes": 101461
+      "bytes": 101475
     },
     {
       "path": "queue-0006.json",
-      "count": 41,
-      "bytes": 101861
+      "count": 42,
+      "bytes": 99301
     },
     {
       "path": "queue-0007.json",
-      "count": 43,
-      "bytes": 100997
+      "count": 40,
+      "bytes": 101927
     },
     {
       "path": "queue-0008.json",
-      "count": 27,
-      "bytes": 64182
+      "count": 44,
+      "bytes": 101346
+    },
+    {
+      "path": "queue-0009.json",
+      "count": 5,
+      "bytes": 12127
     }
   ],
   "recommended_batch": [
@@ -293,25 +299,25 @@
     {
       "kind": "analysis",
       "id": "doi:10.1038/s41534-026-01403-y",
-      "chunk": "queue-0002.json",
+      "chunk": "queue-0003.json",
       "version": 1
     },
     {
       "kind": "analysis",
       "id": "doi:10.1038/s41467-026-78492-y",
-      "chunk": "queue-0003.json",
+      "chunk": "queue-0004.json",
       "version": 1
     },
     {
       "kind": "analysis",
       "id": "doi:10.1038/s41534-026-01400-1",
-      "chunk": "queue-0003.json",
+      "chunk": "queue-0004.json",
       "version": 1
     },
     {
       "kind": "analysis",
       "id": "doi:10.1038/s41467-026-78646-y",
-      "chunk": "queue-0003.json",
+      "chunk": "queue-0004.json",
       "version": 1
     },
     {
@@ -329,126 +335,126 @@
     {
       "kind": "analysis",
       "id": "doi:10.1038/s41586-026-11165-4",
-      "chunk": "queue-0004.json",
+      "chunk": "queue-0005.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.11858",
+      "id": "2611.14391",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.10529",
+      "id": "2611.14314",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.10481",
+      "id": "2611.14147",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.10295",
+      "id": "2611.14114",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.10283",
+      "id": "2611.14081",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.10282",
+      "id": "2611.13815",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.08776",
+      "id": "2611.13799",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.05335",
+      "id": "2611.13778",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.03324",
+      "id": "2611.13658",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.01325",
+      "id": "2611.13630",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.00931",
+      "id": "2611.13428",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.00751",
+      "id": "2611.13373",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.00599",
+      "id": "2611.13371",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.00521",
+      "id": "2611.13301",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.00404",
+      "id": "2611.13175",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2610.41986",
+      "id": "2611.13111",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2610.41903",
+      "id": "2611.13101",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2610.41848",
+      "id": "2611.13098",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2610.41831",
+      "id": "2611.13094",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2610.41824",
+      "id": "2611.13071",
       "chunk": "queue-0001.json",
       "version": 1
     }
