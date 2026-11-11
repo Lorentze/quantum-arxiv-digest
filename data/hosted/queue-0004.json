@@ -4,6 +4,42 @@
       "kind": "analysis",
       "paper": {
         "doi": "",
+        "id": "2610.33834",
+        "version": 1,
+        "title": "Initial-State Preparation for Strongly Correlated Molecules from Matrix Product States: Benchmarking and Environment-Aware Divide-and-Conquer Compilation",
+        "authors": [
+          "Haiqi Liu",
+          "Longfei Chang",
+          "Zhendong Li",
+          "Wei-Hai Fang"
+        ],
+        "abstract": "Compiling classically optimized matrix product states (MPSs) into quantum circuits is a promising route to initial-state preparation for strongly correlated molecules, but the accuracy, gate cost, and classical scalability of existing MPS compilation methods have not been systematically assessed. Here, we benchmark representative analytical, variational, and hybrid MPS compilation methods for strongly correlated systems including hydrogen chains and iron-sulfur clusters. We compare state infidelity, CNOT gate count, classical runtime, and parallel scalability across different system sizes and bond dimensions. We also introduce a divide-and-conquer environment-aware compilation algorithm (DCE), which optimizes each local isometry approximation according to its contribution to the prepared-state fidelity. The results reveal complementary operating regimes: direct variational compilation methods are gate-efficient for some smaller molecular systems with $O(10)$ qubits and $O(10)$ bond dimensions or moderate accuracy targets with infidelity of order $10^{-1}$, whereas divide-and-conquer methods scale more favorably for larger systems and relatively higher bond dimensions of $O(10\\text{-}10^2)$, particularly when target infidelities below $10^{-1}$ are required. Within the latter family, environment-aware optimization improves accuracy over unitary-distance-based compilation while retaining task-level parallelism. For the FeMo-cofactor (FeMoco), we find the DCE algorithm together with the MPS obtained in the entanglement-minimized orbitals (EMOs) provides a resource-efficient route to initial-state preparation. Our results provide practical guidance for selecting and developing MPS compilation methods for strongly correlated molecular simulations.",
+        "url": "https://arxiv.org/abs/2610.33834",
+        "pdf_url": "https://arxiv.org/pdf/2610.33834v1",
+        "published": "2026-10-24T18:13:06Z",
+        "updated": "2026-10-24T18:13:06Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "adaptive_resources"
+        ],
+        "keyword_matches": {
+          "adaptive_resources": [
+            "state preparation"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-27T05:12:19Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
         "id": "2610.33723",
         "version": 1,
         "title": "Task-Directed Spectral Design for Local Quantum Tomography",
@@ -1625,41 +1661,6 @@
           ],
           "magic_stabilizer": [
             "stabilizer"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-22T04:56:38Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.29919",
-        "version": 1,
-        "title": "Resource Analysis of Quantum Optimization Algorithms via Variational Methods",
-        "authors": [
-          "Vitor Dallabona",
-          "Lucas Friedrich",
-          "Jonas Maziero"
-        ],
-        "abstract": "Variational Quantum Algorithms (VQAs) are promising approaches for solving combinatorial optimization problems on near-term quantum devices. However, the role played by quantum resources such as entanglement and coherence during the optimization process remains poorly understood. In this work, we investigate the evolution of these resources in two VQAs--the Quantum Approximate Optimization Algorithm (QAOA) and the Feedback-based Algorithm for Quantum Optimization (FALQON)--applied to the Minimum Vertex Cover problem. We employ a variational resource-quantification framework based on the Bures metric and Uhlmann's theorem, in which an auxiliary quantum circuit is optimized to identify the closest resource-free states. This approach allows us to quantify Bures entanglement and Bures coherence of the algorithmic states without requiring full quantum state tomography. For the considered problem instance, QAOA exhibits a pronounced accumulation of entanglement in its initial layers, followed by a progressive reduction as the algorithm converges toward the optimal solution. Its coherence likewise decreases overall with increasing circuit depth, although a finite residual value persists due to the degeneracy of the optimal-solution subspace. In contrast, FALQON exhibits a substantially lower entanglement peak, reached at larger circuit depth, followed by a decay as convergence proceeds. Its coherence decreases smoothly and monotonically together with the optimization error. These results reveal distinct quantum-resource trajectories associated with the two optimization strategies and illustrate how entanglement and coherence evolve as variational quantum states approach solutions of a classical combinatorial optimization problem.",
-        "url": "https://arxiv.org/abs/2610.29919",
-        "pdf_url": "https://arxiv.org/pdf/2610.29919v1",
-        "published": "2026-10-21T15:56:58Z",
-        "updated": "2026-10-21T15:56:58Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "adaptive_resources"
-        ],
-        "keyword_matches": {
-          "adaptive_resources": [
-            "circuit depth"
           ]
         },
         "sources": [

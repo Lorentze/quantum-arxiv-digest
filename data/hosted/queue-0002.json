@@ -4,6 +4,83 @@
       "kind": "analysis",
       "paper": {
         "doi": "",
+        "id": "2610.41649",
+        "version": 1,
+        "title": "Quantum machine learning geospatial time-series by seasonal encoding",
+        "authors": [
+          "Devjyoti Tripathy",
+          "Reece Robertson",
+          "Josey Stevens",
+          "Catherine Nakalembe",
+          "Sebastian Deffner"
+        ],
+        "abstract": "Quantum data reuploading models can increase the expressive capacity of variational quantum models, but do not necessarily improve predictive performance. In the present work, we investigate this behavior for seasonal time series forecasting and show that data encoding determines how well temporal structures are represented as circuit depth increases. We develop a fidelity-based quantum geometric description in which repeated encodings contribute to an effective input generator, so that reuploading depth changes the quantum geometry through which approximately recurrent inputs are distinguished. We construct fixed and adaptive seasonal encodings that represent observation magnitude and seasonal phase in distinct Bloch-sphere coordinates. We evaluate these encodings for monthly precipitation derived from ERA5-Land, a global reanalysis dataset, from a representative semi-arid, drought-prone tropical region in East Africa, using a 14-month lag window and reuploading depths $L$= 1-6. We find that in ideal simulations, standard value-based encodings degrade markedly with depth, whereas adaptive seasonal encodings preserve temporal correlation, spectral structure, and forecasting accuracy. Noisy simulations show that this encoding hierarchy persists at shallow and intermediate depths, while larger depths are limited by circuit noise and optimization difficulty. The seasonal quantum models remain competitive with established classical forecasting methods (ARIMA, random forests, and LSTMs). These results identify structure-aware quantum data encoding as a general strategy for building deeper quantum reuploading models.",
+        "url": "https://arxiv.org/abs/2610.41649",
+        "pdf_url": "https://arxiv.org/pdf/2610.41649v1",
+        "published": "2026-10-30T12:22:47Z",
+        "updated": "2026-10-30T12:22:47Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "adaptive_resources"
+        ],
+        "keyword_matches": {
+          "adaptive_resources": [
+            "circuit depth"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-11-02T06:17:22Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.41528",
+        "version": 1,
+        "title": "FaultScope: A software package for fast error attribution in quantum error correction",
+        "authors": [
+          "Yuguo Shao",
+          "Zhenyu Chen",
+          "Ningfeng Wang",
+          "Song Cheng",
+          "Zhaohui Wei",
+          "Zi-Wen Liu",
+          "Zhengwei Liu"
+        ],
+        "abstract": "We introduce FaultScope, a classical simulator for quantum error correction circuits, implemented in Rust with a Python interface. FaultScope estimates logical error rates and their derivatives with respect to component error rates from the same sampled and decoded shots, without modifying or differentiating through the decoder. These derivatives enable error attribution to individual noisy components, helping identify noise hotspots for targeted noise reduction. FaultScope supports forward simulation of error propagation through circuits and direct sampling of detector and logical observable outcomes from detector error models. In our noiseless and noisy benchmarks, FaultScope has the lowest runtime among the tested simulators at every size. Computing all derivatives adds only 0.33--0.97\\% to the runtime of logical error rate estimation across five repetition code sizes with 7--2047 error locations. FaultScope can be used to benchmark large-scale quantum error correction schemes and guide targeted noise reduction efficiently, thereby facilitating the design and optimization of fault-tolerant quantum computing architectures.",
+        "url": "https://arxiv.org/abs/2610.41528",
+        "pdf_url": "https://arxiv.org/pdf/2610.41528v1",
+        "published": "2026-10-30T10:21:09Z",
+        "updated": "2026-10-30T10:21:09Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 4,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "quantum error correction",
+            "logical error"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-11-02T06:17:22Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
         "id": "2610.41524",
         "version": 1,
         "title": "High-efficiency photonic GHZ measurements with linear optics",
@@ -1592,78 +1669,6 @@
         "keyword_matches": {
           "random_designs": [
             "Haar-random"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-30T05:55:37Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.38322",
-        "version": 1,
-        "title": "Strict Frequency Bandwidths from Causal Light Cones Enable Scalable Exact Gradient Evaluation in Quantum Optimization",
-        "authors": [
-          "Zhaoyang Song",
-          "Wei Zhang",
-          "Ji Cao",
-          "Xuexi Yi",
-          "Hong-Fu Wang"
-        ],
-        "abstract": "Dynamical locality is often regarded as a limitation of shallow quantum circuits, yet we show that it can reduce the number of circuit settings required for exact evaluation of gradients with respect to shared parameters. For layered ansatze generated by commuting local terms, strict Heisenberg light cones confine energy slices obtained by varying one shared layer parameter to finite Fourier bandwidths dictated by local causal geometry. This bandlimit recasts exact gradient evaluation as a local signal recovery problem and, when the relevant frequencies lie on a known frequency lattice, yields an exact multipoint parameter-shift rule based on the discrete sine transform. The quantum approximate optimization algorithm (QAOA) provides a canonical realization in which this mechanism is governed by the local structure of the graph. Specifically, when a cost angle is varied, the relevant geometry is encoded by the contact region in the interaction line graph. At fixed circuit depth on graphs of bounded degree, the number of distinct circuit settings required for the corresponding derivative collapses from $O(m)$ to $O(1)$. This shows that dynamical locality is not merely a constraint on correlation propagation, but also a computational resource that enables exact gradient evaluation with fewer circuit settings in quantum optimization.",
-        "url": "https://arxiv.org/abs/2610.38322",
-        "pdf_url": "https://arxiv.org/pdf/2610.38322v1",
-        "published": "2026-10-28T06:17:43Z",
-        "updated": "2026-10-28T06:17:43Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "adaptive_resources"
-        ],
-        "keyword_matches": {
-          "adaptive_resources": [
-            "circuit depth"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-30T05:55:37Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.38283",
-        "version": 1,
-        "title": "Maximally-Matched Mixture Decoding for Correlated Atom Loss in Quantum LDPC Codes",
-        "authors": [
-          "Jacob W. Murri"
-        ],
-        "abstract": "Heralded atom loss is a dominant noise channel in neutral atom quantum computing platforms, and losses at a two-qubit gate are strongly correlated: when one atom is lost, its gate partner is often lost too. This work shows how to exploit this correlation to construct a better decoder, focusing on [[144,12,12]] Gross code syndrome extraction circuits. Given a loss readout, the possible pairings of the lost qubits according to shared gates form a graph whose maximum matchings carry almost all of the conditional probability mass. Our maximal-matching-mixture (MMM) decoder builds a per-readout decoding hypergraph as a weighted mixture over exactly these loss scenarios. This decoding hypergraph can be used by an ordinary belief-propagation decoder. On the [[144,12,12]] Gross code, MMM lowers the logical error rate by as much as ~25x relative to a loss-unaware decoder and ~2x relative to a loss-aware uniform-mixture baseline from Baranes et al. (2026).",
-        "url": "https://arxiv.org/abs/2610.38283",
-        "pdf_url": "https://arxiv.org/pdf/2610.38283v1",
-        "published": "2026-10-28T05:05:13Z",
-        "updated": "2026-10-28T05:05:13Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 5,
-        "topics": [
-          "logical_qec"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "logical error",
-            "syndrome",
-            "quantum LDPC"
           ]
         },
         "sources": [

@@ -3,6 +3,106 @@
     {
       "kind": "analysis",
       "paper": {
+        "id": "2610.06036",
+        "version": 1,
+        "title": "Materialised symmetries of 2D translationally invariant codes",
+        "authors": [
+          "Andrew Li",
+          "Stephen D. Bartlett",
+          "Andrew C. Doherty",
+          "Campbell K. McLauchlan"
+        ],
+        "abstract": "There has been significant recent interest in near-term qLDPC codes as high-performance alternatives to surface and color codes. One such class of codes is 2-dimensional translationally invariant (TI) codes, such as bivariate bicycle codes, which share similar properties to topological codes. Fundamental objects in the study of such codes are the materialised symmetries, which can be used for the construction of matching-based decoders. These decoders generalise the minimum-weight perfect matching decoder for toric codes and provide similar asymptotic performance guarantees that heuristic decoders such as BP and its variants lack. Despite this, the mathematical structure of symmetries along with their properties under translation and restriction to finite-sized lattices has not been well-studied. We describe a decomposition of symmetry spaces of 2D CSS TI codes on infinite lattices into translation-invariant subspaces which allow us to write an explicit basis of symmetries in a plane-wave-like form. We then describe how to adapt this infinite lattice basis so that any corresponding rectangular periodic lattice basis can be obtained by restriction to basis elements compatible with the periodic boundaries. This allows us to describe how the symmetry space varies with different rectangular dimensions. We illustrate via examples that it is often straightforward in practice to determine a basis of symmetries on twisted boundaries as well, without needing to recompute the decomposition. We comment on the applications of this framework to matching-based decoders and provide examples of symmetries of such codes as the gross code.",
+        "url": "https://arxiv.org/abs/2610.06036",
+        "pdf_url": "https://arxiv.org/pdf/2610.06036v1",
+        "published": "2026-10-05T09:35:01Z",
+        "updated": "2026-10-05T09:35:01Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "qLDPC"
+          ]
+        },
+        "first_seen_at": "2026-10-12T02:38:41Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "id": "2610.05992",
+        "version": 1,
+        "title": "Joint GKP Encoding for GHZ States Transmission over Bosonic Quantum MIMO Channels",
+        "authors": [
+          "Seid Koudia",
+          "Selssabil Kadid",
+          "Symeon Chatzinotas",
+          "Mérouane Debbah"
+        ],
+        "abstract": "We study transmission of a Greenberger-Horne-Zeilinger (GHZ) state over nonunitary quantum multiple-input multiple-output (QuMIMO) channels using finite-energy Gottesman-Kitaev-Preskill (GKP) encoding. A coupled-mode model describes coherent mixing, mode-dependent attenuation, and Gaussian noise. The transceiver combines programmable passive meshes, quantum-limited MMSE gain, local GKP recovery, and joint classical syndrome decoding. We optimize complex-Givens lattices using instantaneous channel-state information (CSI), current singular values with channel statistics, or statistics alone. Simulations show that joint lattice shaping outperforms product GKP processing. Under coherent-basis drift, full instantaneous CSI improves GHZ-state preservation, whereas singular-value conditioned and fully statistical designs perform similarly because neither resolves the current singular frames. These findings identify singular-frame geometry as a critical resource beyond attenuation knowledge where joint GKP processing adapts the logical lattice and receiver to anisotropic bosonic noise rather than merely inverting multimode mixing.",
+        "url": "https://arxiv.org/abs/2610.05992",
+        "pdf_url": "https://arxiv.org/pdf/2610.05992v1",
+        "published": "2026-10-05T08:46:53Z",
+        "updated": "2026-10-05T08:46:53Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "syndrome"
+          ]
+        },
+        "first_seen_at": "2026-10-12T02:38:41Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "id": "2610.05928",
+        "version": 1,
+        "title": "Evaluating the performance of QEC primitives on quantum processors at large width and depth",
+        "authors": [
+          "J. A. Montanez-Barrera; Kristel Michielsen"
+        ],
+        "abstract": "Quantum error correction (QEC) relies on repeated parity extraction, mid-circuit measurement (MCM), reset, feed-forward, and scheduling, yet these primitives are usually assessed either in isolation or through resource-demanding experiments. We introduce a few-sample benchmark of QEC-relevant primitives based on an MCM implementation of the quantum approximate optimization algorithm (QAOA) with a fixed set of linear parameters (LR-QAOA). For a chosen code, the QAOA Hamiltonian is constructed from its check structure, such that the resulting circuit mimics the syndrome-extraction connectivity and MCM pattern while producing a direct algorithmic signal, the approximation-ratio r. The LR-QAOA depth, defined by the number of QAOA layers, plays a role analogous to the number of repeated syndrome-extraction rounds in a QEC experiment. From QPU executions, the decay of r with depth defines an effective hardware error, which we map to an equivalent two-qubit depolarizing rate λeff. We compare direct and MCM-mediated implementations across 10 QPUs from IBM, IQM, and Quantinuum, with circuits containing up to 2950 MCM operations. On Quantinuum's Helios-1 and H2-1, we run code-structured LR-QAOA benchmarks for surface-code, triangular color-code, and bivariate-bicycle qLDPC Hamiltonians up to 81, 91, and 48 data qubits, respectively, using up to 480 MCM operations. On IBM ibm_phoenix, we implement the surface-code structure and compare the LR-QAOA response with logical-memory experiments, observing a correlation between the benchmark and the logical performance across different regions of the QPU. Its construction and low resource requirements provide a practical benchmark for comparing hardware generations and QEC implementations before full logical-memory experiments are performed.",
+        "url": "https://arxiv.org/abs/2610.05928",
+        "pdf_url": "https://arxiv.org/pdf/2610.05928v1",
+        "published": "2026-10-05T07:46:20Z",
+        "updated": "2026-10-05T07:46:20Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 9,
+        "topics": [
+          "logical_qec",
+          "adaptive_resources"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "quantum error correction",
+            "syndrome",
+            "qLDPC"
+          ],
+          "adaptive_resources": [
+            "mid-circuit measurement",
+            "feed-forward"
+          ]
+        },
+        "first_seen_at": "2026-10-12T02:38:41Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
         "id": "2610.05901",
         "version": 1,
         "title": "Fusion-assisted decoding of non-Abelian topological order",
