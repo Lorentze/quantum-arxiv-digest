@@ -1,0 +1,355 @@
+{
+  "analyses": [
+    {
+      "id": "2611.12882",
+      "version": 1,
+      "analysis": {
+        "summary": "作者从 chiral waveguide 的微观光子散射推出有效 polarization channel，再用于 rotated planar code 和 quantum phase estimation，把物理噪声偏置连接到逻辑错误与算法电路选择。",
+        "problem": "需要从散射机制而非任意 Pauli 模型判断 QEC 和算法表现。",
+        "setting": "偏振编码单光子与二能级原子 ensemble 相互作用，频率自由度被迹去。",
+        "main_results": [
+          "改变原子数 N 与耦合 Γ 时观察到阈值行为；渐近分析以 NΓ/σ 解释标度，σ 为光谱带宽。",
+          "在指定共振、无损条件下噪声强烈偏向 X；Hadamard-basis 的 phase estimation 降低对主导错误的敏感度。"
+        ],
+        "techniques": [
+          "微观 scattering 到 channel 的归约；码级及算法级分析。"
+        ],
+        "assumptions": [
+          "相同无损原子、对称实耦合、光谱中心共振。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "摘要无数值阈值、decoder 和相关噪声细节，不能推广至有损器件或任意 memory noise。"
+        ],
+        "relevance": [
+          "与物理噪声假设如何影响逻辑 QEC 和固定算法直接相关。"
+        ],
+        "follow_up": [
+          "读者建议：比较含损耗和频率相关性的噪声下偏置是否保持。"
+        ],
+        "relevance_score": 81,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:04:20.345Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.12882v1"
+      }
+    },
+    {
+      "id": "2611.12833",
+      "version": 1,
+      "analysis": {
+        "summary": "GARI++ 把快速 normalized min-sum 第一阶段与按码选择的第二阶段解码结合，只将未收敛案例送往后端，并传递 residual syndrome 和 soft information。论文关心逻辑正确率与实时延迟的共同约束。",
+        "problem": "单一高速 decoder 未必兼顾准确度，后端全量处理又可能过慢。",
+        "setting": "surface、bivariate bicycle、color codes；预测选择第一阶段最适合后端的迭代输出。",
+        "main_results": [
+          "uniform circuit-level depolarizing noise、p=0.001 时，surface distance 7至25的 FPGA GARI 平均每轮延迟为201 ns至11.8 μs。",
+          "Union-Find 后端在单 Apple M2 core 上的平均 residual decoding time 到 distance51仍低于1 μs，所报准确度可比 correlated MWPM。"
+        ],
+        "techniques": [
+          "random serial scheduling；变换矩阵；预测式两阶段流水。"
+        ],
+        "assumptions": [
+          "延迟是平均值，后端仅处理第一阶段失败的稀疏残差。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "不能把后端 residual time 当成总 latency；无 worst-case backlog 或硬件噪声外推保证。",
+          "摘要未给出各码的完整准确率数据。"
+        ],
+        "relevance": [
+          "直接关系实时 logical QEC 的恢复成本。"
+        ],
+        "follow_up": [
+          "读者建议：分别审计各阶段失败率、尾延迟、排队与总逻辑错误。"
+        ],
+        "relevance_score": 85,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:04:20.346Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.12833v1"
+      }
+    },
+    {
+      "id": "2611.12236",
+      "version": 1,
+      "analysis": {
+        "summary": "作者用 completion qubits 使 gauging 后的 checks 在整个 Hilbert space 上对易，解决码空间之外相互测量扰乱 syndrome 的问题，从而控制多轮逻辑测量中的 fault propagation。",
+        "problem": "逻辑算符分解成 local checks 后，码空间内的对易性不足以保证噪声下反复测量一致。",
+        "setting": "qubit stabilizer codes 的 Clifford Z₂ symmetries，并讨论 prime-dimension qudits。",
+        "main_results": [
+          "每个非对易 pair 加一个 completion qubit，保持 gauged code space、距离和 Clifford checks；LDPC 属性以常数倍 qubit 开销保持。",
+          "qubit distance-d 母码 gauging/ungauging 在 O(d) rounds 内实现 circuit fault distance Ω(d) 的逻辑测量。",
+          "两 toric codes 经 D(D₄) quantum double 再返回的显式电路，fault distance 等于母码距离。"
+        ],
+        "techniques": [
+          "check completion；全局对易性；独立于轮数的 fault propagation 控制。"
+        ],
+        "assumptions": [
+          "结论针对给定 gauging 构造；qudit 的 hierarchy bounds 不等同 qubit 结论。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "fault distance 不是给定随机噪声下的 logical error rate 或阈值；未审电路级故障模型和证明。"
+        ],
+        "relevance": [
+          "直接连接 logical measurement、ancilla 开销与 magic-state lattice surgery。"
+        ],
+        "follow_up": [
+          "读者建议：核对 completion qubit 的测量电路、传播常数和恢复假设。"
+        ],
+        "relevance_score": 96,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:04:20.346Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.12236v1"
+      }
+    },
+    {
+      "id": "2611.12190",
+      "version": 1,
+      "analysis": {
+        "summary": "论文研究高码率 Quantum Block Turbo Codes，改变 product-form 连接的 constituent codes 及排列顺序，考察迭代解码性能。其直接价值是比较组件选择，而不是声称普适解码优势。",
+        "problem": "需要判断组件参数和次序如何影响 quantum turbo decoding。",
+        "setting": "由 constituent stabilizer codes 构成的 product-like concatenation。",
+        "main_results": [
+          "作者研究新的高码率构造以及参数、组件顺序对 turbo performance 的影响。"
+        ],
+        "techniques": [
+          "quantum block turbo iterative decoding；组件码比较。"
+        ],
+        "assumptions": [
+          "摘要未说明具体 noise model、码参数与迭代停止条件。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "本次只依据 HTML 摘要；正文复杂度和性能图未审。",
+          "摘要没有定量改进，不补写阈值或高效性结论。"
+        ],
+        "relevance": [
+          "与 logical QEC 的恢复算法和码率选择直接相关。"
+        ],
+        "follow_up": [
+          "读者建议：先核对逻辑错误率、迭代代价及高码率带来的距离变化。"
+        ],
+        "relevance_score": 78,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:04:20.346Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/html/2611.12190v1"
+      }
+    },
+    {
+      "id": "2611.12098",
+      "version": 1,
+      "analysis": {
+        "summary": "作者提出 globally driven dual-species atom arrays，通过 interspecies Rydberg interaction 实现选择性控制，将 surface-code correction 和 magic-state cultivation 编译到统一原生指令集 GRAIL。",
+        "problem": "局部寻址的校准复杂性与可编程容错控制之间存在冲突。",
+        "setting": "双物种 hybrid neutral-atom system；通过原子间选择性而非 locally addressed gates 控制。",
+        "main_results": [
+          "作者报告 crosstalk 可抑制至10⁻⁴级，编译并行化用于压低串扰。",
+          "在 hardware-inferred circuit-level noise model 下，memory threshold 为1.43%，cultivated magic states 的 logical error rate 低于10⁻⁹。"
+        ],
+        "techniques": [
+          "global instruction language；surface-code 与 cultivation 编译。"
+        ],
+        "assumptions": [
+          "误差数字依赖所用硬件推断噪声模型和可达 Rydberg Rabi frequency。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "这是架构和模型结果，不是已运行的10⁻⁹实验验证；摘要未给出总 qubits、成功率、shots 与时间成本。"
+        ],
+        "relevance": [
+          "具体连接逻辑 QEC、magic 资源和控制编译。"
+        ],
+        "follow_up": [
+          "读者建议：计入全局操作相关错误、cultivation postselection 和资源开销后重新比较。"
+        ],
+        "relevance_score": 88,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:04:20.347Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.12098v1"
+      }
+    },
+    {
+      "id": "2611.11759",
+      "version": 1,
+      "analysis": {
+        "summary": "论文精确求解两输入、三输出的双人 two-hat nonlocal game，给出 tensor-product quantum value 与 commuting value 相同的最优量子策略。",
+        "problem": "需要同时展示可达策略与匹配上界，而不能只优化出一个数值候选。",
+        "setting": "共享非最大纠缠 qutrit state 的两玩家游戏。",
+        "main_results": [
+          "作者得到 ωq=ωqc=(15+√33)/36≈0.576238；no-signalling value 为2/3。"
+        ],
+        "techniques": [
+          "利用 D₈ 对称与表示论缩小矩阵问题。"
+        ],
+        "assumptions": [
+          "结果针对该特定游戏及两类量子相关模型。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "正文最优性证明未核查；摘要没有 classical value、self-testing 或噪声鲁棒性界，不补写这些结论。"
+        ],
+        "relevance": [
+          "与 nonlocal games、对称方法和量子资源的操作性优势相关。"
+        ],
+        "follow_up": [
+          "读者建议：核对最优策略是否唯一，以及有噪声时能认证什么。"
+        ],
+        "relevance_score": 85,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:05:15.564Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.11759v1"
+      }
+    },
+    {
+      "id": "2611.11754",
+      "version": 1,
+      "analysis": {
+        "summary": "论文在 paired-state Loop-Back QKD 中用两个独立 public parity checks 选择一致的三条 two-bit records，以 postselection 降低残余错误，并追踪公开通信和量子侧信息代价。",
+        "problem": "丢弃不一致数据可降低错误，但也损失记录并向对手公开信息。",
+        "setting": "固定光学站和轻量终端；两偏振脉冲返回后推断选择。",
+        "main_results": [
+          "同一顶点集上的任意 spanning tree 与闭合 parity polygon 有相同 acceptance set。",
+          "独立 bit errors 下领先误差从 e 降至 e²，并计算 acceptance、retention 和残余错误。",
+          "modular theorem 约束 syndrome disclosure 与 acceptance 后的额外 guessing advantage；指定 single-photon passive-tap channel 给出条件熵界。"
+        ],
+        "techniques": [
+          "parity graph filtering；条件安全与 quantum side information。"
+        ],
+        "assumptions": [
+          "e² 依赖独立错误；光学计算限于指定 passive-tap model。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "只读 HTML 摘要；未审安全证明。",
+          "过滤不是逐错误纠正，也不能据此断言一般光学实现已具无条件安全性或更高净密钥率。"
+        ],
+        "relevance": [
+          "具体涉及 postselection、经典公开信息与 quantum information access。"
+        ],
+        "follow_up": [
+          "读者建议：在相同损耗和公开信息预算下比较净密钥率。"
+        ],
+        "relevance_score": 74,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:05:15.564Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/html/2611.11754v1"
+      }
+    },
+    {
+      "id": "2611.10796",
+      "version": 1,
+      "analysis": {
+        "summary": "论文固定各单机制错误边缘概率，通过 hidden Gaussian Markov random field 改变空间相关，测试假定独立噪声的 qLDPC decoders。它区分边缘错误率相同与联合先验正确这两个要求。",
+        "problem": "独立模型下排名靠前的 decoder 在相关噪声中是否仍可靠？",
+        "setting": "Relay-BP、beam search 与 BP-OSD，在多组模拟电路和码实例上比较。",
+        "main_results": [
+          "相关性可令 logical error rate 改变数量级、削弱有限尺寸距离优势并改写排名；两个测试电路之一中前两者落后 BP-OSD。",
+          "增大 relay memory 或 beam width 不足以补偿；匹配 error weight 后相关错误仍使失败频率增至数倍。",
+          "提供隐藏场条件下的 marginals 后，在测试设置中恢复大部分性能。"
+        ],
+        "techniques": [
+          "固定 marginals 的相关错误生成；trapping configuration 分析；先验对照。"
+        ],
+        "assumptions": [
+          "条件 marginals 需要额外隐藏场信息，实际 decoder 未必可得。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "数值观察不是所有 qLDPC 的定理；摘要无通用阈值和精确倍率。"
+        ],
+        "relevance": [
+          "直接对应逻辑性能对噪声相关性和恢复先验的依赖。"
+        ],
+        "follow_up": [
+          "读者建议：限制可用校准信息后，测试可实际估计的相关先验能恢复多少性能。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:05:15.565Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.10796v1"
+      }
+    },
+    {
+      "id": "2611.10588",
+      "version": 1,
+      "analysis": {
+        "summary": "论文指出 compressed QAOA 的固定 Pauli encoding 与 sign decoder 会造成表达限制，改变初始化可解除而单纯加深电路不能解除。该结果强调 decoded assignment 与变分能量是不同目标。",
+        "problem": "增加深度未必能改善固定读出解码得到的经典答案。",
+        "setting": "显式 connected cubic graph 无限族，n=3r；固定编码与确定性 sign decoder。",
+        "main_results": [
+          "所有 all-plus QAOA 在任意有限深度、任意实 angles 下 cut≤2r；固定 depth-one angles 加随机 signed product-state mask 的期望为13r/4，差5n/12。",
+          "1699个随机 cubic MaxCut 实例中，选择一个 mask 的均值比为0.9100，对照 all-plus为0.7067，而 r²个分别优化 random masks 的最佳值为0.9125。"
+        ],
+        "techniques": [
+          "结构性解码障碍；初始化 masks；有限候选池统计比较。"
+        ],
+        "assumptions": [
+          "第二构造还限制 weighted coupling、angle domain 和 encoder ordering。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "证明未审；并未建立 quantum computational advantage，也不能推广为任意编码读出下的深度下界。"
+        ],
+        "relevance": [
+          "与浅线路、固定 measurement access 和资源比较有具体联系。"
+        ],
+        "follow_up": [
+          "读者建议：比较总经典 mask-selection 和多次优化成本，并检查改变 decoder 后分离是否保留。"
+        ],
+        "relevance_score": 73,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:05:15.566Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.10588v1"
+      }
+    },
+    {
+      "id": "2611.12876",
+      "version": 1,
+      "analysis": {
+        "summary": "论文统一精确光子采样器的机器性能口径，并测量 GPU 上的 simulability frontier。主要是经典模拟器性能比较，缺少当前量子数据或认证任务的严格资源保证，低相关筛除。",
+        "problem": "核对摘要是否具体回答当前研究问题。",
+        "setting": "H100、Haar-random interferometers 和指定探测配置。",
+        "main_results": [
+          "frontier 定义为每秒一份精确样本；随机器和算法变化，不是量子优势定理。"
+        ],
+        "techniques": [
+          "精确采样实现与计时。"
+        ],
+        "assumptions": [
+          "结论限于摘要所述模型。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "不从关键词命中推断量子任务优势或认证保证。"
+        ],
+        "relevance": [
+          "未达到当前研究问题的相关度门槛。"
+        ],
+        "follow_up": [],
+        "relevance_score": 48,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:05:15.566Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.12876v1"
+      }
+    }
+  ]
+}
