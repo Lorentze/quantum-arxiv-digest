@@ -4,6 +4,621 @@
   "papers": [
     {
       "doi": "",
+      "id": "2611.12882",
+      "version": 1,
+      "title": "Chiral waveguide model for error-correctable quantum computation",
+      "authors": [
+        "Zixiang Hong"
+      ],
+      "abstract": "We develop a first-principles framework connecting microscopic waveguide scattering to quantum error correction and algorithmic performance. For polarization-encoded single photons interacting with an ensemble of two-level atoms in a chiral waveguide, we derive an effective polarization quantum channel by tracing out the frequency degree of freedom. Using this channel as the physical noise model for a rotated planar code, we observe threshold behavior as the number of atoms $N$ and the atom-waveguide coupling strength $Γ$ are varied. An asymptotic analysis of the microscopic scattering model explains the threshold scaling with $NΓ/σ$, where $σ$ is the photon spectral bandwidth. For identical, lossless atoms with symmetric real coupling and a photon spectrum centered at resonance, the effective noise is strongly biased toward $X$ errors. We then incorporate the resulting logical errors into quantum phase estimation and demonstrate that the noise bias can guide circuit design. In particular, a Hadamard-basis implementation reduces sensitivity to the dominant error, improving algorithmic performance.",
+      "url": "https://arxiv.org/abs/2611.12882",
+      "pdf_url": "https://arxiv.org/pdf/2611.12882v1",
+      "published": "2026-11-09T18:59:36Z",
+      "updated": "2026-11-09T18:59:36Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z",
+      "analysis": {
+        "summary": "作者从 chiral waveguide 的微观光子散射推出有效 polarization channel，再用于 rotated planar code 和 quantum phase estimation，把物理噪声偏置连接到逻辑错误与算法电路选择。",
+        "problem": "需要从散射机制而非任意 Pauli 模型判断 QEC 和算法表现。",
+        "setting": "偏振编码单光子与二能级原子 ensemble 相互作用，频率自由度被迹去。",
+        "main_results": [
+          "改变原子数 N 与耦合 Γ 时观察到阈值行为；渐近分析以 NΓ/σ 解释标度，σ 为光谱带宽。",
+          "在指定共振、无损条件下噪声强烈偏向 X；Hadamard-basis 的 phase estimation 降低对主导错误的敏感度。"
+        ],
+        "techniques": [
+          "微观 scattering 到 channel 的归约；码级及算法级分析。"
+        ],
+        "assumptions": [
+          "相同无损原子、对称实耦合、光谱中心共振。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "摘要无数值阈值、decoder 和相关噪声细节，不能推广至有损器件或任意 memory noise。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与物理噪声假设如何影响逻辑 QEC 和固定算法直接相关。"
+        ],
+        "follow_up": [
+          "读者建议：比较含损耗和频率相关性的噪声下偏置是否保持。"
+        ],
+        "relevance_score": 81,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.12882v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:04:20+00:00"
+      },
+      "selected_at": "2026-11-11T01:06:15Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.12833",
+      "version": 1,
+      "title": "GARI++: A General-Purpose Decoder for Quantum Error Correction",
+      "authors": [
+        "Arshpreet Singh Maan",
+        "Francisco Garcia-Herrero",
+        "Daniel Bascones",
+        "Valentin Savin",
+        "Alexandru Paler"
+      ],
+      "abstract": "We present GARI++, a two-stage decoding pipeline achieving accuracy competitive with the state of the art across surface, bivariate bicycle and color codes without relying on ensembles. The first stage uses GARI, a normalized min-sum decoder with random serial scheduling on the GARI transformed matrix. The second stage decoder is used only for the cases that the first stage does not converge, and the decoder is configurable based on the choice of the QEC code. The first stage pipelines towards the second stage both the residual syndrome and the soft information. GARI++ pipelining is predictive, meaning that GARI++ chooses the first stage iteration outputs which are expected to deliver the best accuracy in the second stage. GARI++ motivates a hybrid FPGA-CPU architecture for real-time decoding. For example, under uniform circuit-level depolarising noise with a physical error rate of 0.001, the FPGA implementation of GARI achieves average latencies per round ranging from $201 ns$ to $11.8μs$ for surface code distances between 7 and 25. At the same time, due to the very low weight residuals output by the first stage, the average residual decoding time per round remains near constant and below one microsecond on a single Apple M2 core for surface code distances even up to 51 when using Union-Find and accuracy on par with correlated MWPM.",
+      "url": "https://arxiv.org/abs/2611.12833",
+      "pdf_url": "https://arxiv.org/pdf/2611.12833v1",
+      "published": "2026-11-09T18:31:41Z",
+      "updated": "2026-11-09T18:31:41Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction",
+          "syndrome"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z",
+      "analysis": {
+        "summary": "GARI++ 把快速 normalized min-sum 第一阶段与按码选择的第二阶段解码结合，只将未收敛案例送往后端，并传递 residual syndrome 和 soft information。论文关心逻辑正确率与实时延迟的共同约束。",
+        "problem": "单一高速 decoder 未必兼顾准确度，后端全量处理又可能过慢。",
+        "setting": "surface、bivariate bicycle、color codes；预测选择第一阶段最适合后端的迭代输出。",
+        "main_results": [
+          "uniform circuit-level depolarizing noise、p=0.001 时，surface distance 7至25的 FPGA GARI 平均每轮延迟为201 ns至11.8 μs。",
+          "Union-Find 后端在单 Apple M2 core 上的平均 residual decoding time 到 distance51仍低于1 μs，所报准确度可比 correlated MWPM。"
+        ],
+        "techniques": [
+          "random serial scheduling；变换矩阵；预测式两阶段流水。"
+        ],
+        "assumptions": [
+          "延迟是平均值，后端仅处理第一阶段失败的稀疏残差。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "不能把后端 residual time 当成总 latency；无 worst-case backlog 或硬件噪声外推保证。",
+          "摘要未给出各码的完整准确率数据。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接关系实时 logical QEC 的恢复成本。"
+        ],
+        "follow_up": [
+          "读者建议：分别审计各阶段失败率、尾延迟、排队与总逻辑错误。"
+        ],
+        "relevance_score": 85,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.12833v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:04:20+00:00"
+      },
+      "selected_at": "2026-11-11T01:06:15Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.12236",
+      "version": 1,
+      "title": "Commuting-check gauging for fault-tolerant logical measurements",
+      "authors": [
+        "Zongyuan Wang"
+      ],
+      "abstract": "Gauging turns a logical operator into a product of local checks, providing a route to logical measurement and lattice surgery. These checks can fail to commute outside the code space, so measuring one can randomize the outcome of another. In this work, we introduce completion qubits that make the checks commute for Clifford $\\mathbb{Z}_2$ symmetries of qubit stabilizer codes. Adding one completion qubit per noncommuting pair preserves the gauged code space and its distance while keeping the checks Clifford. Completion also preserves the low-density parity-check property with a constant-factor qubit overhead. We generalize completion to qudits and establish bounds on the Clifford-hierarchy level of the completed checks in prime dimensions. Global commutation ensures that a fault-free round fixes the syndrome until the next fault and allows us to bound fault propagation independently of the number of measurement rounds. For qubit codes, we show that gauging and ungauging a distance-$d$ parent code implements a logical measurement with circuit fault distance $Ω(d)$ in $O(d)$ rounds. We demonstrate the construction by gauging two toric codes into the $D(D_4)$ quantum double and back, with an explicit circuit whose circuit fault distance equals the parent code distance. Our results provide a framework for fault-tolerant logical measurements using commuting checks, with applications to magic-state preparation by lattice surgery.",
+      "url": "https://arxiv.org/abs/2611.12236",
+      "pdf_url": "https://arxiv.org/pdf/2611.12236v1",
+      "published": "2026-11-09T11:27:18Z",
+      "updated": "2026-11-09T11:27:18Z",
+      "categories": [
+        "quant-ph",
+        "cond-mat.str-el"
+      ],
+      "keyword_score": 9,
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer",
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "syndrome"
+        ],
+        "magic_stabilizer": [
+          "stabilizer"
+        ],
+        "adaptive_resources": [
+          "state preparation"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z",
+      "analysis": {
+        "summary": "作者用 completion qubits 使 gauging 后的 checks 在整个 Hilbert space 上对易，解决码空间之外相互测量扰乱 syndrome 的问题，从而控制多轮逻辑测量中的 fault propagation。",
+        "problem": "逻辑算符分解成 local checks 后，码空间内的对易性不足以保证噪声下反复测量一致。",
+        "setting": "qubit stabilizer codes 的 Clifford Z₂ symmetries，并讨论 prime-dimension qudits。",
+        "main_results": [
+          "每个非对易 pair 加一个 completion qubit，保持 gauged code space、距离和 Clifford checks；LDPC 属性以常数倍 qubit 开销保持。",
+          "qubit distance-d 母码 gauging/ungauging 在 O(d) rounds 内实现 circuit fault distance Ω(d) 的逻辑测量。",
+          "两 toric codes 经 D(D₄) quantum double 再返回的显式电路，fault distance 等于母码距离。"
+        ],
+        "techniques": [
+          "check completion；全局对易性；独立于轮数的 fault propagation 控制。"
+        ],
+        "assumptions": [
+          "结论针对给定 gauging 构造；qudit 的 hierarchy bounds 不等同 qubit 结论。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "fault distance 不是给定随机噪声下的 logical error rate 或阈值；未审电路级故障模型和证明。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接连接 logical measurement、ancilla 开销与 magic-state lattice surgery。"
+        ],
+        "follow_up": [
+          "读者建议：核对 completion qubit 的测量电路、传播常数和恢复假设。"
+        ],
+        "relevance_score": 96,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.12236v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:04:20+00:00"
+      },
+      "selected_at": "2026-11-11T01:06:15Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.12190",
+      "version": 1,
+      "title": "High Rate Quantum Block Turbo Codes",
+      "authors": [
+        "Khaled Jebari",
+        "Luiz Anet Neto",
+        "Ramesh Pyndiah",
+        "Jean-Louis de Bougrenet de la Tocnaye"
+      ],
+      "abstract": "Quantum Block Turbo Code is an iterative decoding technique for concatenated quantum error correction codes in product form. In this paper, we study new high rate quantum block turbo codes with different constituent codes. We examine the impact of the change of codes parameters and the order of constituent codes on turbo performance.",
+      "url": "https://arxiv.org/abs/2611.12190",
+      "pdf_url": "https://arxiv.org/pdf/2611.12190v1",
+      "published": "2026-11-09T10:47:35Z",
+      "updated": "2026-11-09T10:47:35Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z",
+      "analysis": {
+        "summary": "论文研究高码率 Quantum Block Turbo Codes，改变 product-form 连接的 constituent codes 及排列顺序，考察迭代解码性能。其直接价值是比较组件选择，而不是声称普适解码优势。",
+        "problem": "需要判断组件参数和次序如何影响 quantum turbo decoding。",
+        "setting": "由 constituent stabilizer codes 构成的 product-like concatenation。",
+        "main_results": [
+          "作者研究新的高码率构造以及参数、组件顺序对 turbo performance 的影响。"
+        ],
+        "techniques": [
+          "quantum block turbo iterative decoding；组件码比较。"
+        ],
+        "assumptions": [
+          "摘要未说明具体 noise model、码参数与迭代停止条件。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "本次只依据 HTML 摘要；正文复杂度和性能图未审。",
+          "摘要没有定量改进，不补写阈值或高效性结论。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 logical QEC 的恢复算法和码率选择直接相关。"
+        ],
+        "follow_up": [
+          "读者建议：先核对逻辑错误率、迭代代价及高码率带来的距离变化。"
+        ],
+        "relevance_score": 78,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/html/2611.12190v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:04:20+00:00"
+      },
+      "selected_at": "2026-11-11T01:06:15Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.12098",
+      "version": 1,
+      "title": "A Universal Fault-Tolerant Quantum Computing Architecture with Globally Driven Atom Arrays",
+      "authors": [
+        "Zhihao Zhang",
+        "Shuaifan Cao",
+        "Xinyang Yu",
+        "Yanyan Chen",
+        "Yueyang Min",
+        "Yingzhou Li",
+        "Zhongcheng Yu",
+        "Lei Feng",
+        "Xiaopeng Li"
+      ],
+      "abstract": "Scalable quantum computation requires reconciling programmability with simple, high-fidelity control. Here, we propose a universal fault-tolerant architecture using globally driven dual-species atom arrays. In a hybrid neutral-atom system, interspecies Rydberg interactions enable qubit addressability without locally addressed quantum gates. We construct a universal native instruction set, Global Rydberg Atom Instruction Language (GRAIL), and show that crosstalk errors can be suppressed to the $10^{-4}$ level. We compile surface-code error correction and magic state cultivation into GRAIL, and parallelize the compilation to suppress crosstalk. Under a hardware-inferred circuit-level noise model, we obtain an error-correction threshold of $1.43\\%$ for the resulting quantum memory and a logical error rate below $10^{-9}$ for magic states cultivated at an experimentally accessible Rydberg Rabi frequency. By replacing local gate addressing with atom-mediated selectivity, this architecture removes the associated calibration requirements, offering a route to simpler control for large-scale fault-tolerant neutral-atom computation.",
+      "url": "https://arxiv.org/abs/2611.12098",
+      "pdf_url": "https://arxiv.org/pdf/2611.12098v1",
+      "published": "2026-11-09T09:18:12Z",
+      "updated": "2026-11-09T09:18:12Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 6,
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "logical error"
+        ],
+        "magic_stabilizer": [
+          "magic state"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z",
+      "analysis": {
+        "summary": "作者提出 globally driven dual-species atom arrays，通过 interspecies Rydberg interaction 实现选择性控制，将 surface-code correction 和 magic-state cultivation 编译到统一原生指令集 GRAIL。",
+        "problem": "局部寻址的校准复杂性与可编程容错控制之间存在冲突。",
+        "setting": "双物种 hybrid neutral-atom system；通过原子间选择性而非 locally addressed gates 控制。",
+        "main_results": [
+          "作者报告 crosstalk 可抑制至10⁻⁴级，编译并行化用于压低串扰。",
+          "在 hardware-inferred circuit-level noise model 下，memory threshold 为1.43%，cultivated magic states 的 logical error rate 低于10⁻⁹。"
+        ],
+        "techniques": [
+          "global instruction language；surface-code 与 cultivation 编译。"
+        ],
+        "assumptions": [
+          "误差数字依赖所用硬件推断噪声模型和可达 Rydberg Rabi frequency。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "这是架构和模型结果，不是已运行的10⁻⁹实验验证；摘要未给出总 qubits、成功率、shots 与时间成本。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "具体连接逻辑 QEC、magic 资源和控制编译。"
+        ],
+        "follow_up": [
+          "读者建议：计入全局操作相关错误、cultivation postselection 和资源开销后重新比较。"
+        ],
+        "relevance_score": 88,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.12098v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:04:20+00:00"
+      },
+      "selected_at": "2026-11-11T01:06:15Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.11759",
+      "version": 1,
+      "title": "An optimal quantum strategy for the $2$-hat game",
+      "authors": [
+        "Georgios Baziotis",
+        "Sang-Jun Park",
+        "Sang-Gyun Youn"
+      ],
+      "abstract": "We study the two-player hat game as a two-input, three-output non-local game. We calculate the quantum commuting value and show that it coincides with the quantum one. In particular, we show that \\[ω_{\\rm q}(H_2)=ω_{\\mathrm{qc}}(H_2)=\\frac{15+\\sqrt{33}}{36}\\approx 0.576238.\\] We achieve the optimal quantum advantage using a shared non-maximally entangled qutrit state. To establish optimality, we exploit the game's symmetry under the dihedral group $D_8$ and apply its representation theory to substantially reduce the complexity of the underlying matrix problem. We also determine the no-signalling value $ω_{\\mathrm{ns}}(H_2)=2/3$.",
+      "url": "https://arxiv.org/abs/2611.11759",
+      "pdf_url": "https://arxiv.org/pdf/2611.11759v1",
+      "published": "2026-11-09T01:58:36Z",
+      "updated": "2026-11-09T01:58:36Z",
+      "categories": [
+        "quant-ph",
+        "math-ph",
+        "math.OA"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "non-local game"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z",
+      "analysis": {
+        "summary": "论文精确求解两输入、三输出的双人 two-hat nonlocal game，给出 tensor-product quantum value 与 commuting value 相同的最优量子策略。",
+        "problem": "需要同时展示可达策略与匹配上界，而不能只优化出一个数值候选。",
+        "setting": "共享非最大纠缠 qutrit state 的两玩家游戏。",
+        "main_results": [
+          "作者得到 ωq=ωqc=(15+√33)/36≈0.576238；no-signalling value 为2/3。"
+        ],
+        "techniques": [
+          "利用 D₈ 对称与表示论缩小矩阵问题。"
+        ],
+        "assumptions": [
+          "结果针对该特定游戏及两类量子相关模型。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "正文最优性证明未核查；摘要没有 classical value、self-testing 或噪声鲁棒性界，不补写这些结论。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 nonlocal games、对称方法和量子资源的操作性优势相关。"
+        ],
+        "follow_up": [
+          "读者建议：核对最优策略是否唯一，以及有噪声时能认证什么。"
+        ],
+        "relevance_score": 85,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.11759v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:05:15+00:00"
+      },
+      "selected_at": "2026-11-11T01:06:15Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.11754",
+      "version": 1,
+      "title": "Advantage Distillation in Paired-State Quantum Key Distribution",
+      "authors": [
+        "Luis Adrián Lizama-Pérez",
+        "José Mauricio López-Romero"
+      ],
+      "abstract": "We investigate advantage distillation for paired-state Loop-Back quantum key distribution, with a fixed optical station serving a lightweight portable terminal. Alice prepares two polarization-encoded pulses, Bob selects and applies a polarization filter to each pulse, and Alice infers his selections from the returned detection pattern. The proposed advantage-distillation step selects consistent blocks of three two-bit records using two independent public parity checks on a minimal connected graph. The closing edge of a parity polygon is shown to be redundant: any spanning tree of the same vertices has the same acceptance set. We derive exact acceptance probabilities, residual-error laws, and retention rates. Under independent bit errors, the three-record filter reduces the leading error term from e to e^2, while its cost in discarded records and public information is accounted for explicitly. A modular security theorem bounds the additional guessing advantage available to an adversary after syndrome disclosure and block acceptance, including arbitrary quantum side information. We also evaluate a specified single-photon passive-tap optical channel, obtaining a positive conditional entropy bound and exact accepted-block security quantities. This parity-based advantage-distillation step detects discrepancies by postselection; it does not correct individual errors and is intended to precede conventional reconciliation. The architecture suggests two further directions: hybrid filtering and reconciliation, and key establishment between portable users accessing a shared quantum station.",
+      "url": "https://arxiv.org/abs/2611.11754",
+      "pdf_url": "https://arxiv.org/pdf/2611.11754v1",
+      "published": "2026-11-09T01:50:30Z",
+      "updated": "2026-11-09T01:50:30Z",
+      "categories": [
+        "quant-ph",
+        "cs.CR"
+      ],
+      "keyword_score": 6,
+      "topics": [
+        "logical_qec",
+        "data_hiding"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "syndrome"
+        ],
+        "data_hiding": [
+          "side information"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z",
+      "analysis": {
+        "summary": "论文在 paired-state Loop-Back QKD 中用两个独立 public parity checks 选择一致的三条 two-bit records，以 postselection 降低残余错误，并追踪公开通信和量子侧信息代价。",
+        "problem": "丢弃不一致数据可降低错误，但也损失记录并向对手公开信息。",
+        "setting": "固定光学站和轻量终端；两偏振脉冲返回后推断选择。",
+        "main_results": [
+          "同一顶点集上的任意 spanning tree 与闭合 parity polygon 有相同 acceptance set。",
+          "独立 bit errors 下领先误差从 e 降至 e²，并计算 acceptance、retention 和残余错误。",
+          "modular theorem 约束 syndrome disclosure 与 acceptance 后的额外 guessing advantage；指定 single-photon passive-tap channel 给出条件熵界。"
+        ],
+        "techniques": [
+          "parity graph filtering；条件安全与 quantum side information。"
+        ],
+        "assumptions": [
+          "e² 依赖独立错误；光学计算限于指定 passive-tap model。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "只读 HTML 摘要；未审安全证明。",
+          "过滤不是逐错误纠正，也不能据此断言一般光学实现已具无条件安全性或更高净密钥率。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "具体涉及 postselection、经典公开信息与 quantum information access。"
+        ],
+        "follow_up": [
+          "读者建议：在相同损耗和公开信息预算下比较净密钥率。"
+        ],
+        "relevance_score": 74,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/html/2611.11754v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:05:15+00:00"
+      },
+      "selected_at": "2026-11-11T01:06:15Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.10796",
+      "version": 1,
+      "title": "BP-based qLDPC Decoding under Long-range Correlated Noise: Trapping Configurations and Prior Mismatch",
+      "authors": [
+        "Abhinav Dangi",
+        "Avhishek Chatterjee"
+      ],
+      "abstract": "We study the robustness of two state-of-the-art BP-based qLDPC decoders, Relay-BP and beam search, designed for independent noise when applied to spatially correlated noise with unchanged single-mechanism error probabilities. We generate correlated errors with a hidden Gaussian Markov random field, which lets us control the strength and range of the correlation while keeping every marginal error probability exact. This setting complements correlation-aware decoding: it asks how existing decoders perform when their assumed joint error model is mismatched. Across multiple tested circuits and code instances that we simulated, we observe that correlations can change logical error rates by orders of magnitude, reduce the finite-size distance advantage, and alter the relative ranking of Relay-BP, beam search, and BP-OSD. On one of the two tested circuits, Relay-BP and beam search become worse than BP-OSD, and increasing relay memory or beam width does not compensate for the degradation. Configuration analysis indicates that correlation primarily increases the probability of trapping configurations that are known to challenge these decoders; at matched error weight, correlated errors still cause decoding failures several times more often than i.i.d. errors. Finally, supplying the decoders with the marginals conditioned on the hidden field recovers most of the lost performance in the tested settings identifying prior mismatch as a major contributor to performance degradation under correlation.",
+      "url": "https://arxiv.org/abs/2611.10796",
+      "pdf_url": "https://arxiv.org/pdf/2611.10796v1",
+      "published": "2026-11-07T15:19:59Z",
+      "updated": "2026-11-07T15:19:59Z",
+      "categories": [
+        "cs.IT",
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "logical error",
+          "qLDPC"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z",
+      "analysis": {
+        "summary": "论文固定各单机制错误边缘概率，通过 hidden Gaussian Markov random field 改变空间相关，测试假定独立噪声的 qLDPC decoders。它区分边缘错误率相同与联合先验正确这两个要求。",
+        "problem": "独立模型下排名靠前的 decoder 在相关噪声中是否仍可靠？",
+        "setting": "Relay-BP、beam search 与 BP-OSD，在多组模拟电路和码实例上比较。",
+        "main_results": [
+          "相关性可令 logical error rate 改变数量级、削弱有限尺寸距离优势并改写排名；两个测试电路之一中前两者落后 BP-OSD。",
+          "增大 relay memory 或 beam width 不足以补偿；匹配 error weight 后相关错误仍使失败频率增至数倍。",
+          "提供隐藏场条件下的 marginals 后，在测试设置中恢复大部分性能。"
+        ],
+        "techniques": [
+          "固定 marginals 的相关错误生成；trapping configuration 分析；先验对照。"
+        ],
+        "assumptions": [
+          "条件 marginals 需要额外隐藏场信息，实际 decoder 未必可得。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "数值观察不是所有 qLDPC 的定理；摘要无通用阈值和精确倍率。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接对应逻辑性能对噪声相关性和恢复先验的依赖。"
+        ],
+        "follow_up": [
+          "读者建议：限制可用校准信息后，测试可实际估计的相关先验能恢复多少性能。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.10796v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:05:15+00:00"
+      },
+      "selected_at": "2026-11-11T01:06:15Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.10588",
+      "version": 1,
+      "title": "Initialization masks overcome decoding obstructions in compressed QAOA",
+      "authors": [
+        "Emilio Semre",
+        "Steven Frankel"
+      ],
+      "abstract": "In compressed quantum optimization, a variational state is converted into a classical assignment by decoding noncommuting observables. We show that this step creates structural restrictions that changing the initialization can remove, even when increasing circuit depth cannot. For an explicit infinite family of connected cubic graphs on $n=3r$ vertices, with a fixed Pauli encoding and deterministic sign decoder, every all-plus QAOA circuit has cut at most $2r$, at every finite depth and every real angle sequence. A uniform signed product-state mask at fixed depth-one angles has expected cut $13r/4$, an additive advantage $5n/12$; an infinite subfamily admits an optimal mask. A second construction retains a linear depth-one separation under weak weighted couplings, a bounded cost-angle domain and a specified production-encoder ordering. Noiseless simulations then test classical mask selection before energy optimization. On 1,699 random cubic MaxCut instances, one selected mask achieves mean ratio $0.9100$, versus $0.7067$ for the all-plus $X$ baseline and $0.9125$ for the best of $r^2$ separately optimized random masks. On complete cohorts of weighted MaxCut, sparse Ising, Max-2-XOR and Max-2-SAT, the selected mask also improves on the baseline at every size, but it trails the pool at small sizes and leads it significantly only at the larger MaxCut and Ising sizes. Finite-pool order statistics separate the effect of selection from that of drawing a random mask. The results distinguish decoded expressivity from optimized energy and empirical performance; they do not establish a quantum computational advantage.",
+      "url": "https://arxiv.org/abs/2611.10588",
+      "pdf_url": "https://arxiv.org/pdf/2611.10588v1",
+      "published": "2026-11-07T08:52:37Z",
+      "updated": "2026-11-07T08:52:37Z",
+      "categories": [
+        "quant-ph",
+        "cs.CC"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "circuit depth"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-10T07:25:28Z",
+      "analysis": {
+        "summary": "论文指出 compressed QAOA 的固定 Pauli encoding 与 sign decoder 会造成表达限制，改变初始化可解除而单纯加深电路不能解除。该结果强调 decoded assignment 与变分能量是不同目标。",
+        "problem": "增加深度未必能改善固定读出解码得到的经典答案。",
+        "setting": "显式 connected cubic graph 无限族，n=3r；固定编码与确定性 sign decoder。",
+        "main_results": [
+          "所有 all-plus QAOA 在任意有限深度、任意实 angles 下 cut≤2r；固定 depth-one angles 加随机 signed product-state mask 的期望为13r/4，差5n/12。",
+          "1699个随机 cubic MaxCut 实例中，选择一个 mask 的均值比为0.9100，对照 all-plus为0.7067，而 r²个分别优化 random masks 的最佳值为0.9125。"
+        ],
+        "techniques": [
+          "结构性解码障碍；初始化 masks；有限候选池统计比较。"
+        ],
+        "assumptions": [
+          "第二构造还限制 weighted coupling、angle domain 和 encoder ordering。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未说明的假设。",
+          "证明未审；并未建立 quantum computational advantage，也不能推广为任意编码读出下的深度下界。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与浅线路、固定 measurement access 和资源比较有具体联系。"
+        ],
+        "follow_up": [
+          "读者建议：比较总经典 mask-selection 和多次优化成本，并检查改变 decoder 后分离是否保留。"
+        ],
+        "relevance_score": 73,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.10588v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-11T01:05:15+00:00"
+      },
+      "selected_at": "2026-11-11T01:06:15Z"
+    },
+    {
+      "doi": "",
       "id": "2611.09760",
       "version": 1,
       "title": "Scalable Unitary State-Encoding for Generic Large Data",
@@ -22520,357 +23135,6 @@
     },
     {
       "doi": "",
-      "id": "2611.12882",
-      "version": 1,
-      "title": "Chiral waveguide model for error-correctable quantum computation",
-      "authors": [
-        "Zixiang Hong"
-      ],
-      "abstract": "We develop a first-principles framework connecting microscopic waveguide scattering to quantum error correction and algorithmic performance. For polarization-encoded single photons interacting with an ensemble of two-level atoms in a chiral waveguide, we derive an effective polarization quantum channel by tracing out the frequency degree of freedom. Using this channel as the physical noise model for a rotated planar code, we observe threshold behavior as the number of atoms $N$ and the atom-waveguide coupling strength $Γ$ are varied. An asymptotic analysis of the microscopic scattering model explains the threshold scaling with $NΓ/σ$, where $σ$ is the photon spectral bandwidth. For identical, lossless atoms with symmetric real coupling and a photon spectrum centered at resonance, the effective noise is strongly biased toward $X$ errors. We then incorporate the resulting logical errors into quantum phase estimation and demonstrate that the noise bias can guide circuit design. In particular, a Hadamard-basis implementation reduces sensitivity to the dominant error, improving algorithmic performance.",
-      "url": "https://arxiv.org/abs/2611.12882",
-      "pdf_url": "https://arxiv.org/pdf/2611.12882v1",
-      "published": "2026-11-09T18:59:36Z",
-      "updated": "2026-11-09T18:59:36Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.12876",
-      "version": 1,
-      "title": "The simulability frontiers of photonic quantum computing",
-      "authors": [
-        "Jean Senellart",
-        "Benjamin Stott",
-        "Stephen Wein",
-        "Esperanza Cuenca Gomez",
-        "Pascale Senellart",
-        "Shane Mansfield",
-        "Pierre-Emmanuel Emeriau"
-      ],
-      "abstract": "Estimates of when photonic devices outgrow classical simulation are hard to compare: even for single-photon boson sampling, quoted thresholds range from 50 to 98 photons, as they rest on different tasks and assumptions. We propose as a common unit the time a classical computer needs to draw one sample from the device's exact output distribution, up to floating-point rounding. Only exactness applies equally to every kind of light, since the cost of approximate sampling depends on the accuracy required. The simulability frontier is the device size at which our fastest exact sampler produces one sample per second on a fixed machine; this device size increases with better hardware and algorithms. As the time per sample grows exponentially with the number of detected photons, doubling the machine speed moves the frontier by about one photon, whereas a better algorithm changes the growth rate. We measure the frontier with photonic-engines, an open-source GPU library of exact samplers for single photons, entangled photons from quantum emitters, vacuum-single-photon superpositions and squeezed light. Each sampler is validated against a simulator sharing no code with it. On one NVIDIA H100 GPU, with Haar-random interferometers, twice as many modes as photonic inputs and photon-number-resolving detectors, the frontier lies at 38.3 single photons and at 31.0 entangled photons from one emitter. For squeezed light, a timing model fitted to measurements places it at 41.5 squeezed photonic inputs of mean photon number 0.5. For our samplers, coherence alone makes simulation harder: sources that emit a photon with probability one half reach 64.2 when vacuum and photon are mixed incoherently, as for lossy single photons, but only 50.0 when they are in coherent superposition. Feed-forward from mid-circuit measurement of up to three modes lowers the single-photon frontier only from 38.3 to 38.1.",
-      "url": "https://arxiv.org/abs/2611.12876",
-      "pdf_url": "https://arxiv.org/pdf/2611.12876v1",
-      "published": "2026-11-09T18:58:02Z",
-      "updated": "2026-11-09T18:58:02Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 8,
-      "topics": [
-        "random_designs",
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "random_designs": [
-          "Haar-random"
-        ],
-        "adaptive_resources": [
-          "mid-circuit measurement",
-          "feed-forward"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.12833",
-      "version": 1,
-      "title": "GARI++: A General-Purpose Decoder for Quantum Error Correction",
-      "authors": [
-        "Arshpreet Singh Maan",
-        "Francisco Garcia-Herrero",
-        "Daniel Bascones",
-        "Valentin Savin",
-        "Alexandru Paler"
-      ],
-      "abstract": "We present GARI++, a two-stage decoding pipeline achieving accuracy competitive with the state of the art across surface, bivariate bicycle and color codes without relying on ensembles. The first stage uses GARI, a normalized min-sum decoder with random serial scheduling on the GARI transformed matrix. The second stage decoder is used only for the cases that the first stage does not converge, and the decoder is configurable based on the choice of the QEC code. The first stage pipelines towards the second stage both the residual syndrome and the soft information. GARI++ pipelining is predictive, meaning that GARI++ chooses the first stage iteration outputs which are expected to deliver the best accuracy in the second stage. GARI++ motivates a hybrid FPGA-CPU architecture for real-time decoding. For example, under uniform circuit-level depolarising noise with a physical error rate of 0.001, the FPGA implementation of GARI achieves average latencies per round ranging from $201 ns$ to $11.8μs$ for surface code distances between 7 and 25. At the same time, due to the very low weight residuals output by the first stage, the average residual decoding time per round remains near constant and below one microsecond on a single Apple M2 core for surface code distances even up to 51 when using Union-Find and accuracy on par with correlated MWPM.",
-      "url": "https://arxiv.org/abs/2611.12833",
-      "pdf_url": "https://arxiv.org/pdf/2611.12833v1",
-      "published": "2026-11-09T18:31:41Z",
-      "updated": "2026-11-09T18:31:41Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction",
-          "syndrome"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.12779",
-      "version": 1,
-      "title": "Unified architecture for arbitrary two-qubit gates with neutral atoms",
-      "authors": [
-        "Nader Mostaan",
-        "Peter Schmelcher",
-        "Rick Mukherjee"
-      ],
-      "abstract": "We propose a unified architecture for two-qubit gates in neutral-atom quantum processors which allows the implementation of the complete set of two-qubit gates. Our approach rests on a single resource that unlocks the entire gate set: an XXZ interaction with tunable anisotropy, combined only with single-qubit operations. We introduce a Rydberg-atom realization of the tunable XXZ interaction and combine it with optimally controlled global microwave pulses to implement the B, QFT, iSWAP, and $\\sqrt{\\mathrm{iSWAP}}$ gates, as well as a continuous gate family interpolating from CZ to iSWAP via the B gate. This work allows the implementation of any two-qubit gate natively in neutral-atom platforms, enabling flexible switching between instruction sets to reduce circuit depth and compilation overhead in quantum algorithm implementation.",
-      "url": "https://arxiv.org/abs/2611.12779",
-      "pdf_url": "https://arxiv.org/pdf/2611.12779v1",
-      "published": "2026-11-09T17:51:21Z",
-      "updated": "2026-11-09T17:51:21Z",
-      "categories": [
-        "quant-ph",
-        "math-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "circuit depth"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.12720",
-      "version": 1,
-      "title": "Spin Shuttling Through Quantum-Dot Based Chiral Molecular Bridges: Gauge Constraints, Holonomy, and Quantum Gates",
-      "authors": [
-        "Amitoj S. Miglani",
-        "Rajdeep R. Dwivedi",
-        "Balsant S. Tiwari",
-        "Vishvendra S. Poonia"
-      ],
-      "abstract": "Chiral molecular bridges between silicon quantum dots can provide novel two-qubit entangling resources via the chirality-induced spin-selectivity (CISS) effect. We evaluate this using Makhlin invariants. Modeling a phase-coherent bridge as an $\\mathrm{SU}(2)$-valued hopping between two spins, a Schrieffer-Wolff reduction yields a twisted exchange interaction $J \\mathbf{S}_1 \\cdot \\mathbf{R} \\mathbf{S}_2$, whose Dzyaloshinskii-Moriya and symmetric anisotropic parts are fixed by a single bridge angle $α$. Using the Kaplan-Shekhtman-Entin-Wohlman-Aharony (KSEA) gauge argument, we prove this interaction is locally equivalent to isotropic exchange; thus, a single chiral bond does not constitute a new entangling class. Breaking this gauge symmetry reveals genuine chiral utility: chiral exchange converts a uniform transverse field into a synthetic gradient, bringing the two-qubit propagator within $7\\times10^{-4}$ of the CNOT class in invariant space 4.7 times faster than an equivalent orthogonal gradient. Shuttling a spin through bridges with non-collinear axes implements a non-Abelian $\\mathrm{SU}(2)$ holonomy, yielding rotationally non-reciprocal transport and closed-loop geometric gates that suppress dynamical-phase noise to second order. To address the unsettled microscopic origin of CISS, we introduce a unified transport channel combining coherent rotation, a direction-reversing spin filter, and pointer-basis dephasing. This model obeys an exact $\\tanh$ composition law for pumped polarization and a closed-form transverse decay law, yielding four observables that experimentally over-determine the bridge's coherent fraction $F_c$. Finally, we quantify silicon-specific hardware constraints, establishing the Landau-Zener valley-adiabaticity window ($E_v \\geq 2.1\\sqrt{\\hbar v}$) and charge-noise limit ($σ_J/J \\leq 3\\%$) required for $99\\%$ gate fidelity.",
-      "url": "https://arxiv.org/abs/2611.12720",
-      "pdf_url": "https://arxiv.org/pdf/2611.12720v1",
-      "published": "2026-11-09T17:05:32Z",
-      "updated": "2026-11-09T17:05:32Z",
-      "categories": [
-        "cond-mat.mes-hall",
-        "quant-ph"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "benchmarking"
-      ],
-      "keyword_matches": {
-        "benchmarking": [
-          "gate fidelity"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.12549",
-      "version": 1,
-      "title": "The finite projective classification of complex spinors via momentum maps",
-      "authors": [
-        "Bartłomiej Sikorski",
-        "Adam Sawicki"
-      ],
-      "abstract": "We describe the projective orbits of complex spinors from the point of view of the momentum map. We treat the irreducible spin modules in odd dimensions 1,3,5,7,9,11 and the half-spin modules in even dimensions 2,4,6,8,10,12,14, which are the only cases with finitely many orbits. In the Clifford--Fock model, we construct representatives as sums of pure basis spinors, and the coefficients are chosen so that the representative is a critical point of the squared norm of the momentum map. The resulting momentum values in a fixed Weyl chamber distinguish the orbits. Completeness follows from Vinberg's theory of graded Lie algebras and stabilizer actions, independently of the classical spinor classifications. We recover the classical counts of 1,1,1,2,3,5 orbits in the odd cases and 1,1,1,2,2,4,9 in the even cases, and compute the projective dimension of every orbit. In dimension fourteen we also determine the closure order of the orbits, using the fact that the minimum of the squared momentum norm increases strictly under degeneration.",
-      "url": "https://arxiv.org/abs/2611.12549",
-      "pdf_url": "https://arxiv.org/pdf/2611.12549v1",
-      "published": "2026-11-09T15:19:30Z",
-      "updated": "2026-11-09T15:19:30Z",
-      "categories": [
-        "math-ph",
-        "math.RT",
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "magic_stabilizer": [
-          "stabilizer"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.12236",
-      "version": 1,
-      "title": "Commuting-check gauging for fault-tolerant logical measurements",
-      "authors": [
-        "Zongyuan Wang"
-      ],
-      "abstract": "Gauging turns a logical operator into a product of local checks, providing a route to logical measurement and lattice surgery. These checks can fail to commute outside the code space, so measuring one can randomize the outcome of another. In this work, we introduce completion qubits that make the checks commute for Clifford $\\mathbb{Z}_2$ symmetries of qubit stabilizer codes. Adding one completion qubit per noncommuting pair preserves the gauged code space and its distance while keeping the checks Clifford. Completion also preserves the low-density parity-check property with a constant-factor qubit overhead. We generalize completion to qudits and establish bounds on the Clifford-hierarchy level of the completed checks in prime dimensions. Global commutation ensures that a fault-free round fixes the syndrome until the next fault and allows us to bound fault propagation independently of the number of measurement rounds. For qubit codes, we show that gauging and ungauging a distance-$d$ parent code implements a logical measurement with circuit fault distance $Ω(d)$ in $O(d)$ rounds. We demonstrate the construction by gauging two toric codes into the $D(D_4)$ quantum double and back, with an explicit circuit whose circuit fault distance equals the parent code distance. Our results provide a framework for fault-tolerant logical measurements using commuting checks, with applications to magic-state preparation by lattice surgery.",
-      "url": "https://arxiv.org/abs/2611.12236",
-      "pdf_url": "https://arxiv.org/pdf/2611.12236v1",
-      "published": "2026-11-09T11:27:18Z",
-      "updated": "2026-11-09T11:27:18Z",
-      "categories": [
-        "quant-ph",
-        "cond-mat.str-el"
-      ],
-      "keyword_score": 9,
-      "topics": [
-        "logical_qec",
-        "magic_stabilizer",
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "syndrome"
-        ],
-        "magic_stabilizer": [
-          "stabilizer"
-        ],
-        "adaptive_resources": [
-          "state preparation"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.12190",
-      "version": 1,
-      "title": "High Rate Quantum Block Turbo Codes",
-      "authors": [
-        "Khaled Jebari",
-        "Luiz Anet Neto",
-        "Ramesh Pyndiah",
-        "Jean-Louis de Bougrenet de la Tocnaye"
-      ],
-      "abstract": "Quantum Block Turbo Code is an iterative decoding technique for concatenated quantum error correction codes in product form. In this paper, we study new high rate quantum block turbo codes with different constituent codes. We examine the impact of the change of codes parameters and the order of constituent codes on turbo performance.",
-      "url": "https://arxiv.org/abs/2611.12190",
-      "pdf_url": "https://arxiv.org/pdf/2611.12190v1",
-      "published": "2026-11-09T10:47:35Z",
-      "updated": "2026-11-09T10:47:35Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.12098",
-      "version": 1,
-      "title": "A Universal Fault-Tolerant Quantum Computing Architecture with Globally Driven Atom Arrays",
-      "authors": [
-        "Zhihao Zhang",
-        "Shuaifan Cao",
-        "Xinyang Yu",
-        "Yanyan Chen",
-        "Yueyang Min",
-        "Yingzhou Li",
-        "Zhongcheng Yu",
-        "Lei Feng",
-        "Xiaopeng Li"
-      ],
-      "abstract": "Scalable quantum computation requires reconciling programmability with simple, high-fidelity control. Here, we propose a universal fault-tolerant architecture using globally driven dual-species atom arrays. In a hybrid neutral-atom system, interspecies Rydberg interactions enable qubit addressability without locally addressed quantum gates. We construct a universal native instruction set, Global Rydberg Atom Instruction Language (GRAIL), and show that crosstalk errors can be suppressed to the $10^{-4}$ level. We compile surface-code error correction and magic state cultivation into GRAIL, and parallelize the compilation to suppress crosstalk. Under a hardware-inferred circuit-level noise model, we obtain an error-correction threshold of $1.43\\%$ for the resulting quantum memory and a logical error rate below $10^{-9}$ for magic states cultivated at an experimentally accessible Rydberg Rabi frequency. By replacing local gate addressing with atom-mediated selectivity, this architecture removes the associated calibration requirements, offering a route to simpler control for large-scale fault-tolerant neutral-atom computation.",
-      "url": "https://arxiv.org/abs/2611.12098",
-      "pdf_url": "https://arxiv.org/pdf/2611.12098v1",
-      "published": "2026-11-09T09:18:12Z",
-      "updated": "2026-11-09T09:18:12Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 6,
-      "topics": [
-        "logical_qec",
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "logical error"
-        ],
-        "magic_stabilizer": [
-          "magic state"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.11974",
-      "version": 1,
-      "title": "Polynomial Sample Complexity of Noninteractive Simulation over Finite Alphabets",
-      "authors": [
-        "Haoran Wang"
-      ],
-      "abstract": "We study noninteractive simulation from a finite correlated source. Alice and Bob observe independent copies of the source and generate outputs without communication. We give a quantitative construction for arbitrary finite output alphabets: for every fixed source, a joint law that is simulable with arbitrarily many samples can be approximated using a number of samples polynomial jointly in the output alphabet sizes and the inverse accuracy. We first study binary outputs. A one-sided Wright--Fisher comparison gives a source-dependent explicit exponent and a finite-head Gaussian-threshold representation. We then handle arbitrary finite output alphabets through averaged influence regularity, simplex-preserving Gaussian moment lifting, and a common Gaussian projection for all correlated-prefix states. The sample exponent is independent of the output alphabet sizes. For a concrete biased binary source we certify an explicit exponent below $19$.",
-      "url": "https://arxiv.org/abs/2611.11974",
-      "pdf_url": "https://arxiv.org/pdf/2611.11974v1",
-      "published": "2026-11-09T06:58:40Z",
-      "updated": "2026-11-09T06:58:40Z",
-      "categories": [
-        "cs.CC",
-        "cs.IT"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "quantum_learning"
-      ],
-      "keyword_matches": {
-        "quantum_learning": [
-          "sample complexity"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
       "id": "2611.11858",
       "version": 1,
       "title": "Rotational Encoding of Objective Functions for Quantum Optimization",
@@ -22887,326 +23151,6 @@
       "updated": "2026-11-09T04:29:35Z",
       "categories": [
         "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "circuit depth"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.11759",
-      "version": 1,
-      "title": "An optimal quantum strategy for the $2$-hat game",
-      "authors": [
-        "Georgios Baziotis",
-        "Sang-Jun Park",
-        "Sang-Gyun Youn"
-      ],
-      "abstract": "We study the two-player hat game as a two-input, three-output non-local game. We calculate the quantum commuting value and show that it coincides with the quantum one. In particular, we show that \\[ω_{\\rm q}(H_2)=ω_{\\mathrm{qc}}(H_2)=\\frac{15+\\sqrt{33}}{36}\\approx 0.576238.\\] We achieve the optimal quantum advantage using a shared non-maximally entangled qutrit state. To establish optimality, we exploit the game's symmetry under the dihedral group $D_8$ and apply its representation theory to substantially reduce the complexity of the underlying matrix problem. We also determine the no-signalling value $ω_{\\mathrm{ns}}(H_2)=2/3$.",
-      "url": "https://arxiv.org/abs/2611.11759",
-      "pdf_url": "https://arxiv.org/pdf/2611.11759v1",
-      "published": "2026-11-09T01:58:36Z",
-      "updated": "2026-11-09T01:58:36Z",
-      "categories": [
-        "quant-ph",
-        "math-ph",
-        "math.OA"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "magic_stabilizer": [
-          "non-local game"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.11754",
-      "version": 1,
-      "title": "Advantage Distillation in Paired-State Quantum Key Distribution",
-      "authors": [
-        "Luis Adrián Lizama-Pérez",
-        "José Mauricio López-Romero"
-      ],
-      "abstract": "We investigate advantage distillation for paired-state Loop-Back quantum key distribution, with a fixed optical station serving a lightweight portable terminal. Alice prepares two polarization-encoded pulses, Bob selects and applies a polarization filter to each pulse, and Alice infers his selections from the returned detection pattern. The proposed advantage-distillation step selects consistent blocks of three two-bit records using two independent public parity checks on a minimal connected graph. The closing edge of a parity polygon is shown to be redundant: any spanning tree of the same vertices has the same acceptance set. We derive exact acceptance probabilities, residual-error laws, and retention rates. Under independent bit errors, the three-record filter reduces the leading error term from e to e^2, while its cost in discarded records and public information is accounted for explicitly. A modular security theorem bounds the additional guessing advantage available to an adversary after syndrome disclosure and block acceptance, including arbitrary quantum side information. We also evaluate a specified single-photon passive-tap optical channel, obtaining a positive conditional entropy bound and exact accepted-block security quantities. This parity-based advantage-distillation step detects discrepancies by postselection; it does not correct individual errors and is intended to precede conventional reconciliation. The architecture suggests two further directions: hybrid filtering and reconciliation, and key establishment between portable users accessing a shared quantum station.",
-      "url": "https://arxiv.org/abs/2611.11754",
-      "pdf_url": "https://arxiv.org/pdf/2611.11754v1",
-      "published": "2026-11-09T01:50:30Z",
-      "updated": "2026-11-09T01:50:30Z",
-      "categories": [
-        "quant-ph",
-        "cs.CR"
-      ],
-      "keyword_score": 6,
-      "topics": [
-        "logical_qec",
-        "data_hiding"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "syndrome"
-        ],
-        "data_hiding": [
-          "side information"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.11568",
-      "version": 1,
-      "title": "Spin entanglement in $pp$ and $pA$ collisions: high-energy TMD effects and fragmentation probes",
-      "authors": [
-        "Michael Fucilla"
-      ],
-      "abstract": "Spin-spin correlations of a quark-antiquark pair produced in proton-proton or proton-Ion collisions are investigated in $k_T$-factorization within the shockwave formalism. We construct the full spin-density matrix of both inclusive and diffractive channels in the limit in which the two quarks are back-to-back. In the inclusive channel, due to linearly polarized gluons, we show that a $\\cos (2 φ)$-modulation of the concurrence, stabilizer Rényi entropy, and quantum discord emerges and depends on the interplay between six small-$x$ gluon TMDs. The modulation is predicted to be maximally strong and independent of the transverse momentum imbalance, $q$, from a dilute (BFKL) perspective, while it is considerably suppressed by saturation effects. In diffraction, we observe that the pair is always entangled and exhibits the same properties found in diffractive DIS. We explain how these properties follow directly from the exclusive and eikonal nature of the Pomeron exchange. We trace this behavior to a spin-density matrix of rank at most two with maximally mixed marginals. For this class of states, entanglement and Bell nonlocality coincide even when the state is mixed, while the explicit form of the light-front helicity amplitudes ensures that both persist in the whole phase space. We suggest accessing the spin correlations in unpolarized hadron collisions through the Collins and dihadron fragmentation functions. We point out that, in inclusive production, for massless quarks, suitably chosen double-Collins asymmetries provide promising entanglement witnesses.",
-      "url": "https://arxiv.org/abs/2611.11568",
-      "pdf_url": "https://arxiv.org/pdf/2611.11568v1",
-      "published": "2026-11-08T19:31:21Z",
-      "updated": "2026-11-08T19:31:21Z",
-      "categories": [
-        "hep-ph",
-        "hep-ex",
-        "nucl-ex",
-        "nucl-th",
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "magic_stabilizer": [
-          "stabilizer"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.11420",
-      "version": 1,
-      "title": "Universal robust nonadiabatic geometric quantum computation with shortened composite pulses on superconducting circuits",
-      "authors": [
-        "Cheng-Yun Ding",
-        "Na Kuang",
-        "Yu Jin",
-        "Li Tang",
-        "Rui Huang",
-        "Li-Hua Zhang"
-      ],
-      "abstract": "The nonadiabatic geometric quantum computation (NGQC) using the nonadiabatic geometric phases is a promising strategy to realize the high-fidelity quantum operation for large-scale quantum processing. However, conventional NQGC schemes combining with optimal control techniques to further improve the gate fidelity and robustness usually either comes at the cost of prolonged gate time or require complex pulse control and only are limited to several certain specific quantum gates or/and for a certain type error source. Thus, implementing universal and robust geometric gates with simple control while further suppressing gate times remains a major challenge. Here, we propose a scheme for universal robust geometric gates with shortened composite pulses, where the pulse control is simple and enough available evolution parameters can be utilized to effectively reduce the sensitivity to universal systematic errors. Numerical simulations demonstrate that our universal geometric gates set exhibit much stronger error resilience than their conventional single-loop counterparts. Finally, we also verify the robustness advantage of our scheme on realistic superconducting quantum circuits with experimentally demonstrated technology. Therefore, our work paves an alternative way to achieve high-fidelity and robust geometric quantum computation against multiple errors.",
-      "url": "https://arxiv.org/abs/2611.11420",
-      "pdf_url": "https://arxiv.org/pdf/2611.11420v1",
-      "published": "2026-11-08T14:33:57Z",
-      "updated": "2026-11-08T14:33:57Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "benchmarking"
-      ],
-      "keyword_matches": {
-        "benchmarking": [
-          "gate fidelity"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.11409",
-      "version": 1,
-      "title": "Linear Set Reconciliation with $O(d)$ Additive Redundancy",
-      "authors": [
-        "Tianren Liu",
-        "Rui Xu",
-        "Tong Yang",
-        "Kangyang Zhou"
-      ],
-      "abstract": "In set reconciliation, two parties holding sets $A, B \\subseteq [n]$ with $|A \\triangle B| \\le d$ seek to recover their symmetric difference from short $\\mathbb{F}_2$-linear sketches, which is equivalent to recovering a $d$-sparse vector $x = \\mathbf{1}_{A \\triangle B} \\in \\mathbb{F}_2^n$ from its syndrome $Hx \\in \\mathbb{F}_2^m$. While the information-theoretic counting bound requires $L(n,d) := \\log \\sum_{i=0}^d \\binom{n}{i} = d\\log(n/d) + Θ(d)$ bits, existing polynomial-time schemes either use at least $d\\lceil\\log(n+1)\\rceil$ bits (algebraic sketches, leaving an $Ω(d\\log d)$-bit gap) or incur a multiplicative $(1+δ)L(n,d)$ overhead (peeling-based sketches), raising the question of whether $L(n,d) + O(d)$ bits is achievable with fast updates and decoding. We construct a public-coin randomized $\\mathbb{F}_2$-linear sketch of length $L(n,d) + O(d) + λ\\log^{O(1)} n$ that recovers each fixed input of weight at most $d$ with probability at least $1 - 2^{-λ}$, with $\\log^{O(1)} n$ update time and $d\\exp(O((\\log\\log n)^2)) = dn^{o(1)}$ worst-case decoding time. In particular, for $n \\le 2^{\\operatorname{polylog}(d)}$ and $λ\\le d^{1-Ω(1)}$, this achieves $L(n,d) + O(d)$ bits with $\\operatorname{polylog}(d)$ update time and $d^{1+o(1)}$ decoding time. Our construction encodes $d$ permuted rows via randomly scaled Pinsketch syndromes and sketches the resulting bit array column by column. Decoding columns sequentially from prefix predictions cancels recovered rows and exposes undecided rows as decoder-side hints, reducing each column to a hinted sparse recovery problem that we solve via a recursive sketch, HintSketch.",
-      "url": "https://arxiv.org/abs/2611.11409",
-      "pdf_url": "https://arxiv.org/pdf/2611.11409v1",
-      "published": "2026-11-08T14:23:57Z",
-      "updated": "2026-11-08T14:23:57Z",
-      "categories": [
-        "cs.DS",
-        "cs.IT"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "syndrome"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.11405",
-      "version": 1,
-      "title": "Industrial RPCVD growth of high-purity 28Si epilayers with 29Si content below 30 ppm for high-fidelity electron spin qubits",
-      "authors": [
-        "Zhenzhen Kong",
-        "Weizhu Liao",
-        "Ning Chu",
-        "Yiwen Zhang",
-        "Ying Zhang",
-        "Jixuan Li",
-        "Changyang Xu",
-        "Yongliang Hao",
-        "Yi Zhou",
-        "Yanpeng Song",
-        "Xiaomeng Liu",
-        "Hailing Wang",
-        "Xiangsheng Wang",
-        "Jinbiao Liu",
-        "Chao Zhao",
-        "Hao Meng",
-        "Gang Cao",
-        "Guo-Ping Guo",
-        "Hai-Ou Li",
-        "Guilei Wang"
-      ],
-      "abstract": "Silicon quantum-dot spin qubits are among the most promising routes to large-scale quantum computation, but the residual 29Si nuclear spins in natural silicon impose a hyperfine dephasing limit that must be overcome by isotopic purification. Here, we report the epitaxial growth of high-purity 28Si on float-zone silicon using an industrial reduced-pressure chemical vapor deposition (RPCVD) system. Secondary-ion mass spectrometry (SIMS) confirms an 28Si isotopic purity of 99.997%, with the 29Si concentration below 30 ppm. Through a systematic vacuum annealing matrix (850-1150 C), combined with atomic force microscopy and SIMS, we investigate the defect-mediated decomposition of the native oxide and the injection of non-equilibrium vacancies. We identify a thermal-budget window below 950 C within which the thin-layer structure of 28Si remains intact. At 1.5 K, magnetotransport measurements reveal a peak Hall mobility of 12,858 cm^2 V^-1 s^-1 and a quantum scattering lifetime of 0.659 ps, corresponding to a single-particle level broadening of 499 micro-eV. A double quantum dot fabricated on this platform exhibits a T2* of 0.62 us, a Hahn-echo coherence time of 28.8 us, and single-qubit gate fidelities of up to 99.9% measured by randomized benchmarking. Our results establish industrial RPCVD as a promising route toward high-coherence, high-fidelity silicon spin qubits.",
-      "url": "https://arxiv.org/abs/2611.11405",
-      "pdf_url": "https://arxiv.org/pdf/2611.11405v1",
-      "published": "2026-11-08T14:20:18Z",
-      "updated": "2026-11-08T14:20:18Z",
-      "categories": [
-        "cond-mat.mes-hall",
-        "quant-ph"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "benchmarking"
-      ],
-      "keyword_matches": {
-        "benchmarking": [
-          "randomized benchmarking"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.10796",
-      "version": 1,
-      "title": "BP-based qLDPC Decoding under Long-range Correlated Noise: Trapping Configurations and Prior Mismatch",
-      "authors": [
-        "Abhinav Dangi",
-        "Avhishek Chatterjee"
-      ],
-      "abstract": "We study the robustness of two state-of-the-art BP-based qLDPC decoders, Relay-BP and beam search, designed for independent noise when applied to spatially correlated noise with unchanged single-mechanism error probabilities. We generate correlated errors with a hidden Gaussian Markov random field, which lets us control the strength and range of the correlation while keeping every marginal error probability exact. This setting complements correlation-aware decoding: it asks how existing decoders perform when their assumed joint error model is mismatched. Across multiple tested circuits and code instances that we simulated, we observe that correlations can change logical error rates by orders of magnitude, reduce the finite-size distance advantage, and alter the relative ranking of Relay-BP, beam search, and BP-OSD. On one of the two tested circuits, Relay-BP and beam search become worse than BP-OSD, and increasing relay memory or beam width does not compensate for the degradation. Configuration analysis indicates that correlation primarily increases the probability of trapping configurations that are known to challenge these decoders; at matched error weight, correlated errors still cause decoding failures several times more often than i.i.d. errors. Finally, supplying the decoders with the marginals conditioned on the hidden field recovers most of the lost performance in the tested settings identifying prior mismatch as a major contributor to performance degradation under correlation.",
-      "url": "https://arxiv.org/abs/2611.10796",
-      "pdf_url": "https://arxiv.org/pdf/2611.10796v1",
-      "published": "2026-11-07T15:19:59Z",
-      "updated": "2026-11-07T15:19:59Z",
-      "categories": [
-        "cs.IT",
-        "quant-ph"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "logical error",
-          "qLDPC"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.10593",
-      "version": 1,
-      "title": "Markov-Shielded Typicality for Thermal Quantum States",
-      "authors": [
-        "Atsushi Iwaki",
-        "Chisa Hotta"
-      ],
-      "abstract": "Pure states of quantum many-body systems at thermal equilibrium are known to be typical, in a sense that a randomly chosen pure state from an appropriate energy shell reproduces the Gibbs-state expectation values of most observables acting on a small subsystem. However, such typical states are intrinsically stochastic, conventionally generated from the random high-temperature state, suffer from statistical fluctuations, and do not provide a continuous connection to the ground state. Here, we introduce a deterministic variational framework for constructing a Markov-Shielded Typical (MST) state, a unique thermal pure-state representative whose local reduced density matrices closely approximate those of the Gibbs state, from the ground state up to infinite-temperature limit. Our approach reformulates free-energy minimization by replacing the nonlocal von Neumann entropy with a local, computationally tractable Markov entropy, where we establish rigorous upper and lower bounds of MST free energy to lie in the very vicinity of the thermal free energy. This framework extends the concept of typicality to deterministic pure-state representations of thermal equilibrium, offering a scalable wave-function approach with potential applications to both classical and quantum computing.",
-      "url": "https://arxiv.org/abs/2611.10593",
-      "pdf_url": "https://arxiv.org/pdf/2611.10593v1",
-      "published": "2026-11-07T09:01:09Z",
-      "updated": "2026-11-07T09:01:09Z",
-      "categories": [
-        "cond-mat.stat-mech",
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "quantum_learning"
-      ],
-      "keyword_matches": {
-        "quantum_learning": [
-          "Gibbs state"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-10T07:25:28Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.10588",
-      "version": 1,
-      "title": "Initialization masks overcome decoding obstructions in compressed QAOA",
-      "authors": [
-        "Emilio Semre",
-        "Steven Frankel"
-      ],
-      "abstract": "In compressed quantum optimization, a variational state is converted into a classical assignment by decoding noncommuting observables. We show that this step creates structural restrictions that changing the initialization can remove, even when increasing circuit depth cannot. For an explicit infinite family of connected cubic graphs on $n=3r$ vertices, with a fixed Pauli encoding and deterministic sign decoder, every all-plus QAOA circuit has cut at most $2r$, at every finite depth and every real angle sequence. A uniform signed product-state mask at fixed depth-one angles has expected cut $13r/4$, an additive advantage $5n/12$; an infinite subfamily admits an optimal mask. A second construction retains a linear depth-one separation under weak weighted couplings, a bounded cost-angle domain and a specified production-encoder ordering. Noiseless simulations then test classical mask selection before energy optimization. On 1,699 random cubic MaxCut instances, one selected mask achieves mean ratio $0.9100$, versus $0.7067$ for the all-plus $X$ baseline and $0.9125$ for the best of $r^2$ separately optimized random masks. On complete cohorts of weighted MaxCut, sparse Ising, Max-2-XOR and Max-2-SAT, the selected mask also improves on the baseline at every size, but it trails the pool at small sizes and leads it significantly only at the larger MaxCut and Ising sizes. Finite-pool order statistics separate the effect of selection from that of drawing a random mask. The results distinguish decoded expressivity from optimized energy and empirical performance; they do not establish a quantum computational advantage.",
-      "url": "https://arxiv.org/abs/2611.10588",
-      "pdf_url": "https://arxiv.org/pdf/2611.10588v1",
-      "published": "2026-11-07T08:52:37Z",
-      "updated": "2026-11-07T08:52:37Z",
-      "categories": [
-        "quant-ph",
-        "cs.CC"
       ],
       "keyword_score": 3,
       "topics": [
@@ -47620,15 +47564,65 @@
       "score": 0,
       "at": "2026-11-11T01:03:07Z",
       "metadata_fingerprint": "38566b6da075b78ea238c8654492cae4916eba9321c827f9ac84c2edbc386583"
+    },
+    "2611.12876": {
+      "status": "ai_rejected",
+      "score": 48,
+      "at": "2026-11-11T01:06:15Z"
+    },
+    "2611.12779": {
+      "status": "ai_rejected",
+      "score": 55,
+      "at": "2026-11-11T01:06:15Z"
+    },
+    "2611.12720": {
+      "status": "ai_rejected",
+      "score": 63,
+      "at": "2026-11-11T01:06:15Z"
+    },
+    "2611.12549": {
+      "status": "ai_rejected",
+      "score": 15,
+      "at": "2026-11-11T01:06:15Z"
+    },
+    "2611.11974": {
+      "status": "ai_rejected",
+      "score": 20,
+      "at": "2026-11-11T01:06:15Z"
+    },
+    "2611.11568": {
+      "status": "ai_rejected",
+      "score": 50,
+      "at": "2026-11-11T01:06:15Z"
+    },
+    "2611.11420": {
+      "status": "ai_rejected",
+      "score": 52,
+      "at": "2026-11-11T01:06:15Z"
+    },
+    "2611.11409": {
+      "status": "ai_rejected",
+      "score": 8,
+      "at": "2026-11-11T01:06:15Z"
+    },
+    "2611.11405": {
+      "status": "ai_rejected",
+      "score": 35,
+      "at": "2026-11-11T01:06:15Z"
+    },
+    "2611.10593": {
+      "status": "ai_rejected",
+      "score": 48,
+      "at": "2026-11-11T01:06:15Z"
     }
   },
   "last_successful_run": "2026-11-10T07:25:28Z",
   "last_run": {
     "fetched": 630,
     "keyword_candidates": 25,
-    "analyzed": 0,
+    "analyzed": 9,
     "selected": 0,
-    "pending": 347,
+    "pending": 328,
     "lookback_days": 7,
     "source": "all",
     "date_basis": "initial_submission",
@@ -47637,11 +47631,11 @@
   },
   "is_demo": false,
   "last_collection_run": "2026-11-11T01:03:07Z",
-  "last_analysis_run": "2026-11-10T01:06:45Z",
+  "last_analysis_run": "2026-11-11T01:06:15Z",
   "last_analysis_batch": {
-    "analyzed": 6,
-    "selected": 6,
-    "pending": 320
+    "analyzed": 9,
+    "selected": 0,
+    "pending": 328
   },
   "topic_labels": {
     "benchmarking": "Benchmarking / SPAM",
