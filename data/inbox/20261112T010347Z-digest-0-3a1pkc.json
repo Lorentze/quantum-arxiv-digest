@@ -1,0 +1,363 @@
+{
+  "analyses": [
+    {
+      "id": "doi:10.1103/ynk4-sj21",
+      "version": 1,
+      "analysis": {
+        "summary": "作者以 free probability 求 Haar 演化的 local-operator entanglement（LOE），发现无迹初始算符的大维数前两阶复现随机态 Page curve。LOE 主阶对初始算符不敏感，因而与读取高阶算符相关的 scrambling 诊断提供不同信息。",
+        "problem": "Heisenberg 算符可模拟性与高阶 scrambling 是否由同一批相关函数控制？",
+        "setting": "Haar 随机动力学与 Rényi LOE，大维数展开。",
+        "main_results": [
+          "作者解析计算所有 Rényi 指数的渐近 LOE；无迹算符的前两阶与随机态 Page curve 一致。",
+          "高阶 out-of-time-ordered correlators 依赖更复杂的 free cumulants，相关信息可进入 LOE 的有限尺寸修正。"
+        ],
+        "techniques": [
+          "free probability；渐近展开；与高阶 OTOC 对照。"
+        ],
+        "assumptions": [
+          "Page curve 对照使用无迹算符；Haar 为理论基准。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "对局域混沌系统长时 LOE 的 ETH 子层级解释是作者基于 Haar 结果的论证，摘要不足以评估其适用范围。"
+        ],
+        "relevance": [
+          "说明低阶算符纠缠何时不足以区分高阶随机性。"
+        ],
+        "follow_up": [
+          "读者建议：比较有限深度局域电路的 LOE 与高阶 moments 的收敛。"
+        ],
+        "relevance_score": 87,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:00:50.098Z",
+        "evidence_level": "abstract",
+        "source_url": "https://journals.aps.org/prl/abstract/10.1103/ynk4-sj21",
+        "publication_significance": [
+          "阅读推断，非实际编辑或审稿理由：新意是以可解的 Haar 基准分开算符可模拟性与高阶 scrambling；理论证据是各 Rényi 指数的渐近结果。",
+          "这一区分连接量子混沌、算符纠缠和经典模拟，具 PRL 的跨领域读者意义；摘要不能判定证明质量、与先前工作比较的完整性或局域动力学推广。"
+        ]
+      }
+    },
+    {
+      "id": "doi:10.1103/q8k6-mj9z",
+      "version": 1,
+      "analysis": {
+        "summary": "作者在高 finesse cavity 耦合的中性原子阵列上，将 midcircuit measurement 加实时 feedforward 的周期压到100 μs以下，并演示自适应态判别与条件态制备。",
+        "problem": "基线周期通常超过1 ms；加速读出还需避免损害未测 data qubits。",
+        "setting": "用局部 light shifts 使数据 qubits 脱离 cavity 共振，选择性探测并以 Purcell enhancement 收集发射。",
+        "main_results": [
+          "四个 qubits 的中途测量 infidelity 均为亚百分比量级；第五个未测 qubit 的相干性降低不足2%。",
+          "实时反馈修正测量诱导相位，并实现 optimal state discrimination 的自适应电路。"
+        ],
+        "techniques": [
+          "腔增强光收集；选择性光移；反馈相位校正。"
+        ],
+        "assumptions": [
+          "数字适用于论文所测阵列与读出条件。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "周期时长不是单次读出延迟，也不是完整 QEC cycle；未核查测量模型、shots 与不确定度。"
+        ],
+        "relevance": [
+          "直接给出 adaptive measurement 的时延与旁观者相干成本。"
+        ],
+        "follow_up": [
+          "读者建议：用同一读出预算比较判别成功率并量化多轮串扰积累。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:00:50.098Z",
+        "evidence_level": "abstract",
+        "source_url": "https://journals.aps.org/prl/abstract/10.1103/q8k6-mj9z",
+        "publication_significance": [
+          "阅读推断，非实际编辑或审稿理由：实验的新意是同时缩短测量反馈周期并保留旁观数据相干，跨过中性原子读出延迟和 backaction 的障碍。",
+          "亚百分比测量误差、旁观者相干和自适应任务的联合证据，对中性原子、纠错及量子控制均有意义，符合 PRL 的广泛物理议题；仅凭摘要无法核查完整实验误差分析与先前工作比较。"
+        ]
+      }
+    },
+    {
+      "id": "2611.14314",
+      "version": 1,
+      "analysis": {
+        "summary": "这篇论文把随机编码的二阶矩偏差与纠错后的条件保真度联系起来。它研究的并非允许任意恢复映射的量子信道容量，而是一个具体的 encoding–error–decoding（EED）实验：同一编码 U 的逆负责解码，辅助系统投影回初态，只有投影成功的试次才计入逻辑输出。由此得到的恢复曲线一方面衡量某类噪声下编码的保护效果，另一方面可用来诊断 ensemble 是否偏离 Haar 二阶统计。",
+        "problem": "哪些随机性要求足以复现 Haar 编码的保护相？如果物理编码器只是近似设计，条件逻辑保真度会怎样偏离基线？问题的难点在于后选择概率随 U 而变，保真度本身是两个相关随机量的比值。",
+        "setting": "总计 N qubits，其中 k 个逻辑 qubits，其余为辅助；初态取计算基乘积态。作者在主要例子中施加同角度相干 Z 旋转，角度记为 α，误差酉为 exp[−i(α/2)ΣZ]；一般不等式用固定酉误差层，要求平均后选择概率严格为正。",
+        "main_results": [
+          "将全输入态的返回概率记为 q，辅助系统返回的概率记为 p；单电路保真度 F=q/p。作者的二阶矩结论控制 annealed fidelity E[q]/E[p]，它按接受概率对电路加权。逐个编码器求比再平均得到 quenched fidelity E[q/p]，一般不能用有限阶矩直接替代；只有额外自平均等依据时才可作近似。",
+          "二阶 frame potential 减去 Haar 基准得到 Δ；其平方根是二阶矩算符的 Hilbert–Schmidt 距离。式(3)给出 Δ 对平均 p 的平方乘上保真度偏差平方的下界，分母还含总维数平方与逻辑维数相关因子。精确 2-design 使偏差为零；近似设计下小 Δ 的效力仍取决于维数与接受率，不能单凭 Δ 小就宣称近似保护。",
+          "在码率 k/N=1/2 的 Haar 基线中，相干误差角临界值为 2 arccos(2^(−1/4))，约1.14；阈值两侧的条件保真度趋向1或0。竞争项是原态保留与旋入其他逻辑态但仍通过辅助投影的概率，两者具有不同指数标度。",
+          "undoped matchgate 的 Gaussian twirl 保留按 Majorana 权重分组的额外不变量，作者报告热力学极限没有稳定保护相。增加 non-Gaussian doping 可恢复 Haar-like 行为；给定受限 ensemble 的比较应使用相应 symmetry-sector Haar 基准。"
+        ],
+        "techniques": [
+          "把分子与分母分别写成 two-copy twirl 的线性泛函，再用 frame-potential 偏差控制其与 Haar 的差。",
+          "用 Majorana 双副本 commutant 的权重壳层组织 matchgate 计算；无掺杂部分使用含反射的 O(2N) Gaussian ensemble。"
+        ],
+        "assumptions": [
+          "逻辑输入为指定纯态，噪声分析主要是空间乘积相干旋转；使用可信逆 U† 与辅助后选择。",
+          "所述 Δ 是 additive Hilbert–Schmidt 口径，不是 relative-error design 保证。"
+        ],
+        "limitations": [
+          "阅读范围：arXiv v1 的模型、式(1)–(6)、掺杂与结论片段；未逐页审阅补充证明、有限尺寸拟合和 Hamiltonian 实例。",
+          "高条件 fidelity 不保证高接受率、低总 shots 或无条件纠错。文中的 inverse access 与固定未知目标门认证不同，也未建立噪声下编译逆的误差保证。"
+        ],
+        "relevance": [
+          "直接连接二阶 design、fermionic Gaussian 随机性及 postselected recovery；可用于比较某个诊断所需的 moments 与完整 design 定义。"
+        ],
+        "follow_up": [
+          "读者建议：同时画出接受率、annealed 与 quenched 曲线，再比较对固定相对误差的实际 shot 预算。"
+        ],
+        "relevance_score": 98,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:00:50.099Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.14314v1"
+      }
+    },
+    {
+      "id": "2611.14391",
+      "version": 1,
+      "analysis": {
+        "summary": "作者用片上专用耗散单元对多个 transmon 演示快速 reset 与 leakage removal。把耗散留在芯片上旨在减少较高温外部线路带来的热噪声。",
+        "problem": "QEC 初始化和泄漏清理需要快速且低残余占据的 reset。",
+        "setting": "resonator 耦合片上电阻负载，同时提供 Purcell protection。",
+        "main_results": [
+          "g–e reset 时间常数中位数约48 ns，有效 bath 30 mK。",
+          "400 ns reset 脉冲后，从 g、e 起始的残余激发分别为0.29%、0.67%；f 态残余0.51%。"
+        ],
+        "techniques": [
+          "片上 dissipation engineering；多 qubit 实验。"
+        ],
+        "assumptions": [
+          "分开时间常数、脉冲长度和不同初态下的残余占据。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "未报告多轮 QEC 下的逻辑错误改善或完整 reset channel。"
+        ],
+        "relevance": [
+          "提供具体 leakage-reset primitive 的实验参数。"
+        ],
+        "follow_up": [
+          "读者建议：测量 reset 引入的旁观串扰和对多轮 syndrome 的影响。"
+        ],
+        "relevance_score": 73,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:00:50.099Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.14391v1"
+      }
+    },
+    {
+      "id": "2611.14147",
+      "version": 1,
+      "analysis": {
+        "summary": "论文把量子程序的信息流安全写成 noninterference 与显式 attacker simulation 两种定义，并给出等价性。为处理不能复制未知量子数据的问题，验证框架以 self-conjugation 替代经典 self-composition。",
+        "problem": "程序含相干、纠缠及经典控制时，如何从攻击者可见输出判定泄漏？",
+        "setting": "量子程序语义及 quantum Hoare logic。",
+        "main_results": [
+          "证明两种安全定义等价；演示量子 one-time pad、QEC 和匿名纠缠生成实例。"
+        ],
+        "techniques": [
+          "deferred measurement；酉操作性质；self-conjugation。"
+        ],
+        "assumptions": [
+          "结论取决于该语义和攻击者访问模型。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "未核查对一般噪声、近似安全、外部量子侧信息的适用条件。"
+        ],
+        "relevance": [
+          "与量子数据访问和泄漏的操作性定义直接相连。"
+        ],
+        "follow_up": [
+          "读者建议：比较其 noninterference 与可访问系统上的 trace-distance 区分。"
+        ],
+        "relevance_score": 77,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:00:50.099Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.14147v1"
+      }
+    },
+    {
+      "id": "2611.14114",
+      "version": 1,
+      "analysis": {
+        "summary": "论文在九台云量子处理器上用 direct fidelity estimation 比较 GHZ 制备。关键观察是，把统计上与阈值相容当作通过，与实际认证 GME，会得出不同设备排名和成功数量。",
+        "problem": "物理 qubit 数和中位校准值能否预测可制备的多体纠缠规模？",
+        "setting": "五家供应商，超导与离子阱；默认编译，不做 error mitigation。",
+        "main_results": [
+          "以 F=1/2 作为 GME 门槛，统计相容规则下最佳超导设备报告27和24 qubits，12-qubit 离子阱全用。",
+          "改用确证 GME 的规则后，在任意测试规模成功的设备数从9降到4。"
+        ],
+        "techniques": [
+          "QuSquare 的 GHZ benchmark；直接保真度估计；比较统计判定。"
+        ],
+        "assumptions": [
+          "结果反映云用户的默认编译和实际软硬件堆栈。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "GHZ state fidelity 不是固定门 process fidelity；摘要未给出 shots、置信区间构造和 SPAM 控制。"
+        ],
+        "relevance": [
+          "直接显示统计决策如何改变 certification 结论。"
+        ],
+        "follow_up": [
+          "读者建议：在同一置信度和总 shots 下重算设备曲线。"
+        ],
+        "relevance_score": 86,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:00:50.100Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.14114v1"
+      }
+    },
+    {
+      "id": "2611.14081",
+      "version": 1,
+      "analysis": {
+        "summary": "作者把 dynamical stabilizer code 的测量序列形式推广到 GKP phase-space lattices，以持续的 stabilizer lattice 和有界推断窗口计算 syndrome 与距离。",
+        "problem": "连续变量 translation measurements 如何表达时间依赖的逻辑保护？",
+        "setting": "scaled symplectic lattices 定义 subsystem GKP，再推广 qubit dynamical codes 的 ancestry、detector 与 benign-error 工具。",
+        "main_results": [
+          "两模式 square–hexagonal Floquet GKP 例中，测量权重低于所对照的 square 与 hexagonal codes，并组合两者的逻辑门集合。",
+          "单模式 irrational symplectic overlap 的测量归约为破坏性 homodyne。"
+        ],
+        "techniques": [
+          "subsystem lattice；time-dependent translation measurements；有界窗口推断。"
+        ],
+        "assumptions": [
+          "门与权重结论针对构造，irrational overlap 归约限于单模式。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "距离不是有限 squeezing 下的实测 logical error rate；摘要未列测量成本和噪声模型。"
+        ],
+        "relevance": [
+          "连接 GKP 动态逻辑测量和完整单逻辑 qubit Clifford 操作。"
+        ],
+        "follow_up": [
+          "读者建议：在有限 squeezing 与探测损耗下比较不同 lattice 的读出代价。"
+        ],
+        "relevance_score": 89,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:00:50.100Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.14081v1"
+      }
+    },
+    {
+      "id": "2611.13815",
+      "version": 1,
+      "analysis": {
+        "summary": "论文用 contextual bandit 在变分 QML 训练中在线选择 error mitigation。实证结果限于所测任务和噪声模型，没有给出量子数据学习或固定门认证保证，本轮低相关筛除。",
+        "problem": "比较在线策略与固定 mitigation。",
+        "setting": "跨五类学习设置的80组条件及八台设备噪声模型。",
+        "main_results": [
+          "报告达到 oracle utility 的95.5%，在设备噪声模型上为99.9%；后者约1.3×10⁴ shots。"
+        ],
+        "techniques": [
+          "根据训练反馈选择 ZNE、PEC、测量缓解等。"
+        ],
+        "assumptions": [
+          "oracle utility 不是保真度；模型结果不是设备运行。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "未核查总成本与可推广性。"
+        ],
+        "relevance": [
+          "主要是变分学习经验策略，低于收录阈值。"
+        ],
+        "follow_up": [],
+        "relevance_score": 63,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:02:02.813Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.13815v1"
+      }
+    },
+    {
+      "id": "2611.13799",
+      "version": 1,
+      "analysis": {
+        "summary": "作者提出用 balanced homodyne detection 读出中性原子的共振荧光，以光电二极管减少相机电子读出延迟。原子运动会压低相干信号，因此积分时间不是越长越好。",
+        "problem": "快速无损中途读出要兼顾 SNR、反冲及运动。",
+        "setting": "态依赖 resonant fluorescence；分析模型加3D Monte Carlo。",
+        "main_results": [
+          "谐运动造成相位平均，光子反冲引入轨迹依赖的噪声；两者与信号累积竞争产生最优探测时间。",
+          "对实验可实现参数，模拟预测100 μs内 state-detection fidelity 超过99%。"
+        ],
+        "techniques": [
+          "balanced homodyne；积分 quadrature 信号和噪声建模。"
+        ],
+        "assumptions": [
+          "预测依赖运动与光学参数，尚非实验结果。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "探测时间不含反馈与重复 QEC 延迟；未给出完整 SPAM 矩阵。"
+        ],
+        "relevance": [
+          "具体量化 midcircuit readout 的时间与误差。"
+        ],
+        "follow_up": [
+          "读者建议：将实验光损和测量 backaction 纳入同一预算。"
+        ],
+        "relevance_score": 74,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:02:02.813Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.13799v1"
+      }
+    },
+    {
+      "id": "2611.13778",
+      "version": 1,
+      "analysis": {
+        "summary": "作者以 CPTP polynomial recurrent channels 追踪矩阵逆作用的量子解态，比较保留内部态的 resident recurrence 与重新制备的 fresh recurrence。前者部分场景满足精度，但不因此降低总成本。",
+        "problem": "在反复更新解态时，保留量子记忆是否值得？",
+        "setting": "Chebyshev recurrence；synthetic configurations 与假设成本模型。",
+        "main_results": [
+          "2880组配置中，resident 在满足精度的 snapshot 数上胜608、平2271、负1。",
+          "360组成本场景中，184组均可行时 fresh 全部更便宜，resident/fresh 中位成本比3.12；另有74组仅 resident 满足精度。",
+          "逻辑噪声率10⁻⁴下两种方法均不达标。"
+        ],
+        "techniques": [
+          "CPTP recurrent channel；fixed-point 与 tracking bounds；reduced-density simulation。"
+        ],
+        "assumptions": [
+          "结果依赖指定输入变化与成本模型。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "没有端到端加速或普适成本优势；未核查 block encoding 和总调用口径。"
+        ],
+        "relevance": [
+          "为保持量子内存与重置的资源权衡提供具体对照。"
+        ],
+        "follow_up": [
+          "读者建议：对比相同精度和访问模型下的查询、重置、保留时间与噪声成本。"
+        ],
+        "relevance_score": 72,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:02:02.814Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.13778v1"
+      }
+    }
+  ]
+}
