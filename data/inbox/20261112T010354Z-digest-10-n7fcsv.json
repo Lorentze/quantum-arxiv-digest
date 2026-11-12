@@ -1,0 +1,359 @@
+{
+  "analyses": [
+    {
+      "id": "2611.13658",
+      "version": 1,
+      "analysis": {
+        "summary": "作者为任意非空整数区间的均匀叠加给出无辅助的精确制备电路，仅使用单比特门和单控制单比特门。资源结论针对论文指定的 logical gate model。",
+        "problem": "能否在固定 n-qubit 宽度下，以线性开销精确制备不对齐的区间？",
+        "setting": "区间 [a,a+M)，0≤a<a+M≤2ⁿ；无需 ancilla。",
+        "main_results": [
+          "直接构造的最坏门数在 n≥3 时为5n−9，n=1、2分别为1、3；Ω(n) 下界说明宽度依赖的渐近最优性。",
+          "实例门数 O(log₂M+ε)，其中 ε 是与偏移的二进制 Hamming weights 有关的参数，而非误差容差。",
+          "直接电路逻辑深度 O(n)，还可在原构造和 reflected 构造中择较少门数。"
+        ],
+        "techniques": [
+          "直接与 reflected circuits；经典预选；扩展至 XOR images 与二幂间距等差序列。"
+        ],
+        "assumptions": [
+          "精确性以指定逻辑门集为准。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "门数不是 T-count；未审旋转角合成、局域路由或物理精度成本。"
+        ],
+        "relevance": [
+          "给出 ancilla、门数与深度的具体制备基准。"
+        ],
+        "follow_up": [
+          "读者建议：在 Clifford+T 与1D NN 下重新计入角度误差预算。"
+        ],
+        "relevance_score": 86,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:02:02.814Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.13658v1"
+      }
+    },
+    {
+      "id": "2611.13630",
+      "version": 1,
+      "analysis": {
+        "summary": "PRISM 以 Transformer decoder 利用已知 erasure locations，在光子 fusion-based QEC 中同时处理 Pauli errors 与 erasures。论文分开报告逻辑性能、单块延迟和流水吞吐。",
+        "problem": "高 erasure rates 下如何保持解码准确性和实时速度？",
+        "setting": "surface、color、qLDPC protocols，测试距离至24。",
+        "main_results": [
+          "在测试点达到 integer-programming decoder 的 logical error rates，速度更快；测试含达阈值50%的错误率。",
+          "AMD VP1902 FPGA 对空间和时间距离均为8的逻辑块，报告6.59 μs延迟和1.56 μs每逻辑块的摊销解码时间。"
+        ],
+        "techniques": [
+          "擦除位置作为输入；Transformer 推断；FPGA 实现优化。"
+        ],
+        "assumptions": [
+          "基线与性能针对指定 Pauli/erasure 模型，擦除位置已知。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "摊销时间不等于单块 latency；未证明一般 decoder 最优性，也未核查分布迁移。"
+        ],
+        "relevance": [
+          "具体联系逻辑 QEC、擦除侧信息和实时恢复。"
+        ],
+        "follow_up": [
+          "读者建议：测试 erasure 标签误判与时间相关性对逻辑错误和尾延迟的影响。"
+        ],
+        "relevance_score": 88,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:02:02.815Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.13630v1"
+      }
+    },
+    {
+      "id": "2611.13428",
+      "version": 1,
+      "analysis": {
+        "summary": "论文补齐 Gaussian 态学习中若干测量访问模型的总副本复杂度。核心分离是：任意混合 fermionic Gaussian 态即使包含纯模式，单副本测量的 trace-distance minimax 率仍为 Θ(m³/ε²)，而 collective measurement 为 Θ(m²/ε²)。作者补上不带对数的单副本上界。",
+        "problem": "单副本、k-copy block 与 collective access 在相同精度下各要多少份态？靠近纯态边界时块大小的收益是否改变？",
+        "setting": "m 个模式；不同类分别给出 fermionic 与 bosonic 结果；区分 trace distance 和 Frobenius norm。",
+        "main_results": [
+          "fermionic 单副本方法将测量噪声与不同 occupation scale 的度量匹配；摘要引用的下界精度范围 ε≤1/3600。",
+          "k-copy 的 covariant highest-weight measurement 配合 Weyl-shift estimator 精确无偏；总副本数 Θ(max{m³/k,m²}/ε²)，Frobenius 结论适用于全部所述态，trace-distance 结论要求与纯边界保持固定距离。暖区 k≤m 时收益1/k，不应套用于冷的 number-conserving 类，其对照为1/√k。",
+          "bosonic 结果按 occupation 计价，并区分有界 covariance、displaced passive 以及不设能量或 squeezing 上限的情形。无能量界时，作者用 non-Gaussian 测量给出中心单模 O(ε⁻²)、中心纯 m 模 O(m²/ε²) 的单副本上界；摘要另列首轮仅在4m+6份一组上联合测量的 O(m³/ε²) 方案。"
+        ],
+        "techniques": [
+          "occupation-adapted estimation；covariant highest-weight measurement；Weyl-shift；非 Gaussian 读出。"
+        ],
+        "assumptions": [
+          "上述复杂度计总 copies，k 是允许共同测量的块大小而非样本数；各态类假设不可互换。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "未审138页正文中的成功概率、测量可实现性与常数；不是以提高 fermionic design order 取得单副本优势的结果。"
+        ],
+        "relevance": [
+          "直接给出单副本与量子内存/联合读出的标杆和边界条件。"
+        ],
+        "follow_up": [
+          "读者建议：对固定单副本模型，比较 occupation 匹配估计与高阶 design 的总副本数，而不把块测量增益归给 design。"
+        ],
+        "relevance_score": 99,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:02:02.815Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.13428v1"
+      }
+    },
+    {
+      "id": "2611.13373",
+      "version": 1,
+      "analysis": {
+        "summary": "PriorTilt 保留 BP 更新规则，仅依最近的 posterior 和 outgoing-message 统计扰动少量 prior log-likelihood ratios。论文比较这一稀疏修改与 Relay-BP、beam search 和标准 min-sum。",
+        "problem": "量子 LDPC 中 BP 逻辑错误率有限，能否只改变 priors 改善恢复？",
+        "setting": "三个码的 circuit-level benchmarks。",
+        "main_results": [
+          "测试点的 LER 均低于 Relay-BP 与 beam search；BB144 在 p=10⁻³ 时分别改善4.3倍、3.1倍。",
+          "同一 p 下相对 beam search 平均加速约2.6–3.0倍；BB144 相同迭代预算下 LER 相对标准 min-sum 约低610倍，每轮平均扰动不足0.5%的 priors。"
+        ],
+        "techniques": [
+          "稀疏 prior perturbation；原有 message passing。"
+        ],
+        "assumptions": [
+          "倍率针对测试码、噪声和预算，平均时间不是尾延迟。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "数值优势不证明渐近阈值或相关噪声鲁棒性。"
+        ],
+        "relevance": [
+          "可作为固定码和恢复的逻辑错误率对照。"
+        ],
+        "follow_up": [
+          "读者建议：比较相同计算预算下的 correlated-noise 与失配 prior。"
+        ],
+        "relevance_score": 85,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:02:02.816Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.13373v1"
+      }
+    },
+    {
+      "id": "2611.13371",
+      "version": 1,
+      "analysis": {
+        "summary": "作者在硅 node network 上比较用远程 singlets 测量 qLDPC stabilizers 的两种方案与 mobile ancilla。主要发现是布局和访问顺序可改写优劣，不能只比纠缠资源 fidelity。",
+        "problem": "非局域 checks 需要跨节点连接；运输错误和局部门读出误差如何决定逻辑表现？",
+        "setting": "bivariate bicycle codes，硬件约束调度及 circuit-level memory simulation。",
+        "main_results": [
+          "比较 distributed GHZ、ancilla teleportation 与 CAbLECAR。原布局含运输 bit flips 时，teleportation 可胜过 CAbLECAR。",
+          "将移动 ancilla 换到作者 node lattice 后，Gross [[144,12,12]] 平均路线从350降到153 μm，采样 bit-flip 区域 LER 最多降低50倍；该布局下直接运输在所测 Gross 点均优于两种 singlet 方案。",
+          "频繁运输 bit flips 时，当 two-qubit gate/readout errors 低于约4–5×10⁻⁴，GHZ 方案可反超。Heralding 有益于两种 singlet 方案，phase purification 对 GHZ 有噪声交叉点、对 teleportation 在测试中变差。"
+        ],
+        "techniques": [
+          "节点布局与访问排序；电路级 syndrome extraction 对照；heralding/purification。"
+        ],
+        "assumptions": [
+          "临界数字依赖测试噪声、布局与调度。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "路线长度不是逻辑 cycle time；模拟比较不是实验阈值。"
+        ],
+        "relevance": [
+          "直接关联 extraction gadget、相关 ancilla fault 与 logical fidelity。"
+        ],
+        "follow_up": [
+          "读者建议：在相同 cycle time、herald 成功率和解码器下复算交叉点。"
+        ],
+        "relevance_score": 93,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:02:02.816Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.13371v1"
+      }
+    },
+    {
+      "id": "2611.13301",
+      "version": 1,
+      "analysis": {
+        "summary": "论文报告一个 fault-tolerant MLIR dialect，用 typed SSA values 保留逻辑 qubit、syndrome、magic state 与 Pauli frame，使编译决策和资源估计可检查。",
+        "problem": "一般 lowering 会掩盖码选择与 magic factory 的开销。",
+        "setting": "两层 lowering；三个码族的实例和多种输出目标。",
+        "main_results": [
+          "20-qubit Pathfinder 实例中，解码使 logical readout error 降低3.3倍。",
+          "QFT-3 实例中，magic-state factory 的峰值 qubits 是编码电路的五倍。"
+        ],
+        "techniques": [
+          "QEC-aware type system；IR 内资源分析；多后端映射。"
+        ],
+        "assumptions": [
+          "比例只针对给出的实例。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "软件实现不是新 QEC 定理；读出误差不等同完整逻辑过程 fidelity。"
+        ],
+        "relevance": [
+          "因具体报告逻辑读出和 factory 开销而达到收录门槛。"
+        ],
+        "follow_up": [
+          "读者建议：在相同 distillation 质量下分列峰值 qubits、时间与 magic 消耗。"
+        ],
+        "relevance_score": 71,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:02:02.817Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.13301v1"
+      }
+    },
+    {
+      "id": "2611.13175",
+      "version": 1,
+      "analysis": {
+        "summary": "这篇论文为动态量子线路的测量记录找到可精确计算的基准。通常，scrambling 电路的中途测量结果形成长时间序列，其联合分布难用整机模拟获取。作者改为沿光锥边缘或其内侧固定偏移取样：虽然后方整个系统可能高度纠缠，影响这些测量概率的有效记忆却被因果结构限制在少量自由度内。由此可在大系统上比较特定记录统计，而无须重建全态或完整过程。",
+        "problem": "测量位置靠近传播光锥时，哪些量子自由度必须保留以预测未来读出？该可解区域能否构造不依赖层析的门性质见证？",
+        "setting": "一维 brickwork circuit，初始只有局部 seed qubit 极化，背景为 maximally mixed。读出以光锥速度移动，d 表示离边缘的空间偏移；d 与门本身是否 dual-unitary 是不同概念。",
+        "main_results": [
+          "边缘记录服从两态 Markov chain。内移 d 个格点后，作者给出由 ⌊d/2⌋+1 个随读出移动的 qubits 生成的精确记录模型，其余系统充当无记忆 bath。论文另以过去与未来联合概率矩阵的最大秩取对数度量记录记忆，固定偏移下上界为 d+1 bits；这不是把有效模型的 qubit 数直接换算成经典历史长度。",
+          "即便生成器很小，输出也不必是有限阶经典 Markov chain；正文的例子中，较早读出仍可改变下一步概率。读出若落后于光锥，d 随时间增长，固定偏移的有界记忆结果便不再给出常数上界。",
+          "在 d=1 的理想 dual-unitary 电路，记录均匀。实验见证取正、反 seed 极化的读出均值之半差；与 seed 无关的信号抵消。局部酉 dressing 保持 dual-unitarity；论文另对若干 damping、depolarizing 和读出赋值噪声做数值核对。这种 exact null 的非零响应针对门偏离该流形，不能直接换成平均门 infidelity。",
+          "156-qubit 超导演示以事先确定的分析方案检测到光锥内侧一、二格的预言记忆，并在理论禁止处未检出；这些检验针对指定记录，而非整机任意输出分布。"
+        ],
+        "techniques": [
+          "利用光锥和最大混合背景消去因果无关的线路；以 co-moving collision model 更新测量概率。",
+          "把记录对 seed 极化的线性响应作反对称化，用零信号作为 dual-unitarity 基准。"
+        ],
+        "assumptions": [
+          "所述精确模型使用指定初态、测量轨迹和 brickwork 几何；门可任意，但观测对象是受限的。",
+          "反对称相消要求两组数据的非 seed 贡献一致；任意不可重复 SPAM 不在该代数抵消结论内。"
+        ],
+        "limitations": [
+          "阅读范围为 arXiv v1 摘要、光锥记忆和 dual-unitarity witness 片段及若干噪声核对；未审全部附录、设备调度与置信度分析。",
+          "不把数值噪声核对当成所有噪声通道的定理。零信号也不足以单独证明门属于流形；尚无从摘要及摘录得到的通用 shots、序列长度或 target-call 保证。"
+        ],
+        "relevance": [
+          "联系随机线路的可解测量统计、有限量子记忆及基于精确零基线的硬件表征。"
+        ],
+        "follow_up": [
+          "读者建议：固定目标门和读出深度，比较多方向 seed 下见证对偏差的灵敏度，分别估计 shots、线路长度和目标门调用。"
+        ],
+        "relevance_score": 97,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:03:07.240Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.13175v1"
+      }
+    },
+    {
+      "id": "2611.13111",
+      "version": 1,
+      "analysis": {
+        "summary": "FusionQ 用实际触发的 detector clusters 动态构造局部 decoding tasks，而不是对每个 shot 都等待完整 DEM 或预定时窗。局部结果只有不使用虚拟边界错误时才可按定理拼接。",
+        "problem": "能否把等待 syndrome 的时间用于解码，同时保留全局最可能错误解？",
+        "setting": "以 fired detectors 为中心建立 open-boundary local DEM；若解用到虚拟 boundary errors，则扩大范围。",
+        "main_results": [
+          "精确 minimum-weight backend 与 boundary-free 发布下，作者证明融合得到原 DEM 的 global most-likely error。",
+          "精确 backend 在测试中逐 shot 匹配 monolithic MLE；与 syndrome acquisition 重叠可降低延迟。"
+        ],
+        "techniques": [
+          "syndrome-driven scheduling；局部求解与融合。"
+        ],
+        "assumptions": [
+          "最优性要求精确后端；heuristic 后端虽可接入但不继承证明。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "MLE 指最可能错误，不等同按退化类求和的最可能逻辑类；摘要未给具体延迟或尾部界。"
+        ],
+        "relevance": [
+          "直接关联实时 syndrome 处理与恢复最优性。"
+        ],
+        "follow_up": [
+          "读者建议：按簇尺度分布比较解码延迟尾部与逻辑类错误率。"
+        ],
+        "relevance_score": 89,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:03:07.241Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.13111v1"
+      }
+    },
+    {
+      "id": "2611.13101",
+      "version": 1,
+      "analysis": {
+        "summary": "作者用可实现 Hamiltonian 变形下的 eigenstate susceptibility 量化量子混沌。虽涉及 scrambling，摘要没有给出设计阶数、decoupling 或量子信息任务的具体保证，本轮低相关筛除。",
+        "problem": "区分不同模型的混沌表现。",
+        "setting": "受 locality、symmetries 和守恒律约束的形变。",
+        "main_results": [
+          "典型模型中若干混沌诊断在同一参数区间吻合。"
+        ],
+        "techniques": [
+          "quantum geometric susceptibility。"
+        ],
+        "assumptions": [
+          "受允许控制流形限制。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "摘要未核查正文证明。"
+        ],
+        "relevance": [
+          "侧重多体混沌度量，未达到收录门槛。"
+        ],
+        "follow_up": [],
+        "relevance_score": 58,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:03:07.241Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.13101v1"
+      }
+    },
+    {
+      "id": "2611.13098",
+      "version": 1,
+      "analysis": {
+        "summary": "论文研究 surface code 在统一相干 Z rotations 与完美 syndrome 下的 decoding。重点是区分有限尺寸平台与渐近阈值，并在偶数距离给出 deterministic syndrome-conditioned recovery 的最优性结果。",
+        "problem": "有限尺寸漂移可能误导阈值外推；Pauli 恢复与一般量子恢复的最优性也须区分。",
+        "setting": "每物理 qubit 施加 exp(iθZ)，随后完美 syndrome；βR=−½ ln tanθ。",
+        "main_results": [
+          "两种长度 d_ba∼1/βR^α（奇 d 的 α=1，偶 d 的 α=2）与 d_RG∼exp(C/βR⁴)，在 θ→π/4 时分离，产生宽中间区。",
+          "replicated Majorana theory 的主阶 inter-flavor interaction 为 βR² 量级；X₄=βR⁴ ln d 下的数值塌缩与渐近 Pauli threshold θc=π/4 相容。",
+          "作者证明任意偶数 d 上 ML Pauli decoding 在所有确定性 syndrome-conditioned quantum recoveries 中最大化 entanglement fidelity，并指出其阈值与 coherent-information 定义的量子最优极限相合。"
+        ],
+        "techniques": [
+          "自由费米子模拟、replica Majorana 与 class-D RG 图景。"
+        ],
+        "assumptions": [
+          "模型为均匀相干旋转和完美测量；最优性陈述限偶 d。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "数值相容性不等同单独证明阈值等于 π/4；不外推到 noisy repeated syndrome 或电路级阈值。"
+        ],
+        "relevance": [
+          "直接对应物理相干噪声、恢复可选集合与逻辑 fidelity。"
+        ],
+        "follow_up": [
+          "读者建议：在小距离复算奇偶差异，并比较用哪个尺寸区间拟合阈值。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:03:07.242Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.13098v1"
+      }
+    }
+  ]
+}
