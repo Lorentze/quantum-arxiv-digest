@@ -1,0 +1,76 @@
+{
+  "analyses": [
+    {
+      "id": "2611.13094",
+      "version": 1,
+      "analysis": {
+        "summary": "作者把制备 Dicke states 的 frustration-free measurement-feedback 动力学化为经典 first-passage process：测量使 singlet pair 端点移动，反馈在指定键上吸收违反局域约束的 pair。",
+        "problem": "可否从可解的有效过程推出制备时间与反馈范围的权衡？",
+        "setting": "Nq 个 qubits，置换对称子空间按 magnetization sector 分解；局部 singlet projectors 作约束。",
+        "main_results": [
+          "闭合在 Nq(Nq−1)/2 个 pair projectors 上，将指数规模 Liouvillian 问题化为多项式大小生成元。",
+          "1D 解的最慢速率为2[1−cos(π/Nq)]，单位为测量率；作者另给出按反馈可达 pair 比例的弛豫时间下界，局域反馈情形至少线性。",
+          "第二闭合给出终态，second-moment 闭合处理涨落；扩展考虑 stationary leakage。"
+        ],
+        "techniques": [
+          "first passage、闭合方程与 transport–absorber 分析。"
+        ],
+        "assumptions": [
+          "下界针对所定义反馈类，速率以测量率计。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "弛豫时间不能直接当作门深度或 shot 数；未核查误差与成功率定义。"
+        ],
+        "relevance": [
+          "与自适应状态制备、局域约束与时间下界相连。"
+        ],
+        "follow_up": [
+          "读者建议：将测量并行度、反馈通信及初始化成本单列后比较电路实现。"
+        ],
+        "relevance_score": 87,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:03:07.243Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.13094v1"
+      }
+    },
+    {
+      "id": "2611.13071",
+      "version": 1,
+      "analysis": {
+        "summary": "作者给出三方纯态何时与某 stabilizer state 局部酉等价的谱判据。关键是同时检查 marginal、reflected 和 negativity spectra 的平坦性，后一项按符号调整。",
+        "problem": "边缘谱无法单独回答三方非局域 magic；需要检测跨分区关联的额外谱信息。",
+        "setting": "tripartite pure states；local-unitary equivalence，并在 non-abelian quantum doubles 与 random tensor networks 中应用。",
+        "main_results": [
+          "作者声称三类谱按所述方式平坦当且仅当局部酉等价于 stabilizer state。",
+          "以 anti-flatness 量化偏差并提出 randomized measurements。",
+          "例子中，quantum double 的信号仅在 triple points 落于 plaquettes 时出现；random tensor networks 中对应两个边界区域的 entanglement wedge 连通。"
+        ],
+        "techniques": [
+          "reflected 与 negativity spectra；anti-flatness；随机测量。"
+        ],
+        "assumptions": [
+          "判据限三方纯态，局部酉等价不同于局部 Clifford 等价。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未核查正文证明及摘要未明示的假设。",
+          "摘要没有给测量所需 copies、统计误差或 design order；不等同蒸馏成本或通用 magic 度量。"
+        ],
+        "relevance": [
+          "具体关联 stabilizer 结构与可测 nonlocal magic。"
+        ],
+        "follow_up": [
+          "读者建议：分别计算三类谱见证的测量成本，比较哪些可用单副本实现。"
+        ],
+        "relevance_score": 91,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-12T01:03:07.243Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.13071v1"
+      }
+    }
+  ]
+}
