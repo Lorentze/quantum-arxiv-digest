@@ -4,6 +4,149 @@
       "kind": "analysis",
       "paper": {
         "doi": "",
+        "id": "2610.34615",
+        "version": 1,
+        "title": "Higher Order OTOCs in Chaotic Quantum Maps: Ruelle-Pollicott Resonances and Asymptotic Freeness",
+        "authors": [
+          "Nicolás Gómez Brucks",
+          "Ignacio García-Mata",
+          "Diego A. Wisniacki"
+        ],
+        "abstract": "Out-of-time-ordered correlators (OTOCs) measure the scrambling of information and are a powerful diagnostic of chaos. In chaotic quantum systems with a classical analog, their relaxation towards equilibrium is dictated by the classical Ruelle--Pollicott resonances. We investigate higher-order OTOCs in quantum maps, prototypical one-body systems with a classical limit showing all the essential features of chaotic dynamics. We demonstrate numerically that in the intermediate-time regime they decay exponentially at a rate that depends only on the parity of the order: odd-order OTOCs decay at the same rate as classical correlations, given by the leading Ruelle--Pollicott resonance, and even-order ones at twice that rate. Both are far slower than the naive expectation, under which the rate would grow in proportion to the order. We then mimic the effect of an environment by defining a coarse-grained superoperator whose effect is to introduce decoherence into the system, and find that the expected proportionality between rate and order is thereby restored. Finally, we show that at long times each higher-order OTOC becomes dominated by a single free cumulant, whose saturation value falls off inversely with the dimension of the Hilbert space, signalling the emergence of asymptotic freeness and highlighting the relevance of free probability theory as a framework for the study of quantum chaos.",
+        "url": "https://arxiv.org/abs/2610.34615",
+        "pdf_url": "https://arxiv.org/pdf/2610.34615v1",
+        "published": "2026-10-25T22:26:31Z",
+        "updated": "2026-10-25T22:26:31Z",
+        "categories": [
+          "nlin.CD",
+          "quant-ph"
+        ],
+        "keyword_score": 4,
+        "topics": [
+          "random_designs"
+        ],
+        "keyword_matches": {
+          "random_designs": [
+            "scrambling"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-27T05:12:19Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.34486",
+        "version": 1,
+        "title": "QQLink: A Declarative Framework for Multi-QPU Quantum Workflow Orchestration",
+        "authors": [
+          "Vicente Leyton Ortega",
+          "Narasinga Rao Miniskar",
+          "Thomas Naughton",
+          "Travis S. Humble"
+        ],
+        "abstract": "Distributed quantum protocols require measurement outcomes produced at one node to control operations at another. We present QQLink, a programming and orchestration layer that expresses these dependencies in a single program, using workflow nodes, deferred measurement references, and declared entanglement, and derives the cross-node coordination automatically. Its planner constructs a provably acyclic dependency graph in time linear in the total size of the instructions' qubit footprints. The same programs execute through simulator backends or are lowered to dynamic circuits on partitioned quantum hardware. We evaluate seven protocol workflows. Exhaustive feedforward-branch tests on the simulator runtime path, over tomographically complete input sets, yield output-state infidelities of at most $5\\times10^{-12}$ and no incorrect classical outputs, and replaying every plan in random topological orders leaves each final state unchanged. Separate executor processes run the plans with delayed messages, with the joint quantum state held by a centralized simulation service. Every run with the full plan is correct, and removing required cross-node dependencies causes protocol failures. The lowered circuits match hand-written implementations of the same construction in two-qubit gate and conditional-block counts. Runs on two IBM Heron processors, each partitioned into virtual QPUs, demonstrate same-chip execution in two sessions a week apart. The runs also show large variation between sessions and losses beyond what calibration-derived noise models predict. Coherence-sensitive checks do not establish coherent Toffoli operation or preservation of the intended repetition-code superposition. These results support QQLink's workflow semantics on the tested execution paths and identify limits of the current hardware realization; execution across physically networked QPUs remains future work.",
+        "url": "https://arxiv.org/abs/2610.34486",
+        "pdf_url": "https://arxiv.org/pdf/2610.34486v1",
+        "published": "2026-10-25T18:30:46Z",
+        "updated": "2026-10-25T18:30:46Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "adaptive_resources"
+        ],
+        "keyword_matches": {
+          "adaptive_resources": [
+            "feedforward"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-27T05:12:19Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.34446",
+        "version": 1,
+        "title": "Ancilla-free optimal quantum adder",
+        "authors": [
+          "Junhong Nie",
+          "Jialiang Tang",
+          "Xiaoming Sun",
+          "Wei Zi"
+        ],
+        "abstract": "We construct an exact $n$-bit quantum adder with $O(n)$ gates and $O(\\log n)$ depth that requires no ancillary qubits. The circuit uses only $X$, CNOT, and Toffoli gates under all-to-all connectivity and is classically reversible. Our construction accelerates the controlled ladder underlying addition. Grouping the data into blocks and use existing control qubits as conditional workspace gives a recursive construction with $O(n\\log\\log n)$ gates and $O(\\log n)$ depth. We then coordinate inter-block propagation via two short-path forest operations to cut the per-block workspace requirement, yielding a nonrecursive implementation with $O(n)$ gates. Both the gate count and circuit depth are asymptotically optimal.",
+        "url": "https://arxiv.org/abs/2610.34446",
+        "pdf_url": "https://arxiv.org/pdf/2610.34446v1",
+        "published": "2026-10-25T17:07:59Z",
+        "updated": "2026-10-25T17:07:59Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 4,
+        "topics": [
+          "adaptive_resources"
+        ],
+        "keyword_matches": {
+          "adaptive_resources": [
+            "ancilla-free",
+            "circuit depth"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-27T05:12:19Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.34404",
+        "version": 1,
+        "title": "Maximum-Likelihood Decoding of Gabidulin Codes Is NP-Hard Even in Dimension One",
+        "authors": [
+          "Philippe Gaborit"
+        ],
+        "abstract": "Fix a prime power q. We prove that deciding whether a received word y in Fnqm lies at rank distance at most n-2 from the one-dimensional Gabidulin code {{λ.g : λ in Fqm } is NP-complete. Thus maximum-likelihood decoding of Gabidulin codes is NP-hard even for k = 1, an analogue of the Guruswami-Vardy theorem for Reed-Solomon codes. In the Hamming metric, by contrast, hardness at this radius requires the dimension to grow with the length, as in the Guruswami-Vardy theorem. The reduction is deterministic; consequently Rank Syndrome Decoding (RSD) and Rank Minimum Distance (RMD) for Fqm -linear codes are NP-complete under deterministic polynomial reductions, whereas the previously known reduction was randomized. The proof goes through a pivot problem that we introduce, Twisted Square Membership (TSM): given Fq-subspaces U, W in FqN , decide whether some non-zero a in U satisfies a^(q+1) in W . Quadratic systems in d unknowns are encoded into TSM, then TSM into Gabidulin decoding. The last step views the received word as an Fq-linear map and decoding at radius n - 2 as the search for an Fq-plane on which it acts as a scalar. With support U + τ W in a cubic extension and map a + τ b to a^(q^2) + τ bq^q , two Frobenius twists force solution planes to encode the relation a^(q+1) in W . All constructions are explicit and polynomial, with N = O(qd^2 ), n less than N + d, and m = 3N .",
+        "url": "https://arxiv.org/abs/2610.34404",
+        "pdf_url": "https://arxiv.org/pdf/2610.34404v1",
+        "published": "2026-10-25T16:06:47Z",
+        "updated": "2026-10-25T16:06:47Z",
+        "categories": [
+          "cs.CR",
+          "cs.IT"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "syndrome"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-27T05:12:19Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
         "id": "2610.34003",
         "version": 1,
         "title": "Resource-Optimal Screening for Two-Tier Quantum System Characterization",
@@ -1503,168 +1646,6 @@
           "adaptive_resources"
         ],
         "keyword_matches": {
-          "adaptive_resources": [
-            "circuit depth"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-24T04:43:31Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.30681",
-        "version": 1,
-        "title": "High-fidelity and robust controlled-Z gates for superconducting transmon qubits. II. System-parameter uncertainties and overall errors",
-        "authors": [
-          "Chia-Hsien Huang",
-          "Hsi-Sheng Goan"
-        ],
-        "abstract": "In the companion paper (Part I), we developed an optimal-control framework to suppress intrinsic and decoherence-induced errors in controlled-Z (CZ) gates between directly coupled, frequency-tunable transmons. Here, we extend this framework to incorporate uncertainties in coupling strength, anharmonicities, and zero-flux qubit frequencies, enabling the design of high-fidelity gates robust against noise and parameter uncertainties. We classify these uncertainties by whether they perturb the off-diagonal coupling strengths or the diagonal detunings of the Hamiltonian, and we identify distinct suppression mechanisms for each class. Coupling errors are mitigated through dynamical decoupling induced by strong detuning modulation. For a 30-ns gate, this strategy reduces the coupling error to $6.21\\times10^{-7}$ and tolerates coupling-strength uncertainties up to $2π\\times4$ MHz while keeping total gate infidelity below $10^{-3}$. Detuning errors are minimized near a symmetric-detuning operating point that balances the two dominant leakage-mediated interactions. A 24-ns gate operated near this point tolerates individual uncertainties of up to $2π\\times5$ MHz in each relevant diagonal parameter under the same infidelity threshold. We further optimize gate performance under realistic conditions where intrinsic errors, decoherence, and parameter uncertainties coexist across six representative stages of progressively improving hardware performance. The resulting stage-specific controls achieve lower infidelity and greater robustness. Together with the companion study (Part I), this framework offers a practical approach to balance speed, fidelity, and robustness while reducing the need for exhaustive characterization and frequent recalibration in large-scale superconducting quantum processors.",
-        "url": "https://arxiv.org/abs/2610.30681",
-        "pdf_url": "https://arxiv.org/pdf/2610.30681v1",
-        "published": "2026-10-22T03:48:21Z",
-        "updated": "2026-10-22T03:48:21Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "logical_qec"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "decoupling"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-24T04:43:31Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "id": "doi:10.1038/s41467-026-78128-1",
-        "version": 1,
-        "title": "Reduced-DSP 200G/λ low-voltage slow-light silicon modulator enabled by built-in EO equalizer",
-        "authors": [
-          "Keisuke Kawahara",
-          "Tai Tsuchizawa",
-          "Noritsugu Yamamoto",
-          "Yuriko Maegami",
-          "Koji Yamada",
-          "Nobuhiko Nishiyama",
-          "Toshihiko Baba"
-        ],
-        "abstract": "Multi-Tb/s optical interconnects for artificial intelligence data centers necessitate high-speed, energy-efficient, and compact transceivers. However, conventional silicon Mach-Zehnder modulators are fundamentally limited by low modulation efficiency and large physical dimensions that typically extend several millimeters, requiring high-swing drivers and power-intensive digital signal processing to achieve data rates exceeding 100 Gb/s per lane. Here we show a silicon photonic crystal waveguide slow-light modulator that overcomes the bandwidth-efficiency trade-off via a built-in electro-optic equalizer. By monolithically integrating optical delay lines and crossings within segmented slow-light phase shifters, we synthesized an on-chip feedforward response that extends the 3-dB bandwidth. The fabricated modulator with a small device length of 320 µm demonstrated 140-Gb/s on-off keying operation with an energy consumption of 26 fJ/bit using drive voltages compatible with fin field-effect transistor-based complementary metal-oxide-semiconductor technology. Furthermore, four-level pulse amplitude modulation achieved 180 Gb/s without digital signal processing and 200 Gb/s with a low-complexity 11-tap digital equalizer. By reducing reliance on power-dissipating electronics, this strategy provides a potential route toward future dense multi-Tb/s co-packaged optics for energy-constrained switching systems.",
-        "abstract_basis": "crossref_abstract",
-        "abstract_source_url": "https://api.crossref.org/journals/2041-1723/works?filter=from-online-pub-date%3A2026-10-22%2Cuntil-online-pub-date%3A2026-10-25%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
-        "url": "https://www.nature.com/articles/s41467-026-78128-1",
-        "pdf_url": "",
-        "published": "2026-10-22",
-        "updated": "2026-10-22",
-        "categories": [],
-        "sources": [
-          "nature_communications"
-        ],
-        "publication": {
-          "journal_id": "nature_communications",
-          "journal": "Nature Communications",
-          "doi": "10.1038/s41467-026-78128-1",
-          "url": "https://www.nature.com/articles/s41467-026-78128-1",
-          "published": "2026-10-22",
-          "date_basis": "crossref_published-online"
-        },
-        "keyword_score": 3,
-        "topics": [
-          "adaptive_resources"
-        ],
-        "keyword_matches": {
-          "adaptive_resources": [
-            "feedforward"
-          ]
-        },
-        "first_seen_at": "2026-10-23T04:58:33Z",
-        "doi": "10.1038/s41467-026-78128-1"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.30305",
-        "version": 1,
-        "title": "Dealing with low-weight errors that lead BP OSD to fail",
-        "authors": [
-          "Giacomo Fregona",
-          "Matthias C. Löbl",
-          "Benjamin J. Brown",
-          "Michael J. Kastoryano",
-          "Stefano Paesani"
-        ],
-        "abstract": "Belief Propagation combined with Ordered Statistics Decoding (BP OSD) is an open-source decoding tool used widely within the community due to its versatility and ease of application to Quantum Low Density Parity Check (QLDPC) codes. However, the degeneracy of quantum codes has been observed to degrade the performance of BP OSD, particularly leading to error floors for low physical error rates. Here, we investigate the low-weight error configurations responsible for such failures in Bivariate Bicycle codes. We show that, at code capacity, BP OSD fails on errors whose weight is significantly smaller than d/2, arising from global symmetries of the decoding graph that prevent the convergence of parallel BP. Furthermore, our analysis reveals new pitfalls that can arise when analysing the performance of BP OSD in the rare events regime, such as loss of ergodicity in splitting methods and numerical instabilities in the decoder. We show how to mitigate these failure mechanisms by modifying the BP update rules and the decoder implementation, leading to substantial improvement in logical error rate.",
-        "url": "https://arxiv.org/abs/2610.30305",
-        "pdf_url": "https://arxiv.org/pdf/2610.30305v1",
-        "published": "2026-10-21T18:18:32Z",
-        "updated": "2026-10-21T18:18:32Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 4,
-        "topics": [
-          "logical_qec"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "logical error",
-            "qLDPC"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-24T04:43:31Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.30279",
-        "version": 1,
-        "title": "Transversal syndrome extraction: A unifying construction for measuring the error syndromes of any stabilizer code",
-        "authors": [
-          "Miles D. Gorman"
-        ],
-        "abstract": "Fault-tolerant syndrome extraction is fundamental to stabilizer-code-based quantum error correction, yet existing general protocols incur substantial costs in either circuit depth or width. In this work, we design ancilla stabilizer states for a general transversal circuit to construct a family of fault-tolerant syndrome-extraction gadgets that interpolate between Shor and Steane syndrome extraction for any stabilizer code. The result is a configurable trade-off between circuit depth and width.",
-        "url": "https://arxiv.org/abs/2610.30279",
-        "pdf_url": "https://arxiv.org/pdf/2610.30279v1",
-        "published": "2026-10-21T18:01:04Z",
-        "updated": "2026-10-21T18:01:04Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 11,
-        "topics": [
-          "logical_qec",
-          "magic_stabilizer",
-          "adaptive_resources"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "quantum error correction",
-            "syndrome",
-            "transversal"
-          ],
-          "magic_stabilizer": [
-            "stabilizer"
-          ],
           "adaptive_resources": [
             "circuit depth"
           ]

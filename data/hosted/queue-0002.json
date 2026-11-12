@@ -4,6 +4,121 @@
       "kind": "analysis",
       "paper": {
         "doi": "",
+        "id": "2610.41986",
+        "version": 1,
+        "title": "Resource efficient Sample Based Quantum Simulation through Fragmentation and Virtual Partitioning of QPU",
+        "authors": [
+          "R. Pradeep",
+          "Anurag Chaudhary",
+          "Ashish Kumar Patra",
+          "Anurag K. S. V.",
+          "Ruchika Bhat",
+          "Sai Shankar P.",
+          "G. Jaiganesh"
+        ],
+        "abstract": "Present-day sample-based quantum algorithms within quantum-centric supercomputing workflows require substantial classical post-processing, large circuit depths to produce chemically relevant samples, and long QPU times to execute the many circuits needed for molecules of chemically relevant size. We introduce FMO-QVM-HCI-HSQD, a resource-efficient sample-based framework that breaks a large problem into fragments, runs the fragments in parallel on virtual regions of the QPU, and reduces circuit depth through a half-qubit ansatz whose samples seed an HCI expansion. We demonstrate the algorithm on ibm_marrakesh and ibm_boston for the water trimer and the carmofur_Mpro complex with up to 52 qubits, benchmarking against FMO-CCSD(T), FMO-CASCI and FMO-HCI. For the water trimer (14 spin orbitals for monomers, 28 for dimers), our method reduces the two-qubit depth by 39% compared to FMO-QVM-SQD and the QPU time by 82% compared to sequential FMO-SQD, and accesses 3% of the determinant subspace versus 40% for FMO-SQD, while achieving more accurate energies. For the carmofur_Mpro complex (16 and 32 spin orbitals), it reduces the two-qubit depth by 47% and the QPU time by 20% compared to FMO-QVM-SQD, and accesses 0.007% of the determinant subspace versus 40%, while remaining within chemical accuracy. Extending the carmofur_Mpro active space in the 6-31G basis to 52 and 104 spin orbitals, sampled on 26 and 52 qubits, the total energy deviates from FMO-HCI by only 1.22 mHa. These results show that combining fragmentation, virtual QPU partitioning and half-qubit sampling makes sample-based quantum simulation of chemically relevant systems feasible on current hardware.",
+        "url": "https://arxiv.org/abs/2610.41986",
+        "pdf_url": "https://arxiv.org/pdf/2610.41986v1",
+        "published": "2026-10-30T16:33:49Z",
+        "updated": "2026-10-30T16:33:49Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "adaptive_resources"
+        ],
+        "keyword_matches": {
+          "adaptive_resources": [
+            "circuit depth"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-11-02T06:17:22Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.41903",
+        "version": 1,
+        "title": "Statistical Foundations of Reinforcement Learning: A Non-Asymptotic Perspective",
+        "authors": [
+          "Yuxin Chen",
+          "Yuejie Chi",
+          "Jianqing Fan",
+          "Gen Li",
+          "Yuting Wei",
+          "Yuling Yan"
+        ],
+        "abstract": "Reinforcement learning (RL) embodies a foundational paradigm for sequential decision-making in the face of uncertainty. The rapid growth of model complexity in emerging applications has significantly amplified the challenges of achieving data-efficient RL, particularly in sample-starved scenarios where data collection may be costly, time-consuming, or even high-stakes. Consequently, understanding and improving the data efficiency of RL algorithms has become a central problem of both fundamental theoretical interest and practical importance. Despite decades of research, the statistical underpinnings of RL remained remarkably underdeveloped until relatively recently, particularly in the finite-sample regimes most relevant to modern practice. Over the past few years, there has been a surge of activity advancing the frontiers of non-asymptotic statistical RL theory, drawing on ideas from high-dimensional statistics and probability, information theory, and statistical learning theory. In this monograph, we present a non-asymptotic treatment for RL based on tabular Markov decision processes, focusing on three canonical sampling mechanisms --- RL with a generative model, online RL, and offline RL --- together with two algorithmic paradigms: model-based and model-free approaches. Centered around non-asymptotic sample complexity analysis, our treatment emphasizes minimax-optimal algorithm design, particularly methods that attain statistical optimality without significant burn-in costs, as well as sharp statistical characterizations of several widely used RL algorithms. Whenever possible, we provide largely self-contained analyses together with intuitive explanations. We also briefly discuss several extensions, such as robust RL, competitive multi-agent RL, federated RL, uncertainty quantification, and RL from human feedback.",
+        "url": "https://arxiv.org/abs/2610.41903",
+        "pdf_url": "https://arxiv.org/pdf/2610.41903v1",
+        "published": "2026-10-30T15:39:38Z",
+        "updated": "2026-10-30T15:39:38Z",
+        "categories": [
+          "stat.ML",
+          "cs.IT",
+          "cs.LG"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "quantum_learning"
+        ],
+        "keyword_matches": {
+          "quantum_learning": [
+            "sample complexity"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-11-02T06:17:22Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.41848",
+        "version": 1,
+        "title": "Engineered Learning Problems on Noisy Quantum Processors",
+        "authors": [
+          "Esteban Payares",
+          "Nadia Milazzo",
+          "Ghada Ben Slama",
+          "Thomas Cope"
+        ],
+        "abstract": "Despite quantum machine learning being an active topic of research, demonstrations of algorithms run on quantum hardware beating classical methods remain rare. In this work, we demonstrate a significant performance gap using a projected quantum kernel for $n=15,30$ and $45$ qubits over classical methods on an engineered classification problem, and show reproducibility of the results over different quantum processor units. We also demonstrate how error mitigation can widen this gap, both by improving hardware performance but also by increasing the classical difficulty, with different techniques contributing unequally to these phenomena. This work provides strong evidence that superior empirical performance of quantum hardware over all classical techniques is an achievable goal in quantum machine learning, albeit for an artificial problem. However, as with any application relying on observables, beating state-of-the-art simulation methods remains the primary challenge, as our matrix product state results here show.",
+        "url": "https://arxiv.org/abs/2610.41848",
+        "pdf_url": "https://arxiv.org/pdf/2610.41848v1",
+        "published": "2026-10-30T15:03:38Z",
+        "updated": "2026-10-30T15:03:38Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 4,
+        "topics": [
+          "benchmarking"
+        ],
+        "keyword_matches": {
+          "benchmarking": [
+            "error mitigation"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-11-02T06:17:22Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
         "id": "2610.41831",
         "version": 1,
         "title": "Toward Quantum Monte Carlo for Sovereign Debt Risk: A proof of concept",
@@ -1527,148 +1642,6 @@
         "keyword_matches": {
           "quantum_learning": [
             "quantum learning"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-30T05:55:37Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.38885",
-        "version": 1,
-        "title": "Execution bias, repeatability and mitigation cost in parameter-frozen molecular VQE energy evaluation",
-        "authors": [
-          "Julen Larrucea"
-        ],
-        "abstract": "A smaller statistical error bar need not mean a more accurate molecular energy. We evaluate noiselessly optimized molecular variational quantum eigensolver states on IBM Aachen and Pittsburgh, two 156-qubit Heron processors (provider-reported revision 3). Only energy evaluation runs on hardware, with parameters, layouts and compiled circuits frozen and dynamical decoupling disabled. A five-molecule pilot, three-molecule isolated cohort in three windows and known-state controls comprise 110 jobs and 28.2 billed quantum processing unit (QPU) minutes; the isolated cohort spans 30.2 h within a 31.7 h campaign. Raw 1024 O2 and BeH2 mean residuals exceed returned uncertainty by factors 12-32. Pittsburgh BeH2 cross-job standard deviation is 5.6 times mean returned uncertainty. The zero-noise extrapolation (ZNE) package reduces O2 absolute residuals by 49.7% on Aachen and 83.5% on Pittsburgh at about fourfold charge. On Pittsburgh, twirled readout error extinction (TREX) removes 80 millihartree (mHa) per Raw 1024 job charge versus 50 mHa for ZNE. Controls reveal qubit-124 preparation or readout errors 5.4-5.6 times calibration; 13 mitigated energy point estimates fall outside the mapped spectrum, with no Raw counterpart. These results support workload checks and repeated measurements before additional sampling.",
-        "url": "https://arxiv.org/abs/2610.38885",
-        "pdf_url": "https://arxiv.org/pdf/2610.38885v1",
-        "published": "2026-10-28T20:48:09Z",
-        "updated": "2026-10-28T20:48:09Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "logical_qec"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "decoupling"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-30T05:55:37Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.38847",
-        "version": 1,
-        "title": "Local Quantum Fault Tolerance Without Expansion",
-        "authors": [
-          "David Ponarovsky"
-        ],
-        "abstract": "We study fault-tolerant quantum computation using a fixed, local error-correction rule and a geometrically simple code: the cubical $(d,d')$-Toric code with $d',d-d'\\geq 2$, including the 4D Toric code. Under sufficiently weak local-stochastic Pauli noise, our construction uses noiseless, bounded-depth classical processing per physical time step. Its correction cycle acts only on the current syndrome, has constant depth, and is repeated unchanged during idle logical computation; it requires neither multiscale decoder states nor scale-dependent communication delays. Our proof treats errors and syndromes as chains in a cubical complex, combining geometric shrinking under the sweep rule with a space--time explanation-tree argument inspired by Toom's theorem. It does not rely on expansion. We establish three results: 1.Explicit higher-dimensional sweep rule. We give a local algorithm for choosing sweep corrections on cubical $(d,d')$-Toric complexes, resolving the local-existence question of Kubica and Preskill. 2. Fault-tolerant computation. We prove a circuit-level threshold theorem for noisy sweep cycles interleaved with logical gates. In particular, the 4D Toric code admits a fixed, constant-depth syndrome-based correction cycle without a multiscale decoder or expansion-based encoding. We do not claim constant total-depth overhead. 3. Ideal decoding under local-stochastic noise. For an initial local-stochastic Pauli error of rate $p$ below threshold, $n^{d+1}$ noiseless sweep cycles recover the encoded state on a side-length-$n$ $(d,d')$-Toric code with probability at least $1-O(\\operatorname{poly}(n))p^{Ω(n)}$, extending earlier guarantees for independent errors.",
-        "url": "https://arxiv.org/abs/2610.38847",
-        "pdf_url": "https://arxiv.org/pdf/2610.38847v1",
-        "published": "2026-10-28T20:31:21Z",
-        "updated": "2026-10-28T20:31:21Z",
-        "categories": [
-          "quant-ph",
-          "cs.CC"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "logical_qec"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "syndrome"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-30T05:55:37Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.38844",
-        "version": 1,
-        "title": "Inferring the Number of Quantum State Transfers with Neural Networks",
-        "authors": [
-          "Hayden Zammit",
-          "Tony J. G. Apollaro",
-          "Gianluca Valentino",
-          "Johann A. Briffa"
-        ],
-        "abstract": "Repeated-use quantum state transfer (QST) goes beyond the single-use paradigm by accounting for the memory that accumulates inside the transmission channel when it is not reset between uses. Consequently, the map governing the $n^{\\mathrm{th}}$ use of the channel differs from use to use and carries a signature of each previous use. We ask whether this use number can be recovered from transmission data alone, and show that it can: a simple feed-forward neural network, given as input the Bloch vectors sent and received over a single use of an XX spin-chain channel, is able to identify the use number with an accuracy exceeding 90%. Exploiting the U(1) symmetry of the channel, we find that a reduced two-component representation of the transmitted states improves the accuracy further, to about 95%. We characterise the dependence of the classifier on the size and composition of the training data, finding that the number of sampled states and of sampled timings are equally important. We also identify the data set sizes required to reach a given accuracy. Finally, we quantify the severity of the residual misclassifications with an earth-mover distance on the confusion matrix.",
-        "url": "https://arxiv.org/abs/2610.38844",
-        "pdf_url": "https://arxiv.org/pdf/2610.38844v1",
-        "published": "2026-10-28T20:30:51Z",
-        "updated": "2026-10-28T20:30:51Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "adaptive_resources"
-        ],
-        "keyword_matches": {
-          "adaptive_resources": [
-            "feed-forward"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-30T05:55:37Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.38554",
-        "version": 1,
-        "title": "Coherent errors, syndrome extraction and the Robustness of Magic in stabiliser codes",
-        "authors": [
-          "Enrico Bozzetto",
-          "Jonte R. Hance"
-        ],
-        "abstract": "Coherent errors leave stabiliser-code-encoded magic states in superpositions of syndrome sectors. We ask how much magic these coherent errors add, and whether syndrome extraction depletes logical magic. Using Robustness of Magic, we show that, for a unitary error U on a correctable region which supports no stabiliser, the encoded state has the same robustness as the logical state plus one copy of the Choi state of U , in every stabiliser code encoding. Syndrome extraction removes this copy, returning the logical robustness. The removed magic is positive for every non-Clifford error: adding a non-stabiliser state to any state multiplies one plus the robustness by a (tightly- bounded) factor above one. The magic capacity of two-qubit gates Clifford-equivalent to diagonal or single-qubit gates is equal to their Choi-state robustness. We give a linear-algebraic test for when a Clifford error makes syndrome extraction measure a logical operator, and give magic lifetimes of stored single-qubit magic states under Pauli noise. Choosing the plane of the stored state extends these lifetimes about 1.5x on rotated surface codes under low code-capacity depolarising noise. We identify states and channels in odd-prime dimension for which Wigner negativity and robustness show equal lifetimes.",
-        "url": "https://arxiv.org/abs/2610.38554",
-        "pdf_url": "https://arxiv.org/pdf/2610.38554v1",
-        "published": "2026-10-28T09:52:51Z",
-        "updated": "2026-10-28T09:52:51Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 7,
-        "topics": [
-          "logical_qec",
-          "magic_stabilizer"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "syndrome"
-          ],
-          "magic_stabilizer": [
-            "stabiliser",
-            "non-Clifford"
           ]
         },
         "sources": [

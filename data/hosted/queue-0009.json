@@ -3,6 +3,136 @@
     {
       "kind": "analysis",
       "paper": {
+        "id": "2610.06247",
+        "version": 1,
+        "title": "High-Fidelity Remote Graph State Preparation for Blind Quantum Computation",
+        "authors": [
+          "Jiawei Cai",
+          "Rex Fleur",
+          "Benedikt Tissot",
+          "Wolfgang Löffler",
+          "Tzula B. Propp"
+        ],
+        "abstract": "Measurement-based quantum computation (MBQC) relies on entangled graph states, yet existing remote state preparation (RSP) protocols prepare only separable states, requiring subsequent entangling gates on the remote server. Here, we introduce Remote Graph State Preparation (RGSP), a framework that prepares arbitrary graph states directly from a single high-dimensional photonic qudit. By encoding multiple qubits and their graph connectivity into the photon's structured phase profile, RGSP can reduce or, for small computations, completely eliminate the need for server-side entangling operations among qubits. We show that under a reasonable noise model the resulting state fidelity is independent of the graph topology. Under cumulative fiber phase drift, we demonstrate that this fidelity is significantly enhanced by a ``highest-weight-first'' mode reordering strategy. Finally, we show that RGSP enables reduced-SWAP universal blind quantum computing on arbitrary topologies, reducing qubit overhead e.g., for a six-qubit Quantum Fourier Transform from $420$ RSP qubits with a standard brickwork topology to $48$ RSP qubits. These results establish RGSP as a resource-efficient, topology-invariant primitive for quantum-secured cloud computing.",
+        "url": "https://arxiv.org/abs/2610.06247",
+        "pdf_url": "https://arxiv.org/pdf/2610.06247v1",
+        "published": "2026-10-05T12:47:09Z",
+        "updated": "2026-10-05T12:47:09Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 7,
+        "topics": [
+          "random_designs",
+          "adaptive_resources"
+        ],
+        "keyword_matches": {
+          "random_designs": [
+            "brickwork"
+          ],
+          "adaptive_resources": [
+            "state preparation"
+          ]
+        },
+        "first_seen_at": "2026-10-12T02:38:41Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "id": "2610.06197",
+        "version": 1,
+        "title": "Improved Adaptive Estimation of Quantum Partition Functions with Heisenberg Scaling",
+        "authors": [
+          "Yufei Wang",
+          "Daniel Stilck França",
+          "Samuel Slezak"
+        ],
+        "abstract": "We give quantum algorithms that estimate the log partition function of an $n$-qubit quantum Hamiltonian to additive error $ε$ with Heisenberg scaling, while minimizing calls to thermal-state purification preparation. The input is a block encoding of $H$, unitaries preparing thermofield-double states at chosen inverse temperatures, with their inverses and controlled versions, and an adaptive slowly-varying cooling schedule. The system-size bounds below assume $0\\preceq H\\preceq hI$ with $h=O(n)$ and block-encoding normalization $α=Θ(h)$. For constant inverse temperature, we show that such a schedule of length $O(\\sqrt n)$ always exists and can be generated from overlap estimates with $\\widetilde O(\\sqrt n)$ further preparations. Given such a schedule and classically chosen temperatures, we estimate the log partition function with $\\widetilde O(n^{5/4}/ε)$ expected calls to state preparation and to the block encoding, improving by $n^{1/4}$ on non-adaptive strategies. To achieve our result, we use a recursive-doubling identity that expresses each schedule increment as a weighted sum of logarithms of thermofield-double overlaps and of short imaginary-time steps implemented by quantum singular value transformation combined with previously developed variance reduction techniques. If thermofield doubles can be prepared controlled on a temperature register, a quantum inverse-binomial log estimator combined with quantum mean estimation reduces both query counts to $\\widetilde O(n/ε)$. We show that the latter scaling is optimal in block-encoding queries up to polylogarithmic factors and discuss end-to-end complexities for one-dimensional partition-function estimation.",
+        "url": "https://arxiv.org/abs/2610.06197",
+        "pdf_url": "https://arxiv.org/pdf/2610.06197v1",
+        "published": "2026-10-05T12:12:55Z",
+        "updated": "2026-10-05T12:12:55Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "adaptive_resources"
+        ],
+        "keyword_matches": {
+          "adaptive_resources": [
+            "state preparation"
+          ]
+        },
+        "first_seen_at": "2026-10-12T02:38:41Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "id": "2610.06113",
+        "version": 1,
+        "title": "Collective Quantum State Preparation Is Nonadditive",
+        "authors": [
+          "Lin Zhu",
+          "Ranyiliu Chen",
+          "Xin Wang",
+          "Shenggen Zheng"
+        ],
+        "abstract": "Quantum state preparation is a basic primitive of quantum computation and control, but its resource cost is usually analyzed for one target state or under an independent-copy construction. Here we study the many-copy problem under weighted Pauli control, where a Pauli-product rotation $e^{iφP}$ is charged by its rotation angle $|φ|$, independently of the weight of $P$. We derive the exact single-qubit preparation cost and show that it is strictly nonadditive: a four-pulse collective protocol prepares two $T$ states at lower cost than two optimal one-copy protocols. We further identify finite regions of the Bloch sphere with collective saving, including trajectories that remain product throughout, showing that transient entanglement is not the only mechanism behind the advantage. Complementarily, a dimension-independent Rényi-entropy speed limit gives an extensive lower bound for every coherent target and an exponential fidelity penalty below a finite preparation rate. These results establish a many-copy geometry of state synthesis in which uncorrelated outputs can nevertheless benefit from collective control.",
+        "url": "https://arxiv.org/abs/2610.06113",
+        "pdf_url": "https://arxiv.org/pdf/2610.06113v1",
+        "published": "2026-10-05T10:45:49Z",
+        "updated": "2026-10-05T10:45:49Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "adaptive_resources"
+        ],
+        "keyword_matches": {
+          "adaptive_resources": [
+            "state preparation"
+          ]
+        },
+        "first_seen_at": "2026-10-12T02:38:41Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "id": "2610.06059",
+        "version": 1,
+        "title": "Comparing thresholds of XZZX and rotated surface codes under spatio-temporal correlated noise",
+        "authors": [
+          "Dhruv Koul"
+        ],
+        "abstract": "While independent and identically distributed noise is typically assumed in quantum computing research, complex error models such as correlated and spatio-temporal errors remain underexplored. In this paper, the performance of $\\mathrm{XZZX}$ and rotated surface codes is evaluated under these complex noise models. Standard graph-based decoders struggle with the hyperedges generated by correlated errors on bias-tailored codes. To address this, we employ the Minimum Weight Parity Factor (MWPF) decoder, which natively processes syndrome hypergraphs without artificial edge decomposition. Our simulations show that under strong Z-biased circuit-level correlated noise ($η=100$), the threshold of the rotated code degrades to $\\approx 0.36\\%$, while the $\\mathrm{XZZX}$ code drops to $\\approx 0.70\\%$. Furthermore, a distinct non-monotonic threshold dependence is observed for the $\\mathrm{XZZX}$ code across different bias ratios. While the $\\mathrm{XZZX}$ code effectively absorbs high-density Z-type hyperedges at extreme biases, it exhibits a threshold minimum at moderate biases ($η\\approx 10$) because transverse X and Y errors actively bridge the diagonal strings, breaking the code's one-dimensional decoupling symmetry. These findings demonstrate that utilizing hypergraph-aware decoders is critical, as the performance of bias-tailored codes is highly sensitive to the geometric structure of spatio-temporal correlated noise.",
+        "url": "https://arxiv.org/abs/2610.06059",
+        "pdf_url": "https://arxiv.org/pdf/2610.06059v1",
+        "published": "2026-10-05T09:51:46Z",
+        "updated": "2026-10-05T09:51:46Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 4,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "syndrome",
+            "decoupling"
+          ]
+        },
+        "first_seen_at": "2026-10-12T02:38:41Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
         "id": "2610.06036",
         "version": 1,
         "title": "Materialised symmetries of 2D translationally invariant codes",

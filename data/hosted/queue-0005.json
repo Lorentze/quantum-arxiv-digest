@@ -4,6 +4,168 @@
       "kind": "analysis",
       "paper": {
         "doi": "",
+        "id": "2610.30681",
+        "version": 1,
+        "title": "High-fidelity and robust controlled-Z gates for superconducting transmon qubits. II. System-parameter uncertainties and overall errors",
+        "authors": [
+          "Chia-Hsien Huang",
+          "Hsi-Sheng Goan"
+        ],
+        "abstract": "In the companion paper (Part I), we developed an optimal-control framework to suppress intrinsic and decoherence-induced errors in controlled-Z (CZ) gates between directly coupled, frequency-tunable transmons. Here, we extend this framework to incorporate uncertainties in coupling strength, anharmonicities, and zero-flux qubit frequencies, enabling the design of high-fidelity gates robust against noise and parameter uncertainties. We classify these uncertainties by whether they perturb the off-diagonal coupling strengths or the diagonal detunings of the Hamiltonian, and we identify distinct suppression mechanisms for each class. Coupling errors are mitigated through dynamical decoupling induced by strong detuning modulation. For a 30-ns gate, this strategy reduces the coupling error to $6.21\\times10^{-7}$ and tolerates coupling-strength uncertainties up to $2π\\times4$ MHz while keeping total gate infidelity below $10^{-3}$. Detuning errors are minimized near a symmetric-detuning operating point that balances the two dominant leakage-mediated interactions. A 24-ns gate operated near this point tolerates individual uncertainties of up to $2π\\times5$ MHz in each relevant diagonal parameter under the same infidelity threshold. We further optimize gate performance under realistic conditions where intrinsic errors, decoherence, and parameter uncertainties coexist across six representative stages of progressively improving hardware performance. The resulting stage-specific controls achieve lower infidelity and greater robustness. Together with the companion study (Part I), this framework offers a practical approach to balance speed, fidelity, and robustness while reducing the need for exhaustive characterization and frequent recalibration in large-scale superconducting quantum processors.",
+        "url": "https://arxiv.org/abs/2610.30681",
+        "pdf_url": "https://arxiv.org/pdf/2610.30681v1",
+        "published": "2026-10-22T03:48:21Z",
+        "updated": "2026-10-22T03:48:21Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "decoupling"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-24T04:43:31Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "id": "doi:10.1038/s41467-026-78128-1",
+        "version": 1,
+        "title": "Reduced-DSP 200G/λ low-voltage slow-light silicon modulator enabled by built-in EO equalizer",
+        "authors": [
+          "Keisuke Kawahara",
+          "Tai Tsuchizawa",
+          "Noritsugu Yamamoto",
+          "Yuriko Maegami",
+          "Koji Yamada",
+          "Nobuhiko Nishiyama",
+          "Toshihiko Baba"
+        ],
+        "abstract": "Multi-Tb/s optical interconnects for artificial intelligence data centers necessitate high-speed, energy-efficient, and compact transceivers. However, conventional silicon Mach-Zehnder modulators are fundamentally limited by low modulation efficiency and large physical dimensions that typically extend several millimeters, requiring high-swing drivers and power-intensive digital signal processing to achieve data rates exceeding 100 Gb/s per lane. Here we show a silicon photonic crystal waveguide slow-light modulator that overcomes the bandwidth-efficiency trade-off via a built-in electro-optic equalizer. By monolithically integrating optical delay lines and crossings within segmented slow-light phase shifters, we synthesized an on-chip feedforward response that extends the 3-dB bandwidth. The fabricated modulator with a small device length of 320 µm demonstrated 140-Gb/s on-off keying operation with an energy consumption of 26 fJ/bit using drive voltages compatible with fin field-effect transistor-based complementary metal-oxide-semiconductor technology. Furthermore, four-level pulse amplitude modulation achieved 180 Gb/s without digital signal processing and 200 Gb/s with a low-complexity 11-tap digital equalizer. By reducing reliance on power-dissipating electronics, this strategy provides a potential route toward future dense multi-Tb/s co-packaged optics for energy-constrained switching systems.",
+        "abstract_basis": "crossref_abstract",
+        "abstract_source_url": "https://api.crossref.org/journals/2041-1723/works?filter=from-online-pub-date%3A2026-10-22%2Cuntil-online-pub-date%3A2026-10-25%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
+        "url": "https://www.nature.com/articles/s41467-026-78128-1",
+        "pdf_url": "",
+        "published": "2026-10-22",
+        "updated": "2026-10-22",
+        "categories": [],
+        "sources": [
+          "nature_communications"
+        ],
+        "publication": {
+          "journal_id": "nature_communications",
+          "journal": "Nature Communications",
+          "doi": "10.1038/s41467-026-78128-1",
+          "url": "https://www.nature.com/articles/s41467-026-78128-1",
+          "published": "2026-10-22",
+          "date_basis": "crossref_published-online"
+        },
+        "keyword_score": 3,
+        "topics": [
+          "adaptive_resources"
+        ],
+        "keyword_matches": {
+          "adaptive_resources": [
+            "feedforward"
+          ]
+        },
+        "first_seen_at": "2026-10-23T04:58:33Z",
+        "doi": "10.1038/s41467-026-78128-1"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.30305",
+        "version": 1,
+        "title": "Dealing with low-weight errors that lead BP OSD to fail",
+        "authors": [
+          "Giacomo Fregona",
+          "Matthias C. Löbl",
+          "Benjamin J. Brown",
+          "Michael J. Kastoryano",
+          "Stefano Paesani"
+        ],
+        "abstract": "Belief Propagation combined with Ordered Statistics Decoding (BP OSD) is an open-source decoding tool used widely within the community due to its versatility and ease of application to Quantum Low Density Parity Check (QLDPC) codes. However, the degeneracy of quantum codes has been observed to degrade the performance of BP OSD, particularly leading to error floors for low physical error rates. Here, we investigate the low-weight error configurations responsible for such failures in Bivariate Bicycle codes. We show that, at code capacity, BP OSD fails on errors whose weight is significantly smaller than d/2, arising from global symmetries of the decoding graph that prevent the convergence of parallel BP. Furthermore, our analysis reveals new pitfalls that can arise when analysing the performance of BP OSD in the rare events regime, such as loss of ergodicity in splitting methods and numerical instabilities in the decoder. We show how to mitigate these failure mechanisms by modifying the BP update rules and the decoder implementation, leading to substantial improvement in logical error rate.",
+        "url": "https://arxiv.org/abs/2610.30305",
+        "pdf_url": "https://arxiv.org/pdf/2610.30305v1",
+        "published": "2026-10-21T18:18:32Z",
+        "updated": "2026-10-21T18:18:32Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 4,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "logical error",
+            "qLDPC"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-24T04:43:31Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.30279",
+        "version": 1,
+        "title": "Transversal syndrome extraction: A unifying construction for measuring the error syndromes of any stabilizer code",
+        "authors": [
+          "Miles D. Gorman"
+        ],
+        "abstract": "Fault-tolerant syndrome extraction is fundamental to stabilizer-code-based quantum error correction, yet existing general protocols incur substantial costs in either circuit depth or width. In this work, we design ancilla stabilizer states for a general transversal circuit to construct a family of fault-tolerant syndrome-extraction gadgets that interpolate between Shor and Steane syndrome extraction for any stabilizer code. The result is a configurable trade-off between circuit depth and width.",
+        "url": "https://arxiv.org/abs/2610.30279",
+        "pdf_url": "https://arxiv.org/pdf/2610.30279v1",
+        "published": "2026-10-21T18:01:04Z",
+        "updated": "2026-10-21T18:01:04Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 11,
+        "topics": [
+          "logical_qec",
+          "magic_stabilizer",
+          "adaptive_resources"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "quantum error correction",
+            "syndrome",
+            "transversal"
+          ],
+          "magic_stabilizer": [
+            "stabilizer"
+          ],
+          "adaptive_resources": [
+            "circuit depth"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-24T04:43:31Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
         "id": "2610.30087",
         "version": 1,
         "title": "Injection is all you need: parallel universal logic in high-rate concatenated self-dual codes",
@@ -1503,166 +1665,6 @@
         "keyword_matches": {
           "magic_stabilizer": [
             "stabilizer"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-20T04:57:05Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.26472",
-        "version": 1,
-        "title": "KrMM Recurrences: HPC-Enhanced Estimators for Nonlinear Classical Shadows",
-        "authors": [
-          "Matthias Gruber",
-          "Sabrina Herbst",
-          "Ivona Brandic",
-          "Vincenzo De Maio"
-        ],
-        "abstract": "While quantum technologies are rapidly evolving, near-term applications heavily rely on hybrid quantum-classical paradigms. Among these, the classical shadows framework has gained a lot of traction, not only for quantum information science, but also for the development and verification of quantum hardware. It allows to efficiently classically estimate many properties of quantum states from randomized measurements alone, a task that is otherwise intractable due to the destructive nature of measurements in quantum systems. There are, however, many properties of interest that are, due to their very problem formulation, not efficiently estimable. In this work, we identify a computational kernel occurring in estimators of polynomial functions, a class of problems that are in general computationally difficult to solve. We show that this structure allows a row-wise partition that, together with a custom SIMD vectorization, enables massive parallelization and can reduce the computational cost significantly. We show applicability and scalability of the approach on different tasks, and our results showcase that the approach allows high sequential throughput and close-to-ideal parallel scaling. The work thus provides a new way of identifying and exploiting structure in classical shadow estimators, resulting in practical advantages on inherently difficult problems.",
-        "url": "https://arxiv.org/abs/2610.26472",
-        "pdf_url": "https://arxiv.org/pdf/2610.26472v1",
-        "published": "2026-10-19T14:19:09Z",
-        "updated": "2026-10-19T14:19:09Z",
-        "categories": [
-          "cs.DC",
-          "cs.ET",
-          "quant-ph"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "quantum_learning"
-        ],
-        "keyword_matches": {
-          "quantum_learning": [
-            "classical shadow"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-20T04:57:05Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.26471",
-        "version": 1,
-        "title": "End-to-End Optimization of Partial Fault Tolerance in Neutral-Atom Arrays",
-        "authors": [
-          "Stefano Veroni",
-          "Aydin Deger",
-          "Andrew J. Daley"
-        ],
-        "abstract": "Fault-tolerant (FT) quantum computation offers a pathway to quantum advantage, but its realization is hindered by its significant overhead. The partially FT \"STAR\" architecture reduces the cost of universal computation at the price of relaxing FT requirements for non-Clifford operations, increasing exposure to hardware noise. Therefore, maximizing its performance and applicability demands careful co-design with the underlying hardware. In this work we investigate the co-design of the STAR architecture with neutral-atom platforms, connecting the underlying atomic physics to logical error modeling and application-level performance. At the physical level, we identify a favorable noise bias in $^{171}\\mathrm{Yb}$ Rydberg gates, and show how it can be enhanced through error-selective pulse optimization. At the logical level, we identify an intrinsic error suppression mechanism, yielding vanishing logical coherent noise in leading order. Detailed circuit-level simulations of surface code implementations show more than an order of magnitude reduction in logical error relative to previous estimates. As a concrete target application, we focus on the Fermi-Hubbard model with periodic boundaries, for which we design a simulation circuit particularly suited to early implementations. We quantify the resource tradeoff of partially and fully FT approaches to gate synthesis, with the former showing approximately an order of magnitude reduction in state-injection depth, and an even larger reduction in Clifford resources. Comparing with classical and fully FT approaches, we identify regimes where partial fault tolerance provides both lower overheads and lower error rates. In our estimates, this is accessible with moderate error rates $p\\sim 10^{-3}$ and a few thousand qubits, underlining that for these types of problems, partial FT approaches provide a compelling pathway to early quantum advantage.",
-        "url": "https://arxiv.org/abs/2610.26471",
-        "pdf_url": "https://arxiv.org/pdf/2610.26471v1",
-        "published": "2026-10-19T14:18:12Z",
-        "updated": "2026-10-19T14:18:12Z",
-        "categories": [
-          "quant-ph",
-          "cond-mat.quant-gas",
-          "physics.atom-ph"
-        ],
-        "keyword_score": 6,
-        "topics": [
-          "logical_qec",
-          "magic_stabilizer"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "logical error"
-          ],
-          "magic_stabilizer": [
-            "non-Clifford"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-20T04:57:05Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.26413",
-        "version": 1,
-        "title": "Two-qubit cryo-CMOS control of a spin register in diamond",
-        "authors": [
-          "H. B. van Ommen",
-          "N. E. Fakkel",
-          "M. van Riggelen",
-          "J. Yun",
-          "L. A. Enthoven",
-          "M. A. B. ElBadry",
-          "F. Sebastiano",
-          "M. Babaie",
-          "T. H. Taminiau"
-        ],
-        "abstract": "Utility-scale quantum technologies will not only require a well-performing quantum platform, but also classical control hardware that is scalable, efficient, and meets the design requirements set by the quantum system of interest. One approach is the application of silicon CMOS technology, a highly scalable and mature technology, to design application-specific integrated circuits (ASIC) that are optimized for the quantum system. In this work, we present two-qubit control of electron and nuclear spins in NV centres in diamond, using a cryogenic CMOS qubit controller integrated with a diamond quantum device in a cryostat. Using Gate Set Tomography (GST) we characterize the performance of the single-qubit gates on both electron- and carbon nuclear spins, and analyze the limiting noise processes. We use dynamical decoupling to engineer a two-qubit gate, and estimate $F_\\text{2q,avg} = 95(2)\\%$ for the electron-nuclear two-qubit gate fidelity. Our demonstration of cryo-CMOS-driven two-qubit gates is a key step towards highly-integrated quantum devices based on colour centres.",
-        "url": "https://arxiv.org/abs/2610.26413",
-        "pdf_url": "https://arxiv.org/pdf/2610.26413v1",
-        "published": "2026-10-19T13:47:18Z",
-        "updated": "2026-10-19T13:47:18Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 7,
-        "topics": [
-          "benchmarking",
-          "logical_qec"
-        ],
-        "keyword_matches": {
-          "benchmarking": [
-            "gate fidelity"
-          ],
-          "logical_qec": [
-            "decoupling"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-20T04:57:05Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.26381",
-        "version": 1,
-        "title": "Higher-order Parity Constraints for Quantum Approximate Optimization",
-        "authors": [
-          "Anita Weidinger",
-          "Glen Bigan Mbeng",
-          "Roeland ter Hoeven",
-          "Wolfgang Lechner"
-        ],
-        "abstract": "The Parity Architecture was originally introduced in the context of quantum optimization algorithms to overcome hardware connectivity constraints. Here, we show that its benefits extend beyond this role by identifying specific parity transformations that enhance the success probability of the Quantum Approximate Optimization Algorithm (QAOA) for optimization problems defined on hardware-native and sparse graphs. Numerical simulations suggest that this enhancement originates from the higher-order operators introduced by the Parity representation, which accelerate the propagation of correlations across the physical device. We investigate this mechanism for the Signed Max-Cut problem on 3-regular graph instances and demonstrate its practical relevance on IBM Heron quantum processors. QAOA parameters are first classically optimized on small training instances containing up to 14 vertices and subsequently transferred to larger instances executed on quantum hardware. We consider Signed Max-Cut instances of up to 40 vertices and find that, together with an error mitigation technique, the parity-based QAOA identifies the optimal solutions for all the considered 40-vertex instances, whereas the conventional QAOA fails under the same conditions.",
-        "url": "https://arxiv.org/abs/2610.26381",
-        "pdf_url": "https://arxiv.org/pdf/2610.26381v1",
-        "published": "2026-10-19T13:32:26Z",
-        "updated": "2026-10-19T13:32:26Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 4,
-        "topics": [
-          "benchmarking"
-        ],
-        "keyword_matches": {
-          "benchmarking": [
-            "error mitigation"
           ]
         },
         "sources": [
