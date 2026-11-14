@@ -4,6 +4,114 @@
       "kind": "analysis",
       "paper": {
         "doi": "",
+        "id": "2610.35657",
+        "version": 1,
+        "title": "Quantum-Inspired and Optimization-Based CT Reconstruction Through Spin-Error",
+        "authors": [
+          "Hyunju Lee",
+          "Jeonghwa Lee",
+          "Yushuang Sam Yang",
+          "Clement Chu",
+          "Anthony B. Murphy",
+          "Kyungtaek Jun"
+        ],
+        "abstract": "Quantum-optimization-based computed tomography (CT) reconstruction has demonstrated quantum supremacy in reconstruction accuracy over conventional classical methods under sparse-view and corrupted-sinogram conditions. However, scaling this approach remains challenging because larger images require increasingly many binary variables and interactions in the underlying quadratic unconstrained binary optimization (QUBO) model. Even with iterative region-of-interest (ROI) refinement, a 60 by 60 ROI with three X-ray mass attenuation coefficients requires 10,800 binary variables under our encoding. As an initial step toward larger quantum CT images, we investigate simulated annealing (SA) followed by spin-error mitigation for optimisation (SEMO), without altering the CT-QUBO objective. We evaluate three 54-view ROI reconstruction instances and nine-view reconstruction with detector-row corruption, comparing SA and SEMO with selected hybrid quantum-classical solver results. For the ROI cases, SEMO reduced the numbers of incorrectly reconstructed pixels in low-budget SA outputs from 13 to 1, 38 to 0, and 54 to 15. With 20 percent detector-row corruption, three of four selected SA and SEMO pairs achieved exact reconstruction. Applying SEMO to one hybrid-solver output reduced its ROI error from 78 to 1 pixel. Improvements were instance-dependent: in one corrupted-sinogram case, QUBO energy decreased while image-domain error increased slightly; in one ROI case, the refined image retained 15 incorrect pixels despite having lower QUBO energy than ground truth. At the evaluated problem sizes, SA and SEMO attained reconstruction accuracy comparable to or better than selected unmitigated hybrid-solver results, providing an initial solution-quality benchmark for future larger-scale, parallelized quantum CT image reconstruction.",
+        "url": "https://arxiv.org/abs/2610.35657",
+        "pdf_url": "https://arxiv.org/pdf/2610.35657v1",
+        "published": "2026-10-26T16:03:34Z",
+        "updated": "2026-10-26T16:03:34Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 4,
+        "topics": [
+          "benchmarking"
+        ],
+        "keyword_matches": {
+          "benchmarking": [
+            "error mitigation"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-27T05:12:19Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.35513",
+        "version": 1,
+        "title": "Geometric aspects of fault tolerance",
+        "authors": [
+          "Jonathan Conrad"
+        ],
+        "abstract": "We highlight three geometric aspects of fault tolerance. First, we construct an operator-algebraic formulation of the fiber bundle framework for fault tolerance, and show that a generalization of the Knill-Laflamme conditions implies a flat connection for this framework. Next, we develop this framework for Gottesman-Kitaev-Preskill (GKP) codes. We show that, for each polarization type, their moduli space embeds smoothly into a Grassmannian of finite-dimensional subspaces of a regularized distribution space. Finally, we explain how GKP codes associated with Jacobians give rise to magic states that can be obtained by code space projections of Gaussian states and identify a $\\rm CCZ$-type magic state arising this way.",
+        "url": "https://arxiv.org/abs/2610.35513",
+        "pdf_url": "https://arxiv.org/pdf/2610.35513v1",
+        "published": "2026-10-26T14:36:56Z",
+        "updated": "2026-10-26T14:36:56Z",
+        "categories": [
+          "quant-ph",
+          "math-ph",
+          "math.DG"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "magic_stabilizer"
+        ],
+        "keyword_matches": {
+          "magic_stabilizer": [
+            "magic state"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-27T05:12:19Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.35498",
+        "version": 1,
+        "title": "Fast and accurate rare-event simulation by Markov chain Monte Carlo for general quantum codes",
+        "authors": [
+          "Junichi Haruna",
+          "Kotaro Murakami"
+        ],
+        "abstract": "The splitting method estimates logical error rates of quantum error-correcting codes deep in the rare-event regime, where direct Monte Carlo sampling is prohibitively expensive. It relies on a Markov chain Monte Carlo (MCMC) sampler of faulty configurations, usually driven by one-bit-flip proposals. However, one-bit flips have been reported to be trapped on some codes, which biases the estimate. To address this issue, we propose a new kernel that combines locally balanced one-bit-flip proposals with a cluster-exchange move. We benchmark both kernels and direct Monte Carlo on twelve codes under code-capacity bit-flip noise in two ways, by comparing the mean fault weight with an MCMC-independent reference and by measuring the computation time to reach a fixed accuracy. In the first, our kernel agrees with the reference on every code, including those where one-bit flips are trapped. In the second, it is faster than one-bit flips wherever they are trapped, by orders of magnitude on some codes. Furthermore, at the lowest error rate, it is faster than direct Monte Carlo on every code, by more than four orders of magnitude on some.",
+        "url": "https://arxiv.org/abs/2610.35498",
+        "pdf_url": "https://arxiv.org/pdf/2610.35498v1",
+        "published": "2026-10-26T14:26:53Z",
+        "updated": "2026-10-26T14:26:53Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 4,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "quantum error-correcting",
+            "logical error"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-27T05:12:19Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
         "id": "2610.35377",
         "version": 1,
         "title": "Multipartite dynamics beyond bipartite entanglement equilibration",
@@ -1534,112 +1642,6 @@
         "keyword_matches": {
           "adaptive_resources": [
             "state preparation"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-24T04:43:31Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.31580",
-        "version": 1,
-        "title": "Mixed State Deep Thermalization under Generic Quantum Errors",
-        "authors": [
-          "Xie-Hang Yu",
-          "Pavel Kos"
-        ],
-        "abstract": "Pure-state deep thermalization predicts that, after sufficient scrambling, projected ensembles approach universal distributions that contain information beyond the reduced density matrix. In realistic quantum systems, however, noise is unavoidable and the projected states are generally mixed. Whether mixed-state deep thermalization admits an analogous universal limiting distribution has remained unclear. Here we answer this question for quantum dynamics containing local quantum channels, i.e., errors. We show that the late-time mixed-state projected ensemble is completely determined by the normalized Choi state of the error channel and is universal, independent of the microscopic details of the underlying unitary dynamics. We establish this result analytically for dual-unitary circuits, global Haar-random dynamics, and local Haar-random circuits at large local dimension, and verify it numerically in qubit circuits and kicked Ising dynamics. In a solvable setting, we further find exponentially fast convergence to the limiting ensemble. Our results extend deep thermalization to noisy quantum dynamics and establish a direct correspondence between quantum errors and universal random mixed-state ensembles.",
-        "url": "https://arxiv.org/abs/2610.31580",
-        "pdf_url": "https://arxiv.org/pdf/2610.31580v1",
-        "published": "2026-10-22T17:16:16Z",
-        "updated": "2026-10-22T17:16:16Z",
-        "categories": [
-          "quant-ph",
-          "cond-mat.dis-nn",
-          "cond-mat.stat-mech"
-        ],
-        "keyword_score": 5,
-        "topics": [
-          "random_designs"
-        ],
-        "keyword_matches": {
-          "random_designs": [
-            "scrambling",
-            "Haar-random"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-24T04:43:31Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.31571",
-        "version": 1,
-        "title": "Size-independent Logarithmic Sobolev Inequalities for Quantum Gibbs Samplers",
-        "authors": [
-          "Hongrui Chen",
-          "Zhiyan Ding",
-          "Jianfeng Lu"
-        ],
-        "abstract": "We propose a new method for proving $L^2$ and modified logarithmic Sobolev inequalities with constants independent of system size for quantum Gibbs samplers whose Lindblad generators satisfy Kubo-Martin-Schwinger (KMS) detailed balance. We first establish the $L^2$ logarithmic Sobolev inequality by transporting it along a temperature-dependent path from the infinite-temperature product state to the target Gibbs state while maintaining a size-independent decay rate for the sandwiched Rényi-2 divergence. A tensor-power argument, combined with the quantum asymptotic equipartition property, then transfers this decay bound to relative entropy, yielding the modified logarithmic Sobolev inequality. This approach provides a general framework for proving size-independent logarithmic Sobolev inequalities for quantum Gibbs samplers. We apply it to two regimes: one-dimensional quantum spin chains at every finite temperature, and finite-range quantum spin systems at sufficiently high temperature in any fixed dimension.",
-        "url": "https://arxiv.org/abs/2610.31571",
-        "pdf_url": "https://arxiv.org/pdf/2610.31571v1",
-        "published": "2026-10-22T17:12:59Z",
-        "updated": "2026-10-22T17:12:59Z",
-        "categories": [
-          "quant-ph",
-          "math-ph"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "quantum_learning"
-        ],
-        "keyword_matches": {
-          "quantum_learning": [
-            "Gibbs state"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-24T04:43:31Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.31531",
-        "version": 1,
-        "title": "The Cheng-Murray Conjecture on Deep Holes of Full-Length Reed-Solomon Codes",
-        "authors": [
-          "Weijun Fang"
-        ],
-        "abstract": "For full-length Reed--Solomon codes, every received word whose interpolation polynomial has degree equal to the code dimension is a deep hole. The Cheng--Murray conjecture asserts that these are the only deep holes in dimensions $3\\le k\\le q-2$, except when $q$ is even and $k=q-3$. Earlier results settled the conjecture over odd prime fields and in the high-dimensional range. We resolve the remaining cases $3\\le k\\le\\lfloor q/2\\rfloor$ over every finite field $\\F_q$, thereby completing the classification in all nonexceptional dimensions. Our proof combines two complementary approaches. The tangent envelope of a marked arc yields differential constraints that settle the even-characteristic range $3\\le k\\le q/2$ and the odd-characteristic range $3\\le k\\le q/3$. In the remaining odd-characteristic range, local syndrome compatibility and combinatorial counting rule out additional deep holes.",
-        "url": "https://arxiv.org/abs/2610.31531",
-        "pdf_url": "https://arxiv.org/pdf/2610.31531v1",
-        "published": "2026-10-22T16:38:26Z",
-        "updated": "2026-10-22T16:38:26Z",
-        "categories": [
-          "cs.IT"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "logical_qec"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "syndrome"
           ]
         },
         "sources": [
