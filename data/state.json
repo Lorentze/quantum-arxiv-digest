@@ -490,6 +490,68 @@
     },
     {
       "doi": "",
+      "id": "2611.16578",
+      "version": 1,
+      "title": "Asymptotic Attainability of the Channel RLD Fisher-Information Bound",
+      "authors": [
+        "Masahito Hayashi"
+      ],
+      "abstract": "The channel right-logarithmic-derivative (RLD) Fisher information is a computable upper bound on the optimal asymptotic symmetric-logarithmic-derivative (SLD) Fisher information per channel use over causally ordered, parameter-independent strategies. The bound is not always attained, even if the Choi matrix is positive definite. We determine exactly when equality holds using a semidefinite feasibility condition involving only the Choi matrix and its first derivative. The condition allows a degenerate largest eigenvalue of the RLD matrix and rank-deficient Choi matrices with derivatives supported on their range. The original channel family may change rank nearby. For generalized dephasing channels with a positive-definite correlation matrix at the evaluation point, the condition becomes a system of linear equations for nonnegative certificate weights that sum to one. At a completely dephasing point we also calculate the optimal SLD information for every finite number of uses and show that a repeated, ancilla-free probe attains it, even against adaptive strategies. Explicit examples give an unbounded ratio of the channel RLD information to the optimal asymptotic SLD information per use, either as the dimension grows or at fixed qubit dimension as the smallest Choi eigenvalue tends to zero. We derive the equality criterion and its consequences from the asymptotic optimization of Zhou and Jiang.",
+      "url": "https://arxiv.org/abs/2611.16578",
+      "pdf_url": "https://arxiv.org/pdf/2611.16578v1",
+      "published": "2026-11-12T10:10:15Z",
+      "updated": "2026-11-12T10:10:15Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "ancilla-free"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-13T06:52:07Z",
+      "analysis": {
+        "summary": "论文给出一个只依赖评价点 Choi 数据的可行性检验，判定多次使用信道时最优的渐近 SLD Fisher 信息斜率何时等于 channel RLD 上界。RLD 是易写成 Choi 表达式的上界，但即使允许量子记忆与自适应操作，仍未必能达到。",
+        "problem": "怎样从信道及其导数判断 RLD 是否真实刻画最优渐近灵敏度？",
+        "setting": "固定参数点 θ=0，允许辅助、纠缠输入与参数无关的定序自适应操作。比较 n 次调用得到的最优输出 SLD 信息与 n 倍 RLD。",
+        "main_results": [
+          "作者在 Choi 空间引入 Hermitian gauge 变量 Y，Y=0 对应 RLD 值。等号当且仅当该点在许可方向上无法改进；证书由支撑在 RLD 矩阵最大特征子空间的密度算符及满足线性算符方程的 Hermitian 变量给出。该密度算符是最优性证书，不能直接当作输入探针。",
+          "允许最大特征值简并，也处理 Choi 秩不足但导数支撑在其值域内的情况。广义 Pauli 信道可饱和；某些 qubit 去相干信道的单次 SLD 严格较小，渐近仍饱和。完全去相干评价点，独立重复无辅助探针可对每个使用次数最优。",
+          "replacer 和图模型展示 RLD 与最优 SLD 的比值可无界；秩变化例说明指定点的信息不一定等于邻点极限。"
+        ],
+        "techniques": [
+          "将已有 Kraus 优化转写为评价点的 Choi gauge，并考察 RLD 对应可行点的最优性。"
+        ],
+        "assumptions": [
+          "RLD 有限的线性增长情形；信道层面渐近等号、单次指定探针和有限次可加性是三个问题。"
+        ],
+        "limitations": [
+          "阅读 v1 引言、结果概览和例子表；未逐条核对变分式、支持条件证明或有限次可达策略。点态 Fisher 信息不等于有限样本全局估计保证，调用量也不等于实验 shots。"
+        ],
+        "relevance": [
+          "适合判断何时量子记忆或输入纠缠能改变可提取的信息，及用上界作基准的风险。"
+        ],
+        "follow_up": [
+          "读者建议：对固定噪声门的参数化模型分别估计单次与多次斜率，并标注实际允许的探针和门调用。"
+        ],
+        "relevance_score": 92,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.16578v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-15T01:02:14+00:00"
+      },
+      "selected_at": "2026-11-15T01:03:57Z"
+    },
+    {
+      "doi": "",
       "id": "2611.16479",
       "version": 1,
       "title": "Quantum Mpemba effect from logical-information exposure in monitored circuits",
@@ -980,6 +1042,613 @@
         "analyzed_at": "2026-11-14T01:00:34+00:00"
       },
       "selected_at": "2026-11-14T01:02:32Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.15104",
+      "version": 1,
+      "title": "An Architecture for Real-Time Quantum Error Correction with Neutral Atoms",
+      "authors": [
+        "X. Wang",
+        "Y. Jing",
+        "Z. Yu",
+        "S. Wang",
+        "D. Niu",
+        "Y. Liu",
+        "T. Xiao",
+        "A. Yang",
+        "J. Han",
+        "Y. Wu",
+        "X. Lv"
+      ],
+      "abstract": "The latency of quantum measurement and classical decoding constrains the execution of adaptive fault-tolerant circuits. In neutral-atom processors, this requirement couples spatially resolved fluorescence detection to classical inference. Here we implement cascaded readout and decoding in a heterogeneous architecture that overlaps acquisition and processing at two spatial scales. Field-programmable gate arrays process camera rows as they arrive, while graphics processors decode an acquired logical block during acquisition of the next. This heterogeneous architecture offers flexibility in the choice of error-correcting codes and decoding algorithms. Direct communication preserves microsecond-scale transfer times for kilobyte payloads and supports interchangeable decoding algorithms. Hardware characterization and decoding benchmarks using circuit-level simulated syndromes yield a submillisecond post-exposure processing latency for selected small-code workloads ($d = 3, 5, 7$). By enabling logical blocks to be decoded before full-frame readout is complete, the architecture implements low-latency syndrome decoding, realizing real-time quantum information processing as required for fault-tolerant computation in atom arrays.",
+      "url": "https://arxiv.org/abs/2611.15104",
+      "pdf_url": "https://arxiv.org/pdf/2611.15104v1",
+      "published": "2026-11-11T06:31:12Z",
+      "updated": "2026-11-11T06:31:12Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction",
+          "syndrome"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-13T06:52:07Z",
+      "analysis": {
+        "summary": "中性原子读出以 FPGA 吃入相机行数据，再由 GPU 在下一逻辑块采集期间解码前一块，让处理和采集在两级上重叠。",
+        "problem": "如何缩短曝光后到可用 syndrome 解码结果的路径？",
+        "setting": "空间分辨荧光检测；FPGA 和 GPU 异构流水。",
+        "main_results": [
+          "千字节载荷直接传输达微秒级；电路模拟 syndrome 的小码工作负载 d=3、5、7 中，曝光后的处理延迟低于1毫秒。"
+        ],
+        "techniques": [
+          "按行处理、按逻辑块流式解码。"
+        ],
+        "assumptions": [
+          "评估使用硬件表征及模拟 syndrome；码距结论仅为所选负载。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明及摘要未说明的假设。",
+          "该延迟不含曝光，也不等于完成全纠错循环或已实测逻辑错误率。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "提供反馈关键路径和数据吞吐的具体指标。"
+        ],
+        "follow_up": [
+          "读者建议：同时测量曝光、尾延迟和反馈后逻辑保真度。"
+        ],
+        "relevance_score": 84,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.15104v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-15T01:02:14+00:00"
+      },
+      "selected_at": "2026-11-15T01:03:57Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.15076",
+      "version": 1,
+      "title": "Scalable Compilation of Resource-Efficient Tapers for High-Confidence Quantum Phase Estimation",
+      "authors": [
+        "David Raveh",
+        "Andrew Sornborger",
+        "Yiğit Subaşı",
+        "Lukasz Cincio"
+      ],
+      "abstract": "Quantum phase estimation is a key component of many quantum algorithms. Recently, high-confidence, tapered QPE (tQPE) has been introduced, significantly reducing the number of ancilla qubits necessary for a given failure probability, $ε$. We consider tQPE with $p = l+m$ ancillas, where $l$ represents the number of ancillas necessary to estimate a phase to a given resolution and $m$ represents the number of ''confidence'' qubits added to ensure a desired success probability. With tQPE the failure probability decays double exponentially in $m$, implying that only a few confidence qubits suffice for virtually any problem of interest. A key challenge for tQPE is the construction of the quantum circuit for preparing the taper state on the ancilla register. Here, we develop scalable tensor network methods (previous work was limited to ($l + m = 24$)) giving highly optimized state preparation circuits for optimally concentrated DPSS (Slepian) tapers. We provide an accompanying database of resource-efficient state preparation circuits for $l = 1, \\dots, 50$ and $m = 1, \\dots, 4$. Our circuits are shallow enough for a demonstration on near-term devices for small values of $l$. We run tQPE circuits for a 1-qubit system initialized in the ground state on Quantinuum's H2-2 quantum computer, demonstrating a $3\\times$ to $18\\times$ reduction in failure probability for $l=1,\\ldots,10$ on a noisy device.",
+      "url": "https://arxiv.org/abs/2611.15076",
+      "pdf_url": "https://arxiv.org/pdf/2611.15076v1",
+      "published": "2026-11-11T05:50:20Z",
+      "updated": "2026-11-11T05:50:20Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "state preparation"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-13T06:52:07Z",
+      "analysis": {
+        "summary": "作者通过张量网络构造 DPSS taper 制备电路，降低 high-confidence QPE 中为成功率添加的辅助位开销，并在小规模硬件上比较失败概率。",
+        "problem": "如何把已有高置信 tQPE 的辅助态转成可执行电路？",
+        "setting": "p=l+m 个 ancillas，l 决定分辨率，m 用于置信度；对照先前限制 p=24 的制备计算。",
+        "main_results": [
+          "已有 tQPE 失败概率对 m 双指数衰减；新方法给出 l=1…50、m=1…4 的制备线路。",
+          "在 Quantinuum H2-2 上以单比特基态输入运行，l=1…10 时观察到失败概率降低3至18倍。"
+        ],
+        "techniques": [
+          "张量网络编译、DPSS/Slepian taper。"
+        ],
+        "assumptions": [
+          "指数是对置信位 m 的理想结果，不是全系统门数标度。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明及摘要未说明的假设。",
+          "摘要未列逐点基线、受控幂开销和重复 shots；辅助态编译结果不能推为完整 QPE 的深度保证。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接涉及精度、置信度和 ancilla 的资源口径。"
+        ],
+        "follow_up": [
+          "读者建议：在同一总受控演化和制备预算下对照重复 QPE 的置信度。"
+        ],
+        "relevance_score": 87,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.15076v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-15T01:02:14+00:00"
+      },
+      "selected_at": "2026-11-15T01:03:57Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.15018",
+      "version": 1,
+      "title": "Time- and Photon-Optimal Paths for the Preparation and Logical Flip of Gottesman-Kitaev-Preskill States",
+      "authors": [
+        "Aidan Curtis",
+        "Juan S. Salcedo-Gallo",
+        "Sergei Leonov",
+        "Kevin Limanta",
+        "Peter Chin",
+        "Salil Bedkihal",
+        "Mattias Fitzpatrick"
+      ],
+      "abstract": "Gottesman-Kitaev-Preskill (GKP) states are highly non-Gaussian, making their control challenging, particularly in the presence of photon loss. Here, we use the brachistochrone, the fastest path at bounded speed, to construct ideal nonlinear Hamiltonians for state preparation and logical gates, and compare it with the photon-optimal path. We find that the two paths nearly coincide for state preparation but differ markedly for logical operations, namely the brachistochrone preserves the encoded qubit during a bit flip, whereas the photon-optimal path flips a known state through the vacuum. We then introduce the tangential capacity to quantify how effectively gate sets track these paths. Using this analysis, we find that conditional squeezing achieves the highest capacity, preparing GKP states in 824 ns with a fidelity of 0.99 and a minimum closeness to the path of 0.90, compared with 0.98 and 0.51 for conditional displacements and 0.83 and 0.19 for SNAP gates.",
+      "url": "https://arxiv.org/abs/2611.15018",
+      "pdf_url": "https://arxiv.org/pdf/2611.15018v1",
+      "published": "2026-11-11T04:21:30Z",
+      "updated": "2026-11-11T04:21:30Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "state preparation"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-13T06:52:07Z",
+      "analysis": {
+        "summary": "论文比较 GKP 态制备与逻辑翻转的最短时间轨迹和 photon-optimal 轨迹。制备时路径相近；翻转时，保留未知编码 qubit 与把已知态经真空翻转是不同任务。",
+        "problem": "有光子损失时怎样同时评估目标路径和所允许的控制门？",
+        "setting": "限速 brachistochrone；conditional squeezing、displacement 和 SNAP 门集。",
+        "main_results": [
+          "用 tangential capacity 衡量跟踪理想轨迹的能力。",
+          "conditional squeezing 的制备结果为824 ns、保真度0.99、最小轨迹接近度0.90；另两门集分别报告0.98/0.51和0.83/0.19。"
+        ],
+        "techniques": [
+          "理想非线性 Hamiltonian 轨迹与门集对照。"
+        ],
+        "assumptions": [
+          "路径的最佳性依赖论文的限速或光子成本定义。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明及摘要未说明的假设。",
+          "已知态翻转不能认证未知输入上的逻辑操作；摘要未核查噪声、控制限制、保真度定义或实验属性。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "涉及 GKP 逻辑保持、态制备和能量时间代价。"
+        ],
+        "follow_up": [
+          "读者建议：固定未知输入，用 channel fidelity 检验翻转并分列光子损失。"
+        ],
+        "relevance_score": 87,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.15018v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-15T01:02:14+00:00"
+      },
+      "selected_at": "2026-11-15T01:03:57Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.14967",
+      "version": 1,
+      "title": "Local enhancement of finite-strength code preparation: recoverability and Wilson coherence",
+      "authors": [
+        "Tong Xu",
+        "Yuanchen Zhao",
+        "Dong E. Liu"
+      ],
+      "abstract": "Stabilizer measurements provide a direct route to preparing quantum error-correcting codes and long-range entangled states. In realistic implementations, however, finite measurement strength can coherently deform the encoding map away from the projective limit. Certain nonlocal signatures associated with long-range order can survive such a deformation, but this alone does not guarantee that the resulting state protects encoded quantum information. We show that, at fixed strength, local logical leakage obstructs asymptotically faithful recovery; along logical operators' supports, its accumulation forces the relevant measurement strength to grow logarithmically with code distance. We then prove that this obstruction can be removed locally: for fixed toric registers under sufficiently weak local-stochastic errors, enhancing only a vanishing fraction of checks near selected logical supports restores recovery while the bulk remains at finite measurement strength. With recoverability restored, we prove a further dimensional distinction in logical operations. In the strict three-dimensional deconfined phase, suitable enhanced tubes restore the equivalence of macroscopically separated representatives, so either representative asymptotically implements the same controlled logical action on a fixed encoding. In two dimensions, recoverability alone does not restore this equivalence: the representatives can remain inequivalent even when both associated encodings are recoverable.",
+      "url": "https://arxiv.org/abs/2611.14967",
+      "pdf_url": "https://arxiv.org/pdf/2611.14967v1",
+      "published": "2026-11-11T03:26:28Z",
+      "updated": "2026-11-11T03:26:28Z",
+      "categories": [
+        "quant-ph",
+        "cond-mat.stat-mech",
+        "math-ph"
+      ],
+      "keyword_score": 6,
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error-correcting"
+        ],
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-13T06:52:07Z",
+      "analysis": {
+        "summary": "有限强度 stabilizer 测量可能保留长程序信号，却因局部逻辑泄漏而失去可靠恢复。论文构造只提高少数选定逻辑支撑附近测量强度的方式来恢复保护。",
+        "problem": "在不把所有 checks 推向投影极限的条件下，怎样保证编码可恢复及逻辑操作等价？",
+        "setting": "固定 toric registers，足够弱的 local-stochastic errors。",
+        "main_results": [
+          "固定测量强度下，逻辑支撑上泄漏累积，相关强度须随码距对数增长。",
+          "增强比例趋零的 checks 可恢复可恢复性；严格三维 deconfined phase 下，合适的增强管道还恢复远隔代表的受控逻辑等价。二维中即使均可恢复也可能不等价。"
+        ],
+        "techniques": [
+          "按逻辑支撑分析泄漏；局域增强；Wilson 代表对照。"
+        ],
+        "assumptions": [
+          "三维结论要求指定相与增强位置；二维结果不否认可恢复性。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明及摘要未说明的假设。",
+          "未核查有限尺寸界、弱噪声条件、测量强度定义；长程序信号不能替代逻辑认证。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接连接制备测量强度、逻辑噪声和恢复。"
+        ],
+        "follow_up": [
+          "读者建议：按固定总测量代价比较增强布局的逻辑错误与逻辑动作偏差。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.14967v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-15T01:02:14+00:00"
+      },
+      "selected_at": "2026-11-15T01:03:57Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.14944",
+      "version": 1,
+      "title": "CSS Circuits: useful quantum circuits that can be simulated with $O(1)$ cost per gate",
+      "authors": [
+        "Craig Gidney",
+        "Cody Jones"
+      ],
+      "abstract": "\"CSS circuits\" are quantum circuits generated by $X$, $Z$, $M_X$, $M_Z$, and CNOT gates. Although CSS circuits are extremely restrictive, they can implement important quantum protocols like teleportation, error correction, and entanglement purification. We present a simple CSS circuit simulator that uses $O(1)$ work per gate. The simulator corresponds to a local hidden variable model, so we use Bell inequalities to prove the simulator can't also support Hadamard gates, CZ gates, or S gates. We note that CSS circuits appear ideal for benchmarking quantum error correction in the presence of atom loss errors.",
+      "url": "https://arxiv.org/abs/2611.14944",
+      "pdf_url": "https://arxiv.org/pdf/2611.14944v1",
+      "published": "2026-11-11T02:48:44Z",
+      "updated": "2026-11-11T02:48:44Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-13T06:52:07Z",
+      "analysis": {
+        "summary": "受限 CSS 门集虽不含全部 Clifford，却足以表达 teleportation、纠错和纯化等协议。作者给出每门 O(1) 的经典模拟，并用 Bell 不等式划出此模拟的扩展边界。",
+        "problem": "哪些受限 stabilizer 操作仍有足够的 QEC 表达能力且易模拟？",
+        "setting": "生成元 X、Z、M_X、M_Z 和 CNOT。",
+        "main_results": [
+          "所给 simulator 每门工作量 O(1)，对应局域隐变量模型。",
+          "作者证明该模拟不能同时支持新增 Hadamard、CZ 或 S；并提出用于含原子损失的 QEC benchmarking。"
+        ],
+        "techniques": [
+          "受限门集模拟及 Bell 约束。"
+        ],
+        "assumptions": [
+          "限制针对该模拟模型，不是一般 Clifford 模拟的复杂度下界。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明及摘要未说明的假设。",
+          "摘要未列初始化、读出总成本或完整 loss benchmarking 协议。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "连接 stabilizer 结构与可进行大规模对照的逻辑纠错测试。"
+        ],
+        "follow_up": [
+          "读者建议：在同一误差记录假设下检验 loss benchmark 忽略了哪些非 CSS 错误。"
+        ],
+        "relevance_score": 89,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.14944v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-15T01:02:14+00:00"
+      },
+      "selected_at": "2026-11-15T01:03:57Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.14923",
+      "version": 1,
+      "title": "Quantum CSS codes: Decoder-aware multiobjective design and bound-certified selection",
+      "authors": [
+        "Jiapei Zhuang",
+        "Yaocheng Chen",
+        "Xingyao Wu"
+      ],
+      "abstract": "Quantum error-correcting codes trade decoding reliability against the resources needed to measure their checks. We formulate Calderbank-Shor-Steane (CSS) code design at fixed encoding resources as a decoder-aware multiobjective problem. The objectives are failure probability under sector-wise degenerate maximum-likelihood decoding and check weight, the minimum total weight of an independent pure-type generator basis. For independent bit- and phase-flip noise with perfect syndrome extraction, deterministic truncation bounds support selection under a failure-rate constraint. At a per-sector error probability of 0.01, the bounds certify that a code encoding two logical qubits into 40 physical qubits meets a failure-rate target of 0.001 at check weight 139. The lower bound of every cheaper candidate in the corresponding (40,2) main menu exceeds this target. In paired searches sharing one annealing kernel and equal query budgets, decoder-aware guidance gives significantly higher mean final hypervolume than distance guidance in all eight tested configurations under the reported Holm correction. Against distance-multiplicity guidance, five configurations show significant gains and three do not, including one with a negative mean difference. All arms are scored in common truncated-reliability and normalized-check-weight coordinates. The framework connects reliability-check-weight trade-offs to bound-certified selection within evaluated CSS pools.",
+      "url": "https://arxiv.org/abs/2611.14923",
+      "pdf_url": "https://arxiv.org/pdf/2611.14923v1",
+      "published": "2026-11-11T02:25:14Z",
+      "updated": "2026-11-11T02:25:14Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error-correcting",
+          "syndrome"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-13T06:52:07Z",
+      "analysis": {
+        "summary": "论文以退化最大似然 decoder 的失败概率及 check weight 联合筛选 CSS 码，而不是只用 distance 排名。用可计算的截断上下界判定候选是否满足目标错误率。",
+        "problem": "固定编码规模时，最轻的可靠校验结构如何选择？",
+        "setting": "独立 X/Z 型错误、完美 syndrome；check weight 是独立纯型生成基的最小总权重。",
+        "main_results": [
+          "每扇区错误率0.01时，40物理比特编码2个逻辑比特的候选，以权重139达到失败率目标0.001；该候选池更便宜的方案下界均超目标。",
+          "等查询预算的配对实验中，相对 distance 引导八组 mean hypervolume 均显著提高；相对 distance-multiplicity 五组显著，三组未显著。"
+        ],
+        "techniques": [
+          "退化 ML、确定性截断界、配对搜索与 Holm correction。"
+        ],
+        "assumptions": [
+          "最优性限对应 menu；检查权重不直接等于 fault-tolerant circuit 深度。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明及摘要未说明的假设。",
+          "无含噪 syndrome 结论；统计显著性仅限所试搜索。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "给出固定码恢复性能和提取资源间的可认证筛选。"
+        ],
+        "follow_up": [
+          "读者建议：将电路级 hook errors 纳入同一设计目标。"
+        ],
+        "relevance_score": 89,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.14923v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-15T01:02:14+00:00"
+      },
+      "selected_at": "2026-11-15T01:03:57Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.14919",
+      "version": 1,
+      "title": "Evaluating Quantum Circuit Protection Methods After Compilation: An Empirical Comparison",
+      "authors": [
+        "Ing Muyleang",
+        "Leanghok Hour",
+        "Youngsun Han"
+      ],
+      "abstract": "Quantum cloud providers can read the circuits they receive and their outputs, yet methods for hiding a circuit are usually evaluated on the circuit as written, before compilation optimises it. We compare three ObfusQate schemes (inverse, composite and delayed gates), ECQCO and Q-MaskCut under one protocol that compiles every protected circuit at optimisation level 3 before measuring it; the goal is to keep the provider from learning the user's algorithm and answer. Q-MaskCut is one example combination of existing techniques: a one-time-pad key, decoy wires, circuit cutting with a random rotation pair across each cut, and Pauli twirling with dynamical-decoupling masking after compilation. We simulate 11 circuits of 3 to 19 qubits without noise and on two noise models, measure the compiled structure and execution time of 23 circuits of 3 to 127 qubits, and test whether the structural disguise survives a second compilation by the provider. Composite and delayed gates lose most of their structural disguise in compilation and leave the output readable; inverse gates keep a high normalised graph edit distance (normGED) only by making execution 7 to 112 times longer; ECQCO's output could not be decoded with the implementation provided by its authors. Q-MaskCut hides the output (mean total variation distance without the key 0.94), and without noise, with exact fragment probabilities, it decodes exactly. Its compiled normGED of 0.88 comes mostly from the masking, which a second compilation removes, leaving 0.42 from the key, decoys and padlocks. With noise, its fidelity is comparable to the original's; it needs 7 to 91 fragment variants per circuit in the simulations (7 to 61 in a run on ibm_marrakesh) and a classical reconstruction. Protection should therefore be evaluated on the compiled circuit and again after the provider recompiles it.",
+      "url": "https://arxiv.org/abs/2611.14919",
+      "pdf_url": "https://arxiv.org/pdf/2611.14919v1",
+      "published": "2026-11-11T02:22:09Z",
+      "updated": "2026-11-11T02:22:09Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 7,
+      "topics": [
+        "benchmarking",
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "benchmarking": [
+          "Pauli twirling"
+        ],
+        "logical_qec": [
+          "decoupling"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-13T06:52:07Z",
+      "analysis": {
+        "summary": "论文对量子云端线路隐藏方法采用共同的编译后评估口径：同时比较输出是否可读、结构差距以及重新编译后掩蔽还能剩多少。",
+        "problem": "编译优化会不会抵消线路保护？",
+        "setting": "五种经验方案；无噪声及两个噪声模型，并有设备运行。",
+        "main_results": [
+          "部分随机结构在重编译后消失；Q-MaskCut 无密钥输出的平均 TV 为0.94，但结构指标由0.88降至0.42；模拟需每线路7至91个片段变体。"
+        ],
+        "techniques": [
+          "同一优化级别编译、重编译对照与输出分布比较。"
+        ],
+        "assumptions": [
+          "数字限测试电路、无密钥输出及所定义结构指标。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明及摘要未说明的假设。",
+          "高 TV 或 graph edit distance 不证明计算不可区分；无一般安全保证。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "具体比较编译后信息暴露和重建资源。"
+        ],
+        "follow_up": [
+          "读者建议：固定威胁模型，测结构和输出两类泄漏指标是否一致。"
+        ],
+        "relevance_score": 76,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.14919v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-15T01:03:02+00:00"
+      },
+      "selected_at": "2026-11-15T01:03:57Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.14822",
+      "version": 1,
+      "title": "Quantum Telatar formula: fading quantum capacity of Haar-random multimode attenuators",
+      "authors": [
+        "Eric Culf",
+        "Victor V. Albert"
+      ],
+      "abstract": "Cellular communication is done over an imperfectly predictable multimode environment, where the sender only knows about the distribution of possible intermode coupling and scattering a signal faces. It may thus seem surprising that such communication is efficient. Telatar proved that the sender's lack of exact knowledge about the channel, on average, does not significantly hinder multimode communication. As the number $N$ of modes increases at fixed signal-to-noise ratio, the average capacity of a classical multimode fading channel grows linearly in $N$, like that of $N$ decoupled single-mode channels. We study the quantum analogue in a Haar-random passive bosonic network and prove a similar scaling for unassisted quantum information transmission. Suppose that the sender drives a fixed fraction of the input modes and the receiver collects more than half of the output modes. Then the quantum capacity of such channels at zero temperature grows linearly with the number of modes at fixed photon number per mode, just like the classical capacity grows with the number of antennas. At nonzero temperature, the Haar-averaged coherent information of the isotropic thermal input bounds the capacity from below, and its value per mode converges to an integral against Wachter's law. We numerically identify positive achievable rates in models motivated by cryogenic microwave networks and room-temperature multimode fibers.",
+      "url": "https://arxiv.org/abs/2611.14822",
+      "pdf_url": "https://arxiv.org/pdf/2611.14822v1",
+      "published": "2026-11-10T23:20:19Z",
+      "updated": "2026-11-10T23:20:19Z",
+      "categories": [
+        "quant-ph",
+        "cs.IT"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "random_designs"
+      ],
+      "keyword_matches": {
+        "random_designs": [
+          "Haar-random"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-13T06:52:07Z",
+      "analysis": {
+        "summary": "文章在 Haar 随机被动玻色网络上研究无辅助量子容量，给出经典 Telatar 模式数量标度的量子对应。接收端收集的模式比例决定结论范围。",
+        "problem": "发射端只知耦合分布时，容量能否随模式数线性增长？",
+        "setting": "发送端驱动固定比例输入，接收端收集超过一半输出；每模式光子数固定。",
+        "main_results": [
+          "零温下容量随 N 线性增长。",
+          "非零温下，以各向同性热输入的 Haar 平均 coherent information 给出容量下界，每模式极限用 Wachter law 积分表示；若干物理模型数值上有正可达速率。"
+        ],
+        "techniques": [
+          "Haar 被动混模、相干信息与随机矩阵谱极限。"
+        ],
+        "assumptions": [
+          "区分零温容量标度和有限温下界；发送端访问受限。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明及摘要未说明的假设。",
+          "不是单副本学习或高阶 design 优势；摘要未给有限尺寸和实现成本。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "具体连接随机混合、输出访问比例及量子通信能力。"
+        ],
+        "follow_up": [
+          "读者建议：比较有限深度近似混模器对容量下界的影响。"
+        ],
+        "relevance_score": 82,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.14822v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-15T01:03:02+00:00"
+      },
+      "selected_at": "2026-11-15T01:03:57Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.14652",
+      "version": 1,
+      "title": "The memory cost of sequential quantum state preparation",
+      "authors": [
+        "Jian Li",
+        "Patryk Lipka-Bartosik"
+      ],
+      "abstract": "How much memory does a quantum device need to prepare systems one at a time? We address this question through the lens of quantum resource theories, which formalize physical restrictions on how the memory may interact with the stream of systems it processes. By comparing sequential with collective preparation, we show that under general assumptions both have the same asymptotic memory cost per output. Still, sequential preparation can require an unboundedly larger memory than collective one, and we investigate how this gap depends on the physical restrictions on the allowed interactions. For energy-conserving unitaries, we determine both optimal memory dimensions needed for preparing pure states from an energy eigenstate, and find that the extra memory required sequentially either remains bounded or grows logarithmically with the number of outputs. Under noisy operations, we reveal transformations for which one auxiliary qubit suffices for preparing arbitrarily many independent outputs collectively, while no memory of fixed dimension can deliver them sequentially. Finally, for sequential protocols that repeat a fixed interaction, we show that a $d$-dimensional memory that succeeds for $d^2$ rounds will succeed forever, and that such a sequential preparation is equivalent to quantum catalysis.",
+      "url": "https://arxiv.org/abs/2611.14652",
+      "pdf_url": "https://arxiv.org/pdf/2611.14652v1",
+      "published": "2026-11-10T19:05:18Z",
+      "updated": "2026-11-10T19:05:18Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "state preparation"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-13T06:52:07Z",
+      "analysis": {
+        "summary": "论文比较一次准备整批输出与逐个准备时需要的量子记忆。每输出的渐近成本可相同，但绝对记忆需求可随输出数拉开，尤其当记忆与系统的相互作用受限。",
+        "problem": "串行制备在何种物理约束下不能复现集体方案的小记忆？",
+        "setting": "量子资源理论，比较能量守恒酉、noisy operations 与重复固定交互。",
+        "main_results": [
+          "能量守恒情形对能量本征态到纯态制备确定最优记忆维数；作者报告额外成本有界或对输出数呈对数增长。",
+          "noisy operations 中有变换用一个辅助 qubit 可集体制备任意多份独立输出，但固定维数记忆无法顺序完成。",
+          "重复固定交互时，若 d 维记忆能成功 d² 轮则能永续，作者将此与 catalysis 等价。"
+        ],
+        "techniques": [
+          "分离资源约束下的顺序与集体制备；固定交互的有限轮证据。"
+        ],
+        "assumptions": [
+          "结论依赖各自的允许操作；不能把记忆维数直接当作 qubit 数。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明及摘要未说明的假设。",
+          "摘要未核查对数增长采用的具体记忆单位或近似精度；不外推至时变交互。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "给出 ancilla、量子记忆与时间访问资源分离。"
+        ],
+        "follow_up": [
+          "读者建议：区分精确独立输出与固定总 trace-distance 误差下的成本。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.14652v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-15T01:03:02+00:00"
+      },
+      "selected_at": "2026-11-15T01:03:57Z"
     },
     {
       "doi": "",
@@ -7266,6 +7935,69 @@
         "analyzed_at": "2026-11-09T01:04:05+00:00"
       },
       "selected_at": "2026-11-09T01:05:44Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.03324",
+      "version": 1,
+      "title": "Stabilizer Learning under Global Depolarizing Noise with Polynomial Copies and $2^t$ Time",
+      "authors": [
+        "Aryeh Lev Zabokritskiy"
+      ],
+      "abstract": "We study learning the stabilizer structure of an unknown pure $n$-qubit state observed through global depolarizing noise of unknown strength, with a fixed promised upper bound below one, using destructive two-copy Bell measurements. Let $0\\le t\\le n$ bound the stabilizer nullity, let $\\varepsilon>0$ be the accuracy, and let $0<δ<1$ be the failure tolerance. With probability at least $1-δ$, a learner must return a commuting unsigned Pauli group containing every stabilizer of the pure state; averaging conjugation by that group must decrease the purity of the observed noisy state by at most $\\varepsilon$. Tang and Steckmann gave such a learner with polynomially many copies and $2^t$ times polynomial time when the noise strength is below a threshold of at most about $0.16$, which tends to zero as $t/n\\to1$. They asked whether other algorithms with these resources can exceed this threshold. We answer this question affirmatively for every fixed bound on global depolarizing noise below one and every $0\\le t\\le n$, including states with only one promised independent stabilizer. Our learner uses polynomially many copies and $2^t$ times polynomial classical running time. All resource bounds hold on every execution. Their polynomial factors depend on $n,1/\\varepsilon,\\log(1/δ)$, with degrees and constants depending on the fixed noise promise.",
+      "url": "https://arxiv.org/abs/2611.03324",
+      "pdf_url": "https://arxiv.org/pdf/2611.03324v1",
+      "published": "2026-11-02T15:47:50Z",
+      "updated": "2026-11-02T15:47:50Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-04T06:34:03Z",
+      "analysis": {
+        "summary": "作者解决一个带噪 stabilizer learning 的资源问题：当全局 depolarizing 强度未知、但承诺有任意固定小于1的上界时，仍能用多项式份态和 2^t 乘多项式的经典时间输出满足要求的 commuting Pauli group。",
+        "problem": "此前具有这些资源的算法只覆盖有限噪声区间，且阈值随 t/n 接近1而趋零；能否跨过这一限制？",
+        "setting": "未知纯 n-qubit 态经过全局 depolarizing；t 上界 stabilizer nullity；数据由破坏性双副本 Bell 测量获得。",
+        "main_results": [
+          "以至少 1−δ 概率输出包含全部无符号真实 stabilizers 的对易群；按该群作共轭平均，所观测带噪态的 purity 降低不超过 ε。",
+          "多项式因子依赖 n、1/ε、log(1/δ)，次数和常数依赖固定噪声上界；资源界逐次执行成立。此前阈值至多约0.16，且会随 nullity 增大而减小。"
+        ],
+        "techniques": [
+          "用双副本 Bell 测量取数据；输出同时满足对易性、包含性和 purity 条件。"
+        ],
+        "assumptions": [
+          "全局 depolarizing 不是局域独立 Pauli 噪声；噪声上界须固定低于1。"
+        ],
+        "limitations": [
+          "仅依据官方摘要；未审阅正文证明及摘要未说明的假设。",
+          "摘要未给构造及筛选细节；输出不是带符号的精确 stabilizer 群或完整态重建；也不是单副本算法。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与噪声下 stabilizer 结构学习和经典运行时间直接相关。"
+        ],
+        "follow_up": [
+          "读者建议：比较噪声上界趋近1时多项式常数，并检验局域噪声是否保留可用的 Bell 统计。"
+        ],
+        "relevance_score": 99,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.03324v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-15T01:03:02+00:00"
+      },
+      "selected_at": "2026-11-15T01:03:57Z"
     },
     {
       "doi": "",
@@ -25866,36 +26598,6 @@
       "first_seen_at": "2026-11-04T06:34:03Z"
     },
     {
-      "doi": "",
-      "id": "2611.03324",
-      "version": 1,
-      "title": "Stabilizer Learning under Global Depolarizing Noise with Polynomial Copies and $2^t$ Time",
-      "authors": [
-        "Aryeh Lev Zabokritskiy"
-      ],
-      "abstract": "We study learning the stabilizer structure of an unknown pure $n$-qubit state observed through global depolarizing noise of unknown strength, with a fixed promised upper bound below one, using destructive two-copy Bell measurements. Let $0\\le t\\le n$ bound the stabilizer nullity, let $\\varepsilon>0$ be the accuracy, and let $0<δ<1$ be the failure tolerance. With probability at least $1-δ$, a learner must return a commuting unsigned Pauli group containing every stabilizer of the pure state; averaging conjugation by that group must decrease the purity of the observed noisy state by at most $\\varepsilon$. Tang and Steckmann gave such a learner with polynomially many copies and $2^t$ times polynomial time when the noise strength is below a threshold of at most about $0.16$, which tends to zero as $t/n\\to1$. They asked whether other algorithms with these resources can exceed this threshold. We answer this question affirmatively for every fixed bound on global depolarizing noise below one and every $0\\le t\\le n$, including states with only one promised independent stabilizer. Our learner uses polynomially many copies and $2^t$ times polynomial classical running time. All resource bounds hold on every execution. Their polynomial factors depend on $n,1/\\varepsilon,\\log(1/δ)$, with degrees and constants depending on the fixed noise promise.",
-      "url": "https://arxiv.org/abs/2611.03324",
-      "pdf_url": "https://arxiv.org/pdf/2611.03324v1",
-      "published": "2026-11-02T15:47:50Z",
-      "updated": "2026-11-02T15:47:50Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "magic_stabilizer": [
-          "stabilizer"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-04T06:34:03Z"
-    },
-    {
       "id": "doi:10.1038/s41467-026-78805-1",
       "version": 1,
       "title": "Conveyor-mode electron shuttling through a T-junction in Si/SiGe",
@@ -26345,139 +27047,6 @@
     },
     {
       "doi": "",
-      "id": "2611.16738",
-      "version": 1,
-      "title": "Ground-State Spin Squeezing and Collective Excitations in $\\mathbb{Z}_2$-Symmetric Systems",
-      "authors": [
-        "Arkadiusz Kosior",
-        "George Mihailescu",
-        "Karol Gietka"
-      ],
-      "abstract": "Ground-state spin squeezing is a resource for quantum-enhanced measurements, but is commonly associated with a closing excitation gap near a quantum critical point. A closing gap can complicate state preparation and reduce thermal robustness. Here we identify the physical mechanism linking squeezing to collective excitations and establish when stronger squeezing accompanies a larger many-body gap. Using the anisotropic Lipkin--Meshkov--Glick model, we show that, for a quadratic collective mode, the ratio of two transverse fluctuation costs determines squeezing, whereas their geometric mean sets the collective gap. The pair terms responsible for unequal costs are allowed, but not guaranteed, by $\\mathbb Z_2$ parity. To extend this picture beyond a single mode, we derive an exact relation between squeezing, polarization, and excitation energies weighted by their collective-spin transition strengths. For XXZ chains, weak-coupling and spin-wave analyses explain how squeezing can develop while both the collective and many-body gaps increase. Exact finite-size calculations for power-law interactions, including the nearest-neighbor limit, confirm a negative-coupling branch on which the two gaps coincide and increase as squeezing improves. For nearest-neighbor interactions, this branch also retains squeezing at higher temperatures than a gap-closing branch with comparable ground-state squeezing. In the Ising chain, by contrast, a staggered excitation can lower the many-body gap without directly contributing to collective fluctuations. Our results explain why ground-state squeezing can accompany either a closing or an opening collective gap, and identify a gap-opening branch with enhanced thermal robustness and the potential for faster adiabatic preparation.",
-      "url": "https://arxiv.org/abs/2611.16738",
-      "pdf_url": "https://arxiv.org/pdf/2611.16738v1",
-      "published": "2026-11-12T12:54:16Z",
-      "updated": "2026-11-12T12:54:16Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "state preparation"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-13T06:52:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.16578",
-      "version": 1,
-      "title": "Asymptotic Attainability of the Channel RLD Fisher-Information Bound",
-      "authors": [
-        "Masahito Hayashi"
-      ],
-      "abstract": "The channel right-logarithmic-derivative (RLD) Fisher information is a computable upper bound on the optimal asymptotic symmetric-logarithmic-derivative (SLD) Fisher information per channel use over causally ordered, parameter-independent strategies. The bound is not always attained, even if the Choi matrix is positive definite. We determine exactly when equality holds using a semidefinite feasibility condition involving only the Choi matrix and its first derivative. The condition allows a degenerate largest eigenvalue of the RLD matrix and rank-deficient Choi matrices with derivatives supported on their range. The original channel family may change rank nearby. For generalized dephasing channels with a positive-definite correlation matrix at the evaluation point, the condition becomes a system of linear equations for nonnegative certificate weights that sum to one. At a completely dephasing point we also calculate the optimal SLD information for every finite number of uses and show that a repeated, ancilla-free probe attains it, even against adaptive strategies. Explicit examples give an unbounded ratio of the channel RLD information to the optimal asymptotic SLD information per use, either as the dimension grows or at fixed qubit dimension as the smallest Choi eigenvalue tends to zero. We derive the equality criterion and its consequences from the asymptotic optimization of Zhou and Jiang.",
-      "url": "https://arxiv.org/abs/2611.16578",
-      "pdf_url": "https://arxiv.org/pdf/2611.16578v1",
-      "published": "2026-11-12T10:10:15Z",
-      "updated": "2026-11-12T10:10:15Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "ancilla-free"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-13T06:52:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.15516",
-      "version": 1,
-      "title": "Feedback Control and Neural-Network-Based Prediction of Quantum Entanglement in Fano-mirror cavity optomechanics",
-      "authors": [
-        "Ya-Feng Jiao",
-        "Ze-Yu Zhu",
-        "Jie Wang",
-        "Qing-Shou Tan",
-        "Wen-Qiang Fang",
-        "Le-Man Kuang",
-        "Hui Jing"
-      ],
-      "abstract": "Quantum entanglement involving the centre-of-mass motion of macroscopic-scale objects plays an essential role in both fundamental science and emerging quantum technologies, yet generating and verifying such macroscopic nonclassical states remain formidable challenges. Here, we report a theoretical scheme to effectively generate, manipulate, and predict bipartite optomechanical entanglement based on a Fano-mirror cavity optomechanical system with a coherent feedback loop, where the cavity and Fano optical modes couple through coherent and dissipative interactions. We show that the Fano mirror forms a closed tripartite interaction loop with the cavity and mechanical modes, whereby the quantum interference between direct and indirect interaction pathways substantially enhances the cavity-mechanical entanglement and gives rise to a robust Fano-mechanical entanglement. More importantly, we find that coherent feedback combined with an appropriate optical frequency mismatch can further enhance the entanglement, and a trained supervised feedforward neural network can be used to predict the entanglement magnitude from the readily measurable optical signals, relaxing the requirement of full quantum-state tomography. Our work, establishing an all-optical and experimentally feasible approach to generate, manipulate, and characterize the macroscopic optomechanical entanglement, holds great potential for applications in quantum information processing.",
-      "url": "https://arxiv.org/abs/2611.15516",
-      "pdf_url": "https://arxiv.org/pdf/2611.15516v1",
-      "published": "2026-11-11T14:09:13Z",
-      "updated": "2026-11-11T14:09:13Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "feedforward"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-13T06:52:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.15393",
-      "version": 1,
-      "title": "VR-Net: Subarray-Level Inter-Cell Coordination for Multi-Cell XL-MIMO under Near-Field Spatial Non-Stationarity",
-      "authors": [
-        "Muhammad Shoaib Ayub",
-        "Rana Muhammad Subhan",
-        "Insoo Koo",
-        "Felipe Augusto Pereira de Figueiredo"
-      ],
-      "abstract": "Spatial non-stationarity in multi-cell extremely large-scale MIMO (XL-MIMO) confines each user to a visibility region (VR) of each array. VR-Net exploits these regions for subarray-level coordinated beamforming. A base-station (BS)-indexed conflict graph identifies overlapping VRs; gain-based association and a masked multi-cell weighted minimum mean square error (WMMSE) iteration restrict beam design and channel state information (CSI) uploads to the relevant subarray blocks. We establish conditions for exact per-cell decoupling, derive the expected CSI loads, bound the loss of designing on the VR-gated channel and the loss of the support constraint, and characterize single-edge visibility contrast through a closed-form Fresnel transition width. Simulations use a 3GPP TR 38.901 Release-19-based near-field UMi channel with modular facade arrays and pre-registered criteria. At a 30 dB threshold, VR-Net retains at least 99.6% of the full-aperture WMMSE sum rate in every tested setting while uploading 10-39% fewer complex CSI entries. It gains up to 3.5 bit/s/Hz over an all-user adaptation of the multi-cell scheme of Pérez-Adán et al. at moderate power and dense load, and inter-cell coordination adds up to 33% over per-cell design.",
-      "url": "https://arxiv.org/abs/2611.15393",
-      "pdf_url": "https://arxiv.org/pdf/2611.15393v1",
-      "published": "2026-11-11T12:15:44Z",
-      "updated": "2026-11-11T12:15:44Z",
-      "categories": [
-        "cs.IT",
-        "eess.SP",
-        "math.ST"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "decoupling"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-13T06:52:07Z"
-    },
-    {
-      "doi": "",
       "id": "2611.15365",
       "version": 1,
       "title": "A Unified Benchmarking Study of Variational Quantum Eigensolver Ansatz for Electronic Structure Problems",
@@ -26504,452 +27073,6 @@
       "keyword_matches": {
         "adaptive_resources": [
           "circuit depth"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-13T06:52:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.15357",
-      "version": 1,
-      "title": "Multimodal Semantic Communication using Shared and Unique Representation Decomposition",
-      "authors": [
-        "Peng Yi",
-        "Ying-Chang Liang"
-      ],
-      "abstract": "Semantic communication (SemCom) has emerged as a promising paradigm for bandwidth-constrained mobile and vehicular networks. This paper proposes a unified representation learning framework for multimodal SemCom (MSC), which encodes heterogeneous data into a compact semantic space for efficient transmission and source recovery. The framework addresses the multimodal semantic representation gap, which arises when at least one modality contains semantic information that cannot be fully inferred from the other. To preserve this information for reconstruction, the framework decomposes each representation into shared and modality-specific components. We formulate a mutual information objective for source reconstruction, cross-modal alignment of the shared components, and decoupling of the shared and modality-specific components. To enhance transmission efficiency, we introduce a shared knowledge base implemented as a compact codebook of semantic vectors learned during training. The shared components are transmitted digitally as codebook indices, while the modality-specific components are sent in analog form. We apply knowledge distillation during training, using a pretrained vision foundation model to guide the learning of quantized shared features. On image--text pairs over additive white Gaussian noise (AWGN) and Extended Vehicular A (EVA) channels, the proposed framework improves image reconstruction over conventional separate source-channel coding (SSCC) and representative multimodal and unimodal SemCom systems. Further evaluations show gradual degradation under channel-estimation mismatch, complementary effects of alignment, decoupling, and knowledge distillation on the shared representation, and alignment of shared features across modalities with separation of the modality-specific features.",
-      "url": "https://arxiv.org/abs/2611.15357",
-      "pdf_url": "https://arxiv.org/pdf/2611.15357v1",
-      "published": "2026-11-11T11:37:41Z",
-      "updated": "2026-11-11T11:37:41Z",
-      "categories": [
-        "cs.IT",
-        "eess.SP"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "decoupling"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-13T06:52:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.15298",
-      "version": 1,
-      "title": "Quantum Recurrent Architectures for Financial Time Series Prediction",
-      "authors": [
-        "Danyal Maheshwari",
-        "Gerhard Hellstern",
-        "Martin Zaefferer",
-        "Martin Braun",
-        "Tanja Döhler"
-      ],
-      "abstract": "This study evaluates quantum classical hybrid recurrent architectures for financial time-series forecasting: a Quantum Long Short-Term Memory (QLSTM) network and Quantum Reservoir Computing (QRC) with lag-based inputs. Classical lag vectors are encoded into quantum states via amplitude encoding, which compactly represents normalized observations but requires nontrivial state preparation; the QLSTM gates and the QRC reservoir are implemented with parameterized quantum circuits, while classical optimizers train the interface and readout layers. On a monthly revenue series extended to 1056 months by a Gaussian-process--hidden-Markov generator, with a fixed chronological 70/15/15 split and one-step-ahead forecasts, we compare both models against a full-size LSTM, a classical control matched in parameter budget and interface architecture, a small plain LSTM, and classical reservoir computing, over ten seeds and against persistence, seasonal-naive and SARIMA benchmark forecasts. The QLSTM, with 2,105 parameters, is statistically indistinguishable from an LSTM 126 times larger, but equally indistinguishable from the matched classical control and from a plain LSTM of the same budget, so its parameter efficiency cannot be attributed to the quantum circuits. The quantum reservoir is worse than a classical reservoir of equal feature dimension in all ten seeds and worse than SARIMA, whereas all recurrent models and both classical reservoirs improve on SARIMA by about 2\\% in RMSE. In a 24-month rolling-origin backtest the classical LSTMs degrade more slowly than the QLSTM. We find no evidence of a quantum accuracy or parameter-efficiency advantage in this low-dimensional setting.",
-      "url": "https://arxiv.org/abs/2611.15298",
-      "pdf_url": "https://arxiv.org/pdf/2611.15298v1",
-      "published": "2026-11-11T10:30:03Z",
-      "updated": "2026-11-11T10:30:03Z",
-      "categories": [
-        "quant-ph",
-        "cs.AI"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "state preparation"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-13T06:52:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.15250",
-      "version": 1,
-      "title": "Multi-head Quantum Neural Networks: Replacing Transformer Blocks with NISQ Modules inside a 30-Billion-Parameter LLM",
-      "authors": [
-        "Maforikan Amoussou",
-        "Borja Aizpurua",
-        "Sukhbinder Singh",
-        "Román Orús",
-        "Hans-Arno Jacobsen"
-      ],
-      "abstract": "We introduce the multi-head quantum neural network (QNN), a quantum module compatible with noisy intermediate-scale quantum (NISQ) devices that can replace transformer blocks inside pre-trained large language models (LLMs) with little loss in accuracy and with far fewer parameters than the blocks it replaces. Encoding a model's $D$ hidden neurons into a qubit register is the obstacle: amplitude encoding scales poorly in circuit depth and angle encoding in qubit count, so neither is practical at production-scale width. We instead partition the hidden space into $k$ disjoint heads, angle-encode each into an $n_q$-qubit register, process the heads in parallel, and couple them through constrained classical linear layers, the mixers. Performing surgery on Qwen3-30B-A3B-Instruct-2507, we show that a single multi-head QNN with $145\\,281$ trainable parameters ($D=2048$, $k=32$, $n_q=8$, $L=4$) can replace a contiguous span of eight transformer blocks, displacing $16.33\\%$ of the model's parameters. Ablations show that, for a single replaced block, the quantum heads (circuits followed by a learned readout), and not the classical mixers alone, recover the displaced function, whereas for fused spans the mixers alone come within $1$-$3\\%$ of the full module in perplexity. Whether this benefit is specific to trained, entangling quantum circuits is not established: controls that switch the entangler off (two seeds), or freeze the circuit at its initial or at uniformly random angles (one seed), beat the full module on held-out perplexity, and a parameter-matched classical multilayer perceptron remains a few percent ahead of the full module. We train classically with exact statevector simulation, then execute the quantum heads of our fusion checkpoints on a $156$-qubit IBM Heron processor, showing that NISQ-scale quantum modules can be installed in a production-scale LLM and run on hardware.",
-      "url": "https://arxiv.org/abs/2611.15250",
-      "pdf_url": "https://arxiv.org/pdf/2611.15250v1",
-      "published": "2026-11-11T09:39:14Z",
-      "updated": "2026-11-11T09:39:14Z",
-      "categories": [
-        "quant-ph",
-        "cs.AI",
-        "cs.LG"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "circuit depth"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-13T06:52:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.15104",
-      "version": 1,
-      "title": "An Architecture for Real-Time Quantum Error Correction with Neutral Atoms",
-      "authors": [
-        "X. Wang",
-        "Y. Jing",
-        "Z. Yu",
-        "S. Wang",
-        "D. Niu",
-        "Y. Liu",
-        "T. Xiao",
-        "A. Yang",
-        "J. Han",
-        "Y. Wu",
-        "X. Lv"
-      ],
-      "abstract": "The latency of quantum measurement and classical decoding constrains the execution of adaptive fault-tolerant circuits. In neutral-atom processors, this requirement couples spatially resolved fluorescence detection to classical inference. Here we implement cascaded readout and decoding in a heterogeneous architecture that overlaps acquisition and processing at two spatial scales. Field-programmable gate arrays process camera rows as they arrive, while graphics processors decode an acquired logical block during acquisition of the next. This heterogeneous architecture offers flexibility in the choice of error-correcting codes and decoding algorithms. Direct communication preserves microsecond-scale transfer times for kilobyte payloads and supports interchangeable decoding algorithms. Hardware characterization and decoding benchmarks using circuit-level simulated syndromes yield a submillisecond post-exposure processing latency for selected small-code workloads ($d = 3, 5, 7$). By enabling logical blocks to be decoded before full-frame readout is complete, the architecture implements low-latency syndrome decoding, realizing real-time quantum information processing as required for fault-tolerant computation in atom arrays.",
-      "url": "https://arxiv.org/abs/2611.15104",
-      "pdf_url": "https://arxiv.org/pdf/2611.15104v1",
-      "published": "2026-11-11T06:31:12Z",
-      "updated": "2026-11-11T06:31:12Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction",
-          "syndrome"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-13T06:52:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.15076",
-      "version": 1,
-      "title": "Scalable Compilation of Resource-Efficient Tapers for High-Confidence Quantum Phase Estimation",
-      "authors": [
-        "David Raveh",
-        "Andrew Sornborger",
-        "Yiğit Subaşı",
-        "Lukasz Cincio"
-      ],
-      "abstract": "Quantum phase estimation is a key component of many quantum algorithms. Recently, high-confidence, tapered QPE (tQPE) has been introduced, significantly reducing the number of ancilla qubits necessary for a given failure probability, $ε$. We consider tQPE with $p = l+m$ ancillas, where $l$ represents the number of ancillas necessary to estimate a phase to a given resolution and $m$ represents the number of ''confidence'' qubits added to ensure a desired success probability. With tQPE the failure probability decays double exponentially in $m$, implying that only a few confidence qubits suffice for virtually any problem of interest. A key challenge for tQPE is the construction of the quantum circuit for preparing the taper state on the ancilla register. Here, we develop scalable tensor network methods (previous work was limited to ($l + m = 24$)) giving highly optimized state preparation circuits for optimally concentrated DPSS (Slepian) tapers. We provide an accompanying database of resource-efficient state preparation circuits for $l = 1, \\dots, 50$ and $m = 1, \\dots, 4$. Our circuits are shallow enough for a demonstration on near-term devices for small values of $l$. We run tQPE circuits for a 1-qubit system initialized in the ground state on Quantinuum's H2-2 quantum computer, demonstrating a $3\\times$ to $18\\times$ reduction in failure probability for $l=1,\\ldots,10$ on a noisy device.",
-      "url": "https://arxiv.org/abs/2611.15076",
-      "pdf_url": "https://arxiv.org/pdf/2611.15076v1",
-      "published": "2026-11-11T05:50:20Z",
-      "updated": "2026-11-11T05:50:20Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "state preparation"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-13T06:52:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.15018",
-      "version": 1,
-      "title": "Time- and Photon-Optimal Paths for the Preparation and Logical Flip of Gottesman-Kitaev-Preskill States",
-      "authors": [
-        "Aidan Curtis",
-        "Juan S. Salcedo-Gallo",
-        "Sergei Leonov",
-        "Kevin Limanta",
-        "Peter Chin",
-        "Salil Bedkihal",
-        "Mattias Fitzpatrick"
-      ],
-      "abstract": "Gottesman-Kitaev-Preskill (GKP) states are highly non-Gaussian, making their control challenging, particularly in the presence of photon loss. Here, we use the brachistochrone, the fastest path at bounded speed, to construct ideal nonlinear Hamiltonians for state preparation and logical gates, and compare it with the photon-optimal path. We find that the two paths nearly coincide for state preparation but differ markedly for logical operations, namely the brachistochrone preserves the encoded qubit during a bit flip, whereas the photon-optimal path flips a known state through the vacuum. We then introduce the tangential capacity to quantify how effectively gate sets track these paths. Using this analysis, we find that conditional squeezing achieves the highest capacity, preparing GKP states in 824 ns with a fidelity of 0.99 and a minimum closeness to the path of 0.90, compared with 0.98 and 0.51 for conditional displacements and 0.83 and 0.19 for SNAP gates.",
-      "url": "https://arxiv.org/abs/2611.15018",
-      "pdf_url": "https://arxiv.org/pdf/2611.15018v1",
-      "published": "2026-11-11T04:21:30Z",
-      "updated": "2026-11-11T04:21:30Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "state preparation"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-13T06:52:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.14967",
-      "version": 1,
-      "title": "Local enhancement of finite-strength code preparation: recoverability and Wilson coherence",
-      "authors": [
-        "Tong Xu",
-        "Yuanchen Zhao",
-        "Dong E. Liu"
-      ],
-      "abstract": "Stabilizer measurements provide a direct route to preparing quantum error-correcting codes and long-range entangled states. In realistic implementations, however, finite measurement strength can coherently deform the encoding map away from the projective limit. Certain nonlocal signatures associated with long-range order can survive such a deformation, but this alone does not guarantee that the resulting state protects encoded quantum information. We show that, at fixed strength, local logical leakage obstructs asymptotically faithful recovery; along logical operators' supports, its accumulation forces the relevant measurement strength to grow logarithmically with code distance. We then prove that this obstruction can be removed locally: for fixed toric registers under sufficiently weak local-stochastic errors, enhancing only a vanishing fraction of checks near selected logical supports restores recovery while the bulk remains at finite measurement strength. With recoverability restored, we prove a further dimensional distinction in logical operations. In the strict three-dimensional deconfined phase, suitable enhanced tubes restore the equivalence of macroscopically separated representatives, so either representative asymptotically implements the same controlled logical action on a fixed encoding. In two dimensions, recoverability alone does not restore this equivalence: the representatives can remain inequivalent even when both associated encodings are recoverable.",
-      "url": "https://arxiv.org/abs/2611.14967",
-      "pdf_url": "https://arxiv.org/pdf/2611.14967v1",
-      "published": "2026-11-11T03:26:28Z",
-      "updated": "2026-11-11T03:26:28Z",
-      "categories": [
-        "quant-ph",
-        "cond-mat.stat-mech",
-        "math-ph"
-      ],
-      "keyword_score": 6,
-      "topics": [
-        "logical_qec",
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error-correcting"
-        ],
-        "magic_stabilizer": [
-          "stabilizer"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-13T06:52:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.14944",
-      "version": 1,
-      "title": "CSS Circuits: useful quantum circuits that can be simulated with $O(1)$ cost per gate",
-      "authors": [
-        "Craig Gidney",
-        "Cody Jones"
-      ],
-      "abstract": "\"CSS circuits\" are quantum circuits generated by $X$, $Z$, $M_X$, $M_Z$, and CNOT gates. Although CSS circuits are extremely restrictive, they can implement important quantum protocols like teleportation, error correction, and entanglement purification. We present a simple CSS circuit simulator that uses $O(1)$ work per gate. The simulator corresponds to a local hidden variable model, so we use Bell inequalities to prove the simulator can't also support Hadamard gates, CZ gates, or S gates. We note that CSS circuits appear ideal for benchmarking quantum error correction in the presence of atom loss errors.",
-      "url": "https://arxiv.org/abs/2611.14944",
-      "pdf_url": "https://arxiv.org/pdf/2611.14944v1",
-      "published": "2026-11-11T02:48:44Z",
-      "updated": "2026-11-11T02:48:44Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-13T06:52:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.14923",
-      "version": 1,
-      "title": "Quantum CSS codes: Decoder-aware multiobjective design and bound-certified selection",
-      "authors": [
-        "Jiapei Zhuang",
-        "Yaocheng Chen",
-        "Xingyao Wu"
-      ],
-      "abstract": "Quantum error-correcting codes trade decoding reliability against the resources needed to measure their checks. We formulate Calderbank-Shor-Steane (CSS) code design at fixed encoding resources as a decoder-aware multiobjective problem. The objectives are failure probability under sector-wise degenerate maximum-likelihood decoding and check weight, the minimum total weight of an independent pure-type generator basis. For independent bit- and phase-flip noise with perfect syndrome extraction, deterministic truncation bounds support selection under a failure-rate constraint. At a per-sector error probability of 0.01, the bounds certify that a code encoding two logical qubits into 40 physical qubits meets a failure-rate target of 0.001 at check weight 139. The lower bound of every cheaper candidate in the corresponding (40,2) main menu exceeds this target. In paired searches sharing one annealing kernel and equal query budgets, decoder-aware guidance gives significantly higher mean final hypervolume than distance guidance in all eight tested configurations under the reported Holm correction. Against distance-multiplicity guidance, five configurations show significant gains and three do not, including one with a negative mean difference. All arms are scored in common truncated-reliability and normalized-check-weight coordinates. The framework connects reliability-check-weight trade-offs to bound-certified selection within evaluated CSS pools.",
-      "url": "https://arxiv.org/abs/2611.14923",
-      "pdf_url": "https://arxiv.org/pdf/2611.14923v1",
-      "published": "2026-11-11T02:25:14Z",
-      "updated": "2026-11-11T02:25:14Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error-correcting",
-          "syndrome"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-13T06:52:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.14919",
-      "version": 1,
-      "title": "Evaluating Quantum Circuit Protection Methods After Compilation: An Empirical Comparison",
-      "authors": [
-        "Ing Muyleang",
-        "Leanghok Hour",
-        "Youngsun Han"
-      ],
-      "abstract": "Quantum cloud providers can read the circuits they receive and their outputs, yet methods for hiding a circuit are usually evaluated on the circuit as written, before compilation optimises it. We compare three ObfusQate schemes (inverse, composite and delayed gates), ECQCO and Q-MaskCut under one protocol that compiles every protected circuit at optimisation level 3 before measuring it; the goal is to keep the provider from learning the user's algorithm and answer. Q-MaskCut is one example combination of existing techniques: a one-time-pad key, decoy wires, circuit cutting with a random rotation pair across each cut, and Pauli twirling with dynamical-decoupling masking after compilation. We simulate 11 circuits of 3 to 19 qubits without noise and on two noise models, measure the compiled structure and execution time of 23 circuits of 3 to 127 qubits, and test whether the structural disguise survives a second compilation by the provider. Composite and delayed gates lose most of their structural disguise in compilation and leave the output readable; inverse gates keep a high normalised graph edit distance (normGED) only by making execution 7 to 112 times longer; ECQCO's output could not be decoded with the implementation provided by its authors. Q-MaskCut hides the output (mean total variation distance without the key 0.94), and without noise, with exact fragment probabilities, it decodes exactly. Its compiled normGED of 0.88 comes mostly from the masking, which a second compilation removes, leaving 0.42 from the key, decoys and padlocks. With noise, its fidelity is comparable to the original's; it needs 7 to 91 fragment variants per circuit in the simulations (7 to 61 in a run on ibm_marrakesh) and a classical reconstruction. Protection should therefore be evaluated on the compiled circuit and again after the provider recompiles it.",
-      "url": "https://arxiv.org/abs/2611.14919",
-      "pdf_url": "https://arxiv.org/pdf/2611.14919v1",
-      "published": "2026-11-11T02:22:09Z",
-      "updated": "2026-11-11T02:22:09Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 7,
-      "topics": [
-        "benchmarking",
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "benchmarking": [
-          "Pauli twirling"
-        ],
-        "logical_qec": [
-          "decoupling"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-13T06:52:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.14822",
-      "version": 1,
-      "title": "Quantum Telatar formula: fading quantum capacity of Haar-random multimode attenuators",
-      "authors": [
-        "Eric Culf",
-        "Victor V. Albert"
-      ],
-      "abstract": "Cellular communication is done over an imperfectly predictable multimode environment, where the sender only knows about the distribution of possible intermode coupling and scattering a signal faces. It may thus seem surprising that such communication is efficient. Telatar proved that the sender's lack of exact knowledge about the channel, on average, does not significantly hinder multimode communication. As the number $N$ of modes increases at fixed signal-to-noise ratio, the average capacity of a classical multimode fading channel grows linearly in $N$, like that of $N$ decoupled single-mode channels. We study the quantum analogue in a Haar-random passive bosonic network and prove a similar scaling for unassisted quantum information transmission. Suppose that the sender drives a fixed fraction of the input modes and the receiver collects more than half of the output modes. Then the quantum capacity of such channels at zero temperature grows linearly with the number of modes at fixed photon number per mode, just like the classical capacity grows with the number of antennas. At nonzero temperature, the Haar-averaged coherent information of the isotropic thermal input bounds the capacity from below, and its value per mode converges to an integral against Wachter's law. We numerically identify positive achievable rates in models motivated by cryogenic microwave networks and room-temperature multimode fibers.",
-      "url": "https://arxiv.org/abs/2611.14822",
-      "pdf_url": "https://arxiv.org/pdf/2611.14822v1",
-      "published": "2026-11-10T23:20:19Z",
-      "updated": "2026-11-10T23:20:19Z",
-      "categories": [
-        "quant-ph",
-        "cs.IT"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "random_designs"
-      ],
-      "keyword_matches": {
-        "random_designs": [
-          "Haar-random"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-13T06:52:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.14652",
-      "version": 1,
-      "title": "The memory cost of sequential quantum state preparation",
-      "authors": [
-        "Jian Li",
-        "Patryk Lipka-Bartosik"
-      ],
-      "abstract": "How much memory does a quantum device need to prepare systems one at a time? We address this question through the lens of quantum resource theories, which formalize physical restrictions on how the memory may interact with the stream of systems it processes. By comparing sequential with collective preparation, we show that under general assumptions both have the same asymptotic memory cost per output. Still, sequential preparation can require an unboundedly larger memory than collective one, and we investigate how this gap depends on the physical restrictions on the allowed interactions. For energy-conserving unitaries, we determine both optimal memory dimensions needed for preparing pure states from an energy eigenstate, and find that the extra memory required sequentially either remains bounded or grows logarithmically with the number of outputs. Under noisy operations, we reveal transformations for which one auxiliary qubit suffices for preparing arbitrarily many independent outputs collectively, while no memory of fixed dimension can deliver them sequentially. Finally, for sequential protocols that repeat a fixed interaction, we show that a $d$-dimensional memory that succeeds for $d^2$ rounds will succeed forever, and that such a sequential preparation is equivalent to quantum catalysis.",
-      "url": "https://arxiv.org/abs/2611.14652",
-      "pdf_url": "https://arxiv.org/pdf/2611.14652v1",
-      "published": "2026-11-10T19:05:18Z",
-      "updated": "2026-11-10T19:05:18Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "state preparation"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-13T06:52:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.14611",
-      "version": 1,
-      "title": "Probing Krylov Dynamics in Driven Many-Body Systems",
-      "authors": [
-        "András Grabarits",
-        "Adolfo del Campo"
-      ],
-      "abstract": "Krylov complexity has become a central probe of operator growth, scrambling, and quantum chaos. Yet, a basic fact hinders its experimental study: laboratory quantum systems are routinely driven in time, whereas the Krylov construction assumes a fixed generator and breaks down once the Hamiltonian varies. Here, we solve the time-dependent many-body Krylov problem exactly and in closed form for scale- and rotation-invariant systems realized in current quantum-simulation and control platforms. We find exact relations that map the driven dynamics onto mutually orthogonal Krylov subspaces and yield a closed-form spread complexity, determined solely by the spectral properties of the initial Hamiltonian and the driving schedule. The construction extends to Liouville space and solves the time-dependent density-matrix Krylov problem, which makes the Krylov dynamics of initial thermal states experimentally accessible. In scale-invariant quantum gases, such as the driven Lieb-Liniger model, the Tonks-Girardeau gas, and the Calogero-Sutherland model, the complexity is set by the width of the atomic cloud and its rate of change, directly accessible via in situ and time-of-flight imaging. In rotation-invariant spin systems such as the Haldane-Shastry and central-spin models, it is governed by collective spin precession that can be probed and read out in trapped-ion, cavity-QED, and circuit-QED platforms.",
-      "url": "https://arxiv.org/abs/2611.14611",
-      "pdf_url": "https://arxiv.org/pdf/2611.14611v1",
-      "published": "2026-11-10T19:00:01Z",
-      "updated": "2026-11-10T19:00:01Z",
-      "categories": [
-        "quant-ph",
-        "cond-mat.quant-gas"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "random_designs"
-      ],
-      "keyword_matches": {
-        "random_designs": [
-          "scrambling"
         ]
       },
       "sources": [
@@ -53915,15 +54038,50 @@
       "score": 0,
       "at": "2026-11-15T01:00:37Z",
       "metadata_fingerprint": "c21d85cd876405643ea699a473f8f0006969345bd271ac36da7ec5d1bb3f5426"
+    },
+    "2611.16738": {
+      "status": "ai_rejected",
+      "score": 35,
+      "at": "2026-11-15T01:03:57Z"
+    },
+    "2611.15516": {
+      "status": "ai_rejected",
+      "score": 35,
+      "at": "2026-11-15T01:03:57Z"
+    },
+    "2611.15393": {
+      "status": "ai_rejected",
+      "score": 35,
+      "at": "2026-11-15T01:03:57Z"
+    },
+    "2611.15357": {
+      "status": "ai_rejected",
+      "score": 35,
+      "at": "2026-11-15T01:03:57Z"
+    },
+    "2611.15298": {
+      "status": "ai_rejected",
+      "score": 35,
+      "at": "2026-11-15T01:03:57Z"
+    },
+    "2611.15250": {
+      "status": "ai_rejected",
+      "score": 35,
+      "at": "2026-11-15T01:03:57Z"
+    },
+    "2611.14611": {
+      "status": "ai_rejected",
+      "score": 35,
+      "at": "2026-11-15T01:03:57Z"
     }
   },
   "last_successful_run": "2026-11-14T06:33:45Z",
   "last_run": {
     "fetched": 475,
     "keyword_candidates": 0,
-    "analyzed": 0,
-    "selected": 0,
-    "pending": 340,
+    "analyzed": 8,
+    "selected": 1,
+    "pending": 322,
     "lookback_days": 7,
     "source": "all",
     "date_basis": "initial_submission",
@@ -53932,11 +54090,11 @@
   },
   "is_demo": false,
   "last_collection_run": "2026-11-15T01:00:37Z",
-  "last_analysis_run": "2026-11-14T01:02:32Z",
+  "last_analysis_run": "2026-11-15T01:03:57Z",
   "last_analysis_batch": {
-    "analyzed": 9,
-    "selected": 4,
-    "pending": 338
+    "analyzed": 8,
+    "selected": 1,
+    "pending": 322
   },
   "topic_labels": {
     "benchmarking": "Benchmarking / SPAM",
