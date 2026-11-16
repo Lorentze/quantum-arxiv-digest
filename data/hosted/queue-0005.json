@@ -4,6 +4,79 @@
       "kind": "analysis",
       "paper": {
         "doi": "",
+        "id": "2610.28012",
+        "version": 1,
+        "title": "Lower Bounds for Minimal-Transversal Enumeration of Bounded-Dimension Hypergraphs and the maximum Minimal Hitting Set Problem",
+        "authors": [
+          "Arnaud Mary"
+        ],
+        "abstract": "We present lower bounds for the maximum minimal hitting set problem and for the problem of enumeration of minimal transversals in bounded-dimension hypergraphs. Our starting point is the recent reduction of Kobayashi, Kurita, and Wasa (2026), developed to establish ETH-based hardness of hypergraph dualization. Adapting their construction, we show that, under ETH, deciding whether a hypergraph $\\mathcal{G}$ with $n$ vertices and $m$ hyperedges has a minimal transversal of size at least $k$ cannot be done in time $n^{f(k)}m^{o(k)}$, for an arbitrary computable $f$. We transfer this bound to the following decision problem: given a dimension-at-most-$r$ hypergraph and a family of $s$ of its minimal transversals, decide whether another exists. Under ETH, this problem admits no uniform algorithm with running time $n^{f(r)}(s+1)^{o(r)}$. Under SETH, for every fixed $t \\geq 2$, it admits no algorithm with running time $\\poly(|\\mathcal{G}|)(s+1)^c$ for dimension at most $2t$ and any $c<t$. As corollaries, the same exponent obstructions hold for the total time of any output-polynomial enumeration algorithm, with $s$ replaced by the total number of minimal transversals. In particular, polynomial delay is excluded under SETH already for dimension at most four.",
+        "url": "https://arxiv.org/abs/2610.28012",
+        "pdf_url": "https://arxiv.org/pdf/2610.28012v1",
+        "published": "2026-10-20T10:58:15Z",
+        "updated": "2026-10-20T10:58:15Z",
+        "categories": [
+          "cs.CC"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "transversal"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-21T04:56:40Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.28008",
+        "version": 1,
+        "title": "Certified Non-Degenerate Maximum-Likelihood Benchmarking of Quantum LDPC Decoders",
+        "authors": [
+          "Michele Banfi",
+          "Marco Ferrari",
+          "Antonino Favano",
+          "Alberto Tarable",
+          "Luca Barletta"
+        ],
+        "abstract": "The measured logical error rate of a quantum low-density parity-check (QLDPC) code depends on the decoding algorithm. We develop a framework that certifies non-degenerate maximum-likelihood (ML) decoding outcomes on individual sampled shots under circuit-level noise, providing a common reference for comparing decoders and codes. Upper and lower bounds on the minimum correction cost in the true and competing logical classes establish success, failure, or an undecided outcome. Branch-and-bound search refines these intervals while retaining valid bounds under resource limits. Counting the outcomes bounds the empirical ML logical error rate, with interval width equal to the undecided fraction. Results for two bivariate bicycle codes show that best-first ordered statistics decoding (BF-OSD) tracks the non-degenerate ML benchmark closely while leaving some ML-correctable shots.",
+        "url": "https://arxiv.org/abs/2610.28008",
+        "pdf_url": "https://arxiv.org/pdf/2610.28008v1",
+        "published": "2026-10-20T10:53:31Z",
+        "updated": "2026-10-20T10:53:31Z",
+        "categories": [
+          "cs.IT",
+          "quant-ph"
+        ],
+        "keyword_score": 5,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "logical error",
+            "qLDPC",
+            "quantum LDPC"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-21T04:56:40Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
         "id": "2610.27929",
         "version": 1,
         "title": "Constant-Depth Quantum Barrier Option Pricing via a Static Bivariate Oracle Framework",
@@ -1585,95 +1658,6 @@
           "arxiv"
         ],
         "first_seen_at": "2026-10-19T04:48:43Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.24025",
-        "version": 1,
-        "title": "New lower bounds for binary constant-weight codes from prescribed-automorphism search, and two quantum codes meeting their upper bounds",
-        "authors": [
-          "Chris Dzoba"
-        ],
-        "abstract": "We give explicit binary constant-weight codes that raise the lower bounds on $A(n,6,w)$ in eight cells of Brouwer's table, all now listed there. The first round (9 October 2026) gave four values: $A(27,6,11)\\ge 19305$, $A(27,6,12)\\ge 24453$, $A(28,6,10)\\ge 18642$ and $A(28,6,9)\\ge 11154$, together with an explicit $A(24,6,12)$ code of 5566 words, now in the table's list of lost codes. The second round (14 October 2026) gave seven values, listed in the table since 15 October 2026: $A(29,6,10)\\ge 27183$, $A(29,6,11)\\ge 42042$, $A(29,6,9)\\ge 14781$, $A(28,6,10)\\ge 19110$, $A(27,6,12)\\ge 24804$, $A(28,6,9)\\ge 11388$ and $A(27,6,13)\\ge 27783$, three of which replace first-round values. Every code is a union of orbits of the semilinear affine group $\\mathrm{AΓL}(1,27)$, its index-2 subgroup, or $\\mathrm{AGL}(1,23)$, acting on all but at most two coordinates. The orbits were chosen by maximum-weight independent set search on the orbit conflict graph: branch and bound in the first round, iterated local search in the second. Each code was checked by two separately written programs over all pairs of words and was regenerated from its generators and orbit representatives. We also report two qubit stabilizer codes, $[[20,11,4]]$ and $[[43,32,4]]$, which raise the lower bounds of 3 listed at codetables.de to the listed upper bound 4.",
-        "url": "https://arxiv.org/abs/2610.24025",
-        "pdf_url": "https://arxiv.org/pdf/2610.24025v1",
-        "published": "2026-10-16T03:59:57Z",
-        "updated": "2026-10-16T03:59:57Z",
-        "categories": [
-          "math.CO",
-          "cs.IT"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "magic_stabilizer"
-        ],
-        "keyword_matches": {
-          "magic_stabilizer": [
-            "stabilizer"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-20T04:57:05Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "id": "doi:10.1038/s41467-026-78333-y",
-        "version": 1,
-        "title": "Intravenous [Pyr¹]apelin-13 in Healthy Volunteers with Artificially-Induced Syndrome of Inappropriate Antidiuresis - a double-blind, randomised, placebo-controlled crossover study",
-        "authors": [
-          "Sophie Monnerat",
-          "Sven Lustenberger",
-          "Chiara A. Bizzozero",
-          "Fiona A. Chapman",
-          "Joyce Santos de Jesus",
-          "Eszter Kustos-Toth",
-          "Deborah R. Vogt",
-          "Lorraine Bruce",
-          "Robert Little",
-          "Anthony P. Davenport",
-          "Janet J. Maguire",
-          "Julie Refardt",
-          "Martin Bidlingmaier",
-          "Neeraj Dhaun",
-          "Mirjam Christ-Crain"
-        ],
-        "abstract": "Apelin, a hormone secreted by the posterior pituitary, antagonises arginine vasopressin in salt and water homoeostasis. Administration of apelin analogues increased urine output in hyponatremic rodent models, but corresponding human data are lacking. We therefore investigated intravenous [Pyr¹]apelin-13 in healthy participants with artificially induced syndrome of inappropriate antidiuresis. In this double-blind, randomised, placebo-controlled crossover study, 15 healthy adults (7 female; mean age, 28 years [SD, 8]) attended three study visits. Hyponatremia was induced using desmopressin, water loading, and hypotonic saline. Participants subsequently received high-dose [Pyr¹]apelin-13 (1800 nmol), low-dose [Pyr¹]apelin-13 (180 nmol), or placebo as a 3-hour infusion. The primary endpoint was cumulative urine output from infusion initiation until 1 hour after its completion. Neither apelin dose produced a clinically relevant difference in urine output compared with placebo. ClinicalTrials.gov: NCT06277336. Funded by the Swiss National Science Foundation. Registration number: NCT06277336 .",
-        "abstract_basis": "crossref_abstract",
-        "abstract_source_url": "https://api.crossref.org/journals/2041-1723/works?filter=from-online-pub-date%3A2026-10-16%2Cuntil-online-pub-date%3A2026-10-19%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
-        "url": "https://www.nature.com/articles/s41467-026-78333-y",
-        "pdf_url": "",
-        "published": "2026-10-16",
-        "updated": "2026-10-16",
-        "categories": [],
-        "sources": [
-          "nature_communications"
-        ],
-        "publication": {
-          "journal_id": "nature_communications",
-          "journal": "Nature Communications",
-          "doi": "10.1038/s41467-026-78333-y",
-          "url": "https://www.nature.com/articles/s41467-026-78333-y",
-          "published": "2026-10-16",
-          "date_basis": "crossref_published-online"
-        },
-        "keyword_score": 3,
-        "topics": [
-          "logical_qec"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "syndrome"
-          ]
-        },
-        "first_seen_at": "2026-10-17T04:34:51Z",
-        "doi": "10.1038/s41467-026-78333-y"
       }
     }
   ]

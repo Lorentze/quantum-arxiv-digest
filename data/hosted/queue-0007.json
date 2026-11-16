@@ -3,6 +3,81 @@
     {
       "kind": "analysis",
       "paper": {
+        "id": "doi:10.1103/2xnf-jcyn",
+        "version": 1,
+        "title": "Predicting Magic from Very Few Measurements",
+        "authors": [
+          "J. M. Varela, L. L. Keller, A. de Oliveira Junior, D. A. Moreira, R. Chaves, and R. A. Macêdo"
+        ],
+        "abstract": "The nonstabilizerness of quantum states is a necessary resource for universal quantum computation, yet its characterization is notoriously demanding. Quantifying nonstabilizerness typically requires an exponential number of measurements and a doubly exponential classical post-processing cost to evaluate its standard monotones. In this work, we show that nonstabilizerness is, to a large extent, in the eyes of the beholder: it can be witnessed and quantified using set of m n -qubit Pauli measurements, provided the set contains anti-commuting pairs. We introduce a general framework that projects the stabilizer polytope onto the subspace defined by these observables and provide an algorithm that estimates magic from Pauli expectation values with runtime exponential in the number of measurements m and polynomial in the number of qubits n . By relating the problem to a stabilizer-restricted variant of the quantum marginal problem, we also prove that deciding membership in the corresponding reduced stabilizer polytope is NP-hard. In particular, unless P = NP , no algorithm polynomial in m can solve the problem in full generality, thus establishing fundamental complexity-theoretic limitations. Finally, we employ our framework to compute nonstabilizerness in different Hamiltonian ground states, demonstrating the practical performance of our method in regimes beyond the reach of existing techniques.",
+        "abstract_basis": "crossref_abstract",
+        "abstract_source_url": "https://api.crossref.org/journals/2691-3399/works?filter=from-online-pub-date%3A2026-10-14%2Cuntil-online-pub-date%3A2026-10-17%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
+        "url": "https://journals.aps.org/prxquantum/abstract/10.1103/2xnf-jcyn",
+        "pdf_url": "",
+        "published": "2026-10-14",
+        "updated": "2026-10-14",
+        "categories": [],
+        "sources": [
+          "prx_quantum"
+        ],
+        "publication": {
+          "journal_id": "prx_quantum",
+          "journal": "PRX Quantum",
+          "doi": "10.1103/2xnf-jcyn",
+          "url": "https://journals.aps.org/prxquantum/abstract/10.1103/2xnf-jcyn",
+          "published": "2026-10-14T10:00:00Z",
+          "date_basis": "publisher_rss"
+        },
+        "keyword_score": 3,
+        "topics": [
+          "magic_stabilizer"
+        ],
+        "keyword_matches": {
+          "magic_stabilizer": [
+            "stabilizer"
+          ]
+        },
+        "first_seen_at": "2026-10-15T04:47:49Z",
+        "doi": "10.1103/2xnf-jcyn"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.19779",
+        "version": 1,
+        "title": "Tomography for coherent noise",
+        "authors": [
+          "Long Huang"
+        ],
+        "abstract": "Coherent noise poses a fundamentally greater challenge to quantum error correction than independent s- tochastic Pauli errors, because unitary errors preserve interference between error paths, can accumulate over multiple quantum error correction rounds, and leave the encoded logical channel with a residual coherent com- ponent. If the parameters of such coherent noise can be accurately determined, this knowledge can be exploited to inject correlated priors into the decoding graph, and to perform maximum-likelihood decoding under poly- nomially tractable structures, significantly improving the accuracy of syndrome-based decoding. In this work, we introduce one protocol to determine the model and parameters of coherent noise, and reduce the complexity of the experiment from 16nto O(16), which is of great significance for correcting coherent noise in quantum error correction.",
+        "url": "https://arxiv.org/abs/2610.19779",
+        "pdf_url": "https://arxiv.org/pdf/2610.19779v1",
+        "published": "2026-10-14T08:29:50Z",
+        "updated": "2026-10-14T08:29:50Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 4,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "quantum error correction",
+            "syndrome"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-15T04:47:49Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
         "doi": "",
         "id": "2610.19676",
         "version": 1,
@@ -1625,36 +1700,6 @@
         "keyword_matches": {
           "quantum_learning": [
             "sample complexity"
-          ]
-        },
-        "first_seen_at": "2026-10-12T02:38:41Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "id": "2610.06727",
-        "version": 1,
-        "title": "Random Order in Quantum Streaming: Replenishment and Robust Lower Bounds",
-        "authors": [
-          "Nadezhda Voronova"
-        ],
-        "abstract": "How can random order change the role of quantum memory in streaming? Later classical input can restore the usefulness of a quantum state consumed by earlier queries. We call this replenishment. We construct an artificial problem based on Hidden Matching, with repeated coordinate data and online matching requests. It admits a one-pass quantum algorithm using polylogarithmic space in uniformly random order, but unconditionally requires polynomial space both classically in random order and quantumly when all updates precede the requests. To prove the quantum lower bound, we strengthen the consumability bounds of Gilboa, Jain, and McClean for Multiple Hidden Matching. Without prior entanglement, any quantum encoding supporting $r$ independent matching requests requires $Ω(r)$ qubits for $r\\le N^{1/2-δ}$ and every fixed $δ\\in(0,1/2)$, even with simultaneous revelation and arbitrary joint decoding. For sequential requests, the linear bound extends through $r=Θ(\\sqrt N)$. We also adapt Kallaugher's triangle-counting algorithm to uniformly random streams in which every edge is repeated equally often. Rebuilding the quantum sketch and resampling the classical estimator improve its expected-space bound in suitable parameter regimes. Finally, we extend the robust Noisy Gap Cycle framework of Assadi and Sundaresan to quantum streaming. A quantum communication lower bound for Block Hidden XOR yields an $Ω(n)$ space lower bound in random edge order for large enough cycles, with consequences for several graph problems. Thus random order can enable replenishment of small quantum representations, while substantial space requirements persist for other tasks.",
-        "url": "https://arxiv.org/abs/2610.06727",
-        "pdf_url": "https://arxiv.org/pdf/2610.06727v1",
-        "published": "2026-10-05T17:15:51Z",
-        "updated": "2026-10-05T17:15:51Z",
-        "categories": [
-          "quant-ph",
-          "cs.DS"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "logical_qec"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "quantum encoding"
           ]
         },
         "first_seen_at": "2026-10-12T02:38:41Z"
