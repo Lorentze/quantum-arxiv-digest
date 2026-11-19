@@ -4,6 +4,997 @@
   "papers": [
     {
       "doi": "",
+      "id": "2611.23207",
+      "version": 1,
+      "title": "Local interference algorithms for observables in large random circuits",
+      "authors": [
+        "Philippe Suchsland",
+        "Brayden Ware",
+        "Vladislav D. Kurilovich",
+        "Vadim Smelyanskiy",
+        "Kostyantyn Kechedzhi"
+      ],
+      "abstract": "In quantum dynamics, it is generally believed that interference effects lead to a sign problem for classical Monte Carlo sampling methods, rendering sampling ineffective. In this paper we show that this is generically not the case for the task of simulating the evolution of observables in random instances of circuit dynamics. Specifically, we consider two examples of observables which give large signals despite the randomness of the dynamics: first order out-of-time-ordered correlators (OTOCs) in unstructured random circuits without conservation laws and time-ordered charge-charge correlators (TOCs) in particle number-preserving random circuits. We show that these observables can be approximated by classical stochastic processes and that these approximations can be systematically improved with a series expansion that incorporates coherent corrections associated with clusters of gates. We design and implement algorithms that combine Monte Carlo sampling and tensor network methods to approximate the series. We observe numerically that the computational complexity of approximating TOCs and OTOCs scales polynomially in the circuit size and in the target precision. We study the accuracy of these algorithms by directly mapping their ensemble-averaged errors to partition functions of replica statistical models, allowing for perturbative analysis and numerics in $1$d brickwork geometries. Our theoretical analysis explains the empirical observation of polynomial complexity of these algorithms and is consistent with polynomial complexity extending to arbitrarily small precision and to the thermodynamic limit.",
+      "url": "https://arxiv.org/abs/2611.23207",
+      "pdf_url": "https://arxiv.org/pdf/2611.23207v1",
+      "published": "2026-11-17T18:48:27Z",
+      "updated": "2026-11-17T18:48:27Z",
+      "categories": [
+        "quant-ph",
+        "cond-mat.str-el"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "random_designs"
+      ],
+      "keyword_matches": {
+        "random_designs": [
+          "brickwork"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-18T07:37:07Z",
+      "analysis": {
+        "summary": "针对随机线路中两类特定 observable，作者用经典随机过程作基线，并以局部 gate clusters 的 coherent corrections 系统改进。数值支持多项式成本，正文中的一般精度外推仍包含 conjecture。",
+        "problem": "量子动力学中的干涉并不自动意味着每个 observable 都有不可处理的 sign problem。如何利用随机线路中局部干涉的结构，估计仍保有明显信号的关联函数？",
+        "setting": "无守恒随机线路的 first-order OTOC，以及粒子数守恒随机线路的 charge-charge TOC，分析和数值重点为一维 brickwork geometry。",
+        "main_results": [
+          "作者观察算法成本随线路大小和目标精度多项式增长；误差的 ensemble average 映射到 replica statistical model 的 partition function。",
+          "所读 TOC 分析给出平均相关的长时间 T⁻¹ᐟ² 衰减和 circuit-to-circuit variance 的 T⁻⁵ᐟ² 衰减，局域 coherent correction 支持这一波动尺度。",
+          "OTOC 截断 recursion 的相对均方误差随 excursion depth 指数小的关键陈述在正文标作 conjecture，尤其涉及 diffusion front window。"
+        ],
+        "techniques": [
+          "从 stochastic approximation 出发，用连通 gate clusters 补回 coherent interference。一个实现精确收缩大 circuit blocks，只在块边界采样，再以 inclusion-exclusion 修正遗漏。",
+          "另一实现对修正后的 master equation 做截断 MPS 演化。两者分别控制局部 tensor contraction 和被忽略的 coherent excursions。"
+        ],
+        "assumptions": [
+          "对象是所选随机 ensemble 的指定 TOC/OTOC。ensemble-averaged error 与对每个实例的最坏情形保证属于不同评价。"
+        ],
+        "limitations": [
+          "依据 arXiv v1 引言和部分分析摘录，所读文本少于 60000 字符。未复核所有 replica 映射和算法细节。数值多项式行为及 perturbative 支持不足以独立证明任意精度、任意线路实例的多项式模拟。"
+        ],
+        "relevance": [
+          "为 random circuits 的 observable 模拟提供更强 classical baseline，有助于评估 scrambling 信号到底支持哪类量子优势。"
+        ],
+        "follow_up": [
+          "读者建议：固定同一 ensemble 和 additive/relative error，比较前沿小信号处与体内大信号处的总样本和经典收缩成本。"
+        ],
+        "relevance_score": 91,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.23207v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-19T01:09:50+00:00"
+      },
+      "selected_at": "2026-11-19T01:10:47Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.23165",
+      "version": 1,
+      "title": "Teleportation of Logical Qubits using Lattice Surgery with Superconducting Circuits",
+      "authors": [
+        "Luca Hofele",
+        "Yongxin Song",
+        "Áron Márton",
+        "Ian Hesner",
+        "Ilya Besedin",
+        "Jakob Ekert",
+        "Jonathan Trebst",
+        "François Swiadek",
+        "Felix Henrich",
+        "Dante Colao Zanúz",
+        "Mohsen Bahrami Panah",
+        "Lukas Bödeker",
+        "Nicholas Gialouris",
+        "Chrysander D. Hagen",
+        "Marek Pechal",
+        "Jean Claude Besse",
+        "Markus Müller",
+        "Christoph Hellings",
+        "Andreas Wallraff"
+      ],
+      "abstract": "Demonstrating a quantum advantage when solving large-scale computational problems on a quantum computer requires the correction of errors that occur due to limitations in control accuracy and coherence. Using the concept of quantum error correction, fault-tolerant logical qubits can be realized and manipulated with logical single- and two-qubit gates. In this paper, we experimentally analyze fault-tolerant lattice-surgery, which is a key primitive that enables operations between logical qubits realized in the surface-code. Using this primitive, we demonstrate the teleportation of logical states between two distance-three logical qubits realized in a superconducting circuit composed of 41 physical qubits. Throughout this process, we study the step-by-step transfer of logical information from a source to a target logical qubit by characterizing the time evolution of logical observables. We find that repeated execution of stabilizer measurements, after merging two surface-code patches, restores fault tolerance and yields increased fidelity of the teleported state. When optimizing the protocol in terms of gate count and sequence duration, we observe further improvements in fidelity. Our work offers new insights into the optimization of fault-tolerant lattice-surgery operations, while also providing a comprehensive description of the physical device and gate sequences used. We expect the efficient implementation of increasingly complex logical circuits to enhance the performance of future fault-tolerant quantum computers.",
+      "url": "https://arxiv.org/abs/2611.23165",
+      "pdf_url": "https://arxiv.org/pdf/2611.23165v1",
+      "published": "2026-11-17T18:17:01Z",
+      "updated": "2026-11-17T18:17:01Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 6,
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction"
+        ],
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-18T07:37:07Z",
+      "analysis": {
+        "summary": "在 41 个物理比特的超导处理器上，用 lattice surgery 在两个 distance-3 surface-code logical qubits 之间传送量子态，并逐步骤观察逻辑信息从 source 到 target 的变化。",
+        "problem": "逻辑传态不只取决于最终 state fidelity，还依赖 merge 后的重复 stabilizer measurements 能否处理时向故障。哪些测量轮必须保留，哪些可以缩短以减少门误差与序列时长？",
+        "setting": "两个各含九个 data qubits 的 surface-code patches。每个 patch 配备八个 syndrome ancillas，接口另用三数据比特和四测量辅助位完成 merge。",
+        "main_results": [
+          "实验跟踪逻辑 observables 的时间演化，显示 merge 后重复执行 stabilizer measurements 改善 teleported-state fidelity。",
+          "作者比较 fully modular 线路与两种只保留所需测量的优化线路，所测试的 Pauli X、Z eigenstates 的传态输出进一步改善。所读摘录未给出统一可引用的总体数值增益。"
+        ],
+        "techniques": [
+          "以联合逻辑 XX measurement、source 的逻辑测量及条件 Pauli correction 实现传态。merge 期间两个 patch 暂成较大 surface code，再 split 回独立逻辑比特。",
+          "通过在中间节点评估逻辑 X、Z 期望值，定位信息转移及误差积累阶段。将抽取轮数与门数、时长一并优化。"
+        ],
+        "assumptions": [
+          "结论针对 distance-3 及给定 decoder、门和测量噪声。Pauli eigenstate 输出并不独立构成任意逻辑输入的完整 process tomography。"
+        ],
+        "limitations": [
+          "依据 arXiv v1 摘要、引言和装置/协议摘录，所读文本少于 60000 字符。未审核完整噪声模型、统计误差、supplementary circuits 和所有解码细节。"
+        ],
+        "relevance": [
+          "直接涉及固定 code、gadget 和 syndrome 时序对逻辑输出的作用，为逻辑 primitive 的性能认证提供实验对象。"
+        ],
+        "follow_up": [
+          "读者建议：固定输出态集合与总 shots，分别扫描 merge 轮数和冗余测量，联合估计逻辑通道、时向失败与执行时间。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.23165v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-19T01:09:50+00:00"
+      },
+      "selected_at": "2026-11-19T01:10:47Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.23116",
+      "version": 1,
+      "title": "Optimal Min-Entropy Estimation with High Probability",
+      "authors": [
+        "Qisheng Wang"
+      ],
+      "abstract": "Min-entropy plays a fundamental role in assessing the unpredictability of randomness sources. In particular, NIST SP 800-90B specifies min-entropy estimation as a key procedure for entropy sources used in cryptographic random bit generators, illustrating the practical importance of reliable min-entropy estimation. In this paper, we settle the sample complexity of min-entropy estimation with high probability in both the classical and quantum cases. Specifically, for min-entropy estimation with additive error $\\varepsilon$ and probability at least $1-δ$, the sample complexity is $Θ(d\\log(d/δ)/\\varepsilon^2)$ for classical distributions on $d$ symbols and $Θ((d^2+d\\log(1/δ))/\\varepsilon^2)$ for quantum states on a $d$-dimensional Hilbert space. Our results admit short and simple proofs.",
+      "url": "https://arxiv.org/abs/2611.23116",
+      "pdf_url": "https://arxiv.org/pdf/2611.23116v1",
+      "published": "2026-11-17T17:35:19Z",
+      "updated": "2026-11-17T17:35:19Z",
+      "categories": [
+        "cs.IT",
+        "math.ST",
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "quantum_learning"
+      ],
+      "keyword_matches": {
+        "quantum_learning": [
+          "sample complexity"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-18T07:37:07Z",
+      "analysis": {
+        "summary": "未知量子态 min-entropy 的高置信度估计可以把主导的维度项和置信度项相加。作者用 weak Schur sampling 获得匹配上下界，并与经典分布的 min-entropy 估计对照。",
+        "problem": "给定独立样本或量子态副本，以加性误差 ε 和至少 1−δ 的成功概率估计最大概率或最大本征值的负对数。直接把常数成功概率估计重复并取中位数，会让整个维度开销再乘 log(1/δ)，这是否必要？",
+        "setting": "经典输入是 d 元分布；量子输入是 d 维未知密度算符 ρ 的独立副本，目标 S∞(ρ)=−log‖ρ‖∞。量子测量模型允许跨副本的 weak Schur sampling。",
+        "main_results": [
+          "经典样本复杂度为 Θ(d log(d/δ)/ε²)。量子副本复杂度为 Θ((d²+d log(1/δ))/ε²)。这里的 ε 是熵的加性误差。",
+          "量子情形中，常数失败概率时的 d²/ε² 项保持不变，提高置信度只增加 d log(1/δ)/ε²。中位数放大的 d² log(1/δ)/ε² 并非该测量模型的最优开销。"
+        ],
+        "techniques": [
+          "经典估计器用经验最大频率取负对数，通过控制最大概率的相对误差控制熵误差。",
+          "量子估计器对 ρ 的多份副本做 weak Schur sampling，输出 Young diagram 的 partition，利用首行长度估计最大本征值，再取负对数。该测量读取谱的统计量，无须预先知道本征基。",
+          "作者以匹配的估计下界证明最优性，将高置信度困难与维度主项分别处理。"
+        ],
+        "assumptions": [
+          "副本和经典抽样独立同分布。论文讨论小误差、高置信度的估计范围，所读经典上界明确取 ε、δ∈(0,1)。具体 Θ 下界的边界范围仍应依正式定理。",
+          "副本数、实现 collective measurement 的量子存储和线路深度是不同资源。此处公式只给出副本复杂度。"
+        ],
+        "limitations": [
+          "依据精确 arXiv v1 的引言、定义、定理及 weak Schur sampling 摘录，所读文本低于 60000 字符。未逐行复核上下界证明和所有参数边界。未给出单副本 Pauli 读出、常数存储或浅线路模型下达到同样副本数的结论。"
+        ],
+        "relevance": [
+          "min-entropy 估计直接属于 quantum-data learning；该结果也为区分高概率保证与常数成功概率下的样本需求提供具体基线。"
+        ],
+        "follow_up": [
+          "读者建议：在仅允许单副本测量或有界量子记忆时重新比较 d 和 log(1/δ) 的依赖，并将 Schur 测量的线路成本加入资源表。"
+        ],
+        "relevance_score": 96,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.23116v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-19T01:09:50+00:00"
+      },
+      "selected_at": "2026-11-19T01:10:47Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.23009",
+      "version": 1,
+      "title": "PRISM: A Logical-Physical Boundary Compiler for Dual-Rail Qubits",
+      "authors": [
+        "Evan McKinney",
+        "Kun Liu",
+        "Harshvardhan K. Babla",
+        "Robert J. Schoelkopf",
+        "Yongshan Ding"
+      ],
+      "abstract": "Quantum computers can encode each logical qubit across multiple physical degrees of freedom so that errors on the physical qubits can be detected or corrected. A compiler must then translate each logical gate into native instructions, and one gate can have several equivalent realizations that interact through different wires. Routing moves those wires, so a realization chosen before routing can force SWAPs that another would avoid, making code expansion and physical routing a phase-ordering problem. PRISM therefore keeps each gate's realizations open across the logical--physical boundary and commits to one only when routing reaches a layout that can execute it. We formalize which physical circuits implement a gate, which respect the fault model, and which the compiler keeps, and define when a gate can execute under a layout. For dual-rail cavity qubits, logical $\\mathrm{CR}_z$ has four loss-admissible realizations, one per rail pairing, and its logical availability graph is exactly the simple quotient of the occupied device graph by the rail pairs. Across 25 workloads with 7 to 25 logical qubits on three device graphs, PRISM reduces routing SWAPs by 20.4--30.8\\% and physical depth by 8.8--10.1\\% relative to a greedy search that fixes each realization before routing. On the grid and hexagonal lattice, the SWAP reductions hold through 32 logical qubits. By shortening routes, PRISM also reduces photon loss on device models and therefore needs 44.3\\% fewer attempts per retained shot at 16 logical qubits, as a geometric mean over workloads and device graphs, and it lowers decoded logical error in a three-round Steane memory under skip-gate leakage.",
+      "url": "https://arxiv.org/abs/2611.23009",
+      "pdf_url": "https://arxiv.org/pdf/2611.23009v1",
+      "published": "2026-11-17T16:20:46Z",
+      "updated": "2026-11-17T16:20:46Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "logical error"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-18T07:37:07Z",
+      "analysis": {
+        "summary": "PRISM 将逻辑门的多个物理实现保留到 routing 时再选择，避免过早展开成单一 rail pairing 导致不必要 SWAP。等价性和 fault admissibility 被分别定义。",
+        "problem": "编码门可通过不同物理 wires 实现，而 routing 会改变哪些 wires 相邻。若先固定实现再移动布局，编译阶段的次序会增加资源成本。",
+        "setting": "dual-rail cavity code 的逻辑 CRz 有四个 rail-pair 实现，配以局部 Z corrections。光子损失离开单激发子空间形成可检测 vacuum。",
+        "main_results": [
+          "在三种器件图、25 个工作负载、7–25 个逻辑比特上，相对先固定实现的 greedy search，routing SWAP 降低 20.4%–30.8%，physical depth 降低 8.8%–10.1%。",
+          "grid 与 hexagonal lattice 的 SWAP 降低持续到 32 logical qubits。16 logical qubits 时，模型下每 retained shot 的尝试数几何平均减少 44.3%。",
+          "作者还在三轮 Steane memory 的 skip-gate leakage 模型中报告更低 decoded logical error。"
+        ],
+        "techniques": [
+          "把编码输入上作用正确的物理 completion、满足 fault model 的 admissible completion 和编译器保留的有限候选分开。",
+          "在当前 layout 下对候选打分，结合 SABRE-style routing 选 SWAP，等路由到可执行布局才承诺具体实现。dual-rail 的逻辑可用图等于 occupied device graph 对 rail pairs 的 simple quotient。"
+        ],
+        "assumptions": [
+          "结果依赖选择的候选集、设备图、baseline heuristic 和损失模型。总体 depth 降低不自动给出每种噪声下的逻辑保真度保证。"
+        ],
+        "limitations": [
+          "依据 arXiv v1 引言和方法概要，所读摘录少于 60000 字符。未核查完整 loss-admissibility 证明、编译实现及全部统计。retained-shot 开销受后选择规则约束。"
+        ],
+        "relevance": [
+          "将逻辑编译、routing 资源和可检测损失共同建模，符合逻辑 gadget 的物理约束问题。"
+        ],
+        "follow_up": [
+          "读者建议：在同一候选集合和运行预算下替换 routing heuristic，单独记录 SWAP、总深度、loss detection 和每个成功逻辑输出的总尝试数。"
+        ],
+        "relevance_score": 88,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.23009v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-19T01:09:50+00:00"
+      },
+      "selected_at": "2026-11-19T01:10:47Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.22933",
+      "version": 1,
+      "title": "Dynamical Decoupling via Continuous Unitary Design",
+      "authors": [
+        "Xiaodong Yang",
+        "Jun Li"
+      ],
+      "abstract": "Dynamical decoupling is a cornerstone of quantum control for protecting and engineering quantum systems. However, conventional schemes rely on idealized instantaneous pulses, limiting their performance under realistic finite-duration and imperfect controls. To overcome this limitation, we establish a dynamical decoupling framework based on continuous unitary designs, which intrinsically suppresses arbitrary static noise during continuous control. We further derive closed-form phase conditions to suppress Rabi-amplitude errors, unifying universal decoupling, finite-pulse compatibility, and control-error robustness within a single analytical framework. We experimentally validate our approach on a superconducting quantum cloud platform, demonstrating significantly extended coherence times and the highest robustness against Rabi-amplitude errors and detuning among the tested sequences.",
+      "url": "https://arxiv.org/abs/2611.22933",
+      "pdf_url": "https://arxiv.org/pdf/2611.22933v1",
+      "published": "2026-11-17T15:29:10Z",
+      "updated": "2026-11-17T15:29:10Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 7,
+      "topics": [
+        "logical_qec",
+        "random_designs"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "decoupling"
+        ],
+        "random_designs": [
+          "unitary design"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-18T07:37:07Z",
+      "analysis": {
+        "summary": "连续 unitary design 的时间平均可在有限宽控制脉冲期间消除一阶静态噪声项。作者把这样的连续轨迹组织成 CUDD blocks，并加入相位条件控制 Rabi-amplitude error。",
+        "problem": "传统 group-averaging 去耦常在瞬时脉冲近似下成立，有限宽度使脉冲内部的连续运动也暴露于噪声。能否让实际控制轨迹本身具有所需 Haar-average 性质？",
+        "setting": "单比特 SU(2) 控制。以 XY4 的 Pauli 1-design 平均为基线，构造按季度点覆盖 Pauli 元素、全段时间平均满足 design 条件的连续轨迹。",
+        "main_results": [
+          "正文将静态噪声的抑制明确表述为 first-order robustness。对 traceless noise，目标是让 toggling-frame 的一阶平均消失。",
+          "作者在超导量子云平台比较多种 DD sequences，报告更长的 coherence preservation，以及在所测试序列中更强的 Rabi-amplitude 和 detuning 稳健性。所读材料未提供可统一引用的数值增益。"
+        ],
+        "techniques": [
+          "将连续 design path 分为四个等时段替代 XY4 的四个脉冲，并在 quarter points 插入 free-evolution intervals。",
+          "进一步串接 blocks，并推导闭式 phase conditions 压低 amplitude errors。continuous trajectory 和离散采样点的设计性质共同服务于有限脉冲平均。"
+        ],
+        "assumptions": [
+          "静态或所述准静态噪声和控制误差模型。design 的一阶平均性质不直接控制任意时间依赖噪声的高阶项。"
+        ],
+        "limitations": [
+          "依据 arXiv v1 摘要、引言及构造段落，所读摘录低于 60000 字符。未复核高阶余项、完整相位条件、实验 shots 或全套基线的资源匹配。"
+        ],
+        "relevance": [
+          "直接把 unitary design 的 moment 性质与实际噪声平均相连，可用来比较控制脉冲长度和去耦精度。"
+        ],
+        "follow_up": [
+          "读者建议：在固定总时长、控制幅度和脉冲能量下，对同一噪声谱分别测一阶消除与高阶残差，比较不同 block 数的误差累积。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.22933v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-19T01:09:50+00:00"
+      },
+      "selected_at": "2026-11-19T01:10:47Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.22630",
+      "version": 1,
+      "title": "Quantum speed limits from symmetries: A numerical analysis",
+      "authors": [
+        "Santana Lujan",
+        "Marco Wiedmann",
+        "Daniel Burgarth"
+      ],
+      "abstract": "Target-specific quantum speed limits (QSLs) bound the minimal time required to realize a given operation. Recent theoretical work derives these limits directly from the symmetries of the dynamical Lie algebra of the control system and a symmetry-restoring perturbation, bypassing the need to solve the equations of motion. In practice, however, identifying a suitable symmetry and a perturbation that restores it demands strong physical intuition and offers no guarantee of tightness. We show that, for any given symmetry, the minimal restoring perturbation is the solution of a convex semidefinite program, which can be solved to global optimality and thus yields the tightest achievable speed limit for that symmetry. This semidefinite program is one building block of our numerical method, alongside an explicit computation of the space of admissible symmetries and a search over this space. Since this search is non-convex, it is addressed with gradient-based optimization, black-box heuristics, or the injection of physically motivated candidate symmetries. We apply the method to three examples: a two-qubit CNOT gate, a SWAP on a spinless-particle chain, and a Dicke state preparation on a qubit ring. Our results improve on previously known symmetry-based bounds, most notably for the SWAP, where solving the semidefinite program for the known analytical symmetry tightens the bound by a factor of approximately 2.5. For the Dicke state preparation, however, the bounds decrease with system size, which we trace back to a symmetry-independent perturbation ceiling. This work provides a reproducible numerical procedure for constructing target-specific quantum speed limits directly from the system Hamiltonians and the target operation.",
+      "url": "https://arxiv.org/abs/2611.22630",
+      "pdf_url": "https://arxiv.org/pdf/2611.22630v1",
+      "published": "2026-11-17T11:47:05Z",
+      "updated": "2026-11-17T11:47:05Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "state preparation"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-18T07:37:07Z",
+      "analysis": {
+        "summary": "把给定 symmetry 的最小 restoring perturbation 写成 convex SDP，得到该 symmetry 方法内部最紧的 target-specific quantum speed limit，再在可用 symmetry 空间中搜索。",
+        "problem": "不解完整控制动力学时，如何为实现一个目标 gate 或 state 给出更好的最短时间下界，并区分固定 symmetry 的优化与全局最优？",
+        "setting": "输入是 control Hamiltonians 和 target operation，示例为双比特 CNOT、spinless chain SWAP 和 ring 上 Dicke-state preparation。",
+        "main_results": [
+          "对固定 symmetry 的 SDP 可全局求最优。跨 symmetry 搜索非凸，采用梯度、黑箱 heuristic 或物理候选。",
+          "SWAP 示例中，针对已知解析 symmetry 求解 SDP，把已有该类下界收紧约 2.5 倍。Dicke 例子的下界随规模下降，作者将其归因于 perturbation ceiling。"
+        ],
+        "techniques": [
+          "显式计算允许的 symmetry space，内层优化 restoring perturbation，外层选择 symmetry。"
+        ],
+        "assumptions": [
+          "最紧指固定 symmetry 所能给出的界；非凸外层并未提供一般线路或一般 Hamiltonian 的最优实现保证。"
+        ],
+        "limitations": [
+          "仅据 arXiv v1 摘要，未核查 SDP 推导、控制幅度归一化及未说明的假设。时间下界与 gate count、深度、ancilla 是不同资源。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "提供目标操作的资源下界工具，能用于比较物理 control time 与编译成本。"
+        ],
+        "follow_up": [
+          "读者建议：固定控制幅度、连接和可用辅助系统，先核验 SDP 的可行 witness，再比较已知可达控制协议的 gap。"
+        ],
+        "relevance_score": 82,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.22630v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-19T01:09:50+00:00"
+      },
+      "selected_at": "2026-11-19T01:10:47Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.22412",
+      "version": 1,
+      "title": "Optimal Measurement Rounds for Perfect Encoded Fusion",
+      "authors": [
+        "Seita Tsuboi",
+        "Takuya Kasamura",
+        "Leo Itoh",
+        "Motoharu Tsuboi",
+        "Tomohiro Hatori",
+        "Junichiro Kadomoto"
+      ],
+      "abstract": "Encoded fusion combines probabilistic physical fusions to perform a logical Bell measurement. Adaptive choices depend on earlier measurement outcomes and therefore require multiple measurement rounds. We determine the minimum worst-case number of rounds for perfect fusion of two blocks of an irreducible [[n,1]] stabilizer code. A strategy is perfect if the logical Bell measurement succeeds on every branch containing at least one successful physical fusion. Even after fixing the past history, including measurement values, we consider all success/failure branches, including those with zero probability for a particular input state or measurement device. In a lossless model with fixed coordinate pairing, arbitrary Pauli failure bases, and each pair fused exactly once, the optimum equals the minimum root eccentricity over the local complementation orbit of rooted graphs representing the code. The lower bound applies to arbitrary perfect strategies that choose batches and bases using previous outcomes. We also characterize the batch sequences that can occur on an all-failure branch of a perfect strategy by a necessary and sufficient graph adjacency condition. A matching strategy fuses distance layers from the outside in and, after the first success, completes the remaining fusions in at most one further round by changing the failure bases along an induced path.",
+      "url": "https://arxiv.org/abs/2611.22412",
+      "pdf_url": "https://arxiv.org/pdf/2611.22412v1",
+      "published": "2026-11-17T08:47:52Z",
+      "updated": "2026-11-17T08:47:52Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-18T07:37:07Z",
+      "analysis": {
+        "summary": "对两个相同 irreducible [[n,1]] stabilizer code block 的 perfect encoded fusion，最少最坏情形测量轮数等于所有 rooted graph 表示中最小的 root eccentricity。",
+        "problem": "物理 fusion 概率成功，失败则在所选 Pauli 基中测量各光子。反馈可以改变后续批次和失败基，减少 rounds 会减少等待与潜在损失。固定一个码时，任何完美自适应策略到底至少需要几轮？",
+        "setting": "lossless 模型，坐标配对固定、每对恰好融合一次、允许任意 Pauli failure bases。完美性要求任何至少有一次物理成功的分支都完成逻辑 Bell measurement。",
+        "main_results": [
+          "若 e 是代表编码比特的 root，则 R*(S)=minΓ eccΓ(e)，Γ 遍历该码 rooted graph representations 的 local-complementation orbit。",
+          "下界覆盖依前序测量结果选择批次与基的任意 perfect strategy。最坏分支包括在某个特定输入或装置上概率为零的分支。",
+          "匹配构造从外向内融合图的距离层；第一次成功后沿 induced path 改变失败基，至多再一轮完成余下融合。"
+        ],
+        "techniques": [
+          "先用 stabilizer 的可恢复性刻画逻辑 Bell 信息，再给出 all-failure branch 上允许批次序列的必要充分邻接条件。",
+          "由这些全失败路径的条件约束任意策略的最坏轮数，再在图表示中按距离层构造达到界的策略。对图表示的优化也属于目标，而非固定某一图后仅优化测量顺序。"
+        ],
+        "assumptions": [
+          "irreducible、单逻辑比特码、无丢失及固定配对是模型的一部分。完美性是整个结果树上的结构保证，不能只按实际高概率分支优化。",
+          "每个 round 可含多对并行 fusion，round 数与物理 fusion 总数、成功概率和装置延迟分别计量。"
+        ],
+        "limitations": [
+          "依据 arXiv v1 摘要、引言及模型和主结果的摘录，低于 60000 字符。未完整审核恢复判据、图轨道变换证明和所有边界码例子。光子损失、受限 failure basis、额外重配对和近似成功标准可能改变最优值。"
+        ],
+        "relevance": [
+          "直接给出 adaptivity、测量批次与 stabilizer encoding 的资源最优性，可与浅线路和辅助资源问题对照。"
+        ],
+        "follow_up": [
+          "读者建议：对一个明确小码枚举 rooted graph orbit，核算最小 eccentricity，并把 worst-case rounds 与平均等待时间、成功概率及损失模型共同评价。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.22412v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-19T01:09:50+00:00"
+      },
+      "selected_at": "2026-11-19T01:10:47Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.22391",
+      "version": 1,
+      "title": "Strong eigenstate thermalization in Singer-cycle Clifford circuits",
+      "authors": [
+        "Naoto Tsuji"
+      ],
+      "abstract": "Eigenstate thermalization hypothesis (ETH) provides a central framework for understanding thermalization in isolated quantum systems. Recently, the infinite-temperature ETH has been established for almost all Floquet eigenstates in linear feedback shift register quantum circuits. Here we introduce brickwork Clifford circuits with $L$ qubits where the induced transformation of Pauli operators is represented by an irreducible symplectic matrix over the finite field $\\mathbb F_2$ of the maximal order $2^L+1$, known as a Singer cycle. For these Singer-cycle Clifford circuits, we prove a strong version of ETH: all Floquet eigenstates are thermal at infinite temperature without exceptions. We derive uniform bounds on both diagonal deviations from thermal expectation values and off-diagonal matrix elements of arbitrary observables supported on a fixed number of sites. The results indicate that long-time averages of observables approach the infinite-temperature values in the thermodynamic limit for arbitrary initial states. We also show that the temporal fluctuation of expectation values of observables is exponentially suppressed in the thermodynamic limit, implying that each observable remains close to the infinite-temperature value for almost all times.",
+      "url": "https://arxiv.org/abs/2611.22391",
+      "pdf_url": "https://arxiv.org/pdf/2611.22391v1",
+      "published": "2026-11-17T08:40:49Z",
+      "updated": "2026-11-17T08:40:49Z",
+      "categories": [
+        "quant-ph",
+        "cond-mat.stat-mech"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "random_designs"
+      ],
+      "keyword_matches": {
+        "random_designs": [
+          "brickwork"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-18T07:37:07Z",
+      "analysis": {
+        "summary": "构造 L 比特 brickwork Clifford circuits，使其 Pauli 作用对应阶数为 2^L+1 的 irreducible symplectic Singer cycle。作者在这个特定代数族中证明覆盖所有 Floquet eigenstates 的无限温 strong ETH。",
+        "problem": "经典可模拟的 Clifford 动力学能否仍让每个本征态对局部观测都表现热性，并压低长期波动？",
+        "setting": "固定 circuit family 的 Floquet 演化，观测量支撑在固定数目的 sites。热性在热力学极限中表达。",
+        "main_results": [
+          "对所有 eigenstates 的局部对角偏离和非对角 matrix elements 给出统一界，长期平均对任意初态趋近 infinite-temperature expectation。",
+          "作者还证明时间波动在系统增大时指数压低，因而几乎所有时刻的局部观测接近热值。"
+        ],
+        "techniques": [
+          "利用有限域上的不可约辛矩阵与 Pauli orbit 结构，将 ETH 所需的矩阵元限制转为可分析的 Clifford 代数问题。"
+        ],
+        "assumptions": [
+          "结论只针对所构造 Singer-cycle 族和局部支撑规模。finite L 下的偏离由界控制，不能把热力学极限陈述直接当作有限系统精确最大混态。"
+        ],
+        "limitations": [
+          "依据 arXiv v1 摘要及引言和部分正文摘录，低于 60000 字符。未审核所有界的常数、存在性构造与长期谱分析。Clifford ETH 不单独提供 Haar design 或通用计算资源。"
+        ],
+        "relevance": [
+          "揭示 stabilizer 可模拟动力学、局部 thermalization 与资源能力之间的区别。"
+        ],
+        "follow_up": [
+          "读者建议：对同一有限 L circuit 分别测局部矩阵元、Pauli orbit、moment operator，比较 ETH 与 design 距离的实际关系。"
+        ],
+        "relevance_score": 87,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.22391v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-19T01:09:50+00:00"
+      },
+      "selected_at": "2026-11-19T01:10:47Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.22260",
+      "version": 1,
+      "title": "Logical error prediction and geometry selection for rectangular surface codes under biased circuit-level noise",
+      "authors": [
+        "Youshin Chung",
+        "Yujin Kang",
+        "Jun Heo"
+      ],
+      "abstract": "Realistic quantum hardware often exhibits biased noise, but at the circuit level this bias may affect only a subset of operations and need not be transferred uniformly to logical errors. The logical response to a given physical bias is therefore central to selecting resource-efficient surface code geometries. Here, we study unrotated rectangular surface codes under standard depolarizing and superconducting-inspired circuit-level noise models. We first construct geometry-dependent logical error rate models from unbiased circuit-level simulations. We then use logical sensitivities to compare the responses to localized idle-bias and global physical error perturbations, defining logical-error-type-dependent response coefficients from an unbiased reference circuit without fitting to finite-bias data. These coefficients are incorporated through effective error parameters, yielding a median fold error of 1.09 over the evaluated finite-bias conditions. Geometries selected by the model are validated through direct biased circuit-level simulations. At a physical error rate of 0.004 and a target logical error rate of 10^{-3}, the validated rectangular codes reduce physical qubit overhead by up to 42.4% and 26.2% under the two noise models, respectively, relative to unrotated square codes. These results provide a practical link between circuit-level bias response and resource-efficient surface code design.",
+      "url": "https://arxiv.org/abs/2611.22260",
+      "pdf_url": "https://arxiv.org/pdf/2611.22260v1",
+      "published": "2026-11-17T06:09:07Z",
+      "updated": "2026-11-17T06:09:07Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "logical error"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-18T07:37:07Z",
+      "analysis": {
+        "summary": "用 unbiased circuit-level simulations 构建矩形 surface code 的逻辑误差模型，再由逻辑 sensitivity 预测特定物理 bias 对不同逻辑错误类型的影响。",
+        "problem": "物理噪声 bias 可能只作用于部分 idle 或 gates，不能直接均匀搬到逻辑层。怎样用参考线路响应选择节省比特的 rectangular geometry？",
+        "setting": "unrotated rectangular surface codes，分别用标准 depolarizing 与 superconducting-inspired circuit-level noise。",
+        "main_results": [
+          "作者不拟合 finite-bias 数据，用 unbiased reference 的 response coefficients 形成 effective error parameters，在测试条件中达到 median fold error 1.09。",
+          "p=0.004、目标 logical error 10⁻³ 时，直接 biased simulations 验证的矩形码相对 unrotated square codes 分别减少最多 42.4% 和 26.2% 的物理比特开销。"
+        ],
+        "techniques": [
+          "分别计算 localized idle-bias 与 global perturbations 的逻辑 response，把 logical X、Z 等错误类型的 sensitivity 纳入几何预测。"
+        ],
+        "assumptions": [
+          "所比较的参考码、noise model、target error 和 response 定义固定。模型外推的有效范围由验证的有限 bias 区间限定。"
+        ],
+        "limitations": [
+          "仅据精确 arXiv v1 摘要，未核查 sensitivity 计算、完整拟合、误差条或摘要未说明的假设。开销比例不能直接推广到 rotated surface code 或完整逻辑计算。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接连接 physical-noise assumptions、logical fidelity 和几何资源。"
+        ],
+        "follow_up": [
+          "读者建议：对相同目标逻辑错误率分别加入测量/reset bias，测试响应系数何时失效并与重新优化几何对照。"
+        ],
+        "relevance_score": 89,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.22260v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-19T01:09:50+00:00"
+      },
+      "selected_at": "2026-11-19T01:10:47Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.22247",
+      "version": 1,
+      "title": "CHEQ: A Concurrent Hardware Evaluation Platform for QEC Decoders via Batch-Invariant Circuit-Level Noise Sampling",
+      "authors": [
+        "Sechan Park",
+        "Kyeongwon Lee",
+        "Mundo Jung",
+        "Chaebin Jung",
+        "Woojoo Lee"
+      ],
+      "abstract": "Hardware quantum error correction (QEC) decoders require validation of logical error suppression and timing compliance before deployment. Rare logical failures and deadline violations demand extensive sampling, while algorithm-level software evaluation does not directly measure hardware response times. Circuit-level noise models contain many error mechanisms but few firings per shot at low physical error rates, making exhaustive per-shot scanning inefficient. We present CHEQ, an FPGA platform integrating on-chip sampling, concurrent decoder evaluation, scoring, and RISC-V control. Its Sampling Units use geometric skipping to sample firing locations from detector error models and amortize mechanism traversal across shots within each batch. Under independent random draws and exact geometric sampling, the shot distribution is invariant to batch size, enabling a memory-throughput tradeoff. A throughput model guides joint selection of the Sampling Unit count, batch size, and decoder count under FPGA resource constraints. Across evaluated conditions, the pooled one-sided 95% upper bound on the weighted root-mean-square relative firing-rate difference from Stim is 0.16%. At a batch size of 4,096, a Sampling Unit uses only 4.8%-11.2% of a Helios decoder's LUTs for code distances 7, 9, 11, and 13. On an AMD VCU118 FPGA at code distance 7 and physical error rate 10^-3, two Sampling Units supply 20 Helios decoders at 49.2 million shots/s, completing 10^10 shots in 3.4 minutes without host-side shot generation.",
+      "url": "https://arxiv.org/abs/2611.22247",
+      "pdf_url": "https://arxiv.org/pdf/2611.22247v1",
+      "published": "2026-11-17T05:49:55Z",
+      "updated": "2026-11-17T05:49:55Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction",
+          "logical error"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-18T07:37:07Z",
+      "analysis": {
+        "summary": "CHEQ 在 FPGA 上集成 circuit-level noise sampling、并行 decoder 测试和 scoring，以大量 shots 同时检验逻辑错误抑制和时序要求。",
+        "problem": "rare logical failures 与 deadline violations 都要求高样本量。纯算法评价无法直接测硬件 response，逐 shot 扫描全部稀疏错误机制又开销较大。",
+        "setting": "detector error model、on-chip sampling units 和多个 Helios decoders，RISC-V 控制。",
+        "main_results": [
+          "独立随机抽样和精确 geometric sampling 条件下，shot distribution 不依赖 batch size。",
+          "在测试条件里，相对 Stim 的 weighted RMS firing-rate difference 的 pooled one-sided 95% 上界为 0.16%。该量评价机制触发统计。",
+          "VCU118、d=7、p=10⁻³ 时，两 sampling units 可供应 20 个 decoders 达到 4920 万 shots/s，10¹⁰ shots 用时 3.4 分钟。"
+        ],
+        "techniques": [
+          "用 geometric skipping 跳过未触发机制，并在 batch 内摊销机制遍历；以资源与吞吐模型共同选择 unit 数、batch size 和 decoder 数。"
+        ],
+        "assumptions": [
+          "分布不变保证使用独立随机 draws 和精确采样。均值触发统计与极稀有逻辑失败尾部是不同验证对象。"
+        ],
+        "limitations": [
+          "仅据 arXiv v1 摘要，未核查采样实现、定时路径、相关性测试和未明示假设。吞吐不能替代单次反馈尾延迟。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "提供 QEC decoder 在同一物理噪声模型下验证逻辑失败及 deadline 的具体入口。"
+        ],
+        "follow_up": [
+          "读者建议：用同一随机 shot 序列比较不同 batch size 的联合 detector 分布、decoder failures 和 deadline 尾部。"
+        ],
+        "relevance_score": 84,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.22247v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-19T01:09:50+00:00"
+      },
+      "selected_at": "2026-11-19T01:10:47Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.22232",
+      "version": 1,
+      "title": "MASQ: Measurement-Adaptive Sampling for Near-Clifford Quantum Error Correction Circuits",
+      "authors": [
+        "Chaebin Jung",
+        "Sangmin Jeon",
+        "Kyeongwon Lee",
+        "Sechan Park",
+        "Woojoo Lee"
+      ],
+      "abstract": "Classical sampling of quantum error correction (QEC) circuits supports fault-tolerant protocol evaluation, but estimating rare logical failures requires many independent shots. Frame-active-state simulators isolate non-stabilizer information in a dense active-state vector, yet dense-state processing remains exponential in the active width. This paper presents MASQ, an exact measurement-adaptive sampler for near-Clifford QEC circuits based on selective materialization of non-Clifford rotations. At each measurement boundary, MASQ materializes only rotations in a measurement-relevant closure capturing direct and indirect non-commuting dependencies, deferring the rest to limit active-state expansion. Stabilizer-assisted elimination further removes rotations certified to be invisible to all future measurements. A circuit-dependent schedule is computed once and shared across shots, while adaptive caching of conditional Born probabilities and batched execution reduce repeated sampling work while preserving the measurement-record distribution. Across 19 QEC benchmarks, MASQ reduces peak active width by up to 40 active virtual qubits and achieves up to 8,098-fold CPU throughput speedup over Clifft on multi-round circuits.",
+      "url": "https://arxiv.org/abs/2611.22232",
+      "pdf_url": "https://arxiv.org/pdf/2611.22232v1",
+      "published": "2026-11-17T05:31:01Z",
+      "updated": "2026-11-17T05:31:01Z",
+      "categories": [
+        "cs.ET",
+        "quant-ph"
+      ],
+      "keyword_score": 7,
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction"
+        ],
+        "magic_stabilizer": [
+          "stabilizer",
+          "non-Clifford"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-18T07:37:07Z",
+      "analysis": {
+        "summary": "MASQ 通过只在测量需要时展开相关 non-Clifford rotations，减少 exact near-Clifford QEC sampling 的活跃量子态宽度，并保持联合 measurement-record distribution。",
+        "problem": "frame-active-state 模拟把 non-stabilizer 信息放进 dense vector，其成本仍随 active virtual qubits 指数增长。能否只保留当下或未来观测真正需要的相干信息？",
+        "setting": "含非 Clifford 旋转与测量的 QEC circuits。Clifford 与 Pauli 部分由紧凑 frame 处理，非稳定子部分在测量边界选择性 materialize。",
+        "main_results": [
+          "在 19 个 QEC benchmarks 上，peak active width 最多下降 40 个 active virtual qubits，multi-round circuits 的 CPU 吞吐相对 Clifft 最多提高 8098 倍。",
+          "正文另给出对 CPU SymFT 最高 1267 倍；15 个有 baseline 的实例中 Born probability 差至多 1.17×10⁻¹⁷，属于数值一致性验证。"
+        ],
+        "techniques": [
+          "为每个测量求包含直接影响及间接不对易依赖的 measurement-relevant closure，其余 rotations 继续 pending。",
+          "利用 stabilizer-equivalent relations 剔除对所有未来测量不可见的 rotations。一次性 circuit schedule 跨 shots 共享，缓存条件 Born probabilities 减少重复工作。"
+        ],
+        "assumptions": [
+          "精确性针对给定线路模型的条件 Born 概率与测量记录分布。缓存键及依赖闭包必须包含实际决定该条件分布的上下文。"
+        ],
+        "limitations": [
+          "依据 arXiv v1 引言与方法概述，所读摘录低于 60000 字符。未逐项审核闭包/删除规则的证明、动态反馈支持范围或完整 benchmark 代码。数值加速和 peak width 改进依赖实例，不是通用多项式模拟界。"
+        ],
+        "relevance": [
+          "将 magic 资源的经典表示成本与未来测量访问联系起来，对精确评估培养和 near-Clifford gadgets 的逻辑失败有方法价值。"
+        ],
+        "follow_up": [
+          "读者建议：在包含 adaptive branch 的小线路中穷举比较每一条件记录，再统一内存上限、精度和噪声，比较稀有逻辑失败的总采样成本。"
+        ],
+        "relevance_score": 86,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.22232v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-19T01:09:50+00:00"
+      },
+      "selected_at": "2026-11-19T01:10:47Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.22221",
+      "version": 1,
+      "title": "Subsystem Stabilizer $(r,δ)$-Locally Recoverable Codes: Characterization, Bounds and Constructions",
+      "authors": [
+        "Yaozong Zhang",
+        "Sihem Mesnager",
+        "Xiaoqiang Wang",
+        "Jian Gao"
+      ],
+      "abstract": "Local erasure recovery limits the number of physical systems accessed to repair a distributed quantum memory. For subsystem stabilizer codes (SSCs), a basic question is whether erasures can be corrected within a prescribed repair set. In this paper, we study subsystem stabilizer $(r,δ)$-locally recoverable codes ($(r,δ)$-SSLRCs), in which each coordinate belongs to a repair set of size between $δ$ and $r+δ-1$ that corrects any set of up to $δ-1$ erasures while preserving the logical subsystem and allowing the gauge subsystem to change. We first characterize local erasure recovery algebraically and apply this criterion to Calderbank-Shor-Steane (CSS) and Hermitian hull constructions for $(r,δ)$-SSLRCs. For $(r,δ)$-SSLRCs, without assuming purity, we derive a redundancy bound for disjoint repair sets, a supported-subspace bound based on supported stabilizer and gauge subspaces, and a mixed counting bound for known erasures within selected repair sets and errors at unknown positions outside their union. For pure $(r,δ)$-SSLRCs with overlapping repair sets, we establish the Singleton-type and alphabet-dependent bounds, together with explicit Griesmer, Hamming, and Plotkin bounds. Moreover, we construct nine classes of $\\F_q$-linear pure $(r,δ)$-SSLRCs from maximum distance separable (MDS) stabilizer codes, Reed-Solomon (RS) codes, and linear codes with MDS Hermitian hulls, which are simultaneously optimal with respect to several bounds for $(r,δ)$-SSLRCs.",
+      "url": "https://arxiv.org/abs/2611.22221",
+      "pdf_url": "https://arxiv.org/pdf/2611.22221v1",
+      "published": "2026-11-17T05:04:57Z",
+      "updated": "2026-11-17T05:04:57Z",
+      "categories": [
+        "cs.IT"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-18T07:37:07Z",
+      "analysis": {
+        "summary": "将局部擦除恢复推广到 subsystem stabilizer code，只要求保护逻辑 subsystem，允许 gauge subsystem 改变，并给出代数判据、界和码构造。",
+        "problem": "对指定 repair set，哪些擦除可以仅访问该集合就修复，同时维持受保护逻辑信息？",
+        "setting": "每个 coordinate 属于大小 δ 到 r+δ−1 的 repair set，该集合可修复任意至多 δ−1 个已知擦除。",
+        "main_results": [
+          "不要求 purity 时，作者给出 disjoint repair sets 的 redundancy、supported-subspace 和 mixed counting bounds。",
+          "对有 overlapping repair sets 的 pure codes，给出 Singleton-type、alphabet-dependent、Griesmer、Hamming 和 Plotkin 界。",
+          "构造九类 Fq-linear pure (r,δ)-SSLRCs，并报告若干界同时达到最优。"
+        ],
+        "techniques": [
+          "以 supported stabilizer 与 gauge subspaces 刻画局部恢复，再应用于 CSS、Hermitian hull、MDS 与 RS 结构。"
+        ],
+        "assumptions": [
+          "不同界的 purity、repair-set overlap 和已知擦除/未知错误条件分别适用。locality 计量可访问系统数。"
+        ],
+        "limitations": [
+          "仅据精确 arXiv v1 摘要，未核查各界的公式、构造参数和未说明的假设。未给出几何局域深度或可执行 recovery circuit 的保证。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接涉及访问受限的 QEC 和 subsystem freedom 对资源界的影响。"
+        ],
+        "follow_up": [
+          "读者建议：选一类小参数实例逐项验证 gauge 可变时的 erasure criterion，再比较固定 gauge 所需的访问数。"
+        ],
+        "relevance_score": 89,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.22221v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-19T01:09:50+00:00"
+      },
+      "selected_at": "2026-11-19T01:10:47Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.22166",
+      "version": 1,
+      "title": "Demonstration of a Qubit Control Scheme Compatible with Superconducting Digital Signals",
+      "authors": [
+        "Chenyin Sun",
+        "Yu Xu",
+        "Zihua Chen",
+        "Dayu Li",
+        "Tianzuo Sun",
+        "Chen Zha",
+        "Yuan Li",
+        "Jin Lin",
+        "Lei Jiang",
+        "Tao Rong",
+        "Tao Jiang",
+        "Shaoyu Zhan",
+        "Xueshen Wang",
+        "Shijian Wang",
+        "Wenhui Cao",
+        "Yeru Wang",
+        "Xiaomin Wang",
+        "Ming Gong",
+        "Yulin Wu",
+        "Yuhuai Li",
+        "Gang Wu",
+        "Hui Deng",
+        "Kai Yan",
+        "Sirui Cao",
+        "Futian Liang",
+        "Fusheng Chen",
+        "Qingling Zhu",
+        "Yangsen Ye",
+        "Hao Rong",
+        "Shaojun Guo",
+        "Haoran Qian",
+        "Haibin Zhang",
+        "Yisen Hu",
+        "Shaowei Li",
+        "Jinjin Li",
+        "Cheng-Zhi Peng",
+        "Xiaobo Zhu",
+        "Jian-Wei Pan"
+      ],
+      "abstract": "Superconducting quantum computing faces a critical scalability bottleneck arising from the escalating complexity of traditional analog control infrastructure. Single-Flux-Quantum(SFQ) systems operate at cryogenic temperatures and offer a potential route to addressing these challenges. Using microwave signals at qubit-dependent frequencies to trigger SFQ pulses requires many independent analog microwave sources, limiting the potential to reduce control wiring and increase integration density. A scalable SFQ control system therefore needs a scheme that can address qubits with different transition frequencies using a common clock. Here, we propose and experimentally demonstrate a control scheme for implementing both single- and two-qubit gates. The scheme uses guiding waveforms to rapidly generate bipolar high-speed pulse sequences on a common clock, providing a basis for future implementation in SFQ control systems. Numerically, this scheme achieves a simulated fidelity of 99.99% for 40ns $R(\\varphi, \\fracπ{2})$ gates with arbitrary initial phases and 99.9% for 100ns controlled-Z(CZ) gates. Experimentally, by utilizing an arbitrary waveform generator(AWG) operated at a fixed sampling rate of 25GSa/s to deliver the bipolar high-speed pulse sequences, we successfully demonstrate 40ns single-qubit gates with an average gate fidelity of 99.94% estimated using cross-entropy benchmarking(XEB) and 120ns CZ gates with 99.63% fidelity. These results demonstrate the feasibility of common-clock encoded pulse control for both single- and two-qubit gates.",
+      "url": "https://arxiv.org/abs/2611.22166",
+      "pdf_url": "https://arxiv.org/pdf/2611.22166v1",
+      "published": "2026-11-17T03:58:03Z",
+      "updated": "2026-11-17T03:58:03Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "benchmarking"
+      ],
+      "keyword_matches": {
+        "benchmarking": [
+          "gate fidelity"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-18T07:37:07Z",
+      "analysis": {
+        "summary": "提出以共同 clock 编码 bipolar pulse sequence 的门控制方案，并用 AWG 实验验证单比特与 CZ 门。目标是为不同频率比特共用时钟提供 SFQ 兼容的路径。",
+        "problem": "若各比特都需独立 microwave source，控制线与模拟硬件难扩展。能否用公共采样时钟的导引脉冲同时控制不同转变频率？",
+        "setting": "数值评估与固定 25 GSa/s AWG 的超导门实验。SFQ 是预期后续实现方向。",
+        "main_results": [
+          "模拟给出 40 ns 单比特 R(φ,π/2) fidelity 99.99%，100 ns CZ fidelity 99.9%。",
+          "实验单比特 40 ns 门用 XEB 估计平均 fidelity 99.94%；120 ns CZ 报告 99.63%。模拟与实验的门时长和评价口径分别保留。"
+        ],
+        "techniques": [
+          "以 guiding waveforms 在 common clock 上形成 bipolar high-speed pulses，适配单、双比特原语。"
+        ],
+        "assumptions": [
+          "门性能依赖 AWG 输出和装置校准。摘要所述实验不能自动视为完整 SFQ 冷端控制系统。"
+        ],
+        "limitations": [
+          "仅据 arXiv v1 摘要，未核查 XEB 模型、SPAM 敏感度、CZ fidelity 估计法和误差条。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "有明确门性能表征和 XEB 数据，适合作为控制架构影响认证口径的单一实例。"
+        ],
+        "follow_up": [
+          "读者建议：在同一硬件和目标门下比较共同 clock 与独立驱动的误差谱、漂移及 SPAM 依赖。"
+        ],
+        "relevance_score": 78,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.22166v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-19T01:09:50+00:00"
+      },
+      "selected_at": "2026-11-19T01:10:47Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.22035",
+      "version": 1,
+      "title": "Magic state cultivation with lattice-surgery escape on superconducting hardware",
+      "authors": [
+        "Haoran Liao",
+        "Michael Schutzman",
+        "William Munizzi",
+        "Pranav Mundada",
+        "Gavin Hartnett",
+        "Yuval Baum"
+      ],
+      "abstract": "Magic state cultivation (MSC) is a low-overhead protocol for fault-tolerantly preparing logical magic states. In this work, we implement two MSC variants to prepare a magic state in a distance-5 code on a publicly available IBM Nighthawk processor. The first is a lattice-surgery escape, recently proposed by Hirano et al. and experimentally studied here for the first time. The second is a grafting escape, previously demonstrated by Rosenfeld et al., and extended here by incorporating a switch into a matchable code. Both protocols begin with fault-tolerant cultivation of a T state on a color code, followed by an escape into a larger code. We decode the results using minimum-weight perfect matching or Tesseract on circuit-level error models calibrated to the hardware noise. Compared with the previous experiment, our cultivated T state achieves a logical error probability of 2e-5 at the T-state injection angle, nearly 10x lower with about 3x the retainment. Moreover, our execution of the grafting escape has a 2x lower logical error rate per stabilizer round at a higher retainment. When comparing the two protocols under identical execution conditions and complementary gap postselection based on decoder confidence, lattice-surgery escape into the surface code preserves a T-state fidelity above 0.99 ten rounds after escape at about 5% retainment. By contrast, matchable-switched grafting drops below 0.95 fidelity at comparable retainment. Furthermore, the lattice-surgery escape reaches a logical error rate per stabilizer round of about 0.14% with around 11% average shot retainment. These results establish lattice-surgery escape as a practical MSC protocol that benefits from a direct transition into a surface code, and demonstrate the lowest MSC error and the highest surface-code magic-state fidelity reported to date, advancing the experimental realization of fault-tolerant non-Clifford gadgets.",
+      "url": "https://arxiv.org/abs/2611.22035",
+      "pdf_url": "https://arxiv.org/pdf/2611.22035v1",
+      "published": "2026-11-17T00:56:04Z",
+      "updated": "2026-11-17T00:56:04Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 8,
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "logical error"
+        ],
+        "magic_stabilizer": [
+          "magic state",
+          "stabilizer",
+          "non-Clifford"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-18T07:37:07Z",
+      "analysis": {
+        "summary": "在 IBM Nighthawk 上比较两种 magic-state cultivation 的 escape：lattice surgery 直接送入 surface code，或 grafting 后转成可匹配的混合码。报告同时列出条件保真度、保留率及后续逻辑存储性能。",
+        "problem": "cultivation 先在较小 color code 制备 T 态，但把它移入可继续使用的较大码时会增加错误与时空开销。哪种 escape 能在同一硬件和相近后选择预算下更好保留资源态？",
+        "setting": "从 Steane code 的 T 态出发，最终进入 distance-5 code。按硬件噪声校准 circuit-level model，分别采用 matching 或 Tesseract 与 matching 的混合解码。",
+        "main_results": [
+          "cultivation 阶段在 T-state injection angle 报告 2×10⁻⁵ 的逻辑错误概率，相比先前实验约低十倍、保留率约高三倍。这是跨实验比较。",
+          "在本实验相同执行条件下，LS escape 后立即可在至多约 16% retainment 保持 T-state fidelity>0.99；再经过十轮后，约 5% retainment 时仍高于 0.99。",
+          "matchable-switched grafting 在相近保留率下十轮后低于 0.95。LS 的另一评价点报告每 stabilizer round 约 0.14% 逻辑错误率、平均约 11% shot retainment。这些点不可混作同一后选择设置。"
+        ],
+        "techniques": [
+          "LS 用联合逻辑 ZZ measurement 将小码的 T 态 teleport 到 rotated surface code，减少中间混合码的专用抽取与解码步骤。",
+          "对两类协议均用 decoder confidence 的 complementary-gap postselection，过滤低置信度 shots。不同线路结构需要各自适配的解码器。",
+          "正文区分了更优注入和 Steane-check schedule 带来的 cultivation 改进，以及 escape 后的持续保护。"
+        ],
+        "assumptions": [
+          "保真度绑定于所用注入角、校准模型、decoder 和保留率。每尝试获得资源态的成本需计入未保留 shots。"
+        ],
+        "limitations": [
+          "依据精确 arXiv v1 的摘要、引言和协议说明，所读摘录低于 60000 字符。未审核补充材料、原始计数、置信区间和在线 decode latency。本文报告的 magic-state fidelity 与通用非 Clifford gate fidelity 不可直接等同。"
+        ],
+        "relevance": [
+          "连接 magic、逻辑 code switching、lattice surgery 和 decoding-based postselection，是研究端到端非 Clifford gadget 的具体实验基线。"
+        ],
+        "follow_up": [
+          "读者建议：固定最终 surface code、反馈延迟和期望输出误差，比较每个可用 T 态消耗的物理 qubit-cycles 与尝试数，并测试连续运行时的噪声漂移。"
+        ],
+        "relevance_score": 97,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.22035v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-19T01:09:50+00:00"
+      },
+      "selected_at": "2026-11-19T01:10:47Z"
+    },
+    {
+      "doi": "",
       "id": "2611.21578",
       "version": 1,
       "title": "Resolving and Suppressing Temporally Correlated Noise in Quantum Error Correction",
@@ -12470,6 +13461,603 @@
       "selected_at": "2026-11-10T01:06:45Z"
     },
     {
+      "id": "doi:10.1126/science.aee7961",
+      "version": 1,
+      "title": "Magic state cultivation on a superconducting quantum processor",
+      "authors": [
+        "E. Rosenfeld",
+        "C. Gidney",
+        "G. Roberts",
+        "A. Morvan",
+        "N. Lacroix",
+        "D. Kafri",
+        "J. Marshall",
+        "M. Li",
+        "V. Sivak",
+        "D. Abanin",
+        "A. Abbas",
+        "R. Acharya",
+        "L. Aghababaie Beni",
+        "G. Aigeldinger",
+        "R. Alcaraz",
+        "S. Alcaraz",
+        "T. I. Andersen",
+        "M. Ansmann",
+        "F. Arute",
+        "K. Arya",
+        "W. Askew",
+        "N. Astrakhantsev",
+        "J. Atalaya",
+        "R. Babbush",
+        "B. Ballard",
+        "J. C. Bardin",
+        "H. Bates",
+        "A. Bengtsson",
+        "M. Bigdeli Karimi",
+        "A. Bilmes",
+        "S. Bilodeau",
+        "F. Borjans",
+        "J. Bovaird",
+        "D. Bowers",
+        "L. Brill",
+        "P. Brooks",
+        "M. Broughton",
+        "D. A. Browne",
+        "B. Buchea",
+        "B. B. Buckley",
+        "T. Burger",
+        "B. Burkett",
+        "N. Bushnell",
+        "J. Busnaina",
+        "A. Cabrera",
+        "J. Campero",
+        "H.-S. Chang",
+        "S. Chen",
+        "Z. Chen",
+        "B. Chiaro",
+        "L.-Y. Chih",
+        "A. Y. Cleland",
+        "B. Cochrane",
+        "M. Cockrell",
+        "J. Cogan",
+        "P. Conner",
+        "H. Cook",
+        "R. G. Cortiñas",
+        "W. Courtney",
+        "A. L. Crook",
+        "B. Curtin",
+        "M. Damyanov",
+        "S. Das",
+        "D. M. Debroy",
+        "S. Demura",
+        "P. Donohoe",
+        "I. Drozdov",
+        "A. Dunsworth",
+        "V. Ehimhen",
+        "A. Eickbusch",
+        "A. Moshe Elbag",
+        "L. Ella",
+        "M. Elzouka",
+        "D. Enriquez",
+        "C. Erickson",
+        "L. Faoro",
+        "V. S. Ferreira",
+        "M. Flores",
+        "L. Flores Burgos",
+        "S. Fontes",
+        "E. Forati",
+        "J. Ford",
+        "B. Foxen",
+        "M. Fukami",
+        "A. Wing Lun Fung",
+        "L. Fuste",
+        "S. Ganjam",
+        "G. Garcia",
+        "C. Garrick",
+        "R. Gasca",
+        "H. Gehring",
+        "R. Geiger",
+        "É. Genois",
+        "W. Giang",
+        "D. Gilboa",
+        "J. E. Goeders",
+        "E. C. Gonzales",
+        "R. Gosula",
+        "S. J. de Graaf",
+        "A. Grajales Dau",
+        "D. Graumann",
+        "J. Grebel",
+        "A. Greene",
+        "J. A. Gross",
+        "J. Guerrero",
+        "L. Le Guevel",
+        "T. Ha",
+        "S. Habegger",
+        "T. Hadick",
+        "A. Hadjikhani",
+        "M. C. Hamilton",
+        "M. Hansen",
+        "M. P. Harrigan",
+        "S. D. Harrington",
+        "J. Hartshorn",
+        "S. Heslin",
+        "P. Heu",
+        "O. Higgott",
+        "R. Hiltermann",
+        "J. Hilton",
+        "H.-Y. Huang",
+        "M. Hucka",
+        "C. Hudspeth",
+        "A. Huff",
+        "W. J. Huggins",
+        "L. B. Ioffe",
+        "E. Jeffrey",
+        "S. Jevons",
+        "Z. Jiang",
+        "X. Jin",
+        "C. Joshi",
+        "P. Juhas",
+        "A. Kabel",
+        "H. Kang",
+        "K. Kang",
+        "A. H. Karamlou",
+        "R. Kaufman",
+        "K. Kechedzhi",
+        "T. Khattar",
+        "M. Khezri",
+        "S. Kim",
+        "P. V. Klimov",
+        "C. M. Knaut",
+        "B. Kobrin",
+        "A. N. Korotkov",
+        "F. Kostritsa",
+        "J. M. Kreikebaum",
+        "R. Kudo",
+        "B. Kueffler",
+        "A. Kumar",
+        "V. D. Kurilovich",
+        "V. Kutsko",
+        "T. Lange-Dei",
+        "B. W. Langley",
+        "P. Laptev",
+        "K.-M. Lau",
+        "E. Leavell",
+        "J. Ledford",
+        "J. Lee",
+        "K. Lee",
+        "B. J. Lester",
+        "W. Leung",
+        "L. Li",
+        "W. Yan Li",
+        "A. T. Lill",
+        "W. P. Livingston",
+        "M. T. Lloyd",
+        "A. Locharla",
+        "L. De Lorenzo",
+        "E. Lucero",
+        "D. Lundahl",
+        "A. Lunt",
+        "S. Madhuk",
+        "A. Maiti",
+        "A. Maloney",
+        "S. Mandrà",
+        "L. S. Martin",
+        "O. Martin",
+        "E. Mascot",
+        "P. Masih Das",
+        "D. Maslov",
+        "M. Mathews",
+        "C. Maxfield",
+        "J. R. McClean",
+        "M. McEwen",
+        "S. Meeks",
+        "A. Megrant",
+        "K. C. Miao",
+        "Z. K. Minev",
+        "R. Molavi",
+        "S. Molina",
+        "S. Montazeri",
+        "C. Neill",
+        "M. Newman",
+        "A. Nguyen",
+        "M. Nguyen",
+        "C.-H. Ni",
+        "M. Yuezhen Niu",
+        "N. Noll",
+        "L. Oas",
+        "W. D. Oliver",
+        "R. Orosco",
+        "K. Ottosson",
+        "A. Pagano",
+        "A. Di Paolo",
+        "S. Peek",
+        "D. Peterson",
+        "A. Pizzuto",
+        "E. Portoles",
+        "R. Potter",
+        "O. Pritchard",
+        "L. Pryadko",
+        "M. Qian",
+        "C. Quintana",
+        "G. Ramachandran",
+        "A. Ranadive",
+        "M. J. Reagor",
+        "R. Resnick",
+        "D. M. Rhodes",
+        "D. Riley",
+        "R. Rodriguez",
+        "E. Ropes",
+        "L. B. De Rose",
+        "E. Rosenberg",
+        "D. Rosenstock",
+        "E. Rossi",
+        "P. Roushan",
+        "D. A. Rower",
+        "R. Salazar",
+        "K. Sankaragomathi",
+        "M. Can Sarihan",
+        "M. Schaefer",
+        "S. Schroeder",
+        "H. F. Schurkus",
+        "A. Shahingohar",
+        "M. J. Shearn",
+        "A. Shorter",
+        "N. Shutty",
+        "V. Shvarts",
+        "S. Small",
+        "W. C. Smith",
+        "D. A. Sobel",
+        "B. Spells",
+        "S. Springer",
+        "G. Sterling",
+        "J. Suchard",
+        "A. Szasz",
+        "A. Sztein",
+        "M. Taylor",
+        "J. Priyanka Thiruraman",
+        "D. Thor",
+        "D. Timucin",
+        "E. Tomita",
+        "A. Torres",
+        "M. M. Torunbalci",
+        "H. Tran",
+        "A. Vaishnav",
+        "J. Vargas",
+        "S. Vdovichev",
+        "G. Vidal",
+        "B. Villalonga",
+        "C. Vollgraff Heidweiller",
+        "M. Voorhees",
+        "S. Waltman",
+        "J. Waltz",
+        "S. X. Wang",
+        "D. Wang",
+        "B. Ware",
+        "J. D. Watson",
+        "Y. Wei",
+        "T. Weidel",
+        "T. White",
+        "K. Wong",
+        "B. W. K. Woo",
+        "C. J. Wood",
+        "M. Woodson",
+        "C. Xing",
+        "Z. J. Yao",
+        "P. Yeh",
+        "B. Ying",
+        "J. Yoo",
+        "N. Yosri",
+        "E. Young",
+        "G. Young",
+        "A. Zalcman",
+        "R. Zhang",
+        "Y. Zhang",
+        "N. Zhu",
+        "N. Zobrist",
+        "Z. Zou",
+        "H. Neven",
+        "S. Boixo",
+        "C. Jones",
+        "J. Kelly",
+        "A. Bourassa",
+        "K. J. Satzinger"
+      ],
+      "abstract": "Fault-tolerant quantum computing requires a universal gate set, but the necessary non-Clifford gates represent a significant resource cost for most quantum error correction architectures. Magic state cultivation offers an efficient alternative to resource-intensive distillation protocols; however, testing the proposal’s assumptions represents a challenging departure from quantum memory experiments. We present an experimental study of magic state cultivation on a superconducting quantum processor. We implement cultivation, including code-switching into a surface code, and develop a fault-tolerant measurement protocol to bound the magic state fidelity. Cultivation reduces the error by a factor of 40, with a state fidelity of at least 0.9999(1) (retaining 8% of attempts). Our results experimentally establish magic state cultivation as a viable solution to one of quantum computing’s most important challenges.",
+      "abstract_basis": "crossref_abstract",
+      "abstract_source_url": "https://api.crossref.org/journals/1095-9203/works?filter=from-online-pub-date%3A2026-10-15%2Cuntil-online-pub-date%3A2026-10-18%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
+      "url": "https://www.science.org/doi/10.1126/science.aee7961",
+      "pdf_url": "",
+      "published": "2026-10-15T13:01:00Z",
+      "updated": "2026-10-15T13:01:00Z",
+      "categories": [],
+      "sources": [
+        "science"
+      ],
+      "publication": {
+        "journal_id": "science",
+        "journal": "Science",
+        "doi": "10.1126/science.aee7961",
+        "url": "https://www.science.org/doi/10.1126/science.aee7961",
+        "published": "2026-10-15T13:01:00Z",
+        "date_basis": "publisher_rss"
+      },
+      "keyword_score": 7,
+      "topics": [
+        "logical_qec",
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction"
+        ],
+        "magic_stabilizer": [
+          "magic state",
+          "non-Clifford"
+        ]
+      },
+      "first_seen_at": "2026-10-16T04:38:00Z",
+      "doi": "10.1126/science.aee7961",
+      "analysis": {
+        "summary": "在超导处理器上实现 magic-state cultivation 及 code switching 到 surface code，并以 fault-tolerant measurement protocol 给出所得 magic-state fidelity 的下界。",
+        "problem": "通用容错门集所需的 non-Clifford resource 通常昂贵。cultivation 可降低制备成本，但其输入、后选择和输出质量的假设需要超出 memory experiment 的专门验证。",
+        "setting": "magic 态培养实验，包含转入 surface code 的步骤，质量以专门的容错测量作界。",
+        "main_results": [
+          "正式 Crossref 摘要报告错误降低 40 倍，state fidelity 至少 0.9999(1)，同时保留 8% 的 attempts。",
+          "fidelity 是所述测量协议给出的 lower bound；8% retainment 意味着每个可用输出的总尝试成本必须纳入未保留 runs。"
+        ],
+        "techniques": [
+          "将培养与 code switching 串接，并设计 fault-tolerant measurement 去约束 magic 态质量。"
+        ],
+        "assumptions": [
+          "质量结论依赖该测量协议的模型、误差假设和 postselection。"
+        ],
+        "limitations": [
+          "依据精确 DOI 的正式 Crossref 摘要。出版社页面返回 403，未读正文。未核查测量证明、误差条、噪声模型、完整资源表或摘要未说明的假设，不能将该态保真度直接当作任意后续 T gate fidelity。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "同时涉及 magic、logical code switching 与认证成本，是非 Clifford logical gadget 的直接实验基线。"
+        ],
+        "follow_up": [
+          "读者建议：在统一最终码与输出错误目标下计算每个可用 T 态的 qubit-cycles、总 shots 和测量认证成本。"
+        ],
+        "relevance_score": 98,
+        "publication_significance": [
+          "基于正式摘要的推断：对 cultivation 做端到端实验并专门界定输出态质量，回应了低开销 non-Clifford 资源的验证障碍。40 倍误差降低、质量下界和保留率是摘要提供的实验依据。它把资源理论协议连接到硬件逻辑处理，具有跨纠错架构的物理意义，符合 Science 对重要实验推进的范围。摘要不足以评估完整证明、先前工作比较或总体工厂成本。"
+        ],
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://api.crossref.org/works/10.1126/science.aee7961",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-19T01:09:50+00:00"
+      },
+      "selected_at": "2026-11-19T01:10:47Z"
+    },
+    {
+      "id": "doi:10.1103/bpc2-zlx5",
+      "version": 1,
+      "title": "Digital Dissipative State Preparation for Frustration-Free Gapless Quantum Systems",
+      "authors": [
+        "Johannes Feldmeier, Yu-Jie Liu, Mikhail D. Lukin, and Soonwon Choi"
+      ],
+      "abstract": "Preparing algebraically correlated ground states of quantum many-body systems is an important, yet challenging task for quantum simulation. We introduce a protocol that employs local projective measurements and unitary feedback for frustration-free gapless systems. Our approach prepares a priori unk…",
+      "abstract_basis": "publisher_feed_excerpt",
+      "abstract_source_url": "https://feeds.aps.org/rss/recent/prl.xml",
+      "url": "https://journals.aps.org/prl/abstract/10.1103/bpc2-zlx5",
+      "pdf_url": "",
+      "published": "2026-10-15T10:00:00Z",
+      "updated": "2026-10-15T10:00:00Z",
+      "categories": [],
+      "sources": [
+        "prl"
+      ],
+      "publication": {
+        "journal_id": "prl",
+        "journal": "Physical Review Letters",
+        "doi": "10.1103/bpc2-zlx5",
+        "url": "https://journals.aps.org/prl/abstract/10.1103/bpc2-zlx5",
+        "published": "2026-10-15T10:00:00Z",
+        "date_basis": "publisher_rss"
+      },
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "state preparation"
+        ]
+      },
+      "first_seen_at": "2026-10-16T04:38:00Z",
+      "doi": "10.1103/bpc2-zlx5",
+      "metadata_warnings": [
+        "Journal endpoint returned HTTP 403; skipped without retry"
+      ],
+      "analysis": {
+        "summary": "用 local projective measurements 与 unitary feedback 数字制备 frustration-free gapless systems 的未知 ground states，作者把 transient cooling 的规模律与 quasiparticle 临界性质联系起来。",
+        "problem": "无能隙系统的长程代数关联会使 ground-state preparation 困难，如何借助局部测量和反馈获得可控的制备时间？",
+        "setting": "frustration-free gapless 模型，单粒子动力学作解析基础，many-body 情形以 quasiparticle 物理作推广依据。",
+        "main_results": [
+          "作者报告制备时间随 system size 为多项式，并预测冷却动力学反映 universal critical properties。",
+          "当 dynamical critical exponent 不小于 quasiparticle 探索的 effective spatial dimension 时，所给制备时间为 inverse finite-size gap 的线性量级，带 logarithmic correction。",
+          "一维/二维 ferromagnetic Heisenberg、Fredkin chain 及二维 RVB model 的数值检验支持该预测。"
+        ],
+        "techniques": [
+          "将局部投影测量与条件 unitary correction 结合，分析单粒子传播和冷却，再按 quasiparticle 机制理解 many-body dynamics。"
+        ],
+        "assumptions": [
+          "frustration-free、gapless 及 quasiparticle 假设是适用条件。单粒子解析证明和 many-body 推广论证的证据强度需分别保留。"
+        ],
+        "limitations": [
+          "依据正式 Physical Review Letters 的公开摘要，正文有订阅访问限制。未读证明、测量轮数、feedback latency 或完整 error dependence。多项式制备时间不能单靠摘要换成对所有 many-body 模型的定理。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "涉及 measurement-assisted state preparation 与 inverse-gap 资源，适合比较自适应操作能减轻哪些制备障碍。"
+        ],
+        "follow_up": [
+          "读者建议：选取一个模型，在固定目标 fidelity 和局部测量强度下分别统计轮数、反馈时间和失败重启开销。"
+        ],
+        "relevance_score": 85,
+        "publication_significance": [
+          "基于公开正式摘要的推断：数字测量反馈对 gapless 基态制备提出了机制明确的路线，单粒子分析和多种模型数值支持其物理图景。将 critical dynamics 与状态制备时间相连，符合 Physical Review Letters 对简洁物理机制及较广模型意义的主题范围。未核查正文和已有协议对照，无法评价完整证明及普适性。"
+        ],
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://journals.aps.org/prl/abstract/10.1103/bpc2-zlx5",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-19T01:09:50+00:00"
+      },
+      "selected_at": "2026-11-19T01:10:47Z"
+    },
+    {
+      "id": "doi:10.1103/2xnf-jcyn",
+      "version": 1,
+      "title": "Predicting Magic from Very Few Measurements",
+      "authors": [
+        "J. M. Varela, L. L. Keller, A. de Oliveira Junior, D. A. Moreira, R. Chaves, and R. A. Macêdo"
+      ],
+      "abstract": "The nonstabilizerness of quantum states is a necessary resource for universal quantum computation, yet its characterization is notoriously demanding. Quantifying nonstabilizerness typically requires an exponential number of measurements and a doubly exponential classical post-processing cost to evaluate its standard monotones. In this work, we show that nonstabilizerness is, to a large extent, in the eyes of the beholder: it can be witnessed and quantified using set of m n -qubit Pauli measurements, provided the set contains anti-commuting pairs. We introduce a general framework that projects the stabilizer polytope onto the subspace defined by these observables and provide an algorithm that estimates magic from Pauli expectation values with runtime exponential in the number of measurements m and polynomial in the number of qubits n . By relating the problem to a stabilizer-restricted variant of the quantum marginal problem, we also prove that deciding membership in the corresponding reduced stabilizer polytope is NP-hard. In particular, unless P = NP , no algorithm polynomial in m can solve the problem in full generality, thus establishing fundamental complexity-theoretic limitations. Finally, we employ our framework to compute nonstabilizerness in different Hamiltonian ground states, demonstrating the practical performance of our method in regimes beyond the reach of existing techniques.",
+      "abstract_basis": "crossref_abstract",
+      "abstract_source_url": "https://api.crossref.org/journals/2691-3399/works?filter=from-online-pub-date%3A2026-10-14%2Cuntil-online-pub-date%3A2026-10-17%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
+      "url": "https://journals.aps.org/prxquantum/abstract/10.1103/2xnf-jcyn",
+      "pdf_url": "",
+      "published": "2026-10-14",
+      "updated": "2026-10-14",
+      "categories": [],
+      "sources": [
+        "prx_quantum"
+      ],
+      "publication": {
+        "journal_id": "prx_quantum",
+        "journal": "PRX Quantum",
+        "doi": "10.1103/2xnf-jcyn",
+        "url": "https://journals.aps.org/prxquantum/abstract/10.1103/2xnf-jcyn",
+        "published": "2026-10-14T10:00:00Z",
+        "date_basis": "publisher_rss"
+      },
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "first_seen_at": "2026-10-15T04:47:49Z",
+      "doi": "10.1103/2xnf-jcyn",
+      "analysis": {
+        "summary": "把 stabilizer polytope 投影到所选 Pauli observables 的低维坐标，用有限 measurement settings 的期望值见证和约束 magic。把观测维度压低可以降低经典计算，但一般实例的复杂度随 settings 数指数增长。",
+        "problem": "完整态的 magic monotones 计算昂贵，而实验往往只有有限 observables。能否只就这些可见数据判断它与 stabilizer mixture 是否相容？",
+        "setting": "n-qubit states，选择 m 个 Pauli observables，集合包含 anti-commuting pairs；输入是其 expectation values。",
+        "main_results": [
+          "作者给出算法，runtime 对 m 指数、对 n 多项式。m 表示 observable 数量，不是每个 expectation value 所用 shots。",
+          "通过 stabilizer-restricted quantum marginal 问题证明 reduced stabilizer polytope membership 为 NP-hard，除非 P=NP，不能期待一般问题有关于 m 的多项式算法。",
+          "不同 Hamiltonian ground states 上的应用展示少量可见数据下的实用性。"
+        ],
+        "techniques": [
+          "投影保留实验可访问坐标，比较 expectation vector 与 reduced stabilizer polytope。非对易可观测量在受限数据中保留 nonstabilizer obstruction。"
+        ],
+        "assumptions": [
+          "该评价基于选定 observables，部分 magic 可在这些坐标投影中不可见。测量误差和有限样本容差需另作处理。"
+        ],
+        "limitations": [
+          "依据正式 PRX Quantum 及精确 DOI Crossref 摘要。未核查算法细节、NP-hard reduction、具体 monotone 和有限 shots 置信保证。少 settings 不等于无样本成本，也不保证重建全部 state magic。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接连通 magic、Pauli measurement access 和 classical post-processing，是资源可见性问题的具体技术框架。"
+        ],
+        "follow_up": [
+          "读者建议：为每个 Pauli expectation 加入置信区间，比较 robust polytope separation 所需总 shots，并量化不同非对易 settings 的见证能力。"
+        ],
+        "relevance_score": 96,
+        "publication_significance": [
+          "基于正式摘要的推断：将 full-state 资源问题转成 reduced stabilizer geometry，回应了实验可读坐标有限与经典后处理昂贵的双重障碍。算法和复杂度界同时限定可行规模，ground-state 例子提供应用证据，符合 PRX Quantum 的资源理论与认证范围。摘要不足以复核 reduction、算法精度及完整 prior-art 比较。"
+        ],
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://api.crossref.org/works/10.1103/2xnf-jcyn",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-19T01:09:50+00:00"
+      },
+      "selected_at": "2026-11-19T01:10:47Z"
+    },
+    {
+      "id": "doi:10.1103/1kmf-6fz9",
+      "version": 1,
+      "title": "Fast Gates for Bit-Flip Protected Superconducting Qubits",
+      "authors": [
+        "C. A. Siegele, A. A. Sokolova, L. N. Kapoor, F. Hassani, and J. M. Fink"
+      ],
+      "abstract": "Superconducting qubits offer an unprecedentedly high degree of flexibility in terms of circuit encoding and parameter choices. However, in designing the qubit parameters, one typically faces the conflicting goals of long coherence times and simple control capabilities. Both are determined by the wavefunction overlap of the qubit basis states and the corresponding matrix elements. Here, we address this problem by introducing a qubit architecture with real-time tunable bit-flip protection. In the first, the “heavy” regime, the energy relaxation time can be on the order of hours for fluxons located in two near-degenerate ground states, as recently demonstrated in Ref. [Hassani ., (2023)]. The second, “light” regime, facilitates high-fidelity control on nanosecond timescales without the need for microwave signals. We propose two different tuning mechanisms of the qubit potential and show that base-band flux-pulses of around 10 ns are sufficient to realize a universal set of high-fidelity single- and two-qubit gates. This realizes a hardware-efficient and strongly noise-biased qubit platform with analogies to cat qubits with the potential for efficient quantum error correction. We expect that the introduced concept of fast and real-time wavefunction control can also be applied to other hardware-protected qubit designs.",
+      "abstract_basis": "crossref_abstract",
+      "abstract_source_url": "https://api.crossref.org/journals/2691-3399/works?filter=from-online-pub-date%3A2026-10-14%2Cuntil-online-pub-date%3A2026-10-17%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
+      "url": "https://journals.aps.org/prxquantum/abstract/10.1103/1kmf-6fz9",
+      "pdf_url": "",
+      "published": "2026-10-14",
+      "updated": "2026-10-14",
+      "categories": [],
+      "sources": [
+        "prx_quantum"
+      ],
+      "publication": {
+        "journal_id": "prx_quantum",
+        "journal": "PRX Quantum",
+        "doi": "10.1103/1kmf-6fz9",
+        "url": "https://journals.aps.org/prxquantum/abstract/10.1103/1kmf-6fz9",
+        "published": "2026-10-14T10:00:00Z",
+        "date_basis": "publisher_rss"
+      },
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction"
+        ]
+      },
+      "first_seen_at": "2026-10-15T04:47:49Z",
+      "doi": "10.1103/1kmf-6fz9",
+      "analysis": {
+        "summary": "通过实时调整受保护 superconducting qubit 的 wavefunction overlap，在存储时维持 bit-flip protection，在操作时切换到较易控制的 light regime。",
+        "problem": "bit-flip protection 往往伴随较弱控制矩阵元。如何在高保护存储和快速通用门之间切换，并保留有利的 noise bias？",
+        "setting": "fluxon 编码的 heavy/light regimes，提出两类 potential-tuning 机制，以 base-band flux pulses 实现单、双比特门。",
+        "main_results": [
+          "正式摘要称约 10 ns 的 base-band pulses 足以实现所述 universal set 的高保真单、双比特门。",
+          "作者将 heavy regime 小时量级 relaxation 引用为先前已有实验背景，当前门方案的性能以理论/数值研究支持。"
+        ],
+        "techniques": [
+          "改变 qubit potential，临时调整基态 wavefunction overlap 和耦合矩阵元，使存储与 gate 操作采用不同的物理工作区间。"
+        ],
+        "assumptions": [
+          "门执行期间的保护及 noise bias 与 idle 情况不同；资源需要计入切换脉冲和过程中全部噪声。"
+        ],
+        "limitations": [
+          "依据正式 PRX Quantum 摘要。未核查门脉冲、全噪声模型、error budget 或未说明假设；约 10 ns 本身不提供 SPAM-robust gate certification。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "以明确控制原语连接 noise-biased protection 和通用门，而不只讨论器件材料。"
+        ],
+        "follow_up": [
+          "读者建议：逐段评估 heavy→light→heavy 的错误通道，固定同样总门时长比较 bit-flip、phase-flip 与泄漏。"
+        ],
+        "relevance_score": 84,
+        "publication_significance": [
+          "基于正式摘要的推断：通过可调 wavefunction control 调和保护和门速，是论文处理的物理障碍；门集与时间尺度给出数值可行性依据。它与 cat-like biased-noise QEC 有接口，符合 PRX Quantum 的量子硬件和信息处理范围。摘要不足以评价完整误差模型、前人比较和实验可实施性。"
+        ],
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://api.crossref.org/works/10.1103/1kmf-6fz9",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-19T01:09:50+00:00"
+      },
+      "selected_at": "2026-11-19T01:10:47Z"
+    },
+    {
       "doi": "",
       "id": "2610.18482",
       "version": 1,
@@ -20159,82 +21747,6 @@
       "first_seen_at": "2026-10-15T04:47:49Z"
     },
     {
-      "id": "doi:10.1103/2xnf-jcyn",
-      "version": 1,
-      "title": "Predicting Magic from Very Few Measurements",
-      "authors": [
-        "J. M. Varela, L. L. Keller, A. de Oliveira Junior, D. A. Moreira, R. Chaves, and R. A. Macêdo"
-      ],
-      "abstract": "The nonstabilizerness of quantum states is a necessary resource for universal quantum computation, yet its characterization is notoriously demanding. Quantifying nonstabilizerness typically requires an exponential number of measurements and a doubly exponential classical post-processing cost to evaluate its standard monotones. In this work, we show that nonstabilizerness is, to a large extent, in the eyes of the beholder: it can be witnessed and quantified using set of m n -qubit Pauli measurements, provided the set contains anti-commuting pairs. We introduce a general framework that projects the stabilizer polytope onto the subspace defined by these observables and provide an algorithm that estimates magic from Pauli expectation values with runtime exponential in the number of measurements m and polynomial in the number of qubits n . By relating the problem to a stabilizer-restricted variant of the quantum marginal problem, we also prove that deciding membership in the corresponding reduced stabilizer polytope is NP-hard. In particular, unless P = NP , no algorithm polynomial in m can solve the problem in full generality, thus establishing fundamental complexity-theoretic limitations. Finally, we employ our framework to compute nonstabilizerness in different Hamiltonian ground states, demonstrating the practical performance of our method in regimes beyond the reach of existing techniques.",
-      "abstract_basis": "crossref_abstract",
-      "abstract_source_url": "https://api.crossref.org/journals/2691-3399/works?filter=from-online-pub-date%3A2026-10-14%2Cuntil-online-pub-date%3A2026-10-17%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
-      "url": "https://journals.aps.org/prxquantum/abstract/10.1103/2xnf-jcyn",
-      "pdf_url": "",
-      "published": "2026-10-14",
-      "updated": "2026-10-14",
-      "categories": [],
-      "sources": [
-        "prx_quantum"
-      ],
-      "publication": {
-        "journal_id": "prx_quantum",
-        "journal": "PRX Quantum",
-        "doi": "10.1103/2xnf-jcyn",
-        "url": "https://journals.aps.org/prxquantum/abstract/10.1103/2xnf-jcyn",
-        "published": "2026-10-14T10:00:00Z",
-        "date_basis": "publisher_rss"
-      },
-      "keyword_score": 3,
-      "topics": [
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "magic_stabilizer": [
-          "stabilizer"
-        ]
-      },
-      "first_seen_at": "2026-10-15T04:47:49Z",
-      "doi": "10.1103/2xnf-jcyn"
-    },
-    {
-      "id": "doi:10.1103/1kmf-6fz9",
-      "version": 1,
-      "title": "Fast Gates for Bit-Flip Protected Superconducting Qubits",
-      "authors": [
-        "C. A. Siegele, A. A. Sokolova, L. N. Kapoor, F. Hassani, and J. M. Fink"
-      ],
-      "abstract": "Superconducting qubits offer an unprecedentedly high degree of flexibility in terms of circuit encoding and parameter choices. However, in designing the qubit parameters, one typically faces the conflicting goals of long coherence times and simple control capabilities. Both are determined by the wavefunction overlap of the qubit basis states and the corresponding matrix elements. Here, we address this problem by introducing a qubit architecture with real-time tunable bit-flip protection. In the first, the “heavy” regime, the energy relaxation time can be on the order of hours for fluxons located in two near-degenerate ground states, as recently demonstrated in Ref. [Hassani ., (2023)]. The second, “light” regime, facilitates high-fidelity control on nanosecond timescales without the need for microwave signals. We propose two different tuning mechanisms of the qubit potential and show that base-band flux-pulses of around 10 ns are sufficient to realize a universal set of high-fidelity single- and two-qubit gates. This realizes a hardware-efficient and strongly noise-biased qubit platform with analogies to cat qubits with the potential for efficient quantum error correction. We expect that the introduced concept of fast and real-time wavefunction control can also be applied to other hardware-protected qubit designs.",
-      "abstract_basis": "crossref_abstract",
-      "abstract_source_url": "https://api.crossref.org/journals/2691-3399/works?filter=from-online-pub-date%3A2026-10-14%2Cuntil-online-pub-date%3A2026-10-17%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
-      "url": "https://journals.aps.org/prxquantum/abstract/10.1103/1kmf-6fz9",
-      "pdf_url": "",
-      "published": "2026-10-14",
-      "updated": "2026-10-14",
-      "categories": [],
-      "sources": [
-        "prx_quantum"
-      ],
-      "publication": {
-        "journal_id": "prx_quantum",
-        "journal": "PRX Quantum",
-        "doi": "10.1103/1kmf-6fz9",
-        "url": "https://journals.aps.org/prxquantum/abstract/10.1103/1kmf-6fz9",
-        "published": "2026-10-14T10:00:00Z",
-        "date_basis": "publisher_rss"
-      },
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction"
-        ]
-      },
-      "first_seen_at": "2026-10-15T04:47:49Z",
-      "doi": "10.1103/1kmf-6fz9"
-    },
-    {
       "doi": "",
       "id": "2610.22357",
       "version": 1,
@@ -21206,385 +22718,6 @@
       "first_seen_at": "2026-10-16T04:38:00Z"
     },
     {
-      "id": "doi:10.1126/science.aee7961",
-      "version": 1,
-      "title": "Magic state cultivation on a superconducting quantum processor",
-      "authors": [
-        "E. Rosenfeld",
-        "C. Gidney",
-        "G. Roberts",
-        "A. Morvan",
-        "N. Lacroix",
-        "D. Kafri",
-        "J. Marshall",
-        "M. Li",
-        "V. Sivak",
-        "D. Abanin",
-        "A. Abbas",
-        "R. Acharya",
-        "L. Aghababaie Beni",
-        "G. Aigeldinger",
-        "R. Alcaraz",
-        "S. Alcaraz",
-        "T. I. Andersen",
-        "M. Ansmann",
-        "F. Arute",
-        "K. Arya",
-        "W. Askew",
-        "N. Astrakhantsev",
-        "J. Atalaya",
-        "R. Babbush",
-        "B. Ballard",
-        "J. C. Bardin",
-        "H. Bates",
-        "A. Bengtsson",
-        "M. Bigdeli Karimi",
-        "A. Bilmes",
-        "S. Bilodeau",
-        "F. Borjans",
-        "J. Bovaird",
-        "D. Bowers",
-        "L. Brill",
-        "P. Brooks",
-        "M. Broughton",
-        "D. A. Browne",
-        "B. Buchea",
-        "B. B. Buckley",
-        "T. Burger",
-        "B. Burkett",
-        "N. Bushnell",
-        "J. Busnaina",
-        "A. Cabrera",
-        "J. Campero",
-        "H.-S. Chang",
-        "S. Chen",
-        "Z. Chen",
-        "B. Chiaro",
-        "L.-Y. Chih",
-        "A. Y. Cleland",
-        "B. Cochrane",
-        "M. Cockrell",
-        "J. Cogan",
-        "P. Conner",
-        "H. Cook",
-        "R. G. Cortiñas",
-        "W. Courtney",
-        "A. L. Crook",
-        "B. Curtin",
-        "M. Damyanov",
-        "S. Das",
-        "D. M. Debroy",
-        "S. Demura",
-        "P. Donohoe",
-        "I. Drozdov",
-        "A. Dunsworth",
-        "V. Ehimhen",
-        "A. Eickbusch",
-        "A. Moshe Elbag",
-        "L. Ella",
-        "M. Elzouka",
-        "D. Enriquez",
-        "C. Erickson",
-        "L. Faoro",
-        "V. S. Ferreira",
-        "M. Flores",
-        "L. Flores Burgos",
-        "S. Fontes",
-        "E. Forati",
-        "J. Ford",
-        "B. Foxen",
-        "M. Fukami",
-        "A. Wing Lun Fung",
-        "L. Fuste",
-        "S. Ganjam",
-        "G. Garcia",
-        "C. Garrick",
-        "R. Gasca",
-        "H. Gehring",
-        "R. Geiger",
-        "É. Genois",
-        "W. Giang",
-        "D. Gilboa",
-        "J. E. Goeders",
-        "E. C. Gonzales",
-        "R. Gosula",
-        "S. J. de Graaf",
-        "A. Grajales Dau",
-        "D. Graumann",
-        "J. Grebel",
-        "A. Greene",
-        "J. A. Gross",
-        "J. Guerrero",
-        "L. Le Guevel",
-        "T. Ha",
-        "S. Habegger",
-        "T. Hadick",
-        "A. Hadjikhani",
-        "M. C. Hamilton",
-        "M. Hansen",
-        "M. P. Harrigan",
-        "S. D. Harrington",
-        "J. Hartshorn",
-        "S. Heslin",
-        "P. Heu",
-        "O. Higgott",
-        "R. Hiltermann",
-        "J. Hilton",
-        "H.-Y. Huang",
-        "M. Hucka",
-        "C. Hudspeth",
-        "A. Huff",
-        "W. J. Huggins",
-        "L. B. Ioffe",
-        "E. Jeffrey",
-        "S. Jevons",
-        "Z. Jiang",
-        "X. Jin",
-        "C. Joshi",
-        "P. Juhas",
-        "A. Kabel",
-        "H. Kang",
-        "K. Kang",
-        "A. H. Karamlou",
-        "R. Kaufman",
-        "K. Kechedzhi",
-        "T. Khattar",
-        "M. Khezri",
-        "S. Kim",
-        "P. V. Klimov",
-        "C. M. Knaut",
-        "B. Kobrin",
-        "A. N. Korotkov",
-        "F. Kostritsa",
-        "J. M. Kreikebaum",
-        "R. Kudo",
-        "B. Kueffler",
-        "A. Kumar",
-        "V. D. Kurilovich",
-        "V. Kutsko",
-        "T. Lange-Dei",
-        "B. W. Langley",
-        "P. Laptev",
-        "K.-M. Lau",
-        "E. Leavell",
-        "J. Ledford",
-        "J. Lee",
-        "K. Lee",
-        "B. J. Lester",
-        "W. Leung",
-        "L. Li",
-        "W. Yan Li",
-        "A. T. Lill",
-        "W. P. Livingston",
-        "M. T. Lloyd",
-        "A. Locharla",
-        "L. De Lorenzo",
-        "E. Lucero",
-        "D. Lundahl",
-        "A. Lunt",
-        "S. Madhuk",
-        "A. Maiti",
-        "A. Maloney",
-        "S. Mandrà",
-        "L. S. Martin",
-        "O. Martin",
-        "E. Mascot",
-        "P. Masih Das",
-        "D. Maslov",
-        "M. Mathews",
-        "C. Maxfield",
-        "J. R. McClean",
-        "M. McEwen",
-        "S. Meeks",
-        "A. Megrant",
-        "K. C. Miao",
-        "Z. K. Minev",
-        "R. Molavi",
-        "S. Molina",
-        "S. Montazeri",
-        "C. Neill",
-        "M. Newman",
-        "A. Nguyen",
-        "M. Nguyen",
-        "C.-H. Ni",
-        "M. Yuezhen Niu",
-        "N. Noll",
-        "L. Oas",
-        "W. D. Oliver",
-        "R. Orosco",
-        "K. Ottosson",
-        "A. Pagano",
-        "A. Di Paolo",
-        "S. Peek",
-        "D. Peterson",
-        "A. Pizzuto",
-        "E. Portoles",
-        "R. Potter",
-        "O. Pritchard",
-        "L. Pryadko",
-        "M. Qian",
-        "C. Quintana",
-        "G. Ramachandran",
-        "A. Ranadive",
-        "M. J. Reagor",
-        "R. Resnick",
-        "D. M. Rhodes",
-        "D. Riley",
-        "R. Rodriguez",
-        "E. Ropes",
-        "L. B. De Rose",
-        "E. Rosenberg",
-        "D. Rosenstock",
-        "E. Rossi",
-        "P. Roushan",
-        "D. A. Rower",
-        "R. Salazar",
-        "K. Sankaragomathi",
-        "M. Can Sarihan",
-        "M. Schaefer",
-        "S. Schroeder",
-        "H. F. Schurkus",
-        "A. Shahingohar",
-        "M. J. Shearn",
-        "A. Shorter",
-        "N. Shutty",
-        "V. Shvarts",
-        "S. Small",
-        "W. C. Smith",
-        "D. A. Sobel",
-        "B. Spells",
-        "S. Springer",
-        "G. Sterling",
-        "J. Suchard",
-        "A. Szasz",
-        "A. Sztein",
-        "M. Taylor",
-        "J. Priyanka Thiruraman",
-        "D. Thor",
-        "D. Timucin",
-        "E. Tomita",
-        "A. Torres",
-        "M. M. Torunbalci",
-        "H. Tran",
-        "A. Vaishnav",
-        "J. Vargas",
-        "S. Vdovichev",
-        "G. Vidal",
-        "B. Villalonga",
-        "C. Vollgraff Heidweiller",
-        "M. Voorhees",
-        "S. Waltman",
-        "J. Waltz",
-        "S. X. Wang",
-        "D. Wang",
-        "B. Ware",
-        "J. D. Watson",
-        "Y. Wei",
-        "T. Weidel",
-        "T. White",
-        "K. Wong",
-        "B. W. K. Woo",
-        "C. J. Wood",
-        "M. Woodson",
-        "C. Xing",
-        "Z. J. Yao",
-        "P. Yeh",
-        "B. Ying",
-        "J. Yoo",
-        "N. Yosri",
-        "E. Young",
-        "G. Young",
-        "A. Zalcman",
-        "R. Zhang",
-        "Y. Zhang",
-        "N. Zhu",
-        "N. Zobrist",
-        "Z. Zou",
-        "H. Neven",
-        "S. Boixo",
-        "C. Jones",
-        "J. Kelly",
-        "A. Bourassa",
-        "K. J. Satzinger"
-      ],
-      "abstract": "Fault-tolerant quantum computing requires a universal gate set, but the necessary non-Clifford gates represent a significant resource cost for most quantum error correction architectures. Magic state cultivation offers an efficient alternative to resource-intensive distillation protocols; however, testing the proposal’s assumptions represents a challenging departure from quantum memory experiments. We present an experimental study of magic state cultivation on a superconducting quantum processor. We implement cultivation, including code-switching into a surface code, and develop a fault-tolerant measurement protocol to bound the magic state fidelity. Cultivation reduces the error by a factor of 40, with a state fidelity of at least 0.9999(1) (retaining 8% of attempts). Our results experimentally establish magic state cultivation as a viable solution to one of quantum computing’s most important challenges.",
-      "abstract_basis": "crossref_abstract",
-      "abstract_source_url": "https://api.crossref.org/journals/1095-9203/works?filter=from-online-pub-date%3A2026-10-15%2Cuntil-online-pub-date%3A2026-10-18%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
-      "url": "https://www.science.org/doi/10.1126/science.aee7961",
-      "pdf_url": "",
-      "published": "2026-10-15T13:01:00Z",
-      "updated": "2026-10-15T13:01:00Z",
-      "categories": [],
-      "sources": [
-        "science"
-      ],
-      "publication": {
-        "journal_id": "science",
-        "journal": "Science",
-        "doi": "10.1126/science.aee7961",
-        "url": "https://www.science.org/doi/10.1126/science.aee7961",
-        "published": "2026-10-15T13:01:00Z",
-        "date_basis": "publisher_rss"
-      },
-      "keyword_score": 7,
-      "topics": [
-        "logical_qec",
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction"
-        ],
-        "magic_stabilizer": [
-          "magic state",
-          "non-Clifford"
-        ]
-      },
-      "first_seen_at": "2026-10-16T04:38:00Z",
-      "doi": "10.1126/science.aee7961"
-    },
-    {
-      "id": "doi:10.1103/bpc2-zlx5",
-      "version": 1,
-      "title": "Digital Dissipative State Preparation for Frustration-Free Gapless Quantum Systems",
-      "authors": [
-        "Johannes Feldmeier, Yu-Jie Liu, Mikhail D. Lukin, and Soonwon Choi"
-      ],
-      "abstract": "Preparing algebraically correlated ground states of quantum many-body systems is an important, yet challenging task for quantum simulation. We introduce a protocol that employs local projective measurements and unitary feedback for frustration-free gapless systems. Our approach prepares a priori unk…",
-      "abstract_basis": "publisher_feed_excerpt",
-      "abstract_source_url": "https://feeds.aps.org/rss/recent/prl.xml",
-      "url": "https://journals.aps.org/prl/abstract/10.1103/bpc2-zlx5",
-      "pdf_url": "",
-      "published": "2026-10-15T10:00:00Z",
-      "updated": "2026-10-15T10:00:00Z",
-      "categories": [],
-      "sources": [
-        "prl"
-      ],
-      "publication": {
-        "journal_id": "prl",
-        "journal": "Physical Review Letters",
-        "doi": "10.1103/bpc2-zlx5",
-        "url": "https://journals.aps.org/prl/abstract/10.1103/bpc2-zlx5",
-        "published": "2026-10-15T10:00:00Z",
-        "date_basis": "publisher_rss"
-      },
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "state preparation"
-        ]
-      },
-      "first_seen_at": "2026-10-16T04:38:00Z",
-      "doi": "10.1103/bpc2-zlx5",
-      "metadata_warnings": [
-        "Journal endpoint returned HTTP 403; skipped without retry"
-      ]
-    },
-    {
       "id": "doi:10.1038/s41467-026-78529-2",
       "version": 1,
       "title": "11 million days of longitudinal Fitbit data reveal novel future health insights",
@@ -21675,58 +22808,6 @@
       },
       "first_seen_at": "2026-10-17T04:34:51Z",
       "doi": "10.1038/s41567-026-03468-0"
-    },
-    {
-      "id": "doi:10.1038/s41467-026-78333-y",
-      "version": 1,
-      "title": "Intravenous [Pyr¹]apelin-13 in Healthy Volunteers with Artificially-Induced Syndrome of Inappropriate Antidiuresis - a double-blind, randomised, placebo-controlled crossover study",
-      "authors": [
-        "Sophie Monnerat",
-        "Sven Lustenberger",
-        "Chiara A. Bizzozero",
-        "Fiona A. Chapman",
-        "Joyce Santos de Jesus",
-        "Eszter Kustos-Toth",
-        "Deborah R. Vogt",
-        "Lorraine Bruce",
-        "Robert Little",
-        "Anthony P. Davenport",
-        "Janet J. Maguire",
-        "Julie Refardt",
-        "Martin Bidlingmaier",
-        "Neeraj Dhaun",
-        "Mirjam Christ-Crain"
-      ],
-      "abstract": "Apelin, a hormone secreted by the posterior pituitary, antagonises arginine vasopressin in salt and water homoeostasis. Administration of apelin analogues increased urine output in hyponatremic rodent models, but corresponding human data are lacking. We therefore investigated intravenous [Pyr¹]apelin-13 in healthy participants with artificially induced syndrome of inappropriate antidiuresis. In this double-blind, randomised, placebo-controlled crossover study, 15 healthy adults (7 female; mean age, 28 years [SD, 8]) attended three study visits. Hyponatremia was induced using desmopressin, water loading, and hypotonic saline. Participants subsequently received high-dose [Pyr¹]apelin-13 (1800 nmol), low-dose [Pyr¹]apelin-13 (180 nmol), or placebo as a 3-hour infusion. The primary endpoint was cumulative urine output from infusion initiation until 1 hour after its completion. Neither apelin dose produced a clinically relevant difference in urine output compared with placebo. ClinicalTrials.gov: NCT06277336. Funded by the Swiss National Science Foundation. Registration number: NCT06277336 .",
-      "abstract_basis": "crossref_abstract",
-      "abstract_source_url": "https://api.crossref.org/journals/2041-1723/works?filter=from-online-pub-date%3A2026-10-16%2Cuntil-online-pub-date%3A2026-10-19%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
-      "url": "https://www.nature.com/articles/s41467-026-78333-y",
-      "pdf_url": "",
-      "published": "2026-10-16",
-      "updated": "2026-10-16",
-      "categories": [],
-      "sources": [
-        "nature_communications"
-      ],
-      "publication": {
-        "journal_id": "nature_communications",
-        "journal": "Nature Communications",
-        "doi": "10.1038/s41467-026-78333-y",
-        "url": "https://www.nature.com/articles/s41467-026-78333-y",
-        "published": "2026-10-16",
-        "date_basis": "crossref_published-online"
-      },
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "syndrome"
-        ]
-      },
-      "first_seen_at": "2026-10-17T04:34:51Z",
-      "doi": "10.1038/s41467-026-78333-y"
     },
     {
       "doi": "",
@@ -29240,747 +30321,6 @@
         "arxiv"
       ],
       "first_seen_at": "2026-11-17T08:00:39Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.23213",
-      "version": 1,
-      "title": "Modeling quantum information scrambling in realistic protein NMR experiments",
-      "authors": [
-        "Alec F. White",
-        "Joseph Haslehurst",
-        "Daniel R. Moberg",
-        "Justin Provazza",
-        "Nicholas C. Rubin",
-        "Thomas E. O'Brien",
-        "Christian Bengs"
-      ],
-      "abstract": "Out-of-time-order correlators (OTOCs) are important probes of operator spreading and information scrambling, and have recently been proposed as a means of extracting molecular structural information through nuclear magnetic resonance (NMR). Realizing this potential requires accurate modeling of OTOCs in complex molecular environments within experimentally relevant settings. Here, we develop an end-to-end computational pipeline connecting molecular structures to OTOC dynamics in protein systems. Our framework incorporates molecular motion through molecular dynamics simulations, orientational averaging appropriate for powder samples, and spin-network truncation, using an experimentally realizable double-quantum effective Hamiltonian. We apply this framework to a dataset of over 350 carbon-carbon spin pairs across 10 protein systems, spanning interspin distances of 5-17 A. We find that OTOC arrival times scale approximately linearly with interspin distance, revealing system-dependent operator-spreading velocities that enable correlations to propagate over extended distances within milliseconds. Our sensitivity analysis further shows that individual OTOCs predominantly constrain a single structural parameter, primarily associated with interspin distance. Together, these findings highlight the potential of OTOCs to probe spatially extended spin correlations on timescales compatible with solid-state NMR experiments.",
-      "url": "https://arxiv.org/abs/2611.23213",
-      "pdf_url": "https://arxiv.org/pdf/2611.23213v1",
-      "published": "2026-11-17T18:52:24Z",
-      "updated": "2026-11-17T18:52:24Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "random_designs"
-      ],
-      "keyword_matches": {
-        "random_designs": [
-          "scrambling"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.23207",
-      "version": 1,
-      "title": "Local interference algorithms for observables in large random circuits",
-      "authors": [
-        "Philippe Suchsland",
-        "Brayden Ware",
-        "Vladislav D. Kurilovich",
-        "Vadim Smelyanskiy",
-        "Kostyantyn Kechedzhi"
-      ],
-      "abstract": "In quantum dynamics, it is generally believed that interference effects lead to a sign problem for classical Monte Carlo sampling methods, rendering sampling ineffective. In this paper we show that this is generically not the case for the task of simulating the evolution of observables in random instances of circuit dynamics. Specifically, we consider two examples of observables which give large signals despite the randomness of the dynamics: first order out-of-time-ordered correlators (OTOCs) in unstructured random circuits without conservation laws and time-ordered charge-charge correlators (TOCs) in particle number-preserving random circuits. We show that these observables can be approximated by classical stochastic processes and that these approximations can be systematically improved with a series expansion that incorporates coherent corrections associated with clusters of gates. We design and implement algorithms that combine Monte Carlo sampling and tensor network methods to approximate the series. We observe numerically that the computational complexity of approximating TOCs and OTOCs scales polynomially in the circuit size and in the target precision. We study the accuracy of these algorithms by directly mapping their ensemble-averaged errors to partition functions of replica statistical models, allowing for perturbative analysis and numerics in $1$d brickwork geometries. Our theoretical analysis explains the empirical observation of polynomial complexity of these algorithms and is consistent with polynomial complexity extending to arbitrarily small precision and to the thermodynamic limit.",
-      "url": "https://arxiv.org/abs/2611.23207",
-      "pdf_url": "https://arxiv.org/pdf/2611.23207v1",
-      "published": "2026-11-17T18:48:27Z",
-      "updated": "2026-11-17T18:48:27Z",
-      "categories": [
-        "quant-ph",
-        "cond-mat.str-el"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "random_designs"
-      ],
-      "keyword_matches": {
-        "random_designs": [
-          "brickwork"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.23165",
-      "version": 1,
-      "title": "Teleportation of Logical Qubits using Lattice Surgery with Superconducting Circuits",
-      "authors": [
-        "Luca Hofele",
-        "Yongxin Song",
-        "Áron Márton",
-        "Ian Hesner",
-        "Ilya Besedin",
-        "Jakob Ekert",
-        "Jonathan Trebst",
-        "François Swiadek",
-        "Felix Henrich",
-        "Dante Colao Zanúz",
-        "Mohsen Bahrami Panah",
-        "Lukas Bödeker",
-        "Nicholas Gialouris",
-        "Chrysander D. Hagen",
-        "Marek Pechal",
-        "Jean Claude Besse",
-        "Markus Müller",
-        "Christoph Hellings",
-        "Andreas Wallraff"
-      ],
-      "abstract": "Demonstrating a quantum advantage when solving large-scale computational problems on a quantum computer requires the correction of errors that occur due to limitations in control accuracy and coherence. Using the concept of quantum error correction, fault-tolerant logical qubits can be realized and manipulated with logical single- and two-qubit gates. In this paper, we experimentally analyze fault-tolerant lattice-surgery, which is a key primitive that enables operations between logical qubits realized in the surface-code. Using this primitive, we demonstrate the teleportation of logical states between two distance-three logical qubits realized in a superconducting circuit composed of 41 physical qubits. Throughout this process, we study the step-by-step transfer of logical information from a source to a target logical qubit by characterizing the time evolution of logical observables. We find that repeated execution of stabilizer measurements, after merging two surface-code patches, restores fault tolerance and yields increased fidelity of the teleported state. When optimizing the protocol in terms of gate count and sequence duration, we observe further improvements in fidelity. Our work offers new insights into the optimization of fault-tolerant lattice-surgery operations, while also providing a comprehensive description of the physical device and gate sequences used. We expect the efficient implementation of increasingly complex logical circuits to enhance the performance of future fault-tolerant quantum computers.",
-      "url": "https://arxiv.org/abs/2611.23165",
-      "pdf_url": "https://arxiv.org/pdf/2611.23165v1",
-      "published": "2026-11-17T18:17:01Z",
-      "updated": "2026-11-17T18:17:01Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 6,
-      "topics": [
-        "logical_qec",
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction"
-        ],
-        "magic_stabilizer": [
-          "stabilizer"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.23116",
-      "version": 1,
-      "title": "Optimal Min-Entropy Estimation with High Probability",
-      "authors": [
-        "Qisheng Wang"
-      ],
-      "abstract": "Min-entropy plays a fundamental role in assessing the unpredictability of randomness sources. In particular, NIST SP 800-90B specifies min-entropy estimation as a key procedure for entropy sources used in cryptographic random bit generators, illustrating the practical importance of reliable min-entropy estimation. In this paper, we settle the sample complexity of min-entropy estimation with high probability in both the classical and quantum cases. Specifically, for min-entropy estimation with additive error $\\varepsilon$ and probability at least $1-δ$, the sample complexity is $Θ(d\\log(d/δ)/\\varepsilon^2)$ for classical distributions on $d$ symbols and $Θ((d^2+d\\log(1/δ))/\\varepsilon^2)$ for quantum states on a $d$-dimensional Hilbert space. Our results admit short and simple proofs.",
-      "url": "https://arxiv.org/abs/2611.23116",
-      "pdf_url": "https://arxiv.org/pdf/2611.23116v1",
-      "published": "2026-11-17T17:35:19Z",
-      "updated": "2026-11-17T17:35:19Z",
-      "categories": [
-        "cs.IT",
-        "math.ST",
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "quantum_learning"
-      ],
-      "keyword_matches": {
-        "quantum_learning": [
-          "sample complexity"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.23009",
-      "version": 1,
-      "title": "PRISM: A Logical-Physical Boundary Compiler for Dual-Rail Qubits",
-      "authors": [
-        "Evan McKinney",
-        "Kun Liu",
-        "Harshvardhan K. Babla",
-        "Robert J. Schoelkopf",
-        "Yongshan Ding"
-      ],
-      "abstract": "Quantum computers can encode each logical qubit across multiple physical degrees of freedom so that errors on the physical qubits can be detected or corrected. A compiler must then translate each logical gate into native instructions, and one gate can have several equivalent realizations that interact through different wires. Routing moves those wires, so a realization chosen before routing can force SWAPs that another would avoid, making code expansion and physical routing a phase-ordering problem. PRISM therefore keeps each gate's realizations open across the logical--physical boundary and commits to one only when routing reaches a layout that can execute it. We formalize which physical circuits implement a gate, which respect the fault model, and which the compiler keeps, and define when a gate can execute under a layout. For dual-rail cavity qubits, logical $\\mathrm{CR}_z$ has four loss-admissible realizations, one per rail pairing, and its logical availability graph is exactly the simple quotient of the occupied device graph by the rail pairs. Across 25 workloads with 7 to 25 logical qubits on three device graphs, PRISM reduces routing SWAPs by 20.4--30.8\\% and physical depth by 8.8--10.1\\% relative to a greedy search that fixes each realization before routing. On the grid and hexagonal lattice, the SWAP reductions hold through 32 logical qubits. By shortening routes, PRISM also reduces photon loss on device models and therefore needs 44.3\\% fewer attempts per retained shot at 16 logical qubits, as a geometric mean over workloads and device graphs, and it lowers decoded logical error in a three-round Steane memory under skip-gate leakage.",
-      "url": "https://arxiv.org/abs/2611.23009",
-      "pdf_url": "https://arxiv.org/pdf/2611.23009v1",
-      "published": "2026-11-17T16:20:46Z",
-      "updated": "2026-11-17T16:20:46Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "logical error"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.22933",
-      "version": 1,
-      "title": "Dynamical Decoupling via Continuous Unitary Design",
-      "authors": [
-        "Xiaodong Yang",
-        "Jun Li"
-      ],
-      "abstract": "Dynamical decoupling is a cornerstone of quantum control for protecting and engineering quantum systems. However, conventional schemes rely on idealized instantaneous pulses, limiting their performance under realistic finite-duration and imperfect controls. To overcome this limitation, we establish a dynamical decoupling framework based on continuous unitary designs, which intrinsically suppresses arbitrary static noise during continuous control. We further derive closed-form phase conditions to suppress Rabi-amplitude errors, unifying universal decoupling, finite-pulse compatibility, and control-error robustness within a single analytical framework. We experimentally validate our approach on a superconducting quantum cloud platform, demonstrating significantly extended coherence times and the highest robustness against Rabi-amplitude errors and detuning among the tested sequences.",
-      "url": "https://arxiv.org/abs/2611.22933",
-      "pdf_url": "https://arxiv.org/pdf/2611.22933v1",
-      "published": "2026-11-17T15:29:10Z",
-      "updated": "2026-11-17T15:29:10Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 7,
-      "topics": [
-        "logical_qec",
-        "random_designs"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "decoupling"
-        ],
-        "random_designs": [
-          "unitary design"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.22834",
-      "version": 1,
-      "title": "Molecular energies from sparse quantum prolate diagonalization on a trapped-ion quantum processor",
-      "authors": [
-        "Davide Castaldo",
-        "Marvin Kronenberger",
-        "Marek Miller",
-        "Sélène Forget",
-        "Gemma C. Solomon",
-        "Kresten Lindorff-Larsen",
-        "Matthias Christandl",
-        "Markus Reiher"
-      ],
-      "abstract": "We introduce sparse quantum prolate diagonalization (sparse QPD), which combines the original formulation of QPD [Phys. Rev. Res., 8(3), 033177, (2026)] with compressed sensing to exploit Hamiltonian spectrum sparsity for molecular systems. We show that sparse sampling reduces the sample complexity of QPD from $\\mathcal{O}(N_s)$ to $\\mathcal{O}(\\log N_s)$, where $N_s$ is the number of sampled points of the autocorrelation function (i.e.\\ distinct circuits), without increasing circuit depth at chemical accuracy. With a two-orbital active-space-embedded Hamiltonian for an interacting arginine--tryptophan residue pair in water as an example, we show that on the Quantinuum Helios trapped-ion quantum computer, sparse QPD resolves the Hamiltonian energies to chemical accuracy with circuits of up to 448 two-qubit gates. For a suitably large quantum processor, we demonstrate numerically in the weakly correlated regime that the method extends to larger systems.",
-      "url": "https://arxiv.org/abs/2611.22834",
-      "pdf_url": "https://arxiv.org/pdf/2611.22834v1",
-      "published": "2026-11-17T14:17:08Z",
-      "updated": "2026-11-17T14:17:08Z",
-      "categories": [
-        "quant-ph",
-        "physics.bio-ph",
-        "physics.chem-ph",
-        "physics.comp-ph"
-      ],
-      "keyword_score": 6,
-      "topics": [
-        "adaptive_resources",
-        "quantum_learning"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "circuit depth"
-        ],
-        "quantum_learning": [
-          "sample complexity"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.22810",
-      "version": 1,
-      "title": "Depth-Dependent Collapse and Warm-Start Limits of a Symmetry-Preserving VQE for the J$_1$--J$_2$ Heisenberg Ring",
-      "authors": [
-        "Soumyadip Sahoo",
-        "Sahinur Reja"
-      ],
-      "abstract": "Increasing circuit depth is expected to improve a variational quantum eigensolver (VQE). We show that this expectation can fail, and that curing the failure does not guarantee the exact ground state. We study a symmetry-preserving ansatz of SingleExcitationMinus gates, started from the Néel state, on the frustrated spin-$1/2$ $J_1$--$J_2$ Heisenberg ring with $N=10$ and $12$ sites. With random initialization the fidelity, energy error, half-chain entropy and total spin change abruptly at intermediate depth ($L\\approx 9$ for $N=10$, $L=10$--$12$ for $N=12$), giving improvement, degradation and recovery, a double-descent-like shape. The circuit family is nested and the gradient stays finite, so this is an optimization failure, not a loss of expressibility or a barren plateau. A chained warm start, which extends an optimized shallow circuit with identity layers, removes the collapse and improves energy error and fidelity almost monotonically for most frustration values. However, near $J_2/J_1=0.60$ ($N=10$) and over $J_2/J_1=0.60$--$1.00$ ($N=12$) the warm start stalls at a fidelity of $\\approx 0.50$--$0.58$, although the energy error is small and the total spin stays in the $S=0$ sector. Removing the non-monotonic depth dependence is therefore not the same as reaching the ground state, and low energy and a singlet-like state are not sufficient: the fidelity, entropy and total spin must be satisfied together. The conclusions are limited to the system sizes and frustration values studied.",
-      "url": "https://arxiv.org/abs/2611.22810",
-      "pdf_url": "https://arxiv.org/pdf/2611.22810v1",
-      "published": "2026-11-17T14:02:20Z",
-      "updated": "2026-11-17T14:02:20Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "circuit depth"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.22630",
-      "version": 1,
-      "title": "Quantum speed limits from symmetries: A numerical analysis",
-      "authors": [
-        "Santana Lujan",
-        "Marco Wiedmann",
-        "Daniel Burgarth"
-      ],
-      "abstract": "Target-specific quantum speed limits (QSLs) bound the minimal time required to realize a given operation. Recent theoretical work derives these limits directly from the symmetries of the dynamical Lie algebra of the control system and a symmetry-restoring perturbation, bypassing the need to solve the equations of motion. In practice, however, identifying a suitable symmetry and a perturbation that restores it demands strong physical intuition and offers no guarantee of tightness. We show that, for any given symmetry, the minimal restoring perturbation is the solution of a convex semidefinite program, which can be solved to global optimality and thus yields the tightest achievable speed limit for that symmetry. This semidefinite program is one building block of our numerical method, alongside an explicit computation of the space of admissible symmetries and a search over this space. Since this search is non-convex, it is addressed with gradient-based optimization, black-box heuristics, or the injection of physically motivated candidate symmetries. We apply the method to three examples: a two-qubit CNOT gate, a SWAP on a spinless-particle chain, and a Dicke state preparation on a qubit ring. Our results improve on previously known symmetry-based bounds, most notably for the SWAP, where solving the semidefinite program for the known analytical symmetry tightens the bound by a factor of approximately 2.5. For the Dicke state preparation, however, the bounds decrease with system size, which we trace back to a symmetry-independent perturbation ceiling. This work provides a reproducible numerical procedure for constructing target-specific quantum speed limits directly from the system Hamiltonians and the target operation.",
-      "url": "https://arxiv.org/abs/2611.22630",
-      "pdf_url": "https://arxiv.org/pdf/2611.22630v1",
-      "published": "2026-11-17T11:47:05Z",
-      "updated": "2026-11-17T11:47:05Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "state preparation"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.22617",
-      "version": 1,
-      "title": "Hardness and Inapproximability of the Covering Radius for LDPC Codes",
-      "authors": [
-        "Massimo Battaglioni",
-        "Fabrizio Marinelli"
-      ],
-      "abstract": "Given a binary parity-check matrix $H$ and an integer $r$, the covering-radius decision problem asks whether every attainable syndrome can be represented by an error vector of Hamming weight at most $r$. We study this problem for sparse parity-check matrices with bounded row and column weights. Using a bounded-occurrence quantified-SAT reduction, we prove that the problem is $Π_2^{\\mathrm P}$-complete for matrices with maximum row and column weight three, and remains $Π_2^{\\mathrm P}$-hard under a constant multiplicative gap. Starting from Vertex Cover on 3-regular graphs, we also obtain an explicit NP-hard approximation factor under the same weight constraints. We remark that weight three is the exact threshold for hardness: if either the maximum row weight or the maximum column weight is at most two, the covering radius can be computed in polynomial time.",
-      "url": "https://arxiv.org/abs/2611.22617",
-      "pdf_url": "https://arxiv.org/pdf/2611.22617v1",
-      "published": "2026-11-17T11:34:48Z",
-      "updated": "2026-11-17T11:34:48Z",
-      "categories": [
-        "cs.IT"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "syndrome"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.22505",
-      "version": 1,
-      "title": "Quantum Optimal Control of Many-Body States in an Antiferromagnetic XXZ Chain with a Single Local Magnetic Field",
-      "authors": [
-        "Nicolás Rojo",
-        "Ignacio R. Solá",
-        "Juan J. Omiste"
-      ],
-      "abstract": "We investigate the quantum optimal control of an antiferromagnetic XXZ spin chain with open boundary conditions, driven solely by a local time-dependent magnetic field applied to a single terminal spin. By optimizing the control field via Krotov's algorithm, we evaluate the feasibility of preparing multi-particle many-body states, including highly polarized Greenberger-Horne-Zeilinger (GHZ)-type states and study the mechanisms by which the control is applied. We demonstrate that global spin-flip symmetry restricts reachable state spaces, strictly confining dynamics within the parity sector of the initial ground state and requiring parity-adapted linear combinations to avoid fundamental population upper bounds. Beyond symmetry constraints, driven population transfer does not occur via direct multi-spin flips, but proceeds stepwise across intermediate magnetization sectors ($|S_{\\mathrm{tot}}^z| = 0 \\to 1 \\to 2 \\to 3$) mediated by resonant frequency components matching the internal energy gaps. To overcome optimization stagnation caused by the small overlap mechanism in gradient updates, we introduce a four-stage sequential target protocol and compared it to spectrally filtered, time-localized frequency seed pulses. Combining frequency-tailored seed fields with an extended propagation time window yields GHZ state preparation fidelities exceeding $0.927$ establishing that a single local actuator is sufficient for high-fidelity multipartite state engineering in interacting spin networks.",
-      "url": "https://arxiv.org/abs/2611.22505",
-      "pdf_url": "https://arxiv.org/pdf/2611.22505v1",
-      "published": "2026-11-17T10:00:55Z",
-      "updated": "2026-11-17T10:00:55Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "state preparation"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.22412",
-      "version": 1,
-      "title": "Optimal Measurement Rounds for Perfect Encoded Fusion",
-      "authors": [
-        "Seita Tsuboi",
-        "Takuya Kasamura",
-        "Leo Itoh",
-        "Motoharu Tsuboi",
-        "Tomohiro Hatori",
-        "Junichiro Kadomoto"
-      ],
-      "abstract": "Encoded fusion combines probabilistic physical fusions to perform a logical Bell measurement. Adaptive choices depend on earlier measurement outcomes and therefore require multiple measurement rounds. We determine the minimum worst-case number of rounds for perfect fusion of two blocks of an irreducible [[n,1]] stabilizer code. A strategy is perfect if the logical Bell measurement succeeds on every branch containing at least one successful physical fusion. Even after fixing the past history, including measurement values, we consider all success/failure branches, including those with zero probability for a particular input state or measurement device. In a lossless model with fixed coordinate pairing, arbitrary Pauli failure bases, and each pair fused exactly once, the optimum equals the minimum root eccentricity over the local complementation orbit of rooted graphs representing the code. The lower bound applies to arbitrary perfect strategies that choose batches and bases using previous outcomes. We also characterize the batch sequences that can occur on an all-failure branch of a perfect strategy by a necessary and sufficient graph adjacency condition. A matching strategy fuses distance layers from the outside in and, after the first success, completes the remaining fusions in at most one further round by changing the failure bases along an induced path.",
-      "url": "https://arxiv.org/abs/2611.22412",
-      "pdf_url": "https://arxiv.org/pdf/2611.22412v1",
-      "published": "2026-11-17T08:47:52Z",
-      "updated": "2026-11-17T08:47:52Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "magic_stabilizer": [
-          "stabilizer"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.22391",
-      "version": 1,
-      "title": "Strong eigenstate thermalization in Singer-cycle Clifford circuits",
-      "authors": [
-        "Naoto Tsuji"
-      ],
-      "abstract": "Eigenstate thermalization hypothesis (ETH) provides a central framework for understanding thermalization in isolated quantum systems. Recently, the infinite-temperature ETH has been established for almost all Floquet eigenstates in linear feedback shift register quantum circuits. Here we introduce brickwork Clifford circuits with $L$ qubits where the induced transformation of Pauli operators is represented by an irreducible symplectic matrix over the finite field $\\mathbb F_2$ of the maximal order $2^L+1$, known as a Singer cycle. For these Singer-cycle Clifford circuits, we prove a strong version of ETH: all Floquet eigenstates are thermal at infinite temperature without exceptions. We derive uniform bounds on both diagonal deviations from thermal expectation values and off-diagonal matrix elements of arbitrary observables supported on a fixed number of sites. The results indicate that long-time averages of observables approach the infinite-temperature values in the thermodynamic limit for arbitrary initial states. We also show that the temporal fluctuation of expectation values of observables is exponentially suppressed in the thermodynamic limit, implying that each observable remains close to the infinite-temperature value for almost all times.",
-      "url": "https://arxiv.org/abs/2611.22391",
-      "pdf_url": "https://arxiv.org/pdf/2611.22391v1",
-      "published": "2026-11-17T08:40:49Z",
-      "updated": "2026-11-17T08:40:49Z",
-      "categories": [
-        "quant-ph",
-        "cond-mat.stat-mech"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "random_designs"
-      ],
-      "keyword_matches": {
-        "random_designs": [
-          "brickwork"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.22260",
-      "version": 1,
-      "title": "Logical error prediction and geometry selection for rectangular surface codes under biased circuit-level noise",
-      "authors": [
-        "Youshin Chung",
-        "Yujin Kang",
-        "Jun Heo"
-      ],
-      "abstract": "Realistic quantum hardware often exhibits biased noise, but at the circuit level this bias may affect only a subset of operations and need not be transferred uniformly to logical errors. The logical response to a given physical bias is therefore central to selecting resource-efficient surface code geometries. Here, we study unrotated rectangular surface codes under standard depolarizing and superconducting-inspired circuit-level noise models. We first construct geometry-dependent logical error rate models from unbiased circuit-level simulations. We then use logical sensitivities to compare the responses to localized idle-bias and global physical error perturbations, defining logical-error-type-dependent response coefficients from an unbiased reference circuit without fitting to finite-bias data. These coefficients are incorporated through effective error parameters, yielding a median fold error of 1.09 over the evaluated finite-bias conditions. Geometries selected by the model are validated through direct biased circuit-level simulations. At a physical error rate of 0.004 and a target logical error rate of 10^{-3}, the validated rectangular codes reduce physical qubit overhead by up to 42.4% and 26.2% under the two noise models, respectively, relative to unrotated square codes. These results provide a practical link between circuit-level bias response and resource-efficient surface code design.",
-      "url": "https://arxiv.org/abs/2611.22260",
-      "pdf_url": "https://arxiv.org/pdf/2611.22260v1",
-      "published": "2026-11-17T06:09:07Z",
-      "updated": "2026-11-17T06:09:07Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "logical error"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.22247",
-      "version": 1,
-      "title": "CHEQ: A Concurrent Hardware Evaluation Platform for QEC Decoders via Batch-Invariant Circuit-Level Noise Sampling",
-      "authors": [
-        "Sechan Park",
-        "Kyeongwon Lee",
-        "Mundo Jung",
-        "Chaebin Jung",
-        "Woojoo Lee"
-      ],
-      "abstract": "Hardware quantum error correction (QEC) decoders require validation of logical error suppression and timing compliance before deployment. Rare logical failures and deadline violations demand extensive sampling, while algorithm-level software evaluation does not directly measure hardware response times. Circuit-level noise models contain many error mechanisms but few firings per shot at low physical error rates, making exhaustive per-shot scanning inefficient. We present CHEQ, an FPGA platform integrating on-chip sampling, concurrent decoder evaluation, scoring, and RISC-V control. Its Sampling Units use geometric skipping to sample firing locations from detector error models and amortize mechanism traversal across shots within each batch. Under independent random draws and exact geometric sampling, the shot distribution is invariant to batch size, enabling a memory-throughput tradeoff. A throughput model guides joint selection of the Sampling Unit count, batch size, and decoder count under FPGA resource constraints. Across evaluated conditions, the pooled one-sided 95% upper bound on the weighted root-mean-square relative firing-rate difference from Stim is 0.16%. At a batch size of 4,096, a Sampling Unit uses only 4.8%-11.2% of a Helios decoder's LUTs for code distances 7, 9, 11, and 13. On an AMD VCU118 FPGA at code distance 7 and physical error rate 10^-3, two Sampling Units supply 20 Helios decoders at 49.2 million shots/s, completing 10^10 shots in 3.4 minutes without host-side shot generation.",
-      "url": "https://arxiv.org/abs/2611.22247",
-      "pdf_url": "https://arxiv.org/pdf/2611.22247v1",
-      "published": "2026-11-17T05:49:55Z",
-      "updated": "2026-11-17T05:49:55Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction",
-          "logical error"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.22232",
-      "version": 1,
-      "title": "MASQ: Measurement-Adaptive Sampling for Near-Clifford Quantum Error Correction Circuits",
-      "authors": [
-        "Chaebin Jung",
-        "Sangmin Jeon",
-        "Kyeongwon Lee",
-        "Sechan Park",
-        "Woojoo Lee"
-      ],
-      "abstract": "Classical sampling of quantum error correction (QEC) circuits supports fault-tolerant protocol evaluation, but estimating rare logical failures requires many independent shots. Frame-active-state simulators isolate non-stabilizer information in a dense active-state vector, yet dense-state processing remains exponential in the active width. This paper presents MASQ, an exact measurement-adaptive sampler for near-Clifford QEC circuits based on selective materialization of non-Clifford rotations. At each measurement boundary, MASQ materializes only rotations in a measurement-relevant closure capturing direct and indirect non-commuting dependencies, deferring the rest to limit active-state expansion. Stabilizer-assisted elimination further removes rotations certified to be invisible to all future measurements. A circuit-dependent schedule is computed once and shared across shots, while adaptive caching of conditional Born probabilities and batched execution reduce repeated sampling work while preserving the measurement-record distribution. Across 19 QEC benchmarks, MASQ reduces peak active width by up to 40 active virtual qubits and achieves up to 8,098-fold CPU throughput speedup over Clifft on multi-round circuits.",
-      "url": "https://arxiv.org/abs/2611.22232",
-      "pdf_url": "https://arxiv.org/pdf/2611.22232v1",
-      "published": "2026-11-17T05:31:01Z",
-      "updated": "2026-11-17T05:31:01Z",
-      "categories": [
-        "cs.ET",
-        "quant-ph"
-      ],
-      "keyword_score": 7,
-      "topics": [
-        "logical_qec",
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction"
-        ],
-        "magic_stabilizer": [
-          "stabilizer",
-          "non-Clifford"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.22221",
-      "version": 1,
-      "title": "Subsystem Stabilizer $(r,δ)$-Locally Recoverable Codes: Characterization, Bounds and Constructions",
-      "authors": [
-        "Yaozong Zhang",
-        "Sihem Mesnager",
-        "Xiaoqiang Wang",
-        "Jian Gao"
-      ],
-      "abstract": "Local erasure recovery limits the number of physical systems accessed to repair a distributed quantum memory. For subsystem stabilizer codes (SSCs), a basic question is whether erasures can be corrected within a prescribed repair set. In this paper, we study subsystem stabilizer $(r,δ)$-locally recoverable codes ($(r,δ)$-SSLRCs), in which each coordinate belongs to a repair set of size between $δ$ and $r+δ-1$ that corrects any set of up to $δ-1$ erasures while preserving the logical subsystem and allowing the gauge subsystem to change. We first characterize local erasure recovery algebraically and apply this criterion to Calderbank-Shor-Steane (CSS) and Hermitian hull constructions for $(r,δ)$-SSLRCs. For $(r,δ)$-SSLRCs, without assuming purity, we derive a redundancy bound for disjoint repair sets, a supported-subspace bound based on supported stabilizer and gauge subspaces, and a mixed counting bound for known erasures within selected repair sets and errors at unknown positions outside their union. For pure $(r,δ)$-SSLRCs with overlapping repair sets, we establish the Singleton-type and alphabet-dependent bounds, together with explicit Griesmer, Hamming, and Plotkin bounds. Moreover, we construct nine classes of $\\F_q$-linear pure $(r,δ)$-SSLRCs from maximum distance separable (MDS) stabilizer codes, Reed-Solomon (RS) codes, and linear codes with MDS Hermitian hulls, which are simultaneously optimal with respect to several bounds for $(r,δ)$-SSLRCs.",
-      "url": "https://arxiv.org/abs/2611.22221",
-      "pdf_url": "https://arxiv.org/pdf/2611.22221v1",
-      "published": "2026-11-17T05:04:57Z",
-      "updated": "2026-11-17T05:04:57Z",
-      "categories": [
-        "cs.IT"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "magic_stabilizer": [
-          "stabilizer"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.22166",
-      "version": 1,
-      "title": "Demonstration of a Qubit Control Scheme Compatible with Superconducting Digital Signals",
-      "authors": [
-        "Chenyin Sun",
-        "Yu Xu",
-        "Zihua Chen",
-        "Dayu Li",
-        "Tianzuo Sun",
-        "Chen Zha",
-        "Yuan Li",
-        "Jin Lin",
-        "Lei Jiang",
-        "Tao Rong",
-        "Tao Jiang",
-        "Shaoyu Zhan",
-        "Xueshen Wang",
-        "Shijian Wang",
-        "Wenhui Cao",
-        "Yeru Wang",
-        "Xiaomin Wang",
-        "Ming Gong",
-        "Yulin Wu",
-        "Yuhuai Li",
-        "Gang Wu",
-        "Hui Deng",
-        "Kai Yan",
-        "Sirui Cao",
-        "Futian Liang",
-        "Fusheng Chen",
-        "Qingling Zhu",
-        "Yangsen Ye",
-        "Hao Rong",
-        "Shaojun Guo",
-        "Haoran Qian",
-        "Haibin Zhang",
-        "Yisen Hu",
-        "Shaowei Li",
-        "Jinjin Li",
-        "Cheng-Zhi Peng",
-        "Xiaobo Zhu",
-        "Jian-Wei Pan"
-      ],
-      "abstract": "Superconducting quantum computing faces a critical scalability bottleneck arising from the escalating complexity of traditional analog control infrastructure. Single-Flux-Quantum(SFQ) systems operate at cryogenic temperatures and offer a potential route to addressing these challenges. Using microwave signals at qubit-dependent frequencies to trigger SFQ pulses requires many independent analog microwave sources, limiting the potential to reduce control wiring and increase integration density. A scalable SFQ control system therefore needs a scheme that can address qubits with different transition frequencies using a common clock. Here, we propose and experimentally demonstrate a control scheme for implementing both single- and two-qubit gates. The scheme uses guiding waveforms to rapidly generate bipolar high-speed pulse sequences on a common clock, providing a basis for future implementation in SFQ control systems. Numerically, this scheme achieves a simulated fidelity of 99.99% for 40ns $R(\\varphi, \\fracπ{2})$ gates with arbitrary initial phases and 99.9% for 100ns controlled-Z(CZ) gates. Experimentally, by utilizing an arbitrary waveform generator(AWG) operated at a fixed sampling rate of 25GSa/s to deliver the bipolar high-speed pulse sequences, we successfully demonstrate 40ns single-qubit gates with an average gate fidelity of 99.94% estimated using cross-entropy benchmarking(XEB) and 120ns CZ gates with 99.63% fidelity. These results demonstrate the feasibility of common-clock encoded pulse control for both single- and two-qubit gates.",
-      "url": "https://arxiv.org/abs/2611.22166",
-      "pdf_url": "https://arxiv.org/pdf/2611.22166v1",
-      "published": "2026-11-17T03:58:03Z",
-      "updated": "2026-11-17T03:58:03Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "benchmarking"
-      ],
-      "keyword_matches": {
-        "benchmarking": [
-          "gate fidelity"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.22108",
-      "version": 1,
-      "title": "Perturbative Recovery of Stabilizer-Subspace Correlations for Quantum Computational Chemistry",
-      "authors": [
-        "Qianjun Yao",
-        "Jie Liu",
-        "He Li"
-      ],
-      "abstract": "Stabilizer-based subspace methods can substantially reduce the quantum resources required for electronic structure calculations, but the resulting projection neglects Hamiltonian couplings to configurations outside the retained subspace. In this work, we introduce Stabilizer-Subspace Perturbation Theory (SSPT) to recover the associated correlation contributions, using the Contextual Subspace Variational Quantum Eigensolver (CS-VQE) as a representative application. The central idea is to exploit the Pauli terms eliminated by stabilizer projection as perturbative operators that generate an external manifold from the optimized reference state. Their energetic contributions are evaluated using an Epstein-Nesbet-type second-order correction or a resolvent-based formulation that retains couplings within the external space. By exploiting the factorized structure of the stabilizer-constrained reference state, the required matrix elements can be evaluated through Pauli expectation values on the reduced contextual register without explicitly reconstructing the full-space wave function. Molecular benchmarks demonstrate substantial reductions in projection-induced energy errors, allowing chemical precision to be achieved with fewer contextual qubits in several cases. These results establish stabilizer-guided perturbation theory as a promising strategy for improving the accuracy of resource-efficient quantum chemistry calculations.",
-      "url": "https://arxiv.org/abs/2611.22108",
-      "pdf_url": "https://arxiv.org/pdf/2611.22108v1",
-      "published": "2026-11-17T02:47:09Z",
-      "updated": "2026-11-17T02:47:09Z",
-      "categories": [
-        "quant-ph",
-        "physics.chem-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "magic_stabilizer": [
-          "stabilizer"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.22035",
-      "version": 1,
-      "title": "Magic state cultivation with lattice-surgery escape on superconducting hardware",
-      "authors": [
-        "Haoran Liao",
-        "Michael Schutzman",
-        "William Munizzi",
-        "Pranav Mundada",
-        "Gavin Hartnett",
-        "Yuval Baum"
-      ],
-      "abstract": "Magic state cultivation (MSC) is a low-overhead protocol for fault-tolerantly preparing logical magic states. In this work, we implement two MSC variants to prepare a magic state in a distance-5 code on a publicly available IBM Nighthawk processor. The first is a lattice-surgery escape, recently proposed by Hirano et al. and experimentally studied here for the first time. The second is a grafting escape, previously demonstrated by Rosenfeld et al., and extended here by incorporating a switch into a matchable code. Both protocols begin with fault-tolerant cultivation of a T state on a color code, followed by an escape into a larger code. We decode the results using minimum-weight perfect matching or Tesseract on circuit-level error models calibrated to the hardware noise. Compared with the previous experiment, our cultivated T state achieves a logical error probability of 2e-5 at the T-state injection angle, nearly 10x lower with about 3x the retainment. Moreover, our execution of the grafting escape has a 2x lower logical error rate per stabilizer round at a higher retainment. When comparing the two protocols under identical execution conditions and complementary gap postselection based on decoder confidence, lattice-surgery escape into the surface code preserves a T-state fidelity above 0.99 ten rounds after escape at about 5% retainment. By contrast, matchable-switched grafting drops below 0.95 fidelity at comparable retainment. Furthermore, the lattice-surgery escape reaches a logical error rate per stabilizer round of about 0.14% with around 11% average shot retainment. These results establish lattice-surgery escape as a practical MSC protocol that benefits from a direct transition into a surface code, and demonstrate the lowest MSC error and the highest surface-code magic-state fidelity reported to date, advancing the experimental realization of fault-tolerant non-Clifford gadgets.",
-      "url": "https://arxiv.org/abs/2611.22035",
-      "pdf_url": "https://arxiv.org/pdf/2611.22035v1",
-      "published": "2026-11-17T00:56:04Z",
-      "updated": "2026-11-17T00:56:04Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 8,
-      "topics": [
-        "logical_qec",
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "logical error"
-        ],
-        "magic_stabilizer": [
-          "magic state",
-          "stabilizer",
-          "non-Clifford"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-18T07:37:07Z"
     },
     {
       "doi": "",
@@ -60098,15 +60438,50 @@
       "score": 0,
       "at": "2026-11-19T01:02:49Z",
       "metadata_fingerprint": "54bbb7c4a46673af8caed5508e293d2f388d6e86a0480d24e9183f82b4df7a39"
+    },
+    "doi:10.1038/s41467-026-78333-y": {
+      "status": "ai_rejected",
+      "score": 1,
+      "at": "2026-11-19T01:10:47Z"
+    },
+    "2611.23213": {
+      "status": "ai_rejected",
+      "score": 48,
+      "at": "2026-11-19T01:10:47Z"
+    },
+    "2611.22834": {
+      "status": "ai_rejected",
+      "score": 49,
+      "at": "2026-11-19T01:10:47Z"
+    },
+    "2611.22810": {
+      "status": "ai_rejected",
+      "score": 38,
+      "at": "2026-11-19T01:10:47Z"
+    },
+    "2611.22617": {
+      "status": "ai_rejected",
+      "score": 54,
+      "at": "2026-11-19T01:10:47Z"
+    },
+    "2611.22505": {
+      "status": "ai_rejected",
+      "score": 52,
+      "at": "2026-11-19T01:10:47Z"
+    },
+    "2611.22108": {
+      "status": "ai_rejected",
+      "score": 58,
+      "at": "2026-11-19T01:10:47Z"
     }
   },
   "last_successful_run": "2026-11-18T07:37:07Z",
   "last_run": {
     "fetched": 587,
     "keyword_candidates": 27,
-    "analyzed": 0,
-    "selected": 0,
-    "pending": 345,
+    "analyzed": 5,
+    "selected": 4,
+    "pending": 320,
     "lookback_days": 7,
     "source": "all",
     "date_basis": "initial_submission",
@@ -60115,11 +60490,11 @@
   },
   "is_demo": false,
   "last_collection_run": "2026-11-19T01:02:49Z",
-  "last_analysis_run": "2026-11-18T01:08:44Z",
+  "last_analysis_run": "2026-11-19T01:10:47Z",
   "last_analysis_batch": {
-    "analyzed": 6,
+    "analyzed": 5,
     "selected": 4,
-    "pending": 318
+    "pending": 320
   },
   "topic_labels": {
     "benchmarking": "Benchmarking / SPAM",
