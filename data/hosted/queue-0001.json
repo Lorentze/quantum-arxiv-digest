@@ -3,6 +3,154 @@
     {
       "kind": "analysis",
       "paper": {
+        "id": "doi:10.1103/kfd4-91m9",
+        "version": 1,
+        "title": "Combinatorial Approach to Circuit Complexity: From Approximate Quantum Codes to Lieb-Schultz-Mattis Constraints",
+        "authors": [
+          "Jinmin Yi, Ruizhi Liu, and Zhi Li"
+        ],
+        "abstract": "Approximate quantum error correction (AQEC) provides a versatile framework for both quantum information processing and probing many-body entanglement. We reveal a fundamental tension between the error-correcting power of an AQEC and the hardness of code state preparation. More precisely, through a n…",
+        "abstract_basis": "publisher_feed_excerpt",
+        "abstract_source_url": "https://feeds.aps.org/rss/recent/prl.xml",
+        "url": "https://journals.aps.org/prl/abstract/10.1103/kfd4-91m9",
+        "pdf_url": "",
+        "published": "2026-11-19T10:00:00Z",
+        "updated": "2026-11-19T10:00:00Z",
+        "categories": [],
+        "sources": [
+          "prl"
+        ],
+        "publication": {
+          "journal_id": "prl",
+          "journal": "Physical Review Letters",
+          "doi": "10.1103/kfd4-91m9",
+          "url": "https://journals.aps.org/prl/abstract/10.1103/kfd4-91m9",
+          "published": "2026-11-19T10:00:00Z",
+          "date_basis": "publisher_rss"
+        },
+        "metadata_warnings": [
+          "Journal endpoint returned HTTP 403; skipped without retry"
+        ],
+        "keyword_score": 6,
+        "topics": [
+          "logical_qec",
+          "adaptive_resources"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "quantum error correction"
+          ],
+          "adaptive_resources": [
+            "state preparation"
+          ]
+        },
+        "first_seen_at": "2026-11-20T01:04:50Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "id": "doi:10.1038/s41534-026-01407-8",
+        "version": 1,
+        "title": "Compilation-informed probabilistic logical-error cancellation",
+        "authors": [
+          "Giancarlo Camilo",
+          "Thiago O. Maciel",
+          "Allan Tosta",
+          "Abdulla Alhajri",
+          "Thais de Lima Silva",
+          "Daniel Stilck França",
+          "Leandro Aolita"
+        ],
+        "abstract": "The potential of quantum computers to outperform classical ones in practically useful tasks remains challenging in the near term due to scaling limitations and high error rates of current quantum hardware. While quantum error correction (QEC) offers a clear path towards fault tolerance, overcoming the scalability issues will take time. Early applications will likely rely on QEC combined with quantum error mitigation (QEM). We introduce a QEM scheme against both compilation errors and logical-gate noise that is circuit-, QEC code-, and compiler-agnostic. The scheme builds on quasi-probability methods and uses information about the circuit’s gates’ compilations to attain an unbiased estimation of noiseless expectation values incurring a constant sample-complexity overhead. Moreover, it features maximal circuit size and code distance both independent of the target precision, in contrast to strategies based on QEC alone. We formulate the mitigation procedure as a linear program, demonstrate its efficacy through numerical simulations, and illustrate it for estimating the Jones polynomials of knots. Our method significantly reduces quantum resource requirements for high-precision estimations, offering a practical route towards fault-tolerant quantum computation with precision-independent overheads for fixed circuit size and code distance.",
+        "abstract_basis": "crossref_abstract",
+        "abstract_source_url": "https://api.crossref.org/journals/2056-6387/works?filter=from-online-pub-date%3A2026-11-17%2Cuntil-online-pub-date%3A2026-11-20%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
+        "url": "https://www.nature.com/articles/s41534-026-01407-8",
+        "pdf_url": "",
+        "published": "2026-11-19",
+        "updated": "2026-11-19",
+        "categories": [],
+        "sources": [
+          "npj_quantum_information"
+        ],
+        "publication": {
+          "journal_id": "npj_quantum_information",
+          "journal": "npj Quantum Information",
+          "doi": "10.1038/s41534-026-01407-8",
+          "url": "https://www.nature.com/articles/s41534-026-01407-8",
+          "published": "2026-11-19",
+          "date_basis": "crossref_published-online"
+        },
+        "keyword_score": 7,
+        "topics": [
+          "benchmarking",
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "benchmarking": [
+            "error mitigation"
+          ],
+          "logical_qec": [
+            "quantum error correction"
+          ]
+        },
+        "first_seen_at": "2026-11-20T01:04:50Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "id": "doi:10.1103/gnq3-c2df",
+        "version": 1,
+        "title": "Fault-Tolerant Execution of Error-Corrected Quantum Algorithms",
+        "authors": [
+          "Michael A. Perlin",
+          "Zichang He",
+          "Anthony Alexiades Armenakas",
+          "Pablo Andres-Martinez",
+          "Tianyi Hao",
+          "Dylan A. Herman",
+          "Yuwei Jin",
+          "Karl Mayer",
+          "Chris N. Self",
+          "David Amaro",
+          "Ciaran Ryan-Anderson",
+          "Ruslan Shaydulin"
+        ],
+        "abstract": "Scaling up quantum algorithms to tackle high-impact problems in science and industry requires quantum error correction and fault tolerance. While progress has been made in experimentally realizing error-corrected primitives, the end-to-end execution of logical quantum algorithms using only fault-tolerant (FT) components has remained out of reach. We demonstrate the FT and error-corrected execution of two quantum algorithms, the quantum approximate optimization algorithm (QAOA) and the Harrow-Hassidim-Lloyd algorithm applied to the Poisson equation, on Quantinuum H2 and Helios trapped-ion quantum processors using the ⟦ 7 , 1 , 3 ⟧ Steane code. For QAOA circuits on five and six logical qubits, we show performance improvements from increasing the number of QAOA layers and the number of T gates used to approximate logical rotations, despite increased physical circuit complexity. We further show that QAOA circuits with up to eight logical qubits and nine logical T gates perform similarly to unencoded circuits. For the largest QAOA circuits we run, with 12 logical (97 physical) qubits and 2132 physical two-qubit gates, we still observe better-than-random performance. Finally, we show that adding active quantum error correction cycles and increasing the repeat-until-success limit of state-preparation subroutines can improve the performance of a quantum algorithm, thereby demonstrating critical capabilities of scalable FT quantum computation. Our results are enabled by a FT logical T -gate implementation with an infidelity of 2.7 ( 4 ) × 10 − 3 and dynamic circuits with measurement-dependent feedback. Our work demonstrates near-breakeven performance of complex, error-corrected algorithmic quantum circuits using only FT components.",
+        "abstract_basis": "crossref_abstract",
+        "abstract_source_url": "https://api.crossref.org/journals/2160-3308/works?filter=from-online-pub-date%3A2026-11-17%2Cuntil-online-pub-date%3A2026-11-20%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
+        "url": "https://journals.aps.org/prx/abstract/10.1103/gnq3-c2df",
+        "pdf_url": "",
+        "published": "2026-11-19",
+        "updated": "2026-11-19",
+        "categories": [],
+        "sources": [
+          "prx"
+        ],
+        "publication": {
+          "journal_id": "prx",
+          "journal": "Physical Review X",
+          "doi": "10.1103/gnq3-c2df",
+          "url": "https://journals.aps.org/prx/abstract/10.1103/gnq3-c2df",
+          "published": "2026-11-19",
+          "date_basis": "crossref_published-online"
+        },
+        "keyword_score": 3,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "quantum error correction"
+          ]
+        },
+        "first_seen_at": "2026-11-20T01:04:50Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
         "doi": "",
         "id": "2611.24910",
         "version": 1,
@@ -1429,157 +1577,6 @@
         "keyword_matches": {
           "quantum_learning": [
             "sample complexity"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-11-17T08:00:39Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2611.19453",
-        "version": 1,
-        "title": "A Quantum Metric Approach to Stabilizer Codes",
-        "authors": [
-          "Are Austad",
-          "Jonas Eidesen"
-        ],
-        "abstract": "We associate a spectral triple with each stabilizer code in a projective error model arising from a nice error basis and equipped with a length function. The spectral triple records the dimension of the code as well as the minimum code distance. For Pauli stabilizer codes of dimension greater than one with Hamming weight, Latrémolière's dual propinquity provides a pseudometric which allows us to compare codes of different physical and logical dimensions. We show that in the resulting topology, minimum distance of a code is locally constant for qubits and for qudits of dimensions three and five. Thus correction of all errors up to a prescribed weight is a local property in these cases. Moreover, for each prime $p$, we classify the underlying $C^*$-algebras in the metric closure as a subclass of AF algebras, namely those arising as tensor products of $C((\\mathbb{Z}_p)^r)$, for $r \\in \\{0,1,2, \\ldots , \\infty\\}$, with matrix algebras of $p$-power order or the UHF algebra of type $p^\\infty$. Every such $C^*$-algebra not isomorphic to $M_{p^k}(\\mathbb{C})$ for any $k\\geq 1$ occurs as the underlying algebra of a point in the metric boundary. In particular, we obtain the CAR algebra as a metric limit of qubit stabilizer codes.",
-        "url": "https://arxiv.org/abs/2611.19453",
-        "pdf_url": "https://arxiv.org/pdf/2611.19453v1",
-        "published": "2026-11-14T15:20:33Z",
-        "updated": "2026-11-14T15:20:33Z",
-        "categories": [
-          "math.OA",
-          "quant-ph"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "magic_stabilizer"
-        ],
-        "keyword_matches": {
-          "magic_stabilizer": [
-            "stabilizer"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-11-17T08:00:39Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2611.19442",
-        "version": 1,
-        "title": "Dressed higher-form symmetries in mixed state quantum matter",
-        "authors": [
-          "Tibor Rakovszky",
-          "Sarang Gopalakrishnan",
-          "Curt von Keyserlingk"
-        ],
-        "abstract": "We describe how to construct emergent strong higher-form symmetries in mixed quantum states that act unitarily on Hilbert space. Our construction uses (quasi-)local recovery channels from quantum error correction to some nearby simple (stabilizer) model. We prove that when the recovery is done in an appropriate (deterministic) manner, the resulting operators continue to be unitary. When applied to operators acting on topologically non-trivial sub-manifolds (loops, surfaces), the resulting unitaries inherit the logical algebra of the fixed point model. More generally, the unitarity of the emergent symmetries allows one to define emergent excitations whose statistics follow those of the fixed point limit.",
-        "url": "https://arxiv.org/abs/2611.19442",
-        "pdf_url": "https://arxiv.org/pdf/2611.19442v1",
-        "published": "2026-11-14T14:54:03Z",
-        "updated": "2026-11-14T14:54:03Z",
-        "categories": [
-          "quant-ph",
-          "cond-mat.str-el"
-        ],
-        "keyword_score": 6,
-        "topics": [
-          "logical_qec",
-          "magic_stabilizer"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "quantum error correction"
-          ],
-          "magic_stabilizer": [
-            "stabilizer"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-11-17T08:00:39Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2611.19141",
-        "version": 1,
-        "title": "Asymptotic efficiency of tests for quantum statistical models",
-        "authors": [
-          "Rathindra Nath Karmakar",
-          "Samriddha Lahiry",
-          "Koichi Yamagata"
-        ],
-        "abstract": "In classical statistics, local asymptotic normality provides a general framework for characterizing optimal testing power and constructing asymptotically efficient procedures. Extending this framework to quantum statistical models introduces additional challenges arising from the noncommutativity of observables and the need to optimize over quantum measurements. In this paper, we develop a theory of asymptotic efficiency for quantum hypothesis testing using quantum local asymptotic normality and the asymptotic representation theorem. We establish sharp nuisance-maximin power bounds for one-sided tests and two-sided tests within the unbiased class by reducing the corresponding classical--quantum Gaussian shift experiments to classical testing problems. This reduction is justified through a quantum Hunt--Stein argument that accommodates both commuting and noncommuting Gaussian coordinates. Under suitable asymptotic invariance conditions, the resulting bounds transfer to the original quantum experiments and are attained by scalar symmetric logarithmic derivative tests. We further develop a two-stage adaptive construction that achieves the same local asymptotic power without knowledge of the reference parameter. As an application, we study testing of smooth spectral functionals of quantum states. We compare scalar symmetric logarithmic derivative tests with the weak Schur sampling plug-in test and with optimally weighted linear statistics of its fluctuations. This comparison distinguishes loss from the plug-in weighting from a gap between the best such spectral statistic and the scalar score procedure. We characterize equality of the corresponding variances and illustrate the two gaps through explicit examples.",
-        "url": "https://arxiv.org/abs/2611.19141",
-        "pdf_url": "https://arxiv.org/pdf/2611.19141v1",
-        "published": "2026-11-14T04:03:10Z",
-        "updated": "2026-11-14T04:03:10Z",
-        "categories": [
-          "math.ST",
-          "math-ph",
-          "quant-ph"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "quantum_learning"
-        ],
-        "keyword_matches": {
-          "quantum_learning": [
-            "quantum hypothesis testing"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-11-17T08:00:39Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2611.19130",
-        "version": 1,
-        "title": "Accurate qLDPC decoding under real-time constraints",
-        "authors": [
-          "Chenzewei Qing",
-          "Tengyu Zhang",
-          "Xiaoqin Luo",
-          "Xiaolu Su",
-          "Li You"
-        ],
-        "abstract": "Fault-tolerant quantum computation requires reconciling the computational demands of accurate decoding with the stringent timing constraints of real-time error correction. We present Spatiotemporal Covariance-Optimized Parallel Ensemble (SCOPE), a physics-informed framework for real-time decoding of quantum low-density parity-check codes (qLDPC). By exploiting the spatial symmetries of bivariate-bicycle (BB) codes and the temporal regularity of repeated syndrome extraction, SCOPE uncovers a spatiotemporally covariant decoding structure and organizes the circuit-level problem into a layered decoding strategy. We further compress the high-dimensional evolution of belief propagation (BP) into a low-dimensional dynamical representation, revealing distinct signatures of successful and failed decoding and enabling early detection of unpromising trajectories. Guided by these dynamical signatures, SCOPE explores multiple perturbed decoding trajectories in parallel, enabling early termination and reseeding within a fixed serial iteration budget, with message-passing parameters optimized offline by simulated annealing. Circuit-level simulations of the $[[144,12,12]]$ BB code yield a logical error rate of $p_L=4.82\\times10^{-10}$ at a physical error rate of $p=10^{-3}$. We further realize a pipelined two-arm memory-augmented BP (Mem-BP) core at the register-transfer level. Functional simulations at a 250 MHz clock yield a 16 ns BP iteration interval per arm and a mean input-to-result latency of 173.8 ns at $p=5\\times10^{-3}$.",
-        "url": "https://arxiv.org/abs/2611.19130",
-        "pdf_url": "https://arxiv.org/pdf/2611.19130v1",
-        "published": "2026-11-14T03:37:53Z",
-        "updated": "2026-11-14T03:37:53Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 5,
-        "topics": [
-          "logical_qec"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "logical error",
-            "syndrome",
-            "qLDPC"
           ]
         },
         "sources": [

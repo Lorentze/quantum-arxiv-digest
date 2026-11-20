@@ -31433,6 +31433,145 @@
         "arxiv"
       ],
       "first_seen_at": "2026-11-19T07:33:05Z"
+    },
+    {
+      "id": "doi:10.1103/gnq3-c2df",
+      "version": 1,
+      "title": "Fault-Tolerant Execution of Error-Corrected Quantum Algorithms",
+      "authors": [
+        "Michael A. Perlin",
+        "Zichang He",
+        "Anthony Alexiades Armenakas",
+        "Pablo Andres-Martinez",
+        "Tianyi Hao",
+        "Dylan A. Herman",
+        "Yuwei Jin",
+        "Karl Mayer",
+        "Chris N. Self",
+        "David Amaro",
+        "Ciaran Ryan-Anderson",
+        "Ruslan Shaydulin"
+      ],
+      "abstract": "Scaling up quantum algorithms to tackle high-impact problems in science and industry requires quantum error correction and fault tolerance. While progress has been made in experimentally realizing error-corrected primitives, the end-to-end execution of logical quantum algorithms using only fault-tolerant (FT) components has remained out of reach. We demonstrate the FT and error-corrected execution of two quantum algorithms, the quantum approximate optimization algorithm (QAOA) and the Harrow-Hassidim-Lloyd algorithm applied to the Poisson equation, on Quantinuum H2 and Helios trapped-ion quantum processors using the ⟦ 7 , 1 , 3 ⟧ Steane code. For QAOA circuits on five and six logical qubits, we show performance improvements from increasing the number of QAOA layers and the number of T gates used to approximate logical rotations, despite increased physical circuit complexity. We further show that QAOA circuits with up to eight logical qubits and nine logical T gates perform similarly to unencoded circuits. For the largest QAOA circuits we run, with 12 logical (97 physical) qubits and 2132 physical two-qubit gates, we still observe better-than-random performance. Finally, we show that adding active quantum error correction cycles and increasing the repeat-until-success limit of state-preparation subroutines can improve the performance of a quantum algorithm, thereby demonstrating critical capabilities of scalable FT quantum computation. Our results are enabled by a FT logical T -gate implementation with an infidelity of 2.7 ( 4 ) × 10 − 3 and dynamic circuits with measurement-dependent feedback. Our work demonstrates near-breakeven performance of complex, error-corrected algorithmic quantum circuits using only FT components.",
+      "abstract_basis": "crossref_abstract",
+      "abstract_source_url": "https://api.crossref.org/journals/2160-3308/works?filter=from-online-pub-date%3A2026-11-17%2Cuntil-online-pub-date%3A2026-11-20%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
+      "url": "https://journals.aps.org/prx/abstract/10.1103/gnq3-c2df",
+      "pdf_url": "",
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "categories": [],
+      "sources": [
+        "prx"
+      ],
+      "publication": {
+        "journal_id": "prx",
+        "journal": "Physical Review X",
+        "doi": "10.1103/gnq3-c2df",
+        "url": "https://journals.aps.org/prx/abstract/10.1103/gnq3-c2df",
+        "published": "2026-11-19",
+        "date_basis": "crossref_published-online"
+      },
+      "keyword_score": 3,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction"
+        ]
+      },
+      "first_seen_at": "2026-11-20T01:04:50Z"
+    },
+    {
+      "id": "doi:10.1103/kfd4-91m9",
+      "version": 1,
+      "title": "Combinatorial Approach to Circuit Complexity: From Approximate Quantum Codes to Lieb-Schultz-Mattis Constraints",
+      "authors": [
+        "Jinmin Yi, Ruizhi Liu, and Zhi Li"
+      ],
+      "abstract": "Approximate quantum error correction (AQEC) provides a versatile framework for both quantum information processing and probing many-body entanglement. We reveal a fundamental tension between the error-correcting power of an AQEC and the hardness of code state preparation. More precisely, through a n…",
+      "abstract_basis": "publisher_feed_excerpt",
+      "abstract_source_url": "https://feeds.aps.org/rss/recent/prl.xml",
+      "url": "https://journals.aps.org/prl/abstract/10.1103/kfd4-91m9",
+      "pdf_url": "",
+      "published": "2026-11-19T10:00:00Z",
+      "updated": "2026-11-19T10:00:00Z",
+      "categories": [],
+      "sources": [
+        "prl"
+      ],
+      "publication": {
+        "journal_id": "prl",
+        "journal": "Physical Review Letters",
+        "doi": "10.1103/kfd4-91m9",
+        "url": "https://journals.aps.org/prl/abstract/10.1103/kfd4-91m9",
+        "published": "2026-11-19T10:00:00Z",
+        "date_basis": "publisher_rss"
+      },
+      "metadata_warnings": [
+        "Journal endpoint returned HTTP 403; skipped without retry"
+      ],
+      "keyword_score": 6,
+      "topics": [
+        "logical_qec",
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction"
+        ],
+        "adaptive_resources": [
+          "state preparation"
+        ]
+      },
+      "first_seen_at": "2026-11-20T01:04:50Z"
+    },
+    {
+      "id": "doi:10.1038/s41534-026-01407-8",
+      "version": 1,
+      "title": "Compilation-informed probabilistic logical-error cancellation",
+      "authors": [
+        "Giancarlo Camilo",
+        "Thiago O. Maciel",
+        "Allan Tosta",
+        "Abdulla Alhajri",
+        "Thais de Lima Silva",
+        "Daniel Stilck França",
+        "Leandro Aolita"
+      ],
+      "abstract": "The potential of quantum computers to outperform classical ones in practically useful tasks remains challenging in the near term due to scaling limitations and high error rates of current quantum hardware. While quantum error correction (QEC) offers a clear path towards fault tolerance, overcoming the scalability issues will take time. Early applications will likely rely on QEC combined with quantum error mitigation (QEM). We introduce a QEM scheme against both compilation errors and logical-gate noise that is circuit-, QEC code-, and compiler-agnostic. The scheme builds on quasi-probability methods and uses information about the circuit’s gates’ compilations to attain an unbiased estimation of noiseless expectation values incurring a constant sample-complexity overhead. Moreover, it features maximal circuit size and code distance both independent of the target precision, in contrast to strategies based on QEC alone. We formulate the mitigation procedure as a linear program, demonstrate its efficacy through numerical simulations, and illustrate it for estimating the Jones polynomials of knots. Our method significantly reduces quantum resource requirements for high-precision estimations, offering a practical route towards fault-tolerant quantum computation with precision-independent overheads for fixed circuit size and code distance.",
+      "abstract_basis": "crossref_abstract",
+      "abstract_source_url": "https://api.crossref.org/journals/2056-6387/works?filter=from-online-pub-date%3A2026-11-17%2Cuntil-online-pub-date%3A2026-11-20%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
+      "url": "https://www.nature.com/articles/s41534-026-01407-8",
+      "pdf_url": "",
+      "published": "2026-11-19",
+      "updated": "2026-11-19",
+      "categories": [],
+      "sources": [
+        "npj_quantum_information"
+      ],
+      "publication": {
+        "journal_id": "npj_quantum_information",
+        "journal": "npj Quantum Information",
+        "doi": "10.1038/s41534-026-01407-8",
+        "url": "https://www.nature.com/articles/s41534-026-01407-8",
+        "published": "2026-11-19",
+        "date_basis": "crossref_published-online"
+      },
+      "keyword_score": 7,
+      "topics": [
+        "benchmarking",
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "benchmarking": [
+          "error mitigation"
+        ],
+        "logical_qec": [
+          "quantum error correction"
+        ]
+      },
+      "first_seen_at": "2026-11-20T01:04:50Z"
     }
   ],
   "screened": {
@@ -35845,8 +35984,10 @@
       "metadata_fingerprint": "0429d01d41ea618472287e00db623fb313b28b25b168cf2b966794c1d1ae97f2"
     },
     "doi:10.1103/74gr-cq5n": {
-      "status": "awaiting_publication",
-      "at": "2026-10-16T04:38:00Z"
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "d1ddebfccf0aeab248b886cbed78bec255c540579f0b09cf29b28de25f363098"
     },
     "doi:10.1103/x4f8-pfj2": {
       "status": "keyword_rejected",
@@ -37915,8 +38056,8 @@
     "doi:10.1103/wybf-r4gm": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-16T04:38:00Z",
-      "metadata_fingerprint": "56a7ae9f278db59f96d51a4ce64068e082f93d8d002a2cd0be9bdcf1c4526ae1"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "82a7675c43c6d533239f530148cfa12f532a5330e4bdddb437e942a1b74b2ee7"
     },
     "doi:10.1103/skq4-mn78": {
       "status": "keyword_rejected",
@@ -38393,8 +38534,8 @@
     "doi:10.1103/q1cs-j5py": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-17T04:34:51Z",
-      "metadata_fingerprint": "66fb293e7ab5ff09de4d471c792d622f6123d25a708e0e05cd27f248dba0e0f1"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "e46d9b2ab0ab39385ad97adc51ceb52b048dbde178d1fbf178dbb1943bb7242f"
     },
     "doi:10.1103/pppb-9sm1": {
       "status": "keyword_rejected",
@@ -41855,8 +41996,8 @@
     "doi:10.1103/vg1s-h4x6": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-22T04:56:38Z",
-      "metadata_fingerprint": "c2a4b305bb99170c8320c4aaa37f19714c15b1eaf0aec30d89ad937b7669ec9c"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "e024fac85b18b48868c164174d64e851ffde8f82b7b19ca9345bc8cdccc2c3bc"
     },
     "doi:10.1103/tj49-5vyf": {
       "status": "keyword_rejected",
@@ -41915,8 +42056,8 @@
     "doi:10.1103/ddrf-yxd4": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-22T04:56:38Z",
-      "metadata_fingerprint": "dbf08cbd2dd62a7c75102d49bf3a0c685fb1be2ba34b431046e266722da55013"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "41375d3d513a65c944cf642af1f31544e09009a239de96c37f53f08f6f7cb667"
     },
     "doi:10.1103/d83k-923y": {
       "status": "keyword_rejected",
@@ -41927,8 +42068,8 @@
     "doi:10.1103/7zh3-zvnd": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-24T04:43:31Z",
-      "metadata_fingerprint": "498d076cccad8399128abbedd9e61c34c5d01c77b0f2fa64dd21efb856ac0202"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "5562e0067656da38171a3683dc62f8a0f91998c721a38709129978f673f58832"
     },
     "doi:10.1103/7931-lsqk": {
       "status": "keyword_rejected",
@@ -42395,8 +42536,8 @@
     "doi:10.1103/nv71-s5dd": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-23T04:58:33Z",
-      "metadata_fingerprint": "6cb1d48bdf16fb47d3487e23a069da3f6daa0b2280ebf7cdf2d05fbd817011e7"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "eca5affb31dff7781bb42e1a9c76a9cd36f8beb7b8ff7f634cef794125fb333c"
     },
     "doi:10.1103/k3ng-gm5v": {
       "status": "keyword_rejected",
@@ -42419,8 +42560,8 @@
     "doi:10.1103/6cyn-zbpm": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-23T04:58:33Z",
-      "metadata_fingerprint": "610996f7706d240c6c4df64dd087a31ca7f9ec301bbca62f90e5eafe51283b99"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "d0acc5d1df4a872c94d43d3a923a6807b77b257718daad7f265b589d5c8cab86"
     },
     "doi:10.1103/6bwx-7q8k": {
       "status": "keyword_rejected",
@@ -43139,8 +43280,8 @@
     "doi:10.1103/25vr-l8dg": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-24T04:43:31Z",
-      "metadata_fingerprint": "c19d8eae2211ad81d23777d2c782b5984a98075558bb01eb01c6a3f101a3fc22"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "0308f8718c8c8f7a9b1280e3aed0d5cee73da698023cf404d67dbb57f238021e"
     },
     "doi:10.1103/12p9-4krp": {
       "status": "keyword_rejected",
@@ -44872,8 +45013,8 @@
     "doi:10.1103/l8m8-vk2h": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-27T05:12:19Z",
-      "metadata_fingerprint": "e2f20beea6261c307647135b830d49a6ef483cac20cf2cd428a7447ee523f204"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "78e496a3b62113c1f75661317a7b93e4636203f67a6aaa323e26df9d7c89d47a"
     },
     "doi:10.1103/kpbs-7d6l": {
       "status": "keyword_rejected",
@@ -44908,8 +45049,8 @@
     "doi:10.1103/bwxl-wwt6": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-27T05:12:19Z",
-      "metadata_fingerprint": "c8c85f5dd6207759a83241714b57068a507e7c0e0af2be94ac6bd8feb9fde14c"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "d05393d6dba4cc1d2377211375a9121dbbfe171b6997b8c2c2cd9d04a7dd4fb7"
     },
     "doi:10.1103/91hd-8k7g": {
       "status": "keyword_rejected",
@@ -44926,8 +45067,8 @@
     "doi:10.1103/7jkz-3r9q": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-27T05:12:19Z",
-      "metadata_fingerprint": "9a3965f02c6c7a3213663842768a58bca834dc1dbe085737d59fd21513ffd2aa"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "56c7da3e9b23fd50f3bab1878726ad7f9d8883ce23c6325ecbcd044ff66db1b6"
     },
     "doi:10.1103/75j8-3nbl": {
       "status": "keyword_rejected",
@@ -44938,8 +45079,8 @@
     "doi:10.1103/63ch-m64p": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-27T05:12:19Z",
-      "metadata_fingerprint": "e4982ab3c28e31c12c1f1e4576c360b8c3f3e3c27c66f53d511a955a338cc9b8"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "ad07aec7e0c36ac16872db2d48a0d768f9e1662f790524e0eb92586c51e8139e"
     },
     "doi:10.1103/3kmz-18bp": {
       "status": "keyword_rejected",
@@ -45742,8 +45883,8 @@
     "doi:10.1103/4v66-y755": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-28T05:49:27Z",
-      "metadata_fingerprint": "6157e6e6518d9e67c4a845d397089b79d6baef1bb0820e4ac141e997c0048513"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "e645f2ad976374c287a8022cec1d1c4272e5609a3445f0d793409bd056ae36df"
     },
     "doi:10.1103/3jqj-6ldy": {
       "status": "keyword_rejected",
@@ -47619,14 +47760,14 @@
     "doi:10.1103/9b1c-bl53": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-30T05:55:37Z",
-      "metadata_fingerprint": "39bbcc185244420e94406c7c684642f7e9349a96371c6fa575ed26ecfda8de0e"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "ef64cd89f0cc0c052c84f92757d0ae29f5084a4b34d733dd885c5d3e5aa9d8f2"
     },
     "doi:10.1103/9433-q867": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-30T05:55:37Z",
-      "metadata_fingerprint": "2e6141eec2126d3c8c06ae10122a4a76a5f69b0829857aee438232951a3b0771"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "0822e5c85f329493cca9db870abaab4088368499abe2a523f7cea96fa8be5c03"
     },
     "doi:10.1103/88gs-6cts": {
       "status": "keyword_rejected",
@@ -47925,8 +48066,8 @@
     "doi:10.1103/xpsr-4hqn": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-31T05:51:49Z",
-      "metadata_fingerprint": "52c2bba740ab8b2db6cad0777e3ca504b8f8d05fa43c5dc8ef427920de5db771"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "20358171aac83ad02204fcf40f728c40c1280e63de20413a2e738dbf3a4da38b"
     },
     "doi:10.1103/wmpz-2b5c": {
       "status": "keyword_rejected",
@@ -47955,8 +48096,8 @@
     "doi:10.1103/fz8w-w61f": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-10-31T05:51:49Z",
-      "metadata_fingerprint": "5180e8d8fb66ae2a46fde7421e8cca792db531d8fc3dd803e7119cbcc0d58962"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "1ea52dd7285c0099af39d1367c08de99b6143d1641375106941e06ed53f0b161"
     },
     "doi:10.1103/djwx-lqsx": {
       "status": "keyword_rejected",
@@ -49927,14 +50068,14 @@
     "doi:10.1103/plv9-bn9t": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-11-03T06:54:52Z",
-      "metadata_fingerprint": "7c78af8ac107738093435cb4c3f4560fab3a1c00ad62c0b2ca40c428ac1fbabc"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "282a59f063e0353b73f0239da03648d5985139a865b33208a36c13677be082b6"
     },
     "doi:10.1103/mv2l-tb14": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-11-03T06:54:52Z",
-      "metadata_fingerprint": "9a9f9a8cc4c9e19ab7ae0a08867988ef17a090ab8c649d14ea8027973fc4a25a"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "29fd81fa3aeaf445c24480024ba9955633e96deffbe75c3b099bf399ebebbc3c"
     },
     "doi:10.1103/kn6h-dkxb": {
       "status": "keyword_rejected",
@@ -61883,8 +62024,8 @@
     "doi:10.1038/s41467-026-79513-6": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-11-19T07:33:05Z",
-      "metadata_fingerprint": "33bf0e21c0c8f500342dab78915e32d666fc5a22cdd248ff9d635664121c4616"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "a7f9705ac0d237817fc0127c8e5f402d3a63d1b42cda39b83a0c80883f774634"
     },
     "doi:10.1038/s41467-026-79481-x": {
       "status": "keyword_rejected",
@@ -61895,8 +62036,8 @@
     "doi:10.1038/s41467-026-79459-9": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-11-19T07:33:05Z",
-      "metadata_fingerprint": "8ef3bf4812703611762f6ab7db97c91a75edc25ae448740a54cab60ade444613"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "bc933538d2387a3cc54eab9ec24d42bcc400ae9c511c7c022ae2f4c9a521e53e"
     },
     "doi:10.1038/s41467-026-79417-5": {
       "status": "keyword_rejected",
@@ -61907,8 +62048,8 @@
     "doi:10.1038/s41467-026-79402-y": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-11-19T07:33:05Z",
-      "metadata_fingerprint": "ec1a57e4f21d17e4446fcc3181a2a14a341397db2508adcd520083a70338fc2b"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "fd4cdcfe55b08902023ee72a210b142743a61831f902557a92fd4babf806fda8"
     },
     "doi:10.1038/s41467-026-79377-w": {
       "status": "keyword_rejected",
@@ -61931,8 +62072,8 @@
     "doi:10.1038/s41467-026-78926-7": {
       "status": "keyword_rejected",
       "score": 0,
-      "at": "2026-11-19T07:33:05Z",
-      "metadata_fingerprint": "6c68018b12db69922a8cda3677282d9110cde04a2ac2d2454d1a2104123a5755"
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "d511c8246500665c6e3a4d703cf5bdbea048a9a099730aa37949328abaec9caa"
     },
     "doi:10.1038/s41467-026-78889-9": {
       "status": "keyword_rejected",
@@ -61951,23 +62092,413 @@
       "score": 0,
       "at": "2026-11-19T07:33:05Z",
       "metadata_fingerprint": "30f1dd8b99d104bee80457528837fa98fe84de3b599987603157fbdb90a650a5"
+    },
+    "doi:10.1038/s41586-026-11445-z": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "c42b66d440f1c8dce6b4c86053dd2fb54445a433427b0c8bab4804ba32dbf897"
+    },
+    "doi:10.1126/science.aeo2218": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "62d7bd86184d26a0e7719034ce7ae9e37f9519c0c41a80eed12042d4fc0b3710"
+    },
+    "doi:10.1126/science.aen9176": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "7c13910772664a29c1f77ec85cea17c14277986eaa62422029608ef5fff42fcd"
+    },
+    "doi:10.1126/science.aen0458": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "1949484642706802f5ee759afc5c8d78f953f5b656b920397f75a171d50f4a2b"
+    },
+    "doi:10.1126/science.aen0206": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "3d5ed55d126e64926d434baebc9ba77e96af88d166b43a1273a7d19ed0cceaa2"
+    },
+    "doi:10.1126/science.aem7976": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "2ab4df8b5f8cb49cd9c5f9fe254baf56e71ded32246f9f820b4dcd2b7b215cc2"
+    },
+    "doi:10.1126/science.aem7343": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "eef5608bc5d8ef8e66ee261ab1e8d6e69d6f75de3d1dfd96c501b66f0d199eeb"
+    },
+    "doi:10.1126/science.aem5489": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "cf289d7cb2c12531807c396fd8a7062e30746476dd9ac3a611f424c5e172b6a0"
+    },
+    "doi:10.1126/science.aem5274": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "02df0db7467e5d8e48ecd77e11c265b4cbfce4f0ade8a2d7010899c728282c1c"
+    },
+    "doi:10.1126/science.aem4000": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "8045668d2d400a283fb0b0cce03ef4475c2e6ccf4d8208e2c6ff8da2941c2765"
+    },
+    "doi:10.1126/science.ael6252": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "ddf19ae5c9ff59b322478f189f1c8ff58ba58d908bbda6c0c3ee04e480cdefe8"
+    },
+    "doi:10.1126/science.aek1724": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "30197c345c44ae149fd7739f5d4bc7a6d9a67d551d208ea4ae1a77c8e5475849"
+    },
+    "doi:10.1126/science.aej5001": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "0ff3dece3343de0ab63943be62ef7c753f0a1c2e078ec91bdf512747e98f58ec"
+    },
+    "doi:10.1126/science.aej3009": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "68ec4dbb24c85a470f89b3bd965095e993955cb36633c997c8dd893a36cfac94"
+    },
+    "doi:10.1126/science.aei7840": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "328122d98980ef27b6373d0e745306d5644a661c1747d965f0f93f0e9d5f4f92"
+    },
+    "doi:10.1126/science.aei2041": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "41298f17ef7465bd94d74ea3897c09afc76e98cfb6c386251414cd1d836834a1"
+    },
+    "doi:10.1126/science.aei0135": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "85bb7e47827b83ef0fe3a49a870c8f59d913e3268477af5a1e11d2357c29eed2"
+    },
+    "doi:10.1126/science.aeh3114": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "e9718b5662bfddaa2693b095932f64eaef88b563be28646be78b21c54e57613b"
+    },
+    "doi:10.1126/science.aef8963": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "87cafd061adbdec494ee7db940c4e0df8eb9ac7b21c4410b70b3a4590c49576f"
+    },
+    "doi:10.1126/science.aee9889": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "8df63b1be3d069c55a57a54bb14f5d241198c99092306e7201454d8828db2ff6"
+    },
+    "doi:10.1126/science.aee8018": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "9584a879484d141a8473d181b77b53b4625179f47af930934c65e0afb1608636"
+    },
+    "doi:10.1126/science.aee2641": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "acfab85e0095258626312d4daf83e085004c70cbe68ba779578373f636fa892d"
+    },
+    "doi:10.1126/science.aec3042": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "a91cd714b49a30ffdac6eff2d7d4c015806437d31df0890964ce484622675fcb"
+    },
+    "doi:10.1126/science.aeb9995": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "ee13bd5d2dcbee548f163d0a5e4d47660e0e6eec152f3be8e0600a323efb79ee"
+    },
+    "doi:10.1126/science.aeb1122": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "7d3ced1e45905ac251a68aa9b1446f7df387c1d9105755c213282f366b6e47f9"
+    },
+    "doi:10.1126/science.adx5757": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "6c020edfb7e33bfa942505e18f65a7dd4f27e4199a9fa2dda5e1e4248f75e65d"
+    },
+    "doi:10.1103/vlt2-xzgk": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "d1b8e1cc0226dfa908d48113f18c7b549a32c05ac1a0d4ce4eb302333239b00b"
+    },
+    "doi:10.1103/1xgg-qdyd": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "aad0b843a709b372cef3ed9665fa939219f5af7047815c881bb67bc24a25e9f9"
+    },
+    "doi:10.1103/sk23-2l8m": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "890c7397e1e153677815d14156304cc608e6d54f661f626080a88921e49f7bdf"
+    },
+    "doi:10.1103/q94d-rf67": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "64afb5c4fac8e529dc5cdabf157187815916ede005c1e457ede97f2bbe4bc130"
+    },
+    "doi:10.1103/fkpq-49d1": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "0899f6a59c43f8b5fcbd7f34f2bd44c62d636d6a817ac65b3cb440982cd903eb"
+    },
+    "doi:10.1103/bp46-97l5": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "4c53f51974dd37f4654470230d3c874d81138cfad446f1587bbae2490873fe0b"
+    },
+    "doi:10.1103/b11r-j369": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "b7011c6f5c9d9597fb7fd4fcdde4689f46d0f24af4837fa6af59704804cf5524"
+    },
+    "doi:10.1103/7hdp-y4vw": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "4754cdc43e940eea8710db2dc29cc7ad7bb163adac88415ebf83a3d817d5e29f"
+    },
+    "doi:10.1103/44jl-1b99": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "2094eed341b7a1380b185eb312f1dca2a26e9b3dd30528daf72d6e465c17179d"
+    },
+    "doi:10.1103/31nh-2wyn": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "3cdb81aed2ee4ca93c883934a88838e5272627dd7151ebad0b06da092b58a840"
+    },
+    "doi:10.1103/2jx4-c8w1": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "2be58a8968831473c8494ce6c1c50abf7238f4625f608aa58b7e96f2aa105130"
+    },
+    "doi:10.1103/594z-74r2": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "de6f10b0edbc0dbd83b3b9f8833e1570c4cf9c007318d1554679419b2055e568"
+    },
+    "doi:10.1038/s41467-026-79710-3": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "1029c33de72b9549825db30e8bc32ecb0c82880e81cd25b0c5e9961fbe07900c"
+    },
+    "doi:10.1038/s41467-026-79617-z": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "de57603cf457be1b0e00481cdad23ac708808ec61b5b6d68ee55e74356287ee0"
+    },
+    "doi:10.1038/s41467-026-79613-3": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "582ddf8779614f5f244bf8eff418f57d3540023653a0a406099ecc44a885de16"
+    },
+    "doi:10.1038/s41467-026-79612-4": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "3f15a46aff694ced35523ba1d811821ba1c1ced55ee0334bf8a6abcf0cdedcf5"
+    },
+    "doi:10.1038/s41467-026-79581-8": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "e3af121552bbdc9064d8ec90af97536807fa31aa4e286d73fe9ed79fd8fa46dd"
+    },
+    "doi:10.1038/s41467-026-79541-2": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "3cf37a3e91eb4f18b4ab3eeb68b4d07de3e89dbf6fcc8e44f03359e9deb85d65"
+    },
+    "doi:10.1038/s41467-026-79522-5": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "0982e447282eed1993422ab498082b1a1a1276a769988d043e08770a0f694468"
+    },
+    "doi:10.1038/s41467-026-79512-7": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "078081107be840d97480828bfe5d90a725b9e65e9ca6bd05a4022d8f2592b138"
+    },
+    "doi:10.1038/s41467-026-79487-5": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "006ae2a7f9a777ec37a2c474af08ea0694c1cf81d18f901418f05201d6ef7724"
+    },
+    "doi:10.1038/s41467-026-79472-y": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "a8695cb5409cc8dc74c7aef67383207f14e1e7d195d6f53fbd7713837117f457"
+    },
+    "doi:10.1038/s41467-026-79435-3": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "523efda64faa732ac7462c85afc6858ea204c667b315018c19f03119cb809fe3"
+    },
+    "doi:10.1038/s41467-026-79412-w": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "e5758c368c0e2dd3a66dd4dbeb7f11e958ab20154dc35761403e0550eed8fa66"
+    },
+    "doi:10.1038/s41467-026-79394-9": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "5f1724b3d176c51f35d249af723b846f9ed6f00dd30fe1aab6746b30f76524d7"
+    },
+    "doi:10.1038/s41467-026-79389-6": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "1bd689941515c6d50bde2c0e7889dce81cc1efd910645c3a1f82a3d858af51bb"
+    },
+    "doi:10.1038/s41467-026-79369-w": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "75256c188895007067db53f8e04a10041200fad88582abcb9ddb124fdad49f71"
+    },
+    "doi:10.1038/s41467-026-79368-x": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "70cc45eadcb97707f11640e81faf1f79c2a3cf552360f02da08fc0eead87ef80"
+    },
+    "doi:10.1038/s41467-026-79356-1": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "6ce704b9b715a41b93000f77d96e5529e188512383f8d5c89f4147b05c82d797"
+    },
+    "doi:10.1038/s41467-026-79342-7": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "4e9dc4f7338375e24f78a668f6a238737361ad78ffa95f4016c34027589b300e"
+    },
+    "doi:10.1038/s41467-026-79284-0": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "7fc076d88a6481ad05896ae81e5ac212ac58aa2cac118359dce6ff455c44dc9e"
+    },
+    "doi:10.1038/s41467-026-79222-0": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "d53962a4a9ee6dc628cfd94b59cf01b9c230b00a069dda07301765a4414cf1a8"
+    },
+    "doi:10.1038/s41467-026-79096-2": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "0f25f989b8aed2526096f1fa880b9d6c0d3fb5c70673f6782b3a40e530c0c107"
+    },
+    "doi:10.1038/s41467-026-78803-3": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "874a5d2157b28e083250edd3de0383374dd58fbd2047bdd22cbfb9e62a20f9fc"
+    },
+    "doi:10.1038/s41467-026-78758-5": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "864e3eb00f2ea3046161b629118420950983739e582b1931d86e71b4bfe0092c"
+    },
+    "doi:10.1038/s41467-026-78404-0": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "afb037126bf257c63d96e0e6180ba1950dc25148bcb0acae672dfaa91dd859a0"
+    },
+    "doi:10.1038/s41467-026-77977-0": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "e52602fd56f4425a158283f46d5682e2c1f6ebf7f688efd6b3528dd09fbbc933"
+    },
+    "doi:10.1038/s41467-026-77853-x": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "34add64f58c1ff5331f6b1cad6a2bcc8ab8c9d9afb352c0eb857af5ee4cb8745"
+    },
+    "doi:10.1038/s41534-026-01412-x": {
+      "status": "keyword_rejected",
+      "score": 0,
+      "at": "2026-11-20T01:04:50Z",
+      "metadata_fingerprint": "06ce91c8926d1dba5748fe21fb3210041ff23e34a4cd0edc3ea1409f2377d40d"
     }
   },
-  "last_successful_run": "2026-11-19T07:33:05Z",
+  "last_successful_run": "2026-11-20T01:04:50Z",
   "last_run": {
-    "fetched": 625,
-    "keyword_candidates": 25,
+    "fetched": 528,
+    "keyword_candidates": 0,
     "analyzed": 0,
     "selected": 0,
-    "pending": 345,
+    "pending": 348,
     "lookback_days": 7,
     "source": "all",
     "date_basis": "initial_submission",
-    "journal_fetched": 229,
-    "journal_queued": 0
+    "journal_fetched": 268,
+    "journal_queued": 3
   },
   "is_demo": false,
-  "last_collection_run": "2026-11-19T07:33:05Z",
+  "last_collection_run": "2026-11-20T01:04:50Z",
   "last_analysis_run": "2026-11-19T01:10:47Z",
   "last_analysis_batch": {
     "analyzed": 5,
@@ -61989,27 +62520,27 @@
     "papers": 17,
     "description": "Detailed Chinese reports and original English abstracts; stable article URLs and RSS GUIDs."
   },
-  "last_arxiv_collection_run": "2026-11-19T07:33:05Z",
+  "last_arxiv_collection_run": "2026-11-20T01:04:50Z",
   "publication_reviews_pending": [],
   "journal_source_status": {
     "nature": {
       "journal": "Nature",
       "status": "ok",
-      "window_start": "2026-11-16",
-      "window_end": "2026-11-19",
-      "checked_at": "2026-11-19T07:33:05.561589Z",
+      "window_start": "2026-11-17",
+      "window_end": "2026-11-20",
+      "checked_at": "2026-11-20T01:04:50.116513Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://www.nature.com/nature.rss",
           "status": "ok",
-          "research_records": 28
+          "research_records": 29
         }
       ],
       "warnings": [],
       "crossref": {
         "status": "ok",
-        "total_results": 69,
+        "total_results": 73,
         "returned_research_records": 28,
         "date_basis": "published-online"
       },
@@ -62020,20 +62551,45 @@
     "science": {
       "journal": "Science",
       "status": "ok",
-      "window_start": "2026-11-16",
-      "window_end": "2026-11-19",
-      "checked_at": "2026-11-19T07:33:05.561589Z",
+      "window_start": "2026-11-17",
+      "window_end": "2026-11-20",
+      "checked_at": "2026-11-20T01:04:50.116513Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://feeds.science.org/rss/science.xml",
           "status": "ok",
-          "research_records": 22
+          "research_records": 23
         },
         {
           "url": "https://feeds.science.org/rss/science-aop.xml",
           "status": "ok",
-          "research_records": 17
+          "research_records": 19
+        }
+      ],
+      "warnings": [],
+      "crossref": {
+        "status": "ok",
+        "total_results": 3,
+        "returned_research_records": 3,
+        "date_basis": "published-online"
+      },
+      "collected": 25,
+      "abstract_enrichment_attempts": 2,
+      "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
+    },
+    "nature_physics": {
+      "journal": "Nature Physics",
+      "status": "ok",
+      "window_start": "2026-11-17",
+      "window_end": "2026-11-20",
+      "checked_at": "2026-11-20T01:04:50.116513Z",
+      "date_basis": "publication_date",
+      "feeds": [
+        {
+          "url": "https://www.nature.com/nphys.rss",
+          "status": "ok",
+          "research_records": 8
         }
       ],
       "warnings": [],
@@ -62047,91 +62603,16 @@
       "abstract_enrichment_attempts": 0,
       "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
-    "nature_physics": {
-      "journal": "Nature Physics",
-      "status": "ok",
-      "window_start": "2026-11-16",
-      "window_end": "2026-11-19",
-      "checked_at": "2026-11-19T07:33:05.561589Z",
-      "date_basis": "publication_date",
-      "feeds": [
-        {
-          "url": "https://www.nature.com/nphys.rss",
-          "status": "ok",
-          "research_records": 8
-        }
-      ],
-      "warnings": [],
-      "crossref": {
-        "status": "ok",
-        "total_results": 3,
-        "returned_research_records": 3,
-        "date_basis": "published-online"
-      },
-      "collected": 3,
-      "abstract_enrichment_attempts": 2,
-      "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
-    },
     "prx": {
       "journal": "Physical Review X",
       "status": "ok",
-      "window_start": "2026-11-16",
-      "window_end": "2026-11-19",
-      "checked_at": "2026-11-19T07:33:05.561589Z",
+      "window_start": "2026-11-17",
+      "window_end": "2026-11-20",
+      "checked_at": "2026-11-20T01:04:50.116513Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://feeds.aps.org/rss/recent/prx.xml",
-          "status": "ok",
-          "research_records": 99
-        }
-      ],
-      "warnings": [],
-      "crossref": {
-        "status": "ok",
-        "total_results": 12,
-        "returned_research_records": 12,
-        "date_basis": "published-online"
-      },
-      "collected": 12,
-      "abstract_enrichment_attempts": 2,
-      "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
-    },
-    "prl": {
-      "journal": "Physical Review Letters",
-      "status": "ok",
-      "window_start": "2026-11-16",
-      "window_end": "2026-11-19",
-      "checked_at": "2026-11-19T07:33:05.561589Z",
-      "date_basis": "publication_date",
-      "feeds": [
-        {
-          "url": "https://feeds.aps.org/rss/recent/prl.xml",
-          "status": "ok",
-          "research_records": 97
-        }
-      ],
-      "warnings": [],
-      "crossref": {
-        "status": "ok",
-        "total_results": 87,
-        "returned_research_records": 84,
-        "date_basis": "published-online"
-      },
-      "collected": 84,
-      "abstract_enrichment_attempts": 12,
-      "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
-    },
-    "prx_quantum": {
-      "journal": "PRX Quantum",
-      "status": "ok",
-      "window_start": "2026-11-16",
-      "window_end": "2026-11-19",
-      "checked_at": "2026-11-19T07:33:05.561589Z",
-      "date_basis": "publication_date",
-      "feeds": [
-        {
-          "url": "https://feeds.aps.org/rss/recent/prxquantum.xml",
           "status": "ok",
           "research_records": 99
         }
@@ -62144,15 +62625,65 @@
         "date_basis": "published-online"
       },
       "collected": 10,
+      "abstract_enrichment_attempts": 1,
+      "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
+    },
+    "prl": {
+      "journal": "Physical Review Letters",
+      "status": "ok",
+      "window_start": "2026-11-17",
+      "window_end": "2026-11-20",
+      "checked_at": "2026-11-20T01:04:50.116513Z",
+      "date_basis": "publication_date",
+      "feeds": [
+        {
+          "url": "https://feeds.aps.org/rss/recent/prl.xml",
+          "status": "ok",
+          "research_records": 97
+        }
+      ],
+      "warnings": [],
+      "crossref": {
+        "status": "ok",
+        "total_results": 97,
+        "returned_research_records": 94,
+        "date_basis": "published-online"
+      },
+      "collected": 94,
+      "abstract_enrichment_attempts": 12,
+      "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
+    },
+    "prx_quantum": {
+      "journal": "PRX Quantum",
+      "status": "ok",
+      "window_start": "2026-11-17",
+      "window_end": "2026-11-20",
+      "checked_at": "2026-11-20T01:04:50.116513Z",
+      "date_basis": "publication_date",
+      "feeds": [
+        {
+          "url": "https://feeds.aps.org/rss/recent/prxquantum.xml",
+          "status": "ok",
+          "research_records": 99
+        }
+      ],
+      "warnings": [],
+      "crossref": {
+        "status": "ok",
+        "total_results": 8,
+        "returned_research_records": 8,
+        "date_basis": "published-online"
+      },
+      "collected": 8,
       "abstract_enrichment_attempts": 3,
       "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "nature_communications": {
       "journal": "Nature Communications",
       "status": "ok",
-      "window_start": "2026-11-16",
-      "window_end": "2026-11-19",
-      "checked_at": "2026-11-19T07:33:05.561589Z",
+      "window_start": "2026-11-17",
+      "window_end": "2026-11-20",
+      "checked_at": "2026-11-20T01:04:50.116513Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -62164,50 +62695,52 @@
       "warnings": [],
       "crossref": {
         "status": "ok",
-        "total_results": 97,
-        "returned_research_records": 90,
+        "total_results": 103,
+        "returned_research_records": 99,
         "date_basis": "published-online"
       },
-      "collected": 90,
+      "collected": 99,
       "abstract_enrichment_attempts": 1,
       "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "npj_quantum_information": {
       "journal": "npj Quantum Information",
-      "status": "ok",
-      "window_start": "2026-11-16",
-      "window_end": "2026-11-19",
-      "checked_at": "2026-11-19T07:33:05.561589Z",
+      "status": "partial",
+      "window_start": "2026-11-17",
+      "window_end": "2026-11-20",
+      "checked_at": "2026-11-20T01:04:50.116513Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://www.nature.com/npjqi.rss",
-          "status": "ok",
-          "research_records": 8
+          "status": "skipped",
+          "error": "Journal endpoint redirected outside the official allowlist"
         }
       ],
-      "warnings": [],
+      "warnings": [
+        "Journal endpoint redirected outside the official allowlist"
+      ],
       "crossref": {
         "status": "ok",
-        "total_results": 2,
-        "returned_research_records": 2,
+        "total_results": 4,
+        "returned_research_records": 4,
         "date_basis": "published-online"
       },
-      "collected": 2,
-      "abstract_enrichment_attempts": 2,
+      "collected": 4,
+      "abstract_enrichment_attempts": 3,
       "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     }
   },
-  "last_journal_collection_run": "2026-11-19T07:33:05Z",
+  "last_journal_collection_run": "2026-11-20T01:04:50Z",
   "last_journal_run": {
-    "fetched": 229,
-    "queued": 0,
-    "merged": 2,
+    "fetched": 268,
+    "queued": 3,
+    "merged": 0,
     "publication_reviews_pending": 0,
     "successful_sources": 8
   },
   "arxiv_source_status": {
     "status": "ok",
-    "checked_at": "2026-11-19T07:33:05Z"
+    "checked_at": "2026-11-20T01:04:50Z"
   }
 }
