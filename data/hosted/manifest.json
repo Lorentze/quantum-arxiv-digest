@@ -1,31 +1,33 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-20T01:11:26Z",
-  "last_collection_run": "2026-11-20T01:04:50Z",
+  "generated_at": "2026-11-20T07:25:31Z",
+  "last_collection_run": "2026-11-20T07:24:21Z",
   "last_analysis_run": "2026-11-20T01:11:26Z",
   "arxiv_source_status": {
     "status": "ok",
-    "checked_at": "2026-11-20T01:04:50Z"
+    "checked_at": "2026-11-20T07:24:21Z"
   },
   "journal_source_status": {
     "nature": {
       "journal": "Nature",
-      "status": "ok",
+      "status": "partial",
       "window_start": "2026-11-17",
       "window_end": "2026-11-20",
-      "checked_at": "2026-11-20T01:04:50.116513Z",
+      "checked_at": "2026-11-20T07:24:21.996645Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://www.nature.com/nature.rss",
-          "status": "ok",
-          "research_records": 29
+          "status": "skipped",
+          "error": "Journal endpoint redirected outside the official allowlist"
         }
       ],
-      "warnings": [],
+      "warnings": [
+        "Journal endpoint redirected outside the official allowlist"
+      ],
       "crossref": {
         "status": "ok",
-        "total_results": 73,
+        "total_results": 74,
         "returned_research_records": 28,
         "date_basis": "published-online"
       },
@@ -38,7 +40,7 @@
       "status": "ok",
       "window_start": "2026-11-17",
       "window_end": "2026-11-20",
-      "checked_at": "2026-11-20T01:04:50.116513Z",
+      "checked_at": "2026-11-20T07:24:21.996645Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -68,7 +70,7 @@
       "status": "ok",
       "window_start": "2026-11-17",
       "window_end": "2026-11-20",
-      "checked_at": "2026-11-20T01:04:50.116513Z",
+      "checked_at": "2026-11-20T07:24:21.996645Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -93,7 +95,7 @@
       "status": "ok",
       "window_start": "2026-11-17",
       "window_end": "2026-11-20",
-      "checked_at": "2026-11-20T01:04:50.116513Z",
+      "checked_at": "2026-11-20T07:24:21.996645Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -118,7 +120,7 @@
       "status": "ok",
       "window_start": "2026-11-17",
       "window_end": "2026-11-20",
-      "checked_at": "2026-11-20T01:04:50.116513Z",
+      "checked_at": "2026-11-20T07:24:21.996645Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -143,7 +145,7 @@
       "status": "ok",
       "window_start": "2026-11-17",
       "window_end": "2026-11-20",
-      "checked_at": "2026-11-20T01:04:50.116513Z",
+      "checked_at": "2026-11-20T07:24:21.996645Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -168,7 +170,7 @@
       "status": "ok",
       "window_start": "2026-11-17",
       "window_end": "2026-11-20",
-      "checked_at": "2026-11-20T01:04:50.116513Z",
+      "checked_at": "2026-11-20T07:24:21.996645Z",
       "date_basis": "publication_date",
       "feeds": [
         {
@@ -180,31 +182,29 @@
       "warnings": [],
       "crossref": {
         "status": "ok",
-        "total_results": 103,
-        "returned_research_records": 99,
+        "total_results": 108,
+        "returned_research_records": 104,
         "date_basis": "published-online"
       },
-      "collected": 99,
+      "collected": 104,
       "abstract_enrichment_attempts": 1,
       "coverage": "Rolling publisher RSS, supplemented by publisher-deposited online publication dates; delayed deposits or feed truncation can omit articles."
     },
     "npj_quantum_information": {
       "journal": "npj Quantum Information",
-      "status": "partial",
+      "status": "ok",
       "window_start": "2026-11-17",
       "window_end": "2026-11-20",
-      "checked_at": "2026-11-20T01:04:50.116513Z",
+      "checked_at": "2026-11-20T07:24:21.996645Z",
       "date_basis": "publication_date",
       "feeds": [
         {
           "url": "https://www.nature.com/npjqi.rss",
-          "status": "skipped",
-          "error": "Journal endpoint redirected outside the official allowlist"
+          "status": "ok",
+          "research_records": 8
         }
       ],
-      "warnings": [
-        "Journal endpoint redirected outside the official allowlist"
-      ],
+      "warnings": [],
       "crossref": {
         "status": "ok",
         "total_results": 4,
@@ -218,69 +218,74 @@
   },
   "counts": {
     "published": 285,
-    "pending": 323,
+    "pending": 353,
     "publication_reviews_pending": 0
   },
   "analysis_health": {
     "status": "ok",
     "stale": false,
-    "backlog": 323,
-    "age_hours": 0.0,
+    "backlog": 353,
+    "age_hours": 6.23,
     "threshold_hours": 48
   },
   "chunks": [
     {
       "path": "queue-0001.json",
       "count": 42,
-      "bytes": 99806
+      "bytes": 102006
     },
     {
       "path": "queue-0002.json",
       "count": 43,
-      "bytes": 99713
+      "bytes": 100646
     },
     {
       "path": "queue-0003.json",
-      "count": 44,
-      "bytes": 101652
+      "count": 45,
+      "bytes": 102393
     },
     {
       "path": "queue-0004.json",
-      "count": 44,
-      "bytes": 100361
+      "count": 43,
+      "bytes": 100979
     },
     {
       "path": "queue-0005.json",
-      "count": 43,
-      "bytes": 101105
+      "count": 45,
+      "bytes": 101156
     },
     {
       "path": "queue-0006.json",
-      "count": 44,
-      "bytes": 101935
+      "count": 42,
+      "bytes": 102016
     },
     {
       "path": "queue-0007.json",
-      "count": 43,
-      "bytes": 99707
+      "count": 44,
+      "bytes": 101607
     },
     {
       "path": "queue-0008.json",
-      "count": 20,
-      "bytes": 47046
+      "count": 44,
+      "bytes": 101346
+    },
+    {
+      "path": "queue-0009.json",
+      "count": 5,
+      "bytes": 12127
     }
   ],
   "recommended_batch": [
     {
       "kind": "analysis",
       "id": "doi:10.1103/9x8h-h3hp",
-      "chunk": "queue-0001.json",
+      "chunk": "queue-0002.json",
       "version": 1
     },
     {
       "kind": "analysis",
       "id": "doi:10.1103/kw13-xkkb",
-      "chunk": "queue-0001.json",
+      "chunk": "queue-0002.json",
       "version": 1
     },
     {
@@ -298,156 +303,156 @@
     {
       "kind": "analysis",
       "id": "doi:10.1038/s41567-026-03468-0",
-      "chunk": "queue-0006.json",
+      "chunk": "queue-0007.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.23448",
+      "id": "2611.26626",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.23387",
+      "id": "2611.26605",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.23382",
+      "id": "2611.26506",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.23378",
+      "id": "2611.26497",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.21928",
+      "id": "2611.26447",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.21910",
+      "id": "2611.26395",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.21906",
+      "id": "2611.26329",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.21888",
+      "id": "2611.26219",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.21749",
+      "id": "2611.26173",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.21723",
+      "id": "2611.25887",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.21709",
+      "id": "2611.25880",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.19725",
+      "id": "2611.25859",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.19717",
+      "id": "2611.25825",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.19715",
+      "id": "2611.25775",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.19671",
+      "id": "2611.25752",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.19605",
+      "id": "2611.25740",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.19566",
+      "id": "2611.25579",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.19453",
+      "id": "2611.25578",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.19442",
+      "id": "2611.25572",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.19141",
+      "id": "2611.25496",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.19130",
+      "id": "2611.25397",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.19017",
+      "id": "2611.25372",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.19002",
+      "id": "2611.25365",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.18881",
+      "id": "2611.25352",
       "chunk": "queue-0001.json",
       "version": 1
     },
     {
       "kind": "analysis",
-      "id": "2611.18848",
+      "id": "2611.25216",
       "chunk": "queue-0001.json",
       "version": 1
     }
