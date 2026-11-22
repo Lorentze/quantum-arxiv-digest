@@ -1,0 +1,370 @@
+{
+  "analyses": [
+    {
+      "id": "2611.25163",
+      "version": 1,
+      "analysis": {
+        "summary": "论文研究高斯混合聚类的 low-degree 样本复杂度，与当前量子信息研究问题缺乏直接联系。",
+        "problem": "群数超过维数时，经典聚类需要多少观测样本。",
+        "setting": "K 个各向同性高斯分布的经典混合模型，采用随机中心和低阶多项式计算模型。",
+        "main_results": [
+          "作者给出低阶聚类分离度的上下界，并讨论非整数参数下匹配的样本复杂度。"
+        ],
+        "techniques": [
+          "low-degree 下界与张量型聚类分析。"
+        ],
+        "assumptions": [
+          "摘要所述随机高斯中心模型。"
+        ],
+        "limitations": [
+          "未涉及 quantum-data、量子测量或量子资源约束。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "相关性低；sample complexity 一词不足以建立量子学习联系。"
+        ],
+        "follow_up": [],
+        "relevance_score": 8,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.25163v1"
+      }
+    },
+    {
+      "id": "2611.25107",
+      "version": 1,
+      "analysis": {
+        "summary": "论文把 post-selected fault-tolerant state preparation 中常见的独立校验、cat-state 校验和 Steane-type 校验放进统一设计空间，并加入多个校验共享一个容错辅助块的 Block Checks。Pareto tree search 在操作数与深度之间寻找不同折中。已读结果强调，这种优化增加了硬件可选方案，但操作更少并不自动意味着逻辑错误率在所有噪声模型下更低。",
+        "problem": "逻辑态制备中的单个故障可能经 CNOT 扩散成不可纠正错误。增加校验可检测危险故障，却同时增加操作数、辅助比特和等待时间。现有自动方法通常固定一种校验结构，难以适应不同平台的并行能力和相干时间。",
+        "setting": "研究 CSS 码的逻辑基态制备。令 t=floor((d−1)/2)，危险故障集指模去目标态稳定子后，X 或 Z 错误权重大于故障数的情形；容错要求所有不超过 t 个故障的危险集合被检测。检测到错误便丢弃本轮，属于 repeat-until-success 的 post-selection，必须计入接受率。评估对象距离不超过 7。",
+        "main_results": [
+          "Block Checks 让若干校验共享容错制备的辅助块，各数据比特可横向耦合一次；Grouped Block Checks 进一步缩小辅助系统，但增加耦合层数。其成本处于独立 cat checks 与完整 Steane-type checks 之间。",
+          "在作者收集的已发表基线深度上，搜索找到操作更少且深度不增的电路，唯一列出的持平是 [[9,1,3]] 码深度 6。对 [[25,1,5]] 码深度 7，操作数由 262 降至 91，辅助比特由 63 降至 16；[[17,1,5]] 码相应操作数由 194 降至 77。",
+          "[[17,1,5]] 和 [[25,1,5]] 的最浅构造由深度 7 降至 5。模拟中距离 7 的部分结果比 SpiderCSS 和 Flag at Origin 的逻辑错误率约低一个数量级，但相对 Steane-type、ILP 和 layered-verification 的某些电路又可高至三倍，不能宣称全面支配。"
+        ],
+        "techniques": [
+          "将跨校验共享辅助与校验内部辅助合并作为结构变换；树搜索添加校验、合并辅助、完成保护，再通过删除冗余、重排耦合等方式 polish。",
+          "每次保留重写均需精确容错检查。模拟使用 Stim 的电路级 depolarizing noise，在制备、CNOT 和测量上取 p=10⁻³，idle 噪声为 p/100 的给定设置。"
+        ],
+        "assumptions": [
+          "辅助块本身也需容错制备，不能当作免费资源。",
+          "逻辑性能数字依赖具体码、噪声和接受规则，深度与操作数是分开的成本。"
+        ],
+        "limitations": [
+          "搜索计算成本高，距离 5、6 每码约 1200–1850 core-hours，距离 7 约 1650–2150；作者指出超出距离 7 或 9 的扩展困难。",
+          "目标未直接优化所有 t+1 故障集，因而更少操作可能伴随更高未检出逻辑错误；post-selection 成功率下降也会抵消单次电路节省。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接关联逻辑 QEC 原语的深度、ancilla 与故障传播权衡，也提供区分形式容错条件和噪声下实际 logical fidelity 的例子。"
+        ],
+        "follow_up": [
+          "读者建议：在固定物理噪声和接受率要求下比较每次成功制备的期望总操作数；再检验深度优势是否保留。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.25107v1"
+      }
+    },
+    {
+      "id": "2611.25095",
+      "version": 1,
+      "analysis": {
+        "summary": "作者提出三腔 cQED 的 measurement-free QEC 协议，以一个腔承载最低阶 binomial code，另外两个腔作为 ancillas。恢复步骤主要通过参数激活的腔间交换和数值优化脉冲实现，将测量及实时反馈移出纠错主体。数值模拟报告单光子损失校正约 99% fidelity，并在给定参数下超过 Fock 编码的 break-even；这仍是架构与仿真结果。",
+        "problem": "低层先校正主导物理错误，有望减轻外层纠错码负担。问题在于怎样把光子损失的错误空间相干地映回码空间，同时避免 syndrome measurement 的延迟及其附加错误，并处理没有发生损失时也存在的确定性 no-jump back-action。",
+        "setting": "码字为 |0L⟩=(|0⟩+|4⟩)/√2、|1L⟩=|2⟩。三只超导微波腔由 Josephson 非线性元件耦合，各腔另配辅助 transmon 用于局部操作、制备和读出。纠错目标是单光子损失；每轮之间仍需无条件 reset 来移除熵，measurement-free 不表示整个系统完全无耗散或无需初始化。",
+        "main_results": [
+          "相较原有使用 CLY encoding 的六模式方案，本文最低阶 binomial encoding 将所需 bosonic modes 降为三。一个存储腔加两个辅助腔并不等于整个器件只含三个物理自由度。",
+          "单轮模拟校正 fidelity 达 99%，所读引言称 transmon decoherence 约贡献该轮 infidelity 预算的 10%。此处 99% 是特定纠错任务的仿真指标，不能替代任意逻辑门的 process fidelity。",
+          "在腔寿命 0.5–2 ms 的参数范围优化连续纠错轮之间的等待时间，逻辑寿命相对未保护的 {",
+          "0⟩,",
+          "1⟩} Fock 编码提高 1.2–1.8 倍。比较基准是该无保护编码，未证明优于所有主动测量或自治 QEC 方法。"
+        ],
+        "techniques": [
+          "用 GRAPE 优化一串相干门，主要利用参数激活的 cavity–cavity exchange interactions，降低对 transmon-mediated dispersive control 的依赖。",
+          "恢复不仅补偿跳跃到奇数光子错误空间的分量，还显式考虑 binomial 码中不同光子数分量在 no-jump evolution 下的相对权重变化。"
+        ],
+        "assumptions": [
+          "单光子损失是主要存储噪声，pure dephasing 相对受抑；多光子损失与有限门时长仍可能导致失败。",
+          "需要足够强而可控的非线性交换、可重复的校准脉冲、辅助模式 reset，以及模拟采用的相干寿命。"
+        ],
+        "limitations": [
+          "实验可实现参数的模拟不等于已完成三腔实验。恢复 fidelity、长时逻辑寿命和外层码性能不可相互替代。",
+          "等待过短会付出更多有噪纠错操作，过长则增加不可纠正损失；最优等待时间依赖设备参数，不能直接移植。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接涉及固定 bosonic code、恢复 gadget 和物理噪声假设下的逻辑存储性能，也有助于分析 measurement-free 方案把反馈成本转移到哪些控制资源上。"
+        ],
+        "follow_up": [
+          "读者建议：用统一输入集合和寿命拟合约定对比测量式恢复，并将 reset、辅助 transmon 和脉冲校准漂移纳入完整预算。"
+        ],
+        "relevance_score": 93,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.25095v1"
+      }
+    },
+    {
+      "id": "2611.25038",
+      "version": 1,
+      "analysis": {
+        "summary": "本文分析 strong pseudorandom unitary 候选 DPFC 在 non-adaptive 查询下的生日尺度安全性。对 N 维系统，允许纠缠输入及 U、U†、U*、Uᵀ 四类查询的相干叠加，作者给出 O(t/√N) 区分优势界。另构造 Clifford endpoints 情形的 O(√N) 自适应攻击。关键区别是安全保证针对并行非自适应访问，攻击则使用自适应访问。",
+        "problem": "Haar randomness 很有用但实现昂贵，PRU 希望提供高效替代。加入 inverse、conjugate 和 transpose 访问后，普通 forward-only PRU 证明未必有效。问题是 DPFC 能否在这些更强访问权限下达到接近 √N 的查询尺度，并明确哪一种访问顺序会限制其安全性。",
+        "setting": "理想模型用随机 permutation 与 phase function 构造中间层，两端为独立精确 unitary 2-design；Clifford 是可高效实现的例子。对手计算可不受限，先一次制备 t 个输入寄存器、routing register 和参考系统的任意联合态，再并行施加选择的查询类型，最后联合测量。N=2ⁿ，t 计 oracle 调用，不是电路深度或单拷贝 shots。",
+        "main_results": [
+          "所读非正式定理给出 DPFC 与 Haar 的 non-adaptive 区分优势至多 O(t/√N)，包含四类查询模式之间的 coherence。只有 t≪√N 才由该界直接保证小优势，t≈√N 通常仅剩常数级界，不能把生日尺度解释成该点仍有 negligible advantage。",
+          "若 DPFC 两端选用 n-qubit Clifford，作者构造用 U 和 U† 的 O(√N) adaptive queries 达到常数区分优势的算法。因此不能将非自适应定理升级为同样规模下的强自适应安全定理。",
+          "与先前 strong-PRU 分析中 N^α、α<1/2 的尺度相比，本文达到生日尺度。随机函数替换为密码学对象是额外的计算安全步骤，理想 oracle 的信息论界与真实 PRF 假设须分开。"
+        ],
+        "techniques": [
+          "将 EPR-sector decomposition 与 path-recording framework 组合，分离四种查询带来的不变 EPR sectors，并保持不同 sector 的相干性。通过并行 recorder 与碰撞分析比较两种 ensemble 所诱导的通道。",
+          "攻击利用 Clifford 对 Pauli 群的正规化结构：寻找一小部分具有特殊 Pauli expansion 交换性质的算符，再以 amplitude amplification 和 commutation test 区分 Haar。"
+        ],
+        "assumptions": [
+          "endpoint 独立且具精确 2-design 性质，中间随机 permutation 与函数符合论文模型。",
+          "非自适应查询的路由可以相干，但不能依据先前输出临时选择下一次输入；允许纠缠并不取消该限制。"
+        ],
+        "limitations": [
+          "所读 HTML 主要复核引言、模型和定理陈述，未审计 recorder 的全部 Gram bounds、附录常数或密码学替换证明。",
+          "该结果没有给出达到同样查询界的自适应安全构造，也没有直接比较真实硬件上的门数、magic、ancilla 或噪声容忍度。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接连接 random designs、信息访问模型和 pseudorandomness；特别适合区分统计不可区分、计算不可区分及查询类型带来的资源变化。"
+        ],
+        "follow_up": [
+          "读者建议：固定目标区分误差 ε，从显式界导出 t 与 N 的允许关系，再检查是否能在受限 inverse access 或单拷贝测量下获得不同 tradeoff。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.25038v1"
+      }
+    },
+    {
+      "id": "2611.25025",
+      "version": 1,
+      "analysis": {
+        "summary": "论文给出二维 topological codes 的两种显式构造，使 Clifford stabilizers 的码支持 Clifford hierarchy 任意层级的 transversal logical C^(k−1)Z。物理执行只用 Z 或 CZ，而高层级逻辑作用来自非阿贝尔编码。该结论超出先前对更一般稳定子码的猜想，并未违反仅适用于 Pauli stabilizer codes 的 Bravyi–König 定理。",
+        "problem": "二维 Pauli 稳定子拓扑码的常深度逻辑门受限于 Clifford。已知非 Pauli 码可略微越界，曾猜想逻辑层级至多比稳定子层级高 D−1。本文问，即使稳定子只达到 Clifford，在二维是否仍能实现任意高层级的逻辑门。",
+        "setting": "构造使用 D4 与 Z2 的 quantum double 及四段指定 gapped boundaries，编码 k 个逻辑比特。D4 是正方形对称群；所用物理量子比特码的稳定子算符为 Clifford 而不必为 Pauli。讨论的是先已准备好这种码空间后执行逻辑门的成本，不能忽略制备、syndrome extraction 和边界结构。",
+        "main_results": [
+          "两种构造都实现逻辑 C^(k−1)Z，其在逻辑基态上施加 (−1)^(x1…xk)，属于 hierarchy 第 k 层。第一种由跨越边界的 Pauli Z string 实现；第二种由 group 2-cocycle 对应的物理 CZ 层实现。",
+          "作者称码实现后，该逻辑操作是一层单比特或两比特物理门，可重复使用。层级随 k 增长，同时群的直积结构与编码规模也变化，不能解释成一个固定常数大小器件拥有任意层级门。",
+          "论文将“稳定子层级 ℓ、维度 D 则逻辑层级至多 ℓ+D−1”的一般化猜想与原始 Pauli 情形区分，并用 D=2、ℓ=2 的构造越过该猜想。"
+        ],
+        "techniques": [
+          "利用非阿贝尔 flux 穿越时的群乘法约束，使额外 Z2 flux 的指数等于多个逻辑标签的乘积；对应 electric charge 的路径作用读出这个乘积相位。",
+          "第二种方法用 2-cocycle 的比值相位构造逻辑作用。高阶逻辑非线性藏在编码而非物理 Z/CZ 门的单次复杂度中。"
+        ],
+        "assumptions": [
+          "需要精确选定的非阿贝尔 quantum double 码与边界条件，逻辑标签和物理算符的映射不可换成普通 Pauli code。",
+          "作者把既有 D(D4) 的常深度 adaptive preparation 作为自然起点，是对实现路径的讨论，不等于本文已经给出所有构造的完整低成本制备方案。"
+        ],
+        "limitations": [
+          "本报告未逐式验证 End Matter 中的逻辑基变换不降低层级证明，也未审计完整纠错或阈值分析。",
+          "论文没有在已读节选中给出与 magic-state distillation 在统一噪声、ancilla 和总时空体积预算下的定量胜负。物理门为 Clifford 不能推出所有编码资源均免费。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接涉及逻辑 non-Clifford gate、稳定子形式和 magic 资源迁移。其机制说明必须把码准备与后续逻辑门的资源分别计量。"
+        ],
+        "follow_up": [
+          "读者建议：在固定目标 k 和误差要求下，补齐码制备、恢复以及门重复使用次数的成本，再与常规 magic injection 比较摊销资源。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.25025v1"
+      }
+    },
+    {
+      "id": "2611.23448",
+      "version": 1,
+      "analysis": {
+        "summary": "DIRAC 将 cryogenic qubit readout 的部分处理移到模拟域，避免 Nyquist-rate ADC。其相关性来自摘要明确给出的读出保真度和固定功耗下 QEC code distance 的联系；本条依据摘要，性能数字应看作该架构评估的作者报告。",
+        "problem": "大量并行量子比特读出会消耗 4 K 制冷与数字处理预算，传统先高速数字化再处理的路径如何压缩功耗。",
+        "setting": "22 nm FD-SOI 设计，在 4 K 使用 112 万个实验 shots 评估。被比较的是 DIRAC、fixed-point 与 FP32 数字处理流水线，以及室温 flex-cable 的功耗基准。",
+        "main_results": [
+          "在短至 750 ns 的读出窗口，作者称匹配 FP32 pipeline 的 fidelity，处理能耗相对 FxP 和 FP32 分别降低 31.6 与 238 倍。",
+          "每物理比特总 4 K 功耗相对 FxP 与室温 flex cables 分别减少 50.4% 与 68.6%。固定逻辑比特数量及 4 K 预算的模型下，code distance 增大 2–6；逻辑错误率改善为 Willow 模型 1.6–7.3 倍、SI1000 且 p=10⁻³ 时 4.9–204 倍。"
+        ],
+        "techniques": [
+          "被动 complex mixers 完成模拟解调，ping-pong active-RC integrators 产生下采样轨迹，再由 time-domain stage 数字化；校准联合训练 matched filter 和 neural network。"
+        ],
+        "assumptions": [
+          "逻辑错误改善以固定功耗可容纳更大码为前提，依赖所选噪声模型。"
+        ],
+        "limitations": [
+          "摘要未给出全部工艺非理想性、读出 fidelity 定义和统计误差，也未建立对 SPAM 漂移的认证保证；shots 数量不等于逻辑 QEC 实验轮数。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与读出资源及 QEC 开销有具体联系，相关性中等；不将硬件节能直接当作量子信息理论优势。"
+        ],
+        "follow_up": [
+          "读者建议：核对读出混淆矩阵及 drift，再比较固定物理比特数和固定功耗两种预算下的逻辑性能。"
+        ],
+        "relevance_score": 75,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.23448v1"
+      }
+    },
+    {
+      "id": "2611.23387",
+      "version": 1,
+      "analysis": {
+        "summary": "作者研究 sparse-access Hamiltonian 下 GSEE 与 GSP 的联合 query complexity，补上稀疏度 s 与 overlap、精度及失败概率的共同依赖。摘要给出匹配的上下界，但上界使用 reversible in-place sparse-location model，不能无条件替换成任意稀疏数据接口。",
+        "problem": "已有 time-evolution 与 block-encoding 最优界没有直接说明从矩阵位置和数值 oracle 访问时，稀疏度要付出多少额外代价。",
+        "setting": "||H||≤1，guiding state 对 ground space 的 overlap 至少 γ>0。GSEE 要求能量加性误差 δ、失败概率≤ε；GSP 给定 gap 下界 Δ，目标 ground-space weight≥1−ε。",
+        "main_results": [
+          "GSEE 稀疏查询下界为 Ω(√s log(1/ε)/(γδ))，GSP 为 Ω(√s log(1/ε)/(γΔ))，即使 stoquastic Hamiltonians 也成立。",
+          "在 reversible in-place sparse-location model 给出匹配上界，形成相应 Θ 界；这里 γ 按作者 overlap 约定，不能擅自改为 overlap probability。"
+        ],
+        "techniques": [
+          "稀疏 oracle 下界构造和匹配的量子算法；摘要称构造同时恢复已有 evolution/block-encoding 下界尺度。"
+        ],
+        "assumptions": [
+          "s 是每行或列非零元的最大数量；oracle 返回位置与数值。",
+          "上界对稀疏位置访问的可逆 in-place 接口有明确要求。"
+        ],
+        "limitations": [
+          "摘要未交代全部参数有效区间、输入态制备成本、辅助比特和 elementary-gate 开销，不能把 query 最优等同所有资源同时最优。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "连接 state preparation 的可达资源界与访问模型；对理解 oracle 成本很有用，但并非直接针对随机电路或 SPAM。"
+        ],
+        "follow_up": [
+          "读者建议：逐一核对 sparse oracle 与实际 block encoding 的转换成本，比较 γ 定义、ancilla 和门数是否改变可用优势。"
+        ],
+        "relevance_score": 83,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.23387v1"
+      }
+    },
+    {
+      "id": "2611.23382",
+      "version": 1,
+      "analysis": {
+        "summary": "论文研究 time-invariant Hamiltonian 的 autonomous state preparation。作者认为在足够随机的静态控制项和足够长演化时间下，即使生成元很少，几乎所有目标态也可能近似可达。其结论强调表达能力与演化时间的权衡，不能解释为高效或低噪声制备算法。",
+        "problem": "没有 time-dependent modulation 时，只允许选择静态耦合和终止时间，究竟能触达多少 Hilbert-space 状态。",
+        "setting": "autonomous control 模型中 Hamiltonian 在单次演化中不随时间变化，调节变量为静态 coupling strengths 与 evolution time；并与 time-dependent controllability 比较。",
+        "main_results": [
+          "作者刻画 autonomously reachable set 的数学性质，并提出廉价严格不可达 certificate 与更强的 exhaustive numerical optimization 判据。",
+          "在随机控制项模型下估计典型态不可达概率；摘要报告近可达覆盖对控制 Hamiltonians 很敏感，足够随机及长时条件下可逼近几乎所有状态。"
+        ],
+        "techniques": [
+          "可达集合几何分析、不可达证书与数值优化。"
+        ],
+        "assumptions": [
+          "近可达与精确可达不同；长演化时间和随机控制模型是关键限定。"
+        ],
+        "limitations": [
+          "摘要未给出演化时间对系统大小与误差的显式尺度，也未给出噪声容忍度或制备复杂度；不能由表达能力推出实际可扩展性。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与受限控制下的 state preparation 和时间资源相关，可用于区分控制自由度与运行成本。"
+        ],
+        "follow_up": [
+          "读者建议：固定目标精度后研究最短演化时间分布，并加入静态校准误差检验近可达性是否可用。"
+        ],
+        "relevance_score": 77,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.23382v1"
+      }
+    },
+    {
+      "id": "2611.23378",
+      "version": 1,
+      "analysis": {
+        "summary": "作者把 NLQC 的 shared-entanglement 成本与 scrambling 联系起来，提出 faithful lower bound。对 unitary，摘要称 entanglement cost 为零当且仅当不 scramble；tripartite mutual information 给出定量下界。这里 faithful 指检测非零资源需求，不表示已得到每种电路的紧成本公式。",
+        "problem": "已有 NLQC 纠缠下界多依赖特殊构造，缺少可由一般通道性质判断是否必需共享纠缠的方法。",
+        "setting": "双方预共享纠缠，并仅允许一轮 simultaneous quantum communication 来实现联合 channel。主要结论针对 unitary；成本为该通信限制下所需共享纠缠。",
+        "main_results": [
+          "作者给出基于 scrambling 的新下界，使用 tripartite mutual information 量化 scrambling 程度。",
+          "进一步证明先前 controllable correlation 也是 faithful lower bound，解决摘要提到的相关猜想。"
+        ],
+        "techniques": [
+          "以熵量建立 scrambling 与 NLQC 资源成本的联系，再推导 correlation-based 下界。"
+        ],
+        "assumptions": [
+          "固定 NLQC 通信时序和 unitary 任务；不能直接推广成任意多轮通信或任意噪声通道的等价条件。"
+        ],
+        "limitations": [
+          "摘要未给出定量系数、误差约定、平滑化方式或多次任务的摊销性质；未核查其熵不等式证明。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接连接 scrambling、信息访问顺序与 entanglement resource lower bounds。"
+        ],
+        "follow_up": [
+          "读者建议：比较典型 random circuits 中该下界随深度的增长，并在统一近似误差下与可实现 NLQC 上界配对。"
+        ],
+        "relevance_score": 90,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.23378v1"
+      }
+    },
+    {
+      "id": "2611.21928",
+      "version": 1,
+      "analysis": {
+        "summary": "本文把 noisy stabilizer QEC 的 syndrome Markov 模型扩展到有 leakage 的物理系统。关键是 leakage-dephased Pauli twirling 后同时追踪 syndrome 与 leakage pattern，并在每条经典转移上附加 logical Pauli channel，再用 transfer matrix 描述多轮存储成功率。",
+        "problem": "只追踪计算子空间内 Pauli errors 的模型难以处理 leakage 在多轮间的传播与记忆。需要将组件级 leaky noise 与可观测的多轮 logical performance 联系起来。",
+        "setting": "稳定子 QEC cycle，物理比特可离开 computational subspace。twirled process 由 leakage pattern 转移条件化的 computational-subspace Pauli maps 表示。",
+        "main_results": [
+          "作者建立 joint syndrome–leakage pattern 上的 classical Markov process，每个联合转移携带一个 logical Pauli channel。",
+          "摘要声称推导重复 QEC cycles 的 transfer-matrix 描述及 memory experiment success probability 的精确表达。精确性针对其 twirled 模型，不能自动替代原始未 twirl 的 coherent leakage。"
+        ],
+        "techniques": [
+          "leakage-dephased Pauli twirling、条件 Pauli maps 和 transfer matrices。"
+        ],
+        "assumptions": [
+          "对噪声进行所述 twirling/dephasing，并在联合状态空间采用 Markov 描述；具体何种物理记忆可被该状态吸收需查正文。"
+        ],
+        "limitations": [
+          "HTML 正文请求返回 404，本次只依据指定 v1 摘要。摘要未给出完整控制、SPAM、时变噪声假设，也未提出可直接套用的 shot 或 target-call 界。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "高度契合 leakage-aware logical benchmarking，以及固定 code/recovery/gadget 的数据如何识别逻辑性能。"
+        ],
+        "follow_up": [
+          "读者建议：明确可观测 syndrome 与不可观测 leakage 的区分，研究小 SPAM 扰动下 transfer-matrix 参数是否可辨识。"
+        ],
+        "relevance_score": 97,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.21928v1"
+      }
+    }
+  ]
+}
