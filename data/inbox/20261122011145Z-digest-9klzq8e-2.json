@@ -1,0 +1,372 @@
+{
+  "analyses": [
+    {
+      "id": "2611.21910",
+      "version": 1,
+      "analysis": {
+        "summary": "论文研究 sigmoid 神经网络实现 Boolean functions 的经典电路复杂度，缺乏具体量子数据或量子电路资源联系。",
+        "problem": "Sigmoid 激活网络的 gate、wire 与 weight 复杂度上下界。",
+        "setting": "多项式权重、常深度或 depth-3 的经典 sigmoid networks。",
+        "main_results": [
+          "作者报告 PARITY 的近紧 wire bounds 及显式函数的规模下界，并比较 threshold circuits。"
+        ],
+        "techniques": [
+          "random restrictions、average sensitivity 和逼近理论等经典复杂度工具。"
+        ],
+        "assumptions": [
+          "经典 Boolean functions 与指定权重约束。"
+        ],
+        "limitations": [
+          "不涉及 magic、量子测量、logical QEC 或 quantum-data access。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "低相关，circuit depth 的词面重合不足以进入公开技术报告。"
+        ],
+        "follow_up": [],
+        "relevance_score": 7,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.21910v1"
+      }
+    },
+    {
+      "id": "2611.21906",
+      "version": 1,
+      "analysis": {
+        "summary": "论文用 decoder switching 将低延迟弱解码器与低频调用的强解码器结合，利用 trapped-ion 的毫秒级 QEC cycle 预算改善 BB code 的逻辑错误率。软输出标记低置信窗口，才进行更昂贵的解码。重点是噪声、强解码器选择和调用频率共同决定收益，不能把最大改善数字视作所有平台通用。",
+        "problem": "实时解码必须及时给出 Pauli frame 或非 Clifford 操作的反馈决定，不能无限积压 syndrome。弱解码器快但不够准，强解码器更准却可能超过每轮时限。如何把长一点的 ion-platform cycle time 转化为 logical accuracy，而非一律增大码。",
+        "setting": "在 sliding-window decoding 中，每个窗口先由 BP-LSD 或 UF 等弱解码器处理，只对低置信窗口切换至 Tesseract 或 Relay-BP。评估为 bivariate bicycle codes 的 memory simulations，采用 trapped-ion informed 的 Pauli、leakage 与 erasure 噪声模型；不是已完成实时硬件 QEC 演示。",
+        "main_results": [
+          "摘要报告相对 BP-LSD 最多 3–4 个数量级、相对 Beamsearch 最多 2–3 个数量级的 logical error reduction，取决于物理错误率和 BB code。所读引言在 Pauli p=2×10⁻³ 时列出相应大幅改善，不能外推为任意 p。",
+          "在 Pauli+leakage 且不使用 leakage reduction 时，Relay-BP 可能成为不可靠的 strong decoder，使 switching 失效；选择 Tesseract 则保留性能收益。这显示组合方案的有效性依赖组件对具体错误类型的鲁棒性。",
+          "对 Pauli+erasure，UF 弱解码器的方案相较 Pauli-only 设置最多改善三个数量级。这个比较改变了噪声信息条件，不能与固定同一噪声下的纯算法加速混同。"
+        ],
+        "techniques": [
+          "从低精度解码器提取 cluster-norm soft output，避免计算每个逻辑类所需的昂贵 logical/complementary gaps。利用置信度决定强解码器调用率，并以可实现 switch rates 估计实时约束。",
+          "将 windowing、弱解码器和强解码器组合；文中也比较 CPU runtimes，但主要延迟论证与允许的 switching 频率有关。"
+        ],
+        "assumptions": [
+          "需要弱解码器软输出对失败风险有足够预测力，强解码调用足够稀疏，且经典处理预算与离子平台轮时一致。",
+          "不同平台轮时差异很大，超导约微秒级的预算不能直接使用本文离子平台结果。"
+        ],
+        "limitations": [
+          "尚未由本文节选确立 worst-case latency、长尾 backlog 或 FPGA 实现的整体保证。平均调用率可行不等于所有窗口都能在 deadline 前完成。",
+          "最大改善来自特定码与噪声点，亦需区分每轮 logical error、总 memory failure 和所用 decoder baseline。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接涉及 syndrome 数据、自适应经典处理资源与逻辑 QEC accuracy 的权衡，也提示 leakage 假设如何改变逻辑性能结论。"
+        ],
+        "follow_up": [
+          "读者建议：在固定 deadline 下测量 latency 分布与连续困难窗口的积压概率，再报告同一 code/noise 条件下的端到端 logical failure。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.21906v1"
+      }
+    },
+    {
+      "id": "2611.21888",
+      "version": 1,
+      "analysis": {
+        "summary": "作者研究经典 QR/GQR codes 的多项式时间解码，摘要未建立与量子 stabilizer codes 或逻辑恢复的具体联系。",
+        "problem": "如何对二次剩余码达到平方根距离保证的一半解码半径。",
+        "setting": "素数或素数幂长度的 binary quadratic residue 和 generalized quadratic residue codes。",
+        "main_results": [
+          "作者提出在该保证半径内的 polynomial-time decoder，并讨论平方长度时统一半径的最优性。"
+        ],
+        "techniques": [
+          "利用 error-locator polynomial 的 quadratic character 值恢复多项式。"
+        ],
+        "assumptions": [
+          "经典 QR/GQR 代数码模型。"
+        ],
+        "limitations": [
+          "摘要没有量子 syndrome-extraction 或量子纠错性能结论。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "低相关；经典解码工具有潜在迁移可能，但本条没有足够直接联系。"
+        ],
+        "follow_up": [],
+        "relevance_score": 12,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.21888v1"
+      }
+    },
+    {
+      "id": "2611.21749",
+      "version": 1,
+      "analysis": {
+        "summary": "本文 Part I 对一种三维多尺度 welded stabilizer memory 的变体分别研究两个边界情形：无扰动的非零温热稳定性，以及零温的弱量子扰动稳定性。作者报告前者有 stretched-exponential memory lifetime，后者有稳定 bulk gap、极小 ground-space splitting 和超多项式长的 dressed-logical memory。两条轴上的结论不能直接拼成有限温且受扰动的结论。",
+        "problem": "三维局域、bounded-degree 系统能否被动保护量子信息，须同时面对热缺陷和静态量子扰动。既有 BDL 构造建立理想 Hamiltonian 的热自纠错，却未解决一般量子扰动下零温稳定性。本文首先建立后续联合分析需要的拓扑与算符工具。",
+        "setting": "使用三层变体的递归 welded CSS code family，嵌入三维 open cubic boxes，含被固定在 |0⟩ 的非活跃位置。Hamiltonian 为局域 commuting-projector 型；沿温度轴取 V=0，沿扰动轴取 T=0。所说被动记忆无需运行中的主动 syndrome measurement 和反馈，但寿命与安全解码观测量的定义仍重要。",
+        "main_results": [
+          "在 V=0、T<Tc 时，针对单站点 system–bath coupling 产生的 local Markovian Davies bath，要求 detailed balance 和 bounded coupling rates，作者得到随规模 stretched-exponential 增长的 memory lifetime。",
+          "在 T=0、足够弱且 superpolynomially decaying 的量子扰动下，作者报告 uniform Ω(1) bulk gap、superpolynomially small ground-space splitting，以及准局域 dressed logical observables 的超多项式长闭系统 unitary memory lifetime。",
+          "所读引言明确将 T>0 且 V≠0 的内部区域留给 companion Part II，本文两条轴的稳定性本身不解决热缺陷与量子扰动同时存在时的动力学。"
+        ],
+        "techniques": [
+          "以线性膨胀的 Bravyi–Hastings–Michalakis 局域拓扑量子序条件适配多尺度层级，配合 relative cone acyclicity、syndrome cleaning 和尺度匹配 coarse-graining。",
+          "热部分使用 cluster decoder 与 safe decoded observables；零温部分采用 quasi-adiabatic continuation 和准局域 block diagonalization 追踪受扰动基态空间。"
+        ],
+        "assumptions": [
+          "热浴必须是指定局域 Markovian、详细平衡模型；不含任意非 Markov 或任意强驱动环境。",
+          "量子扰动须足够弱且空间衰减满足论文范畴；闭系统保护针对 dressed observables，而非任意 bare logical string。"
+        ],
+        "limitations": [
+          "本报告仅读正文前部与总体定理说明，未审计多尺度同调构造和所有 gap bootstrap 证明。未给出可用于设备设计的数值温度阈值或扰动常数。",
+          "这是随规模的理论家族，不能由寿命渐近式推定有限尺寸硬件已优于主动纠错，也不能把本篇结果归为完整相图的独立证据。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接涉及稳定子记忆、物理噪声假设与逻辑寿命；对区分热 Markov 保护、闭系统相干稳定和可操作 logical observable 很有价值。"
+        ],
+        "follow_up": [
+          "读者建议：固定有限尺寸，明确 logical readout 与 decoder 的成本，并逐项检验 bath assumptions 对寿命下界的必要性。"
+        ],
+        "relevance_score": 91,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.21749v1"
+      }
+    },
+    {
+      "id": "2611.21723",
+      "version": 1,
+      "analysis": {
+        "summary": "作者在 Haar-random black-box 模型证明 python’s lunch decoding 的平方根 post-selection 查询障碍。给定一份归一化编码态并允许 U、U† 及 controlled queries，连恢复一个逻辑 bit 的常数平均优势都需要 Ω(2^(m/2)) 次查询。与近等距编码的 amplitude amplification 上界合并，得到常精度 Θ(2^(m/2))；这是 oracle 层面的结果。",
+        "problem": "稀有 post-selection 的直接重复需约 2^m 次尝试，amplitude amplification 可降为约 2^(m/2)。是否能进一步降到更小指数，不能仅靠 BQP 与 PostBQP 的一般复杂度直觉决定，须为这个具体解码任务证明下界。",
+        "setting": "将逻辑输入和固定 ancillas 送入未知 Haar-random U，并将 m 个输出 qubits post-select 到零。解码器拿到一份归一化投影态，并可相干查询 U 与 U†，包括 controlled 版本；所有与 U 无关的计算免费。任务只需区分均匀随机逻辑 bit，成功率对 U 平均。",
+        "main_results": [
+          "所读非正式主定理在 1≤m<n 时给出平均成功率不超过 1/2+6√2 T·2^(−m/2)，T 为查询数。因此达到至少 2/3 平均成功率需 T≥2^(m/2)/(36√2)。",
+          "若编码近似正比于 isometry，state-independent amplitude amplification 的 O(2^(m/2)) 上界可用于相应常精度重建，从而与下界匹配。这里上界需要编码条件，不能无条件把任意归一化非线性投影当作可逆编码。",
+          "定理覆盖 controlled inverse access，因而不是通过禁止逆门人为制造困难；但只给一份输入态，多份编码态是否改变复杂度不由本条结论处理。"
+        ],
+        "techniques": [
+          "把完整重建问题限制到单 bit 判别，建立 oracle-query 不能快速增加平均区分优势的界，再与 amplitude amplification 构成上下界配对。",
+          "模型用 K=(⟨0^m",
+          "⊗I)U(I⊗",
+          "0^a⟩) 描述编码，近等距要求 2^m K†K≈I；归一化后态的可恢复性依赖这一结构。"
+        ],
+        "assumptions": [
+          "U 从 Haar ensemble 抽取，相关信息只能通过指定 oracle 进入解码器。",
+          "constant accuracy 与 constant average advantage 是这里的精度口径；T 计 U/U† target calls，不能直接等同 elementary gates 或实验 shots。"
+        ],
+        "limitations": [
+          "作者明确指出 black-box qualification 至关重要：已知显式电路可能有可利用结构，query lower bound 不能推出所有已知 holographic maps 的 circuit lower bound。",
+          "本次未审计完整 oracle 下界证明，也未核查其他 admissible ensembles 的扩展；不把物理黑洞或全 AdS/CFT 的一般重建复杂度视为已证结论。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接关联随机性、信息访问、单拷贝区分与 target-call 下界，特别适合对照 inverse access 是否真的必要及资源定义如何改变结论。"
+        ],
+        "follow_up": [
+          "读者建议：在明确 design order 和误差后检查有限随机电路能否替代 Haar，并单独研究增加编码态拷贝数的资源交换。"
+        ],
+        "relevance_score": 93,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.21723v1"
+      }
+    },
+    {
+      "id": "2611.21709",
+      "version": 1,
+      "analysis": {
+        "summary": "QEDist 是针对 stabilizer codes 的 exact distance certification 方法。其价值来自可完成的搜索所提供的排除证书，以及对 syndrome-extraction circuit fault distance 的扩展；不能只根据运行时间把它看作启发式模拟器排名。",
+        "problem": "许多有限长码只有低权逻辑算符给出的 distance upper bound，缺少证明不存在更轻逻辑算符的实用方法。",
+        "setting": "给定 qubit stabilizer code 和 cutoff W，逐比特构造 candidate logical operators。完整搜索要么找到 weight≤W 的非平凡逻辑算符，要么证明该范围内不存在。",
+        "main_results": [
+          "作者对若干最高数千 qubits 的 lifted-product codes 确立 exact distances，包括此前仅知上界者。",
+          "摘要报告单 laptop core 上数秒认证许多码的距离至 20，并认证 [[144,12,12]] syndrome-extraction circuit 的 fault distance 为 10；这些是所测实例，不能将所有大码一概归入相同时间。"
+        ],
+        "techniques": [
+          "结合 sparse parity checks、stabilizer equivalence 和 verified symmetries 剪枝；同时利用已满足与未满足检查来下界完成逻辑算符所需额外 weight。LP codes 可降到更小经典 constituent 搜索。"
+        ],
+        "assumptions": [
+          "只有搜索完成且对称性已验证，排除结论才成立；未完成运行不给 distance lower bound 证书。"
+        ],
+        "limitations": [
+          "摘要主要 benchmark CSS，虽称可推广 non-CSS 和 circuit faults，未提供全部运行复杂度与证明细节；code distance 与 fault distance 不可互换。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接服务有限码选择、容错电路检验和 QEC resource assessment，精确证书使其超出纯软件性能比较。"
+        ],
+        "follow_up": [
+          "读者建议：对相同 syndrome circuit 报告 distance 上下界收敛及完整运行耗时，核对电路 fault model 与 noise mechanism。"
+        ],
+        "relevance_score": 92,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.21709v1"
+      }
+    },
+    {
+      "id": "2611.19725",
+      "version": 1,
+      "analysis": {
+        "summary": "论文将已知 full-rank quantum states 的转换成本表为可逼近的最低 entropy production，并讨论固定大小热辅助和 reusable memory 如何改变可达性。重点是资源受限下可实现的渐近基准，不能把任意 driven joint control 当作低成本门集。",
+        "problem": "量子态制备的损失中，哪些可用更好的控制去除，哪些由新鲜辅助系统大小和能量范围决定。",
+        "setting": "可用 fixed-size、bounded-energy-range fresh thermal auxiliaries，并允许任意驱动的联合控制。讨论每个可达目标的渐近 infimum，以及复用 memory 的效果。",
+        "main_results": [
+          "作者称最低熵产生等于一个可计算谱函数的下降量，并给出有限协议逼近该极限，包含资源约束饱和情形。",
+          "均匀 memory 可精确重标定资源参数；外部提供 biased memory 可进一步改善。充足固定 memory 下，协议到达精确 product endpoints，dissipation 随 operation count 反比下降。"
+        ],
+        "techniques": [
+          "量子态谱与可达性分析，结合 constructive control、algorithmic cooling 和 resource theory。"
+        ],
+        "assumptions": [
+          "输入输出已知且满秩，热辅助的大小与能量界固定，允许论文设定的任意联合控制。"
+        ],
+        "limitations": [
+          "摘要未给出谱函数显式表达、操作代价定义或有限误差常数；不能外推 pure-state 目标或受局部门集限制的最优性。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "连接 ancilla/memory、state preparation 和可达资源界，适合区分 memory dimension 与 memory bias 两种资源。"
+        ],
+        "follow_up": [
+          "读者建议：在局域门和有限深度约束下重新计费，检查熵成本最优是否仍能接近总运行成本最优。"
+        ],
+        "relevance_score": 80,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.19725v1"
+      }
+    },
+    {
+      "id": "2611.19717",
+      "version": 1,
+      "analysis": {
+        "summary": "作者在 misty-state calculus 中区分 symmetry fixed point 与可消耗的 gate program，给出有限群轨道和构造及 one-shot state–gate duality。与 profile 的具体联系是 H-type magic state 的单次 injection，而非固定点语义本身代表新的容错优势。",
+        "problem": "一个态既是算符 eigenstate，又是可用于注入 non-Clifford gate 的 resource，如何精确区分这两种关系并表明一次资源消耗对应什么操作。",
+        "setting": "归一化叠加 N(x+y) 的语义构造；有限 unitary group 的非零 orbit sum。注入使用 Clifford controlled-J，J=XZ，Rθ=exp(θJ)，资源 Mθ=Rθ|0⟩。",
+        "main_results": [
+          "作者称非零 normalized orbit cloud 被群的每个元素固定。U=H、x=",
+          "0⟩ 的特例给出 +1 Hadamard eigenstate，它是 H-type magic state，并与 T",
+          "+⟩ Clifford-equivalent。",
+          "单份 Mθ 注入在数据上产生 Rθ 或其逆；Rθ² 为 free 时可用 feed-forward 得到确定实现。θ=π/8 时 R²=HZ=XH 为 Clifford，一份 M 与一次精确 R 使用可双向转化。"
+        ],
+        "techniques": [
+          "有限群 symmetrization 与 Clifford gate injection，分开 Fix(U) 和 Prog(R) 两类语义证书。"
+        ],
+        "assumptions": [
+          "轨道和非零；确定性实现需测量后反馈以及 Rθ² 属于指定 free operations。"
+        ],
+        "limitations": [
+          "摘要未提供抗噪注入、magic distillation 开销或相对已有 injection 的资源改善，语义等价不能推出新复杂度优势。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 magic、Clifford resources 和 feed-forward 有直接但范围较窄的联系。"
+        ],
+        "follow_up": [
+          "读者建议：在统一 free-operation 定义下核对一次注入所需测量、反馈与 ancilla，并检验资源态噪声如何传到 gate error。"
+        ],
+        "relevance_score": 78,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.19717v1"
+      }
+    },
+    {
+      "id": "2611.19715",
+      "version": 1,
+      "analysis": {
+        "summary": "Proxima 将 syndrome-extraction circuit 调度优化的目标从深度或单种 hook error，转为 detector error model 上的 proximity。该指标衡量 seed fault 还需多少故障才能补成不可检测的逻辑失败，用局部子问题降低评估代价。论文同时给出逻辑错误率比较，说明更浅调度不一定带来更可靠的逻辑执行。",
+        "problem": "一般 CSS qLDPC 的调度空间很大，CNOT 顺序决定故障传播，直接优化 LER 需要大量采样和解码，精确 circuit-level distance 也难计算。需要便宜且能感知完整电路故障机制的 surrogate objective，避免只看 depth 或单个 ancilla hook 的盲点。",
+        "setting": "在给定目标 depth 下产生满足校验测量一致性的 SEC schedules，用完整 DEM 表达各类电路 fault mechanisms。针对每个候选，只评估小型 graph-local fault subsets，靠排名选择调度；这里的局部子集选择是计算策略，不等于物理噪声只发生在这些子集中。",
+        "main_results": [
+          "作者报告跨多种 qLDPC code families，相对最强自动基线 LER 降低 1.4–2.6 倍，相对其他基线最多 40 倍；改善限于所测 noise/decoder/code 设置。",
+          "利用平移对称和紧凑 monomial representation，找到 BB codes 的 depth-8 uniform schedules，在对应评估下相对 IBM depth-7 reference schedules 的 LER 改善 2.1–5.1 倍。这一对比不能写成 depth 从 8 降到 7；结果恰是更深但更可靠。",
+          "proximity 与 circuit-level distance 相关并给出上界。找到少故障 logical failure 可证 distance 不超过某值；没有找到失败不能凭局部搜索自行断言完整电路 distance 达到该值。"
+        ],
+        "techniques": [
+          "采用 SMT 生成目标深度的 valid schedules；在 DEM 列子集上解逻辑失败组合问题，逐步扩大 subset 以区分最优候选的并列。",
+          "完整电路 fault mechanism 进入代价函数，避免每轮都用 decoder-in-the-loop Monte Carlo 估计 LER；最终仍需在噪声模型和解码器下评估实际效果。"
+        ],
+        "assumptions": [
+          "假定 DEM 正确表达门、测量等组件故障和相应 detector/logical effects；若真实误差超出模型，排名可能改变。",
+          "调度有效性约束、目标深度、噪声模型和所比较 decoder 必须统一；syndrome ancilla 与执行层数不能从抽象码距推定。"
+        ],
+        "limitations": [
+          "本次只读前 60000 字符中的引言与方法概述，未核对全部实验表、噪声扫描和 SMT 细节。作者所称跨模型 generalization 不是任意相关、coherent 或时变噪声的保证。",
+          "proximity 优化不构成 LER 的解析最优性证明，也没有自动给出每个逻辑 gadget 的 process fidelity。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接涉及固定 code/gadget 下 syndrome 数据、fault distance 与 logical error 的关系，也提供 depth 和 fidelity 分开优化的明确例子。"
+        ],
+        "follow_up": [
+          "读者建议：将选出的 schedules 交给独立 exact fault-distance certificate，并在同样 total cycle time、idle noise 和 decoder 下复核排名。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.19715v1"
+      }
+    },
+    {
+      "id": "2611.19671",
+      "version": 1,
+      "analysis": {
+        "summary": "论文在二维 square-lattice nearest-neighbor 结构下构造浅 Clifford 电路，分别处理任意 CZ、stabilizer state preparation 和任意 Clifford unitary。重要限定是许多最优性结论针对固定纠缠模板的 full CZ-span programmability，并不表示每个单独目标态都需要相同深度。",
+        "problem": "不受限 connectivity 的 Clifford 综合在路由到二维设备后可能失去优势。需要利用中间线性函数及可编程 phase gates，在实际近邻结构上减少 entangling depth，同时区分固定通用模板与按目标单独综合。",
+        "setting": "成本主要按 nearest-neighbor two-qubit gate layers 计算，single-qubit gates 被视作廉价。偶数规模构造不用额外 ancillas 或 measurements，odd-size unitary extension 则用一个最后保持不变的附加 qubit。任意 Clifford unitary 的最终输出排列不允许免费改变。",
+        "main_results": [
+          "2×k ladder、n=2k 上任意 CZ computation 可在最多 3n/2+3 深度实现，但两条 rails 末端整体 reversal 要计入输出解释。相较 LNN 的 2n+2，上界渐近改善约 25%。",
+          "对 cycle connectivity Cn 的可编程态制备模板，entangling depth 精确为 2ceil(n/2)−1，除非 n=4k，此时需要 2ceil(n/2)。作者为每个偶数规模构造含 Hamiltonian cycle 的无孔最小周长 patch，使 n=4k+2 的模板达到该 counting bound。",
+          "对任意 Clifford unitaries，结合已有四 diagonal-stage decomposition 给出 n=4k+2 时 4n−4、n=4k 时 4n 的深度上界，相较相关 LNN 7n−4 基线渐近改善约 43%；是不同 connectivity 下可用构造的比较。"
+        ],
+        "techniques": [
+          "用 ladder reversal walks 使 rail 内及跨 rail 的 CZ 项均可编程；state templates 采用 H-{CNOT+P}-LC 形式，Phase 位置编程目标相位。",
+          "将 CZ-span 计数下界与每层 matching 限制结合，证明某些图结构无法达到计数界；利用 circuit 与 binary transpose 配对消去线性端点，实现 unitary 综合。"
+        ],
+        "assumptions": [
+          "所有 gate 均遵循选定 occupied square-lattice layout；不能把二维 gate-layer 数直接当作真实时长而忽略校准和并行限制。",
+          "深度下界针对所定义 full-span programmable architecture，末端 local Cliffords 的额外表达能力可能让其他 state-universal templates 采用不同机制。"
+        ],
+        "limitations": [
+          "其余尺寸部分使用 exhaustive 或 heuristic search，摘要列举至 256 及选定 1024 qubits 的结果，不能把数值搜索等同所有尺寸的严格构造。",
+          "本次未审计全部组合证明和搜索证书，未给出硬件噪声下 gate fidelity 或 SPAM 鲁棒性结论，也未比较 magic 成本。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接支持 Clifford resources、locality 与 depth 的权衡，也与 randomized benchmarking 和 stabilizer preparation 的实现代价相关。"
+        ],
+        "follow_up": [
+          "读者建议：在相同二维 layout 下比较模板通用性与单目标综合，并加上输出排列、idle errors 和 odd-size ancilla 后报告总成本。"
+        ],
+        "relevance_score": 92,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.19671v1"
+      }
+    }
+  ]
+}
