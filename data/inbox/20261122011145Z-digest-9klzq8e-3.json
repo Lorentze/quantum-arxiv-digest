@@ -1,0 +1,178 @@
+{
+  "analyses": [
+    {
+      "id": "2611.19605",
+      "version": 1,
+      "analysis": {
+        "summary": "QSITE 用 exact sine filter 近似 imaginary-time evolution，并给出 sequential LCU 与 coherent QSVT 两种实现。摘要称二者制备相同条件态、成功概率相同，差别在成功概率如何放大。其资源联系是 mid-circuit measurement 与 coherence 的交换，不能因有收敛保证就推断一般 ground-state preparation 有高效成功率。",
+        "problem": "如何用可实现的概率量子滤波逼近 imaginary-time evolution，并同时控制逼近误差、成功率与辅助量子比特。",
+        "setting": "一般 Hamiltonian 的基态滤波，随后专门讨论 optimization Hamiltonians 和 MaxCut。sequential 方案跨步骤复用两个 ancilla qubits，使用 mid-circuit measurement；另一方案以 QSVT 保持 coherent processing。",
+        "main_results": [
+          "作者以 telescoping identity 证明两实现的条件输出态和成功概率一致；摘要声称 QSITE operator 一致收敛于 exact ITE，归一化输出亦收敛，filter probability 随拼接步骤单调增加。",
+          "在 MaxCut 整数谱条件下，失败概率对 evolution time 周期变化。第一 safe zone 解析确定，第二数值确定；若容许能量误差是 ground-state energy 的固定比例，第一 safe zone 中线性增长的拼接步骤可使失败概率低于 1/2。",
+          "数值实验为至多 24 qubits 的随机 Erdős–Rényi 实例并与 QAOA 比较，不等于一般最坏情形速度优势。"
+        ],
+        "techniques": [
+          "sine-filter 的 sequential LCU 拼接、telescoping identity 以及 QSVT coherent realization。"
+        ],
+        "assumptions": [
+          "MaxCut safe-zone 论证使用整数 eigenvalues；相对能量误差与 state fidelity 是不同口径。"
+        ],
+        "limitations": [
+          "摘要未提供完整 gate count、Hamiltonian simulation 代价、gap/initial overlap 依赖和成功放大开销；不能把两个 ancillas 的 sequential 实现成本套到 coherent 版本。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 ancilla、measurement timing、coherent access 和 state preparation 的资源交换直接相关。"
+        ],
+        "follow_up": [
+          "读者建议：在同一目标 state fidelity 下计入失败重试和放大成本，对比两个 ancillas 加反馈与 coherent QSVT 的总 target calls。"
+        ],
+        "relevance_score": 83,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.19605v1"
+      }
+    },
+    {
+      "id": "2611.19566",
+      "version": 1,
+      "analysis": {
+        "summary": "论文解决 classical generative-model RL 的 plug-in planning 样本复杂度问题，未展示量子数据或量子测量访问。",
+        "problem": "折扣和平均奖励 reinforcement learning 中经验模型规划的最优样本量。",
+        "setting": "有限状态和行动的经典 MDP，通过 generative model 采样，研究 span 或 diameter 约束。",
+        "main_results": [
+          "作者通过 Bellman residual bracketing 与下界刻画给定模型类的 minimax sample complexity，达到常数因子的匹配。"
+        ],
+        "techniques": [
+          "吸收 MDP 浓缩分析、Bellman residual bracketing。"
+        ],
+        "assumptions": [
+          "经典 generative model 及指定 MDP 参数。"
+        ],
+        "limitations": [
+          "摘要没有 quantum-data learning 或 quantum oracle separation 结论。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "低相关；样本复杂度和 nonadaptive 等共同词汇不足以满足研究范围。"
+        ],
+        "follow_up": [],
+        "relevance_score": 8,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.19566v1"
+      }
+    },
+    {
+      "id": "2611.19453",
+      "version": 1,
+      "analysis": {
+        "summary": "作者将 stabilizer code 与记录码维数和最小距离的 spectral triple 联系起来，用 noncommutative metric geometry 比较不同物理和逻辑维数的码。其直接 QEC 内容是特定维数下 minimum distance 的局部常值性，尚不是实用 decoder 或噪声阈值结果。",
+        "problem": "不同大小 stabilizer codes 能否有一个保留纠错结构的几何比较框架，以及码距在这一拓扑中是否稳定。",
+        "setting": "nice error basis 导出的 projective error model，加上 length function。Pauli stabilizer codes 的码空间维数大于一，Hamming weight 下使用 Latrémolière dual propinquity 构造 pseudometric。",
+        "main_results": [
+          "作者称 qubits 及局部维数 3、5 的 qudits，其 minimum distance 在相应拓扑中 locally constant，因此纠正所有不超过指定 weight 的错误是局部性质。",
+          "对任意素数 p，作者还分类 metric closure 的 underlying C*-algebras 为指定 AF algebra 子类，并给出 CAR algebra 作为 qubit stabilizer codes 的 metric limit。"
+        ],
+        "techniques": [
+          "构造 spectral triples，分析 quantum metric topology 与 AF/UHF algebra closure。"
+        ],
+        "assumptions": [
+          "局部常值结论依赖所选 length/Hamming weight、code dimension 与所列 qudit dimensions，不能凭摘要推广到所有 p。"
+        ],
+        "limitations": [
+          "未给出一般物理 noise channel 下的 fidelity 稳定界、有限距离证书算法或高效计算 pseudometric 的方法；这里拓扑邻近不等于电路执行误差小。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 stabilizer formalism 和纠错半径稳定性有明确联系，属于偏数学的工具候选。"
+        ],
+        "follow_up": [
+          "读者建议：寻找有限码例子计算该 pseudometric，并检验它能否控制某个可操作 logical performance 指标。"
+        ],
+        "relevance_score": 79,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.19453v1"
+      }
+    },
+    {
+      "id": "2611.19442",
+      "version": 1,
+      "analysis": {
+        "summary": "论文用 QEC 的准局域 recovery channels 将简单 stabilizer model 的逻辑代数穿戴到 mixed states 上，构造仍在 Hilbert space 上 unitary 的 emergent higher-form symmetries。相关性来自确定性 recovery 与 logical algebra 的具体联系，不能仅当成一般凝聚态关键词匹配。",
+        "problem": "对混合态的恢复过程通常是 channel，如何从中构造真实 unitary 的涌现对称，并保留拓扑逻辑结构。",
+        "setting": "从 mixed quantum state 恢复到附近简单 stabilizer fixed-point model，采用适当的 deterministic、(quasi-)local recovery；对称算符支撑在拓扑非平凡 loops 或 surfaces。",
+        "main_results": [
+          "摘要称适当确定性的恢复方式保证 resulting operators 仍 unitary。",
+          "在拓扑非平凡子流形上，这些算符继承 fixed-point model 的 logical algebra，并允许定义统计性质遵循 fixed-point limit 的 emergent excitations。"
+        ],
+        "techniques": [
+          "利用 QEC recovery dressing 对称算符，并用 unitary 性质联系逻辑代数和激发统计。"
+        ],
+        "assumptions": [
+          "近邻 simple model 以及特定 deterministic recovery 条件是核心；不是任意 CPTP map 的拉回都保持 unitarity。"
+        ],
+        "limitations": [
+          "摘要未给出 recovery 可实现性、近似误差、定量局域半径、噪声阈值或 measurement 成本；未核查保持 unitary 的证明条件。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 stabilizer、恢复映射和逻辑信息结构有具体联系，但不直接给出 benchmarking 或容错硬件改进。"
+        ],
+        "follow_up": [
+          "读者建议：把恢复条件写成有限系统可检验形式，比较近似 recovery 对逻辑代数误差的影响。"
+        ],
+        "relevance_score": 78,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.19442v1"
+      }
+    },
+    {
+      "id": "2611.19141",
+      "version": 1,
+      "analysis": {
+        "summary": "本文以 quantum local asymptotic normality 建立 quantum hypothesis testing 的渐近效率理论，处理 nuisance parameters 和可观测量不对易带来的测量优化。作者给出 sharp power bounds 及 scalar SLD tests 的达到条件，并用 spectral-functional testing 区分 weak Schur plug-in weighting 的损失与更本质的测量统计差距。",
+        "problem": "经典局部渐近正态框架不能直接绕过 quantum measurement optimization。问题是在存在 nuisance parameters 时，哪些 tests 达到局部最优 power，且参考参数未知时能否通过 adaptive procedure 达到相同效率。",
+        "setting": "将原 quantum statistical models 的局部极限化为 classical–quantum Gaussian shift experiments。研究 one-sided tests，以及 unbiased class 内的 two-sided tests；回传结论需 suitable asymptotic invariance conditions。",
+        "main_results": [
+          "作者通过适用于 commuting 与 noncommuting Gaussian coordinates 的 quantum Hunt–Stein argument，将 nuisance-maximin power bound 约化到经典问题。",
+          "scalar symmetric logarithmic derivative tests 达到相应界；两阶段 adaptive construction 在未知 reference parameter 时达到相同 local asymptotic power。",
+          "应用于 quantum-state smooth spectral functionals，比较 weak Schur sampling plug-in 与 optimally weighted linear statistics，并刻画相关 variances 相等的条件。"
+        ],
+        "techniques": [
+          "quantum LAN、asymptotic representation theorem、Hunt–Stein reduction 与 two-stage adaptive testing。"
+        ],
+        "assumptions": [
+          "渐近局部参数和相应 invariance 条件；two-sided 的最优性限定在 unbiased tests 中。"
+        ],
+        "limitations": [
+          "摘要未给出 finite-copy sample complexity、近似误差或允许 collective measurement 的精确资源实现；渐近 power 最优不等于有限 n 的全局 minimax 最优。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接联系 quantum statistical inference、measurement access 与 adaptivity，也提示同一谱信息下 plug-in 权重选择的额外损失。"
+        ],
+        "follow_up": [
+          "读者建议：固定拷贝数和测量权限，区分 collective quantum procedure、weak Schur statistics 与 single-copy 实现的实际差距。"
+        ],
+        "relevance_score": 90,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-22T01:11:21Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.19141v1"
+      }
+    }
+  ]
+}
