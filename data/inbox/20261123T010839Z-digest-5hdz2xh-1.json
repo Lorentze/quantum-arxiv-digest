@@ -1,0 +1,389 @@
+{
+  "analyses": [
+    {
+      "id": "2611.19130",
+      "version": 1,
+      "analysis": {
+        "summary": "SCOPE 将 BB qLDPC 的时空协变结构与 BP 轨迹诊断结合，在固定串行迭代预算内并行探索、终止和重新播种候选解码轨迹。本文把电路级逻辑错误模拟与两臂 Mem-BP RTL 原型分别评估；纳秒级核心响应不能直接作为完整容错反馈系统的已验证延迟。",
+        "problem": "高准确度解码常需要更多迭代或昂贵后处理，实时 QEC 却受 syndrome 周期限制。如何利用码与重复提取电路的结构，把并行计算宽度转换为较小的 critical-path depth，而非单纯增加串行运行时间。",
+        "setting": "研究 BB codes 的电路级 detector matrix，正文所述构造针对 Z-error sector。主要示范窗口含 Nc=2 noisy cycles，另加两个 noiseless cycles 闭合窗口。空间协变依赖 quasi-cyclic code/circuit 结构，时间平移协变只在远离时间边界的重复 bulk 成立。",
+        "main_results": [
+          "作者报告 [[144,12,12]] 在 p=10⁻³ 时直接 Monte Carlo 得到 pL=4.82×10⁻¹⁰；所比较噪声、矩阵和窗口相同，约比相应 Relay-BP 与 BP-OSD 配置低 70 与 30 倍。曲线其他部分含 log–log 拟合，不应把整条曲线都视为直接采样。",
+          "四臂软件策略先有 80 次 preprocessing，再每臂预算 B；critical-path BP depth 为 80+B，不能写成总计算量也只有 80+B。B=120 的准确度点与更严格实时预算点应分开。",
+          "RTL 为两臂 Mem-BP 核心，并非四臂完整 SCOPE 的所有模块。在 p=5×10⁻³、4096 个样本、250 MHz 功能模拟中，每臂迭代间隔 16 ns，平均 input-to-result 173.8 ns，第 99 百分位 732 ns。"
+        ],
+        "techniques": [
+          "用空间和时间相对位移组织分层解码，将低置信 LLR 的高维 BP 演化投影到低维诊断空间，识别无望轨迹以早停和 reseed。",
+          "消息参数由 simulated annealing 离线优化，多臂共享优化参数但采用独立输入扰动；正文图说明还有 BP preprocessing 与末端 OSD fallback。"
+        ],
+        "assumptions": [
+          "需要所选 BB 码、syndrome schedule 和 noise model 的匹配；有限窗口边界需单独处理。",
+          "实时性能依赖并行资源、每臂状态存储以及通信和后处理成本，串行深度不是 FPGA 面积或总迭代数。"
+        ],
+        "limitations": [
+          "作者将物理硬件上的完整 pipeline、trajectory control、post-processing 和 communication overhead 评估列为后续工作。RTL 功能模拟不是已部署量子处理器的闭环实验。",
+          "所列极低 pL、预算和 RTL 延迟来自不同参数或配置，不能拼接成同一个运行点；Nc=2 的结论也未证明任意长历史均保持。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接关联 syndrome 处理、逻辑准确度、memory assumptions 与 adaptive computational resources，适合比较低错误率与反馈 deadline 的权衡。"
+        ],
+        "follow_up": [
+          "读者建议：在同一窗口、串行预算和总硬件面积下比较端到端延迟分布，并单独量化 OSD fallback 的长尾。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.19130v1"
+      }
+    },
+    {
+      "id": "2611.19017",
+      "version": 1,
+      "analysis": {
+        "summary": "论文研究已知 optimal robustness witness 后，测量其期望值仍需付出的 sampling cost。作者用 Cramér–Rao 与 witness 几何给出方差障碍，并区分 absolute error 与 relative error。资源态越强并不总意味着其 robustness 更容易精确测量；尤其不能把已知 witness 误当作免费且低方差的资源计量。",
+        "problem": "Magic robustness 可表成 witness expectation，但找到 witness 与用足够 shots 测量 witness 是两个不同难题。本文集中处理第二个问题：即使优化过程已经完成，强资源态的 robustness 在什么误差口径下仍有大采样代价。",
+        "setting": "对一般 convex free-state set F，正文 standard robustness 定义为 R=1+2 min s，使 (ρ+sγ)/(1+s)∈F 且 γ∈F，自由态 R=1。generalized robustness R+ 的 witness 额外要求 positive semidefinite，混合态 γ 可任意，定义的因子约定与 R 不同。不能把这些 R 直接替换成自由态取零的惯例而保持公式不变。",
+        "main_results": [
+          "给定最优 W，固定绝对误差 ε 的期望估计 shots 受 Var(W)/ε² 控制。作者对高度混合态给出随 robustness 至少二次、对广泛纯态族的 generalized robustness 至少线性的测量增长结论。",
+          "作者给出两种互补 witness-geometry bounds，其中一种对包含 coherence 和 bipartite entanglement 的一类资源理论为紧界；并未由此声称所有 magic 实例都达到紧界。",
+          "沿状态路径追踪 robustness 增长时，integrated witness variance 至少受资源增量平方与 Fisher length 的比控制。摘要强调指数资源增长路径会经过不适合低绝对误差高效测量的状态，而固定相对误差没有同样障碍。"
+        ],
+        "techniques": [
+          "以 quantum Cramér–Rao bound 将方向导数、QFI 与 witness variance 联系起来，并用 Danskin’s theorem 处理最优 witness 随状态变化时的一阶导数。",
+          "纯态比较 free-state fidelity F(ψ)，正文给出 1/F≤R+≤R；归一化纯态 projector 可产生可行但不一定最优的 witness。"
+        ],
+        "assumptions": [
+          "估计结论适用其 locally unbiased/一阶可估计设置；资源理论、free set 与所用误差定义必须固定。",
+          "先假定 optimal witness 已知，尚未计入寻找、验证、分解和实际实现该 observable 的成本。"
+        ],
+        "limitations": [
+          "大 variance 造成的采样困难与计算难度不同；不能由局部 CR 界直接宣称任意 biased estimator、所有 adaptive collective protocols 都满足同一未加条件的下界。",
+          "相对误差改善只移除这里讨论的障碍，不表示所有高度 resourceful pure states 都有高效 witness 搜索或低深度测量。",
+          "本次复核定义、模型与结果概述，未审计所有几何紧性和路径积分证明，也未提取可用于实验的通用常数。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接回答 magic 的 operational measurement access 与 shots 资源问题，尤其有助于区分 magic preparation cost 与 magic quantification cost。"
+        ],
+        "follow_up": [
+          "读者建议：对同一态族分别设定绝对和相对误差，并把 witness 实现的 setting 数、每次深度与总 shots 一并计费。"
+        ],
+        "relevance_score": 96,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.19017v1"
+      }
+    },
+    {
+      "id": "2611.19002",
+      "version": 1,
+      "analysis": {
+        "summary": "作者求解 complete-graph coloring nonlocal game 的一类最优策略，明确何时 shared entanglement 带来胜率优势。结果给出有限维量子策略和经典策略的精确比较范围，而非一般图染色的量子复杂度结论。",
+        "problem": "两名不能通信的玩家如何用 m<n 个输出标签响应 n 个输入，并在相等关系判断中获胜。",
+        "setting": "输入 x,y∈[n]，输出 a,b∈[m]，获胜条件为 (x=y) iff (a=b)。量子策略允许预共享有限维 entangled state。主要输入分布以 1/2 概率给相同输入，其余为随机不同输入。",
+        "main_results": [
+          "作者声称求出此类及多种相关分布下的最优 classical/quantum values，并为所有 n,m 给出达到最优的显式 synchronous strategies。",
+          "当相同输入概率至少为 2/(m+2)，这些策略仍最优；所讨论范围内，量子优势恰在 m 不整除 n 时出现，优势为 O(m/n²)。"
+        ],
+        "techniques": [
+          "nonlocal-game 最优值分析和显式同步策略构造。"
+        ],
+        "assumptions": [
+          "无需通信且输入分布满足给定范围，m<n；优势是 winning probability 差。"
+        ],
+        "limitations": [
+          "摘要未给出具体最优值公式、纠缠维数成本、近最优策略的刚性或抗噪证书；不能推断实验检验所需 shots。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 nonlocal resources 和信息访问限制直接关联，数值优势还须与测量开销分开。"
+        ],
+        "follow_up": [
+          "读者建议：比较相同精度下检测 O(m/n²) 胜率差所需样本量，并核查纠缠维数随参数增长。"
+        ],
+        "relevance_score": 82,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.19002v1"
+      }
+    },
+    {
+      "id": "2611.18881",
+      "version": 1,
+      "analysis": {
+        "summary": "Double-Randomized QSVT 结合随机 block-encoding 与随机 polynomial 以降低单次电路深度，作者声称二者节省可相乘、误差贡献相加。核心是把 operator 分成确定 core 与随机抽取的 tail，所得 diamond-norm bound 依赖 tail 权重和 polynomial。",
+        "problem": "QSVT 中 block-encoding 太深时，早期容错设备难以实施，能否在明确误差预算下随机省略低权重项。",
+        "setting": "A=A0+Aε，用 core 与 nT 个 tail 随机项的平均之归一化和构造 block-encoding。δ 为 tail 与总 operator 系数向量 ℓ1 norms 的比值；nT 是抽样项数，不是 shots 或 T-count。",
+        "main_results": [
+          "摘要给出随机 block-encoding 的 diamond error 为 O(CP δ²/nT)，CP 依赖 QSVT polynomial P。",
+          "同时随机化 block-encoding 与 polynomial 时，深度节省乘法组合而误差相加。长程 Heisenberg 与 iron-sulfur Hamiltonians 的数值误差界评估中，目标 10⁻³ 时若干实例所需 Pauli terms 少一个数量级或更多。"
+        ],
+        "techniques": [
+          "core/tail 分解、随机项抽样和 polynomial sampling 的联合分布。"
+        ],
+        "assumptions": [
+          "误差界需保留 CP 与归一化约定，不能只留下 δ²/nT 或假设 CP 为通用常数。"
+        ],
+        "limitations": [
+          "摘要未给出每个随机实例与平均 channel 的完整区别、额外 sampling overhead 或总成功概率；Pauli-term 节省不自动等于总 shots、magic 或 target calls 同比下降。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 state preparation 的深度和随机化资源有具体理论联系。"
+        ],
+        "follow_up": [
+          "读者建议：固定最终 observable 精度，把每次 depth 节省与随机化增加的总测量次数、成功概率一同评估。"
+        ],
+        "relevance_score": 84,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.18881v1"
+      }
+    },
+    {
+      "id": "2611.18755",
+      "version": 1,
+      "analysis": {
+        "summary": "论文研究 non-unital Markovian noise 下两条 antipodal 输入轨迹的 survival-error asymmetry。作者用弱耗散一阶理论说明，平均 gate infidelity 所压缩的标量不能描述各方向的错误分配；轨迹的平均 Bloch vector 和 transverse covariance 控制方向差异。本文针对两能级受控路径，不直接建立一般多比特 fixed-gate certification 定理。",
+        "problem": "相同平均 gate fidelity 的脉冲，可能对不同输入产生不同 transition/survival errors。如何给出跨 pulse shapes 的解析描述，并以 complete positivity 约束可实现的不对称程度，而非用单一 T1 例子观察现象。",
+        "setting": "二能级 qubit、time-independent GKSL Markovian generator、piecewise-continuous control path，ε=γT≪1。χ± 是 error probability 关于 ε 的一阶斜率；m 为沿理想控制轨迹的时间平均 Bloch vector，G 为其 transverse residence covariance。",
+        "main_results": [
+          "正文报告 χ±=Tr(SG)/2 ∓ m·t/4，S 与 t 分别描述 unital damping 和 non-unital drift。其平均 gate 与 entanglement infidelity 的一阶关系是该弱耗散模型内的结论，不能作为任意时变 gate-dependent noise 下 RB 拟合的通用解释。",
+          "标准 polar √X 受纵向 T1 relaxation 时，作者给出较小/较大方向斜率比 κ=(3π−8)/(3π+8)≈0.081767，即约 12.23:1；时间对称 X rotation 在同一纵向模型中为 1:1，不代表对所有 non-unital bath 都方向对称。",
+          "对 time-independent single-qubit π swaps，在允许的 completely positive Markovian generators 上给出 κ*=(π−2√2)/(π+2√2)≈0.052456，即约 19.06:1 的极限。该 swap 的 universal-bath 优化与前述 polar √X 的特定 T1 数字是不同问题。"
+        ],
+        "techniques": [
+          "toggling-frame perturbation 将 pure-state fidelity loss 表为 jump-operator fluctuations，再化为两个 trajectory moments，并利用 CP cofactor bound 限制归一化方向对比度。",
+          "作者讨论 Gaussian/DRAG waveform，以及 finite damping、colored baths 和 leakage 扩展；所读前部的严格基础模型仍是二能级弱耗散 Markov 设置。"
+        ],
+        "assumptions": [
+          "各公式需保持路径、固定 generator、bath drift 方向与 ε 的约定；高阶余项不能在有限耗散下自动忽略。",
+          "比较的是 survival slopes 与方向 ratio，不是多次 gate shots、完整 process tomography 或逻辑 fidelity。"
+        ],
+        "limitations": [
+          "摘要称 two-branch differential lock-in protocols 可消除一阶 SPAM。本次 60000 字符正文提取恰在实验 protocol 部分附近截断，未核查完整 SPAM 假设和残余偏差，因此不将该说法升级成任意非重复 SPAM 鲁棒保证。",
+          "理论 waveform 分析和预测不等于已完成跨平台实验；未得到完整 target-call、sequence length 与 shot complexity。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接关联非幺正噪声、PTM、gate fidelity 与 SPAM 认证。其明确模型边界可帮助设计对平均指标盲区敏感的补充观测。"
+        ],
+        "follow_up": [
+          "读者建议：在固定 U、仅可信局部门的认证模型内，检验差分观测是否可实施，并独立推导小非重复 SPAM 的偏差界。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.18755v1"
+      }
+    },
+    {
+      "id": "2610.41528",
+      "version": 1,
+      "analysis": {
+        "summary": "FaultScope 将 logical error rate 与对组件错误率的 sensitivities 从同一批模拟和解码记录中同时估计。其研究价值是固定 circuit、decoder 和 stochastic Pauli model 下的误差归因，而不仅是 simulator 速度排名。导数预测小幅降低某类噪声的局部收益，不表示已从实验 syndrome 唯一识别物理噪声。",
+        "problem": "单一 logical failure probability 不说明哪个组件最值得改进。高频错误可能易纠正，低频错误反而可能触发错误逻辑恢复。怎样在不改动或微分 decoder 的条件下，区分组件发生与未发生时的条件失败风险。",
+        "setting": "Clifford syndrome-extraction circuit、固定 decoder D、独立 Bernoulli error events，概率向量 p。每次 shot 的 logical indicator L 由最终 logical readout 与 decoder correction 的异或决定；初始化及末端测量使用相同逻辑 X 或 Z 基。它衡量所选 memory observable 的失败，不能直接等同完整 logical channel fidelity。",
+        "main_results": [
+          "对 0<pj<1，Sj=∂PL/∂pj=P(L=1",
+          "Fj=1)−P(L=1",
+          "Fj=0)，其他事件概率和 decoder 固定。一个物理组件若对应多处事件，其共同错误率导数为相关 Sj 之和。",
+          "score estimator 用 Fj/pj−(1−Fj)/(1−pj) 加权 L，可减固定或独立数据估计的 baseline 降方差而不改变无偏性。若随参数重新训练 decoder 或改动 failure 定义，该导数口径便改变。",
+          "五个 repetition-code 大小、7–2047 error locations、每轮 100000 shots 的 benchmark 中，同时计算全部导数增加 median total runtime 0.33–0.97%。这是计算开销数字，不表示以相同 shots 即获得任意精度的全部 sensitivities。"
+        ],
+        "techniques": [
+          "支持 Clifford forward error propagation 与 DEM direct sampling 两条路径，保留错误事件和 decoded failure 记录，再以 likelihood-score 计算 sensitivity。",
+          "对小幅非负噪声降低 δpj，线性预测改进为 Σj Sjδpj；可按 qubit、gate、round 或 operation 分组为 hotspot maps。"
+        ],
+        "assumptions": [
+          "独立事件、已知 pj 且位于 (0,1)，固定 circuit/noise/decoder；Bernoulli 描述之外的相关或 coherent errors 不由此条件概率公式自动覆盖。",
+          "baseline 需固定或由独立数据估计；若复用同一批数据调 baseline，须另行检查估计偏差。"
+        ],
+        "limitations": [
+          "罕见事件的 sensitivity variance 和罕见 logical failures 仍影响所需 shots；低计算开销不保证低统计成本。",
+          "热点是模型内局部导数，不一定等于实际可干预组件的因果效应；较大噪声改变需重新模拟，而不能无限外推一阶预测。",
+          "本次未逐项复现全部 simulator benchmark，作者最快的说法仅限所测比较和资源限制。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接契合固定 code/recovery/gadget 的逻辑表现与组件噪声联系，并明确区分模拟归因、实验辨识和 process-fidelity 认证。"
+        ],
+        "follow_up": [
+          "读者建议：为 sensitivity 提供置信区间，按可实现干预成本筛选热点，并用独立新 shots 验证一阶降噪预测。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.41528v1"
+      }
+    },
+    {
+      "id": "2610.41524",
+      "version": 1,
+      "analysis": {
+        "summary": "作者利用多光子干涉构造 linear-optical GHZ measurements，提高纠缠操作成功概率，并以 adaptive variants 将部分失败事件变成仍有用的 stabilizer states。其具体联系是 fusion-based computing 的测量资源，而非一般光学器件性能。",
+        "problem": "基于 pairwise interference 的 Bell fusion 是概率且 destructive 的，能否在测量原语中利用 many-body interference 改善 resource-state generation。",
+        "setting": "四模式 interferometers 实现的 GHZ measurement family，先讨论四光子，再推广更大 GHZ measurements；仍受线性光学和 heralding 条件约束。",
+        "main_results": [
+          "四光子成功概率为 9/32。摘要称更大规模相对先前 linear-optical schemes 有指数更高成功概率，但没有给出完整规模公式。",
+          "自适应失败分支可投影到有用 stabilizer states；作者讨论 graph-state generation、remote spin-photon entanglement distribution 和 fusion-based computation。"
+        ],
+        "techniques": [
+          "many-body photonic interference 和 adaptive measurement branching。"
+        ],
+        "assumptions": [
+          "成功率是指定输入、干涉和测量条件下的原语概率；失败分支资源必须另计。"
+        ],
+        "limitations": [
+          "摘要未给出 loss、indistinguishability、ancilla photons、detector resolution 和 feed-forward 的完整预算，不能推断端到端 fault-tolerant overhead 的指数改善。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 stabilizer resource preparation、adaptivity 和 entangling-measurement 成本有直接联系。"
+        ],
+        "follow_up": [
+          "读者建议：把成功与可回收失败分支放入同一 resource-generation 模型，计入探测损失后比较每个目标 graph state 的平均光子数。"
+        ],
+        "relevance_score": 83,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.41524v1"
+      }
+    },
+    {
+      "id": "2610.41413",
+      "version": 1,
+      "analysis": {
+        "summary": "论文为 [[512,174,8]] 3D product qLDPC code 构造 circuit-level DEM，并实现小规模并行 memory-BP FPGA decoder。关键结果是较高编码率下同时报告准确度和延迟，同时保留物理 code distance 8、拟合 effective distance 6 与每逻辑比特每轮错误率的区别。ASIC 对超导时限的潜力仍属于实现展望。",
+        "problem": "高码率减少每逻辑比特的量子资源，却往往加大 decoding graph 与后处理成本。如何在电路级噪声下以少量并行核心替代 OSD 或 integer programming，同时满足中性原子和离子平台的反馈时间。",
+        "setting": "[[512,174,8]] 码编码率约 33.98%。decoder 使用 row-wise serial min-sum 和 cumulative memory，小 parallel ensemble，不以 relay 次序运行。准确度模拟采用 8 轮 syndrome extraction，最后接 noiseless Z-basis measurement；该边界条件与完整持续运行的 memory experiment 不相同。",
+        "main_results": [
+          "在 p=10⁻³，作者报告三个 FPGA 解码 174 logical qubits，logical error rate 为每逻辑比特每轮约 5×10⁻⁷。观察到有效距离 6，即所测区间拟合 pL∝p^floor(deff/2)，不能把码的名义距离从 8 改写成 6，也不应把此 pL 写成整个码块总失败率。",
+          "一个 core 准确度匹配 BP+OSD-CS10，三个匹配 Relay-BP，限定在相应测量与噪声配置。正文指出其准确度低于距离更高的 [[144,12,12]] BB code，并没有声称全面优于 BB codes。",
+          "FPGA core 每次 iteration 为 3.264 μs。在 p=10⁻⁴ 且 BP iteration cap=30 时，平均 latency 为 5.1 μs，worst-case 为 97.9 μs。平均值与最坏时限差别很大，不可只取平均宣称满足任意平台 deadline。"
+        ],
+        "techniques": [
+          "为紧凑 syndrome schedule 生成 DEM，采用 memory-augmented message passing 和少量独立并行候选，避免昂贵 OSD/I/O 后处理。",
+          "用浮点与 quantized decoder 对比准确度，再在 FPGA 中实现并行架构；所读图注明部分比较使用单轮和末端理想测量，比较条件需对应。"
+        ],
+        "assumptions": [
+          "需要所给 circuit-level stochastic error model、schedule、memory 参数和迭代上限；不同 idle-error 配置与持续 syndrome histories 可能改变表现。",
+          "代码的三维稳定子几何与中性原子近邻结构较匹配，但并非所有检查都局域，不能忽略物理路由。"
+        ],
+        "limitations": [
+          "ASIC 可能把 latency 压到超导所需水平，但这里未完成该 ASIC 实现；FPGA 的资源与频率不能直接按理想缩放当作实测 ASIC。",
+          "每轮、每逻辑比特的模型指标不能自动转换为任意 logical gadget process fidelity；理想末端读出也不覆盖实际 SPAM。",
+          "本次没有独立复现硬件量化和时序报告，所有数字按作者指定条件记录。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接涉及 logical QEC、syndrome data 和实时 classical resources，适合与更低码率高距离方案比较总物理资源及反馈尾延迟。"
+        ],
+        "follow_up": [
+          "读者建议：固定 end-to-end deadline，计入 FPGA 通信、实际末端测量和连续窗口积压，再比较单位逻辑比特的硬件预算。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.41413v1"
+      }
+    },
+    {
+      "id": "2610.41388",
+      "version": 1,
+      "analysis": {
+        "summary": "本文把已知 photon loss 纳入 GKP state 的设计目标，优化初始 grid 而非坚持先制备理想目标 spacing 再承受损失。作者用 GKP squeezing 衡量输出态品质，以 ground-state operator 表示寻找最优近似态。机制是预补偿 loss 对 grid 的收缩，但仍保留损失引入的噪声地板。",
+        "problem": "理想 GKP codewords 具有无限能量，真实光学制备只能产生近似态；fidelity 到非物理理想态不是充分实用的优化指标。已知传输或制备损失下，应制备什么初始 grid 才能让输出最适合纠错。",
+        "setting": "考察 square、hexagonal 及 asymmetric GKP-like states，用正半定 displacement/sine 型 operator 的 expectation 定义 GKP squeezing，目标态可由相关 operator 的低能或 ground-state 表示构造。理想 grid 在 position/momentum 周期性上编码，实际用有限能量近似。",
+        "main_results": [
+          "数值结果称最佳 initial spacing 通常不同于理想 code-state spacing，并在已研究损失下提高 GKP squeezing 与抗损失表现。",
+          "对 symmetric 和 hexagonal lattices，作者报告 optimal parameters 的简单渐近 scaling relation；本次未核查其完整参数区间与表达式，因此不补写未复核的公式或普适阈值。",
+          "loss 同时收缩 grid 并加入噪声，改变初始几何能改善输出目标，却不消除不可逆损失；未声称能恢复任意遗失的量子信息。"
+        ],
+        "techniques": [
+          "通过 GKP operator 的 ground-state representation 把 grid parameters 与 squeezing 优化联系，再对损失后的目标品质求最优输入。",
+          "比较不同 lattice topologies 和非对称变体。采用 Hermitian observable 的 expectation 有利于连接实验品质评价与数值优化。"
+        ],
+        "assumptions": [
+          "需要 photon loss 可预先估计，优化使用的损失模型与实际通道匹配。",
+          "本文明确不研究 dephasing noise；所读引言也将 additive thermal noise 的 grid 作用与 photon loss 区分，不能把方案推广成所有 bosonic noise 的统一补偿。"
+        ],
+        "limitations": [
+          "GKP squeezing、有限能量近似态之间的 fidelity、最终 logical error rate 是不同评价量。本篇优化 squeezing 不等于给出了指定 decoder 下的 logical lifetime 或 fault-tolerance threshold。",
+          "本次复核模型和优化机制，未审计所有数值曲线、渐近推导和实验测量成本，未给出适用任意损失强度的改善倍数。",
+          "源文本使用期刊模板，但当前队列未附正式 publication metadata，本报告仅代表指定 arXiv v1，不推定已正式发表或版本相同。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接联系 bosonic QEC 的 resource-state preparation 与 noise-aware design，说明先验噪声知识可改变最合适的输入资源。"
+        ],
+        "follow_up": [
+          "读者建议：在固定能量和 detector budget 下，将 squeezing 改善映射到具体 GKP decoder 的 logical failure，并扫描损失校准误差。"
+        ],
+        "relevance_score": 88,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.41388v1"
+      }
+    },
+    {
+      "id": "2610.41341",
+      "version": 1,
+      "analysis": {
+        "summary": "本文利用 time-domain multiplexing 复用一至两个 squeezed sources 来制备 heralded GKP resource states。相同目标下，增加可测时间模式可降低单模式 photon-number resolution，又无需按模式数增加同时工作的源。数值比较支持源数、探测需求与损失之间的权衡，未建立任意配置下的总成本优势。",
+        "problem": "空间 GBS 制备若把 heralding photons 分散到更多模式，可降低每个 detector 的分辨率要求，却会在 fully squeezed architecture 中增加同时工作的 source 数。如何通过 temporal reuse 改变这个资源交换，同时保持 conditional state quality。",
+        "setting": "有限能量 square-lattice GKP targets，比较总 heralding photon number N=8 或 12 的配置。TDM 使用 delay loops 和时间 bins，复用一或两个物理 squeezed sources；空间基线包含全输入压缩以及仅两个压缩输入两类。physical source count、temporal mode count 和 detected photons 是不同资源。",
+        "main_results": [
+          "选定 N=8 的九模式 TDM 配置，在每个被测模式 herald 一个光子时，conditional fidelity 超过 0.95。这个数值针对 selected configurations，不是所有九模式电路的保证。",
+          "在每个 loss level 重新优化参数后，所研究 two-mode TDM 在每指定 spatial channel 1.0 dB 损失时，fidelity 约 0.80，对应 spatial benchmarks 低于 0.60。该比较使用特定损失位置和通道模型，不能套成任意 delay loop 每轮损失下的结果。",
+          "作者报告若干匹配 photon-number、mode-count 和 heralding-pattern 的配置中，TDM 的 fidelity 可与 fully squeezed spatial 电路相当，某些情形 heralding probability 相当或更高；并未宣称源数降低必然保持成功率。"
+        ],
+        "techniques": [
+          "使用 end-to-end differentiable Bargmann framework 计算 conditional output，避免显式构造完整 multimode Fock tensor，联合优化 fidelity、effective squeezing 与 heralding probability。",
+          "以 temporal multiplexing 重用光源与组件，测量模式数提供分散光子条件的自由度；评估时按匹配配置比较空间和时间架构。"
+        ],
+        "assumptions": [
+          "需要稳定 delay、phase 和 mode matching，并假定所选探测模式及损失模型；实际 detector efficiency 和时间相关损耗会改变成功率与品质。",
+          "有限能量 GKP target 的 fidelity 不等于 ideal infinite-energy codeword 的 fidelity，也不直接给出逻辑错误率。"
+        ],
+        "limitations": [
+          "这里为变分数值结果，未声称已做物理 TDM GKP preparation 实验。不同初始优化与搜索空间可能影响最优比较。",
+          "压缩源数节省可能转移成更长时间序列、循环损失与同步需求；本文节选没有给出统一光子、时间、反馈和成功次数预算下的全局最优界。",
+          "本次未审计全部 loss-aware optimization、数值稳定性与截断误差。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "与 heralded non-Gaussian resources、ancilla/source reuse、measurement resolution 和 QEC 制备直接相关，是按时间换空间资源的具体案例。"
+        ],
+        "follow_up": [
+          "读者建议：统一每次成功输出的平均源工作时间、光子数和 loop loss，再对特定 GKP recovery 测试逻辑收益。"
+        ],
+        "relevance_score": 90,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.41341v1"
+      }
+    }
+  ]
+}
