@@ -6509,6 +6509,278 @@
     },
     {
       "doi": "",
+      "id": "2611.19130",
+      "version": 1,
+      "title": "Accurate qLDPC decoding under real-time constraints",
+      "authors": [
+        "Chenzewei Qing",
+        "Tengyu Zhang",
+        "Xiaoqin Luo",
+        "Xiaolu Su",
+        "Li You"
+      ],
+      "abstract": "Fault-tolerant quantum computation requires reconciling the computational demands of accurate decoding with the stringent timing constraints of real-time error correction. We present Spatiotemporal Covariance-Optimized Parallel Ensemble (SCOPE), a physics-informed framework for real-time decoding of quantum low-density parity-check codes (qLDPC). By exploiting the spatial symmetries of bivariate-bicycle (BB) codes and the temporal regularity of repeated syndrome extraction, SCOPE uncovers a spatiotemporally covariant decoding structure and organizes the circuit-level problem into a layered decoding strategy. We further compress the high-dimensional evolution of belief propagation (BP) into a low-dimensional dynamical representation, revealing distinct signatures of successful and failed decoding and enabling early detection of unpromising trajectories. Guided by these dynamical signatures, SCOPE explores multiple perturbed decoding trajectories in parallel, enabling early termination and reseeding within a fixed serial iteration budget, with message-passing parameters optimized offline by simulated annealing. Circuit-level simulations of the $[[144,12,12]]$ BB code yield a logical error rate of $p_L=4.82\\times10^{-10}$ at a physical error rate of $p=10^{-3}$. We further realize a pipelined two-arm memory-augmented BP (Mem-BP) core at the register-transfer level. Functional simulations at a 250 MHz clock yield a 16 ns BP iteration interval per arm and a mean input-to-result latency of 173.8 ns at $p=5\\times10^{-3}$.",
+      "url": "https://arxiv.org/abs/2611.19130",
+      "pdf_url": "https://arxiv.org/pdf/2611.19130v1",
+      "published": "2026-11-14T03:37:53Z",
+      "updated": "2026-11-14T03:37:53Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 5,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "logical error",
+          "syndrome",
+          "qLDPC"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-17T08:00:39Z",
+      "analysis": {
+        "summary": "SCOPE 将 BB qLDPC 的时空协变结构与 BP 轨迹诊断结合，在固定串行迭代预算内并行探索、终止和重新播种候选解码轨迹。本文把电路级逻辑错误模拟与两臂 Mem-BP RTL 原型分别评估；纳秒级核心响应不能直接作为完整容错反馈系统的已验证延迟。",
+        "problem": "高准确度解码常需要更多迭代或昂贵后处理，实时 QEC 却受 syndrome 周期限制。如何利用码与重复提取电路的结构，把并行计算宽度转换为较小的 critical-path depth，而非单纯增加串行运行时间。",
+        "setting": "研究 BB codes 的电路级 detector matrix，正文所述构造针对 Z-error sector。主要示范窗口含 Nc=2 noisy cycles，另加两个 noiseless cycles 闭合窗口。空间协变依赖 quasi-cyclic code/circuit 结构，时间平移协变只在远离时间边界的重复 bulk 成立。",
+        "main_results": [
+          "作者报告 [[144,12,12]] 在 p=10⁻³ 时直接 Monte Carlo 得到 pL=4.82×10⁻¹⁰；所比较噪声、矩阵和窗口相同，约比相应 Relay-BP 与 BP-OSD 配置低 70 与 30 倍。曲线其他部分含 log–log 拟合，不应把整条曲线都视为直接采样。",
+          "四臂软件策略先有 80 次 preprocessing，再每臂预算 B；critical-path BP depth 为 80+B，不能写成总计算量也只有 80+B。B=120 的准确度点与更严格实时预算点应分开。",
+          "RTL 为两臂 Mem-BP 核心，并非四臂完整 SCOPE 的所有模块。在 p=5×10⁻³、4096 个样本、250 MHz 功能模拟中，每臂迭代间隔 16 ns，平均 input-to-result 173.8 ns，第 99 百分位 732 ns。"
+        ],
+        "techniques": [
+          "用空间和时间相对位移组织分层解码，将低置信 LLR 的高维 BP 演化投影到低维诊断空间，识别无望轨迹以早停和 reseed。",
+          "消息参数由 simulated annealing 离线优化，多臂共享优化参数但采用独立输入扰动；正文图说明还有 BP preprocessing 与末端 OSD fallback。"
+        ],
+        "assumptions": [
+          "需要所选 BB 码、syndrome schedule 和 noise model 的匹配；有限窗口边界需单独处理。",
+          "实时性能依赖并行资源、每臂状态存储以及通信和后处理成本，串行深度不是 FPGA 面积或总迭代数。"
+        ],
+        "limitations": [
+          "作者将物理硬件上的完整 pipeline、trajectory control、post-processing 和 communication overhead 评估列为后续工作。RTL 功能模拟不是已部署量子处理器的闭环实验。",
+          "所列极低 pL、预算和 RTL 延迟来自不同参数或配置，不能拼接成同一个运行点；Nc=2 的结论也未证明任意长历史均保持。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接关联 syndrome 处理、逻辑准确度、memory assumptions 与 adaptive computational resources，适合比较低错误率与反馈 deadline 的权衡。"
+        ],
+        "follow_up": [
+          "读者建议：在同一窗口、串行预算和总硬件面积下比较端到端延迟分布，并单独量化 OSD fallback 的长尾。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.19130v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06+00:00"
+      },
+      "selected_at": "2026-11-23T01:09:01Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.19017",
+      "version": 1,
+      "title": "Witnessing Magic (and other Quantum Resources)",
+      "authors": [
+        "Brian Barch",
+        "Luis Pedro García-Pintos"
+      ],
+      "abstract": "Motivated by measurements of quantum magic, we study the sampling cost of resource robustness ---a quantifier for a broad class of quantum resources--- by bounding the variance of optimal robustness witnesses. We first lower bound the samples required to estimate a state's resource robustness using Cramér-Rao bounds. We find that the number of measurements scales at least quadratically in the robustness for highly mixed states, and at least linearly in the generalized robustness for broad families of pure states, making it difficult to measure either robustness to low absolute error when the states are highly resourceful. We then derive two complementary bounds in terms of the geometry of witnesses, one of which is tight for a class of resource theories including coherence and bipartite entanglement. An additional hurdle occurs for tracking the onset of resource robustness along state-space trajectories: the integrated witness variance along a path is at least the squared resource gain over Fisher length, indicating that a state evolution with exponential resource gain necessarily goes through states for which the robustness cannot be measured efficiently. This hurdle does not occur when estimating robustness to fixed relative, rather than absolute, error. These results suggest that the ideal witness-based resource estimation task, for general resource theories, is the estimation of generalized robustness to low relative error on highly resourceful pure states.",
+      "url": "https://arxiv.org/abs/2611.19017",
+      "pdf_url": "https://arxiv.org/pdf/2611.19017v1",
+      "published": "2026-11-13T23:33:26Z",
+      "updated": "2026-11-13T23:33:26Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "quantum magic"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-17T08:00:39Z",
+      "analysis": {
+        "summary": "论文研究已知 optimal robustness witness 后，测量其期望值仍需付出的 sampling cost。作者用 Cramér–Rao 与 witness 几何给出方差障碍，并区分 absolute error 与 relative error。资源态越强并不总意味着其 robustness 更容易精确测量；尤其不能把已知 witness 误当作免费且低方差的资源计量。",
+        "problem": "Magic robustness 可表成 witness expectation，但找到 witness 与用足够 shots 测量 witness 是两个不同难题。本文集中处理第二个问题：即使优化过程已经完成，强资源态的 robustness 在什么误差口径下仍有大采样代价。",
+        "setting": "对一般 convex free-state set F，正文 standard robustness 定义为 R=1+2 min s，使 (ρ+sγ)/(1+s)∈F 且 γ∈F，自由态 R=1。generalized robustness R+ 的 witness 额外要求 positive semidefinite，混合态 γ 可任意，定义的因子约定与 R 不同。不能把这些 R 直接替换成自由态取零的惯例而保持公式不变。",
+        "main_results": [
+          "给定最优 W，固定绝对误差 ε 的期望估计 shots 受 Var(W)/ε² 控制。作者对高度混合态给出随 robustness 至少二次、对广泛纯态族的 generalized robustness 至少线性的测量增长结论。",
+          "作者给出两种互补 witness-geometry bounds，其中一种对包含 coherence 和 bipartite entanglement 的一类资源理论为紧界；并未由此声称所有 magic 实例都达到紧界。",
+          "沿状态路径追踪 robustness 增长时，integrated witness variance 至少受资源增量平方与 Fisher length 的比控制。摘要强调指数资源增长路径会经过不适合低绝对误差高效测量的状态，而固定相对误差没有同样障碍。"
+        ],
+        "techniques": [
+          "以 quantum Cramér–Rao bound 将方向导数、QFI 与 witness variance 联系起来，并用 Danskin’s theorem 处理最优 witness 随状态变化时的一阶导数。",
+          "纯态比较 free-state fidelity F(ψ)，正文给出 1/F≤R+≤R；归一化纯态 projector 可产生可行但不一定最优的 witness。"
+        ],
+        "assumptions": [
+          "估计结论适用其 locally unbiased/一阶可估计设置；资源理论、free set 与所用误差定义必须固定。",
+          "先假定 optimal witness 已知，尚未计入寻找、验证、分解和实际实现该 observable 的成本。"
+        ],
+        "limitations": [
+          "大 variance 造成的采样困难与计算难度不同；不能由局部 CR 界直接宣称任意 biased estimator、所有 adaptive collective protocols 都满足同一未加条件的下界。",
+          "相对误差改善只移除这里讨论的障碍，不表示所有高度 resourceful pure states 都有高效 witness 搜索或低深度测量。",
+          "本次复核定义、模型与结果概述，未审计所有几何紧性和路径积分证明，也未提取可用于实验的通用常数。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接回答 magic 的 operational measurement access 与 shots 资源问题，尤其有助于区分 magic preparation cost 与 magic quantification cost。"
+        ],
+        "follow_up": [
+          "读者建议：对同一态族分别设定绝对和相对误差，并把 witness 实现的 setting 数、每次深度与总 shots 一并计费。"
+        ],
+        "relevance_score": 96,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.19017v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06+00:00"
+      },
+      "selected_at": "2026-11-23T01:09:01Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.19002",
+      "version": 1,
+      "title": "Quantum Coloring Games on Complete Graphs",
+      "authors": [
+        "William Bolduc",
+        "Michael Jennings"
+      ],
+      "abstract": "We study the nonlocal game where two players are both given an input ($x$ and $y$, respectively), from a set of size $n$ and, without communicating, must give outputs $a$ and $b$, respectively, from a set of size $m < n$, winning when $(x = y) \\leftrightarrow (a = b)$. This can be considered a graph coloring game on the complete graph with $n$ vertices. In the simplest case, the players get random equal inputs with probability $\\frac{1}{2}$ and random unequal inputs otherwise. We solve this case of the game, and many others, for both classical and quantum (i.e., where the players may share finite-dimensional entangled quantum states) strategy sets, proving the value (the probability of winning) of the optimal strategies and providing explicit strategies that attain this optimum for all $n$ and $m$. Our optimal strategies are synchronous: i.e., the two players always give equal outputs when given equal inputs. These strategies remain optimal when the probability of receiving equal inputs is at least $\\frac{2}{m + 2}$. Across this wide range of cases, we find that quantum strategies have an advantage over classical strategies exactly when $m$ does not divide $n$; this advantage is $O\\left(\\frac{m}{n^2}\\right)$.",
+      "url": "https://arxiv.org/abs/2611.19002",
+      "pdf_url": "https://arxiv.org/pdf/2611.19002v1",
+      "published": "2026-11-13T22:59:02Z",
+      "updated": "2026-11-13T22:59:02Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "nonlocal game"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-17T08:00:39Z",
+      "analysis": {
+        "summary": "作者求解 complete-graph coloring nonlocal game 的一类最优策略，明确何时 shared entanglement 带来胜率优势。结果给出有限维量子策略和经典策略的精确比较范围，而非一般图染色的量子复杂度结论。",
+        "problem": "两名不能通信的玩家如何用 m<n 个输出标签响应 n 个输入，并在相等关系判断中获胜。",
+        "setting": "输入 x,y∈[n]，输出 a,b∈[m]，获胜条件为 (x=y) iff (a=b)。量子策略允许预共享有限维 entangled state。主要输入分布以 1/2 概率给相同输入，其余为随机不同输入。",
+        "main_results": [
+          "作者声称求出此类及多种相关分布下的最优 classical/quantum values，并为所有 n,m 给出达到最优的显式 synchronous strategies。",
+          "当相同输入概率至少为 2/(m+2)，这些策略仍最优；所讨论范围内，量子优势恰在 m 不整除 n 时出现，优势为 O(m/n²)。"
+        ],
+        "techniques": [
+          "nonlocal-game 最优值分析和显式同步策略构造。"
+        ],
+        "assumptions": [
+          "无需通信且输入分布满足给定范围，m<n；优势是 winning probability 差。"
+        ],
+        "limitations": [
+          "摘要未给出具体最优值公式、纠缠维数成本、近最优策略的刚性或抗噪证书；不能推断实验检验所需 shots。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 nonlocal resources 和信息访问限制直接关联，数值优势还须与测量开销分开。"
+        ],
+        "follow_up": [
+          "读者建议：比较相同精度下检测 O(m/n²) 胜率差所需样本量，并核查纠缠维数随参数增长。"
+        ],
+        "relevance_score": 82,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.19002v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06+00:00"
+      },
+      "selected_at": "2026-11-23T01:09:01Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.18881",
+      "version": 1,
+      "title": "Double-Randomized Quantum Singular Value Transformations For Early Fault-Tolerant Quantum Computers",
+      "authors": [
+        "Joel Bierman",
+        "Pawan Poudel",
+        "Yuan Liu"
+      ],
+      "abstract": "The Quantum Singular Value Transformation (QSVT) is an algorithmic framework which encompasses a wide range of problems, including Hamiltonian dynamics, ground state preparation, Gibbs state preparation, amplitude amplification, and matrix inversion. For many areas of scientific interest such as quantum chemistry and condensed matter, the circuit depth of the block-encoding subroutine in QSVT can be formidable, limiting the scope of problems to which QSVT can be applied on early fault-tolerant hardware. We split linear operators $A$ into a core operator $A_0$ and a tail operator $A_ε$, block-encoding the normalized sum of $A_0$ and the average of $n_T$ randomly sampled terms from $A_ε$. We show that using randomized block-encodings of this form allows one to lower the circuit depth of QSVT while incurring a diamond norm error that scales as $\\mathcal{O}(C_Pδ^2/n_T$), where $C_P$ is a prefactor which depends on the QSVT polynomial $P$ and $δ$ is the ratio of the $\\ell_1$ norms of the coefficient vectors of $A_ε$ and $A$. We then go on to show that if one samples QSVT circuits from a joint probability distribution of both random block-encodings and random polynomials (Double-Randomized QSVT), then the circuit depth savings of these two randomization techniques combine multiplicatively, with only additive error contributions. We numerically calculate error bounds for long-range Heisenberg and iron-sulfur complex Hamiltonians, showing that for a diamond norm error bound of $10^{-3}$, RBE-QSVT can reduce the number of Pauli terms needed for the block-encoding by an order of magnitude or more in several cases. This paves the way for demonstrations of QSVT on early fault-tolerant hardware.",
+      "url": "https://arxiv.org/abs/2611.18881",
+      "pdf_url": "https://arxiv.org/pdf/2611.18881v1",
+      "published": "2026-11-13T19:39:36Z",
+      "updated": "2026-11-13T19:39:36Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 7,
+      "topics": [
+        "adaptive_resources",
+        "quantum_learning"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "circuit depth",
+          "state preparation"
+        ],
+        "quantum_learning": [
+          "Gibbs state"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-17T08:00:39Z",
+      "analysis": {
+        "summary": "Double-Randomized QSVT 结合随机 block-encoding 与随机 polynomial 以降低单次电路深度，作者声称二者节省可相乘、误差贡献相加。核心是把 operator 分成确定 core 与随机抽取的 tail，所得 diamond-norm bound 依赖 tail 权重和 polynomial。",
+        "problem": "QSVT 中 block-encoding 太深时，早期容错设备难以实施，能否在明确误差预算下随机省略低权重项。",
+        "setting": "A=A0+Aε，用 core 与 nT 个 tail 随机项的平均之归一化和构造 block-encoding。δ 为 tail 与总 operator 系数向量 ℓ1 norms 的比值；nT 是抽样项数，不是 shots 或 T-count。",
+        "main_results": [
+          "摘要给出随机 block-encoding 的 diamond error 为 O(CP δ²/nT)，CP 依赖 QSVT polynomial P。",
+          "同时随机化 block-encoding 与 polynomial 时，深度节省乘法组合而误差相加。长程 Heisenberg 与 iron-sulfur Hamiltonians 的数值误差界评估中，目标 10⁻³ 时若干实例所需 Pauli terms 少一个数量级或更多。"
+        ],
+        "techniques": [
+          "core/tail 分解、随机项抽样和 polynomial sampling 的联合分布。"
+        ],
+        "assumptions": [
+          "误差界需保留 CP 与归一化约定，不能只留下 δ²/nT 或假设 CP 为通用常数。"
+        ],
+        "limitations": [
+          "摘要未给出每个随机实例与平均 channel 的完整区别、额外 sampling overhead 或总成功概率；Pauli-term 节省不自动等于总 shots、magic 或 target calls 同比下降。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 state preparation 的深度和随机化资源有具体理论联系。"
+        ],
+        "follow_up": [
+          "读者建议：固定最终 observable 精度，把每次 depth 节省与随机化增加的总测量次数、成功概率一同评估。"
+        ],
+        "relevance_score": 84,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.18881v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06+00:00"
+      },
+      "selected_at": "2026-11-23T01:09:01Z"
+    },
+    {
+      "doi": "",
       "id": "2611.18504",
       "version": 1,
       "title": "Agentic AI for Discovering Fault-Tolerant Quantum Circuits",
@@ -8098,6 +8370,73 @@
         "analyzed_at": "2026-11-14T01:00:34+00:00"
       },
       "selected_at": "2026-11-14T01:02:32Z"
+    },
+    {
+      "doi": "",
+      "id": "2611.18755",
+      "version": 1,
+      "title": "Directional gate-error asymmetry and universal selectivity bounds in non-unital open quantum systems",
+      "authors": [
+        "Amritash Patra"
+      ],
+      "abstract": "Clifford randomized benchmarking and average gate fidelity assign a single trajectory-independent decay rate to a noisy quantum gate at leading order in the dimensionless damping exposure \\varepsilon = γT, concealing state-dependent transition-error asymmetries in untwirled quantum circuits. While state-dependent amplitude-damping errors are well known in open quantum systems, a trajectory-level analytical framework that bounds directional transition selectivity across arbitrary pulse shapes and Markovian environments has been lacking. Using first-order toggling-frame perturbation theory for a two-level qubit coupled to a Markovian bath, we show that the antipodal survival-error slopes χ_+ and χ_- along any piecewise-continuous control path depend exclusively on its time-averaged Bloch vector m and transverse residence covariance matrix G, obeying the complete-positivity cofactor bound β(r) \\le 1. On a standard polar \\sqrt{X} gate, longitudinal T_1 relaxation induces a 12.23 : 1 directional survival-error split (κ_{T_1} = (3π- 8)/(3π+ 8) \\approx 0.081767), whereas time-symmetric X rotations maintain an exact 1 : 1 balance (κ_{T_1} = 1). Across all completely positive Markovian generators, coupling between non-unital drift and unital diffusion enforces a selectivity bound κ_\\star = (π- 2\\sqrt{2})/(π+ 2\\sqrt{2}) \\approx 0.052456 (19.06 : 1) for time-independent single-qubit πswaps. We apply this framework to Gaussian and derivative-removal-by-adiabatic-gate (DRAG) waveforms on superconducting transmons and trapped-ion qubits, extend the analysis to finite damping, pulse dwell, colored thermal baths, and qutrit leakage, and construct two-branch differential lock-in protocols that isolate directional error splits immune to first-order state-preparation and measurement errors.",
+      "url": "https://arxiv.org/abs/2611.18755",
+      "pdf_url": "https://arxiv.org/pdf/2611.18755v1",
+      "published": "2026-11-11T17:44:40Z",
+      "updated": "2026-11-11T17:44:40Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 5,
+      "topics": [
+        "benchmarking"
+      ],
+      "keyword_matches": {
+        "benchmarking": [
+          "randomized benchmarking",
+          "gate fidelity"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-17T08:00:39Z",
+      "analysis": {
+        "summary": "论文研究 non-unital Markovian noise 下两条 antipodal 输入轨迹的 survival-error asymmetry。作者用弱耗散一阶理论说明，平均 gate infidelity 所压缩的标量不能描述各方向的错误分配；轨迹的平均 Bloch vector 和 transverse covariance 控制方向差异。本文针对两能级受控路径，不直接建立一般多比特 fixed-gate certification 定理。",
+        "problem": "相同平均 gate fidelity 的脉冲，可能对不同输入产生不同 transition/survival errors。如何给出跨 pulse shapes 的解析描述，并以 complete positivity 约束可实现的不对称程度，而非用单一 T1 例子观察现象。",
+        "setting": "二能级 qubit、time-independent GKSL Markovian generator、piecewise-continuous control path，ε=γT≪1。χ± 是 error probability 关于 ε 的一阶斜率；m 为沿理想控制轨迹的时间平均 Bloch vector，G 为其 transverse residence covariance。",
+        "main_results": [
+          "正文报告 χ±=Tr(SG)/2 ∓ m·t/4，S 与 t 分别描述 unital damping 和 non-unital drift。其平均 gate 与 entanglement infidelity 的一阶关系是该弱耗散模型内的结论，不能作为任意时变 gate-dependent noise 下 RB 拟合的通用解释。",
+          "标准 polar √X 受纵向 T1 relaxation 时，作者给出较小/较大方向斜率比 κ=(3π−8)/(3π+8)≈0.081767，即约 12.23:1；时间对称 X rotation 在同一纵向模型中为 1:1，不代表对所有 non-unital bath 都方向对称。",
+          "对 time-independent single-qubit π swaps，在允许的 completely positive Markovian generators 上给出 κ*=(π−2√2)/(π+2√2)≈0.052456，即约 19.06:1 的极限。该 swap 的 universal-bath 优化与前述 polar √X 的特定 T1 数字是不同问题。"
+        ],
+        "techniques": [
+          "toggling-frame perturbation 将 pure-state fidelity loss 表为 jump-operator fluctuations，再化为两个 trajectory moments，并利用 CP cofactor bound 限制归一化方向对比度。",
+          "作者讨论 Gaussian/DRAG waveform，以及 finite damping、colored baths 和 leakage 扩展；所读前部的严格基础模型仍是二能级弱耗散 Markov 设置。"
+        ],
+        "assumptions": [
+          "各公式需保持路径、固定 generator、bath drift 方向与 ε 的约定；高阶余项不能在有限耗散下自动忽略。",
+          "比较的是 survival slopes 与方向 ratio，不是多次 gate shots、完整 process tomography 或逻辑 fidelity。"
+        ],
+        "limitations": [
+          "摘要称 two-branch differential lock-in protocols 可消除一阶 SPAM。本次 60000 字符正文提取恰在实验 protocol 部分附近截断，未核查完整 SPAM 假设和残余偏差，因此不将该说法升级成任意非重复 SPAM 鲁棒保证。",
+          "理论 waveform 分析和预测不等于已完成跨平台实验；未得到完整 target-call、sequence length 与 shot complexity。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接关联非幺正噪声、PTM、gate fidelity 与 SPAM 认证。其明确模型边界可帮助设计对平均指标盲区敏感的补充观测。"
+        ],
+        "follow_up": [
+          "读者建议：在固定 U、仅可信局部门的认证模型内，检验差分观测是否可实施，并独立推导小非重复 SPAM 的偏差界。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.18755v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06+00:00"
+      },
+      "selected_at": "2026-11-23T01:09:01Z"
     },
     {
       "doi": "",
@@ -16359,6 +16698,148 @@
       "selected_at": "2026-11-16T01:01:26Z"
     },
     {
+      "doi": "",
+      "id": "2610.41528",
+      "version": 1,
+      "title": "FaultScope: A software package for fast error attribution in quantum error correction",
+      "authors": [
+        "Yuguo Shao",
+        "Zhenyu Chen",
+        "Ningfeng Wang",
+        "Song Cheng",
+        "Zhaohui Wei",
+        "Zi-Wen Liu",
+        "Zhengwei Liu"
+      ],
+      "abstract": "We introduce FaultScope, a classical simulator for quantum error correction circuits, implemented in Rust with a Python interface. FaultScope estimates logical error rates and their derivatives with respect to component error rates from the same sampled and decoded shots, without modifying or differentiating through the decoder. These derivatives enable error attribution to individual noisy components, helping identify noise hotspots for targeted noise reduction. FaultScope supports forward simulation of error propagation through circuits and direct sampling of detector and logical observable outcomes from detector error models. In our noiseless and noisy benchmarks, FaultScope has the lowest runtime among the tested simulators at every size. Computing all derivatives adds only 0.33--0.97\\% to the runtime of logical error rate estimation across five repetition code sizes with 7--2047 error locations. FaultScope can be used to benchmark large-scale quantum error correction schemes and guide targeted noise reduction efficiently, thereby facilitating the design and optimization of fault-tolerant quantum computing architectures.",
+      "url": "https://arxiv.org/abs/2610.41528",
+      "pdf_url": "https://arxiv.org/pdf/2610.41528v1",
+      "published": "2026-10-30T10:21:09Z",
+      "updated": "2026-10-30T10:21:09Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 4,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "quantum error correction",
+          "logical error"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-02T06:17:22Z",
+      "analysis": {
+        "summary": "FaultScope 将 logical error rate 与对组件错误率的 sensitivities 从同一批模拟和解码记录中同时估计。其研究价值是固定 circuit、decoder 和 stochastic Pauli model 下的误差归因，而不仅是 simulator 速度排名。导数预测小幅降低某类噪声的局部收益，不表示已从实验 syndrome 唯一识别物理噪声。",
+        "problem": "单一 logical failure probability 不说明哪个组件最值得改进。高频错误可能易纠正，低频错误反而可能触发错误逻辑恢复。怎样在不改动或微分 decoder 的条件下，区分组件发生与未发生时的条件失败风险。",
+        "setting": "Clifford syndrome-extraction circuit、固定 decoder D、独立 Bernoulli error events，概率向量 p。每次 shot 的 logical indicator L 由最终 logical readout 与 decoder correction 的异或决定；初始化及末端测量使用相同逻辑 X 或 Z 基。它衡量所选 memory observable 的失败，不能直接等同完整 logical channel fidelity。",
+        "main_results": [
+          "对 0<pj<1，Sj=∂PL/∂pj=P(L=1",
+          "Fj=1)−P(L=1",
+          "Fj=0)，其他事件概率和 decoder 固定。一个物理组件若对应多处事件，其共同错误率导数为相关 Sj 之和。",
+          "score estimator 用 Fj/pj−(1−Fj)/(1−pj) 加权 L，可减固定或独立数据估计的 baseline 降方差而不改变无偏性。若随参数重新训练 decoder 或改动 failure 定义，该导数口径便改变。",
+          "五个 repetition-code 大小、7–2047 error locations、每轮 100000 shots 的 benchmark 中，同时计算全部导数增加 median total runtime 0.33–0.97%。这是计算开销数字，不表示以相同 shots 即获得任意精度的全部 sensitivities。"
+        ],
+        "techniques": [
+          "支持 Clifford forward error propagation 与 DEM direct sampling 两条路径，保留错误事件和 decoded failure 记录，再以 likelihood-score 计算 sensitivity。",
+          "对小幅非负噪声降低 δpj，线性预测改进为 Σj Sjδpj；可按 qubit、gate、round 或 operation 分组为 hotspot maps。"
+        ],
+        "assumptions": [
+          "独立事件、已知 pj 且位于 (0,1)，固定 circuit/noise/decoder；Bernoulli 描述之外的相关或 coherent errors 不由此条件概率公式自动覆盖。",
+          "baseline 需固定或由独立数据估计；若复用同一批数据调 baseline，须另行检查估计偏差。"
+        ],
+        "limitations": [
+          "罕见事件的 sensitivity variance 和罕见 logical failures 仍影响所需 shots；低计算开销不保证低统计成本。",
+          "热点是模型内局部导数，不一定等于实际可干预组件的因果效应；较大噪声改变需重新模拟，而不能无限外推一阶预测。",
+          "本次未逐项复现全部 simulator benchmark，作者最快的说法仅限所测比较和资源限制。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接契合固定 code/recovery/gadget 的逻辑表现与组件噪声联系，并明确区分模拟归因、实验辨识和 process-fidelity 认证。"
+        ],
+        "follow_up": [
+          "读者建议：为 sensitivity 提供置信区间，按可实现干预成本筛选热点，并用独立新 shots 验证一阶降噪预测。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.41528v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06+00:00"
+      },
+      "selected_at": "2026-11-23T01:09:01Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.41524",
+      "version": 1,
+      "title": "High-efficiency photonic GHZ measurements with linear optics",
+      "authors": [
+        "Stefan N. van den Hoven",
+        "Love A. Pettersson",
+        "Anders S. Sørensen",
+        "Stefano Paesani"
+      ],
+      "abstract": "Probabilistic and destructive Bell-measurements, also known as fusions, constitute a fundamental primitive for photonic quantum technologies. These operations rely only on pairwise photonic interference, whereas the computational power of photonic quantum systems originates from many-body interference. Here, we introduce a family of high-efficiency linear-optical GHZ measurements based on four-mode interferometers and show that incorporating many-body interference into this ubiquitous primitive leads to more efficient entangling operations. For the four-photon case, the success probability is $9/32$, and adaptive variants ensure that unsuccessful events project onto useful stabilizer states. We further show that the approach naturally generalizes to larger GHZ measurements, yielding an exponentially higher success probability than previous linear-optical schemes. Finally, we demonstrate practical advantages for graph-state resource generation, entanglement distribution between remote spin-photon interfaces, and fusion-based quantum computing. Our results establish high-efficiency many-body measurements as a new primitive for scalable photonic quantum information processing.",
+      "url": "https://arxiv.org/abs/2610.41524",
+      "pdf_url": "https://arxiv.org/pdf/2610.41524v1",
+      "published": "2026-10-30T10:17:02Z",
+      "updated": "2026-10-30T10:17:02Z",
+      "categories": [
+        "quant-ph",
+        "physics.optics"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "magic_stabilizer"
+      ],
+      "keyword_matches": {
+        "magic_stabilizer": [
+          "stabilizer"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-02T06:17:22Z",
+      "analysis": {
+        "summary": "作者利用多光子干涉构造 linear-optical GHZ measurements，提高纠缠操作成功概率，并以 adaptive variants 将部分失败事件变成仍有用的 stabilizer states。其具体联系是 fusion-based computing 的测量资源，而非一般光学器件性能。",
+        "problem": "基于 pairwise interference 的 Bell fusion 是概率且 destructive 的，能否在测量原语中利用 many-body interference 改善 resource-state generation。",
+        "setting": "四模式 interferometers 实现的 GHZ measurement family，先讨论四光子，再推广更大 GHZ measurements；仍受线性光学和 heralding 条件约束。",
+        "main_results": [
+          "四光子成功概率为 9/32。摘要称更大规模相对先前 linear-optical schemes 有指数更高成功概率，但没有给出完整规模公式。",
+          "自适应失败分支可投影到有用 stabilizer states；作者讨论 graph-state generation、remote spin-photon entanglement distribution 和 fusion-based computation。"
+        ],
+        "techniques": [
+          "many-body photonic interference 和 adaptive measurement branching。"
+        ],
+        "assumptions": [
+          "成功率是指定输入、干涉和测量条件下的原语概率；失败分支资源必须另计。"
+        ],
+        "limitations": [
+          "摘要未给出 loss、indistinguishability、ancilla photons、detector resolution 和 feed-forward 的完整预算，不能推断端到端 fault-tolerant overhead 的指数改善。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 stabilizer resource preparation、adaptivity 和 entangling-measurement 成本有直接联系。"
+        ],
+        "follow_up": [
+          "读者建议：把成功与可回收失败分支放入同一 resource-generation 模型，计入探测损失后比较每个目标 graph state 的平均光子数。"
+        ],
+        "relevance_score": 83,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.41524v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06+00:00"
+      },
+      "selected_at": "2026-11-23T01:09:01Z"
+    },
+    {
       "id": "doi:10.1103/q4lp-htgw",
       "version": 1,
       "title": "Rare-Event Quantum Sensing Using Logical Qubits",
@@ -16436,6 +16917,81 @@
     },
     {
       "doi": "",
+      "id": "2610.41413",
+      "version": 1,
+      "title": "Real-time BP decoding of a high-rate QEC code",
+      "authors": [
+        "Andreas Kell",
+        "Daniel Herr",
+        "Daniel Bascones García",
+        "Alexandru Paler",
+        "Davide Orsucci",
+        "Francisco Lázaro",
+        "Francisco García Herrero"
+      ],
+      "abstract": "We present a real-time FPGA decoder for a high-rate $[[512,174,8]]$ 3D product qLDPC code. We construct a circuit-level detector-error model for a compact syndrome-extraction schedule and propose a small parallel ensemble of row-wise serial min-sum decoders with cumulative memory. The decoder matches $\\text{BP+OSD-CS}_\\text{10}$ accuracy with one core and Relay-BP accuracy with three cores. The FPGA implementation meets the latency budget of neutral-atom and trapped-ion systems. An ASIC implementation would improve the latency, enabling real time decoding even for superconducting systems. At a physical error rate of $p=10^{-3}$, three FPGA devices decode 174 logical qubits with a logical error rate of $5\\times10^{-7}$ and effective distance 6. For $p=10^{-4}$, and assuming the number of BP iterations is capped to 30, the decoder's average latency is $5.1\\,$\\textmu s and its worst-case latency is $97.9\\,$\\textmu s.",
+      "url": "https://arxiv.org/abs/2610.41413",
+      "pdf_url": "https://arxiv.org/pdf/2610.41413v1",
+      "published": "2026-10-30T08:22:18Z",
+      "updated": "2026-10-30T08:22:18Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 5,
+      "topics": [
+        "logical_qec"
+      ],
+      "keyword_matches": {
+        "logical_qec": [
+          "logical error",
+          "syndrome",
+          "qLDPC"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-02T06:17:22Z",
+      "analysis": {
+        "summary": "论文为 [[512,174,8]] 3D product qLDPC code 构造 circuit-level DEM，并实现小规模并行 memory-BP FPGA decoder。关键结果是较高编码率下同时报告准确度和延迟，同时保留物理 code distance 8、拟合 effective distance 6 与每逻辑比特每轮错误率的区别。ASIC 对超导时限的潜力仍属于实现展望。",
+        "problem": "高码率减少每逻辑比特的量子资源，却往往加大 decoding graph 与后处理成本。如何在电路级噪声下以少量并行核心替代 OSD 或 integer programming，同时满足中性原子和离子平台的反馈时间。",
+        "setting": "[[512,174,8]] 码编码率约 33.98%。decoder 使用 row-wise serial min-sum 和 cumulative memory，小 parallel ensemble，不以 relay 次序运行。准确度模拟采用 8 轮 syndrome extraction，最后接 noiseless Z-basis measurement；该边界条件与完整持续运行的 memory experiment 不相同。",
+        "main_results": [
+          "在 p=10⁻³，作者报告三个 FPGA 解码 174 logical qubits，logical error rate 为每逻辑比特每轮约 5×10⁻⁷。观察到有效距离 6，即所测区间拟合 pL∝p^floor(deff/2)，不能把码的名义距离从 8 改写成 6，也不应把此 pL 写成整个码块总失败率。",
+          "一个 core 准确度匹配 BP+OSD-CS10，三个匹配 Relay-BP，限定在相应测量与噪声配置。正文指出其准确度低于距离更高的 [[144,12,12]] BB code，并没有声称全面优于 BB codes。",
+          "FPGA core 每次 iteration 为 3.264 μs。在 p=10⁻⁴ 且 BP iteration cap=30 时，平均 latency 为 5.1 μs，worst-case 为 97.9 μs。平均值与最坏时限差别很大，不可只取平均宣称满足任意平台 deadline。"
+        ],
+        "techniques": [
+          "为紧凑 syndrome schedule 生成 DEM，采用 memory-augmented message passing 和少量独立并行候选，避免昂贵 OSD/I/O 后处理。",
+          "用浮点与 quantized decoder 对比准确度，再在 FPGA 中实现并行架构；所读图注明部分比较使用单轮和末端理想测量，比较条件需对应。"
+        ],
+        "assumptions": [
+          "需要所给 circuit-level stochastic error model、schedule、memory 参数和迭代上限；不同 idle-error 配置与持续 syndrome histories 可能改变表现。",
+          "代码的三维稳定子几何与中性原子近邻结构较匹配，但并非所有检查都局域，不能忽略物理路由。"
+        ],
+        "limitations": [
+          "ASIC 可能把 latency 压到超导所需水平，但这里未完成该 ASIC 实现；FPGA 的资源与频率不能直接按理想缩放当作实测 ASIC。",
+          "每轮、每逻辑比特的模型指标不能自动转换为任意 logical gadget process fidelity；理想末端读出也不覆盖实际 SPAM。",
+          "本次没有独立复现硬件量化和时序报告，所有数字按作者指定条件记录。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接涉及 logical QEC、syndrome data 和实时 classical resources，适合与更低码率高距离方案比较总物理资源及反馈尾延迟。"
+        ],
+        "follow_up": [
+          "读者建议：固定 end-to-end deadline，计入 FPGA 通信、实际末端测量和连续窗口积压，再比较单位逻辑比特的硬件预算。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.41413v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06+00:00"
+      },
+      "selected_at": "2026-11-23T01:09:01Z"
+    },
+    {
+      "doi": "",
       "id": "2610.41398",
       "version": 1,
       "title": "Distilling Knowledge from Search: Decoder Model Factory for Quantum LDPC Codes",
@@ -16504,6 +17060,147 @@
     },
     {
       "doi": "",
+      "id": "2610.41388",
+      "version": 1,
+      "title": "Loss-aware optimization of realistic GKP gid states",
+      "authors": [
+        "Michal Matulík",
+        "Petr Marek"
+      ],
+      "abstract": "Realistic preparation of Gottesman-Kitaev-Preskill (GKP) states, the prime candidates for quantum computation with bosonic systems, is inevitably burdened by photon loss. We show how taking this loss into account can lead to more robust quantum states, thereby diminishing its negative influence. Using GKP squeezing as an operational figure of merit, we formulate a loss-aware optimization procedure based on the ground state representation of GKP states. Numerical simulations for square, hexagonal, and asymmetric GKP states show that the optimal preparation generally requires a different initial grid spacing than that of the desired ideal code state. For symmetric and hexagonal lattices, the optimal parameters asymptotically follow the simple scaling relation. The optimized states exhibit better GKP squeezing and greater resilience to losses. These results provide a simple and experimentally relevant strategy for improving realistic photonic GKP state preparation in the presence of known photon loss.",
+      "url": "https://arxiv.org/abs/2610.41388",
+      "pdf_url": "https://arxiv.org/pdf/2610.41388v1",
+      "published": "2026-10-30T07:54:53Z",
+      "updated": "2026-10-30T07:54:53Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "state preparation"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-02T06:17:22Z",
+      "analysis": {
+        "summary": "本文把已知 photon loss 纳入 GKP state 的设计目标，优化初始 grid 而非坚持先制备理想目标 spacing 再承受损失。作者用 GKP squeezing 衡量输出态品质，以 ground-state operator 表示寻找最优近似态。机制是预补偿 loss 对 grid 的收缩，但仍保留损失引入的噪声地板。",
+        "problem": "理想 GKP codewords 具有无限能量，真实光学制备只能产生近似态；fidelity 到非物理理想态不是充分实用的优化指标。已知传输或制备损失下，应制备什么初始 grid 才能让输出最适合纠错。",
+        "setting": "考察 square、hexagonal 及 asymmetric GKP-like states，用正半定 displacement/sine 型 operator 的 expectation 定义 GKP squeezing，目标态可由相关 operator 的低能或 ground-state 表示构造。理想 grid 在 position/momentum 周期性上编码，实际用有限能量近似。",
+        "main_results": [
+          "数值结果称最佳 initial spacing 通常不同于理想 code-state spacing，并在已研究损失下提高 GKP squeezing 与抗损失表现。",
+          "对 symmetric 和 hexagonal lattices，作者报告 optimal parameters 的简单渐近 scaling relation；本次未核查其完整参数区间与表达式，因此不补写未复核的公式或普适阈值。",
+          "loss 同时收缩 grid 并加入噪声，改变初始几何能改善输出目标，却不消除不可逆损失；未声称能恢复任意遗失的量子信息。"
+        ],
+        "techniques": [
+          "通过 GKP operator 的 ground-state representation 把 grid parameters 与 squeezing 优化联系，再对损失后的目标品质求最优输入。",
+          "比较不同 lattice topologies 和非对称变体。采用 Hermitian observable 的 expectation 有利于连接实验品质评价与数值优化。"
+        ],
+        "assumptions": [
+          "需要 photon loss 可预先估计，优化使用的损失模型与实际通道匹配。",
+          "本文明确不研究 dephasing noise；所读引言也将 additive thermal noise 的 grid 作用与 photon loss 区分，不能把方案推广成所有 bosonic noise 的统一补偿。"
+        ],
+        "limitations": [
+          "GKP squeezing、有限能量近似态之间的 fidelity、最终 logical error rate 是不同评价量。本篇优化 squeezing 不等于给出了指定 decoder 下的 logical lifetime 或 fault-tolerance threshold。",
+          "本次复核模型和优化机制，未审计所有数值曲线、渐近推导和实验测量成本，未给出适用任意损失强度的改善倍数。",
+          "源文本使用期刊模板，但当前队列未附正式 publication metadata，本报告仅代表指定 arXiv v1，不推定已正式发表或版本相同。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接联系 bosonic QEC 的 resource-state preparation 与 noise-aware design，说明先验噪声知识可改变最合适的输入资源。"
+        ],
+        "follow_up": [
+          "读者建议：在固定能量和 detector budget 下，将 squeezing 改善映射到具体 GKP decoder 的 logical failure，并扫描损失校准误差。"
+        ],
+        "relevance_score": 88,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.41388v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06+00:00"
+      },
+      "selected_at": "2026-11-23T01:09:01Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.41341",
+      "version": 1,
+      "title": "Time-Domain Multiplexing for Resource-Efficient Heralded GKP State Preparation",
+      "authors": [
+        "Ke-Ming Hu",
+        "Jun-Jie He",
+        "Yu-Ze Zhu",
+        "Pei-Lin Du",
+        "Lin Yang",
+        "Hao Tang",
+        "Xian-Min Jin"
+      ],
+      "abstract": "Gottesman-Kitaev-Preskill (GKP) states are key resources for fault-tolerant photonic quantum computing, but their conditional preparation via Gaussian boson sampling involves a trade-off between source count and photon-number resolution. Distributing heralding photons across more measured modes reduces the resolution required per mode, yet increases the number of simultaneously operated squeezed sources in fully squeezed spatial architectures. Here, we show that time-domain multiplexing (TDM) can reduce these physical source requirements while preserving GKP state quality. Using an end-to-end differentiable Bargmann framework, we find that TDM circuits reusing one or two squeezed sources achieve fidelities comparable to fully squeezed spatial circuits across several configurations. Selected nine-mode configurations retain fidelities above 0.95 with one photon heralded in each measured mode, mitigating detector resolution demands without a proportional increase in source count. Loss-aware reoptimization further shows that, under the investigated spatial loss models, two-mode TDM maintains fidelities near 0.80 at 1.0 dB per channel, whereas the corresponding spatial benchmarks fall below 0.60. These results demonstrate that temporal reuse provides an effective architectural route for balancing source overhead, detection demands, and state preparation performance in the presence of optical loss.",
+      "url": "https://arxiv.org/abs/2610.41341",
+      "pdf_url": "https://arxiv.org/pdf/2610.41341v1",
+      "published": "2026-10-30T06:57:29Z",
+      "updated": "2026-10-30T06:57:29Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 3,
+      "topics": [
+        "adaptive_resources"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "state preparation"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-02T06:17:22Z",
+      "analysis": {
+        "summary": "本文利用 time-domain multiplexing 复用一至两个 squeezed sources 来制备 heralded GKP resource states。相同目标下，增加可测时间模式可降低单模式 photon-number resolution，又无需按模式数增加同时工作的源。数值比较支持源数、探测需求与损失之间的权衡，未建立任意配置下的总成本优势。",
+        "problem": "空间 GBS 制备若把 heralding photons 分散到更多模式，可降低每个 detector 的分辨率要求，却会在 fully squeezed architecture 中增加同时工作的 source 数。如何通过 temporal reuse 改变这个资源交换，同时保持 conditional state quality。",
+        "setting": "有限能量 square-lattice GKP targets，比较总 heralding photon number N=8 或 12 的配置。TDM 使用 delay loops 和时间 bins，复用一或两个物理 squeezed sources；空间基线包含全输入压缩以及仅两个压缩输入两类。physical source count、temporal mode count 和 detected photons 是不同资源。",
+        "main_results": [
+          "选定 N=8 的九模式 TDM 配置，在每个被测模式 herald 一个光子时，conditional fidelity 超过 0.95。这个数值针对 selected configurations，不是所有九模式电路的保证。",
+          "在每个 loss level 重新优化参数后，所研究 two-mode TDM 在每指定 spatial channel 1.0 dB 损失时，fidelity 约 0.80，对应 spatial benchmarks 低于 0.60。该比较使用特定损失位置和通道模型，不能套成任意 delay loop 每轮损失下的结果。",
+          "作者报告若干匹配 photon-number、mode-count 和 heralding-pattern 的配置中，TDM 的 fidelity 可与 fully squeezed spatial 电路相当，某些情形 heralding probability 相当或更高；并未宣称源数降低必然保持成功率。"
+        ],
+        "techniques": [
+          "使用 end-to-end differentiable Bargmann framework 计算 conditional output，避免显式构造完整 multimode Fock tensor，联合优化 fidelity、effective squeezing 与 heralding probability。",
+          "以 temporal multiplexing 重用光源与组件，测量模式数提供分散光子条件的自由度；评估时按匹配配置比较空间和时间架构。"
+        ],
+        "assumptions": [
+          "需要稳定 delay、phase 和 mode matching，并假定所选探测模式及损失模型；实际 detector efficiency 和时间相关损耗会改变成功率与品质。",
+          "有限能量 GKP target 的 fidelity 不等于 ideal infinite-energy codeword 的 fidelity，也不直接给出逻辑错误率。"
+        ],
+        "limitations": [
+          "这里为变分数值结果，未声称已做物理 TDM GKP preparation 实验。不同初始优化与搜索空间可能影响最优比较。",
+          "压缩源数节省可能转移成更长时间序列、循环损失与同步需求；本文节选没有给出统一光子、时间、反馈和成功次数预算下的全局最优界。",
+          "本次未审计全部 loss-aware optimization、数值稳定性与截断误差。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "与 heralded non-Gaussian resources、ancilla/source reuse、measurement resolution 和 QEC 制备直接相关，是按时间换空间资源的具体案例。"
+        ],
+        "follow_up": [
+          "读者建议：统一每次成功输出的平均源工作时间、光子数和 loop loss，再对特定 GKP recovery 测试逻辑收益。"
+        ],
+        "relevance_score": 90,
+        "status": "analyzed",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.41341v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06+00:00"
+      },
+      "selected_at": "2026-11-23T01:09:01Z"
+    },
+    {
+      "doi": "",
       "id": "2610.41183",
       "version": 1,
       "title": "Researcher-in-the-Loop Evolutionary Discovery of Entanglement-Assisted Quantum Code Families",
@@ -16566,6 +17263,79 @@
         "analyzed_at": "2026-11-16T01:00:43+00:00"
       },
       "selected_at": "2026-11-16T01:01:26Z"
+    },
+    {
+      "doi": "",
+      "id": "2610.40852",
+      "version": 1,
+      "title": "Colloquium: Quantum information processing with ensembles of identical particles",
+      "authors": [
+        "Matteo Piccolini",
+        "Marcin Karczewski",
+        "Jin-Shi Xu",
+        "Chuan-Feng Li",
+        "Guang-Can Guo",
+        "Giuseppe Compagno",
+        "Farzam Nosrati",
+        "Rosario Lo Franco"
+      ],
+      "abstract": "Identical particles underpin most quantum technologies, but the role of indistinguishability in these processes extends far beyond the symmetrization of many-particle states. This Colloquium presents a unified operational perspective on how particle identity, indistinguishability, exchange statistics, and many-particle interference can instead be harnessed as resources for quantum information processing. We first clarify the notions of entanglement and indistinguishability for identical particles, emphasizing their dependence on the accessible measurements and information. We then review how spatial overlap, multiparticle interference, and path identity enable the generation, extraction, protection, and distillation of coherence and entanglement. Their applications to quantum metrology and imaging, state discrimination, teleportation, entanglement swapping, and quantum cloning are examined. Finally, we discuss the thermodynamic role of indistinguishability, from the Gibbs paradox to quantum thermal machines and statistics-driven engines. Across these settings, indistinguishability emerges as a controllable, task-dependent resource whose benefits are determined by state preparation, exchange statistics, interference, and measurement constraints.",
+      "url": "https://arxiv.org/abs/2610.40852",
+      "pdf_url": "https://arxiv.org/pdf/2610.40852v1",
+      "published": "2026-10-29T18:32:51Z",
+      "updated": "2026-10-29T18:32:51Z",
+      "categories": [
+        "quant-ph"
+      ],
+      "keyword_score": 6,
+      "topics": [
+        "adaptive_resources",
+        "data_hiding"
+      ],
+      "keyword_matches": {
+        "adaptive_resources": [
+          "state preparation"
+        ],
+        "data_hiding": [
+          "state discrimination"
+        ]
+      },
+      "sources": [
+        "arxiv"
+      ],
+      "first_seen_at": "2026-11-02T06:17:22Z",
+      "analysis": {
+        "summary": "这篇 Colloquium 以 operational perspective 综述 identical particles 的不可区分性、交换统计和 many-particle interference 如何成为量子信息资源。与 profile 的联系来自可访问测量和 state discrimination，而非仅因涉及量子多体体系。",
+        "problem": "怎样区分粒子 identity、indistinguishability 与可提取的 entanglement，并按具体任务说明其有用性。",
+        "setting": "面向 identical-particle ensembles 的综述，关注 state preparation、spatial overlap、exchange statistics、interference 及 measurement access constraints。",
+        "main_results": [
+          "摘要概述 coherence/entanglement 的生成、提取、保护和蒸馏，以及 metrology、imaging、state discrimination、teleportation 等应用。",
+          "统一观点是不可区分性的收益具有 task dependence，并由可制备态和可访问信息共同决定；摘要未陈述新的定量 separation theorem。"
+        ],
+        "techniques": [
+          "跨任务的操作性概念梳理与相关资源机制综述。"
+        ],
+        "assumptions": [
+          "资源意义需固定可实现 measurements 和信息访问，不能仅按形式上的粒子标签或态对称性判断。"
+        ],
+        "limitations": [
+          "仅凭综述摘要无法核查各节引用及原始论文的量化条件，不将所有提及应用都列成本文新证明或实验。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "可为 quantum-data access 与 state-discrimination 任务提供问题框架，相关性中等。"
+        ],
+        "follow_up": [
+          "读者建议：选取一个区分任务，分别固定粒子可寻址性、collective measurement 与 side information，再比较所需 copies。"
+        ],
+        "relevance_score": 76,
+        "status": "analyzed",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.40852v1",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-23T01:08:06+00:00"
+      },
+      "selected_at": "2026-11-23T01:09:01Z"
     },
     {
       "id": "doi:10.1038/s41534-026-01403-y",
@@ -33053,587 +33823,6 @@
       "first_seen_at": "2026-10-30T05:55:37Z"
     },
     {
-      "doi": "",
-      "id": "2610.41903",
-      "version": 1,
-      "title": "Statistical Foundations of Reinforcement Learning: A Non-Asymptotic Perspective",
-      "authors": [
-        "Yuxin Chen",
-        "Yuejie Chi",
-        "Jianqing Fan",
-        "Gen Li",
-        "Yuting Wei",
-        "Yuling Yan"
-      ],
-      "abstract": "Reinforcement learning (RL) embodies a foundational paradigm for sequential decision-making in the face of uncertainty. The rapid growth of model complexity in emerging applications has significantly amplified the challenges of achieving data-efficient RL, particularly in sample-starved scenarios where data collection may be costly, time-consuming, or even high-stakes. Consequently, understanding and improving the data efficiency of RL algorithms has become a central problem of both fundamental theoretical interest and practical importance. Despite decades of research, the statistical underpinnings of RL remained remarkably underdeveloped until relatively recently, particularly in the finite-sample regimes most relevant to modern practice. Over the past few years, there has been a surge of activity advancing the frontiers of non-asymptotic statistical RL theory, drawing on ideas from high-dimensional statistics and probability, information theory, and statistical learning theory. In this monograph, we present a non-asymptotic treatment for RL based on tabular Markov decision processes, focusing on three canonical sampling mechanisms --- RL with a generative model, online RL, and offline RL --- together with two algorithmic paradigms: model-based and model-free approaches. Centered around non-asymptotic sample complexity analysis, our treatment emphasizes minimax-optimal algorithm design, particularly methods that attain statistical optimality without significant burn-in costs, as well as sharp statistical characterizations of several widely used RL algorithms. Whenever possible, we provide largely self-contained analyses together with intuitive explanations. We also briefly discuss several extensions, such as robust RL, competitive multi-agent RL, federated RL, uncertainty quantification, and RL from human feedback.",
-      "url": "https://arxiv.org/abs/2610.41903",
-      "pdf_url": "https://arxiv.org/pdf/2610.41903v1",
-      "published": "2026-10-30T15:39:38Z",
-      "updated": "2026-10-30T15:39:38Z",
-      "categories": [
-        "stat.ML",
-        "cs.IT",
-        "cs.LG"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "quantum_learning"
-      ],
-      "keyword_matches": {
-        "quantum_learning": [
-          "sample complexity"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-02T06:17:22Z"
-    },
-    {
-      "doi": "",
-      "id": "2610.41831",
-      "version": 1,
-      "title": "Toward Quantum Monte Carlo for Sovereign Debt Risk: A proof of concept",
-      "authors": [
-        "Jean-Sébastien Dessureault",
-        "Alitiana Mijoro Barisoa"
-      ],
-      "abstract": "We present a proof-of-concept pipeline that applies quantum amplitude estimation to the probability that a sovereign debt-to-GDP ratio exceeds a critical threshold at a given horizon. The pipeline combines a reduced two-factor Gaussian debt model linearized around its mean, quantum state preparation on a 32 x 32 grid, a weighted-adder circuit, an integer comparator, and Maximum Likelihood Amplitude Estimation (MLAE). On a noiseless statevector simulator with 500 shots per Grover power, the circuit estimate (a = 0.1152) agrees with the circuit's exact target amplitude (0.1153), and the observed estimation error is consistent with the amplitude-estimation scaling in the number of oracle calls. The model used here is deliberately simple: it admits a closed-form solution, so the contribution is a demonstration of the encoding and estimation workflow, not a practical advantage over classical methods. We discuss the conditions under which such a pipeline could become relevant and the obstacles that remain.",
-      "url": "https://arxiv.org/abs/2610.41831",
-      "pdf_url": "https://arxiv.org/pdf/2610.41831v1",
-      "published": "2026-10-30T14:48:23Z",
-      "updated": "2026-10-30T14:48:23Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "state preparation"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-02T06:17:22Z"
-    },
-    {
-      "doi": "",
-      "id": "2610.41824",
-      "version": 1,
-      "title": "Overcoming the Representational Limitations of Amplitude Encoding for Quantum Neural Networks",
-      "authors": [
-        "Vincent Gurgul",
-        "David Prinz"
-      ],
-      "abstract": "Quantum Neural Networks (QNNs) offer a framework for learning functions from classical data, but their expressive power depends critically on how inputs are encoded into quantum states. Angle encoding can require resources that scale with the number of features, whereas amplitude encoding represents $d$ features using only $\\mathcal{O}(\\log_2 d)$ qubits. This compactness comes at a representational cost: normalization makes conventional amplitude encoding invariant to nonzero real rescaling of the input, up to an unobservable global phase. We show that this invariance induces an exact, architecture-independent restriction on the resulting hypothesis class. No downstream quantum circuit can distinguish inputs differing by nonzero real scaling. We develop a general condition under which deterministic preprocessing can remove this ambiguity and show that nonlinearity alone is insufficient. Based on this analysis, we introduce a fixed nonlinear feature map that provably distinguishes all real inputs under subsequent amplitude encoding, without adding trainable parameters and while retaining logarithmic qubit scaling. We evaluate the resulting QNN on three canonical classification benchmarks and a nonlinear synthetic dataset against conventional amplitude and angle encoding, as well as a classical neural network. Across these tasks, the proposed encoding consistently improves classification accuracy over both quantum encoding baselines by 21$-$44 %. Our results establish normalization-induced scale invariance as a concrete representational bottleneck of amplitude encoding and demonstrate that it can be removed while preserving a compact quantum representation, marking a step toward quantum models capable of capturing arbitrary relationships in classical data.",
-      "url": "https://arxiv.org/abs/2610.41824",
-      "pdf_url": "https://arxiv.org/pdf/2610.41824v1",
-      "published": "2026-10-30T14:44:49Z",
-      "updated": "2026-10-30T14:44:49Z",
-      "categories": [
-        "quant-ph",
-        "cs.ET",
-        "cs.LG",
-        "math.OC"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum encoding"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-02T06:17:22Z"
-    },
-    {
-      "doi": "",
-      "id": "2610.41649",
-      "version": 1,
-      "title": "Quantum machine learning geospatial time-series by seasonal encoding",
-      "authors": [
-        "Devjyoti Tripathy",
-        "Reece Robertson",
-        "Josey Stevens",
-        "Catherine Nakalembe",
-        "Sebastian Deffner"
-      ],
-      "abstract": "Quantum data reuploading models can increase the expressive capacity of variational quantum models, but do not necessarily improve predictive performance. In the present work, we investigate this behavior for seasonal time series forecasting and show that data encoding determines how well temporal structures are represented as circuit depth increases. We develop a fidelity-based quantum geometric description in which repeated encodings contribute to an effective input generator, so that reuploading depth changes the quantum geometry through which approximately recurrent inputs are distinguished. We construct fixed and adaptive seasonal encodings that represent observation magnitude and seasonal phase in distinct Bloch-sphere coordinates. We evaluate these encodings for monthly precipitation derived from ERA5-Land, a global reanalysis dataset, from a representative semi-arid, drought-prone tropical region in East Africa, using a 14-month lag window and reuploading depths $L$= 1-6. We find that in ideal simulations, standard value-based encodings degrade markedly with depth, whereas adaptive seasonal encodings preserve temporal correlation, spectral structure, and forecasting accuracy. Noisy simulations show that this encoding hierarchy persists at shallow and intermediate depths, while larger depths are limited by circuit noise and optimization difficulty. The seasonal quantum models remain competitive with established classical forecasting methods (ARIMA, random forests, and LSTMs). These results identify structure-aware quantum data encoding as a general strategy for building deeper quantum reuploading models.",
-      "url": "https://arxiv.org/abs/2610.41649",
-      "pdf_url": "https://arxiv.org/pdf/2610.41649v1",
-      "published": "2026-10-30T12:22:47Z",
-      "updated": "2026-10-30T12:22:47Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "circuit depth"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-02T06:17:22Z"
-    },
-    {
-      "doi": "",
-      "id": "2610.41528",
-      "version": 1,
-      "title": "FaultScope: A software package for fast error attribution in quantum error correction",
-      "authors": [
-        "Yuguo Shao",
-        "Zhenyu Chen",
-        "Ningfeng Wang",
-        "Song Cheng",
-        "Zhaohui Wei",
-        "Zi-Wen Liu",
-        "Zhengwei Liu"
-      ],
-      "abstract": "We introduce FaultScope, a classical simulator for quantum error correction circuits, implemented in Rust with a Python interface. FaultScope estimates logical error rates and their derivatives with respect to component error rates from the same sampled and decoded shots, without modifying or differentiating through the decoder. These derivatives enable error attribution to individual noisy components, helping identify noise hotspots for targeted noise reduction. FaultScope supports forward simulation of error propagation through circuits and direct sampling of detector and logical observable outcomes from detector error models. In our noiseless and noisy benchmarks, FaultScope has the lowest runtime among the tested simulators at every size. Computing all derivatives adds only 0.33--0.97\\% to the runtime of logical error rate estimation across five repetition code sizes with 7--2047 error locations. FaultScope can be used to benchmark large-scale quantum error correction schemes and guide targeted noise reduction efficiently, thereby facilitating the design and optimization of fault-tolerant quantum computing architectures.",
-      "url": "https://arxiv.org/abs/2610.41528",
-      "pdf_url": "https://arxiv.org/pdf/2610.41528v1",
-      "published": "2026-10-30T10:21:09Z",
-      "updated": "2026-10-30T10:21:09Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction",
-          "logical error"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-02T06:17:22Z"
-    },
-    {
-      "doi": "",
-      "id": "2610.41524",
-      "version": 1,
-      "title": "High-efficiency photonic GHZ measurements with linear optics",
-      "authors": [
-        "Stefan N. van den Hoven",
-        "Love A. Pettersson",
-        "Anders S. Sørensen",
-        "Stefano Paesani"
-      ],
-      "abstract": "Probabilistic and destructive Bell-measurements, also known as fusions, constitute a fundamental primitive for photonic quantum technologies. These operations rely only on pairwise photonic interference, whereas the computational power of photonic quantum systems originates from many-body interference. Here, we introduce a family of high-efficiency linear-optical GHZ measurements based on four-mode interferometers and show that incorporating many-body interference into this ubiquitous primitive leads to more efficient entangling operations. For the four-photon case, the success probability is $9/32$, and adaptive variants ensure that unsuccessful events project onto useful stabilizer states. We further show that the approach naturally generalizes to larger GHZ measurements, yielding an exponentially higher success probability than previous linear-optical schemes. Finally, we demonstrate practical advantages for graph-state resource generation, entanglement distribution between remote spin-photon interfaces, and fusion-based quantum computing. Our results establish high-efficiency many-body measurements as a new primitive for scalable photonic quantum information processing.",
-      "url": "https://arxiv.org/abs/2610.41524",
-      "pdf_url": "https://arxiv.org/pdf/2610.41524v1",
-      "published": "2026-10-30T10:17:02Z",
-      "updated": "2026-10-30T10:17:02Z",
-      "categories": [
-        "quant-ph",
-        "physics.optics"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "magic_stabilizer": [
-          "stabilizer"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-02T06:17:22Z"
-    },
-    {
-      "doi": "",
-      "id": "2610.41413",
-      "version": 1,
-      "title": "Real-time BP decoding of a high-rate QEC code",
-      "authors": [
-        "Andreas Kell",
-        "Daniel Herr",
-        "Daniel Bascones García",
-        "Alexandru Paler",
-        "Davide Orsucci",
-        "Francisco Lázaro",
-        "Francisco García Herrero"
-      ],
-      "abstract": "We present a real-time FPGA decoder for a high-rate $[[512,174,8]]$ 3D product qLDPC code. We construct a circuit-level detector-error model for a compact syndrome-extraction schedule and propose a small parallel ensemble of row-wise serial min-sum decoders with cumulative memory. The decoder matches $\\text{BP+OSD-CS}_\\text{10}$ accuracy with one core and Relay-BP accuracy with three cores. The FPGA implementation meets the latency budget of neutral-atom and trapped-ion systems. An ASIC implementation would improve the latency, enabling real time decoding even for superconducting systems. At a physical error rate of $p=10^{-3}$, three FPGA devices decode 174 logical qubits with a logical error rate of $5\\times10^{-7}$ and effective distance 6. For $p=10^{-4}$, and assuming the number of BP iterations is capped to 30, the decoder's average latency is $5.1\\,$\\textmu s and its worst-case latency is $97.9\\,$\\textmu s.",
-      "url": "https://arxiv.org/abs/2610.41413",
-      "pdf_url": "https://arxiv.org/pdf/2610.41413v1",
-      "published": "2026-10-30T08:22:18Z",
-      "updated": "2026-10-30T08:22:18Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 5,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "logical error",
-          "syndrome",
-          "qLDPC"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-02T06:17:22Z"
-    },
-    {
-      "doi": "",
-      "id": "2610.41388",
-      "version": 1,
-      "title": "Loss-aware optimization of realistic GKP gid states",
-      "authors": [
-        "Michal Matulík",
-        "Petr Marek"
-      ],
-      "abstract": "Realistic preparation of Gottesman-Kitaev-Preskill (GKP) states, the prime candidates for quantum computation with bosonic systems, is inevitably burdened by photon loss. We show how taking this loss into account can lead to more robust quantum states, thereby diminishing its negative influence. Using GKP squeezing as an operational figure of merit, we formulate a loss-aware optimization procedure based on the ground state representation of GKP states. Numerical simulations for square, hexagonal, and asymmetric GKP states show that the optimal preparation generally requires a different initial grid spacing than that of the desired ideal code state. For symmetric and hexagonal lattices, the optimal parameters asymptotically follow the simple scaling relation. The optimized states exhibit better GKP squeezing and greater resilience to losses. These results provide a simple and experimentally relevant strategy for improving realistic photonic GKP state preparation in the presence of known photon loss.",
-      "url": "https://arxiv.org/abs/2610.41388",
-      "pdf_url": "https://arxiv.org/pdf/2610.41388v1",
-      "published": "2026-10-30T07:54:53Z",
-      "updated": "2026-10-30T07:54:53Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "state preparation"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-02T06:17:22Z"
-    },
-    {
-      "doi": "",
-      "id": "2610.41341",
-      "version": 1,
-      "title": "Time-Domain Multiplexing for Resource-Efficient Heralded GKP State Preparation",
-      "authors": [
-        "Ke-Ming Hu",
-        "Jun-Jie He",
-        "Yu-Ze Zhu",
-        "Pei-Lin Du",
-        "Lin Yang",
-        "Hao Tang",
-        "Xian-Min Jin"
-      ],
-      "abstract": "Gottesman-Kitaev-Preskill (GKP) states are key resources for fault-tolerant photonic quantum computing, but their conditional preparation via Gaussian boson sampling involves a trade-off between source count and photon-number resolution. Distributing heralding photons across more measured modes reduces the resolution required per mode, yet increases the number of simultaneously operated squeezed sources in fully squeezed spatial architectures. Here, we show that time-domain multiplexing (TDM) can reduce these physical source requirements while preserving GKP state quality. Using an end-to-end differentiable Bargmann framework, we find that TDM circuits reusing one or two squeezed sources achieve fidelities comparable to fully squeezed spatial circuits across several configurations. Selected nine-mode configurations retain fidelities above 0.95 with one photon heralded in each measured mode, mitigating detector resolution demands without a proportional increase in source count. Loss-aware reoptimization further shows that, under the investigated spatial loss models, two-mode TDM maintains fidelities near 0.80 at 1.0 dB per channel, whereas the corresponding spatial benchmarks fall below 0.60. These results demonstrate that temporal reuse provides an effective architectural route for balancing source overhead, detection demands, and state preparation performance in the presence of optical loss.",
-      "url": "https://arxiv.org/abs/2610.41341",
-      "pdf_url": "https://arxiv.org/pdf/2610.41341v1",
-      "published": "2026-10-30T06:57:29Z",
-      "updated": "2026-10-30T06:57:29Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "state preparation"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-02T06:17:22Z"
-    },
-    {
-      "doi": "",
-      "id": "2610.41253",
-      "version": 1,
-      "title": "POST-MIMO: Partition-Oriented Semantic Transmission for MIMO Point Cloud Delivery",
-      "authors": [
-        "Hang Yue",
-        "Junlin Chang",
-        "Tianqing Zhao",
-        "Yulin Zhao",
-        "Rongke Liu"
-      ],
-      "abstract": "Point clouds have become a fundamental data format for emerging three dimensional (3D) applications, while their wireless delivery remains challenging due to the large data volume and irregular geometric structure. Existing semantic point cloud transmission methods are mainly developed for single-input single-output systems, making them difficult to apply directly to multiple-input multiple-output (MIMO) systems. To address this issue, we propose a partition-oriented semantic transmission framework for MIMO (POST-MIMO) point cloud delivery. POST-MIMO partitions the input point cloud into spatially coherent blocks and aligns them with parallel MIMO streams. Based on this block-aligned representation, the transmitter employs a hierarchical encoder to capture both intra-block local geometry and inter-block global dependency, while the auxiliary side information is transmitted jointly to assist reconstruction. At the receiver, a progressive decoder reconstructs the block geometry in a progressive manner and restores the final point cloud with block-aware adjustment. Experiments demonstrate improved reconstruction quality and lower computational resource consumption than representative reference schemes under the considered MIMO setting.",
-      "url": "https://arxiv.org/abs/2610.41253",
-      "pdf_url": "https://arxiv.org/pdf/2610.41253v1",
-      "published": "2026-10-30T04:52:56Z",
-      "updated": "2026-10-30T04:52:56Z",
-      "categories": [
-        "cs.IT"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "data_hiding"
-      ],
-      "keyword_matches": {
-        "data_hiding": [
-          "side information"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-02T06:17:22Z"
-    },
-    {
-      "doi": "",
-      "id": "2610.41034",
-      "version": 1,
-      "title": "Privacy-Constrained Function Computation in Distributed Databases",
-      "authors": [
-        "Vamoua Yachongka",
-        "Rémi A. Chou"
-      ],
-      "abstract": "Consider distributed databases that contain both sensitive (private) and non-sensitive (public) attributes. A user seeks to compute a function of public attributes and side information by interacting with the databases and downloading their responses. In this paper, we study the trade-offs among download cost, information leakage about the private attributes, and distortion between the computed function and its reconstruction, referred to as the capacity region. Our main contributions are as follows. For a single database, we provide a complete characterization of the capacity region for general discrete sources and characterize the capacity region of two different setups for Gaussian sources when the computed function is defined as the sum of the public attribute and side information. For distributed databases, we establish inner and outer bounds on the capacity region of discrete sources and we characterize the capacity region when the databases and the side information are mutually independent. As a special instance, we study lossless function computation, and results analogous to the lossy case are obtained.",
-      "url": "https://arxiv.org/abs/2610.41034",
-      "pdf_url": "https://arxiv.org/pdf/2610.41034v1",
-      "published": "2026-10-29T22:26:45Z",
-      "updated": "2026-10-29T22:26:45Z",
-      "categories": [
-        "cs.IT"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "data_hiding"
-      ],
-      "keyword_matches": {
-        "data_hiding": [
-          "side information"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-02T06:17:22Z"
-    },
-    {
-      "doi": "",
-      "id": "2610.40852",
-      "version": 1,
-      "title": "Colloquium: Quantum information processing with ensembles of identical particles",
-      "authors": [
-        "Matteo Piccolini",
-        "Marcin Karczewski",
-        "Jin-Shi Xu",
-        "Chuan-Feng Li",
-        "Guang-Can Guo",
-        "Giuseppe Compagno",
-        "Farzam Nosrati",
-        "Rosario Lo Franco"
-      ],
-      "abstract": "Identical particles underpin most quantum technologies, but the role of indistinguishability in these processes extends far beyond the symmetrization of many-particle states. This Colloquium presents a unified operational perspective on how particle identity, indistinguishability, exchange statistics, and many-particle interference can instead be harnessed as resources for quantum information processing. We first clarify the notions of entanglement and indistinguishability for identical particles, emphasizing their dependence on the accessible measurements and information. We then review how spatial overlap, multiparticle interference, and path identity enable the generation, extraction, protection, and distillation of coherence and entanglement. Their applications to quantum metrology and imaging, state discrimination, teleportation, entanglement swapping, and quantum cloning are examined. Finally, we discuss the thermodynamic role of indistinguishability, from the Gibbs paradox to quantum thermal machines and statistics-driven engines. Across these settings, indistinguishability emerges as a controllable, task-dependent resource whose benefits are determined by state preparation, exchange statistics, interference, and measurement constraints.",
-      "url": "https://arxiv.org/abs/2610.40852",
-      "pdf_url": "https://arxiv.org/pdf/2610.40852v1",
-      "published": "2026-10-29T18:32:51Z",
-      "updated": "2026-10-29T18:32:51Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 6,
-      "topics": [
-        "adaptive_resources",
-        "data_hiding"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "state preparation"
-        ],
-        "data_hiding": [
-          "state discrimination"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-02T06:17:22Z"
-    },
-    {
-      "doi": "",
-      "id": "2610.40851",
-      "version": 1,
-      "title": "Benchmarking One-Dimensional Quantum Lattice Boltzmann Methods on Quantum Hardware",
-      "authors": [
-        "Melvina Quartey",
-        "Lucy T. Zhang"
-      ],
-      "abstract": "Classical computational fluid dynamics (CFD) methods encounter significant computational bottlenecks in large systems and at high Reynolds number flows due to the rapid increase in degrees of freedom, even on flagship supercomputers. As quantum computers emerge, the Quantum Lattice Boltzmann Method (QLBM) has been proposed as a quantum-native alternative for solving fluid dynamics problems. However, until recently, nearly all studies have relied on classical quantum simulators rather than real quantum hardware. This study presents a benchmark of a one-dimensional QLBM implementation executed on three different IBM Quantum hardware. We design and test a quantum circuit for the advection-diffusion equation using amplitude encoding, a Bhatnagar-Gross-Krook (BGK)-type collision operator, and a streaming step with periodic boundary conditions. Our numerical experiments evaluate transpiled two-qubit gate count, total circuit depth, runtime, and accuracy metrics including maximum absolute error ($L_\\infty$ norm) and root-mean-square error (RMSE). We find that the present collision and streaming operators dominate the overall cost and become the primary scalability bottleneck on current hardware. To mitigate the prohibitive cost of full quantum state tomography on hardware-based benchmarking exercises, we introduce a sampler-based measurement strategy that reconstructs macroscopic density fields directly from computational-basis measurements. This approach substantially reduces measurement overhead while preserving the expected advection-diffusion dynamics on hardware. These results provide a quantitative assessment of QLBM performance in the noisy intermediate-scale quantum (NISQ) regime and identify the principal algorithmic and experimental limitations that must be addressed for QLBM to become viable for fluid dynamics.",
-      "url": "https://arxiv.org/abs/2610.40851",
-      "pdf_url": "https://arxiv.org/pdf/2610.40851v1",
-      "published": "2026-10-29T18:32:18Z",
-      "updated": "2026-10-29T18:32:18Z",
-      "categories": [
-        "physics.comp-ph",
-        "physics.flu-dyn",
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "circuit depth"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-02T06:17:22Z"
-    },
-    {
-      "doi": "",
-      "id": "2610.40845",
-      "version": 1,
-      "title": "Learning Finite-Memory Binary Sources",
-      "authors": [
-        "Maciej Skorski"
-      ],
-      "abstract": "Estimating biased finite-memory sources from a single trajectory is a fundamental problem with practical impact, for example in estimating entropy for cryptography. We study order-$d$ binary sources whose conditional probabilities have bias at most $ε$, and establish *sharp* sample complexity bounds: relative accuracy $γ$ with confidence $1-δ$ needs $γ^{-2}\\,(\\tfrac12-ε)^{-d}\\,(\\log d+\\log\\tfrac1δ)$ samples up to constants depending on $ε$, with matching upper and lower bounds and no dependence on mixing time or spectral gap. The proof rests on a sharp bound on expected hitting times of the sliding-window (de Bruijn) chain, which stay of order $1/π(w)$ uniformly in $d$ exactly when $ε<\\tfrac3{10}$, and on majorization of the window masses by those of independent biased coins. Applied to published entropy-source validations, the bounds show that their trace lengths may be underpowered: $10^6$ bits cannot resolve all transitions of an $8$-bit model to better than about $4.5\\%$ relative error.",
-      "url": "https://arxiv.org/abs/2610.40845",
-      "pdf_url": "https://arxiv.org/pdf/2610.40845v1",
-      "published": "2026-10-29T18:27:06Z",
-      "updated": "2026-10-29T18:27:06Z",
-      "categories": [
-        "cs.IT",
-        "math.PR"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "quantum_learning"
-      ],
-      "keyword_matches": {
-        "quantum_learning": [
-          "sample complexity"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-02T06:17:22Z"
-    },
-    {
-      "doi": "",
-      "id": "2610.40840",
-      "version": 1,
-      "title": "Electronic-Structure-Informed Many-Body Encoding for Quantum Machine Learning",
-      "authors": [
-        "Liangnuo Zhang",
-        "Tanner Culpitt",
-        "Qiwei Yin",
-        "Linghua Zhu",
-        "Xiaosong Li"
-      ],
-      "abstract": "Data encoding is a central challenge in quantum machine learning (QML), as it determines how classical information is mapped onto quantum states and influences the expressive power and efficiency of parameterized quantum circuits. Here, we introduce a physics-informed quantum encoding strategy that exploits the intrinsic many-body structure of electronic systems to establish a direct correspondence between the body order of input descriptors and the locality of quantum gates. Specifically, $n$-body electronic descriptors obtained from a single mean-field electronic-structure calculation are encoded through $n$-qubit gates, yielding a systematic hierarchy of quantum circuits with increasing many-body expressivity. Using reduced-density-matrix descriptors, we construct quantum machine-learning models incorporating one- through four-body encodings and benchmark their performance in predicting electron-correlation energies along bond-stretching potential energy surfaces. We demonstrate that increasing the body order of the encoding systematically improves prediction accuracy toward the full configuration interaction limit. Remarkably, disconnected many-particle densities constructed from lower-order electronic information achieve accuracy comparable to explicitly correlated two-particle densities in key cases, providing a computationally inexpensive route to higher-body quantum encodings. These findings establish a connection between the many-body structure of classical data and the design of quantum feature maps, offering a systematic, physically interpretable framework for enhancing the expressivity and predictive performance of quantum machine-learning circuits.",
-      "url": "https://arxiv.org/abs/2610.40840",
-      "pdf_url": "https://arxiv.org/pdf/2610.40840v1",
-      "published": "2026-10-29T18:19:44Z",
-      "updated": "2026-10-29T18:19:44Z",
-      "categories": [
-        "quant-ph",
-        "physics.chem-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum encoding"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-02T06:17:22Z"
-    },
-    {
-      "doi": "",
-      "id": "2610.40825",
-      "version": 1,
-      "title": "On the NP-Hardness of Rank-Metric Minimum Distance and Syndrome Decoding, at Every Rate",
-      "authors": [
-        "Venkata Gandikota",
-        "Vatsal Jha",
-        "S. Venkitesh"
-      ],
-      "abstract": "In this work, we investigate the hardness of computing minimum distance, as well as the hardness of syndrome decoding, for rank-metric codes. It is known (Gaborit and Zémor, IEEE TIT 2016) that for $\\mathbb{F}_{q^m}$-linear rank-metric codes of length $N$, minimum distance when $m=O(N)$ and syndrome decoding when $m=O(N^2)$ are NP-hard under randomized reductions. We obtain a derandomization of these results and a bit more. We show that for any fixed small $\\varepsilon>0$, for $\\mathbb{F}_{q^m}$-linear rank-metric codes of length $N$ with $m=O(N^{1+\\varepsilon})$, the problems of minimum distance, nearest codeword, and syndrome decoding are NP-hard under deterministic reductions. Further, we can prescribe the rate; that is, if we restrict to codes having any fixed rational rate $R\\in(0,1)$, then the NP-hardness for all three problems persists. Our main technical contribution is simple, and possibly of independent interest. The reduction of Gaborit and Zémor (IEEE TIT 2016) relies on a distance-preserving embedding of a Hamming-metric code into a rank-metric code, obtained by multiplying its coordinates by a uniformly random vector. We show that we can choose an explicit vector from a slightly larger extension field.",
-      "url": "https://arxiv.org/abs/2610.40825",
-      "pdf_url": "https://arxiv.org/pdf/2610.40825v1",
-      "published": "2026-10-29T18:06:30Z",
-      "updated": "2026-10-29T18:06:30Z",
-      "categories": [
-        "cs.CC"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "syndrome"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-02T06:17:22Z"
-    },
-    {
-      "doi": "",
-      "id": "2610.40805",
-      "version": 1,
-      "title": "Fock-space delocalization and its control in scarred-vs-ergodic dynamics",
-      "authors": [
-        "Francesco Perciavalle"
-      ],
-      "abstract": "Quantum many-body scarred dynamics in Rydberg-atom arrays is characterized by revivals, in which the system repeatedly returns to its initial state despite its many-body complexity. But how extensively does the wave function explore the space of allowed configurations between revivals? We address this question by quantifying the fraction of configurations occupied during PXP dynamics initialized from the paradigmatic polarized and Néel states, which respectively exhibit thermalizing and scarred dynamics. Despite their striking revivals, dynamics from the Néel state spreads over exponentially many configurations, yet occupies a vanishing fraction of the full space in the thermodynamic limit. Dynamics from the polarized state, by contrast, occupies a finite fraction of the configuration space, close to anticoncentration and random-state statistics, although chiral symmetry limits this fraction to one third. A weak quasiperiodic field enables the polarized state to occupy half of the configuration space by lifting the constraint imposed by chiral symmetry. The Néel state, however, requires a stronger field to reach a comparable anticoncentrated regime. As the field increases further, the occupied fraction decreases for both initial states, revealing a nonmonotonic dependence of Fock-space delocalization on field strength without necessarily implying localization.",
-      "url": "https://arxiv.org/abs/2610.40805",
-      "pdf_url": "https://arxiv.org/pdf/2610.40805v1",
-      "published": "2026-10-29T18:01:59Z",
-      "updated": "2026-10-29T18:01:59Z",
-      "categories": [
-        "quant-ph",
-        "cond-mat.quant-gas",
-        "cond-mat.stat-mech"
-      ],
-      "keyword_score": 4,
-      "topics": [
-        "random_designs"
-      ],
-      "keyword_matches": {
-        "random_designs": [
-          "anticoncentration"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-02T06:17:22Z"
-    },
-    {
       "id": "doi:10.1103/kw13-xkkb",
       "version": 1,
       "title": "Majorana-Pauli stabilizer codes and duality webs of fermionic topological phases",
@@ -33718,284 +33907,6 @@
       },
       "first_seen_at": "2026-11-16T00:58:20Z",
       "doi": "10.1103/9x8h-h3hp"
-    },
-    {
-      "doi": "",
-      "id": "2611.19130",
-      "version": 1,
-      "title": "Accurate qLDPC decoding under real-time constraints",
-      "authors": [
-        "Chenzewei Qing",
-        "Tengyu Zhang",
-        "Xiaoqin Luo",
-        "Xiaolu Su",
-        "Li You"
-      ],
-      "abstract": "Fault-tolerant quantum computation requires reconciling the computational demands of accurate decoding with the stringent timing constraints of real-time error correction. We present Spatiotemporal Covariance-Optimized Parallel Ensemble (SCOPE), a physics-informed framework for real-time decoding of quantum low-density parity-check codes (qLDPC). By exploiting the spatial symmetries of bivariate-bicycle (BB) codes and the temporal regularity of repeated syndrome extraction, SCOPE uncovers a spatiotemporally covariant decoding structure and organizes the circuit-level problem into a layered decoding strategy. We further compress the high-dimensional evolution of belief propagation (BP) into a low-dimensional dynamical representation, revealing distinct signatures of successful and failed decoding and enabling early detection of unpromising trajectories. Guided by these dynamical signatures, SCOPE explores multiple perturbed decoding trajectories in parallel, enabling early termination and reseeding within a fixed serial iteration budget, with message-passing parameters optimized offline by simulated annealing. Circuit-level simulations of the $[[144,12,12]]$ BB code yield a logical error rate of $p_L=4.82\\times10^{-10}$ at a physical error rate of $p=10^{-3}$. We further realize a pipelined two-arm memory-augmented BP (Mem-BP) core at the register-transfer level. Functional simulations at a 250 MHz clock yield a 16 ns BP iteration interval per arm and a mean input-to-result latency of 173.8 ns at $p=5\\times10^{-3}$.",
-      "url": "https://arxiv.org/abs/2611.19130",
-      "pdf_url": "https://arxiv.org/pdf/2611.19130v1",
-      "published": "2026-11-14T03:37:53Z",
-      "updated": "2026-11-14T03:37:53Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 5,
-      "topics": [
-        "logical_qec"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "logical error",
-          "syndrome",
-          "qLDPC"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-17T08:00:39Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.19017",
-      "version": 1,
-      "title": "Witnessing Magic (and other Quantum Resources)",
-      "authors": [
-        "Brian Barch",
-        "Luis Pedro García-Pintos"
-      ],
-      "abstract": "Motivated by measurements of quantum magic, we study the sampling cost of resource robustness ---a quantifier for a broad class of quantum resources--- by bounding the variance of optimal robustness witnesses. We first lower bound the samples required to estimate a state's resource robustness using Cramér-Rao bounds. We find that the number of measurements scales at least quadratically in the robustness for highly mixed states, and at least linearly in the generalized robustness for broad families of pure states, making it difficult to measure either robustness to low absolute error when the states are highly resourceful. We then derive two complementary bounds in terms of the geometry of witnesses, one of which is tight for a class of resource theories including coherence and bipartite entanglement. An additional hurdle occurs for tracking the onset of resource robustness along state-space trajectories: the integrated witness variance along a path is at least the squared resource gain over Fisher length, indicating that a state evolution with exponential resource gain necessarily goes through states for which the robustness cannot be measured efficiently. This hurdle does not occur when estimating robustness to fixed relative, rather than absolute, error. These results suggest that the ideal witness-based resource estimation task, for general resource theories, is the estimation of generalized robustness to low relative error on highly resourceful pure states.",
-      "url": "https://arxiv.org/abs/2611.19017",
-      "pdf_url": "https://arxiv.org/pdf/2611.19017v1",
-      "published": "2026-11-13T23:33:26Z",
-      "updated": "2026-11-13T23:33:26Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "magic_stabilizer": [
-          "quantum magic"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-17T08:00:39Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.19002",
-      "version": 1,
-      "title": "Quantum Coloring Games on Complete Graphs",
-      "authors": [
-        "William Bolduc",
-        "Michael Jennings"
-      ],
-      "abstract": "We study the nonlocal game where two players are both given an input ($x$ and $y$, respectively), from a set of size $n$ and, without communicating, must give outputs $a$ and $b$, respectively, from a set of size $m < n$, winning when $(x = y) \\leftrightarrow (a = b)$. This can be considered a graph coloring game on the complete graph with $n$ vertices. In the simplest case, the players get random equal inputs with probability $\\frac{1}{2}$ and random unequal inputs otherwise. We solve this case of the game, and many others, for both classical and quantum (i.e., where the players may share finite-dimensional entangled quantum states) strategy sets, proving the value (the probability of winning) of the optimal strategies and providing explicit strategies that attain this optimum for all $n$ and $m$. Our optimal strategies are synchronous: i.e., the two players always give equal outputs when given equal inputs. These strategies remain optimal when the probability of receiving equal inputs is at least $\\frac{2}{m + 2}$. Across this wide range of cases, we find that quantum strategies have an advantage over classical strategies exactly when $m$ does not divide $n$; this advantage is $O\\left(\\frac{m}{n^2}\\right)$.",
-      "url": "https://arxiv.org/abs/2611.19002",
-      "pdf_url": "https://arxiv.org/pdf/2611.19002v1",
-      "published": "2026-11-13T22:59:02Z",
-      "updated": "2026-11-13T22:59:02Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "magic_stabilizer": [
-          "nonlocal game"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-17T08:00:39Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.18881",
-      "version": 1,
-      "title": "Double-Randomized Quantum Singular Value Transformations For Early Fault-Tolerant Quantum Computers",
-      "authors": [
-        "Joel Bierman",
-        "Pawan Poudel",
-        "Yuan Liu"
-      ],
-      "abstract": "The Quantum Singular Value Transformation (QSVT) is an algorithmic framework which encompasses a wide range of problems, including Hamiltonian dynamics, ground state preparation, Gibbs state preparation, amplitude amplification, and matrix inversion. For many areas of scientific interest such as quantum chemistry and condensed matter, the circuit depth of the block-encoding subroutine in QSVT can be formidable, limiting the scope of problems to which QSVT can be applied on early fault-tolerant hardware. We split linear operators $A$ into a core operator $A_0$ and a tail operator $A_ε$, block-encoding the normalized sum of $A_0$ and the average of $n_T$ randomly sampled terms from $A_ε$. We show that using randomized block-encodings of this form allows one to lower the circuit depth of QSVT while incurring a diamond norm error that scales as $\\mathcal{O}(C_Pδ^2/n_T$), where $C_P$ is a prefactor which depends on the QSVT polynomial $P$ and $δ$ is the ratio of the $\\ell_1$ norms of the coefficient vectors of $A_ε$ and $A$. We then go on to show that if one samples QSVT circuits from a joint probability distribution of both random block-encodings and random polynomials (Double-Randomized QSVT), then the circuit depth savings of these two randomization techniques combine multiplicatively, with only additive error contributions. We numerically calculate error bounds for long-range Heisenberg and iron-sulfur complex Hamiltonians, showing that for a diamond norm error bound of $10^{-3}$, RBE-QSVT can reduce the number of Pauli terms needed for the block-encoding by an order of magnitude or more in several cases. This paves the way for demonstrations of QSVT on early fault-tolerant hardware.",
-      "url": "https://arxiv.org/abs/2611.18881",
-      "pdf_url": "https://arxiv.org/pdf/2611.18881v1",
-      "published": "2026-11-13T19:39:36Z",
-      "updated": "2026-11-13T19:39:36Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 7,
-      "topics": [
-        "adaptive_resources",
-        "quantum_learning"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "circuit depth",
-          "state preparation"
-        ],
-        "quantum_learning": [
-          "Gibbs state"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-17T08:00:39Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.18848",
-      "version": 1,
-      "title": "Flexible ground-state search algorithm on hybrid Clifford-tensor network manifolds",
-      "authors": [
-        "Hari Timsina",
-        "Antonio Francesco Mello",
-        "Meghadeepa Adhikary",
-        "Marcello Dalmonte",
-        "Mario Collura"
-      ],
-      "abstract": "Tensor network algorithms face challenges in highly entangled regimes, such as systems with periodic boundary conditions (PBC), long-range interactions, or higher dimensions, where the required bond dimension quickly renders computations infeasible. To overcome this limitation, we introduce a novel approach that integrates the stabilizer formalism directly into the traditional density-matrix renormalization group (DMRG) algorithm. While previous methods have used Clifford unitaries to minimize ground-state entanglement, fundamentally limited to distilling that away utilizing local two-qubit operations, our framework optimizes Clifford transformations to minimize the state's energy. We benchmark our method against standard DMRG at fixed bond dimensions for the Ising model on a ring (including long-range interactions) and on a torus. We observe systematic gains in models with local interactions - as drastic as a factor of 40 decrease in bond dimension in two dimensions. Our algorithm is readily implementable in standard DMRG codes and provides a practical way to substantially reduce algorithm costs, paving the way for large-scale simulation at volumes beyond what is presently achievable.",
-      "url": "https://arxiv.org/abs/2611.18848",
-      "pdf_url": "https://arxiv.org/pdf/2611.18848v1",
-      "published": "2026-11-13T19:05:04Z",
-      "updated": "2026-11-13T19:05:04Z",
-      "categories": [
-        "cond-mat.stat-mech",
-        "cond-mat.str-el",
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "magic_stabilizer": [
-          "stabilizer"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-17T08:00:39Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.18838",
-      "version": 1,
-      "title": "Metamorphic Testing of Quantum Software based on Stabilizer States",
-      "authors": [
-        "Adrián Marín Boyero",
-        "Fynn Otto",
-        "Albert Rico",
-        "Otfried Gühne",
-        "Malte Lochau"
-      ],
-      "abstract": "A major challenge in quantum computing is to systematically check if a quantum program implements its desired functionality. For classical programs, testing is widely used; each test case comprises a pair of sample input and expected output to be compared with the actual output. To increase the number of test cases, however, one has to solve the test-oracle problem: for each additional test input one has to know the correct output. Metamorphic testing tackles this problem by utilizing metamorphic relations between input and output domains to automatically derive new test cases from existing ones. However, adapting metamorphic testing to the quantum realm is not straightforward, since quantum states cannot be directly inspected. We propose a framework of quantum metamorphic testing (QMT) in which the metamorphic relations incorporate the measurement procedures required to assess quantum outputs. We apply our QMT framework to testing the preparation of stabilizer states, which are central to protocols like measurement-based quantum computing or quantum error correction. We utilize structural properties of stabilizer states to systematically derive measurement circuits for new test cases from existing ones. We implement this framework in Qiskit, and demonstrate that it reduces by an order of magnitude the testing run time compared to testing with randomly generated input states. We further show effectiveness by revealing synthetic program faults injected by circuit mutations, as well as a real bug in the Qiskit compiler.",
-      "url": "https://arxiv.org/abs/2611.18838",
-      "pdf_url": "https://arxiv.org/pdf/2611.18838v1",
-      "published": "2026-11-13T19:00:02Z",
-      "updated": "2026-11-13T19:00:02Z",
-      "categories": [
-        "quant-ph",
-        "cs.SE"
-      ],
-      "keyword_score": 6,
-      "topics": [
-        "logical_qec",
-        "magic_stabilizer"
-      ],
-      "keyword_matches": {
-        "logical_qec": [
-          "quantum error correction"
-        ],
-        "magic_stabilizer": [
-          "stabilizer"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-17T08:00:39Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.18775",
-      "version": 1,
-      "title": "Quantum-inspired orthogonal adapters for certifiably robust medical image classification",
-      "authors": [
-        "Olga Tsurkan",
-        "Laia Domingo",
-        "Victoria Orlova",
-        "Asel Sagingalieva",
-        "Iris Zalaudek",
-        "Raffaele Dante Caposiena Caro"
-      ],
-      "abstract": "Medical image classifiers require not only high accuracy but also reliable predictions under small input perturbations. Certified robustness provides mathematical guarantees of prediction stability, but preserving these guarantees when adapting pretrained models to new tasks remains challenging. We propose a fine-tuning approach based on quantum-inspired orthogonal butterfly layers that preserves the Lipschitz bounds of pretrained certified networks. Inspired by quantum circuits of reconfigurable beam splitters, these layers preserve orthogonality by construction using only $\\mathcal{O}(n\\log n)$ trainable parameters. Their structured design enables efficient classical implementation and offers a path toward future quantum implementations with logarithmic circuit depth under suitable connectivity assumptions. Controlled experiments on MNIST and MedMNIST demonstrate improved certified robustness compared with conventional alternatives and, in the DermaMNIST transfer, greater resistance to the tested attacks than low-rank adaptation (LoRA). We then apply it to trichoscopic image classification for alopecia diagnosis and alopecia areata activity assessment. By adapting a certified ImageNet-pretrained network, butterfly fine-tuning achieves approximately twice the certified accuracy of conventional fine-tuning and LoRA, with comparable classification accuracy on the same backbone and data split and similar empirical resistance to the tested adversarial attacks. Larger robustness guarantees, including certificates covering certain image-processing transformations, can be obtained at the cost of reduced accuracy. These results highlight the potential of quantum-inspired butterfly layers for parameter-efficient adaptation of medical image classifiers while preserving the mathematical guarantees underlying certified robustness.",
-      "url": "https://arxiv.org/abs/2611.18775",
-      "pdf_url": "https://arxiv.org/pdf/2611.18775v1",
-      "published": "2026-11-12T10:45:44Z",
-      "updated": "2026-11-12T10:45:44Z",
-      "categories": [
-        "cs.CV",
-        "cs.LG",
-        "quant-ph"
-      ],
-      "keyword_score": 3,
-      "topics": [
-        "adaptive_resources"
-      ],
-      "keyword_matches": {
-        "adaptive_resources": [
-          "circuit depth"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-17T08:00:39Z"
-    },
-    {
-      "doi": "",
-      "id": "2611.18755",
-      "version": 1,
-      "title": "Directional gate-error asymmetry and universal selectivity bounds in non-unital open quantum systems",
-      "authors": [
-        "Amritash Patra"
-      ],
-      "abstract": "Clifford randomized benchmarking and average gate fidelity assign a single trajectory-independent decay rate to a noisy quantum gate at leading order in the dimensionless damping exposure \\varepsilon = γT, concealing state-dependent transition-error asymmetries in untwirled quantum circuits. While state-dependent amplitude-damping errors are well known in open quantum systems, a trajectory-level analytical framework that bounds directional transition selectivity across arbitrary pulse shapes and Markovian environments has been lacking. Using first-order toggling-frame perturbation theory for a two-level qubit coupled to a Markovian bath, we show that the antipodal survival-error slopes χ_+ and χ_- along any piecewise-continuous control path depend exclusively on its time-averaged Bloch vector m and transverse residence covariance matrix G, obeying the complete-positivity cofactor bound β(r) \\le 1. On a standard polar \\sqrt{X} gate, longitudinal T_1 relaxation induces a 12.23 : 1 directional survival-error split (κ_{T_1} = (3π- 8)/(3π+ 8) \\approx 0.081767), whereas time-symmetric X rotations maintain an exact 1 : 1 balance (κ_{T_1} = 1). Across all completely positive Markovian generators, coupling between non-unital drift and unital diffusion enforces a selectivity bound κ_\\star = (π- 2\\sqrt{2})/(π+ 2\\sqrt{2}) \\approx 0.052456 (19.06 : 1) for time-independent single-qubit πswaps. We apply this framework to Gaussian and derivative-removal-by-adiabatic-gate (DRAG) waveforms on superconducting transmons and trapped-ion qubits, extend the analysis to finite damping, pulse dwell, colored thermal baths, and qutrit leakage, and construct two-branch differential lock-in protocols that isolate directional error splits immune to first-order state-preparation and measurement errors.",
-      "url": "https://arxiv.org/abs/2611.18755",
-      "pdf_url": "https://arxiv.org/pdf/2611.18755v1",
-      "published": "2026-11-11T17:44:40Z",
-      "updated": "2026-11-11T17:44:40Z",
-      "categories": [
-        "quant-ph"
-      ],
-      "keyword_score": 5,
-      "topics": [
-        "benchmarking"
-      ],
-      "keyword_matches": {
-        "benchmarking": [
-          "randomized benchmarking",
-          "gate fidelity"
-        ]
-      },
-      "sources": [
-        "arxiv"
-      ],
-      "first_seen_at": "2026-11-17T08:00:39Z"
     }
   ],
   "screened": {
@@ -65963,15 +65874,85 @@
       "score": 0,
       "at": "2026-11-23T00:58:22Z",
       "metadata_fingerprint": "9d123de8560155ab2fd7855f6316aa771e62fb7de81063bed0eff7d79eeba673"
+    },
+    "2610.40851": {
+      "status": "ai_rejected",
+      "score": 42,
+      "at": "2026-11-23T01:09:01Z"
+    },
+    "2610.40845": {
+      "status": "ai_rejected",
+      "score": 15,
+      "at": "2026-11-23T01:09:01Z"
+    },
+    "2610.40840": {
+      "status": "ai_rejected",
+      "score": 15,
+      "at": "2026-11-23T01:09:01Z"
+    },
+    "2610.40825": {
+      "status": "ai_rejected",
+      "score": 18,
+      "at": "2026-11-23T01:09:01Z"
+    },
+    "2610.40805": {
+      "status": "ai_rejected",
+      "score": 40,
+      "at": "2026-11-23T01:09:01Z"
+    },
+    "2611.18848": {
+      "status": "ai_rejected",
+      "score": 38,
+      "at": "2026-11-23T01:09:01Z"
+    },
+    "2611.18838": {
+      "status": "ai_rejected",
+      "score": 40,
+      "at": "2026-11-23T01:09:01Z"
+    },
+    "2611.18775": {
+      "status": "ai_rejected",
+      "score": 5,
+      "at": "2026-11-23T01:09:01Z"
+    },
+    "2610.41903": {
+      "status": "ai_rejected",
+      "score": 5,
+      "at": "2026-11-23T01:09:01Z"
+    },
+    "2610.41831": {
+      "status": "ai_rejected",
+      "score": 25,
+      "at": "2026-11-23T01:09:01Z"
+    },
+    "2610.41824": {
+      "status": "ai_rejected",
+      "score": 30,
+      "at": "2026-11-23T01:09:01Z"
+    },
+    "2610.41649": {
+      "status": "ai_rejected",
+      "score": 12,
+      "at": "2026-11-23T01:09:01Z"
+    },
+    "2610.41253": {
+      "status": "ai_rejected",
+      "score": 3,
+      "at": "2026-11-23T01:09:01Z"
+    },
+    "2610.41034": {
+      "status": "ai_rejected",
+      "score": 20,
+      "at": "2026-11-23T01:09:01Z"
     }
   },
   "last_successful_run": "2026-11-23T00:58:22Z",
   "last_run": {
     "fetched": 458,
     "keyword_candidates": 0,
-    "analyzed": 0,
-    "selected": 0,
-    "pending": 303,
+    "analyzed": 10,
+    "selected": 1,
+    "pending": 278,
     "lookback_days": 7,
     "source": "all",
     "date_basis": "initial_submission",
@@ -65980,11 +65961,11 @@
   },
   "is_demo": false,
   "last_collection_run": "2026-11-23T00:58:22Z",
-  "last_analysis_run": "2026-11-22T01:12:46Z",
+  "last_analysis_run": "2026-11-23T01:09:01Z",
   "last_analysis_batch": {
-    "analyzed": 5,
-    "selected": 4,
-    "pending": 303
+    "analyzed": 10,
+    "selected": 1,
+    "pending": 278
   },
   "topic_labels": {
     "benchmarking": "Benchmarking / SPAM",
