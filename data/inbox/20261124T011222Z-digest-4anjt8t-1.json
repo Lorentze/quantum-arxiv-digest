@@ -1,0 +1,382 @@
+{
+  "analyses": [
+    {
+      "id": "2611.27724",
+      "version": 1,
+      "analysis": {
+        "summary": "本文问在固定、含不确定性的 Pauli data 下，施加通道物理性到底能增加多少 fidelity 保证。作者把最坏情形 Choi 优化与去除 positivity 的 linear witness 比较，证明 stabilizer norm 只决定后者的局部 robustness slope，无法单独决定物理 SDP 的表现。另给固定 witness 的 shot allocation，明确把几何不确定半径和有限样本置信区间分开。",
+        "problem": "不完整 Pauli measurements 通常允许许多 CPTP channels。认证应对所有与数据相容的物理通道取最小 target fidelity，而不是重建一个最像目标的估计通道。去掉 positivity 易计算，却可能引入非物理最坏方向；问题是何时这个松弛已紧，以及额外物理结构怎样改善 shots 使用。",
+        "setting": "d=2^n，D=d²，normalized target Choi projector CU 和未知 X 满足 X≥0、Trout X=I/d。目标 Fe=Tr(CU X)，Favg=(dFe+1)/(d+1)。局部模型以理想 target expectations 为中心，每项容许误差 ρ；ρ 尚不是实验 confidence radius，实际 sample means 的目标偏移还需另计。",
+        "main_results": [
+          "线性松弛的斜率为 swit=‖CU‖st−1/D。物理斜率 sSDP≤swit，positivity gain g=swit−sSDP≥0，较小斜率表示对小测量不确定性更稳健，而不是更差。",
+          "作者给出 g=0 的必要充分 KKT condition 和 g>0 的 dual obstruction，并用 outward-rounded interval arithmetic、rational certificate 和解析扰动界证明两个 distinct two-qubit targets 可有完全相同 stabilizer norm，却一个 g=0、另一个 g>0。",
+          "固定证书及总预算下，最优分配 Ni∝abs(yi)^(2/3)。共享 compatible observables 的 measurement settings 需采用相应成组规则，不能将同一次读出的多个 observable 当作独立 shots。"
+        ],
+        "techniques": [
+          "用 Choi positivity 的 KKT 与 duality 刻画松弛是否紧；支撑、relative Pauli signs 及算符乘法关系进入物理条件，而总绝对 Pauli weight 丢失这些信息。",
+          "另建 joint certificate-design/resource-allocation 问题，区分已固定 witness 的闭式分配与联合优化。"
+        ],
+        "assumptions": [
+          "需要可信的 measurement operators 和明确 uncertainty model。statistical error、系统性标定误差及 SPAM 若改变实际算符，不能只靠增加 sample size 消除。",
+          "局部 slope 在目标中心且理想数据可认证 fidelity 1 的设置下定义，不能直接替换有限偏差整个区间的误差函数。"
+        ],
+        "limitations": [
+          "所有 full-support two-qubit targets 均有 positive gain 的 conjecture 仍开放；采样数值成功不是普遍证明。",
+          "本文不建立仅可调用固定 noisy U、可信 local controls 且任意小非重复 SPAM 下的协议，也未给 inverse-free target-call 和 sequence length 的整体界。",
+          "本报告复核模型与主结果节选，未独立重算 interval certificate 或全部 finite-data allocation 证明。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "高度契合 Pauli-limited certification、physicality、stabilizer structure 和 shots 预算，并说明 magic 标量不能替代通道几何。"
+        ],
+        "follow_up": [
+          "读者建议：将可信测量条件逐项映射到 fixed-gate SPAM 模型，在共享 settings 的协方差和漂移约束下重新比较 shot optimum。"
+        ],
+        "relevance_score": 98,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.27724v1"
+      }
+    },
+    {
+      "id": "2611.27703",
+      "version": 1,
+      "analysis": {
+        "summary": "本文从 single randomly sampled Pauli-dressed circuit 的角度分析 coherent error accumulation。对选定 two-qubit Clifford layers，transported error generators 的 covariance 决定哪些跨层相干项可被随机符号打散。裸电路可出现二次增长，独立 dressing 则使平均及固定置信度下的单实现方差只有线性界，但不是每个随机实现都确定性更好。",
+        "problem": "ensemble-averaged Pauli twirling 可把通道变成 Pauli noise，却不直接回答只运行一个 compilation 时是否有收益。需要在具体输入态和电路上分析各层误差传播后如何相干相加，并识别随机化没有多少可抑制内容的情况。",
+        "setting": "理想电路含 L 个选定 two-qubit Clifford gates Uℓ，中间 Bℓ 为确定的局部门或恒等层。每层独立采样两比特 Pauli Pℓ，补偿 Qℓ=UℓPℓUℓ† 仍为 tensor-product Pauli，因此无噪声下 QℓUℓPℓ=Uℓ。非 Clifford 两比特块须先分解，再只对 Clifford entanglers 使用该构造。",
+        "main_results": [
+          "弱 coherent-error perturbation 中，leading state infidelity 由 accumulated generator 的 variance 控制。裸电路的正 cross-layer covariance 可带来 Θ(L²) 增长；独立 dressing 使这些交叉项在随机选择平均中消失。",
+          "若每层 coherent-error strengths 有界，则平均 variance 为 O(L)，相应单实现界在任何固定置信度成立；隐含系数依赖置信度和强度，不能解释为 L 任意大时完整 noisy circuit infidelity 始终线性。",
+          "IBM superconducting hardware 上，作者报告 GHZ preparation 的 measured fidelity 改善，以及 Trotterized TFIM 的 imbalance/local-magnetization errors 下降。不同实验、输入与 observable 不可合并为普适 process-fidelity 改善率。"
+        ],
+        "techniques": [
+          "在 toggling/transported frame 累加各层 Hermitian error generators，计算相对输入态的 connected covariance。diagonal entries 为单层内禀代价，off-diagonal entries 为可增强或抵消的层间误差干涉。",
+          "独立 Pauli conjugations 随机化误差分量符号，无需先校准误差角或做 angle correction。"
+        ],
+        "assumptions": [
+          "结论依赖弱误差展开、所选 dressing 的独立性和其对误差的模型假设。若新增单比特控制不理想，实际收益需计入额外噪声。",
+          "若 covariance 本已近 diagonal，跨层增强很少，随机化不能消除各层本身的错误。"
+        ],
+        "limitations": [
+          "单实现仍须重复 shots 来估计 fidelity/observable，single realization 不等于 single shot。平均通道结论也不自动保证每个 compilation。",
+          "本报告未复核全部高阶余项、置信度系数与硬件误差条，未获得针对任意 gate-dependent、drifting 或 correlated SPAM 的认证保证。",
+          "它是误差抑制分析，不是从数据识别未知 native gate fidelity 的完整 benchmarking protocol。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接联系 Pauli twirling、noise tailoring、coherent accumulation 与 sequence depth，可帮助选择哪些 structured circuits 值得采用随机化。"
+        ],
+        "follow_up": [
+          "读者建议：在固定 target calls 和 shots 下，用独立训练数据估计 covariance diagnostic，再预注册单 compilation 的性能评估以避免挑选偏差。"
+        ],
+        "relevance_score": 96,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.27703v1"
+      }
+    },
+    {
+      "id": "2611.27640",
+      "version": 1,
+      "analysis": {
+        "summary": "作者给出任意 nontrivial Dicke state 的 exact、ancilla-free synthesis：O(n) arbitrary single-qubit gates 与 CNOTs、O(log n) depth。机制是先用输出比特内部压缩腾出 workspace，实现 weight-dependent phases，再把目标 overlap 提升到常数并做常数次 exact amplitude amplification。资源最优性须保持其门集与 connectivity 模型。",
+        "problem": "直接从 biased product state 投影到固定 Hamming weight 的 overlap 随 k 下降，常规 amplification 需要更多步骤。怎样同时压低 gate count、depth 和 external ancillas，尤其是 k≈n/2 的 balanced Dicke states。",
+        "setting": "目标 |Dk^n⟩ 为所有 weight-k computational basis strings 的均匀叠加。n≥2、1≤k≤n−1；k=0 或 n 为 trivial product cases。使用 arbitrary single-qubit rotations 和 CNOT 的 unitary circuit，正文定理未施加 1D/2D nearest-neighbor 约束，亦非固定 Clifford+T exact synthesis。",
+        "main_results": [
+          "作者声称所有非平凡 k 均达到 O(n) gate count、O(log n) depth，与已述 Ω(n) 和 Ω(log n) 下界渐近匹配。balanced k=floor(n/2) 的对数深度反驳其所针对的 Ω(k) conjecture。",
+          "将每个 31-qubit symmetric block 的 32 维空间压缩到 5 个 qubits，余下 26 个输出比特成为 ",
+          "0⟩ workspace；用它们计算总 weight、施加相位，再 uncompute/decompress。没有外部 ancilla 不表示没有中途 workspace。",
+          "先施加 weight-dependent sign correction，再集体 inverse rotation，使 overlap 至少为正常数；O(1) amplitude-amplification steps 加 phase matching 完成精确制备。"
+        ],
+        "techniques": [
+          "初始 biased product state 的 weight-k overlap 为 Θ(k^(−1/4))。作者用 collective rotation 与 quantum-walk approximation 控制相邻 weight interval 中幅度绝对值之和，将相位调整后 overlap 提升至常数。",
+          "weight phase 电路只需在 symmetric subspace 正确工作，而不要求对整个 Hilbert space 实现相同经典 weight algorithm。"
+        ],
+        "assumptions": [
+          "exact 指数学门模型内输出精确；单比特角度可任意选取，实际编译精度、T-count 和路由另计。",
+          "各 block 的压缩与释放 workspace 依赖输入始终处在相关 symmetric support，不能无条件用于任意未知态。"
+        ],
+        "limitations": [
+          "本报告阅读 construction overview 与定理条件，未审计 quantum-walk approximation 的全部常数或 asymptotic proof。",
+          "本结果不建立 local NN depth O(log n)，不能忽略 light-cone 限制；也未给噪声下目标 fidelity、SPAM 或容错 logical preparation 保证。",
+          "ancilla-free、linear size 和 optimal depth 三项按本文模型同时成立，不能进一步宣称 magic 或总物理运行时间也最优。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接符合 state preparation 的 gate/depth/ancilla simultaneous optimality 问题，内部 workspace 与外部 ancilla 的区分尤其有用。"
+        ],
+        "follow_up": [
+          "读者建议：在 1D 和 2D NN 上计入 compression routing 与 weight arithmetic，再给固定误差 Clifford+T 编译的 T-count 和 depth。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.27640v1"
+      }
+    },
+    {
+      "id": "2611.26705",
+      "version": 1,
+      "analysis": {
+        "summary": "论文将 worst-case random access codes 用于 multi-qubit magic certification，以 partially characterized measurements 换取可扩展性。它既构造少 settings 的 non-stabilizerness witnesses，也证明在完整 Pauli measurement family 下，magic preparations 的最坏偏置优势最多常数因子；两类结果的输入和 measurement promises 不同。",
+        "problem": "完整 stabilizer polytope 随规模变复杂，纯 dimension-only semi-device-independent 方法难以扩展。能否通过假定部分测量结构，不做 tomography 地检出 many-body magic，并界定这种访问方式下 magic 能提供多大通信优势。",
+        "setting": "worst-case RAC 中 m-qubit preparations 编码多个 classical bits，接收者按问题选择 Pauli measurements；比较 classical、pure stabilizer、mixed stabilizer 与 general quantum strategies。measurement structure 不是完全不可信设备，pure stabilizer 的有限 marginal set 与一般 stabilizer-mixture polytope 也须区分。",
+        "main_results": [
+          "stabilizer pigeonhole criterion 说明 pure stabilizer states 在 n>Lm=O(m²) 时不能使 worst-case success 超过 1/2。经 k-qubit marginals 可把测量数降至 O(k²)，不随总 m 增长。",
+          "作者对 m≥3 的 W states 用 eight preparations、three single-qubit measurement settings 认证 magic；这是 preparations/settings 类型数，不是八次实验或总 shots 常数的保证。",
+          "另构造所有 k-body marginals 均在 stabilizer polytope 内，但合并 prepare-and-measure correlations 不可能来自任意 global stabilizer mixture 的例子。对其 depolarizing-noise construction 报告 visibility ν>1/√n。",
+          "当 n=4^m−1 为完整 nonidentity Pauli family，最优 quantum 与 mixed-stabilizer worst-case biases 同为 2^(−3m/2) 量级，ratio 渐近≤约 1.85。不是对所有 RAC 或受限 measurement subsets 的一般 magic-advantage 上界。"
+        ],
+        "techniques": [
+          "利用 stabilizer-code-projector marginals 的有限结构建立 counting witness，结合局部 Pauli 的联合相关排除 global mixture。",
+          "通过 mixed-stabilizer bias 的解析上下界与 Haar-random Pauli expectations 的量子上界，比较同一测量族下的能力。"
+        ],
+        "assumptions": [
+          "需部分已知 measurement structure、给定 qubit dimension 及对应 preparation promises。不同结果允许 pure 或 mixed preparations，不能混用。",
+          "small bias 随 m 指数缩小，settings 少或 ratio 常数不意味着固定置信度估计所需 copies 少。"
+        ],
+        "limitations": [
+          "本报告未独立核查全部 counting constants、noise threshold proof 和 optimal-bias bounds。",
+          "未给任意小 SPAM 漂移的鲁棒性，也未将制备 W states 和执行可信单比特测量的控制成本算成总资源界。",
+          "局部 marginal 内有无 magic 与整体 prepare-and-measure 可认证性不同，不能把所有局部为 free 误写成整体无资源。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "高度匹配 magic、measurement access 和 operational advantage 的问题，亦提供资源存在与可高效检测之间的区别。"
+        ],
+        "follow_up": [
+          "读者建议：固定目标置信度，显式计算各 witness gap 所需 shots，并比较有限 measurement uncertainty 对 global-mixture exclusion 的影响。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.26705v1"
+      }
+    },
+    {
+      "id": "2610.40052",
+      "version": 1,
+      "analysis": {
+        "summary": "本文研究从 syndrome histories 识别已执行的 logical operations，而不是在已知电路条件下解码物理错误。作者构造 exact likelihood inference 与可扩展近似，结合噪声传播和理想测量随机性，在 BB codes 的有限候选操作集上展示高识别率。能识别执行了哪个操作，不等于认证该操作的 logical fidelity。",
+        "problem": "syndrome 通常被视为只含错误信息，但不同逻辑操作可把同一物理错误搬到不同位置，也可改变 auxiliary measurement correlations。若候选电路未知，观察这些经典记录是否足以推断执行内容，以及哪些 ambiguity 无法靠增加统计样本消除。",
+        "setting": "评估 [[18,4,2]] 和 [[72,12,6]] BB codes，候选含 automorphisms、logical Pauli measurements、T injections 及其组合。可只读 syndrome，或再加入其他 classical measurement outcomes。未知 faults 与理想测量随机性都进入 likelihood；CPU 上的数值实验不是未知量子计算装置的现场演示。",
+        "main_results": [
+          "单 logical instruction 在 circuit-level physical error 10⁻⁵–10⁻³ 条件下，作者报告 over 94% identification accuracy。automorphism-based logical circuits 超过 99%，混合三类指令的 circuits 为 78.32%；不同任务、候选集和数据条件的数字不能拼成一个统一准确率。",
+          "automorphism 将已有 data errors 按物理 permutation 运输，后续 SEC 可记录不同 syndrome。Pauli measurement 与 T injection 的 auxiliary records 还能提供无 faults 时就存在的 distinguishing correlations。",
+          "不同 automorphism sequences 可诱导相同 logical action。exact method 可按请求的 recovery target 合并候选 likelihood；识别物理 sequence 和识别最终 logical Clifford action 是不同任务。"
+        ],
+        "techniques": [
+          "exact inference 对未知 faults 和 measurement randomness 的可能解释求和，再按候选 likelihood 决策。scalable approximation 减少长电路、大码的内存和计算代价。",
+          "整体 circuit inference 跟踪操作间错误传播及相关测量记录，不把每条 instruction 都当作独立分类。"
+        ],
+        "assumptions": [
+          "需要已知候选操作集、编译实现、噪声模型与 measurement schedule；识别率并非对所有可能逻辑程序的普适保证。",
+          "若候选产生相同或重叠的可观测分布，可能原则上不可区分，不能靠更强分类器自动解决。"
+        ],
+        "limitations": [
+          "论文分析不足测量信息、fault timing 和近似 inference 导致的错误。本报告未审计完整 likelihood 求和、全部噪声模型或候选集大小依赖。",
+          "syndrome 能泄露程序内容的例子不等于任意程序可从 syndrome 完全恢复，也未证明安全盲计算的一般不可能性。",
+          "identification accuracy 是分类成功率；不是逻辑信道 entanglement fidelity、QEC threshold 或 SPAM-robust certification guarantee。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "高度契合 syndrome 数据可辨识性与 quantum-information access，明确指出 code、gadget、噪声、可见记录和恢复目标均决定数据能回答什么。"
+        ],
+        "follow_up": [
+          "读者建议：固定两个 logical gadget，先检验其观测分布的可区分性，再研究小未知噪声或漂移下能否同时推断操作和 logical fidelity。"
+        ],
+        "relevance_score": 97,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.40052v1"
+      }
+    },
+    {
+      "id": "2610.40357",
+      "version": 1,
+      "analysis": {
+        "summary": "论文将 Clifford circuits 的故障分析编码为 subsystem spacetime code，其 gauge group 精确表示对电路无害的 faults。通过 instantaneous stabilizers 的 masking 分类，作者把 circuit fault distance 与各时间切片可用信息联系起来，并研究拼接较小组件时距离何处下降。整个 spacetime 的距离不能由瞬时码距列表代替。",
+        "problem": "动态 QEC 可以交织测量、code switching 与 logical operations。即便每个 instantaneous code 都有良好距离，测量信息可能被后续操作遮蔽，导致低权且不可检测的逻辑故障。需要同时处理 anticommuting measurements、无害故障等价和 terminal boundary 的代数框架。",
+        "setting": "电路由 Clifford unitaries 与 Pauli measurements 构成，以不穿过操作的 cuts 编时；每个 block 中支持互不相交。faults 为各 cut 上的 Pauli，默认 weight 是非平凡 spacetime locations 数之和，不是不同物理 qubits 的空间支持大小，也不自动等于某个真实 native-gate error count。",
+        "main_results": [
+          "作者显式构造并分类 subsystem spacetime gauge group，使其恰包含 harmless faults；detector relations 给出相应稳定子结构，非 gauge 的逻辑 faults 决定距离。",
+          "用 unmasked distances 和 measurement-error distance 约束 fault distance，并在指定 correctability condition 下取等；不是无条件等于所有 instantaneous code distances 的最小值。",
+          "追踪组件间 stabilizer information 的保留、恢复与丢失，分析 circuits composition 的距离变化。框架延伸讨论 partial terminal round、logical measurement、reset/discard 和 state preparation，不同任务的 boundary 需分别指定。"
+        ],
+        "techniques": [
+          "将 instantaneous stabilizers 分为 unmasked、temporarily masked、permanently masked，并通过 commuting propagators、destabilizers 与 adjacent logicals 构成 gauge generators。",
+          "把 Pauli faults 的传播及 detectors 写成 symplectic spacetime algebra，利用子系统等价关系排除虽然未检测但无害的方向。"
+        ],
+        "assumptions": [
+          "基本构造的 steady-state 和 terminal-boundary 条件影响保留的逻辑信息；扩展情形不能未经修改就直接套基本定理。",
+          "基础 fault model 以 cut 上 Pauli 表示，若硬件测量故障、reset 或相关 gate noise 映射到多个 spacetime locations，需按其物理权重重新解释。"
+        ],
+        "limitations": [
+          "本报告只复核引言、circuit model 与框架概述，未审计完整 gauge decomposition、correctability proof 和 composition lower bound。",
+          "distance 描述最小有害不可检测故障权重，未直接给固定 decoder、有限噪声率或 coherent noise 下的 logical failure probability。",
+          "作者所说 gauge faults harmless 依赖任务与可见输出定义，不能在改变 logical measurement/readout 后仍不加检查沿用。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接连接 dynamical QEC、syndrome information、fault distance 和 gadget composition，可为“瞬时稳定子好但整个电路仍不容错”的问题提供诊断。"
+        ],
+        "follow_up": [
+          "读者建议：把同一实验的 memory 与 stability observable 分别写进 terminal boundary，再检查产生 timelike failure 的 faults 是否在各任务中同属 gauge。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.40357v1"
+      }
+    },
+    {
+      "id": "2611.27815",
+      "version": 1,
+      "analysis": {
+        "summary": "作者提出无需训练中量子测量或 classical feedback 的 autonomous quantum learning，以 Riemannian gradient dynamics 将优化留在量子域。相关性来自 unitary learning 与 quantum training access；移除经典优化环并不意味着整体资源免费。",
+        "problem": "训练过程反复从量子系统提取信息，是否可用相干自主更新替代。",
+        "setting": "给出广泛任务的 Riemannian update rules，并提出完全 autonomous realization 的 sufficient conditions；模拟含 quantum phase classification 与带 hidden symmetry 的 unitary learning。",
+        "main_results": [
+          "在满足所述条件且 step size 足够小时，作者声称训练迭代中 exponential convergence，并分析随迭代增长的 circuit depth。",
+          "数值研究以少量 distinct examples 在低深度学习，能发现未预先指定的 symmetry。"
+        ],
+        "techniques": [
+          "Riemannian gradient optimization 与 quantum-domain training dynamics。"
+        ],
+        "assumptions": [
+          "autonomous realization 的充分条件和小步长假设必须满足。"
+        ],
+        "limitations": [
+          "摘要未列出完整数据装载、copies、coherent training-state access、收敛常数和误差度量；不能把 iteration convergence 改写为总 gate 或 shot complexity 的指数优势。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "具体连接 quantum-data learning、measurement extraction 与 coherent processing。"
+        ],
+        "follow_up": [
+          "读者建议：把一次训练迭代的数据访问、copies 和 depth 全部计费，再与固定测量访问的学习下界比较。"
+        ],
+        "relevance_score": 86,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.27815v1"
+      }
+    },
+    {
+      "id": "2611.27787",
+      "version": 1,
+      "analysis": {
+        "summary": "Z-GRO 用 dynamic circuits、feasibility phases 与 reusable ancilla 处理 constrained binary optimization。摘要提供具体数值资源比较，但没有给一般复杂度优势证明。",
+        "problem": "大 penalty multipliers 可能加剧 phase-estimation aliasing 和 gate depth，能否改用受可行性保护的演化。",
+        "setting": "提出 Zeno-decoupled gauge-ratchet scheme，包含 dynamical-decoupling echoes、directional cooling 及带 overshoot rollback 的 Ramsey controller。模拟 spin-glass 和 quadratic-knapsack ensembles。",
+        "main_results": [
+          "作者报告相对所测 Zeno dynamics 的 ground-state probability 提高 3.0–4.3 倍，相对 penalized schemes 提高 11.4–22.5 倍。",
+          "spin-glass 拟合 time-to-solution base 为 1.529，相应基线为 1.684 和 1.909–2.047；14-qubit knapsack 的 TTS 改善 2.4–14.5 倍。"
+        ],
+        "techniques": [
+          "feasibility subspace protection、commutator gauge、ancilla cooling 与 measurement-conditioned threshold updates。"
+        ],
+        "assumptions": [
+          "比较依赖给定 instance ensembles、控制与噪声模型；controller 仍有 classical closed-loop 资源。"
+        ],
+        "limitations": [
+          "摘要未给 TTS 拟合误差、规模外推保证、全部 oracle 实现成本或 postselection 接受率。finite-size fit 不是通用 exponential speedup。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 adaptive resources、reused ancillas 和有条件 state preparation 有具体联系。"
+        ],
+        "follow_up": [
+          "读者建议：统一 success probability、总 target calls 与 feedback latency，核对保留分支和失败重试的完整成本。"
+        ],
+        "relevance_score": 76,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.27787v1"
+      }
+    },
+    {
+      "id": "2611.27535",
+      "version": 1,
+      "analysis": {
+        "summary": "geodesiq 介绍面向 state-transfer pulse shaping 的 Python 软件，当前摘要不足以支撑与研究问题直接匹配的报告。",
+        "problem": "如何用几何方法生成兼容 adiabatic 与选定 diabatic passages 的控制脉冲。",
+        "setting": "多能级 control examples，包括 Landau–Zener、spin initialization 和 many-body ground-state preparation。",
+        "main_results": [
+          "作者把求脉冲化为单个一阶 ODE，并介绍软件用法与示例。"
+        ],
+        "techniques": [
+          "geometric metric 与一阶微分方程。"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "摘要未给 benchmarking/SPAM、logical QEC、magic 或可操作资源下界；主要是软件与控制演示。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "相关性偏低，state preparation 的共同词汇不足以进入当前精选。"
+        ],
+        "follow_up": [],
+        "relevance_score": 45,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.27535v1"
+      }
+    },
+    {
+      "id": "2611.27300",
+      "version": 1,
+      "analysis": {
+        "summary": "本文把 symplectic matroids 的表示与 stabilizer codes、quantum secret-sharing access structures 联系起来，强调只看组合结构有时不足以决定可恢复信息。",
+        "problem": "图拟阵能否生成好码，哪些玩家集合可完全恢复、完全无知或只获部分 secret。",
+        "setting": "Fq-linear [[n,k]]q stabilizer code 对应 Fq^(2n) 的 totally isotropic subspace；对 represented Lagrangian matroid 指定 dealer，再构造 shortened code。",
+        "main_results": [
+          "对 3-connected simple graph，作者称任意字段上的 graphical symplectic-matroid representation 给出 distance exactly 2，因此 girth 不提供所猜的距离下界。",
+          "dealer-shortened code 的 logical operators、encoding isometry 和 recovery maps 可显式构造；列对 rank formula 决定 access 并等于与 dealer 的 mutual information，graph-state 特例为 cut rank。",
+          "F2 上唯一表示使码和 enumerators 由 matroid 决定；q≥3 连 enumerator 也可能不同。"
+        ],
+        "techniques": [
+          "isotropic linear algebra、column-pair rank 和 stabilizer-state teleportation。"
+        ],
+        "assumptions": [
+          "必须指定 representation、field 和 dealer；self-dual 等条件不能省略。"
+        ],
+        "limitations": [
+          "摘要未给全部 rank formula、recovery 实现代价或噪声下近似 secret sharing 保证。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接涉及 stabilizer encoding、recovery 和 quantum-information access。"
+        ],
+        "follow_up": [
+          "读者建议：对同一 representation 显式算出三类 access sets，再检查少量 erasure 与 approximate recovery 的稳定性。"
+        ],
+        "relevance_score": 88,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.27300v1"
+      }
+    }
+  ]
+}
