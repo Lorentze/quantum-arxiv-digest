@@ -1,0 +1,181 @@
+{
+  "analyses": [
+    {
+      "id": "2610.40273",
+      "version": 1,
+      "analysis": {
+        "summary": "论文为一般 quantum locally recoverable codes 建立 Singleton-like bounds，允许任意重叠 recovery blocks，不要求 stabilizer 或 purity。pure-code bounds 则在另行假设 purity 后推导，不能混为一般定理。",
+        "problem": "local recovery 的 block size 与可纠正局部 erasures 怎样限制整体 quantum code 参数，既有结构性假设是否必要。",
+        "setting": "general (r,δ)-qLRC quantum subspaces，另分 pure 与 impure families，并研究 overlapping 与 disjoint blocks。",
+        "main_results": [
+          "selection lemma 给 general-subspace bound；δ=2 时恢复已知 single-erasure bound。integer optimization 的 remainder correction 最多收紧 δ−2。",
+          "local decoupling/entropy 将既有 pure-stabilizer 参数界扩到 arbitrary pure subspaces，并讨论达到界的若干 families。"
+        ],
+        "techniques": [
+          "multiple-erasure selection、integer budget optimization、local decoupling 与 entropy arguments。"
+        ],
+        "assumptions": [
+          "pure 与 general-code 版本分开，recovery-block overlap 必须按定理处理。"
+        ],
+        "limitations": [
+          "摘要未给完整 bound 公式、purity 的技术定义、recovery circuit complexity 或 approximate-noise 扩展；不补写未读公式。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接联系 quantum encoding、local recovery 和信息论资源约束。"
+        ],
+        "follow_up": [
+          "读者建议：将显式 finite code 参数代入 general 与 pure 版本，检查 remainder improvements 是否能在实际 locality 下实现。"
+        ],
+        "relevance_score": 87,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.40273v1"
+      }
+    },
+    {
+      "id": "2610.40072",
+      "version": 1,
+      "analysis": {
+        "summary": "本文用具体 macroscopic-controller 模型研究 dissipation 与 quantum gate control errors 的联系。fluctuation–dissipation 导致控制场噪声，压低操作误差可能需要更高经典耗散；这是特定模型中的代价关系。",
+        "problem": "可信 classical control 也有热涨落，控制器能量耗散能否作为 gate error 的隐性来源定量建模。",
+        "setting": "minimal controller model，在 fast-control/high-fidelity regime 做 perturbative calculations，例子含简单 gates 与 Landau–Zener shortcuts-to-adiabaticity state transfer。",
+        "main_results": [
+          "作者报告 controller entropy production 与 control errors 的 tradeoff，说明压低涨落通常付出 macroscopic dissipation。"
+        ],
+        "techniques": [
+          "fluctuation–dissipation relation 与 gate/state-transfer fidelity perturbation theory。"
+        ],
+        "assumptions": [
+          "结论依赖选定 controller、环境和 fast-control regime，不能外推为所有物理 gate 的 universal bound。"
+        ],
+        "limitations": [
+          "摘要无明确 tradeoff 常数、资源单位、完整噪声频谱或 SPAM 鲁棒认证方法；gate fidelity 的具体定义亦需正文核查。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 trusted-control 假设和 gate-noise budget 有直接方法联系，提醒理想局部门模型与物理实现成本的差别。"
+        ],
+        "follow_up": [
+          "读者建议：把控制器噪声映射到 PTM，并测试其是否引入跨次 correlated noise 而破坏 repeatability 假设。"
+        ],
+        "relevance_score": 79,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.40072v1"
+      }
+    },
+    {
+      "id": "2610.39912",
+      "version": 1,
+      "analysis": {
+        "summary": "CV-DIPE 从远程系统的 local measurement data 估计未知 continuous-variable states 的 inner product，无需联合测量或高效 classical descriptions。作者为 energy-constrained multimode states 给 truncation error 与 worst-case sample guarantees，正好体现 measurement access 的资源差异。",
+        "problem": "两个实验室如何比较未知 bosonic states，在允许不同程度协调与测量结构时付出多少样本。",
+        "setting": "能量受约束的 arbitrary multimode inputs，允许 entangled 和 non-Gaussian states；三种协议为 coordinated displaced parity、coordinated Haar measurements、independent homodyne shadows。",
+        "main_results": [
+          "作者给 exact inner product 的截断误差控制和 worst-case sample complexity。leading terms 更有利于 coordinated Haar，但其 global implementation 更困难。"
+        ],
+        "techniques": [
+          "能量截断、协调测量与 homodyne shadow estimation。"
+        ],
+        "assumptions": [
+          "能量约束及模式数是控制无限维 tail 的必要信息；不同协议的 shared randomness/coordination 不能当作免费互换。"
+        ],
+        "limitations": [
+          "摘要未列完整样本公式、energy dependence、confidence 或 measurement cost；不能只按 leading term 推定实验总成本优胜。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接对应 quantum-data learning、single-copy/local readout 与信息访问限制。"
+        ],
+        "follow_up": [
+          "读者建议：在固定能量和 mode count 下比较总 shots、setting generation 和 global Haar implementation，检验高阶 designs 是否真减少总样本。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.39912v1"
+      }
+    },
+    {
+      "id": "2610.39784",
+      "version": 1,
+      "analysis": {
+        "summary": "论文用 Nussbaum–Szkoła mapping 给 asymmetric quantum hypothesis testing 的非渐近上下界，并展示其可统一恢复多种 asymptotic regimes。量子到经典映射的分析用途不等于实验可直接执行该经典测量。",
+        "problem": "怎样避免分别使用繁复 information-spectrum arguments 或固定 prefactors，在有限 blocklength 更准确地夹住量子 type-I/type-II error tradeoff。",
+        "setting": "两量子态的 asymmetric discrimination，比较 converse/achievability 及 large、moderate、small deviations。",
+        "main_results": [
+          "作者称统一 bounds 可在部分情形直接应用经典结果，并在数值小 blocklength 上比所测 fidelity/information-spectrum bounds 更紧。"
+        ],
+        "techniques": [
+          "Nussbaum–Szkoła distribution mapping 与 finite-blocklength inequalities。"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "摘要未给具体 inequality、prefactors、support assumptions 和 optimal measurement implementation；不能仅凭数值例子声称所有态对上都严格更紧。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 quantum state discrimination、finite-copy access 和 operational error bounds 直接相关。"
+        ],
+        "follow_up": [
+          "读者建议：固定一族 noisy states 与 type-I tolerance，比较新界、精确 SDP 和单拷贝受限测量的 gap。"
+        ],
+        "relevance_score": 89,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.39784v1"
+      }
+    },
+    {
+      "id": "doi:10.1103/v3kk-rwk8",
+      "version": 1,
+      "analysis": {
+        "summary": "论文提出 syndrome resampling，以 syndrome probability 的幂重新加权已有 QEC 记录，研究重加权逻辑性能及 threshold。精确 DOI 的正式 Crossref 摘要已可读，publisher 页面返回 403，本报告未读正文。必须区分重采样所定义的评价分布与原始物理运行分布，不能直接将统计改进当作所有输入均可无条件纠正。",
+        "problem": "低概率 syndromes 更可能对应 logical failure。能否无需改 decoder 或新增量子硬件，通过重新组织 syndrome statistics 改进逻辑表现，以及怎样用信息论描述这种重权。",
+        "setting": "正式 PRL DOI 对应 Version of Record 元数据，卷 137、期 22、article 220601。方法对 syndrome probabilities 取幂并 resample，可与 MLD 或 suboptimal decoders 配合，也可结合 decoding-based postselection。",
+        "main_results": [
+          "作者建立 Rényi coherent information 与 syndrome-distribution powers 的联系；在 MLD 下，相关 RCI phase transitions 给一族 optimal thresholds。这里“optimal”限于所述重权/MLD 设置。",
+          "surface-code simulations 报告 logical errors 最多降低四个数量级；应用既有 experimental QEC data 最多降低两个数量级，且不需新增 measurements。后者是已有记录的再分析，不是新增实时硬件恢复演示。"
+        ],
+        "techniques": [
+          "syndrome-distribution reweighting、Rényi coherent information、finite-data resampling 与可选 postselection。"
+        ],
+        "assumptions": [
+          "需要从有限记录估计 syndrome statistics。改变权重或筛选分布时，必须说明最终指标、normalization、有效样本数及成功/接受率。"
+        ],
+        "limitations": [
+          "摘要未给权重指数、threshold 数值、finite-data estimator variance、postselection rate 或计算成本。无法确认重权对任意 unknown logical inputs 的 operational fidelity 关系，未核查正文证明和未述假设。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接关联 syndrome 数据、logical fidelity 与信息论阈值；特别适合研究统计后处理能证明什么以及不能替代哪类物理恢复。"
+        ],
+        "follow_up": [
+          "读者建议：在同一原始 shots 下同时报告原分布 error rate、重权指标、effective sample size 和接受率，明确可操作任务。"
+        ],
+        "relevance_score": 96,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://api.crossref.org/works/10.1103/v3kk-rwk8",
+        "publication_significance": [
+          "以下是依据摘要的读者推断，不是 PRL 编辑或审稿人的实际理由。新意可能在于把 syndrome probability powers、Rényi coherent information 与 decoder-agnostic 数据重采样联系起来。",
+          "其针对的障碍是现有硬件物理错误率与 QEC threshold 的差距，以及不同 decoder 的性能瓶颈；摘要证据来自 surface-code 数值和已有实验记录再分析。",
+          "物理意义在于利用已收集 syndrome data 改善所定义的逻辑性能评估；是否对应无条件可操作的 memory fidelity，需要正文中的重权、postselection 和资源口径，不能仅凭摘要定论。",
+          "从适用范围与 PRL 定位作推断：连接信息论相变、QEC 和实验记录的机制可能具有跨 decoder 的广度；并非对该期刊实际录用原因的判断。",
+          "证据仅为正式 DOI Crossref abstract，无法充分评估 proof quality、prior-art comparisons、finite-data 稳健性和全部适用边界。"
+        ]
+      }
+    }
+  ]
+}
