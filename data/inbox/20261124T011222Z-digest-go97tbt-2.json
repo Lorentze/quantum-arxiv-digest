@@ -1,0 +1,345 @@
+{
+  "analyses": [
+    {
+      "id": "2611.26951",
+      "version": 1,
+      "analysis": {
+        "summary": "本文研究经典 distribution testing 的 interactive proofs，未建立量子态或量子测量访问联系。",
+        "problem": "如何调整验证任务，让 multiple provers 帮助 verifier 降低样本量。",
+        "setting": "multi-prover、zero-knowledge statistical-property verification，以 farness verification 为例。",
+        "main_results": [
+          "作者报告某些改写任务允许 constant-sample verifiers。"
+        ],
+        "techniques": [
+          "classical interactive proof systems。"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "constant samples 的主张针对交互式经典任务，不能转用为 quantum-state certification 的样本界。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "低相关，未满足当前 quantum-data learning 或认证模型。"
+        ],
+        "follow_up": [],
+        "relevance_score": 8,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.26951v1"
+      }
+    },
+    {
+      "id": "2611.26884",
+      "version": 1,
+      "analysis": {
+        "summary": "论文研究 Hamiltonian simulation 中 Trotter subterms 的排程，以 simultaneous diagonalization 和较高阶 decomposition 平衡电路深度与精度。",
+        "problem": "在固定 circuit complexity 下，子 Hamiltonians 的顺序可改变 Trotter error，如何设计较通用的排程。",
+        "setting": "结合 simultaneous diagonalization 与二阶或四阶 Trotter–Suzuki 启发的 strategies，在多种 Hamiltonian instances 上模拟。",
+        "main_results": [
+          "摘要称相对既有方法有系统性数值改善，但未给统一改善倍数或渐近深度界。"
+        ],
+        "techniques": [
+          "commuting structure 的 simultaneous diagonalization 与 decomposition ordering。"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "摘要没有全部实例、误差范数、门集、routing 或 classical scheduling cost；经验改善不构成任意 Hamiltonian 的性能支配。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 circuit depth/accuracy tradeoff 有方法联系，相关性中等，不能据此声称几种资源同时最优。"
+        ],
+        "follow_up": [
+          "读者建议：固定 diamond/observable error 后，分别比较 gate count、depth 与 scheduling 时间。"
+        ],
+        "relevance_score": 72,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.26884v1"
+      }
+    },
+    {
+      "id": "2610.40628",
+      "version": 1,
+      "analysis": {
+        "summary": "作者研究 free-fermion ground states 能否由 exponentially local linear jump operators 的 quadratic Lindbladian 制备。结果刻画 locality 的存在性障碍，不是通用快速混合定理。",
+        "problem": "局域 Hamiltonian 的基态是否总能通过局域耗散生成，谱结构会带来什么限制。",
+        "setting": "free fermions、quadratic Lindbladian、linear jumps；translation-invariant 情形用 momentum-space analyticity 分析 exponentially local 操作。",
+        "main_results": [
+          "作者给出 jump operators 存在的完整 spectral criterion。sign-changing Fermi-level crossings 排除这种局域制备；在 1D 是完整障碍，高维还可有其他障碍。",
+          "即使无平移对称，short-range ground-state correlations 也足以支持 local dissipative preparation，但不是必要条件。"
+        ],
+        "techniques": [
+          "Fourier correspondence、谱的解析性和 quadratic-band-touching examples。"
+        ],
+        "assumptions": [
+          "必须保留 free/quadratic/linear 的限制；locality 是 exponential spatial decay，不能改写为严格 finite range。"
+        ],
+        "limitations": [
+          "摘要未给 mixing gap、收敛时间、unique steady-state 条件和 finite-system preparation fidelity；存在性不等于高效实现。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 locality-constrained state preparation 及 fermionic information tools 有具体联系。"
+        ],
+        "follow_up": [
+          "读者建议：在同一 target family 上同时比较 jump locality、Liouvillian gap 和 finite-precision preparation time。"
+        ],
+        "relevance_score": 79,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.40628v1"
+      }
+    },
+    {
+      "id": "2610.40592",
+      "version": 1,
+      "analysis": {
+        "summary": "本文刻画高维 translation-invariant CSS codes 何时可经 finite-depth local CSS-preserving Clifford circuit 解耦为 higher-form toric-code stacks。关键是各 excitation layers 之间仍可能有 gluing，平移在每层分别平凡并不充分。",
+        "problem": "二维的 anyon translation criterion 能否直接推广到高维，怎样显式构造相应 Clifford 解耦。",
+        "setting": "prime p 的 p-ary translation-invariant CSS code，允许添加 ancillas，要求电路与某个 superlattice translations 对易；高维激发按维数分层。",
+        "main_results": [
+          "coarse-graining 后，各层 translations 平凡且 gluing 消失，当且仅当可在所选 superlattice decouple。",
+          "若每层 excitation types 有限且共有 m 个非零 layers，在逐层 translations 已平凡后，每方向再 coarse-grain 因子 p^(m−1) 可移除 gluing。",
+          "给出 SUM/qudit-CNOT 与 SWAP 电路的显式构造算法，并联系有限 torus 上 maximal logical-qudit count。"
+        ],
+        "techniques": [
+          "superselection layers、coarse-graining 与 CSS-preserving Clifford transformations。"
+        ],
+        "assumptions": [
+          "有限 excitation types、prime p、指定平移和 ancilla allowance 均影响定理。"
+        ],
+        "limitations": [
+          "摘要未给实际门数、depth 常数、ancilla 数或 noisy decoding 表现；finite depth 是固定 family/coarse-graining 模型中的陈述。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接连接 stabilizer-code structure、local Clifford resources 与逻辑信息组织。"
+        ],
+        "follow_up": [
+          "读者建议：对具体 code 计算 gluing 与 coarse-graining 开销，再检查解耦对 fault distance 和 logical gate locality 的影响。"
+        ],
+        "relevance_score": 89,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.40592v1"
+      }
+    },
+    {
+      "id": "2610.40567",
+      "version": 1,
+      "analysis": {
+        "summary": "论文研究 coherent Z rotations 后 syndrome measurement 的 surface code，出现不能用单纯“可纠正/不可纠正”描述的 partially decodable critical phase。其逻辑恢复设置与 dual paramagnet mixed-state order 通过 Wegner duality 联系。",
+        "problem": "coherent errors 是否产生 Pauli-dephasing 模型无法表达的中间信息恢复行为。",
+        "setting": "triangular-lattice surface code、single-qubit Pauli-Z rotations 后测 syndrome；对偶为 Z2 paramagnet 的 strongly symmetric decoherence。",
+        "main_results": [
+          "作者称增大 rotation angle 会从 decodable phase 进入 partially decodable critical phase。optimal Pauli-decoding fidelity 在 thermodynamic limit 趋于依赖 aspect ratio 的 universal function；对偶 fidelity correlator 有 power-law 衰减。",
+          "replica n→1 的 SO(n) sigma-model predictions 获大规模数值支持，并论证该 algebraic SWSSB phase 不能由相应 Pauli-dephasing channel 产生。"
+        ],
+        "techniques": [
+          "Wegner duality、replica nonlinear sigma model、twist correlations 与数值仿真。"
+        ],
+        "assumptions": [
+          "optimal Pauli decoder、coherent rotation noise、几何与热力学极限是关键限定。"
+        ],
+        "limitations": [
+          "摘要未给临界角度、具体 universal function、finite-size error 或 general CPTP recovery 的最优性；不能把 Pauli decoder 结论直接套到任意 recovery。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接涉及 coherent noise 与 syndrome-based logical fidelity，以及 Pauli approximation 丢失的量子结构。"
+        ],
+        "follow_up": [
+          "读者建议：在固定 finite patch 比较 coherent 与 Pauli-twirled noise，并明确 observable、decoder class 和 aspect ratio。"
+        ],
+        "relevance_score": 90,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.40567v1"
+      }
+    },
+    {
+      "id": "2610.40561",
+      "version": 1,
+      "analysis": {
+        "summary": "VULCAN 通过 VDBF 产生 ansatz layers，再以 grow/compress 和 overlap measurements 减少 VQE 操作选择的测量代价。收录依据是明确的 measurement-cost 问题，但摘要结果仍为特定化学实例的 emulation。",
+        "problem": "ADAPT 类方法为每次 operator selection 测 Hamiltonian gradients 的成本较高，能否用其他构造与较小 operator pool 替代。",
+        "setting": "layered VQE，VDBF 产生 operators，minimal complete pool 与 dominant-determinant subspace projection；最高 32 logical-qubit emulation。",
+        "main_results": [
+          "pool 相对 QEB 小 4–12 倍；hydrogen chains、BeH2、H2O 的 chemical accuracy 使用 batched ADAPT-VQE 测量成本的 5–20%。",
+          "32-qubit C3H6 的成功还结合 GPU stochastic ENPT2 classical correction，不应把 corrected result 全归于量子态本身。"
+        ],
+        "techniques": [
+          "Hamiltonian-gradient-free layer addition、state-overlap-based compression 与经典 perturbative post-processing。"
+        ],
+        "assumptions": [
+          "所称“消除 gradients”针对 Hamiltonian operator-selection gradients，不代表没有 measurement 或 classical optimization。"
+        ],
+        "limitations": [
+          "摘要未给统一 shots/error-confidence、Hamiltonian term 测量策略和 classical post-processing 费用；实例比值不是普适复杂度优势。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与化学测量资源及 adaptive ansatz 深度有具体联系，相关性中等。"
+        ],
+        "follow_up": [
+          "读者建议：在同一 chemical-accuracy confidence、shots 和经典计算预算下重算总成本，并拆开 quantum energy 与 ENPT2 contribution。"
+        ],
+        "relevance_score": 77,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.40561v1"
+      }
+    },
+    {
+      "id": "2610.40490",
+      "version": 1,
+      "analysis": {
+        "summary": "Triage 用 syndrome consistency 自适应分配 neural decoding 计算：先快预测，再为残余违反增加迭代，只对少数难例触发 diversification。其神经网络服务于 logical QEC，符合当前范围。",
+        "problem": "超高码率 qLDPC 的准确 algorithmic decoders 往往 latency 高，单次 neural bitwise prediction 又可能不满足 syndrome。",
+        "setting": "lifted-product 与 Kasai codes，约千 physical data qubits 编码数百 logical qubits，rates 可超过 1/2；评估 neural triage decoding。",
+        "main_results": [
+          "作者称 accuracy 接近所比较 near-optimal algorithmic decoders，latency 减少约 1–2 个数量级。",
+          "对 exact bitwise marginal decoder 的分析揭示 distance-independent syndrome-inconsistent error floor；并评估 mismatched error priors 下鲁棒性。"
+        ],
+        "techniques": [
+          "local neural message passing、残余 syndrome refinement 与罕见难例的 diversification。"
+        ],
+        "assumptions": [
+          "syndrome-consistent correction 不一定是逻辑正确 correction；后者仍需对 logical class 检验。"
+        ],
+        "limitations": [
+          "摘要未给完整码表、物理噪声、硬件、latency tail 和 training cost，near-optimal 是与指定基线比较，不是一般最优证明。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接关联 qLDPC recovery、syndrome data 与自适应计算资源。"
+        ],
+        "follow_up": [
+          "读者建议：固定 cycle deadline 比较 worst-case latency、难例连续出现的 backlog 和实际 logical failure。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.40490v1"
+      }
+    },
+    {
+      "id": "2610.40361",
+      "version": 1,
+      "analysis": {
+        "summary": "论文以 quantum Dobrushin-style condition 研究高温 Gibbs sampler 的 contraction，允许 arbitrary interaction graphs，包括 all-to-all。logarithmic mixing 的温度条件按每站点总耦合强度控制，不能忽略系统规模对该总强度的影响。",
+        "problem": "无几何 locality 时，怎样控制局部扰动在全系统中的传播并证明 Gibbs preparation 的快速收敛。",
+        "setting": "two-local Hamiltonians，Lindblad dynamics 满足 KMS detailed balance；用 quantum Wasserstein-1 距离估计高温 contraction。",
+        "main_results": [
+          "摘要称无需 spatial geometry 或 graph-growth 假设，得到对所有 initial states 一致的 mixing time，随系统大小和 inverse error tolerance 对数增长。"
+        ],
+        "techniques": [
+          "quantum Dobrushin influence condition 与 Wasserstein contraction。"
+        ],
+        "assumptions": [
+          "high-temperature regime 由 maximum total interaction strength per site 控制；detailed balance 和所选 Lindbladian 不能省略。"
+        ],
+        "limitations": [
+          "摘要未给显式阈值、mixing 的最终误差范数及实现每单位 Lindblad time 的 gates；不能把 log mixing 自动等同 log-depth digital sampler。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 Gibbs-state preparation、all-to-all 信息传播和资源界有具体联系。"
+        ],
+        "follow_up": [
+          "读者建议：对 dense graphs 显式代入 coupling normalization，区分物理温度、mixing time 与数字模拟成本。"
+        ],
+        "relevance_score": 84,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.40361v1"
+      }
+    },
+    {
+      "id": "2610.40358",
+      "version": 1,
+      "analysis": {
+        "summary": "作者以 state discrimination 与 entanglement recovery 的 operational duality 构造 unassisted quantum communication codes，decoder 使用 Petz recovery map。其 finite-blocklength error bounds 以 Petz–Rényi coherent information 表示。",
+        "problem": "如何从区分任务直接得到有限次数 noisy channel communication 的可实现恢复，而不只给 asymptotic rate。",
+        "setting": "无外部辅助的 noisy quantum channel，构造 entanglement-generation codes，覆盖每个 channel-use number。",
+        "main_results": [
+          "作者给显式 Petz decoders 与任意 blocklength 的 error bounds；product sources 在低于 coherent information 的 rates 下得到 exponential error decay。"
+        ],
+        "techniques": [
+          "state discrimination/recovery duality 与 Petz maps。"
+        ],
+        "assumptions": [
+          "product-source 情形与一般 finite-use bound 的适用条件需分开，rate 必须在所述阈值以下。"
+        ],
+        "limitations": [
+          "摘要没有 error exponent 的完整表达、Rényi order 范围或 decoder gate complexity；显式数学 map 不保证高效 physical implementation。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接连接 decoupling/recovery、信息获取与 finite-blocklength quantum communication。"
+        ],
+        "follow_up": [
+          "读者建议：比较同一 error tolerance 下 Petz decoder 与 decoupling-based construction，并计入 recovery implementation 的 locality。"
+        ],
+        "relevance_score": 91,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.40358v1"
+      }
+    },
+    {
+      "id": "2610.40329",
+      "version": 1,
+      "analysis": {
+        "summary": "作者在 cryogenic Cs atom array 演示 universal gate set，并报告 raw two-qubit gate fidelity 和误差模型。收录的具体联系是 gate characterization 与 correlated-error 来源，不能把预计进一步改善写成已经实现。",
+        "problem": "Rydberg blackbody transitions 会缩短 lifetime 并产生 contaminant correlated errors，低温抑制这些过程后能否实现高质量 universal gates。",
+        "setting": "133Cs tweezer array；single-photon ground-to-Rydberg-P coupling，Rabi frequency 2π×4.3 MHz。",
+        "main_results": [
+          "single-qubit gate fidelity 99.970(2)%，raw entangling-gate fidelity 99.76(8)%。括号误差依作者记法保留。",
+          "作者称测量值与 atomic-motion-dominated model 一致，Rydberg-decay 的 fundamental error contribution 低于 3×10⁻⁴。"
+        ],
+        "techniques": [
+          "低温抑制 blackbody transitions、直接单光子 excitation，以及 gate-error model comparison。"
+        ],
+        "assumptions": [
+          "raw fidelity 的 SPAM 处理与估计协议需查正文；decay contribution 与 total gate infidelity 不同。"
+        ],
+        "limitations": [
+          "摘要未说明是 average/entanglement fidelity、完整 confidence convention、shots 或 SPAM assumptions；不能自行为 raw 数值去偏。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与具体 gate certification 和噪声归因有联系，硬件优势依 benchmark assumptions 评估。"
+        ],
+        "follow_up": [
+          "读者建议：核查 fidelity 定义与 SPAM correction，并比较同一协议下室温/低温的 correlated-error tail。"
+        ],
+        "relevance_score": 78,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-24T01:11:37Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.40329v1"
+      }
+    }
+  ]
+}
