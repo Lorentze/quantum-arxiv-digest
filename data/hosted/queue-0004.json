@@ -4,6 +4,85 @@
       "kind": "analysis",
       "paper": {
         "doi": "",
+        "id": "2610.28737",
+        "version": 1,
+        "title": "Local Clifford equivalence to CSS codes: Polynomial-time classification and conversion",
+        "authors": [
+          "Mingyuan Wang",
+          "Stefan Krastanov"
+        ],
+        "abstract": "Calderbank--Shor--Steane (CSS) codes support decoding and fault-tolerant logical operations through separate pure $X$ and pure $Z$ stabilizer checks. Generator choices and single-qubit Clifford transformations can obscure this structure. We give a deterministic polynomial-time algorithm that decides whether an arbitrary stabilizer code is locally Clifford-equivalent to a CSS code and constructs the required transformation and CSS checks whenever such a form exists. For $m$ possibly redundant generator rows on $n$ qubits, the algorithm uses $O(mn^2+n^4)$ binary field operations. We reduce the problem to affine linear systems by characterizing local projectors that preserve the span of the binary stabilizer labels. The conversion preserves code parameters and check sparsity for quantum low-density parity-check (qLDPC) codes. We demonstrate CSS recovery and decoder reuse and resolve previously open LC-to-CSS classification questions for published code constructions. For graph states, LC-to-CSS equivalence corresponds to the existence of a bipartite graph in the local-complementation orbit. We derive a necessary-and-sufficient adjacency-matrix criterion for this property and construct such a graph whenever one exists. Our algorithm makes CSS decoding and fault-tolerant constructions accessible throughout the local Clifford equivalence classes of CSS codes.",
+        "url": "https://arxiv.org/abs/2610.28737",
+        "pdf_url": "https://arxiv.org/pdf/2610.28737v1",
+        "published": "2026-10-20T18:00:03Z",
+        "updated": "2026-10-20T18:00:03Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 6,
+        "topics": [
+          "logical_qec",
+          "magic_stabilizer"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "qLDPC"
+          ],
+          "magic_stabilizer": [
+            "stabilizer"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-22T04:56:38Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.28596",
+        "version": 1,
+        "title": "Entanglement Distribution in Quantum Switch Networks: Memory Limits and Achievability",
+        "authors": [
+          "Lei Hu",
+          "Alptug Aytekin",
+          "Stavros Mitrolaris",
+          "Mohamed Nomeir",
+          "Subhankar Banerjee",
+          "Sennur Ulukus",
+          "Saikat Guha"
+        ],
+        "abstract": "We study the minimum persistent memory required to distribute a graph state through a quantum switch. Specifically, consider a central switch that assists $n$ remote users in distributing a graph state, using independently generated user-switch Bell pairs. Since Bell-pair generation is probabilistic, different links generally succeed at different times. When a Bell-pair is generated, the qubits may need to be stored in memory while waiting for other links to succeed. Recently, new protocols have been proposed to reduce this storage overhead by processing and releasing some switch qubits before all Bell links are available. However, these protocols do not characterize the minimum persistent switch memory required at each stage. Moreover, the local-cover method in the state-of-the-art Piecemaker protocol is computationally expensive for general target graphs. In this work, we characterize the minimum persistent switch memory required after any subset of users' Bell links are generated and processed. We then develop an online stabilizer-transition protocol that attains this limit, which can be implemented in polynomial time in the number of qubits $n$. Remarkably, this optimal protocol can provide substantial memory reductions over existing heuristic approaches. In particular, for the path graph $P_n$ over $n$ users, Piecemaker protocol requires at least $\\lfloor n/2\\rfloor$ qubits of peak persistent memory for \\textit{every Bell-links generation order}, whereas under the order $(1,2,\\ldots,n)$, our protocol requires only one persistent switch qubit. Finally, the same stabilizer-transition framework also provides a direct forward construction for sequential graph-state generation using the minimum number of quantum emitters, equal to the maximum of the height function.",
+        "url": "https://arxiv.org/abs/2610.28596",
+        "pdf_url": "https://arxiv.org/pdf/2610.28596v1",
+        "published": "2026-10-20T17:46:05Z",
+        "updated": "2026-10-20T17:46:05Z",
+        "categories": [
+          "cs.IT",
+          "cs.NI",
+          "quant-ph"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "magic_stabilizer"
+        ],
+        "keyword_matches": {
+          "magic_stabilizer": [
+            "stabilizer"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-21T04:56:40Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
         "id": "2610.28581",
         "version": 1,
         "title": "Birthday Estimators Are Uniformly Optimal for Renyi Entropy",
@@ -596,53 +675,6 @@
           "arxiv"
         ],
         "first_seen_at": "2026-10-21T04:56:40Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "id": "doi:10.1103/v3kk-rwk8",
-        "version": 1,
-        "title": "Syndrome resampling enhances quantum error correction thresholds",
-        "authors": [
-          "Luis Colmenarez",
-          "Áron Márton",
-          "Markus Müller"
-        ],
-        "abstract": "",
-        "abstract_basis": "missing",
-        "abstract_source_url": "https://api.crossref.org/journals/1079-7114/works?filter=from-online-pub-date%3A2026-10-18%2Cuntil-online-pub-date%3A2026-10-21%2Ctype%3Ajournal-article&rows=1000&sort=published-online&order=desc",
-        "url": "https://journals.aps.org/prl/abstract/10.1103/v3kk-rwk8",
-        "pdf_url": "",
-        "published": "2026-10-20",
-        "updated": "2026-10-20",
-        "categories": [],
-        "sources": [
-          "prl"
-        ],
-        "publication": {
-          "journal_id": "prl",
-          "journal": "Physical Review Letters",
-          "doi": "10.1103/v3kk-rwk8",
-          "url": "https://journals.aps.org/prl/abstract/10.1103/v3kk-rwk8",
-          "published": "2026-10-20",
-          "date_basis": "crossref_published-online"
-        },
-        "metadata_warnings": [
-          "Journal endpoint returned HTTP 403; skipped without retry"
-        ],
-        "keyword_score": 4,
-        "topics": [
-          "logical_qec"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "quantum error correction",
-            "syndrome"
-          ]
-        },
-        "first_seen_at": "2026-10-21T04:56:40Z",
-        "doi": "10.1103/v3kk-rwk8"
       }
     },
     {
@@ -1591,79 +1623,6 @@
         "keyword_matches": {
           "quantum_learning": [
             "sample complexity"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-20T04:57:05Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.24582",
-        "version": 1,
-        "title": "Concatenated continuous-drive protection of exchange-based spin-qubit gates",
-        "authors": [
-          "Takuma Kuno",
-          "Takeru Utsugi",
-          "Andrew J. Ramsay",
-          "Hideo Arimoto",
-          "Tetsuo Kodera",
-          "Hiroyuki Mizuno"
-        ],
-        "abstract": "Exchange-based two-qubit gates in semiconductor spin qubits are sensitive to low-frequency detuning noise and control errors. Here, we extend concatenated continuous driving (CCD), implemented by phase modulation of a global microwave drive, to exchange-based SWAP and $\\sqrt{\\mathrm{SWAP}}$ operations between double-dressed spin qubits and investigate its effectiveness for protecting two-qubit gates. We find that CCD retains strong protection against quasistatic common-mode detuning errors while substantially improving robustness against Rabi-frequency errors and qubit-to-qubit Rabi-frequency mismatch compared with conventional continuous dressing. By contrast, the gate fidelity is impacted by differential detuning errors. By modeling partially correlated quasistatic detuning noise, we further show that the noise-averaged gate fidelity depends strongly on the spatial correlation of the qubit-frequency fluctuations, with positive correlations enhancing CCD protection by suppressing the differential-noise component. These results identify the symmetry and spatial correlation of qubit-frequency noise as key factors governing continuous-drive protection in coupled spin-qubit systems.",
-        "url": "https://arxiv.org/abs/2610.24582",
-        "pdf_url": "https://arxiv.org/pdf/2610.24582v1",
-        "published": "2026-10-17T09:24:32Z",
-        "updated": "2026-10-17T09:24:32Z",
-        "categories": [
-          "quant-ph",
-          "cond-mat.mes-hall"
-        ],
-        "keyword_score": 4,
-        "topics": [
-          "benchmarking"
-        ],
-        "keyword_matches": {
-          "benchmarking": [
-            "gate fidelity"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-20T04:57:05Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.24503",
-        "version": 1,
-        "title": "Logical-Space Theory of Ordered-Statistics Decoding for Quantum LDPC Codes",
-        "authors": [
-          "Yun Shang"
-        ],
-        "abstract": "Quantum decoding succeeds when a correction matches the logical class of the error, whereas ordered-statistics decoding (OSD) searches a finite list of physical corrections. We connect these spaces through a rank-$k$ logical-signature map $M_{\\rm log}:\\mathbb F_2^q\\to\\mathbb F_2^k$. For fixed, error-independent orderings it yields the exact logical-signature distribution, the OSD-0 logical error rate, and the logical-class coverage of any fixed list. For minimum-cost list decoding we prove $P_L=P_{\\rm miss}+P_{\\rm sel}$, separating absent-class from wrong-selection failures. Hypergraph-product and bivariate-bicycle codes are consistent with the coverage predictions. On the $[\\![144,12,12]\\!]$ gross code, 672 coverage-aware candidates outperform 899 combination-sweep candidates (paired McNemar $p=0.013$), while two lists with identical logical coverage give $P_L=11.30\\%$ and $3.78\\%$; the signature-based coverage compression persists across 30 random column orderings. Logical coverage and within-class representative selection are therefore complementary resources that candidate count alone does not capture. The framework guides OSD list construction and compression by identifying coverage requirements and distinguishing coverage losses from failures of representative selection.",
-        "url": "https://arxiv.org/abs/2610.24503",
-        "pdf_url": "https://arxiv.org/pdf/2610.24503v1",
-        "published": "2026-10-17T06:57:17Z",
-        "updated": "2026-10-17T06:57:17Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 4,
-        "topics": [
-          "logical_qec"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "logical error",
-            "quantum LDPC"
           ]
         },
         "sources": [
