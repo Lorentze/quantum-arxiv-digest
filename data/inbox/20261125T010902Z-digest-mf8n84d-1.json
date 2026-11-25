@@ -1,0 +1,375 @@
+{
+  "analyses": [
+    {
+      "id": "2611.31224",
+      "version": 1,
+      "analysis": {
+        "summary": "本文在 Watts–Strogatz small-world networks 上运行 monitored random Clifford circuits，以 rewiring、measurement rate 和演化层数调控码的 rate 与保护能力。重要限制是主诊断为 mean contiguous distance，而不是对所有错误支持取最小的真实 distance；正文还把一个“层”定义为一批依次执行的随机门，不能直接当作无冲突并行硬件深度。",
+        "problem": "局域编码受到信息传播限制，但直接使用固定非局域码又不易适配多样 connectivity。能否从可用 graph 出发，通过随机门和测量生成参数可调的 quantum codes，并使 protected information 在较短演化中形成。",
+        "setting": "从 degree-four ring 出发以概率 β 重连边，保留 2n 边且排除 self-loops 和重复边。每层从边中独立抽 n/2 个 two-qubit Clifford gates 并顺序施加，之后每 qubit 以概率 p 做 Z measurement。码依赖 measurement record，logical qubit 数由与 reference 的剩余纠缠给出。",
+        "main_results": [
+          "fully rewired β=1 时，作者报告 logarithmic-layer evolution 可产生 finite-rate codes 和 extensive mean contiguous distance；其 encoding time 随 ln n 增长，相比所测 1D ring 的 polynomial growth 更快。",
+          "dcont 是原始 ring 上最短 exposed arc 的长度，满足 dcont≥d。因此平均 dcont 广延不能直接证明一般 adversarial distance 广延；文中另以 i.i.d. random erasure failure 检查任意形状的随机损失。",
+          "rewiring 还提高 purification transition 的 measurement rate 并改变 critical exponents；这些是 ensemble/simulation 的相变结果，不是针对任意有限 realization 的无失败保证。"
+        ],
+        "techniques": [
+          "用 stabilizer tableaux 跟踪 monitored Clifford dynamics。若 I(A:R)=0，则子区 A 不含 logical information，其 erasure 可由其余输出加 measurement record 恢复。",
+          "通过 pinned/depinned domain-wall tension 提出 protected-region 增强的统计力学机制，并扫描 β、p、T 的 rate–distance tradeoff。"
+        ],
+        "assumptions": [
+          "long-range graph connectivity 是资源，必须计入真实门调度、移动或路由。",
+          "code conditioning 所需 classical records 需保存；测量减少 surviving logical rate，不能视为在固定 rate 下只增加保护。"
+        ],
+        "limitations": [
+          "研究侧重平均 contiguous distance 和 finite-size data，不能据此宣称每个 realization 都达到最优 rate–distance 或 erasure capacity。",
+          "文中 layer 的随机边可共享 vertices，不能将 T=O(log n) 不加调度地改成 1D/2D nearest-neighbor parallel circuit depth。",
+          "本报告复核 model、diagnostics 与主要解释，未独立拟合 finite-size scaling 或所有 critical exponents，也未得到 noisy syndrome extraction 的 fault-tolerance guarantee。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接关联 shallow random-Clifford encoding、decoupling 与 connectivity tradeoff；尤其适合比较平均 erasure protection 和 worst-case code distance。"
+        ],
+        "follow_up": [
+          "读者建议：在统一并行调度模型下重算 depth，并同时报告 finite-rate 条件、真实 distance 下界和固定 erasure rate 的 failure probability。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.31224v1"
+      }
+    },
+    {
+      "id": "2611.31186",
+      "version": 1,
+      "analysis": {
+        "summary": "论文用 single-copy Pauli measurements 搜索未知态的最大 stabilizer overlap。算法在 stabilizer-neighbor graph 上自引导移动，复用 Pauli outcomes，并在估计 fidelity 的 lower confidence bound 超过 cos²(π/8) 时给出 unique global optimum 证书。低于阈值则只是所找到候选的 overlap 下界，不能把全部数值成功解释为一般高效求全局最优。",
+        "problem": "stabilizer states 有 2^{O(n²)} 个，直接优化 FSTAB 很难。如何不做 two-copy Bell measurements，用易实现的单份 Pauli readout 同时获取许多候选信息，并处理从随机初态搜索的低信号问题。",
+        "setting": "FSTAB(ρ)=maxφ∈Stab ⟨φ|ρ|φ⟩，允许未知 pure 或 mixed ρ。搜索保留当前 stabilizer candidate，主要在与其 overlap 为 1/2 的 neighbors 中挑选更好的方向。DFE 在当前 stabilizer group 均匀抽 Pauli strings，每个 fresh copy 测一次。",
+        "main_results": [
+          "一次 DFE 可估整个 stabilizer basis 的 fidelities，邻居共享一半 Pauli strings，Pauli store 可复用已有估计；测完整 product-Pauli basis 的一份结果还可提供对应 substrings 的 outcomes。",
+          "若最终 fresh-data lower confidence bound>cos²(π/8)≈0.854，输出为 unique global optimum；未越阈值时不获得同样全局证书，局部搜索存在可卡住的 mixed-state 例子。",
+          "up to 14 qubits 的四类已知最优态数值中，作者报告所有 runs 达最优且无 false certificates；同时明确每 iteration shots 随 n 增加，不能只看 iterations 很少而声称总样本近常数。"
+        ],
+        "techniques": [
+          "利用 neighboring stabilizer groups 与 prefix search 减少候选枚举，局部 substrings 构造 restart point。",
+          "Pauli store 用于选择搜索方向；由于 adaptively chosen queries 依赖先前 outcomes，报告的最终 fidelity 始终另用 fresh copies 估计，避免把复用导致的选择效应混入最终置信证书。"
+        ],
+        "assumptions": [
+          "可信 Pauli readout、fresh copies 及指定 confidence procedure 是必要条件。",
+          "pure states 的 FSTAB<1 可检测 non-stabilizerness，但 mixed stabilizer mixtures 也可能 FSTAB<1，不能直接当作混合态 magic witness。"
+        ],
+        "limitations": [
+          "store 的 shot 节省在小 n 更明显，group dimension 增大而固定 N 时 reuse fraction 下降；可缓存和搜索的 classical cost 也需计费。",
+          "文中 polynomial classical cost 的表述有限定 circuit regime，pseudomagic hardness 并未被算法消除。",
+          "本报告未审计全部 prefix-search proof、restart 分析和 finite-confidence allocation，也未建立 drift/SPAM 鲁棒保证。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "高度对应 single-copy quantum learning、Pauli measurement access、magic/stabilizer structure 和 total sample complexity。"
+        ],
+        "follow_up": [
+          "读者建议：固定 additive error/confidence 后分开计搜索 shots 与最终认证 shots，测试 reuse 是否减少总 copies，而非只减少 settings 或 iterations。"
+        ],
+        "relevance_score": 98,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.31186v1"
+      }
+    },
+    {
+      "id": "2611.30876",
+      "version": 1,
+      "analysis": {
+        "summary": "本文给未知 n-qubit unitary dynamics 的多时关联测量建立 single-ancilla query advantage。一个能跨 queries 保持相干的额外 qubit 用于干涉两条 dynamical trajectories，使同一随机快照可估计一族 nested correlators；对照组仍可任意 adaptive mid-circuit control 和无限 coherence time，但不能保留 native system 外的量子记忆。",
+        "problem": "如何证明小 probe 带来的收益不只是相较弱测量方案，而是真正超过所有仅访问 native n-qubit system 的策略；还需区分实验次数、每次 evolution length 和总 oracle queries。",
+        "setting": "unknown U 仅作用于 native n-qubit system。probe-based model 另有一 ancillary qubit，已知 observables 为 unitary（如 Pauli），以受 probe 控制的相互作用干涉随机选取的互补 trajectories，最后分开测量 system/probe。query complexity 计所有 runs 内 U 的总调用，不是 shots 本身。",
+        "main_results": [
+          "all 2^k nested correlators、k+1 times、总演化 T，每项 additive error ε 且 high probability 的 probe upper bound 为 O(T ε⁻² k)。下界在 T=k≤n/5、constant ε 的 system-only model 为 Ω(k2^k)，上界精度依赖和下界常精度限定须分开。",
+          "单个 ordered multi-time correlator 的 upper bound 为 O(T ε⁻²)，同样 T=k≤n/5 时 ancilla-free lower bound Ω(2^k)。T=k 的 O(k) 与 Ω(2^k) 是 target calls，而非 O(1) 与 exponential shots 的同义表达。",
+          "作者另称若每 run 至多 L<k coherent queries，即使有无限 ancillary memory 与 adaptive control，总 queries 仍为 2^{Ω(n)}。这是指定 hard instances 和 coherent-query/reset 模型中的时间下界，不是任意物理 memory 的普遍退相干定律。"
+        ],
+        "techniques": [
+          "将 nested commutator/anticommutator family 写成 complementary-path overlaps 的 Walsh–Hadamard transform。随机 trajectory snapshot 与目标 σ 无关，从而实现多目标 measurement compatibility。",
+          "下界把未知 dynamics 中隐藏的相对 phase 映射成难区分 ensemble，限制 system-only records 可获得的信息。"
+        ],
+        "assumptions": [
+          "操作允许已知 probe–system controlled observables，而 U 自身仍按规定 forward queries；不能擅自加入 controlled-U 或 inverse oracle。",
+          "native-system-only baseline 不保留额外 quantum memory；若改变空间或 coherent-query 权限，不能直接沿用下界。"
+        ],
+        "limitations": [
+          "同时估计指数多项并不意味着把指数长的结果列表以 polynomial classical time 完整打印；query/shot 节省与 classical post-processing/output size 分开。",
+          "本报告复核 operational models、informal theorems 与机制，未审计附录 hard-instance reductions、精确 failure-probability logs 或实验可实现控制成本。",
+          "数值 probe-signal 演示不等于完整量子优势硬件实验，也不直接解决 fixed noisy gate 的 SPAM-robust fidelity certification。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接关联 quantum-data information access、最小 ancillary memory、coherence timing 和总 target-call separation。"
+        ],
+        "follow_up": [
+          "读者建议：把 probe control 和噪声列为显式资源，在固定 ε/confidence 下比较总 shots、每 run sequence length 与 U calls，再测试更受限 local observables 的实例。"
+        ],
+        "relevance_score": 98,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.30876v1"
+      }
+    },
+    {
+      "id": "2611.29845",
+      "version": 1,
+      "analysis": {
+        "summary": "本文把 quantum-memory advantage 放入 tampered quantum seals 的归因任务，并明确优势依赖 verifier 能否跨 items 做 joint operations、是否保留 untouched references，以及扰动是否留下可学习 fingerprint。指数样本分离继承既有 Pauli-channel-learning lower bound，本文新增的是取证任务和部署资源条件，不能当作对所有替代方案的新普适下界。",
+        "problem": "量子封签的 disturbance detection 只回答是否被改动，无法自动确定受影响单元、扰动机制是否相同及何时切换。需要从不受控到达记录学习 Pauli fingerprint，同时说明何种数据根本不足以归因。",
+        "setting": "每个 cell 为 Bell pair 的一半，另一半由 verifier 存于 protected quantum memory（vault）；secret Pauli frame 后用 Bell readout 得到 channel samples。主要 fingerprint 是隐藏 Pauli parity 的 bias，参数含支撑、符号和强度 ε。归因只到 fingerprint equivalence，不能区分留下相同指纹的不同物理装置。",
+        "main_results": [
+          "对每次只探测一 unit、不能耦合两 units、没有 untouched reference 的 per-unit verifiers，作者通过已知 ε≤1/3 的 parity-learning lower bound 得到渐近指数分离。允许 self-referencing、in-seal reference 或不同攻击结构后不保证指数优势。",
+          "十个受影响 cells 的所述比较中，正文给 nonadaptive stabilizer probes 的下界/上界比至少 134–143，数值观察 936–1105；另一个 implemented self-referencing strategy 的模拟差距约 2/ε²。不能把这些不同资源类的数字合成统一收益。",
+          "报告定位 tampering、学习 fingerprint 和检测到达顺序中的一次 switch，不承诺还原真实攻击时间顺序。incident linking 只做示范，switch detection 在所定义范围做数值评估。"
+        ],
+        "techniques": [
+          "secret Pauli frame 将模型转为 Pauli-channel learning，protected Bell references 提供直接采样，并用不同资源类的 coverage/Fano bounds 比较样本需求。",
+          "分离 detection/localization 与 attribution，超出支持范围时返回无法可靠识别的状态，而非强行作结论。"
+        ],
+        "assumptions": [
+          "完整报告限定 oblivious tool 触及少于一半 cells、不同 fingerprints 的一次切换和到达记录中的连续 tampered segment；不满足时需采用文中其他条件化任务。",
+          "fingerprint 不是任意攻击都会留下的稳定标记，文中明确简单随机 Pauli layer 可将其抹去。"
+        ],
+        "limitations": [
+          "untouched cells 可作内部 reference；若能跨两 units 联合操作，也可替代外部 memory。copying errors 还可能把 fingerprint 暴露给 reference-free probes，因此 memory advantage 不能仅按 ancilla 数推定。",
+          "本文所读摘要源码有未展开数值宏；本报告仅使用指定 HTML 正文已渲染的数字，不猜宏值。",
+          "本次未审计完整 reduction、全部 conditional decoders 和实验模拟；模拟 gain 不等于 optimality over entire self-referencing class，也不是物理实验。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接对应 quantum-data access、protected memory 与 total sample complexity，清楚展示改变 comparator 的 memory/measurement 权限会改变 separation。"
+        ],
+        "follow_up": [
+          "读者建议：对同一 fingerprint strength 和 confidence，分别固定 per-unit、joint-unit 和 protected-reference 权限，比较总 seal copies、vault coherence time 与 classical inference cost。"
+        ],
+        "relevance_score": 93,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.29845v1"
+      }
+    },
+    {
+      "id": "2611.31207",
+      "version": 1,
+      "analysis": {
+        "summary": "作者以带 tunable power 的 SDP 框架统一 pretty good measurements 与 Petz maps，研究显式近似量子操作的性能及其极限。",
+        "problem": "最优 measurement/recovery 求解昂贵，能否系统改进经典 Barnum–Knill 型平方性能保证。",
+        "setting": "广义 pretty-good operations；参数 power 可调，覆盖测量、恢复等任务；另研究 stabilizer codes under Pauli noise。",
+        "main_results": [
+          "作者称 powers 在大于 1 至 3 的范围有更强保证，并在 quadratic power 达峰。",
+          "对结构化 channels 且 maximally mixed inputs，大 power 的 recovery 趋向 maximum-likelihood decoder。"
+        ],
+        "techniques": [
+          "semidefinite optimization 与 power deformation 的 quantum operations。"
+        ],
+        "assumptions": [
+          "输入分布、performance metric 及 power 的允许范围需保持原定义。"
+        ],
+        "limitations": [
+          "摘要未给更强 bound 的完整函数、实现成本或收敛率，不能凭“趋向 MLD”推断高效实现最优解码。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接联系 logical recovery 与 state discrimination 的可计算近似。"
+        ],
+        "follow_up": [
+          "读者建议：对固定 Pauli channel 比较 power、logical fidelity 和恢复实施深度，区分数学显式 map 与电路效率。"
+        ],
+        "relevance_score": 92,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.31207v1"
+      }
+    },
+    {
+      "id": "2611.30884",
+      "version": 1,
+      "analysis": {
+        "summary": "论文通过 packing/covering 视角构造 nested binary codes 的 coherent erasure recovery，把 classical reconstruction 与 quantization 接到保相干的量子 cleanup。",
+        "problem": "丢失位置已知时，怎样在恢复 erased symbols 的同时保留任意逻辑叠加，并消除对 inaccessible erasure-environment branches 的依赖。",
+        "setting": "outer code 做 erasure reconstruction，inner code 做 erasure quantization；给两个 decoder architectures，均以 quantum erasure channel 为背景。",
+        "main_results": [
+          "Architecture I 不需要 stabilizer-syndrome measurements，将 peeling decoder、erasure quantizer 与 coherent reconstruction/cleanup 组合。",
+          "Architecture II 用 reversible ternary gates 直接运行 erasure BP，目标是恢复 erased symbols 且不扰动 unerased code states。",
+          "给 exact recovery 的 sufficient conditions，并用 Steane code 的 schedules 和 circuits 示范。"
+        ],
+        "techniques": [
+          "nested-code packing/covering、classical peeling/quantization 与 reversible coherent cleanup。"
+        ],
+        "assumptions": [
+          "erasure locations 与 coding conditions 须满足正文条件；exact recovery 不等于任意一般噪声纠正。"
+        ],
+        "limitations": [
+          "摘要没有 gate count、ancilla、ternary-gate 编译成本、对不完美 erasure flags 的鲁棒性或一般 family 的 threshold。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接关联 coherent logical recovery、量子 erasure information 与 measurement-free resources。"
+        ],
+        "follow_up": [
+          "读者建议：计入 cleanup workspace 和 ternary-gate 编译，比较与 syndrome-based recovery 的总时间及 residual entanglement。"
+        ],
+        "relevance_score": 91,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.30884v1"
+      }
+    },
+    {
+      "id": "2611.30789",
+      "version": 1,
+      "analysis": {
+        "summary": "本文为固定 encoding/readout 的量子 function approximator 给资源约束，将 coherence、imaginarity、entanglement 和 magic 分开。不是仅以分类 accuracy 经验宣称量子优势。",
+        "problem": "universal approximation 不说明逼近某个函数需要何种资源，trainable gates 与 encoding 自带的资源怎样分工。",
+        "setting": "one-qubit phase encoding 与 two-qubit models，使用 trainable gates 的 cumulative resource power；bounds 对任意 encoding depth 成立。",
+        "main_results": [
+          "coherence 约束函数 oscillation，imaginarity 约束 odd part，entanglement 约束离 product functions 的距离。",
+          "phase encoding 本身已有 non-Clifford resource。domain bounded away from zero 时，Clifford trainable gates 足以 uniform approximation，替代 unrestricted gates 的 encoding depth 仅多项式增于原 depth、inverse error 与 inverse distance to zero。"
+        ],
+        "techniques": [
+          "资源单调量对 function structure 的 bounds 与 Clifford replacement 构造。"
+        ],
+        "assumptions": [
+          "固定 encoding 和 readout；domain 与零点的距离不能省略。"
+        ],
+        "limitations": [
+          "摘要未给具体多项式阶数或一般多 qubit 结果；Clifford trainable 部分可行不表示整个模型 magic-free。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "具体联系 magic allocation 与 depth/expressivity tradeoff。"
+        ],
+        "follow_up": [
+          "读者建议：把 encoding 和 trainable layers 的非 Clifford 成本同时计入，比较固定总 magic/depth 下的 approximation error。"
+        ],
+        "relevance_score": 82,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.30789v1"
+      }
+    },
+    {
+      "id": "2611.30738",
+      "version": 1,
+      "analysis": {
+        "summary": "作者用 local complementations 搜索与目标 local-Clifford equivalent 的 graph states，以减少 CZ edges 和 maximum degree。收益是稳定子制备资源的实例优化，非通用最优性证明。",
+        "problem": "equivalent graph representations 能改变 preparation costs，如何避免停在第一个局部最小值。",
+        "setting": "graph-state preparation 的 CZ-per-edge model，以 local Clifford operations 视为廉价变换；greedy best-first search 遍历 local-complementation state space。",
+        "main_results": [
+          "数值比较称在 random、bounded-degree 和多数 qLDPC-derived graphs 上，GBFS 优于所测 ILP/local-search 基线。"
+        ],
+        "techniques": [
+          "local Clifford equivalence、local complementation 与 heuristic search。"
+        ],
+        "assumptions": [
+          "每条边需 CZ 的准备模型、允许 local Cliffords，且硬件 connectivity 未必等于目标 graph。"
+        ],
+        "limitations": [
+          "摘要未给最终 edges/depth 的一般 approximation ratio、search complexity 或 routing-inclusive costs；maximum degree 也不总等于实际最短 schedule depth。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 stabilizer resource-state preparation 有具体联系，须把图优化与设备执行成本分开。"
+        ],
+        "follow_up": [
+          "读者建议：加入 hardware routing、gate-dependent fidelity 和 local-Clifford noise 后重新排序候选图。"
+        ],
+        "relevance_score": 81,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.30738v1"
+      }
+    },
+    {
+      "id": "2611.30697",
+      "version": 1,
+      "analysis": {
+        "summary": "论文主要研究 information bottleneck 的近似 alphabet-size bounds，并在末尾推广部分 cardinality results 到 quantum-information 变量。量子部分的具体条件在摘要中较少，按方法候选收录。",
+        "problem": "压缩 X 时保留与 Y 的 correlation，能否使 auxiliary representation W 的 alphabet 主要依赖较小 label space 而非巨大的 X。",
+        "setting": "经典 X,Y,W 的 bottleneck optimization，误差写作 δ(ε,|Y|)，cardinality≤f(ε,|Y|)；另含 quantum-information extension。",
+        "main_results": [
+          "作者称近似 bottleneck 可达到不直接依赖 ",
+          "X",
+          " 的明确 functions δ、f，并推广既有 cardinality bounds 到部分变量表示 quantum information 的情况。"
+        ],
+        "techniques": [
+          "approximation/cardinality reduction 与 classical–quantum extension。"
+        ],
+        "assumptions": [
+          "经典 alphabet 和量子 Hilbert dimension 不可直接互换，量子 extension 需查对应约束。"
+        ],
+        "limitations": [
+          "摘要未列 f、δ 或量子推广完整表达，不能声称所有 quantum information bottleneck 都有相同 dimension-independent bound。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 side information、compressed information access 的优化工具相关，直接性中等。"
+        ],
+        "follow_up": [
+          "读者建议：先明确哪个变量为 quantum system，再检查 approximate encoder 的 memory dimension 与 operational distortion。"
+        ],
+        "relevance_score": 74,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.30697v1"
+      }
+    },
+    {
+      "id": "2611.30676",
+      "version": 1,
+      "analysis": {
+        "summary": "THeatA 将 ion transport、heating 和 cooling scheduling 纳入 QCCD QEC simulation，使 gate-dependent noise 与每个离子的 motional state 联系。收录依据是具体 logical-error scaling 机制，而不是软件吞吐量。",
+        "problem": "只按抽象 gate probabilities 模拟可能遗漏 transport-induced heating，导致 surface-code scaling 预测失真。",
+        "setting": "单离子物种的 linear QCCD，IR 含 shuttling、physical SWAP、split/merge 与 cooling；编译 syndrome circuits，并以追踪 phonon number 的噪声生成 Stim circuits。",
+        "main_results": [
+          "所测参数中，heating 使增大 code distance 不再降低 logical error。",
+          "在两比特 gate 前将目标离子与 precooled coolant ions 合并的 indirect cooling 可恢复下降；扫描 cooling duration 与残余 phonon number 得到保持 scaling 的区域。"
+        ],
+        "techniques": [
+          "transport-aware scheduling、per-ion timing/phonon tracking 和 noise injection。"
+        ],
+        "assumptions": [
+          "模型中的 heating/cooling laws、single-species layout 与抽象 cooling instruction 决定结果。"
+        ],
+        "limitations": [
+          "摘要未给阈值区间数值、cooling 操作的实验验证或相关非 Markov 噪声；有限尺寸 scaling 恢复不等于 asymptotic fault-tolerance proof。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接关联 code/gadget、物理 memory assumptions 和 logical performance。"
+        ],
+        "follow_up": [
+          "读者建议：以实验标定 heating 数据替换抽象参数，并在固定总 cycle time 下比较 distance 与 cooling 预算。"
+        ],
+        "relevance_score": 91,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.30676v1"
+      }
+    }
+  ]
+}
