@@ -1,0 +1,151 @@
+{
+  "analyses": [
+    {
+      "id": "2611.29633",
+      "version": 1,
+      "analysis": {
+        "summary": "论文提出 optical vector-vortex ququart 的 interference-based state tomography，以 mutually unbiased bases 统一表征逻辑态。",
+        "problem": "怎样在固定 topological-charge vector-vortex 空间分辨态并重建 density matrix。",
+        "setting": "axially symmetric transverse polarization 的 vector optical vortices，logical ququart space，以 MUB measurement 为基础。",
+        "main_results": [
+          "作者称对全部 20 个 basis states 实现高 fidelity 的 tomography，并统一覆盖所有 MUBs；摘要没有给 fidelity 数字。"
+        ],
+        "techniques": [
+          "interference discrimination 与 MUB density-matrix reconstruction。"
+        ],
+        "assumptions": [
+          "logical subspace 与 fixed charge 假设需保持；leakage 不可自动归入 ququart state。"
+        ],
+        "limitations": [
+          "摘要未给 shots、statistical confidence、SPAM calibration、general mixed-state error 或 sample-optimality。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与具体 quantum tomography/measurement access 有联系，不能由“高 fidelity”推导通用认证保证。"
+        ],
+        "follow_up": [
+          "读者建议：用独立 mixed-state test set 报告 confidence 和 readout calibration，并区分 state-preparation error 与 tomography bias。"
+        ],
+        "relevance_score": 79,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.29633v1"
+      }
+    },
+    {
+      "id": "2611.29583",
+      "version": 1,
+      "analysis": {
+        "summary": "论文用前序 public data 在下一块开始前选择 high-dimensional QKD dimension 和 thresholds，以固定块协议的 sequential composition 保留 finite-key security。优势主要是适应时变链路，而非量子 repeater 或新的 transmissivity scaling。",
+        "problem": "固定 dimension 对不同 turbulence、背景和设备噪声不总合适，在线 dimension 调整能否在保留 composable finite-key security 的同时提高 key。",
+        "setting": "controller 只用 earlier blocks 的 public information 决定下一块参数；评估模拟 airborne OAM entanglement link，并用 superconducting processor 运行其 measurement statistics。",
+        "main_results": [
+          "forecast uncertainty 处理相对 naive planner 提高模拟 key 31%–47%。多场景 recalibration 保留每场景最佳 fixed dimension key 的至少 98.8%；每种固定 dimension 至少一场景降至 73.5% 以下。",
+          "加入测得 device-error offset 后，最佳 daytime dimension 从 8 变 4，controller 随之调整。"
+        ],
+        "techniques": [
+          "past-data feed-forward、finite-key sequential composition 与 uncertainty-aware planning。"
+        ],
+        "assumptions": [
+          "每块参数须在该块前固定，依赖对应 fixed-length security proof；不准确预测可以降 key rate，但不能替代协议 security assumptions。"
+        ],
+        "limitations": [
+          "摘要未给完整 key formula、failure-budget allocation 或可证明 rate separation；模拟场景百分比不是所有实际 free-space passes 的保证。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 adaptive measurement dimension 和信息资源有关，属于邻近方向。"
+        ],
+        "follow_up": [
+          "读者建议：核对跨块 public-data dependence 与 failure budgets，再比较固定总 detected events 下的 composable key。"
+        ],
+        "relevance_score": 74,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.29583v1"
+      }
+    },
+    {
+      "id": "2611.29556",
+      "version": 1,
+      "analysis": {
+        "summary": "作者研究固定 partial-SWAP exchange 与可调 local phases 交替的 state engineering，区分 singular-coupling reachability limits 和 generic-coupling numerical success。",
+        "problem": "只调 local phases、无 measurement 时，固定全局 collision strength 怎样限制 fixed-excitation sector 的可达性与制备时间。",
+        "setting": "partial-SWAP/Heisenberg exchange interleaved phase rotations；考察 Dicke、random-sign、phase-uniform 与 Haar-random targets。",
+        "main_results": [
+          "singular angles 有 invariant supports 与 exact fidelity ceilings，邻近有 inverse-distance preparation-time lower bound。",
+          "sector dimensions≤21 的数值 certificates 支持所采 couplings 的全 sector reachability，optimizations 在 dimensions≤1716 达 fidelity>0.999。",
+          "作者明确 generic-coupling two-qubit gate cost 高于已知 Dicke circuits，优势是固定 couplings、仅局部相位控制而非通用 gate-count 优胜。"
+        ],
+        "techniques": [
+          "differentiable control、QFI/Jacobian geometry 与 near-full-SWAP slow-time theory。"
+        ],
+        "assumptions": [
+          "采样 couplings 的 certificates 与所有 couplings 的定理不同，singular detuning 方向也改变有效几何。"
+        ],
+        "limitations": [
+          "摘要未给所有参数的精确 hitting-time formula、noise robustness 或 optimization success probability，finite-size numerics 不等于可扩展最优电路。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接关联 limited controls、state preparation、depth/time 与 gate-count tradeoffs。"
+        ],
+        "follow_up": [
+          "读者建议：在同一硬件 coupling、target error 和 parallel-layer convention 下比较已知 Dicke circuits，并计入 phase-control precision。"
+        ],
+        "relevance_score": 84,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.29556v1"
+      }
+    },
+    {
+      "id": "doi:10.1103/d6k4-4xrz",
+      "version": 1,
+      "analysis": {
+        "summary": "本文提出 photonic classical shadows，以 randomized passive linear optics 和 photon-number measurements 学习量子态 observable properties，并在 integrated photonic devices 演示。正式精确 DOI 的 Crossref 摘要可读，publisher 页面返回 403；本报告仅依据摘要，不推定任何预印本与正式版本相同。",
+        "problem": "一般 classical shadows 的测量模型未必可由光学平台自然实现，如何获得有统计保证且兼容 photon hardware 的 learning protocol。",
+        "setting": "随机 passive linear-optical transformations 后做 photon-number readout，针对 photonic quantum states 的 physical observables；正式 PRX Quantum 卷 7、期 4，有 Version of Record 链接元数据。",
+        "main_results": [
+          "作者称对所研究 observables 有 rigorous sample- and time-efficiency guarantees。",
+          "在 twelve-mode 与 twenty-four-mode integrated quantum processing units 做实验，并展示五种应用，包括 Hamiltonian measurement 和 complex-state learning。模式数不是 qubits 数；五应用不等于全部 observable classes 均同一复杂度。"
+        ],
+        "techniques": [
+          "photonic randomized measurement、classical-shadow reconstruction 与硬件实验比较。"
+        ],
+        "assumptions": [
+          "需满足正文规定的 state/observable families、随机 optical ensemble 和 photon-number measurement model；摘要未列完整 photon-number/energy restrictions。"
+        ],
+        "limitations": [
+          "摘要未给 shadow norm、sample formula、confidence、optical-depth、loss 和 detector-efficiency 条件，无法判断是否改善 total copies 或仅改变 measurement implementation。证明与未述假设未核查。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接关联 quantum-data learning、single-copy readout 的可实现性和 total sample complexity，适合对比高阶 optical/fermionic designs 的实际价值。"
+        ],
+        "follow_up": [
+          "读者建议：在固定 observable error/confidence 下列出 total copies、random settings、optical depth 和 detector resources，区分 statistical 与 hardware efficiency。"
+        ],
+        "relevance_score": 96,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://api.crossref.org/works/10.1103/d6k4-4xrz",
+        "publication_significance": [
+          "以下为基于摘要的读者推断，不是 PRX Quantum 编辑或审稿人的实际理由。创新可能在于将 classical-shadow learning 与可实现的 passive linear optics、photon-number measurement 结合并给严格保证。",
+          "其针对的障碍是抽象 randomized measurements 与光子硬件之间的落差；证据来自理论效率声明及 12/24-mode integrated-device 实验。",
+          "物理意义在于直接测量和学习 photonic state properties，Hamiltonian measurement 等多应用显示一定广度；效率对 loss、photon number 和 observable class 的条件仍需正文核查。",
+          "从来源支持的 theory–experiment 联系推断，其可实现量子信息工具与 PRX Quantum 的主题契合；这不是对实际 editorial decision 的解释或领域优先权认定。",
+          "仅有正式 DOI abstract，尚不足评估 proof quality、全部 prior-art comparisons、finite-data confidence 或跨平台 generality。"
+        ]
+      }
+    }
+  ]
+}
