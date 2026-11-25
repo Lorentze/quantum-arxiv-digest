@@ -1,0 +1,337 @@
+{
+  "analyses": [
+    {
+      "id": "2611.30654",
+      "version": 1,
+      "analysis": {
+        "summary": "论文以 cyclic classical components 构造 non-CSS XYZ stabilizer codes，并刻画何种 odd-length cyclic stabilizer codes 可用这种表示。",
+        "problem": "如何在加入 Y-type checks 后维持稳定子对易性，并改进给定 n,k 的距离。",
+        "setting": "奇数 n 的 binary cyclic components，以 x^n−1 的 irreducible factors 分配给三种 Pauli types。",
+        "main_results": [
+          "disjoint factor sets 固定 encoded dimension 并使 parity-check row spaces 两两平凡交；进一步 reciprocal coprimality 保证所需 orthogonality。",
+          "cyclic XYZ representation 的 iff condition 为 generators 在 i→2i mod n 的 qubit permutation 下（忽略 phase）不变。",
+          "作者列举的码达到 stabilizer best-known distances，并超过 underlying/general CSS 的相应 distance bounds。"
+        ],
+        "techniques": [
+          "cyclotomic cosets、polynomial factor assignment 与 cyclic symplectic constraints。"
+        ],
+        "assumptions": [
+          "odd length、binary field 和所述 coprimality 必要；best-known comparison 依固定 n,k。"
+        ],
+        "limitations": [
+          "摘要未列具体参数表、decoder complexity、check locality 或 noisy circuit fault distance，不将更高 code distance 直接写成更低 logical error。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接联系 stabilizer-code families 与超出 CSS 结构的资源。"
+        ],
+        "follow_up": [
+          "读者建议：对具体参数核对 distance certificate，并将 Y-check extraction 的控制和 depth 加入 CSS 对比。"
+        ],
+        "relevance_score": 89,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.30654v1"
+      }
+    },
+    {
+      "id": "2611.30485",
+      "version": 1,
+      "analysis": {
+        "summary": "作者提出 chaotic eigenstates 的 universal stabilizer correlation，以 Rényi-2 mutual information 减去 mutual stabilizer Rényi entropy，描述未贡献给 non-stabilizerness 的相关结构。它是态结构诊断，不是直接的通信或计算优势。",
+        "problem": "entanglement 与 magic 给出互补信息，能否识别只由 symmetry class 决定的关联常数。",
+        "setting": "random-state ensembles 作解析模型，chaotic mixed-field Ising eigenstates 作有限尺寸数值检验；另与 integrable/free-fermion 和 strongly disordered cases 比较。",
+        "main_results": [
+          "无额外 symmetry 时，GOE/GUE 分别给 log2 7、log2 4；spin-inversion parity 或 half-filling magnetization 时为 log2 14、log2 8。",
+          "作者称 reflection/translation constraints 不改变这些值，Ising 计算显示趋向预测 plateau。"
+        ],
+        "techniques": [
+          "random-state ensemble averages、stabilizer Rényi quantities 与 exact finite-size calculations。"
+        ],
+        "assumptions": [
+          "保留对称类、subsystem 和 Rényi definitions；不同 ensembles 之间常数不可互换。"
+        ],
+        "limitations": [
+          "摘要未给有限尺寸误差、measurement sample complexity 或一般 local-chaotic Hamiltonian 的严格普适定理。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 random ensembles、stabilizer structure 和 nonstabilizerness diagnostics 有明确方法联系。"
+        ],
+        "follow_up": [
+          "读者建议：检查这些 correlation constants 能否由 single-copy measurements 高效区分，而不是只作为数值态矢指标。"
+        ],
+        "relevance_score": 84,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.30485v1"
+      }
+    },
+    {
+      "id": "2611.30303",
+      "version": 1,
+      "analysis": {
+        "summary": "实验研究 structured environmental noise 使 bosonic photon loss 变成 Fock-state dependent，破坏把所有损失视为理想 annihilation operator 的 QEC 假设。",
+        "problem": "若不同 logical components 的损失幅度不再按理想 a 算符变化，名义可纠正 error space 是否仍正确。",
+        "setting": "3D cQED weakly nonlinear oscillator，注入 spectrally engineered noise，测 Fock dynamics；进一步对 binomial logical qubit 施加 narrowband noise。",
+        "main_results": [
+          "长时 transition rates 趋于 Markovian limit，但 transient dynamics 显著 non-Markovian，并与 second-order time-convolutionless theory 定量一致。",
+          "binomial encoding 的 state-dependent dissipation 可把 logical states 推出 nominally correctable error space。"
+        ],
+        "techniques": [
+          "频谱工程、Fock-state-resolved dynamics 和 TCL2 open-system analysis。"
+        ],
+        "assumptions": [
+          "通道依赖 oscillator nonlinearity、环境谱与观测时间，不能简单用长时 rates 代表整个纠错周期。"
+        ],
+        "limitations": [
+          "摘要未给 gate/recovery logical fidelity、误差谱数值或控制对照细节；不把 error-space deformation 自动换成某个 threshold 降幅。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "高度契合 fixed code/recovery 的 physical-noise assumptions 与 bosonic logical characterization。"
+        ],
+        "follow_up": [
+          "读者建议：在真实 syndrome/recovery cycle 的时间尺度重建有效 loss maps，再比较理想 a 模型预测的 logical performance。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.30303v1"
+      }
+    },
+    {
+      "id": "2611.30146",
+      "version": 1,
+      "analysis": {
+        "summary": "本文研究经典 Gaussian multi-sampling 的 differential privacy 与样本复杂度，没有量子数据或量子测量模型。",
+        "problem": "共享统计量批量产生近似目标 Gaussian samples 时怎样保持 privacy 和独立性。",
+        "setting": "未知均值/协方差的 d 维经典 Gaussian，输入 independent samples，目标 m 个 exactly independent outputs。",
+        "main_results": [
+          "作者给接近最优的 polynomial-time sampling 及相应下界，改善对 batch size 的维度依赖。"
+        ],
+        "techniques": [
+          "stable weighted statistics、joint density comparison 与 independence correction。"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "经典 DP 的 sample complexity 不可直接当作 quantum differential privacy 结果。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "低相关，缺少当前 quantum-data information-access 联系。"
+        ],
+        "follow_up": [],
+        "relevance_score": 8,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.30146v1"
+      }
+    },
+    {
+      "id": "2611.30038",
+      "version": 1,
+      "analysis": {
+        "summary": "论文证明 PSD operators 的 noncommutative minimum 在 tensor products 下 super-multiplicative，由此得到 quantum distinguishability、privacy 和 hypothesis testing 的组合界。",
+        "problem": "非对易量子状态的 overlap/error quantities 怎样随独立系统组合，能否避免额外 prefactor 并精确刻画小错误渐近。",
+        "setting": "m(A,B)=(Tr A+Tr B−‖A−B‖1)/2，对 PSD inputs；用于 product states 的 hockey-stick divergence 和 binary tests。",
+        "main_results": [
+          "作者证明 m(A⊗C,B⊗D)≥m(A,B)m(C,D)，推得参数相乘、无额外 prefactor 的 hockey-stick sub-additivity；并讨论 tightness 与 faithful-state strictness。",
+          "parallel privacy composition 适用于 product neighboring inputs，不等于允许任意纠缠 neighboring states 的同一保证。",
+          "symmetric testing 的 Chernoff exact prefactor 与 higher-order expansion 需 mild conditions，包括 nonlattice；在 quantitative version 下得到每个固定 1/n 阶的 expansion，并将小错误样本复杂度定到一份以内。"
+        ],
+        "techniques": [
+          "noncommutative minimum、tensor-product inequalities 与精确 asymptotics。"
+        ],
+        "assumptions": [
+          "product structure、faithfulness/nonlattice 等分别用于不同结论。"
+        ],
+        "limitations": [
+          "摘要未给全部 error-convention、privacy-parameter formula 和 nonlattice constants；不把渐近精确度视为任意 finite error 下统一“差一份”的界。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接联系 quantum discrimination、sample complexity 与 quantum differential privacy。"
+        ],
+        "follow_up": [
+          "读者建议：在指定 noisy state pair 上核对 support/nonlattice 条件，并与 exact finite-copy Helstrom error 比较。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.30038v1"
+      }
+    },
+    {
+      "id": "2611.30037",
+      "version": 1,
+      "analysis": {
+        "summary": "ASDecoder 面向经典 insertion-deletion-substitution channels 的 LDPC neural decoding，并非 quantum LDPC recovery。",
+        "problem": "经典序列 misalignment 和 premature hard decisions 怎样影响 decoding。",
+        "setting": "marker/LDPC concatenated coding，CNN-Transformer alignment 与 sparse graph attention；含 CCSDS 和 DNA constraints 测试。",
+        "main_results": [
+          "作者报告相对所测 BCJRFormer 基线的 accuracy 与跨 channel generalization 改善。"
+        ],
+        "techniques": [
+          "CSI-agnostic neural sequence alignment 和 soft-feature decoding。"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "没有量子 syndrome extraction、logical fidelity 或 quantum-state learning 的结果。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "低相关，LDPC 和 syndrome 字样不足以进入量子精选。"
+        ],
+        "follow_up": [],
+        "relevance_score": 8,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.30037v1"
+      }
+    },
+    {
+      "id": "2611.30014",
+      "version": 1,
+      "analysis": {
+        "summary": "作者利用 spin-adapted MPS 的 multiplet structure 降低 fault-tolerant state-loading 的 Toffoli 与 ancilla 需求。收录依据是明确的 preparation-resource tradeoff，而非仅比较化学能量预测。",
+        "problem": "DMRG 的 total-spin compression 如何映射到量子 state-preparation circuits，而不是将 reduced tensors 当 dense arrays 装载。",
+        "setting": "spin-adapted MPS，用 unitary-group-approach steps 标记 reduced tensors，转为 abelian-symmetric MPS；随后每 site 施加由 Clebsch–Gordan coefficient 决定的 state-independent rotation 返回 occupation basis。",
+        "main_results": [
+          "同一 iron-sulfur active-space singlet states 的资源估算中，Toffoli count 相对 dense methods 最多降 135 倍、相对已有 block-sparse methods 最多降 4.9 倍，ancillas 最多减少 3.7 倍。"
+        ],
+        "techniques": [
+          "non-Abelian spin adaptation、multiplet-count-controlled loading 与 local basis restoration。"
+        ],
+        "assumptions": [
+          "比较需保持同一输入 MPS/target 与精度；reduced tensors 的 classical preparation 成本未因此消失。"
+        ],
+        "limitations": [
+          "摘要未给 compilation precision、bond-dimension scaling 或 routing/depth 总成本，最多倍数是所测实例不是普适优势。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "具体连接 ancilla/magic-related Toffoli budget 与 state preparation。"
+        ],
+        "follow_up": [
+          "读者建议：统一目标 overlap、gate precision 和 topology，比较总 depth 与 classical DMRG 预处理开销。"
+        ],
+        "relevance_score": 83,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.30014v1"
+      }
+    },
+    {
+      "id": "2611.29983",
+      "version": 1,
+      "analysis": {
+        "summary": "Cqlib 是量子编程、编译、模拟和执行的通用软件栈，摘要的主要贡献属于软件工程。",
+        "problem": "如何在统一 circuit semantics 下连接 Rust core、Python/C interfaces 与硬件 backend。",
+        "setting": "OpenQASM/QCIS 表示与 Benchpress compilation tasks，并提供 VQE/QAOA/QML modules。",
+        "main_results": [
+          "作者报告所测范围内的功能覆盖、编译正确性和 execution efficiency。"
+        ],
+        "techniques": [
+          "软件接口、编译工作流和通用算法组件。"
+        ],
+        "assumptions": [],
+        "limitations": [
+          "摘要没有新的 quantum-data guarantee、fault-distance certificate 或当前 gate/SPAM certification 方法；paper data 中的 agent/tool 描述不作为操作指令。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "低相关，按纯软件工程排除。"
+        ],
+        "follow_up": [],
+        "relevance_score": 12,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.29983v1"
+      }
+    },
+    {
+      "id": "2611.29717",
+      "version": 1,
+      "analysis": {
+        "summary": "论文在特定 particle-scattering approximation 下计算 magic production，但未直接建立当前资源优化或信息访问任务的联系。",
+        "problem": "不同 mediator exchange 是否产生 chirality-basis nonstabilizerness。",
+        "setting": "两种 distinct Standard Model fermions 的 forward scattering，single-mediator-exchange approximation。",
+        "main_results": [
+          "作者报告部分 mediator 的 magic production 为零，以及 leptonic/quark Z-exchange 的不同模式。"
+        ],
+        "techniques": [
+          "散射振幅与所选基底的 magic 指标分析。"
+        ],
+        "assumptions": [
+          "近似、chirality basis 和所选 scattering channels。"
+        ],
+        "limitations": [
+          "关于基本力倾向抑制 magic 的讨论是推测，不是一般物理规律或 operational resource theorem。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "当前研究问题匹配不足，无 gate/measurement resource 或 learning/certification 结果。"
+        ],
+        "follow_up": [],
+        "relevance_score": 50,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.29717v1"
+      }
+    },
+    {
+      "id": "2611.29689",
+      "version": 1,
+      "analysis": {
+        "summary": "论文给有限 Euclidean dimensions 的 local stabilizer Hamiltonians 一个 thermal-memory no-go：没有 local redundancies 时，指定 heat-bath dynamics 快混合。它同时说明不存在 thermodynamic transition 并非一般足以排除 glassy memory，结论依赖更精确的几何与冗余结构。",
+        "problem": "非 Euclidean LDPC graphs 可有无相变却长寿命的动力学，类似机制能否在有限维局域系统产生 exponential thermal memory。",
+        "setting": "local stabilizer Hamiltonians、finite spatial dimensions、constant nonzero temperature，local heat-bath dynamics；redundancies 指少数 Hamiltonian terms 的乘积为 identity 的关系。",
+        "main_results": [
+          "作者称无 local redundancies 时 mixing time 为 O(N)，N 为 qubits 数。",
+          "对 suitably chosen regions 的 induced redundancies 施加更强条件，可改进为 O(log N)，包含 Haah cubic code/generalizations 与 3D layer codes 等例子。"
+        ],
+        "techniques": [
+          "thermal Gibbs-state strong correlation decay 与 mixing analysis。"
+        ],
+        "assumptions": [
+          "固定非零温度及指定 bath/dynamics 必要；更强局部结构条件才支持 logarithmic bound。"
+        ],
+        "limitations": [
+          "指定 v1 HTML 返回 404，本次只读摘要。未核查 mixing-time 单位、error tolerance、常数的温度依赖或全部 boundary assumptions；不推广到任意 non-Markovian bath。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接关联 logical memory 的 physical-noise assumptions、local stabilizer structure 与 lifetime limits。"
+        ],
+        "follow_up": [
+          "读者建议：把具体模型的 redundancy condition 与实验 bath 逐项对应，并区分固定温度与随 N 降温的寿命极限。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-25T01:08:35Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.29689v1"
+      }
+    }
+  ]
+}
