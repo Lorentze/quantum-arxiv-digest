@@ -4,6 +4,39 @@
       "kind": "analysis",
       "paper": {
         "doi": "",
+        "id": "2610.21469",
+        "version": 1,
+        "title": "Limits of adaptive linear postprocessing in six-state quantum key distribution",
+        "authors": [
+          "Toyohiro Tsurumaru"
+        ],
+        "abstract": "Two-way classical communication improves the noise tolerance of quantum key distribution, but the limits of adaptive parity processing remain unclear. For the six-state protocol with equal three-basis error rate $p\\in[p_*,1/2]$, where $p_*=(5-\\sqrt5)/10\\simeq27.64\\%$, we construct a single compatible collective attack that defeats a broad class of linear postprocessing. Each public message may be an affine function of the sender's raw key, chosen adaptively from the public history. For every finite input length and every accepted transcript of positive probability, Eve's optimal probability of recovering any affine function of Alice's raw key is at least Bob's. Consequently, reliable agreement on a linear final key is incompatible with secrecy. The same conclusion holds for arbitrary publicly seeded privacy amplification after reliable recovery of a linear candidate. The proof conditions on the complete transcript, which restricts the two raw keys to affine subspaces. A local degradation of Eve's state, a known Rényi-entropy comparison, and a coset-probability inequality then give the recovery comparison. Both inequalities are proved in self-contained appendices. The result allows block splitting, regrouping, nonzero-syndrome selection, and adaptive linear reconciliation.",
+        "url": "https://arxiv.org/abs/2610.21469",
+        "pdf_url": "https://arxiv.org/pdf/2610.21469v1",
+        "published": "2026-10-15T08:13:21Z",
+        "updated": "2026-10-15T08:13:21Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "syndrome"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-16T04:38:00Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
         "id": "2610.21357",
         "version": 1,
         "title": "Stitched surface codes: planar concatenation through GHZ corridors",
@@ -1656,52 +1689,6 @@
         "keyword_matches": {
           "data_hiding": [
             "side information"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-14T04:59:39Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.16401",
-        "version": 1,
-        "title": "Magic-Free Certification of Logical Error Rates in Universal Fault-Tolerant Circuits",
-        "authors": [
-          "Gebrat Porta-San Miguel",
-          "Shahram Panahiyan",
-          "Dieter Jaksch"
-        ],
-        "abstract": "As quantum hardware enters the fault-tolerant regime, algorithms are beginning to be executed on encoded qubits, yet scalable certification of how well they run remains an open problem. Here we introduce magic-free certification, a certification protocol for universal fault-tolerant circuits that consumes no magic, the resource that generally places them beyond efficient classical simulation and is by far the most expensive element of a fault-tolerant computation. The protocol is code- and decoder-agnostic, runs interleaved with the target circuit on the same device, and has a sample complexity that grows linearly with the number of logical qubits and non-Clifford gates while remaining decoupled from the logical error rate itself. Given a predefined error tolerance $p_L^*$, the protocol determines at a chosen confidence level whether the device executes the target circuit at a logical error rate below $p_L^*$. The method relies on trap circuits, copies of the target with every magic state replaced by a stabilizer state, whose outcomes are deterministic and which, being indistinguishable from the target to stochastic Pauli noise, fail at the same rate. We illustrate the protocol in Steane-code simulations of a magic state injection gadget and a quantum Fourier transform.",
-        "url": "https://arxiv.org/abs/2610.16401",
-        "pdf_url": "https://arxiv.org/pdf/2610.16401v1",
-        "published": "2026-10-12T08:40:17Z",
-        "updated": "2026-10-12T08:40:17Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 12,
-        "topics": [
-          "logical_qec",
-          "magic_stabilizer",
-          "quantum_learning"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "logical error"
-          ],
-          "magic_stabilizer": [
-            "magic state",
-            "stabilizer",
-            "non-Clifford",
-            "magic-free"
-          ],
-          "quantum_learning": [
-            "sample complexity"
           ]
         },
         "sources": [

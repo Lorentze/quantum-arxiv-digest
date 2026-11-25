@@ -4,6 +4,40 @@
       "kind": "analysis",
       "paper": {
         "doi": "",
+        "id": "2610.25518",
+        "version": 1,
+        "title": "Randomness Certification from Statistically Hiding Commitments",
+        "authors": [
+          "Ilya Merkulov",
+          "Rotem Arnon"
+        ],
+        "abstract": "Randomness certification aims to guarantee that the output of an untrusted quantum device contains genuine randomness that remains unpredictable even given quantum side information held by an adversary. For a classical verifier interacting with a single quantum device, such a guarantee cannot rely on the physical separation underlying standard Bell tests and must instead follow from computational restrictions on the prover. Building on the framework of Computational Bell Inequalities, we distinguish classical and quantum virtual-input hiding, showing that the former suffices for proofs of quantumness, whereas the latter enables randomness certification against quantum side information. Our main technical contribution is to establish quantum virtual-input hiding for a commitment-based protocol derived from the proof of quantumness from one-way-functions by Morimae and Yamakawa. We show that statistical hiding together with ordinary computational binding against quantum polynomial-time senders suffices, without requiring stronger quantum binding notions such as sum-binding or collapse-binding. This yields a randomness-certification protocol from post-quantum statistically hiding bit commitments. In particular, existing constructions of such commitments from post-quantum one-way permutations imply that post-quantum one-way permutations suffice for randomness certification. We further instantiate our construction using quantum-secure trapdoor claw-free functions, obtaining an efficient classical verifier, and in the quantum random oracle model, obtaining randomness certification without additional computational assumptions but with an inefficient verifier. These instantiations separate the cryptographic properties sufficient for randomness certification from the additional structure required for efficient verification within our commitment-based framework.",
+        "url": "https://arxiv.org/abs/2610.25518",
+        "pdf_url": "https://arxiv.org/pdf/2610.25518v1",
+        "published": "2026-10-18T20:22:34Z",
+        "updated": "2026-10-18T20:22:34Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "data_hiding"
+        ],
+        "keyword_matches": {
+          "data_hiding": [
+            "side information"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-20T04:57:05Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
         "id": "2610.25472",
         "version": 1,
         "title": "Topological Quantum Gates on FCIs with Bounded Quantum Geometry",
@@ -1618,39 +1652,6 @@
           ],
           "adaptive_resources": [
             "state preparation"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-16T04:38:00Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.21469",
-        "version": 1,
-        "title": "Limits of adaptive linear postprocessing in six-state quantum key distribution",
-        "authors": [
-          "Toyohiro Tsurumaru"
-        ],
-        "abstract": "Two-way classical communication improves the noise tolerance of quantum key distribution, but the limits of adaptive parity processing remain unclear. For the six-state protocol with equal three-basis error rate $p\\in[p_*,1/2]$, where $p_*=(5-\\sqrt5)/10\\simeq27.64\\%$, we construct a single compatible collective attack that defeats a broad class of linear postprocessing. Each public message may be an affine function of the sender's raw key, chosen adaptively from the public history. For every finite input length and every accepted transcript of positive probability, Eve's optimal probability of recovering any affine function of Alice's raw key is at least Bob's. Consequently, reliable agreement on a linear final key is incompatible with secrecy. The same conclusion holds for arbitrary publicly seeded privacy amplification after reliable recovery of a linear candidate. The proof conditions on the complete transcript, which restricts the two raw keys to affine subspaces. A local degradation of Eve's state, a known Rényi-entropy comparison, and a coset-probability inequality then give the recovery comparison. Both inequalities are proved in self-contained appendices. The result allows block splitting, regrouping, nonzero-syndrome selection, and adaptive linear reconciliation.",
-        "url": "https://arxiv.org/abs/2610.21469",
-        "pdf_url": "https://arxiv.org/pdf/2610.21469v1",
-        "published": "2026-10-15T08:13:21Z",
-        "updated": "2026-10-15T08:13:21Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "logical_qec"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "syndrome"
           ]
         },
         "sources": [
