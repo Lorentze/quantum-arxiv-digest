@@ -1,0 +1,384 @@
+{
+  "analyses": [
+    {
+      "id": "2611.32530",
+      "version": 1,
+      "analysis": {
+        "summary": "本文给两个未知 d-dimensional quantum states 的 trace distance 一个与已知下界匹配的 sample-optimal estimator。突破点不是先把两态完整重建到最终精度，而是用较粗 tomography 控制谱，再估 noncommuting trace polynomials。其样本节省使用跨样本的 polynomial observables，不可改写成 single-copy Pauli measurement 的同样保证。",
+        "problem": "直接 tomography 两态到 additive error ε 需 O(d²/ε²) copies。能否只估 Dtr(ρ,σ)=Tr|ρ−σ|/2 而省去对数因子，并在两个态均未知且不对易时保持无偏估计和可控 variance。",
+        "setting": "输入为未知 ρ、σ 的独立 copies，目标 trace distance 的 additive error ε；该量给等先验 optimal discrimination success=(1+Dtr)/2。算法先估 S+=(ρ+σ)/2，后用 fresh samples 估 S−=(ρ−σ)/2 的谱函数。操作可涉及多份样本的 cyclic permutations 和 quantum U-statistic observables，并非仅 classical post-processing。",
+        "main_results": [
+          "作者给每个态所需样本 Θ(d²/[ε² log²(d) max{1,ε² log²(d)}])，常数精度时为 Θ(d²/log⁴d)。不能删掉 max 造成两个精度区间混淆，亦不能把“每态”算成两态合计数。",
+          "先用 O(d log²d) samples 做粗 tomography，得到 projector Q，使压缩后的 S+ operator norm 受控且补空间 rank 为 O(log d)，再分开估压缩 trace norm 与 correction。",
+          "作者还经 random dimension reduction 得到相应 low-rank sample-optimal 推论；pure-state 特例已有维数无关估计，不将含 log r 的表达不加说明套在 r=1。"
+        ],
+        "techniques": [
+          "绝对值函数的 polynomial approximation 将 trace norm 转成 S+、S− 的 trace products。带 ± labels 的 cyclic-permutation observables 提供 unbiased estimators，遗漏某个 label 对应将一项 S− 换为 S+。",
+          "不同 ε log d 区间用单尺度或 dyadic multiscale polynomials，并以 quantum Fourier analysis 一起控制各项 variance，避免把非对易 products 当作经典矩。"
+        ],
+        "assumptions": [
+          "sample complexity 与 estimator implementation 的时间、coherent memory、joint-measurement circuit depth 是不同资源。",
+          "取样与 tomography 的 success event、fresh-data 条件和最终 confidence amplification 需按正文处理，不能凭摘要补上任意 δ 的最优依赖。"
+        ],
+        "limitations": [
+          "本报告复核定义、main theorem 和 estimator overview，未审计全部 polynomial-approximation/variance proofs 或下界引用。",
+          "此为 trace-distance estimation，不直接实现达到 Helstrom 最优的 discrimination measurement，也不承诺单份受限 readout 仍达相同 copies。",
+          "最优到常数因子的样本数不等于 gate count、ancilla 和总实验时间同时最优。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "高度契合 quantum-data inference、distinguishability 与 collective-access sample gains，可作为检验单拷贝协议是否真的减少总 copies 的基准。"
+        ],
+        "follow_up": [
+          "读者建议：固定 readout/coherence 权限后重新比较复制数和实现成本，特别区分 unrestricted collective estimator 与 single-copy shadows。"
+        ],
+        "relevance_score": 98,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.32530v1"
+      }
+    },
+    {
+      "id": "2611.32388",
+      "version": 1,
+      "analysis": {
+        "summary": "PP-VarQITE 把 Pauli propagation 与 variational imaginary-time evolution 结合，在 classical computer 上确定固定架构的角度，再由硬件执行浅 purification circuits。温度变化不增加 gate layers，但低温轨迹是否足够准确仍取决于 ansatz 和 classical operator complexity；不是任意 Hamiltonian 的 efficient Gibbs preparation theorem。",
+        "problem": "热态既要低温又要浅电路。即使 classical MPS 能准确描述目标，把它 sequentially 编成电路仍可能太深。能否直接优化硬件可执行的浅电路，让更多 coherence budget 留给后续实时演化。",
+        "setting": "n physical qubits 加 n purification ancillas，初态为 system–ancilla Bell pairs；理想目标由 e^(−βH/2) 作用于 physical half 得到，故 imaginary time τ=β/2。用固定 Pauli-rotation ansatz 近似此轨迹，只改变角度，不把 96/98 hardware qubits 全部当作物理自旋。",
+        "main_results": [
+          "数值覆盖最多 100 qubits（含 purification），以 energies 和 correlations 对照 exact/thermal-MPS references。frustrated chain 的所测 depth 比 sequential tensor-network compilation 约浅 2–10 倍；lattice 比较中某些 MPS circuits 的 energy error 更小、gate 数更少，本文优化的 depth 不能代替所有指标。",
+          "Quantinuum Helios 实验分别以 96 和 98 qubits 制备 48-site frustrated chain 与 7×7 Ising lattice。lattice compiled circuits 最多 42 two-qubit layers。",
+          "正文给 chain βJ1=6、lattice β abs(J)=1.5 的 target settings，并称 lattice 保留 noiseless distance-averaged correlations 的约 94%–96%；这是相关量保持程度，不是完整 Gibbs-state fidelity。"
+        ],
+        "techniques": [
+          "McLachlan variational principle 给 M θdot=v，classical Pauli propagation 组装共享 Gram metric/evolution vectors，避免构造完整 statevector。",
+          "同一 classical trajectory 提供多个温度的参数，architecture 同时限制可达变分方向和可追踪的 Pauli operators。"
+        ],
+        "assumptions": [
+          "classical propagation 必须保持 tractable，operator growth、截断与 ansatz 误差是主要条件；没有证明任意低温和任意系统均高效。",
+          "需要额外 purification register 与硬件编译，variational evolution 与实际 β 的对应误差需用 observable/reference 检验。"
+        ],
+        "limitations": [
+          "frustrated/lattice variational trajectories 在中间 imaginary times 相对热参考有延迟，不能把参数 τ 一律视为无偏测温标尺。",
+          "matching energies/selected correlations 不意味着 trace distance 小或正确重建所有高阶 properties。",
+          "本次未审计完整 truncation、classical runtime、error bars 与所有温度点，也未验证 Gibbs-state 全局精度界。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "具体连接 shallow state preparation、ancilla tradeoff 和 classical/quantum resource division，适合评估制备成本是否真正留出可用 dynamics budget。"
+        ],
+        "follow_up": [
+          "读者建议：在固定目标 observables 和置信度下计入 classical optimization、purification ancillas、compiled depth 与 total shots，再与 MPS 编译作统一比较。"
+        ],
+        "relevance_score": 90,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.32388v1"
+      }
+    },
+    {
+      "id": "2611.31953",
+      "version": 1,
+      "analysis": {
+        "summary": "本文给特定 qudit CSS families 一个 local-diagonal Clifford ceiling，展示高阶 orthogonality screening 通过仍不保证存在 non-Clifford transversal logical gate。机制是 dual code 的 Schur square 已铺满全空间，使高次 local phase 的兼容条件只能取零。结论针对严格 CSS-preserving 的指定 diagonal phase sector，不能扩成所有逻辑实现的 no-go。",
+        "problem": "triorthogonality 等常用作 non-Clifford code screening，但是否可能只有代数筛选信号而没有可用 gate。怎样在不枚举所有 cosets 的情况下排除这种 false positive。",
+        "setting": "对 p≥5 prime、finite Abelian group G 且 exp(G)整除p−1，以 character evaluations 构造 symmetric spectral CSS Q(A)，满足 A∩(−A)=∅。local phases 写成 ω^f(x)，ω=e^(2πi/p)，f:Fp→Fp 的代表多项式次数≤p−1；这里是所述 precision-1 相位类。",
+        "main_results": [
+          "作者给 C(A)⊥*C(A)⊥=Fp^G 的 Schur saturation，继而排除 degree≥3 的 local polynomial phases，并给严格 CSS-preserving local-diagonal gate group 的闭式分类，survivors 位于 hierarchy level≤2。",
+          "Boolean toric family 可满足 ℓ≤p−2 的 orthogonality screening，但其 non-Clifford sector 仍消失。p 增长时 screening order 可无界，不等于固定 p 有无限多个不同次数条件。",
+          "示例 [[64,56,3]]5 的 rate=0.875，剩余 uniform quadratic drive 为逻辑非平凡 Clifford；另对 [[58,16,3]]5 LDPC instance 给计算检验。码距3与逻辑 gate 的存在性是不同结论。"
+        ],
+        "techniques": [
+          "pointwise Schur products 控制 phase 沿 CSS cosets 的差分；最高次项的系数与 codeword 逐点积被迫落在 Schur-square 正交补，饱和时该补为零，递降排除高次项。",
+          "以 spectral supports 给 exclusion test，并推广部分 criterion 至满足相同 Schur-saturation 条件的任意 CSS pair。"
+        ],
+        "assumptions": [
+          "必须保持 CSS-preserving、local diagonal、所选 phase precision 和 code family 条件。若使用 code switching、non-diagonal gates、测量反馈或额外 magic resources，不属同一个排除命题。",
+          "“仅剩 Clifford”不表示完全没有逻辑操作，也不表示该码没有存储价值。"
+        ],
+        "limitations": [
+          "本报告复核模型、物理解释与 worked example，未审计全部 algebraic classification、distance proofs 和 computational certificates。",
+          "不把本文 ansatz 的 failure 推成所有 transversal/non-Clifford schemes 均失败，也不将此与 Eastin–Knill 的 universality statement 混同。",
+          "作者的 prior-art/firstness 表述未独立核查。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接关联 magic、CSS algebra 与 logical gate resources，提醒 code screening certificate 必须和实际 compatibility condition 配套。"
+        ],
+        "follow_up": [
+          "读者建议：对候选 distillation codes 先明确允许 phase precision，再计算 dual Schur square，并将被排除的 diagonal ansatz 与其他可实现 logical gadgets 分开。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.31953v1"
+      }
+    },
+    {
+      "id": "2611.31607",
+      "version": 1,
+      "analysis": {
+        "summary": "Duet 将 Clifford 电路中已知的 error propagation 与 logical-outcome propagation 写入神经网络，只学习未知故障。配合低置信度 shots 的 Tesseract 重解码，作者在所测多 block logical circuits 上改善 accuracy/latency tradeoff。这里报告的是指定模拟和计算平台下的解码表现，不是新量子硬件上的 end-to-end fault-tolerance 演示。",
+        "problem": "transversal CNOT 在不同 code blocks 间复制错误，因此逐 block 解码会丢失相关性。一般神经网络还需从训练数据重新学已知 Clifford 传播规则，怎样用结构先验减少这一浪费并控制难例的计算成本。",
+        "setting": "circuits 由 transversal CNOT、H、fold-transversal S 等层组成，每层后一个 syndrome round，最后读 logical X/Z products。训练按 code distance d=3,5,7,9 各用一网络，并在给定 noise model 下比较 2–4 blocks、最长若干 logical layers 的 circuits。单轮提取相较 surgery 的时间收益依赖这些 gate/gadget assumptions，不是所有平台的通用 d 倍加速。",
+        "main_results": [
+          "网络按 gates 实际连接的 grid sites 交换 features，使用 backwards-propagated logical operators 和 DEM 的 layer labels 预测各层 flips，再用 soft XOR 合成最终 logical outcome。",
+          "同一 distance 网络可处理不同 block 数和 depth；所读正文展示 2–4 blocks、至多16层，以及4 blocks 至多20层的评估无需 retraining，不能外推任意长度。",
+          "在所列 general-circuit benchmark，Duet+Tesseract 在 distance9 相对 LoMatching 约少44倍 failures；另一 random-circuit benchmark 在 distance7 的 failure 为既有 neural decoder 的0.299倍。二者 comparator 与任务不同。",
+          "组合方案报告每 layer 2.4–121.7 μs；per-layer、per-gate、batched GPU throughput 与单 shot worst-case latency 是不同口径，不能据此直接宣称任意 feedback deadline 均满足。"
+        ],
+        "techniques": [
+          "已知 circuit 规则决定 features 的跨 block 路由和 logical parity aggregation；weights 在 blocks 间共享，gates 作为每层输入以泛化 circuits。",
+          "Tesseract 只接管少数低 confidence records，将 search 计算资源集中到困难 shots。"
+        ],
+        "assumptions": [
+          "准确度依赖给定 noise/training distribution、confidence routing 及 DEM；syndrome-consistency 不单独保证逻辑纠正正确。",
+          "真实硬件尚须加 communication、syndrome acquisition、tail latency 和 classical control overhead。"
+        ],
+        "limitations": [
+          "本报告只核查 architecture 和 benchmark 概述，未重现训练、硬件计时、全部 p/d 扫描及 error bars。",
+          "所述 generalization 不代表对未知相关噪声、leakage 或任意 logical non-Clifford circuits 均成立。",
+          "logical product 的 failure 与整个通道 process fidelity 不同，不能把 decoder 分类准确率代替 gate certification。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接关联 logical QEC、syndrome histories 与 adaptive classical resources，尤其说明 fixed code/gadget 已知信息应如何用于 inference。"
+        ],
+        "follow_up": [
+          "读者建议：在相同 total hardware width、cycle deadline 和噪声下比较 latency distribution，并检查连续难例触发 search 时是否出现 backlog。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.31607v1"
+      }
+    },
+    {
+      "id": "2611.29430",
+      "version": 1,
+      "analysis": {
+        "summary": "本文把 qubit 的 logical-Clifford gadget 限制推广到所有 prime-dimensional qudit stabilizer codes。对 k≥2 个 logical qudits，固定 partition 中每块小于 k 的 Clifford gadgets 无法实现 full logical Clifford group；code automorphisms 也不能。它不是对所有量子电路或允许 changing partitions 的综合下界。",
+        "problem": "高码率 codes 编码多个 logical systems 后，横向、fold-transversal 和 permutations 等廉价 gadgets 能覆盖多少逻辑 Clifford 操作，增加单 carrier 维数能否绕过 qubit obstruction。",
+        "setting": "[[n,k]]p stabilizer codes，p prime，physical Clifford gadgets preserving code space。t-fold transversality 相对于同一 fixed partition 定义，每 block 至多 t 个 physical qudits。逻辑作用按 Pauli 和 phase 的自由度比较，因为这些 Pauli corrections 在两类 architectures 中本已可实现。",
+        "main_results": [
+          "若 partition 的每块<k，full logical Clifford group 不可达。因此 k≥2 时 ordinary transversality 不足，k≥3 时 fixed-pair fold-transversality 也不足。",
+          "block threshold 为紧：作者对每个 prime p、每个 k 构造 distance≥2 的 codes，让大小恰 k 的 blocks 足以生成 full logical Cliffords。这是存在性例子，不表示任意给定码均在 k-fold 达到。",
+          "automorphisms 为 single-qudit Cliffords 加 physical permutations，对所有 prime p、k≥2 仍不充分；但证明机制不同，不能只将 block order-counting argument 套在 permutations 上。"
+        ],
+        "techniques": [
+          "block theorem 用 finite Clifford group 的算术 order obstruction：逻辑群存在某 prime-order 元素，而小块 gadgets 的 orders 无相应因子。",
+          "automorphism theorem 用保不住 maximal commuting logical-Pauli sets 的 prime-order logical element 建立几何障碍，统一覆盖不同 p。"
+        ],
+        "assumptions": [
+          "所有 gadgets 共享 fixed partition 是首个定理的核心。允许结合不同 partitions、code switching、额外资源或 measurement-assisted constructions 可改变可达群。",
+          "结论只说 full group 不可达，不表示某个具体 H/S/SUM 或全部 useful subgroup 不可实现。"
+        ],
+        "limitations": [
+          "本报告复核 setup、main theorems 与 tightness construction 概述，未审计全部 number-theoretic/finite-group proofs。",
+          "本文不是任意 two-qudit unitary circuits 的 gate-count lower bound，也未给 locality/routing 下的最优 synthesis depth。",
+          "distance≥2 的紧性例子与高距离 code 的 fault-tolerant workload 是不同问题，不能直接转成硬件 overhead 最优性。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接关联 logical Clifford resources、固定结构下的可实现性和 qudit stabilizer formalism，并给出与 magic/no-go 分开讨论的 Clifford-only 障碍。"
+        ],
+        "follow_up": [
+          "读者建议：为目标 code 明确可用 partitions 与 permutations，先求可达 subgroup，再单独计算补齐缺失 logical gates 的 measurement/ancilla costs。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.29430v1"
+      }
+    },
+    {
+      "id": "2611.29488",
+      "version": 1,
+      "analysis": {
+        "summary": "论文以 generalized Bloch vector 分开看 randomized compiling 后的 purity loss 与 orientation deviation，说明 Pauli channel 并不必然等于 depolarizing channel。近各向同性收缩的分析依赖 independent、isotropically distributed weak coherent errors；额外 dephasing 可留下无法由该随机化移除的 residual bias。",
+        "problem": "fidelity 把不同噪声结构压成一个数，无法区分 rotation、contraction 及两者混合。RC 抑制 coherent accumulation 后，输出态的朝向和纯度分别发生什么变化。",
+        "setting": "d-dimensional ρ=I/d+(Σj rjΓj)/d，Γj 为 generalized Pauli basis；purity=(1+Σj rj²)/d。GBV direction 只在 vector 非零时定义，maximally mixed state 不具有该 orientation。分析 ensemble-averaged accumulated RC channel，并以多层 circuits 数值/硬件任务检验。",
+        "main_results": [
+          "对指定 weak coherent-noise ensemble，作者发现 RC channel 接近 depolarizing direction，输出近 isotropic contraction：少量 purity 牺牲换取 orientational deviation 显著降低。",
+          "若 dephasing 共存，coherent contribution 被压低后 residual deviation 由 dephasing 主导，作者称 dephasing wall；不是所有噪声通道都存在同一个普适 wall 值。",
+          "superconducting processor 的 GHZ preparation 与 topological-braiding simulation 的 phase-estimation 任务支持所提图像。算法表现与 GBV orientation 的关联并不建立任意 state 或 gate 的 process-fidelity 提升定理。"
+        ],
+        "techniques": [
+          "将 GBV length 与 normalized direction 分别作为 purity/orientation diagnostics，再分析 accumulated twirled channels。",
+          "使用数值模型及两类硬件任务，比较 conventional scalar fidelity 未能分辨的误差结构。"
+        ],
+        "assumptions": [
+          "需要独立、方向 isotropic 的弱 coherent errors 才得到所述近 depolarizing 行为。一般 Pauli noise 可各向异性，不能从“RC yields Pauli”一步推出“RC yields isotropic”。",
+          "ensemble average 与固定随机 compilation 的表现不同；单实现是否集中需另有概率分析。"
+        ],
+        "limitations": [
+          "全文提取至60000字符，本次主要复核介绍和 GBV 定义，未审计所有实验 readout calibration、shots 和 uncertainty。",
+          "GBV 维数为 d²−1，实验获取这些 diagnostics 的 tomography/measurement cost 不应隐去；该框架本身未给 scalable SPAM-robust estimator。",
+          "本文不是从随机化后的状态数据直接识别 native fixed-gate entanglement fidelity 的完整协议。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "高度相关于 noise tailoring、coherent errors 与 benchmarking metrics，能帮助辨析同样 fidelity 数值下可操作误差为何不同。"
+        ],
+        "follow_up": [
+          "读者建议：在固定 shots 和 readout permissions 下设计有限 observable 的 orientation proxy，并检验非重复 SPAM 是否会伪造 dephasing wall。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.29488v1"
+      }
+    },
+    {
+      "id": "2611.33129",
+      "version": 1,
+      "analysis": {
+        "summary": "论文给 visible quantum-source compression 达到 Holevo rate 的 Koashi–Imoto 判据，严格区分 encoder 知道 classical labels 与 blind compression。关键是每个 occupied sector 的 quantum part 是否纯。",
+        "problem": "finite memoryless ensemble 的可见压缩何时可只按 Holevo information 消耗 rate，mixed nonclassical components 会不会形成不可消除的 gap。",
+        "setting": "encoder 知道 label sequence，允许 shared classical randomness，但无 shared entanglement；以 sufficiently small mean local error 衡量重构，不等同整个 block 的 global trace-distance guarantee。",
+        "main_results": [
+          "maximal Koashi–Imoto decomposition 中，每个 signal 在它占据的每个 sector 的 quantum part 均纯，当且仅当 Holevo rate 可达。",
+          "对 qubits，条件化为 signals 全纯或 pairwise commuting。若任一 occupied quantum part 混合，小 local error 下 rate 与 Holevo information 有对 blocklength 一致的正 gap。"
+        ],
+        "techniques": [
+          "对假设近 Holevo 的 visible codes 使用 Fawzi–Renner recovery，再借 blind-compression decoupling bound 得 converse。"
+        ],
+        "assumptions": [
+          "finite memoryless source、可见 labels、shared-resource 和误差口径不可省略。"
+        ],
+        "limitations": [
+          "摘要未给 gap 常数、finite-blocklength overhead、shared randomness 消耗或 constructive circuit costs；不能把 qubit criterion 推成所有维数简单二分。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接联系 classical side information、quantum memory compression 和 decoupling/recovery。"
+        ],
+        "follow_up": [
+          "读者建议：在同一 ensemble 上比较 visible/blind、local/global error 及 shared entanglement 权限的 rate 变化。"
+        ],
+        "relevance_score": 91,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.33129v1"
+      }
+    },
+    {
+      "id": "2611.32923",
+      "version": 1,
+      "analysis": {
+        "summary": "作者用算法结构约束的 Fourier neural operator 从 noisy Shor-order distributions 推断 order，报告 simulation 与硬件数据的经验改善。其输出是经模型先验重建的分布和 order estimate，不是对 underlying quantum state 的无偏认证。",
+        "problem": "noise 会移动和展宽测量 peaks，能否利用 order-finding 的理想分布族恢复 latent information。",
+        "setting": "建模峰位、宽度和强度，生成 synthetic training data；根据三次 circuit executions 的分布对 candidate orders 评分，再以 neural model 调整 normalized ideal-distribution mixture。",
+        "main_results": [
+          "1351 个按 circuit configuration held-out 的模拟 tests 中 exact order recovery 从19%升至34%，median JS divergence 从0.64降至0.32。",
+          "五个 IBM processors 的101个 Mersenne-rotation circuits 中，正确 order estimates 从35增至53，模型另在 simulation 中训练校准。"
+        ],
+        "techniques": [
+          "theory-informed synthetic noise、Fourier neural operator 和 candidate ideal-mixture reconstruction。"
+        ],
+        "assumptions": [
+          "分布/候选 order 的算法先验及训练 noise model 是资源；三次 executions 的 histogram 均需实际 shots。"
+        ],
+        "limitations": [
+          "摘要未给 all-shot cost、confidence/coverage、一般 noise 下的 bias bound 或与最佳经典直接估计的统一比较；不能把准确度增加等同 quantum advantage。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 quantum-data error mitigation 有具体联系，研究匹配中等，收益限所测 tasks。"
+        ],
+        "follow_up": [
+          "读者建议：用独立 calibration/test 数据报告 order confidence 与总 shots，检验模型失配时能否拒绝不可靠答案。"
+        ],
+        "relevance_score": 76,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.32923v1"
+      }
+    },
+    {
+      "id": "2611.32805",
+      "version": 1,
+      "analysis": {
+        "summary": "论文利用 SU(2) spin symmetry 编译 MPS，generic synthesis 只处理 reduced tensors，磁量子数结构由已知 Clebsch–Gordan rotations 恢复。资源重点是 state-loading Toffoli，而非降低 classical ground-state solving 的复杂度。",
+        "problem": "已由 DMRG 得到的 spin-adapted MPS，怎样避免把 symmetry-related amplitudes 都按 dense tensor 编译。",
+        "setting": "sequential fault-tolerant MPS preparation，Wigner–Eckart decomposition；benchmark 含1D/quasi-1D Hubbard 与 Anderson impurity models。",
+        "main_results": [
+          "所测 systems 中 Toffoli cost 相对 U(1)-adapted compilation 约降三倍，相对 dense compilation 降一个数量级以上。"
+        ],
+        "techniques": [
+          "non-Abelian reduced tensor synthesis 与 analytic-angle Clebsch–Gordan transforms。"
+        ],
+        "assumptions": [
+          "目标为给定可classically表示的 MPS，需保持同一 state/precision 比较。"
+        ],
+        "limitations": [
+          "摘要未列 bond-dimension dependence、ancilla/routing/depth 或角度 synthesis error；实例节省不是一般 state preparation 的最优性界。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "具体联系 state preparation、symmetry 和 non-Clifford resource count。"
+        ],
+        "follow_up": [
+          "读者建议：将 reduced-tensor gate savings 与 magnetic-structure restoration 的 depth、precision 和 ancilla 开销同时计费。"
+        ],
+        "relevance_score": 84,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.32805v1"
+      }
+    },
+    {
+      "id": "2611.32757",
+      "version": 1,
+      "analysis": {
+        "summary": "作者对两套 verifiable graph-state advantage 实例给 classical sampling 与 fidelity 证据，指出 verification 约束可能将 T gates 推到 circuit 尾部，从而减弱经典模拟难度。结果针对所给实例和结构，不否定所有可验证量子优势。",
+        "problem": "一个实验既要难以经典复现又要可验证，built-in error detection 对 non-Clifford placement 的约束是否会削弱 hardness。",
+        "setting": "比较已发布 IBM 的70-qubit和64-qubit graph-state experiments，以8 GPUs 做 sampling；hardness 来源原为 non-Clifford readout 或 T insertions。",
+        "main_results": [
+          "70-qubit instance 的经典样本来自 ideal distribution；64-qubit、314 T gates 的 instance，作者给 classical fidelity certificate≥0.908，硬件对照0.349，耗时相近或更短。",
+          "机制是 error detection 不可见的位置才能放 T，因而往往集中在后部且对 classical cost 贡献有限；T-count 本身不足以判定 hardness。"
+        ],
+        "techniques": [
+          "结构化 graph-state simulation 与 certified fidelity comparison。"
+        ],
+        "assumptions": [
+          "比较限于指定 circuits、noise/quality metric 和计算资源，硬件 fidelity 与所用证书的定义需保持一致。"
+        ],
+        "limitations": [
+          "摘要未给通用 classical simulation theorem 或全部 verification protocol；不能仅由两实例推出某一电路 family 全部 easy。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接关联 stabilizer/magic placement、verification 与 operational quantum advantage，超出单纯 simulator 吞吐量排名。"
+        ],
+        "follow_up": [
+          "读者建议：固定 soundness/error-detection 条件后设计更早且不可压缩的 magic placement，并同时评估经典 cost 与 verification gap。"
+        ],
+        "relevance_score": 93,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.32757v1"
+      }
+    }
+  ]
+}
