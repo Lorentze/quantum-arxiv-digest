@@ -4,6 +4,113 @@
       "kind": "analysis",
       "paper": {
         "doi": "",
+        "id": "2610.34446",
+        "version": 1,
+        "title": "Ancilla-free optimal quantum adder",
+        "authors": [
+          "Junhong Nie",
+          "Jialiang Tang",
+          "Xiaoming Sun",
+          "Wei Zi"
+        ],
+        "abstract": "We construct an exact $n$-bit quantum adder with $O(n)$ gates and $O(\\log n)$ depth that requires no ancillary qubits. The circuit uses only $X$, CNOT, and Toffoli gates under all-to-all connectivity and is classically reversible. Our construction accelerates the controlled ladder underlying addition. Grouping the data into blocks and use existing control qubits as conditional workspace gives a recursive construction with $O(n\\log\\log n)$ gates and $O(\\log n)$ depth. We then coordinate inter-block propagation via two short-path forest operations to cut the per-block workspace requirement, yielding a nonrecursive implementation with $O(n)$ gates. Both the gate count and circuit depth are asymptotically optimal.",
+        "url": "https://arxiv.org/abs/2610.34446",
+        "pdf_url": "https://arxiv.org/pdf/2610.34446v1",
+        "published": "2026-10-25T17:07:59Z",
+        "updated": "2026-10-25T17:07:59Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 4,
+        "topics": [
+          "adaptive_resources"
+        ],
+        "keyword_matches": {
+          "adaptive_resources": [
+            "ancilla-free",
+            "circuit depth"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-27T05:12:19Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.34404",
+        "version": 1,
+        "title": "Maximum-Likelihood Decoding of Gabidulin Codes Is NP-Hard Even in Dimension One",
+        "authors": [
+          "Philippe Gaborit"
+        ],
+        "abstract": "Fix a prime power q. We prove that deciding whether a received word y in Fnqm lies at rank distance at most n-2 from the one-dimensional Gabidulin code {{λ.g : λ in Fqm } is NP-complete. Thus maximum-likelihood decoding of Gabidulin codes is NP-hard even for k = 1, an analogue of the Guruswami-Vardy theorem for Reed-Solomon codes. In the Hamming metric, by contrast, hardness at this radius requires the dimension to grow with the length, as in the Guruswami-Vardy theorem. The reduction is deterministic; consequently Rank Syndrome Decoding (RSD) and Rank Minimum Distance (RMD) for Fqm -linear codes are NP-complete under deterministic polynomial reductions, whereas the previously known reduction was randomized. The proof goes through a pivot problem that we introduce, Twisted Square Membership (TSM): given Fq-subspaces U, W in FqN , decide whether some non-zero a in U satisfies a^(q+1) in W . Quadratic systems in d unknowns are encoded into TSM, then TSM into Gabidulin decoding. The last step views the received word as an Fq-linear map and decoding at radius n - 2 as the search for an Fq-plane on which it acts as a scalar. With support U + τ W in a cubic extension and map a + τ b to a^(q^2) + τ bq^q , two Frobenius twists force solution planes to encode the relation a^(q+1) in W . All constructions are explicit and polynomial, with N = O(qd^2 ), n less than N + d, and m = 3N .",
+        "url": "https://arxiv.org/abs/2610.34404",
+        "pdf_url": "https://arxiv.org/pdf/2610.34404v1",
+        "published": "2026-10-25T16:06:47Z",
+        "updated": "2026-10-25T16:06:47Z",
+        "categories": [
+          "cs.CR",
+          "cs.IT"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "syndrome"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-27T05:12:19Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.34003",
+        "version": 1,
+        "title": "Resource-Optimal Screening for Two-Tier Quantum System Characterization",
+        "authors": [
+          "Yi-Ting Chen",
+          "Aniket S. Dalvi",
+          "Nils Quetschlich"
+        ],
+        "abstract": "Quantum processing units (QPUs) require frequent benchmarking to track hardware drift, yet standard protocols such as randomized benchmarking are resource-intensive and compete with application workloads for scarce QPU time. We present a resource-optimal screening strategy that combines a two-tier, risk-based testing architecture with optimal experiment design: a lightweight screening probe runs regularly and triggers expensive full characterization only when statistically significant change is detected, while the probe itself is designed to maximize detection sensitivity under explicit resource constraints. For an exponential fidelity model, we derive closed-form optimal circuit sizes and introduce an effective gate count that renders the analysis hardware-independent. We instantiate the strategy for two applications. For gate-quality verification, we show that optimally designed screening probes outperform randomized benchmarking with optimal experimental design (OED) by more than 4$\\times$ in detection rate at equal resource cost. For compiler benchmarking, we formalize compiler comparison as a paired hypothesis test and derive the optimal circuit size for distinguishing compilation strategies. Despite their different observables and test statistics, both applications yield structurally the same closed-form expression for the optimal probe circuit size as a function of gate fidelity, illustrating the generality of the framework. Numerical and hardware experiments on QPUs (Rigetti Ankaa-3, IQM Garnet, IQM Emerald) confirm the theoretical predictions, with observed optimal circuit sizes matching the derived values across all devices.",
+        "url": "https://arxiv.org/abs/2610.34003",
+        "pdf_url": "https://arxiv.org/pdf/2610.34003v1",
+        "published": "2026-10-25T02:33:16Z",
+        "updated": "2026-10-25T02:33:16Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 5,
+        "topics": [
+          "benchmarking"
+        ],
+        "keyword_matches": {
+          "benchmarking": [
+            "randomized benchmarking",
+            "gate fidelity"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-27T05:12:19Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
         "id": "2610.33834",
         "version": 1,
         "title": "Initial-State Preparation for Strongly Correlated Molecules from Matrix Product States: Benchmarking and Environment-Aware Divide-and-Conquer Compilation",
@@ -1551,115 +1658,6 @@
         "keyword_matches": {
           "adaptive_resources": [
             "circuit depth"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-22T04:56:38Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.29762",
-        "version": 1,
-        "title": "Encoding a bosonic mode into qubits for simulating boson-matter interactions",
-        "authors": [
-          "Maarten Stroeks",
-          "Jelena Mackeprang",
-          "Yaroslav Herasymenko",
-          "Barbara Terhal"
-        ],
-        "abstract": "We explore the space-time cost of encoding of a bosonic mode into a set of qubits via various encodings, and their resilience to noise. In particular, we compare the performance of the unary Fock state encoding, an unexplored encoding of Fock states into Dicke states (``Dicke'' encoding), and the binary quadrature encoding. We do so by considering a displacement as well as a simulation of a Dicke model, coupling a bosonic mode to a set of atoms represented as qubits. Using classical simulations, we assess the accuracy and optimized space-time costs in terms of number of qubits, circuit depth and CNOT count of a quantum simulation of the time dynamics using these encodings. Although our study is far from comprehensive, we find that the binary quadrature encoding is overall most favorable in terms of being very space-efficient and relatively time-efficient due to the use of the quantum Fourier transform. Our novel Dicke encoding leads to very shallow circuits, but pays in terms of using many more qubits. We probe the use of an H2-2 Quantinuum trapped-ion qubit device (56 qubits) for displacement and Dicke model simulation in the low boson-number regime, where we find that noise leads to visible deviations from ideal circuit dynamics.",
-        "url": "https://arxiv.org/abs/2610.29762",
-        "pdf_url": "https://arxiv.org/pdf/2610.29762v1",
-        "published": "2026-10-21T14:00:26Z",
-        "updated": "2026-10-21T14:00:26Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "adaptive_resources"
-        ],
-        "keyword_matches": {
-          "adaptive_resources": [
-            "circuit depth"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-22T04:56:38Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.29457",
-        "version": 1,
-        "title": "Short qudit triorthogonal codes from doubling",
-        "authors": [
-          "Shiroman Prakash",
-          "K. L. Ramya"
-        ],
-        "abstract": "We construct short triorthogonal codes for qudits of odd prime dimension by generalizing doubling, which combines a triorthogonal code with a code admitting a transversal phase gate, and raises the distance by up to two. This gives codes with parameters $[[28,1,4]]_3$, $[[37,1,5]]_3$, $[[72,1,6]]_3$, $[[118,1,8]]_3$, $[[33,1,5]]_5$ and $[[20,1,4]]_7$, each shorter than the cyclic, concatenated and Reed-Muller codes of the same distance, and a doubling construction of the $[[15,1,3]]_3$ code. When the columns of a generator matrix are regarded as charged points, triorthogonality becomes the vanishing of multipole moments up to octupole order, and doubling becomes a double layer of opposite charges; this picture explains why inputs with nontrivial coefficients can give shorter codes. We also show by exhaustive search that the shortest codes of distance three have length $11$ for $p=5$ and length $7$ for $p=7$. Combined with high-rate distance-two codes, the new codes reduce the cost of qutrit magic state distillation by up to an order of magnitude in regimes with high input noise.",
-        "url": "https://arxiv.org/abs/2610.29457",
-        "pdf_url": "https://arxiv.org/pdf/2610.29457v1",
-        "published": "2026-10-21T09:15:16Z",
-        "updated": "2026-10-21T09:15:16Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 6,
-        "topics": [
-          "logical_qec",
-          "magic_stabilizer"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "transversal"
-          ],
-          "magic_stabilizer": [
-            "magic state"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-22T04:56:38Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.29284",
-        "version": 1,
-        "title": "Support periods of polynomials and support-primitive decomposition of constacyclic codes over Galois rings",
-        "authors": [
-          "Li Zhu",
-          "Hongfeng Wu"
-        ],
-        "abstract": "Let \\(A=\\GR(p^e,r)\\) have residue field \\(\\F_q\\), and let \\(λ\\in A^\\times\\). We relate coefficient compression of monic divisors of \\(X^N-λ\\) to support-primitive decomposition of constacyclic codes. At a simple-root length, the support period of every nonconstant monic divisor is preserved at each coefficient precision and equals the order of the multiplicative stabilizer of its root set. For a cyclic Frobenius-orbit polynomial, the multiple equal-difference structure determines its support period, core degree, and least relative degree of an unramified extension over which all its basic-irreducible factors are binomials. Coordinate projections give every constacyclic code over a finite commutative ring a unique maximal interleaving into copies of one support-primitive code. At simple-root lengths over \\(A\\), the intrinsic period of a code is the greatest common divisor of the periods of its torsion codes. The decomposition yields distance and duality formulas and the arithmetic Singleton bound for free codes. At every length, a nonzero code over \\(A\\) has the same minimum Hamming distance as its highest torsion code, which gives a refined bound. At repeated-root lengths, identical torsion filtrations can occur with different intrinsic periods, while a class of nonzero codes obtained by substitution from simple-root generators retains the same core and minimum distance. Trace matrices recover the coefficients of basic-irreducible cores using unit pivots, and local Hensel corrections lift compressed factors directly. For \\(X^n-1\\) with \\(p\\nmid n\\), lifting and output have quasi-linear bit cost in the compressed representation when the arithmetic data and residue factorizations are given.",
-        "url": "https://arxiv.org/abs/2610.29284",
-        "pdf_url": "https://arxiv.org/pdf/2610.29284v1",
-        "published": "2026-10-21T06:37:01Z",
-        "updated": "2026-10-21T06:37:01Z",
-        "categories": [
-          "cs.IT",
-          "math.NT"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "magic_stabilizer"
-        ],
-        "keyword_matches": {
-          "magic_stabilizer": [
-            "stabilizer"
           ]
         },
         "sources": [

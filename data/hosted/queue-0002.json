@@ -4,6 +4,150 @@
       "kind": "analysis",
       "paper": {
         "doi": "",
+        "id": "2610.38847",
+        "version": 1,
+        "title": "Local Quantum Fault Tolerance Without Expansion",
+        "authors": [
+          "David Ponarovsky"
+        ],
+        "abstract": "We study fault-tolerant quantum computation using a fixed, local error-correction rule and a geometrically simple code: the cubical $(d,d')$-Toric code with $d',d-d'\\geq 2$, including the 4D Toric code. Under sufficiently weak local-stochastic Pauli noise, our construction uses noiseless, bounded-depth classical processing per physical time step. Its correction cycle acts only on the current syndrome, has constant depth, and is repeated unchanged during idle logical computation; it requires neither multiscale decoder states nor scale-dependent communication delays. Our proof treats errors and syndromes as chains in a cubical complex, combining geometric shrinking under the sweep rule with a space--time explanation-tree argument inspired by Toom's theorem. It does not rely on expansion. We establish three results: 1.Explicit higher-dimensional sweep rule. We give a local algorithm for choosing sweep corrections on cubical $(d,d')$-Toric complexes, resolving the local-existence question of Kubica and Preskill. 2. Fault-tolerant computation. We prove a circuit-level threshold theorem for noisy sweep cycles interleaved with logical gates. In particular, the 4D Toric code admits a fixed, constant-depth syndrome-based correction cycle without a multiscale decoder or expansion-based encoding. We do not claim constant total-depth overhead. 3. Ideal decoding under local-stochastic noise. For an initial local-stochastic Pauli error of rate $p$ below threshold, $n^{d+1}$ noiseless sweep cycles recover the encoded state on a side-length-$n$ $(d,d')$-Toric code with probability at least $1-O(\\operatorname{poly}(n))p^{Ω(n)}$, extending earlier guarantees for independent errors.",
+        "url": "https://arxiv.org/abs/2610.38847",
+        "pdf_url": "https://arxiv.org/pdf/2610.38847v1",
+        "published": "2026-10-28T20:31:21Z",
+        "updated": "2026-10-28T20:31:21Z",
+        "categories": [
+          "quant-ph",
+          "cs.CC"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "syndrome"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-30T05:55:37Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.38844",
+        "version": 1,
+        "title": "Inferring the Number of Quantum State Transfers with Neural Networks",
+        "authors": [
+          "Hayden Zammit",
+          "Tony J. G. Apollaro",
+          "Gianluca Valentino",
+          "Johann A. Briffa"
+        ],
+        "abstract": "Repeated-use quantum state transfer (QST) goes beyond the single-use paradigm by accounting for the memory that accumulates inside the transmission channel when it is not reset between uses. Consequently, the map governing the $n^{\\mathrm{th}}$ use of the channel differs from use to use and carries a signature of each previous use. We ask whether this use number can be recovered from transmission data alone, and show that it can: a simple feed-forward neural network, given as input the Bloch vectors sent and received over a single use of an XX spin-chain channel, is able to identify the use number with an accuracy exceeding 90%. Exploiting the U(1) symmetry of the channel, we find that a reduced two-component representation of the transmitted states improves the accuracy further, to about 95%. We characterise the dependence of the classifier on the size and composition of the training data, finding that the number of sampled states and of sampled timings are equally important. We also identify the data set sizes required to reach a given accuracy. Finally, we quantify the severity of the residual misclassifications with an earth-mover distance on the confusion matrix.",
+        "url": "https://arxiv.org/abs/2610.38844",
+        "pdf_url": "https://arxiv.org/pdf/2610.38844v1",
+        "published": "2026-10-28T20:30:51Z",
+        "updated": "2026-10-28T20:30:51Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "adaptive_resources"
+        ],
+        "keyword_matches": {
+          "adaptive_resources": [
+            "feed-forward"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-30T05:55:37Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.38554",
+        "version": 1,
+        "title": "Coherent errors, syndrome extraction and the Robustness of Magic in stabiliser codes",
+        "authors": [
+          "Enrico Bozzetto",
+          "Jonte R. Hance"
+        ],
+        "abstract": "Coherent errors leave stabiliser-code-encoded magic states in superpositions of syndrome sectors. We ask how much magic these coherent errors add, and whether syndrome extraction depletes logical magic. Using Robustness of Magic, we show that, for a unitary error U on a correctable region which supports no stabiliser, the encoded state has the same robustness as the logical state plus one copy of the Choi state of U , in every stabiliser code encoding. Syndrome extraction removes this copy, returning the logical robustness. The removed magic is positive for every non-Clifford error: adding a non-stabiliser state to any state multiplies one plus the robustness by a (tightly- bounded) factor above one. The magic capacity of two-qubit gates Clifford-equivalent to diagonal or single-qubit gates is equal to their Choi-state robustness. We give a linear-algebraic test for when a Clifford error makes syndrome extraction measure a logical operator, and give magic lifetimes of stored single-qubit magic states under Pauli noise. Choosing the plane of the stored state extends these lifetimes about 1.5x on rotated surface codes under low code-capacity depolarising noise. We identify states and channels in odd-prime dimension for which Wigner negativity and robustness show equal lifetimes.",
+        "url": "https://arxiv.org/abs/2610.38554",
+        "pdf_url": "https://arxiv.org/pdf/2610.38554v1",
+        "published": "2026-10-28T09:52:51Z",
+        "updated": "2026-10-28T09:52:51Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 7,
+        "topics": [
+          "logical_qec",
+          "magic_stabilizer"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "syndrome"
+          ],
+          "magic_stabilizer": [
+            "stabiliser",
+            "non-Clifford"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-30T05:55:37Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.38401",
+        "version": 1,
+        "title": "Robustness of Magic and the Directed Geometry of State Conversion",
+        "authors": [
+          "Satoshi Kanno",
+          "Yoshi-aki Shimada"
+        ],
+        "abstract": "In this work, we introduce a state-space distance calibrated by stabilizer states based on the dual structure of the robustness of magic (RoM), and show that RoM is exactly represented as the distance to the free-state set. We then extend this geometry to state conversion by defining the directed conversion deficiency $C_{\\mathcal F}$ as the distance between a target state and the set of states freely reachable from a given input state. The quantity $C_{\\mathcal F}$ characterizes free convertibility and is related to the minimum stabilizer quasiprobability weight required to represent the conversion residual through the relation $1+2C_{\\mathcal F}$. It also contains the conventional magic state resource lower bounds based on RoM and can detect stronger conversion obstructions. For single-qubit systems, we analytically construct a continuous family of mixed states with identical RoM but asymmetric convertibility.",
+        "url": "https://arxiv.org/abs/2610.38401",
+        "pdf_url": "https://arxiv.org/pdf/2610.38401v1",
+        "published": "2026-10-28T07:44:13Z",
+        "updated": "2026-10-28T07:44:13Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 4,
+        "topics": [
+          "magic_stabilizer"
+        ],
+        "keyword_matches": {
+          "magic_stabilizer": [
+            "magic state",
+            "stabilizer"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-30T05:55:37Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
         "id": "2610.38344",
         "version": 1,
         "title": "Symmetry-Preserving Hierarchical Quantum Approximate Optimization Algorithm with Subproblems Beyond the Qubit Limit",
@@ -1515,113 +1659,6 @@
         "keyword_matches": {
           "adaptive_resources": [
             "feedforward"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-27T05:12:19Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.34446",
-        "version": 1,
-        "title": "Ancilla-free optimal quantum adder",
-        "authors": [
-          "Junhong Nie",
-          "Jialiang Tang",
-          "Xiaoming Sun",
-          "Wei Zi"
-        ],
-        "abstract": "We construct an exact $n$-bit quantum adder with $O(n)$ gates and $O(\\log n)$ depth that requires no ancillary qubits. The circuit uses only $X$, CNOT, and Toffoli gates under all-to-all connectivity and is classically reversible. Our construction accelerates the controlled ladder underlying addition. Grouping the data into blocks and use existing control qubits as conditional workspace gives a recursive construction with $O(n\\log\\log n)$ gates and $O(\\log n)$ depth. We then coordinate inter-block propagation via two short-path forest operations to cut the per-block workspace requirement, yielding a nonrecursive implementation with $O(n)$ gates. Both the gate count and circuit depth are asymptotically optimal.",
-        "url": "https://arxiv.org/abs/2610.34446",
-        "pdf_url": "https://arxiv.org/pdf/2610.34446v1",
-        "published": "2026-10-25T17:07:59Z",
-        "updated": "2026-10-25T17:07:59Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 4,
-        "topics": [
-          "adaptive_resources"
-        ],
-        "keyword_matches": {
-          "adaptive_resources": [
-            "ancilla-free",
-            "circuit depth"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-27T05:12:19Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.34404",
-        "version": 1,
-        "title": "Maximum-Likelihood Decoding of Gabidulin Codes Is NP-Hard Even in Dimension One",
-        "authors": [
-          "Philippe Gaborit"
-        ],
-        "abstract": "Fix a prime power q. We prove that deciding whether a received word y in Fnqm lies at rank distance at most n-2 from the one-dimensional Gabidulin code {{λ.g : λ in Fqm } is NP-complete. Thus maximum-likelihood decoding of Gabidulin codes is NP-hard even for k = 1, an analogue of the Guruswami-Vardy theorem for Reed-Solomon codes. In the Hamming metric, by contrast, hardness at this radius requires the dimension to grow with the length, as in the Guruswami-Vardy theorem. The reduction is deterministic; consequently Rank Syndrome Decoding (RSD) and Rank Minimum Distance (RMD) for Fqm -linear codes are NP-complete under deterministic polynomial reductions, whereas the previously known reduction was randomized. The proof goes through a pivot problem that we introduce, Twisted Square Membership (TSM): given Fq-subspaces U, W in FqN , decide whether some non-zero a in U satisfies a^(q+1) in W . Quadratic systems in d unknowns are encoded into TSM, then TSM into Gabidulin decoding. The last step views the received word as an Fq-linear map and decoding at radius n - 2 as the search for an Fq-plane on which it acts as a scalar. With support U + τ W in a cubic extension and map a + τ b to a^(q^2) + τ bq^q , two Frobenius twists force solution planes to encode the relation a^(q+1) in W . All constructions are explicit and polynomial, with N = O(qd^2 ), n less than N + d, and m = 3N .",
-        "url": "https://arxiv.org/abs/2610.34404",
-        "pdf_url": "https://arxiv.org/pdf/2610.34404v1",
-        "published": "2026-10-25T16:06:47Z",
-        "updated": "2026-10-25T16:06:47Z",
-        "categories": [
-          "cs.CR",
-          "cs.IT"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "logical_qec"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "syndrome"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-27T05:12:19Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.34003",
-        "version": 1,
-        "title": "Resource-Optimal Screening for Two-Tier Quantum System Characterization",
-        "authors": [
-          "Yi-Ting Chen",
-          "Aniket S. Dalvi",
-          "Nils Quetschlich"
-        ],
-        "abstract": "Quantum processing units (QPUs) require frequent benchmarking to track hardware drift, yet standard protocols such as randomized benchmarking are resource-intensive and compete with application workloads for scarce QPU time. We present a resource-optimal screening strategy that combines a two-tier, risk-based testing architecture with optimal experiment design: a lightweight screening probe runs regularly and triggers expensive full characterization only when statistically significant change is detected, while the probe itself is designed to maximize detection sensitivity under explicit resource constraints. For an exponential fidelity model, we derive closed-form optimal circuit sizes and introduce an effective gate count that renders the analysis hardware-independent. We instantiate the strategy for two applications. For gate-quality verification, we show that optimally designed screening probes outperform randomized benchmarking with optimal experimental design (OED) by more than 4$\\times$ in detection rate at equal resource cost. For compiler benchmarking, we formalize compiler comparison as a paired hypothesis test and derive the optimal circuit size for distinguishing compilation strategies. Despite their different observables and test statistics, both applications yield structurally the same closed-form expression for the optimal probe circuit size as a function of gate fidelity, illustrating the generality of the framework. Numerical and hardware experiments on QPUs (Rigetti Ankaa-3, IQM Garnet, IQM Emerald) confirm the theoretical predictions, with observed optimal circuit sizes matching the derived values across all devices.",
-        "url": "https://arxiv.org/abs/2610.34003",
-        "pdf_url": "https://arxiv.org/pdf/2610.34003v1",
-        "published": "2026-10-25T02:33:16Z",
-        "updated": "2026-10-25T02:33:16Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 5,
-        "topics": [
-          "benchmarking"
-        ],
-        "keyword_matches": {
-          "benchmarking": [
-            "randomized benchmarking",
-            "gate fidelity"
           ]
         },
         "sources": [
