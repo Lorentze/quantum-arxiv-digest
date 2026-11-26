@@ -1,0 +1,325 @@
+{
+  "analyses": [
+    {
+      "id": "2611.32459",
+      "version": 1,
+      "analysis": {
+        "summary": "本文用 residual learning 加 convex projection，使 ML-QEM 重建结果满足 density-matrix physicality，并在小型 quantum simulations 上比较。projection 保证合法态，不单独保证该态接近真实 noisy device 或理想目标。",
+        "problem": "ML reconstruction 可能输出非物理矩阵，训练态选择及物理约束如何影响量子模拟 mitigation。",
+        "setting": "Haar-random/VQE-ansatz training states、多种 regression models；IBM hardware 的3/4-qubit bound-state simulations。",
+        "main_results": [
+          "3-qubit ridge/VQE-training 给 ground-state energy −0.134 MeV，对照 ideal −0.135，报告 state fidelity0.999。",
+          "4-qubit kernel-ridge 两个配置的 energies 为−3.014/−3.045 MeV，对应 fidelities0.995/0.998；具体结果依训练和回归模型。"
+        ],
+        "techniques": [
+          "residual learning、convex physical-state projection，并与 conventional ML-QEM、readout mitigation、ZNE 比较。"
+        ],
+        "assumptions": [
+          "ideal reference、training distribution 与测试配置是方法依赖项；合法 density matrix 不是无偏 estimator 的充分条件。"
+        ],
+        "limitations": [
+          "摘要未给 shots、error bars、train/test leakage checks、generalization bounds 或每方案总开销，不能由高 fidelity 数值推断 certified confidence。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 noise mitigation 和 physicality-constrained quantum inference 相关，匹配中等。"
+        ],
+        "follow_up": [
+          "读者建议：用独立 unseen circuits 与校准漂移测 projection 后的 bias/coverage，并统一 total shots 比较。"
+        ],
+        "relevance_score": 75,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.32459v1"
+      }
+    },
+    {
+      "id": "2611.32192",
+      "version": 1,
+      "analysis": {
+        "summary": "论文从 n-to-1 finite-field mappings 构造同时 self-orthogonal 与 minimal 的 classical codes，再导出 quantum-code 和 secret-sharing families。方法联系明确，但摘要不足以列出具体 quantum parameters。",
+        "problem": "高次 functions 的 Walsh spectra 难计算，如何获得 weight distributions 并证明 minimality/self-orthogonality。",
+        "setting": "skew polynomial rings，以 right gcd 确定关联 linearized polynomials 的 kernel dimensions，再计算 code weights。",
+        "main_results": [
+          "作者处理两种新 n-to-1 families 与一种既有 family，给 exact weight distributions，证明三者均 minimal 和 self-orthogonal，并据此给 quantum codes 和 explicit access structures。"
+        ],
+        "techniques": [
+          "skew-polynomial gcd、kernel counting 与 coding-theoretic constructions。"
+        ],
+        "assumptions": [
+          "量子码来自所述 classical self-orthogonality construction，classical secret sharing 不能直接当作 quantum secret sharing。"
+        ],
+        "limitations": [
+          "摘要没有参数公式、distance optimization、decoder 或 fault-tolerant gadget；不补写未读 n,k,d。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 stabilizer-code construction 与 access-structure 工具有具体联系。"
+        ],
+        "follow_up": [
+          "读者建议：对明确参数核查量子码距与 check weight，并区分 classical/quantum secret 的可恢复条件。"
+        ],
+        "relevance_score": 78,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.32192v1"
+      }
+    },
+    {
+      "id": "2611.32126",
+      "version": 1,
+      "analysis": {
+        "summary": "论文分析 linear entanglement-assisted stabilizer codes 何时满足既有 EA Singleton bound，并量化违反幅度。它把预共享 entanglement 消耗与 logical recovery 的几何信息联系，而不是假定所有大距离码都服从同一旧公式。",
+        "problem": "已知部分 EA codes 违反 standard Singleton estimate，能否给准确适用条件和最大 overstatement。",
+        "setting": "linear EA stabilizer codes、prime-power qudit setting，含此类 qubit codes；考虑若干 physical qudits 连同 receiver 的 Bell-pair halves 可恢复 logical information。",
+        "main_results": [
+          "所需恢复 qudits 数小于两倍 logical count 时，旧界成立，含 degenerate codes。",
+          "等于两倍时，pair-consumption overstatement 受同维 classical MDS code maximum length 减 dimension 限制；更大时用固定 Singleton defect 的 classical lengths 控制，并在一 logical-qudit 情形达界。",
+          "除引用的 MDS lengths 外，作者称 proofs 已 Lean formalized。"
+        ],
+        "techniques": [
+          "erasure/recovery constraints、classical code bounds 与 formal proof。"
+        ],
+        "assumptions": [
+          "不同 recovery-number regimes、field size 与已知 MDS lengths 必须分别使用；摘要所引 recently announced MDS result 未独立核查。"
+        ],
+        "limitations": [
+          "摘要未给完整 EA bound、field-size 条件下的构造参数或 implementation cost；formalization 声明不是本报告独立审计。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接连接 logical QEC、erasure information 和 shared-entanglement resources。"
+        ],
+        "follow_up": [
+          "读者建议：对具体 EA code 显式核算 receiver resources 与 erasure-recovery sets，再检验旧界和改进界的差异。"
+        ],
+        "relevance_score": 90,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.32126v1"
+      }
+    },
+    {
+      "id": "2611.31444",
+      "version": 1,
+      "analysis": {
+        "summary": "作者强调 coherent controls 一般也改变 dissipative dynamics，固定 Lindblad dissipator 可能低估 controllability。本文是二能级 thermal-bath 模型分析，不直接给多比特 gate certification 或 universal noise law。",
+        "problem": "thermal equilibrium 的 Gibbs state 依赖 Hamiltonian；若 controls 改变 Hamiltonian，为什么 dissipative part 还能被当作不变。",
+        "setting": "比较 control-dependent 和 control-independent master-equation models，具体分析 two-level system coupled to thermal bath。",
+        "main_results": [
+          "摘要报告 coherent controls 对 dynamics 的影响可强于固定 dissipator 模型的预测。"
+        ],
+        "techniques": [
+          "Hamiltonian/bath-consistent open-system control analysis。"
+        ],
+        "assumptions": [
+          "结果依赖所选 master equation、thermal-bath approximation 与 control regime。"
+        ],
+        "limitations": [
+          "摘要没有完整 controllability criterion、gate-error bound、bath timescale 或 experiment，不能由模型差异推导具体 hardware infidelity。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与可信控制和 gate-noise stationarity 假设有方法联系。"
+        ],
+        "follow_up": [
+          "读者建议：把控制变化引起的 dissipator 变化映射到 PTM，并检查是否破坏 repeated-gate certification 的噪声假设。"
+        ],
+        "relevance_score": 79,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.31444v1"
+      }
+    },
+    {
+      "id": "2611.31380",
+      "version": 1,
+      "analysis": {
+        "summary": "本文用 spectral filtering 与 fixed-point amplification 在相关 nonreversible Markov chains 间运输 coherent quantum samples。它明确区分有 reverse transition access 的 stationary target 和 forward-only 构造的 biased target，不能将后者默认成 stationary distribution 的纯化。",
+        "problem": "nonreversible chain 没有直接可用的 reversible quantum-walk picture，怎样准备并沿多个阶段更新 coherent samples，同时控制 oracle 和 overlap 成本。",
+        "setting": "第一构造可相干访问 forward/time-reversed transitions，目标为 stationary quantum sample，gap 为 multiplicative-reversibilization gap。第二只用 forward transitions，选择 flat discriminant 的 leading eigenstate，另以谱/reversibility-on-average 条件控制 bias。",
+        "main_results": [
+          "忽略 logarithmic factors，filter degrees 为 relevant gaps 的 inverse square root；transport 另有 certified successive-state squared-overlap lower bounds 的 inverse-square-root 依赖。",
+          "forward-only filter 用 generalized QSP 的一个 signal qubit，但不包括 transition registers 和 oracle workspace。"
+        ],
+        "techniques": [
+          "spectral phase operations、fixed-point amplitude amplification 与 multistage coherent transport。"
+        ],
+        "assumptions": [
+          "需要对应 oracle access、spectral promises 和 overlap certificates；不能把 gap 统一叫原非正规 transition matrix 的普通 spectral gap。"
+        ],
+        "limitations": [
+          "摘要未给完整误差式、multi-step transition-oracle implementation cost 和 bias 常数；single signal qubit 不是整个算法只用一个 ancilla。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接连接 state preparation、coherent access 和 ancilla/query resources。"
+        ],
+        "follow_up": [
+          "读者建议：统一 stationary-target error 后比较 forward-only bias、reverse-oracle cost 与多阶段 overlap bottleneck。"
+        ],
+        "relevance_score": 90,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.31380v1"
+      }
+    },
+    {
+      "id": "2611.31375",
+      "version": 1,
+      "analysis": {
+        "summary": "论文把 toric code 中 stored logical state 的 magic 写成 geometrically defined spinal reflected entropy 的一部分，提供 entanglement 与 logical nonstabilizerness 的联系。",
+        "problem": "物理稳定子码空间可以存储 nonstabilizer logical state，能否从特定局部几何区域的 entanglement 读出该逻辑资源。",
+        "setting": "在 surface spine 的 neighborhood 上，将 vertex disk 与 noncontractible-loop bands 分开定义 reflected entropy，先对 torus 再推广 higher genus 与二维 qubit topological stabilizer codes。",
+        "main_results": [
+          "spinal reflected entropy obeys area law 加 topological correction，另有唯一依赖 stored state 的项。torus 上该项等于 stored-state stabilizer Rényi entropy 加 ground-space degeneracy 的 logarithm。",
+          "sewn/reflected geometry 中 logical Paulis 变 anyon charges，其分布对应 stored state 的 Bell sampling；保持 code space 的 shallow circuits 不能改变所述 logical-magic quantity。"
+        ],
+        "techniques": [
+          "topological sewing、anyon-charge representation 与 Bell-sampling connection。"
+        ],
+        "assumptions": [
+          "需特定 code-space、surface geometry 与 entropy definitions，不是任意 state entanglement 都等于 magic。"
+        ],
+        "limitations": [
+          "摘要未给实验 estimator、copies、region-size scaling 或一般 noisy/leakage states 的稳定界；几何定义不等于低成本可观测。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接联系 logical magic、stabilizer code 和 measurement-access resources。"
+        ],
+        "follow_up": [
+          "读者建议：在有限 noisy patch 上检查 entropy/logic-magic identity 的误差，并比较 Bell sampling 与局部区域 tomography 的总 copies。"
+        ],
+        "relevance_score": 92,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.31375v1"
+      }
+    },
+    {
+      "id": "2611.33063",
+      "version": 1,
+      "analysis": {
+        "summary": "本文研究open Dicke model 的 superradiant phase transition 与 emission spectra，当前研究范围匹配不足。",
+        "problem": "open Dicke model 的 superradiant phase transition 与 emission spectra的理论或数值机制。",
+        "setting": "cavity 零温 reservoir 与 thermalized spin bath 的 finite-temperature open-system 模型。",
+        "main_results": [
+          "作者研究 critical coupling、overdamping 和反射/热发射。"
+        ],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "没有 benchmarking、logical QEC 或信息访问任务；light–matter decoupling 不等于量子信息 decoupling theorem。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "低相关：没有 benchmarking、logical QEC 或信息访问任务；light–matter decoupling 不等于量子信息 decoupling theorem。"
+        ],
+        "follow_up": [],
+        "relevance_score": 15,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.33063v1"
+      }
+    },
+    {
+      "id": "2611.32689",
+      "version": 1,
+      "analysis": {
+        "summary": "本文研究classical space-time metasurface 的 quantum-inspired bits，当前研究范围匹配不足。",
+        "problem": "classical space-time metasurface 的 quantum-inspired bits的理论或数值机制。",
+        "setting": "可编程 polarization、harmonic-frequency 和 Stokes-skyrmion field synthesis。",
+        "main_results": [
+          "作者实现48个非零 harmonic orders 的可控 polarization states。"
+        ],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "qubit-like projective geometry 不构成 quantum-data resource 或 quantum measurement guarantee。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "低相关：qubit-like projective geometry 不构成 quantum-data resource 或 quantum measurement guarantee。"
+        ],
+        "follow_up": [],
+        "relevance_score": 6,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.32689v1"
+      }
+    },
+    {
+      "id": "2611.32313",
+      "version": 1,
+      "analysis": {
+        "summary": "本文研究Roman hitting functions 的 classical graph enumeration，当前研究范围匹配不足。",
+        "problem": "Roman hitting functions 的 classical graph enumeration的理论或数值机制。",
+        "setting": "hypergraphs、extension problems 与 parameterized complexity。",
+        "main_results": [
+          "作者给 polynomial/FPT-delay enumeration 及 hardness 边界。"
+        ],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "与 quantum circuit、magic、QEC 或 quantum-data learning 无直接联系。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "低相关：与 quantum circuit、magic、QEC 或 quantum-data learning 无直接联系。"
+        ],
+        "follow_up": [],
+        "relevance_score": 5,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.32313v1"
+      }
+    },
+    {
+      "id": "2611.31888",
+      "version": 1,
+      "analysis": {
+        "summary": "本文研究cold-atom non-Abelian lattice gauge simulation，当前研究范围匹配不足。",
+        "problem": "cold-atom non-Abelian lattice gauge simulation的理论或数值机制。",
+        "setting": "87Rb analog simulator 的 truncated 1D SU(2) model 与 meson–baryon conversion。",
+        "main_results": [
+          "作者观察 hadronic conversion 与 coherent oscillations。"
+        ],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "本条核心是 gauge-matter physics/platform，摘要没有当前 certification、QEC 或 resource-bound 联系。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "低相关：本条核心是 gauge-matter physics/platform，摘要没有当前 certification、QEC 或 resource-bound 联系。"
+        ],
+        "follow_up": [],
+        "relevance_score": 22,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-26T01:06:28Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.31888v1"
+      }
+    }
+  ]
+}
