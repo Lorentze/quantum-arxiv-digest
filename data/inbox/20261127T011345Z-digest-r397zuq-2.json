@@ -1,0 +1,347 @@
+{
+  "analyses": [
+    {
+      "id": "2611.34481",
+      "version": 1,
+      "analysis": {
+        "summary": "论文用 parallel-window GPU decoding 处理 BB code 的 circuit-level syndrome dependencies。吞吐量达到一轮每微秒，与单个结果承诺时的 63–144 微秒延迟是不同指标；该区别直接影响 logical feed-forward 的可行性。",
+        "problem": "连续 syndrome rounds 的依赖拖慢 sequential sliding-window decoding，如何在不牺牲 logical accuracy 的同时消除 backlog。",
+        "setting": "RTX 5090 上 reusable fault patterns、shared-memory state、persistent GPU workers，min-sum 配合 Relay-BP recovery；四个 BB codes，最大 [[144,12,12]]。",
+        "main_results": [
+          "摘要报告全部四码吞吐跟上一轮每 1 μs，median commit delays 为 63–144 μs；相对 sequential sliding window 吞吐高 120 倍。",
+          "在接受 decoding result 前检查相邻 detector rounds，failures 最多降 65%。[[144,12,12]]、p=0.002 时每轮 failures 为 7.58×10^(−6)，比文献 BP-SF 数值低 36%。"
+        ],
+        "techniques": [
+          "并行窗口、持久 worker 与邻轮一致性检查。"
+        ],
+        "assumptions": [
+          "需采用指定 circuit-level noise、window and commit policies 和 GPU environment；每轮 failure metric 与比较 baseline 定义一致。"
+        ],
+        "limitations": [
+          "摘要未给 latency tails、功耗、全栈 measurement transfer 或在线 logical-gate demonstration。吞吐 improvement 不是 syndrome cycle latency 同比缩短。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "高度相关 logical QEC 与 syndrome-to-recovery timing，可用于区分 steady-state throughput 和 adaptive-control deadline。"
+        ],
+        "follow_up": [
+          "读者建议：加入 p99 latency 和 measurement-to-decoder transfer 后，评估 logical non-Clifford feed-forward 是否能按时提交。"
+        ],
+        "relevance_score": 93,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.34481v1"
+      }
+    },
+    {
+      "id": "2611.34468",
+      "version": 1,
+      "analysis": {
+        "summary": "论文统一分析四类量子信息随机化任务的 trace-distance error exponent：soft covering、privacy amplification、convex splitting 和 Haar partial-trace decoupling。主要进展是给已有 achievability exponent 配套 matching ensemble converses，并区分 error 趋零和趋一的两个指数。对 privacy amplification，不同 hash ensembles 的 reliability 不能混为一谈。",
+        "problem": "已知 one-shot error bounds 常给 exponential decay 的 achievable rate，但未必是 sharp exponent。量子 side information 的非对易性使经典 Poissonization 等方法不直接给 matching converse；且 Rényi-divergence 或 purified-distance 的 sharp result 不能自动换成 trace distance。",
+        "setting": "有限维、i.i.d. sources，trace distance 为 ‖ρ−σ‖₁/2。Δ_n 在适用时先对 prescribed codebook/hash/Haar randomness 平均。reliability 指 lim −logΔ_n/n，strong converse 指 lim −log(1−Δ_n)/n；后者描述 error 如何趋一。R=lim logM_n/n 在不同任务分别对应 codebook、key alphabet 或 registers 的指数规模。",
+        "main_results": [
+          "对于 independent-codeword soft covering、uniform convex splitting 和 Haar partial-trace decoupling，作者确定 exact reliability 与 strong-converse exponents。privacy amplification 的 exact reliability 针对 independent uniform random binning，exact strong-converse exponent 则对每个 two-universal hash ensemble 成立。",
+          "以 privacy amplification 为例，reliability 为 max_(1≤α≤2) [(α−1)/α][H*α(X",
+          "E)−R]，strong-converse exponent 为 max_(0≤s≤1)(1−s)[R−Hs(X",
+          "E)]；前者用 optimized sandwiched Rényi quantity，后者用 actual marginal 对应的 Petz quantity，二者不能互换。",
+          "Haar decoupling 将 A=C⊗D，retain dimension c≥2、discard dimension k，公式涉及 log(c/k)。这里 c、k 是 Hilbert-space dimensions，不能直接改写成 qubit 数之比。作者还展示某 strongly two-universal hash ensemble 的 reliability 严格优于 independent binning，故上述 reliability 非所有 universal hashing 的共同最优式。"
+        ],
+        "techniques": [
+          "把 trace-distance errors 与 binary quantum hypothesis testing 连接。reliability converse 利用 noncommutative Rosenthal inequalities 控制 random matrix sums；strong converse 利用 conditional second-moment estimates 与 weighted testing cost。",
+          "共同框架把 task-dependent state/reference 构造与 testing exponent 分开，并与原有 upper error bounds 配合得到 sharp limits。"
+        ],
+        "assumptions": [
+          "i.i.d.、finite-dimensional 和 ensemble specification 是必要背景；不承诺每一个 sampled codebook 都达到平均 exponent。",
+          "Haar operation 是理想 randomness resource；没有在此给 finite-depth approximate design 替换 Haar 后同样 exact exponent 的保证。"
+        ],
+        "limitations": [
+          "本报告重点读 introduction、Table I、notation 与机制节选，未审计各任务全部 converse proof、support conditions 和有限 blocklength prefactors。",
+          "指数精确不等于 finite-n total cost 最优；也不直接给 sampling shots、Clifford depth 或随机电路设计阶数的最优关系。",
+          "未为非 i.i.d. memory、hardware noise 或 restricted measurement 另加未经正文支持的推广。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接契合 decoupling、quantum side information 和 information access，也提供比较误差量约定时的具体基准，避免把 purified-distance rates 当作 trace-distance rates。"
+        ],
+        "follow_up": [
+          "读者建议：选定任务和 randomness ensemble 后先保留 trace-distance convention，再研究用 finite designs 或 local circuits 替代 Haar 所需误差预算；该推广是读者建议而非本文已证结果。"
+        ],
+        "relevance_score": 99,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.34468v1"
+      }
+    },
+    {
+      "id": "2611.34447",
+      "version": 1,
+      "analysis": {
+        "summary": "本文研究classical q-ary array 的 criss-cross deletion-correcting codes，与当前研究问题的具体连接不足。",
+        "problem": "classical q-ary array 的 criss-cross deletion-correcting codes的定量分析。",
+        "setting": "删除一个 row 和 column 的 n×n classical arrays，sphere-packing 与 syndrome constructions。",
+        "main_results": [
+          "作者给 redundancy bounds 和按 array entries 线性的编码/解码算法。"
+        ],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "这是 classical deletion coding，不是 quantum error correction 或 quantum information access。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "低相关：这是 classical deletion coding，不是 quantum error correction 或 quantum information access。"
+        ],
+        "follow_up": [],
+        "relevance_score": 5,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.34447v1"
+      }
+    },
+    {
+      "id": "2611.34433",
+      "version": 1,
+      "analysis": {
+        "summary": "三 qubit NMR 实验显示：相同 ideal unitary 和角度、不同 CNOT control order 的 Grover–Rudolph loading compilation 可出现不同输出准确度，差异还会随 identity-equivalent gates 的调度改变。作者仅提出 pulse timing/order hypothesis，没有确定 microscopic mechanism。",
+        "problem": "只看输出 probability distribution 与 ideal circuit equivalence，能否掩盖编译调度依赖的噪声，甚至误导 global depolarizing description。",
+        "setting": "ancilla-free Grover–Rudolph 分解为 Ry、X、CNOT；两种 level-2 Gray-code realizations A/B 仅 CNOT controls 顺序不同。700 runs、七个 targets。",
+        "main_results": [
+          "Holm correction 后七目标中的三个 A/B contrast 显著，无固定优胜符号。移除 identity-equivalent gates 的 ladder×intervention interaction 为 +0.0625，95% CI [+0.0306,+0.0944]，并使优势反向。",
+          "同一 logical circuit 的五次 acquisitions contrast 在 +0.0395 到 −0.0229 间；uniform target 的 classical fidelity 为 0.962 时，本应为零的 two-body correlation 达 +0.217。"
+        ],
+        "techniques": [
+          "paired compilation interventions、run-level statistics 与 correlator diagnostics。"
+        ],
+        "assumptions": [
+          "结论依赖具体 liquid-state NMR control schedule；probability metric 不检查 coherences。"
+        ],
+        "limitations": [
+          "摘要没有将 variation 唯一归因于某种 drift/SPAM mechanism，也未给 trusted-inverse-free channel certificate。pulse-level campaign 只有 summary tables，完整 run-level data 覆盖另述 campaigns。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接联系 noise stationarity、compilation-dependent characterization 与 fidelity metric 的信息缺口。"
+        ],
+        "follow_up": [
+          "读者建议：对同一 fixed gate 增加 coherence-sensitive observables，并分开估计 repeatability、SPAM 和 schedule dependence。"
+        ],
+        "relevance_score": 91,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.34433v1"
+      }
+    },
+    {
+      "id": "2611.34135",
+      "version": 1,
+      "analysis": {
+        "summary": "本文用邻近 SNSPD 的 Cryo-CMOS electronics 加速 intrinsic photon-number readout，为 measurement-conditioned feed-forward 给出具体 latency resource。其证据是 detector/readout circuit，不是完整 photonic logical operation 的 demonstration。",
+        "problem": "以 picosecond timing 编码 photon-number 信息的 SNSPD readout 往往依赖高带宽外部设备，如何降低反馈前的读出延迟。",
+        "setting": "cryostat 中靠近 single SNSPD 的 cryogenic electronic circuit，直接从其 signal 隔离 single-photon detection events。",
+        "main_results": [
+          "作者报告 photon-number readout latency 为 13.9±0.3 ns，并指出可支持基于该信息的 low-latency feed-forward。"
+        ],
+        "techniques": [
+          "近探测器 cryogenic signal processing 与 intrinsic photon-number timing extraction。"
+        ],
+        "assumptions": [
+          "latency 限于所述 readout chain；后续 classical decision、routing 和 optical correction 成本需另计。"
+        ],
+        "limitations": [
+          "摘要未给完整 photon-number confusion matrix、QEC threshold、shot budget 或总 feedback cycle latency。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "具体连接 measurement access 和 adaptive timing，按该联系入选；不把一般 detector materials 工作视为相关。"
+        ],
+        "follow_up": [
+          "读者建议：将 number-resolution error 与电子/光学 correction latency 一起加入 photonic gadget 的 resource estimate。"
+        ],
+        "relevance_score": 76,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.34135v1"
+      }
+    },
+    {
+      "id": "2611.33854",
+      "version": 1,
+      "analysis": {
+        "summary": "本文研究superconducting qubit fabrication quality 的 broadband SWAP spectroscopy，与当前研究问题的具体连接不足。",
+        "problem": "superconducting qubit fabrication quality 的 broadband SWAP spectroscopy的定量分析。",
+        "setting": "用 Q=2π f01 T1 汇总多频率 relaxation distributions，跨 thermal cycles 比较。",
+        "main_results": [
+          "作者报告四 thermal cycles、326 天间 broadband Q cumulative distributions 的 reproducibility。"
+        ],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "虽有一般 characterization 意义，摘要主旨是 fabrication/TLS spectroscopy；未建立 gate/SPAM certification、具体 logical QEC protocol 或 quantum-information access 方法。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "低相关：虽有一般 characterization 意义，摘要主旨是 fabrication/TLS spectroscopy；未建立 gate/SPAM certification、具体 logical QEC protocol 或 quantum-information access 方法。"
+        ],
+        "follow_up": [],
+        "relevance_score": 40,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.33854v1"
+      }
+    },
+    {
+      "id": "2611.33665",
+      "version": 1,
+      "analysis": {
+        "summary": "Amatlas 把 distributed Union-Find decoder 映射到二维 PE array，通过本地存储 measurement rounds 避免 array-wide stage synchronization。clock 仍是全局信号；“无全局协调”不是无需任何同步，也不是任意距离上的 constant latency theorem。",
+        "problem": "三维 decoding graph 的 processing-element 布局和 central stage controller 难以在 planar hardware 扩展，怎样保持局部通信并支持实时 surface-code decoding。",
+        "setting": "每 stabilizer 一个 PE，所有 measurement-round states 放入其 local memory；links 只连邻近 PEs，所有 PEs 每 clock cycle 推进。",
+        "main_results": [
+          "RTL implementation 在 VCU129 FPGA 上支持至 d=25；physical error 0.1% 下 average decoding time 462 ns/round。",
+          "所用 circuit-level noise 下 threshold 为 0.72%，同模型 UF reference 为 0.78%，因此速度与 threshold 需共同比较。"
+        ],
+        "techniques": [
+          "二维空间/本地时间存储映射、decentralized UF progression。"
+        ],
+        "assumptions": [
+          "数字依赖 chosen circuit-level noise、FPGA resources、clocking 和 code distance；average 不保证 worst-case deadlines。"
+        ],
+        "limitations": [
+          "摘要未给 latency tails、memory scaling constants 或 encoded hardware closed-loop test。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接联系 syndrome extraction、online recovery 和 logical QEC 的可扩展 classical resources。"
+        ],
+        "follow_up": [
+          "读者建议：在固定 target logical failure 下比较 d、local memory、p99 latency 与 decoder backlog。"
+        ],
+        "relevance_score": 93,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.33665v1"
+      }
+    },
+    {
+      "id": "2611.33590",
+      "version": 1,
+      "analysis": {
+        "summary": "作者提出 silicon spin qubit 的 dense FTQC architecture，以 memory、shuttling lanes 和 cross junctions 支持 surface-code logical operations。大规模集成数字来自参数评估，不是制造或逻辑性能的实测记录。",
+        "problem": "如何同时满足 qubit transport、wiring、QEC 与 logical gates，而非仅在小单元展示高 fidelity。",
+        "setting": "rotated-surface-code logical memories；one-dimensional spin shuttling lanes 提供连接，cross junctions 路由并执行 transversal logical CNOT。",
+        "main_results": [
+          "在所选 experimentally demonstrated device parameters 的模型评估中，作者估计 code distance 至少 21 才达每 syndrome cycle logical error<10^(−10)。",
+          "优化 CMOS-compatible multiplexed wiring efficiency 后，100 mm×100 mm chip 上可容纳超过 120000 logical qubits 的数字是 architecture projection。"
+        ],
+        "techniques": [
+          "logical-memory/transport separation、transversal CNOT routing 与 wiring-resource estimates。"
+        ],
+        "assumptions": [
+          "预测依赖输入 device noise parameters、shuttling/control assumptions 和 optimized wiring；不能把单元指标自然外推为大芯片 correlated-noise performance。"
+        ],
+        "limitations": [
+          "摘要未给完整 memory/correlation assumptions、logical CNOT error model、magic factory footprint 或 yield。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "有明确 logical QEC 和 logical-operation resource 联系，达到范围门槛。"
+        ],
+        "follow_up": [
+          "读者建议：在固定 recovery/gadget 下加入 transport errors、correlations、magic-state supply 和 latency，重新核算可用 logical capacity。"
+        ],
+        "relevance_score": 87,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.33590v1"
+      }
+    },
+    {
+      "id": "2611.33389",
+      "version": 1,
+      "analysis": {
+        "summary": "论文把 QECC Tanner graph 经 continuous embedding、grid assignment 和 path routing 变成显式 hardware layouts，比较 footprint、communication 与 congestion proxies。它把非局域 qLDPC interactions 的实现成本具体化，但没有把几何 proxy 自动换算为 logical fidelity。",
+        "problem": "同样 algebraic code parameters 的 codes 或不同 stabilizer generator sets，落到硬件时可能有很不同的 syndrome extraction 代价。",
+        "setting": "比较 MDS、spectral embedding 与 spring layout，并在不同 lattice geometry、dimension、scales 和 routing choices 下评估。",
+        "main_results": [
+          "R2 HaPPY ablations 中，在作者 chosen weighted cost 下，continuous graph-aware embedding 和 routing algorithm 比 grid assignment 更重要。",
+          "MDS 在多数 tested scales 上比 spectral embedding communication overhead 大；spring 可在中间尺度减通信但增加 congestion，且跨 scales 稳定性较差。"
+        ],
+        "techniques": [
+          "Tanner-graph geometry、discrete grid placement 和 explicit path routing。"
+        ],
+        "assumptions": [
+          "结果依赖 proxy definitions、weights、scales 与 routing policy；不是所有 codes 的 universally optimal embedding。"
+        ],
+        "limitations": [
+          "摘要未给 depth lower bounds、ancilla counts 的最优性或 circuit-level logical noise evaluation。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "具体连接 qLDPC syndrome hardware overhead 与 locality/resources tradeoffs。"
+        ],
+        "follow_up": [
+          "读者建议：将 routed paths 编译成真实 extraction schedule，加入 ancilla reuse、idle errors 和 decoder model 后再评估 logical advantage。"
+        ],
+        "relevance_score": 85,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.33389v1"
+      }
+    },
+    {
+      "id": "2611.33340",
+      "version": 1,
+      "analysis": {
+        "summary": "本文在只能获得 quantum function state copies 的访问模型中改进 Boolean monotonicity testing，并给 matching-range lower bounds。量子输入状态而非 generic classical dataset 是资源优势的关键；copies cost 不等同于制备或 oracle-query cost。",
+        "problem": "给 f 的 quantum function states 能多高效判断 monotonicity，以及量子 readout 的最优 sample demand 是否可被 lower bound 限定。",
+        "setting": "输入 |ψ_f〉=2^(−n/2)Σ_x|x,f(x)〉 的 copies，测试 monotonicity versus ε-far。",
+        "main_results": [
+          "作者给 O(min{n/ε³,n^(3/2)/ε²}) copies，相比先前约 Õ(n²/ε²) 上界改进，并称 broad ε range 有 matching lower bounds。",
+          "同一 lower-bound framework 对 union-closedness 与 2-monotonicity 给 Ω(n²) copies 下界。"
+        ],
+        "techniques": [
+          "分别改进 Fourier tester 并单独处理 high-influence functions，或构造 observable 使 expectation 等于 classical path tester violation probability。",
+          "lower bound 将 independent functions 放在 Boolean hypercube 的 incomparable regions，并以 Poisson-distributed copy number 分离区域贡献。"
+        ],
+        "assumptions": [
+          "优势以可获取 quantum function states 为前提，ε 的 matching range 与 error conventions 要按正文定理确定。"
+        ],
+        "limitations": [
+          "摘要未给所有 ε intervals、confidence dependence、observable implementation depth 或 state-preparation target calls；不能补为所有 ε 的统一 tight bound。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接连接 quantum-data access、sample complexity 与 collective processing。"
+        ],
+        "follow_up": [
+          "读者建议：把 function-state preparation queries、coherent memory 和 measurement implementation 加入统一 resource comparison。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.33340v1"
+      }
+    }
+  ]
+}
