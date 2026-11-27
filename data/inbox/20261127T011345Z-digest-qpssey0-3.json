@@ -1,0 +1,73 @@
+{
+  "analyses": [
+    {
+      "id": "2611.33337",
+      "version": 1,
+      "analysis": {
+        "summary": "作者把 Floquet measurement schedule 映射为 static spacetime subsystem code，并声称精确保留 code distance。它将时序相关的 fault-distance analysis 变为静态问题；这不表示 decoding complexity 或具体 logical failure rate 也自动保持。",
+        "problem": "dynamical codes 的 detection 与 error propagation 依赖错误出现的时刻，直接计算 distance 比静态 code 更复杂，一般 spacetime mappings 又不保证 distance preservation。",
+        "setting": "输入是 Floquet code 的 measurement sequence，输出对应 static spacetime subsystem code。",
+        "main_results": [
+          "计算 Floquet distance 可规约为对应 subsystem code distance，关键属性是 mapping 保持 distance。"
+        ],
+        "techniques": [
+          "measurement-sequence to spacetime-subsystem-code reduction。"
+        ],
+        "assumptions": [
+          "distance 要与原 schedule、fault model 和 static mapping 的定义一致。"
+        ],
+        "limitations": [
+          "摘要未给边界条件、generalized noisy measurement model、mapping size overhead 或解码算法，因此不从 distance equality 推导 threshold equality。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接契合 logical QEC、measurement timing 与 fault-tolerance evaluation。"
+        ],
+        "follow_up": [
+          "读者建议：对一个具体周期 schedule 写出 mapped gauge/logical operators，再比较 circuit-level faults 与 logical-distance calculation。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.33337v1"
+      }
+    },
+    {
+      "id": "2611.33328",
+      "version": 1,
+      "analysis": {
+        "summary": "研究在 free-fermion adaptive circuits 中，以 measurements 和 feed-forward 把两侧引向不同 topological phases，domain wall 自发保留 chiral dynamical modes。结果连接 adaptive measurement 与信息净化的时空结构，但没有给一般 quantum algorithm 的 speedup。",
+        "problem": "重复 wavefunction collapse 是否必然抹去 domain-wall modes，以及 topology 能否在 adaptive dynamics 中保护长寿命信息结构。",
+        "setting": "2+1D charge-conserving free fermions，两侧分别 steered toward Chern/trivial insulators，wall 为 1+1D；circuits 不指定 wall target state。",
+        "main_results": [
+          "long-time trajectories 的 wall entanglement 与 charge variance 呈 logarithmic scaling、density correlations algebraic decay，与 chiral CFT ground-state picture 一致。",
+          "从 maximally mixed input 出发，wall entropy algebraically decays 且 Lyapunov gap 趋零，而两侧 domains 在 O(1) timescale 净化。"
+        ],
+        "techniques": [
+          "topological adaptive circuits、trajectory analysis 与 quantum-cooling interpretation。"
+        ],
+        "assumptions": [
+          "结论限于所述 charge-conserving free-fermion model 和 steering rules；CFT 一致性表述不等于任意 interacting model 的严格等价。"
+        ],
+        "limitations": [
+          "摘要未给 finite-size constants、measurement rate phase boundaries 或 memory/copy advantage theorem。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "具体的 adaptive feed-forward 和 purification-timescale 联系使其相关；不是仅因 topological materials 主题入选。"
+        ],
+        "follow_up": [
+          "读者建议：以保留量子信息任务定义 memory lifetime，比较 wall slow purification 与可读取 logical observables 的成本。"
+        ],
+        "relevance_score": 82,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.33328v1"
+      }
+    }
+  ]
+}
