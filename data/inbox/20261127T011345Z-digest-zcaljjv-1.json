@@ -1,0 +1,369 @@
+{
+  "analyses": [
+    {
+      "id": "2611.34891",
+      "version": 1,
+      "analysis": {
+        "summary": "论文提出 loss-aware CNN decoding 与快速 sampler slim，将带 Pauli noise 和 qubit loss 的 syndrome data 用于 surface code 及高码率 BB code。主要机制是 loss-dependent gate masks 与可追踪的 Pauli frames，并将 loss heralds 作为 decoder 的 side information。显著收益依赖可识别的 loss model，不能把同一物理 error rate 的纯 loss 与纯 Pauli 比较当成任意硬件的等价噪声替换。",
+        "problem": "loss 会跳过后续 gates，单次 loss 的 syndrome effects 既可能随机也不能线性叠加，因此普通 Detector Error Model 不适合直接抽样。逐 shot 重建 circuit 或 stabilizer tableau 计算昂贵，限制高码率 qLDPC 的大规模 decoder training。",
+        "setting": "作者把 loss 建模为单向进入 noninteracting |L〉状态，之后相关 gates 被关闭，reset/replacement 维持运行；硬件 leakage 的实际相互作用不一定服从该模型。研究 surface code 与 walking syndrome-extraction 的 [[144,12,12]] bivariate bicycle/Gross code，decoder 输入包含 syndrome 和 loss information。",
+        "main_results": [
+          "slim 的 loss sampling throughput 可与 pure-Pauli state-of-the-art 相比；文中称相对既有 loss simulation 约快 1000 倍，具体 benchmark 依赖 circuit、noise rate 和计算环境，不能视为任何输入的复杂度定理。",
+          "surface code 上 CNN 在较低 latency 下达到接近昂贵 MLE decoder 的 accuracy。BB code 上，摘要称 p<1% 时 pure-loss 相对相同 p 的 pure-Pauli logical error rate 降低超过 10³ 倍；正文 introduction 在 p=1% 给约 2×10³。此比较不是相同损伤信息量的两个 channels 的普适优劣。",
+          "所得结果为数值 simulation/decoder platform，支持研究 loss-tolerant high-rate codes；没有声称本次在物理处理器实现该 code 的 loss-corrected memory。"
+        ],
+        "techniques": [
+          "先抽 independent loss indicators，以 Boolean relations 算每个 entangling gate 的执行 mask 和每次 readout 的 loss herald，再传播 bit-packed Pauli frames。",
+          "核心 zero-reference condition 要求即使任意 subset 的 entangling gates 被跳过，all-zero measurement record 仍为可行 reference。满足此条件才可避免每个 loss pattern 都重做昂贵 reference simulation。"
+        ],
+        "assumptions": [
+          "需要对应 circuit 满足 ZRC，不能直接宣传任意 noisy Clifford circuit 都适用同一 sampler；本文所用纠错 circuits 满足该条件。",
+          "loss flags、reset timing、noise bias、training distribution 和 decoder architecture 都参与结果。heralded loss 的额外 side information 应计入与 unheralded Pauli baseline 的比较。"
+        ],
+        "limitations": [
+          "已读 sampling mechanism、模型与主要结论，但未复现 CNN training、全部 rare logical-failure statistics 或附录 ZRC 判定证明。",
+          "loss-only 极端模型的收益不直接给 mixed Pauli/loss 真实设备同样倍数，也没有把 logical failure metric 推为所有 encoded algorithms 的 fidelity。",
+          "sampler speed、decoder inference latency 和 syndrome cycle timing 是三个不同资源；不能用高 sampling throughput 代替 online decoding 可行性。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "高度契合 logical QEC、syndrome plus side information 和噪声模型假设；为 logical-fidelity/decoder evaluation 提供具体需要记录的 loss information access。"
+        ],
+        "follow_up": [
+          "读者建议：在固定 recovery gadget、loss-detection efficiency 和 delayed/missed herald model 下重测 logical errors，分别核算 training samples、inference latency 与 memory cycles。"
+        ],
+        "relevance_score": 98,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.34891v1"
+      }
+    },
+    {
+      "id": "2611.34872",
+      "version": 1,
+      "analysis": {
+        "summary": "本文构造多 qubit 的 bound magic：态位于 stabilizer polytope 之外，却不能经任意多 copies 和轮次的 stabilizer operations 蒸馏出 pure magic。关键不是某个有限长度协议失败，而是找到对 tensor product 与自由操作都封闭、又严格大于 free set 的集合。该集合扮演 entanglement 理论中 PPT 判据的角色，但 magic 本身并未被等同为 entanglement。",
+        "problem": "odd-dimensional 系统已有 Wigner-positive bound magic，qubit 系统却缺少可直接沿用的 Wigner 判据。此前有限长度或受限自由操作的 no-go，不能排除完整 stabilizer protocol 在更多 copies 下成功。需要一个 tensor-stable 的不可蒸馏证书。",
+        "setting": "n-qubit density operators；自由操作包括 computational-basis preparations、Clifford unitaries、computational-basis measurements，允许依测量结果和经典随机性作 adaptive choices。STAB_n 是 pure stabilizer states 的 convex hull。作者令 B_n 为所有 PPT Pauli channels 对任意输入态输出的 convex hull；PPT 指 channel 与输出 transposition 复合仍 completely positive，等价于其 Choi state 为 PPT。",
+        "main_results": [
+          "主定理给 B_n 对 tensor products、Clifford、添加或丢弃 qubits、Pauli measurement branches 的封闭性，且包含 STAB_n。单 qubit 时 B_1 恰为 stabilizer octahedron，因而落在此封闭族中的资源不能经自由操作浓缩为 pure single-qubit magic。",
+          "作者给三 qubit 显式例子：Pauli channel 对 identity 的概率为 1/8，对指定 21 个 Pauli strings 各为 1/24，作用于归一化的 ",
+          "000〉+",
+          "+++〉。输出属于 B_3，而 magic witness 表明其不在 STAB_3。添加 ",
+          "0〉 ancillas 后推广至所有 n≥3；正文另给较大奇数 n 的构造。",
+          "B_2=STAB_2 在文中依赖显式 numerical verification，作者说明尚缺 conceptual exact proof；本报告不将该两 qubit 等式的证据强度与主要 tensor-closure 论证混同。"
+        ],
+        "techniques": [
+          "把 Pauli channel 的 eigenvalues 作带 transposition signs 的 Walsh–Hadamard transform，以非负性判断 PPT；在显式三 qubit channel 中非零 eigenvalues 对应偶数个 Y，故 transposition 后不变。",
+          "不可蒸馏机制通过 closure 同时控制多 copies、adaptive branches 和丢弃操作，避免逐一搜索蒸馏电路。用 magic witness 区分 B_n 与 free polytope，补足“封闭集合里确有资源态”的步骤。"
+        ],
+        "assumptions": [
+          "no-go 针对所定义 stabilizer operations 和来自所述 B_n 的输入；没有免费提供额外 pure magic 或 non-Clifford measurement。",
+          "构造证明存在性，不说明实验噪声自动把任何 magic input 送入 bound region，也不把一般 PPT entangled states 直接视为 qubit bound magic。"
+        ],
+        "limitations": [
+          "没有由此得到全部不可蒸馏态的分类；B_n 是证书集合，未声称其穷尽所有 bound magic。",
+          "本次阅读定义、主定理、构造与部分说明，未逐式审计 End Matter 中全部 closure/witness proofs 或复现两 qubit 数值计算。",
+          "未给这些 mixed resource states 的实验制备成本、检测 shots 或抗噪容限，不能从存在性推出 practical distillation overhead。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接回应 magic 的量与可用性是否一致，也给 logical QEC 的资源注入研究一个基准：nonstabilizerness 并不自动保证 distillable pure resource。"
+        ],
+        "follow_up": [
+          "读者建议：在固定自由操作和噪声模型下，为实验输入寻找 B_n membership 与 magic witness 的共同证书，再计入验证 shots 和额外 magic assistance 的成本。"
+        ],
+        "relevance_score": 98,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.34872v1"
+      }
+    },
+    {
+      "id": "2611.34853",
+      "version": 1,
+      "analysis": {
+        "summary": "本文研究Rényi asymmetry monotones 与 nonequilibrium quantum Mpemba effect，与当前研究问题的具体连接不足。",
+        "problem": "Rényi asymmetry monotones 与 nonequilibrium quantum Mpemba effect的定量分析。",
+        "setting": "sandwiched Rényi divergence、charged moments 和 quantum quenches。",
+        "main_results": [
+          "作者比较 pure/Haar-random states 与 integrable quenches 下的 conventional asymmetry 和 genuine monotones。"
+        ],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "核心是 symmetry restoration 与 many-body dynamics，摘要没有 concrete certification、QEC、design/decoupling task、magic 或 quantum-data learning 联系；Haar-random 出现本身不足以入选。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "低相关：核心是 symmetry restoration 与 many-body dynamics，摘要没有 concrete certification、QEC、design/decoupling task、magic 或 quantum-data learning 联系；Haar-random 出现本身不足以入选。"
+        ],
+        "follow_up": [],
+        "relevance_score": 38,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.34853v1"
+      }
+    },
+    {
+      "id": "2611.34803",
+      "version": 1,
+      "analysis": {
+        "summary": "论文在 single-copy、single-output decision model 中给 AC⁰ 不包含于 BQAC⁰/qpoly 的显式分离，并将工具用于 state 2-design pseudorandomness 与低能态制备限制。核心是只限制指定输入 register 上的 Pauli degree，把任意 quantum advice 的影响吸收到 auxiliary contractions；polynomial width 不再淹没输入规模的次线性界。",
+        "problem": "任意 quantum advice 与很大的 polynomial width 会削弱普通 Fourier/Pauli support bounds。需要 operator-norm approximation 而非只在 uniform classical inputs 下的平均保证，才能对 pointwise hard CNF 和 quantum states 同时推导限制。",
+        "setting": "QAC⁰ 为本文固定深度 circuit model，允许 generalized Toffoli 等指定 gates 和 arbitrary auxiliary advice；结论针对一个输出 bit 的 bounded-error computation。指定 register X 有 m qubits，总 width N≤m^κ，depth d 固定。并非带任意 unbounded-fanout primitives 的所有 constant-depth quantum models 都自动适用。",
+        "main_results": [
+          "作者构造 P-uniform monotone depth-2 CNF family，literal 数至多 3n。任意固定深度、polynomial width、quantum advice circuit 的 worst-case success 至多 1/2+O_d(n^(−γ_d))，γ_d>0；这是最坏输入优势界，不是每个输入成功率都近 1/2。",
+          "关键 approximation 在 operator norm 达 e^(−m^α)，α∈(0,1) 固定，X-Pauli degree ≤m^[1−(1−α)2^(−d)+η]。选足够小固定 η 才是次线性；界不把 auxiliary register 的任意算符结构算作 X-degree。",
+          "对 exact 或 exponentially approximate state 2-designs，给 polynomial copies 和 input-independent advice，single-output QAC⁰ 对 Haar ensemble 的 distinguishing advantage ≤e^(−m^α)。另对编码 k logical qubits 的指定 ABN NLTS Hamiltonian，少于 k arbitrary input qubits 加其余 ",
+          "0〉的制备态，在 constant-energy-density low-energy band 的 weight ≤2e^(−m^α)。"
+        ],
+        "techniques": [
+          "从 output 向后逐层 peeling acceptance operator；product-projection localization 配合 Pauli twirling，得到只作用 auxiliary register 的 spectral cutoff。",
+          "Chebyshev filtering 压低 mismatch tails，cutoff 可折入 contractions，不增加指定 register 的 Pauli degree；再与 approximate-degree lower bound 连接，或对 ensemble moments 作区分界。"
+        ],
+        "assumptions": [
+          "depth、polynomial-width exponent、α 等先固定再取大 m；exponential-approximate design 的误差规格也不可省略。",
+          "advice 在 state-distinguishing task 中必须 input-independent；不得预先带有 sampled-state 的识别标签。NLTS 结论对任意输入 qubit 数有严格预算。"
+        ],
+        "limitations": [
+          "对单输出或正文特定扩展输出规模的限制不等同于任意大 classical transcript 的限制，也未给任意 measurement/adaptive circuit 的 no-go。",
+          "没有把 low-energy weight 界换算成通用 gate benchmarking shot bound；真实硬件噪声、SPAM、magic counts 不在此定理中。",
+          "本次核对主定理、quantifiers 和机制，未逐步审计 localization、polynomial approximation 与 NLTS application 的全部证明。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "与 designs 的 operational indistinguishability、measurement power 和 depth/advice resource lower bounds 高度相关；说明“有 polynomial copies”仍可能因 processing restrictions 看不见结构。"
+        ],
+        "follow_up": [
+          "读者建议：明确实验允许的 fanout、inter-copy gates、readout bits 与 adaptation 后再判断模型是否适用，并与 unrestricted stabilizer tests 的 access cost 分开比较。"
+        ],
+        "relevance_score": 97,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.34803v1"
+      }
+    },
+    {
+      "id": "2611.34755",
+      "version": 1,
+      "analysis": {
+        "summary": "本文研究CPU 模拟的 hybrid quantum-classical PINN 运行时间，与当前研究问题的具体连接不足。",
+        "problem": "CPU 模拟的 hybrid quantum-classical PINN 运行时间的定量分析。",
+        "setting": "一维 seawater temperature diffusion benchmark 与 size-matched classical controls。",
+        "main_results": [
+          "作者报告 tested hybrid configurations 的 forward/PDE-gradient runtime 显著高于 classical PINN。"
+        ],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "属于 classical-data variational ML 与 simulator runtime benchmarking，没有 quantum-data guarantees 或目标资源下界。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "低相关：属于 classical-data variational ML 与 simulator runtime benchmarking，没有 quantum-data guarantees 或目标资源下界。"
+        ],
+        "follow_up": [],
+        "relevance_score": 18,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.34755v1"
+      }
+    },
+    {
+      "id": "2611.34742",
+      "version": 1,
+      "analysis": {
+        "summary": "论文确定 Haar-typical 已知纯态在 tensor-product readout 下 tolerant certification 的 copy complexity，并发现随容忍区间变化的整数幂阶梯。接受与拒绝阈值都固定时，局域读出仍可能从 constant copies 跃迁至 n、n² 等级；不能仅用 fidelity 差值大小判断成本。",
+        "problem": "已有 local certification 在部分阈值下可用常数 copies，但任意固定接受/拒绝 fidelity pair 的最佳成本不清楚。实验上 single-qudit readout 易于实现，节省测量硬件是否会引入不可避免的 sample overhead，需要 matching lower bound。",
+        "setting": "目标为 classically known pure |ψ〉，输入为未知 ρ 的 i.i.d. copies，fidelity 定义为 F=Tr(|ψ〉〈ψ|ρ)，没有平方根。区分 F≥a 与 F≤b，0<b<a≤1，两类错误均≤δ；b<F<a 不作保证。每份允许 arbitrary tensor-product POVM，无份内 feedback；可跨 copies adapt、random stopping，经典计算与存储不受限。",
+        "main_results": [
+          "固定 local dimension d 和 g=(a−b)/(1−b)，作者给 Haar measure 趋于一的目标族，使 worst-case copy cost 与 worst-case expected copy cost 都为 Θ(n^r log(1/δ))。上界非自适应 single-qudit projective readout 即可达到；下界包括跨份自适应和随机停止协议。",
+          "常数 copies 当且仅当 g>1/(d+1)。qubit 的前三阶跃点为 1/3、1/10、1/35；恰在第 j 个阶跃点时 exponent 为 j+1，不应把严格大于误写为大于等于。r 随 1/g 的对数增长。",
+          "在固定阶跃点附近令 ε 为 g 超过该点的量：正侧成本为 Θ(min{n^j/ε²,n^(j+1)} log(1/δ))，非正侧为 Θ(n^(j+1)log(1/δ))，交叉尺度是 n^(−1/2)。这描述阈值随 n 变化时的局部行为，并非任意变化阈值的全局公式。"
+        ],
+        "techniques": [
+          "构造非自适应 local measurements 与经典统计量作上界；下界构造在任意 product measurements 下难以区分的 states，把可容忍污染和可见局域信息联系起来。",
+          "阶跃点有精确计算程序，固定小块 joint readout 还可视为更大 local dimension，从而比较 readout block size 与 copies。"
+        ],
+        "assumptions": [
+          "结论是 Haar-typical 目标族上的渐近结果，不是所有 known targets 的统一困难性；product/stabilizer 等特殊目标可更便宜。",
+          "d、阈值及相应典型族的量词须固定在定理范围内，经典处理 unrestricted；copy optimal 不等于可高效存储和处理一个 generic known target。"
+        ],
+        "limitations": [
+          "本文不提供 SPAM-robust gate certification，也不直接估未知 mixed target 的完整 fidelity function。",
+          "作者声称相关定理已 Lean 4 formalized，本报告没有执行或审计该 code；证明正确性与形式化依赖仍未独立核验。",
+          "本次主要核对模型、主定理、阶跃点和近阈值推论，未审计所有 supplemental endpoints 与 typical-set concentration。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "高度契合 single-copy information access、readout restrictions 与 certification sample lower bounds；尤其提醒区分份内 adaptive、跨份 adaptive 和 joint-copy access。"
+        ],
+        "follow_up": [
+          "读者建议：用实验的平方 fidelity 定义和固定 confidence 代入 g，先定位阶跃区间，再与允许少量 qudit joint readout 的总操作与 shots 成本比较。"
+        ],
+        "relevance_score": 99,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.34742v1"
+      }
+    },
+    {
+      "id": "2611.34683",
+      "version": 1,
+      "analysis": {
+        "summary": "作者在 IBM processors 上以 hypergraph-state algebraic invariants、echoes 和 nonlocal/contextual games 检验 non-Clifford coherence。摘要给丰富数值，但这些是不同 circuits 与 metrics 的作者实验声明，不能合并为统一 process fidelity 或 SPAM-robust certification。",
+        "problem": "怎样把 Clifford/stabilizer games 的 characterization 延伸到 degree-3/4 hypergraph states，并分辨 algebraic obstruction 与 noise-induced failure。",
+        "setting": "两台 156-qubit Heron r2 processors 上，实际实验覆盖 3–50 qubits、11 jobs。包括 Walsh spectra、Loschmidt echoes、Mermin–Peres、GHZ parity 与 CCZ-rotated games。",
+        "main_results": [
+          "摘要报告 n=6,8,10 的 X-basis flatness separation 为 5.4–11.6 倍，并在一台设备上给 raw Mermin–Peres win rate 96.85±0.09%。",
+          "30-qubit GHZ parity game win rate 为 59.46±0.54%；三 qubit CCZ-rotated Mermin-3 为 83.95±0.29%，作者与指定 75% LHV ceiling 比较。",
+          "echo signal 高于 random baseline 的倍数不等于 quantum-state fidelity，tensored SPAM diagnostic 的 98.35% 也不是所有 games 经校正后的统一成功率。"
+        ],
+        "techniques": [
+          "modular Walsh constraints、antipodal witnesses、barrier-protected echoes、calibration-aware layout。"
+        ],
+        "assumptions": [
+          "各项 classical bound、measurement setting、compiled schedule 和统计假设必须按相应实验定义。"
+        ],
+        "limitations": [
+          "仅摘要；未检查 circuit files、sampling independence、multiple-testing corrections 或声称 Lean verification 的范围。摘要中的跨芯片倍数不能直接归因于单个硬件机制。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "具体连接 non-Clifford resources、stabilizer games 和 experimental characterization。"
+        ],
+        "follow_up": [
+          "读者建议：分开核对每个 witness 的 null model、shots、SPAM dependence 与 compiled target-call cost。"
+        ],
+        "relevance_score": 88,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.34683v1"
+      }
+    },
+    {
+      "id": "2611.34682",
+      "version": 1,
+      "analysis": {
+        "summary": "Hamiltonian operator support 能快速扩展，并不保证 quantum Gibbs sampler 快速混合。本文以 dense Curie–Weiss model 展示全局 spreading 与 thermalization bottleneck 并存。",
+        "problem": "无空间局域性限制时，quantum mixing 是否仍受类似 classical conductance 的障碍支配。",
+        "setting": "固定低温、弱 transverse field 的 quantum Curie–Weiss model，研究指定 Chen–Kastoryano–Gilyén Gibbs sampler。",
+        "main_results": [
+          "作者给该 regime 中 exponentially large mixing-time lower bound；全局 operator support 没有移除瓶颈。"
+        ],
+        "techniques": [
+          "quantum dynamical bottleneck/conductance 方法，并用 effective Fokker–Planck equation 提供互补解释。"
+        ],
+        "assumptions": [
+          "限定 sampler、温度和 transverse-field regime，不能扩大为所有 Gibbs preparation algorithms 的指数困难性。"
+        ],
+        "limitations": [
+          "摘要未给指数常数、精确温度区间、误差 convention 或 arbitrary input guarantees。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "与 Gibbs-state preparation、scrambling 和 mixing-time resource separation 有直接联系。"
+        ],
+        "follow_up": [
+          "读者建议：固定 trace-distance target 和 oracle model 后，比较 operator growth timescale 与真正 mixing time。"
+        ],
+        "relevance_score": 88,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.34682v1"
+      }
+    },
+    {
+      "id": "2611.34668",
+      "version": 1,
+      "analysis": {
+        "summary": "论文以 discrete Wigner moments 检测和下界量化 magic，避免逐点重建 Wigner function。正文将范围限定为 odd-prime local dimension；低阶矩可给有效 witness，高阶 hierarchy 完备于 Wigner negativity，却不完备于 mixed-state stabilizer-polytope membership。实验上的规模无关 rounds 还需要多份相干处理与指定 parity readout。",
+        "problem": "tomography 与 stabilizer polytope optimization 随系统增大变昂贵。能否只测少数非线性矩，既检测 nonstabilizerness 又给 mana 或 quasiprobability simulation overhead 的可解释界，并明确这些量如何实际测得。",
+        "setting": "n 个 odd-prime d-dimensional qudits，总维数 D=d^n；w_k=Σ_u Wρ(u)^k。重标度 P=Dw_2=Trρ²，b=D²w_3、c=D³w_4。pure-state 结论利用 discrete Hudson theorem；mixed Wigner-positive magic 仍可能存在，因此 negativity 与所有 mixed magic 不能互换。",
+        "main_results": [
+          "Wigner-nonnegative states 满足 w_2²≤w_3；违反即证 negativity 与 magic。作者称纯态三阶判据必要充分，但 HTML Eq.(11)给 b≤1、等号仅 stabilizer，Eq.(12)却写 b>1 当且仅当 magic，与前式和示例矛盾。本报告保留此明确符号疑点，不把 Eq.(12)照抄为正确判据。",
+          "mixed-state Hankel hierarchy H_m(i,j)=w_(i+j+1) 在 Wigner 非负时 PSD；若有 r 个不同 Wigner values 且存在负值，H_(r−1) 可见负 eigenvalue，r≤D²。完备层数可能随维数增大，不能宣传固定少数矩检测任意 mixed magic。",
+          "noisy ququint 例中，三阶 witness 在 p≈0.5806 后检出，真正 negativity 从 p=1/√5≈0.4472 开始；更高层逐渐闭合该 gap。作者另由低阶矩给 sum negativity/mana 下界，这些是下界而非任意态的精确量。"
+        ],
+        "techniques": [
+          "当 k≥2 且 k 不整除为 d 的倍数时，作者构造 k-copy Hermitian unitary R_k，expectation 为 D^(k−1)w_k。对固定 k,d，跨 corresponding sites 并行 Clifford preprocessing 的 depth 不依赖 n。",
+          "每 round 用 k copies 并输出 ±1，固定 additive ε/confidence 1−δ 用 O(ε^(−2)log(1/δ)) rounds；总 copies 还要乘 k。local parity readout 是额外 primitive，正文明确其不自动等于 Clifford-only computational-basis measurement。"
+        ],
+        "assumptions": [
+          "需要 parallel inter-copy connectivity、相应 parity measurement basis 和 i.i.d. preparation；size-independent rounds 不消除 register size、gates 和 coherent memory。",
+          "direct multicopy formula 要求 k mod d≠0，特别 d=3 的 third moment 不满足此条件，不能因摘要“each moment”就声称同一公式覆盖。"
+        ],
+        "limitations": [
+          "统计精度针对 rescaled moment，原始 w_k 精度与 witness margin 的要求不能混用；弱 negativity 的判定仍可能需更多 shots。",
+          "Eq.(12) 的符号矛盾需作者澄清；本报告没有通过猜测修改原文，也未复现全部 simulations 或 higher-moment proofs。",
+          "mixed Wigner-positive bound magic 不在 negativity witness 的检测范围；qubit 系统亦不能直接套用本文 odd-prime construction。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接联系 magic certification、collective versus single-copy measurement 和资源核算，可与 bound-magic 论文相互对照：可测 negativity 只是 magic operational structure 的一部分。"
+        ],
+        "follow_up": [
+          "读者建议：先选不被 d 整除的 moment order，并核算 parity measurement 的 non-Clifford 或 ancilla 需求；在作者澄清符号后再设计带 finite-shot confidence 的 negativity test。"
+        ],
+        "relevance_score": 97,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.34668v1"
+      }
+    },
+    {
+      "id": "2611.34634",
+      "version": 1,
+      "analysis": {
+        "summary": "LatentRL-QAS 把 circuit representations 放入不随 qubit 数改变的 latent space，使 architecture-search agent 可跨规模复用表示。AME preparation 给出具体 QEC resource 联系，但结果仍是 tested instances 的学习性能，不是一般 state-preparation complexity guarantee。",
+        "problem": "已有 RL-QAS 的 state/action/network sizes 随 qubits 增长，难以把小系统学到的结构转到大系统。",
+        "setting": "每 gate 一个 token 的 circuit VAE，固定尺寸 latent-space agent；随新 circuits refresh，并由小系统解扩展到大系统。目标是五、六 qubit absolutely maximally entangled states。",
+        "main_results": [
+          "摘要报告 89–99% evaluation episodes 中制得目标 AME states，同预算 baseline 未找到，即使其 network 大 10–17 倍。",
+          "在指定 depolarizing-noise simulations 下保持 robustness；放大 IBM 参数的 single/two-qubit errors 分别为 10/5 倍，并不表示在硬件完成等价 experiment。"
+        ],
+        "techniques": [
+          "representation transfer、periodic latent refresh 与 RL architecture search。"
+        ],
+        "assumptions": [
+          "结果依赖 training/evaluation budget、AME objective、noise model 和 success definition。"
+        ],
+        "limitations": [
+          "摘要未给严谨最优 depth、ancilla、magic bounds，也未说明每 episode 的 shots 或 fidelity certificate。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "具体的 entangled-state preparation 与 QEC resource 可用性联系使其达到范围门槛；通用 classical-data ML 不据此自动入选。"
+        ],
+        "follow_up": [
+          "读者建议：以统一目标 fidelity 和搜索成本比较最终 gate counts，而非仅比较 agent network size。"
+        ],
+        "relevance_score": 78,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-27T01:13:29Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.34634v1"
+      }
+    }
+  ]
+}
