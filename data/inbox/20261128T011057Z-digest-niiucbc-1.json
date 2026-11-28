@@ -1,0 +1,363 @@
+{
+  "analyses": [
+    {
+      "id": "doi:10.1038/s41534-026-01420-x",
+      "version": 1,
+      "analysis": {
+        "summary": "QSUT 将 composite quantum hypothesis testing 从 fixed-copy two-step protocol 改为 sequential inference：交替用 adaptive local measurements 探索候选空间和 optimized joint measurements 作 discrimination。摘要声称严格控制 type-I error，而 sample saving 来自 empirical comparisons；不能把两者合并为所有 composite tests 的最优 copy-complexity theorem。",
+        "problem": "fixed-copy baseline 先 state estimation 再 optimized joint measurement，对简单和困难实例都花同样 copies，可能不高效。如何允许随数据推进的测试而维持统计有效性。",
+        "setting": "未知 state 属于两个 classes 之一；quantum sequential universal test 基于 universal inference。两个 instantiations 分别用 Holevo–Helstrom test 与 shallow variational circuits。",
+        "main_results": [
+          "作者证明 type-I error control，并在多个 composite QHT tasks 的 empirical evaluation 中报告比 fixed-copy strategies 更低 copy complexity。",
+          "摘要没有具体 copy reduction 倍数、type-II guarantee、expected stopping-time bound 或任意 accuracy/confidence 的 optimal rate，本报告不补造这些数量。"
+        ],
+        "techniques": [
+          "universal inference、adaptive exploration 与 joint-measurement discrimination。"
+        ],
+        "assumptions": [
+          "joint measurements 是显式资源，不能将它称为完全 single-copy local protocol。sequential stopping 的有效性依赖相应 inference construction；shallow variational implementation 的误差也须纳入。"
+        ],
+        "limitations": [
+          "只读精确 DOI 的正式 Crossref abstract；publisher 页面返回303，未继续登录或绕过。未核查 proofs、stopping conditions、训练成本和未写明 assumptions。",
+          "未由 type-I control 推出两侧错误同时最优，也未由 empirical copy saving 推出任意状态类别都节省。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "高度契合 quantum-data learning、hypothesis testing、adaptivity 和 measurement-access resources。"
+        ],
+        "follow_up": [
+          "读者建议：固定 null/alternative classes、两类 errors、joint-block size 与 stopping rule 后，比较 expected/worst-case copies、circuit depth 和 classical optimization。"
+        ],
+        "relevance_score": 97,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://api.crossref.org/works/10.1038/s41534-026-01420-x",
+        "publication_significance": [
+          "以下是依据正式 DOI 摘要的读者推断，并非 npj Quantum Information 编辑或审稿人的实际理由。新意在把 universal inference 的 sequential testing 引入 composite QHT，连接有效统计控制与 adaptive quantum measurements。",
+          "所面对的障碍是 fixed-copy state-estimation/optimized-measurement baseline 不能依任务难度分配 copies；QSUT 通过探索与 discrimination 交替处理这一问题。",
+          "证据强度需要分开：type-I control 是作者理论声明，copy saving 是 empirical comparison。仅摘要不能判断 proof quality、全部先行工作覆盖或 sampling/stopping assumptions。",
+          "物理意义在于明确 classical feedback 与 joint measurement 如何共同影响量子态判别成本；尚不能据此断言 local-only 或 memory-free advantage。",
+          "适用广度来自 composite hypotheses 和两个不同实现方向，而不是已证所有 quantum learning tasks 都有相同收益。",
+          "与 npj Quantum Information 的契合度推断：论文围绕 quantum statistical inference、测量设计和资源效率，主题直接符合该刊量子信息范围；novelty 的相对强度仍需正文与 prior-art 比较。"
+        ]
+      }
+    },
+    {
+      "id": "2611.29258",
+      "version": 1,
+      "analysis": {
+        "summary": "trap placement 的最优性依赖 delegated computation 的 damage profile，也依赖 server 是否重复同一个 deviation。作者将 placement 写为 robust zero-sum game，避免把针对 repeated attack 的 exponential soundness decay 误用到 general adversary。",
+        "problem": "blind computation 中均匀或 computation-independent trap placement 是否浪费测试资源，未知多位置损伤如何组合时应怎样保证 soundness。",
+        "setting": "client 选 trap distribution，server 选 Pauli deviation；给定 profile w 与 detection constant c，同时覆盖与 w 一致的 monotone subadditive damage functions。",
+        "main_results": [
+          "single round 按 w 放 traps 保证 soundness error 1−c/‖w‖₁，并在 factor 1+max_i w_i 内 optimal。",
+          "T rounds 对重复同一 deviation 的 server 可 exponential decay，但 general server 可保持 Θ(‖w‖₁/(cT))，damage-weighted placement 对后一模型 exactly optimal。",
+          "brickwork m=4h+1 columns 中仅 (2h+1)² positions 可影响 decision qubit，与 width 无关。aggregate damage 的 certification rounds 可不依 N，定位损伤则需 Ω(Nε^(−2)logδ^(−1))。"
+        ],
+        "techniques": [
+          "computation flow、robust minimax placement 与 trap statistics。"
+        ],
+        "assumptions": [
+          "Pauli-deviation reduction、damage subadditivity 和 per-trap c 按所述模型成立；不同 attack assumptions 不可交换。"
+        ],
+        "limitations": [
+          "摘要未给 general noisy client/SPAM model、全部常数或实现通信开销。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接相关 verification、measurement patterns 和 sample-resource tradeoffs。"
+        ],
+        "follow_up": [
+          "读者建议：对具体 delegated pattern 计算 w，并分别报告 general-server 与 repeated-deviation soundness。"
+        ],
+        "relevance_score": 93,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.29258v1"
+      }
+    },
+    {
+      "id": "2611.28944",
+      "version": 1,
+      "analysis": {
+        "summary": "作者为 finite-anyon-content 的 BB codes 构造 electric–magnetic duality walls，在 endpoints 实现 non-Abelian twist defects。该结构为 logical operations 提供基础，但不是全部 BB codes 上已实现 universal fault-tolerant gates。",
+        "problem": "如何清除 duality wall 的 unwanted local modes，同时保留 charge conversion 与 encoded-state consistency。",
+        "setting": "arbitrary bivariate bicycle codes with finite anyon content，采用 composite、interblock 和 patch checks。",
+        "main_results": [
+          "contractible closed ribbons 对 encoded states 作用平凡；固定 code 后 check weights 与 interaction ranges 不随 wall length 增大。",
+          "endpoint quantum dimension 为 2^(Q/2)，Q 计 electric 或 magnetic charge space 的 independent generators；Q=3 给 measurement-only braiding illustration。"
+        ],
+        "techniques": [
+          "anyon-charge conversion、domain-wall checks 与 measurements/defect-transport correspondence。"
+        ],
+        "assumptions": [
+          "boundedness 是固定 code、wall length 变化的量词，不是跨 code families 的统一常数。"
+        ],
+        "limitations": [
+          "摘要未给 logical-gate error、measurement count、decoder 或 hardware noise threshold。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "具体连接 BB logical QEC、measurement-only operations 与 locality overhead。"
+        ],
+        "follow_up": [
+          "读者建议：把 wall checks 编入 syndrome schedule，检查 noisy braiding 的 logical action、ancillas 与 measurement rounds。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.28944v1"
+      }
+    },
+    {
+      "id": "2611.28904",
+      "version": 1,
+      "analysis": {
+        "summary": "quantized Floquet invariant 不必保护 bosonic Wigner negativity；本文把 boundary preparation、shielding 和 loss placement 分开比较，提示 topological protection 与 nonlinear resource survival 之间存在缺口。",
+        "problem": "能否仅凭 quasienergy winding 推断 transient non-Gaussian resource 的稳健性。",
+        "setting": "chiral Floquet SSH chain，boundary Kerr nonlinearity、structured loss，初态 even cat；比较不同 ends 上的 preparation/shielding。",
+        "main_results": [
+          "winding 保持 quantized，但 index-end shielding 下 matched-sector contrast 随 chain growth 翻号；uniform loss、t=T、d≤0.5 时 contrast 在 3×10^(−5) 内为零。",
+          "在 physical dangling end 制备和屏蔽时 contrast 为正，受 local dimer return 调制；三 site causal light cone 与 boundary-Laplacian erosion law 把翻号关联到 bulk-loss exposure。"
+        ],
+        "techniques": [
+          "matched sector comparisons、causal propagation 与 loss geometry analysis。"
+        ],
+        "assumptions": [
+          "contrast 是文中指定 resource comparison，不能等同任意 magic monotone；continuous-variable Wigner negativity 不自动等于 qubit stabilizer magic。"
+        ],
+        "limitations": [
+          "摘要未给完整参数 d 定义、误差 bar 或对一般 Floquet systems 的定理，保留其所述数值范围而不外推。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "具体连接 Wigner negativity 的保护条件与资源可用性，非仅 topological-materials 主题。"
+        ],
+        "follow_up": [
+          "读者建议：固定 resource measure、prepared site 和 loss profile 后再比较 invariant 与 survival time。"
+        ],
+        "relevance_score": 86,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.28904v1"
+      }
+    },
+    {
+      "id": "2611.28847",
+      "version": 1,
+      "analysis": {
+        "summary": "论文以 fixed pair partition 和 integer parameters 显式生成 qLDPC checks，避免逐 size 搜索候选。给出的 finite-code distance evidence 与随 size 改进 distance 的 conjecture 必须分开。",
+        "problem": "怎样在保持 sparse commuting checks 的同时构造更大 distance 的 concrete quantum codes。",
+        "setting": "affine permutation matrices 与 circulant permutation matrices 两类 explicit extensions。",
+        "main_results": [
+          "APM 构造给 [[3072,772,32]]，X/Z matrices 的 column weight 3、check weight 8。CPM 给 [[1270,260,≥34]]，column weight 4、check weight 10。",
+          "作者证明 checks commuting，并以 exhaustive search 和 logical operators 验证所述 distances；finite structural upper bound 与 size 增长趋近该 bound 的行为为 conjecture。"
+        ],
+        "techniques": [
+          "pair partition、permutation matrices 与 distance verification。"
+        ],
+        "assumptions": [
+          "精确32与≥34不能混写，前者是所报 distance，后者只保留下界符号。"
+        ],
+        "limitations": [
+          "摘要未给 decoder、circuit-level threshold、geometry 或 asymptotically good parameters；本报告未执行 exhaustive search。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接连接 explicit logical QEC construction 与 sparse syndrome extraction。"
+        ],
+        "follow_up": [
+          "读者建议：用统一 noise/decoder 比较 logical failure，并核算扩展对 interaction range 和 syndrome depth 的影响。"
+        ],
+        "relevance_score": 92,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.28847v1"
+      }
+    },
+    {
+      "id": "2611.28353",
+      "version": 1,
+      "analysis": {
+        "summary": "CSS-TP codes 将 transversal phase gates 的 logical action 与 tensor-network construction 联系起来，为特定 arithmetic primitives 直接制备 tailored magic resources。相对逐 T/CCZ decomposition 的 latency 收益依赖 factory allocation 和 surface-code model，不是任意算法的 universal T-count reduction。",
+        "problem": "non-Clifford clusters 分解成 canonical states 会增加 scheduling/spacetime overhead，能否同时设计 code、resource state 与 algorithm consumption。",
+        "setting": "CSS-T-Product codes，quantum LEGO constructions，logical diagonal gates 位于 Clifford hierarchy 第三和第四层；转为 Encode-T-Decode factories，并按 surface-code model 评估。",
+        "main_results": [
+          "作者区分 canonical、tensor-product canonical 与 irreducible resource states，后者不能经 Clifford 和 logical basis changes 分成 non-Clifford product。",
+          "distance21、每 resource family 一个 factory 时，GF(2⁸) multiplier 与 shared-addend carry-lookahead adder 的 latency 最多降48%和38%，occupied spacetime 相似或更小；最小 tailored factory 还降低 occupied spacetime。"
+        ],
+        "techniques": [
+          "transversal logical-phase rules、tensor-network code operations 与 tailored synthillation。"
+        ],
+        "assumptions": [
+          "数值依赖 distance、factory number、scheduling 和 primitive；第三/四层 logical actions 不表示 physical gates 免费。"
+        ],
+        "limitations": [
+          "HTML v1 返回404，依据官方 v1 摘要；未审阅 code construction proofs、distillation error 或完整 factory accounting。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "高度契合 magic/ancilla/depth/spacetime 联合资源设计。"
+        ],
+        "follow_up": [
+          "读者建议：固定 output error 与并行 factory budget 后比较 latency、peak qubits 和 occupied spacetime，避免只优化其中一个指标。"
+        ],
+        "relevance_score": 97,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.28353v1"
+      }
+    },
+    {
+      "id": "2611.28261",
+      "version": 1,
+      "analysis": {
+        "summary": "通过 circuit cutting，small-circuit learned mitigator 可复用到更大电路。收益来自 fragment-wise inference 与重建；训练只付一次不等于 cutting/measurement reconstruction 的成本消失。",
+        "problem": "大电路的 exact training labels 难计算，small-circuit model 又可能不能跨 size/depth generalize。",
+        "setting": "模拟 random-circuit chains 和 holographic Ising-chain eigensolver，比较 ZNE、CDR、PEC，并对 eigensolver 固定 shot budget。",
+        "main_results": [
+          "摘要报告 fragment-wise mitigator 去除大部分 reconstructed error；eigensolver noise-induced energy error 恢复接近90%或以上，在所测实例优于 CDR/PEC。",
+          "inference 不额外做 noise amplification 或训练专用 circuits，模型的训练成本前置。"
+        ],
+        "techniques": [
+          "circuit cutting、fragment mitigation 与 classical reconstruction。"
+        ],
+        "assumptions": [
+          "需要 moderate cuts 和相关 fragment distribution；cutting 本身的 measurement and variance overhead 仍需计入。"
+        ],
+        "limitations": [
+          "摘要未给 generalization theorem、worst-case bias 或所有 cuts 下的 total shots scaling，不能声称普适可扩展。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "具体连接 error mitigation 与有限 shots 下的估计质量。"
+        ],
+        "follow_up": [
+          "读者建议：把 training labels、fragment settings 和 reconstruction variance 全计入与 baseline 相同的预算。"
+        ],
+        "relevance_score": 85,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.28261v1"
+      }
+    },
+    {
+      "id": "2610.39712",
+      "version": 1,
+      "analysis": {
+        "summary": "研究固定 ensemble-average state 下的 maximum-entropy mixed-state ensemble，将其 asymptotic spectrum 联系到 correlated Wishart ensemble，并给 purification 随机测量的 operational realization。",
+        "problem": "Haar-reduced states 的 MP law 如何推广到非 maximally-mixed average 的 ensemble。",
+        "setting": "固定 mixed reference，maximum-entropy distribution 与其 purification 上的 random POVM，TFIM thermal average 作例子。",
+        "main_results": [
+          "作者论证 asymptotic eigenvalue density 对应 CWE，以 free multiplicative convolution 求谱；给 TFIM high-temperature MP correction 和 finite-temperature Page curves。",
+          "random-POVM-induced ensemble 与 CWE 渐近等价，并给 numerical evidence。"
+        ],
+        "techniques": [
+          "random matrix theory、free convolution 与 purification measurement。"
+        ],
+        "assumptions": [
+          "asymptotic ensemble assumptions 和 POVM distribution 决定结果，不是所有 fixed-average ensembles 都相同。"
+        ],
+        "limitations": [
+          "摘要未给 convergence rates、finite-size errors 或 readout sample advantage。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "有明确 ensemble formation/measurement-access 联系，但不是已证 fermionic single-copy complexity improvement。"
+        ],
+        "follow_up": [
+          "读者建议：把 induced ensemble 用于 discrimination task，检查 spectral law 是否转化为 operational information gain。"
+        ],
+        "relevance_score": 78,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.39712v1"
+      }
+    },
+    {
+      "id": "2610.39693",
+      "version": 1,
+      "analysis": {
+        "summary": "论文在不均匀 NV ensembles 中比较 DD sequences，以 phase-varied rapid adiabatic passage pulses 改善控制鲁棒性。这里 dynamical decoupling 是 pulse-based coherence protection，不能与 quantum-information decoupling theorem 混同。",
+        "problem": "amplitude/frequency inhomogeneity 与 pulse errors 会削弱常用 DD，怎样提高 ensemble memory 和 sensing contrast。",
+        "setting": "ambient-condition negatively charged NV centers，比较多种 DD protocols 与 standard rectangular-pulse XY8。",
+        "main_results": [
+          "作者报告 optimized sequence 的 memory time 相比 XY8 提升一个数量级，并提高弱 oscillating-field sensing contrast。"
+        ],
+        "techniques": [
+          "rapid adiabatic passage 和 pulse phase variation。"
+        ],
+        "assumptions": [
+          "收益依赖 pulse bandwidth/duration、inhomogeneity 和所选 sensing frequency。"
+        ],
+        "limitations": [
+          "摘要未给总 pulse count、sequence length、duty cycle、target-call cost 或 gate fidelity certificate。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "具体连接 control-error-robust coherence protection，可作为 benchmarking noise/control 假设的参考。"
+        ],
+        "follow_up": [
+          "读者建议：在相同 total evolution time 和 pulse budget 下比较 contrast，并记录 sequence-dependent noise 而非仅 T2。"
+        ],
+        "relevance_score": 82,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.39693v1"
+      }
+    },
+    {
+      "id": "2610.39208",
+      "version": 1,
+      "analysis": {
+        "summary": "finite-energy bosonic codes 把未知 logical qubit amplitudes 放在离散 wave-packet sites，把 force signal 放在共享 internal coordinate，从而在同一 oscillator 内兼顾 sensing 与 recoverable memory。",
+        "problem": "通常 QEC 会抑制 force displacement 这一有用信号，如何在保护 logical state 时保留 endpoint probe readout。",
+        "setting": "单 oscillator、continuous photon loss γ，(2r+2)-packet code 和 binomial site recovery，另比较 number dephasing/Kerr effects。",
+        "main_results": [
+          "作者称 endpoint force readout 与 logical input 无关；recovery 同时消除 packet-dependent probe distortion 和 logical error。",
+          "memory infidelity 为 O(γ^(r+1))，residual memory–probe correlations 为 O(γ^(r+2))。这些是不同误差量，不能合并为相同阶 fidelity。"
+        ],
+        "techniques": [
+          "site/internal-coordinate encoding 与 binomial recovery。"
+        ],
+        "assumptions": [
+          "小γ展开、具体 noise/recovery 和 finite-energy packet construction 的适用条件须核对正文；摘要未说明所有常数。"
+        ],
+        "limitations": [
+          "未给 metrological precision、energy/ancilla/recovery-depth 的完整成本；O(γ^r) 不直接说明相同总 sensing time 的优势。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接契合 logical QEC、information separation 与 sensing-preserving recovery。"
+        ],
+        "follow_up": [
+          "读者建议：在固定 energy、sensing time 和 recovery frequency 下比较 logical fidelity 与 force-estimation MSE。"
+        ],
+        "relevance_score": 95,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.39208v1"
+      }
+    }
+  ]
+}
