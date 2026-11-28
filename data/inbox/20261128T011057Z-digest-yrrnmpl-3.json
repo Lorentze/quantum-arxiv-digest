@@ -1,0 +1,86 @@
+{
+  "analyses": [
+    {
+      "id": "2611.33270",
+      "version": 1,
+      "analysis": {
+        "summary": "论文用 quadratic 与 half-quadratic hypothesis testing 紧致刻画 against quantum side information 的 privacy amplification。主要贡献是把若干 trace-distance one-shot bounds 做到常数因子匹配，再推导 all-rate i.i.d. exponents；hash family 的 universality 假设决定哪一侧的结论成立。",
+        "problem": "leftover hash lemma 给 error upper bound，但它是否 sharp，不能仅靠已知 purified-distance 或 entropy bounds 判断。尤其 error趋零与 strong-converse error趋一是不同问题，general two-universality 也不自动给任意 ensemble 的相同 reliability。",
+        "setting": "输入 cq state ρXE，随机 hash f:X→Z；security error 为平均 over f 的 trace distance Δ=E_f ‖ρZE^f−IZ/|Z|⊗ρE‖₁/2。目标既包括 one-shot 也包括 |Zn|=exp(nR) 的 i.i.d. rate limit，不把该平均 error 声称为每一个 fixed hash 的保证。",
+        "main_results": [
+          "作者把 sharpened leftover-hash upper bound 写为 half-quadratic testing functional π_(",
+          "Z",
+          "/4)。对文中 4*-universal hash families 给 Δ≥π/3，而已有 upper bound Δ≤π；这给 constant-factor one-shot tightness。4* 的具体 collision conditions 须沿用正文定义，不能不加区分改成所有 pairwise-universal functions。",
+          "相应 reliability exponent 为 sup_(1<α≤2) [(α−1)/α][H̃α↑(X∣E)−R]，使用 optimized sandwiched Rényi conditional entropy。作者给 all rates 的结果；它并不证明所有仅 two-universal ensembles 有同样 reliability。",
+          "strong-converse regime 控制 1−Δ。作者给与 binary testing cost 匹配的 one-shot bounds，进而对 two-universal hashing 得 exact exponent sup_(0<α<1)(1−α)[R−Hα↓(X∣E)]，这里是 Petz-type conditional entropy，不能与前式交换。"
+        ],
+        "techniques": [
+          "half-quadratic problem 保留一侧 linear cost，另一侧用 squared measurement operator；兼顾 trace-distance operational error 与 collision-type quadratic information。",
+          "measured smooth collision divergence、real interpolation functional 和 L1(ℓ2) row–column norms 将 privacy amplification 接到 noncommutative Khintchine methods。常数因子 one-shot comparison 在除以 n 后给相同 exponent。"
+        ],
+        "assumptions": [
+          "one-shot 与 i.i.d. quantifiers 不同，asymptotic entropy 需要对应 independent source 假设。",
+          "reliability converse 用比一般 pairwise collision 更强的 randomization 条件；strong-converse 部分的 hash hypotheses 应单独检查，不能由其较弱条件倒推 reliability。"
+        ],
+        "limitations": [
+          "本次阅读 summary、testing formulation 和 exponent statements，未逐项审计 operator-space interpolation、smoothing conventions 与各 hash-definition equivalences。",
+          "提取 output length、seed cost、实际 hash evaluation time 与 security error 是不同资源；精确 exponent 不等于总实现成本最优。",
+          "不把此结果解释成量子态 tomography 或 single-copy measurement sample advantage，任务是带 quantum adversary 的 classical randomness extraction。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "高度相关 quantum side information、trace-distance accuracy 和 hypothesis-testing tools，也提示比较近期 exponent 工作时必须统一 hash ensemble 与误差 convention。"
+        ],
+        "follow_up": [
+          "读者建议：用具体 hash construction 核对 4* 或 two-universal 条件，再比较 finite-blocklength seed/output/error；不可只比较渐近 exponent。"
+        ],
+        "relevance_score": 99,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.33270v1"
+      }
+    },
+    {
+      "id": "2610.38922",
+      "version": 1,
+      "analysis": {
+        "summary": "作者构造 marker–signal states，展示跨 copies 的 classical feedback 可产生 exponential learning advantage：adaptive 方只用 local readout，nonadaptive 方虽可在每一份内部作 arbitrary global POVM，仍受信息预算限制。这里 global 指一份内，不允许跨 copies coherent measurement，也不是任意未知态 tomography 的普适指数优势。",
+        "problem": "若隐藏 label 决定应测哪个 observable，固定 readout 是否可以一次收集所有有用信息。若 observables commute，global common-eigenbasis readout 会破坏朴素 hiding argument，因此真正的障碍是 measurement incompatibility。",
+        "setting": "每份 n=2L qubits，ρλ,c=τλ⊗2^(−L)(I+cPλ)。λ 与 scalar c 在全部 copies 上固定，marker 只依赖 λ；c=0 时 signal 总是 maximally mixed，局部 tangent direction 才依赖 λ。比较 finite-accuracy minimax copies 与 shrinking-neighborhood local asymptotic minimax MSE，不把两种量词混在一起。",
+        "main_results": [
+          "binary support construction 对 product measurements 有 separation，但 candidate observables commute，无法抵抗 global single-copy POVM。ternary construction 选择每 site 的 X/Y/Z，消除共同 eigenbasis；正文给 aggregate Fisher-information bound 限制 fixed POVM 分配给全部 directions 的信息。",
+          "作者给 fixed-accuracy adaptive O(log n) copies 与 nonadaptive 2^(Ω(n)) copies 分离。adaptive 先用多份 marker Z readout 定位 label，再在后续 copies 测 matched signal Pauli parity；没有在 copies 间保存 quantum memory。",
+          "固定 L 后 N→∞ 的 local asymptotic MSE 中，adaptive leading constant 为 1；nonadaptive constant 随 L 指数增大。此结论与 n 随 copy budget 同时增长的 uniform theorem 不等价，报告不补上该量词。"
+        ],
+        "techniques": [
+          "定位阶段用 marker means 的 concentration；ternary means 为 −u、0、+u，union bound 控制全部 labels 的误判。",
+          "lower bound 在 maximally mixed signal 附近用 Pauli–Parseval/Gill–Massar-type information budget，再把难方向延伸到 local neighborhood，并转为 MSE 或 finite-sample testing lower bound。"
+        ],
+        "assumptions": [
+          "ternary theorem 要求固定 marker contrast 0<u<1/2，并遵守 parameter windows 和 protocol definitions。marker 信息不能未经成本计算被当成免费 exact classical label。",
+          "nonadaptive 每份 POVM 预先确定，跨份经典 post-processing 允许，但后续 measurement choice 不依先前 outcomes；adaptive 方的优势正来自这一访问权限差异。"
+        ],
+        "limitations": [
+          "本次阅读模型、机制、adaptive theorem 与 information-budget overview，未审计 finite-sample theorem 和全部 appendices 的常数及 parameter ranges，因此只保留作者声明的 asymptotic scaling。",
+          "没有推广到 unrestricted collective measurements across copies，也没有论证 SPAM/noisy-label robustness。",
+          "每个 state separable、在 label-dependent product basis classical，不表示整个 statistical family 在同一固定 basis 下可完整观察；否则 fixed readout 可后处理模拟 adaptation。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "高度契合 measurement order、quantum-data learning 与 label-before/after-readout 的 operational separation；尤其需要避免把 product-Pauli setting count 当作 arbitrary POVM 的证明。"
+        ],
+        "follow_up": [
+          "读者建议：明确实验 noisy marker 的 contrast 和 confidence 后核算定位 copies；分别比较预定 global POVM、跨份 adaptive local readout 与 collective-copy access。"
+        ],
+        "relevance_score": 99,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2610.38922v1"
+      }
+    }
+  ]
+}
