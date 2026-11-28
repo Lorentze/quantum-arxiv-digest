@@ -1,0 +1,341 @@
+{
+  "analyses": [
+    {
+      "id": "2610.39067",
+      "version": 1,
+      "analysis": {
+        "summary": "trapped-ion 实验用 ancillary gadget 对 multi-logical-qubit qLDPC block 中单个 logical Pauli 作 nondestructive measurement，并检查 spectator preservation 和 code-space return。它验证具体 surgery primitive，不能视为通用大规模 qLDPC FTQC 已实现。",
+        "problem": "high-rate code block 中多个 logical qubits 共享物理系统，怎样只测所需 logical operator 而不损伤其他 logical states。",
+        "setting": "H2-2 processor 上 [[10,2,3]] generalized bicycle code，7 gadget qubits，单/三 rounds syndrome extraction。",
+        "main_results": [
+          "单轮 X̄1 measurement error 0.72%，95% credible interval [0.32,1.41]%；与后续 transversal readout disagreement 1.03 [0.60,1.65]%。",
+          "三轮 decoding 将 gadget measurement error 降至<0.26%；spectator error 0.21 [0.04,0.67]%。",
+          "复用 gadget 顺序测 X̄1 和 Z̄2，后者 error 1.12 [0.60,1.94]%。这两个 operators 属不同 logical qubits，不能称同一 logical qubit 上互不对易的顺序测量。"
+        ],
+        "techniques": [
+          "qLDPC surgery、gadget-mediated entanglement 与 repeated-syndrome decoding。"
+        ],
+        "assumptions": [
+          "intervals 是作者 credible intervals，不能改称相同含义的 frequentist confidence intervals。"
+        ],
+        "limitations": [
+          "摘要未给 fault-tolerant threshold、全 logical process fidelity 或完整 SPAM separation；measurement error 与 transversal disagreement 是不同 metrics。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "高度相关 logical output data、syndrome rounds 与固定 gadget 的 performance certification。"
+        ],
+        "follow_up": [
+          "读者建议：明确 recovery 和终测条件，估计 repeated gadgets 的 correlations，并单独核算7 ancillas及三轮延迟。"
+        ],
+        "relevance_score": 98,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.39067v1"
+      }
+    },
+    {
+      "id": "2610.39059",
+      "version": 1,
+      "analysis": {
+        "summary": "论文比较 magic 在 thermal、quench 和 spatial-separation trajectories 上的消失，发现相对 entanglement 的先后次序依过程而变。不能仅凭 entanglement survival 断言 magic resource 可用。",
+        "problem": "如何计算 generic many-body states 的 magic，并理解其与 entanglement lifetimes 的不同。",
+        "setting": "TFIM、generic spin chains、Kitaev honeycomb liquid，subregions 与 nonlocal magic；另提 neutron-scattering witness。",
+        "main_results": [
+          "thermal trajectories 中 magic sudden death 发生在 entanglement death 之后且 threshold 随 size 饱和；quench 中 subregion magic 往往先消失。",
+          "Kitaev 模型 threshold 依 subregion shape；作者还提出 witnessing frame-robust magic volume law 的 scattering method。"
+        ],
+        "techniques": [
+          "non-magical-state geometry 与 many-body magic evaluation framework。"
+        ],
+        "assumptions": [
+          "不同 magic definitions、frame robustness 和 subregion geometry 必须保留，不能自动等同 distillable magic。"
+        ],
+        "limitations": [
+          "摘要未给该 framework 的所有复杂度、witness shots 或实验数据；不据此声称材料已实现 universal resource。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接连接 magic/stabilizer resources 的 noise/thermal survival。"
+        ],
+        "follow_up": [
+          "读者建议：用相同 operational task 比较 entanglement、magic witness 和 distillation usefulness 的温度窗口。"
+        ],
+        "relevance_score": 94,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.39059v1"
+      }
+    },
+    {
+      "id": "2610.38885",
+      "version": 1,
+      "analysis": {
+        "summary": "frozen-parameter molecular VQE workload 被用作 execution-bias 与 repeatability 的诊断，而不是只报告 chemistry accuracy。返回的 shot error bars 可能远小于 cross-job variation，mitigation 后还可出现越出谱范围的 point estimates。",
+        "problem": "增加 shots 能否减少真实 bias，和 mitigation 的 QPU cost 是否划算。",
+        "setting": "两台 Heron processors，parameters/layouts/compiled circuits 固定，DD关闭；110 jobs，28.2 billed QPU minutes。",
+        "main_results": [
+          "Raw1024 的 O2/BeH2 residual 为 returned uncertainty 的12–32倍；一组 BeH2 cross-job standard deviation 为 mean uncertainty 的5.6倍。",
+          "ZNE 在两机分别减 O2 residual 49.7%/83.5%，约四倍 charge；TREX 与 ZNE 每 Raw1024 charge 去除的 bias 不同。",
+          "known-state controls 暴露 preparation/readout error 高于 calibration，13个 mitigated point estimates 越出 mapped spectrum，Raw 无对应现象。"
+        ],
+        "techniques": [
+          "frozen workload、repeated runs、known-state controls 和 mitigation cost accounting。"
+        ],
+        "assumptions": [
+          "这些诊断依所测 circuits/time windows，不等于一般 hardware drift law 或 noise-channel tomography。"
+        ],
+        "limitations": [
+          "摘要未给 universal bias bound；QPU charge、shots、precision 与 systematic accuracy 不同。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "有明确 SPAM/measurement repeatability 与 mitigation-cost 联系，超出单纯 chemistry calculation。"
+        ],
+        "follow_up": [
+          "读者建议：优先复测 known-state controls 和跨 job variance，再决定是否增 shots 或上更贵 mitigation。"
+        ],
+        "relevance_score": 87,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.38885v1"
+      }
+    },
+    {
+      "id": "2610.38847",
+      "version": 1,
+      "analysis": {
+        "summary": "固定 local sweep rule 可在 higher-dimensional toric code 中支持 fault tolerance，无须 expansion 或 multiscale decoder state。constant-depth correction cycle 不等于 constant total-depth overhead。",
+        "problem": "几何简单、局域 classical processing 的 correction rule 能否在 circuit-level noise 和 logical gates 之间持续稳定纠错。",
+        "setting": "cubical (d,d′)-Toric codes，d′≥2且d−d′≥2，包括4D；sufficiently weak local-stochastic Pauli noise，noiseless bounded-depth classical processing。",
+        "main_results": [
+          "作者给 local sweep-correction choice algorithm 与 noisy sweep cycles interleaved logical gates 的 threshold theorem。",
+          "ideal decoding：side length n，n^(d+1) noiseless cycles 后成功率至少1−O(poly(n))p^(Ω(n))，限 below-threshold local-stochastic initial Pauli errors。",
+          "每个 physical timestep 的 cycle 只看 current syndrome，idle 时重复同一 rule；并未声称整个 computation 的 constant total-depth overhead。"
+        ],
+        "techniques": [
+          "cubical-chain geometric shrinking 与 Toom-inspired spacetime explanation trees。"
+        ],
+        "assumptions": [
+          "dimension、noise locality 和 noiseless classical processing 是关键承诺，不能直接换成2D noisy controller。"
+        ],
+        "limitations": [
+          "官方摘要部分枚举文本提取异常，未据其异常片段推导额外结论；未审计完整 threshold constants、logical gate set 或 circuit constructions。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "直接契合 logical QEC、local decoder timing 和 correlated/local-stochastic noise assumptions。"
+        ],
+        "follow_up": [
+          "读者建议：先指定 code dimension、logical gadget 和 controller noise，再比较 total rounds、communication 与 qubit overhead。"
+        ],
+        "relevance_score": 97,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.38847v1"
+      }
+    },
+    {
+      "id": "2610.38844",
+      "version": 1,
+      "analysis": {
+        "summary": "利用 quantum state-transfer channel 未 reset 时积累的 memory，neural classifier 从单次输入/输出 Bloch vectors 推断其 use number。它是 specific channel-memory characterization，并非一般量子学习复杂度保证。",
+        "problem": "重复使用 channel 导致 map 随 use number 变化，是否可从 transmission data 识别这一非平稳性。",
+        "setting": "XX spin-chain QST channel，输入为发出/接收 state Bloch vectors，使用 U(1) symmetry 降为两分量表示。",
+        "main_results": [
+          "摘要报告分类 accuracy>90%，symmetry-reduced representation 约95%，并分析 state/timing sampling 与 confusion earth-mover distance。"
+        ],
+        "techniques": [
+          "supervised classifier 与 symmetry-aware feature reduction。"
+        ],
+        "assumptions": [
+          "结果依 channel、training distribution 与时间采样；Bloch-vector estimation 自身需要 measurement copies。"
+        ],
+        "limitations": [
+          "摘要未给 experimental shots、跨 channel generalization 或对 adversarial drift 的 certificate。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "具体连接 channel memory 的可辨识性；不能把普通 feed-forward network 误认为 quantum adaptive feedback。"
+        ],
+        "follow_up": [
+          "读者建议：计入 Bloch-vector tomography shots，并检验 use-number prediction 是否能改善 fixed-gate noise stationarity tests。"
+        ],
+        "relevance_score": 75,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.38844v1"
+      }
+    },
+    {
+      "id": "2610.38554",
+      "version": 1,
+      "analysis": {
+        "summary": "correctable coherent errors 可给 encoded magic state 添加 syndrome-sector magic；syndrome extraction 去掉这部分而恢复 logical robustness。因而物理 RoM 的下降不必意味着 logical resource 被破坏。",
+        "problem": "如何区分 correctable physical coherent error 带入的 nonstabilizerness 与真正 stored logical magic，以及何时 syndrome extraction 会意外测 logical operator。",
+        "setting": "任意 stabilizer encoding，unitary U 支持在 correctable 且不支持 stabilizer 的区域；另比较 Pauli-noise memory lifetimes。",
+        "main_results": [
+          "作者称 encoded-state robustness 等于 logical state 加一份 U 的 Choi state 的 robustness；这是 composite-state statement，不能擅自改成两个数值 RoM 的普通加法。syndrome extraction 移除该 Choi contribution。",
+          "非-Clifford error 的 removed magic 为正；某些两 qubit gates 的 magic capacity 等于 Choi-state robustness。",
+          "rotated surface code 的 low code-capacity depolarizing model 中，选择 stored magic state 的 plane 将 lifetime 改善约1.5倍。"
+        ],
+        "techniques": [
+          "RoM tensor-resource bounds、syndrome-sector decomposition 与 Clifford-error linear-algebra test。"
+        ],
+        "assumptions": [
+          "correctable region/no stabilizer support 条件不能省略；code-capacity 与 circuit-level noise 不可混用。"
+        ],
+        "limitations": [
+          "摘要未给具体 RoM convention、lifetime threshold 与所有常数，本报告不推导一般 noisy-gadget magic rate。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "高度相关 logical QEC 与 magic preservation 的关系。"
+        ],
+        "follow_up": [
+          "读者建议：对固定 code/recovery 分开记录 physical、syndrome 和 logical magic，检查 extraction 是否测到了 logical information。"
+        ],
+        "relevance_score": 98,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.38554v1"
+      }
+    },
+    {
+      "id": "2611.28958",
+      "version": 1,
+      "analysis": {
+        "summary": "本文研究spin-bath decoherence 的 semiclassical cluster simulation，与当前研究任务的具体连接不足。",
+        "problem": "spin-bath decoherence 的 semiclassical cluster simulation的建模或实测比较。",
+        "setting": "sensor 与强耦合 bath spins quantum clustering，其余 classical bath。",
+        "main_results": [
+          "作者重现 NV/molecular-qubit coherence revivals，并把某些 GPU simulations 缩短为 CPU 分钟级。"
+        ],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "虽然包含 DD pulses，本文摘要核心是 classical spin-dynamics simulator；未给 gate/SPAM certification、logical QEC 或 information-access 方法。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "低相关：虽然包含 DD pulses，本文摘要核心是 classical spin-dynamics simulator；未给 gate/SPAM certification、logical QEC 或 information-access 方法。"
+        ],
+        "follow_up": [],
+        "relevance_score": 42,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2611.28958v1"
+      }
+    },
+    {
+      "id": "2610.39266",
+      "version": 1,
+      "analysis": {
+        "summary": "本文研究cavity dissipative optimization 的 false-vacuum decay，与当前研究任务的具体连接不足。",
+        "problem": "cavity dissipative optimization 的 false-vacuum decay的建模或实测比较。",
+        "setting": "MaxCut/MIS atomic-spin Hamiltonians 和有限尺寸数值 mixing。",
+        "main_results": [
+          "作者基于 median mixing 与 instance-averaged ground-state probability 估计优于 Grover 的 scaling。"
+        ],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "属于一般模拟型 optimization；没有当前 topics 的具体 certification/QEC/design/magic/quantum-data 联系，有限尺寸拟合也不等于 worst-case speedup theorem。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "低相关：属于一般模拟型 optimization；没有当前 topics 的具体 certification/QEC/design/magic/quantum-data 联系，有限尺寸拟合也不等于 worst-case speedup theorem。"
+        ],
+        "follow_up": [],
+        "relevance_score": 40,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.39266v1"
+      }
+    },
+    {
+      "id": "2610.38974",
+      "version": 1,
+      "analysis": {
+        "summary": "本文研究classical malware records 的 variational quantum diffusion，与当前研究任务的具体连接不足。",
+        "problem": "classical malware records 的 variational quantum diffusion的建模或实测比较。",
+        "setting": "opcode latent vectors、17 malware families 与 post-selected sampling。",
+        "main_results": [
+          "作者观察 denoising infidelity 改善但 downstream classification 弱，postselection acceptance 极低。"
+        ],
+        "techniques": [],
+        "assumptions": [],
+        "limitations": [
+          "classical-data generative ML，没有 rigorous quantum-data guarantee；mid-circuit measurement 关键词不足以构成 adaptive resource theorem。",
+          "本条分析仅依据论文摘要，未核查正文证明和摘要中未说明的假设。"
+        ],
+        "relevance": [
+          "低相关：classical-data generative ML，没有 rigorous quantum-data guarantee；mid-circuit measurement 关键词不足以构成 adaptive resource theorem。"
+        ],
+        "follow_up": [],
+        "relevance_score": 15,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "abstract",
+        "source_url": "https://arxiv.org/abs/2610.38974v1"
+      }
+    },
+    {
+      "id": "2611.33312",
+      "version": 1,
+      "analysis": {
+        "summary": "本文区分 global charge conservation 与 local gauge redundancy 对 randomization 的约束。Gauss law 不必带来不可消除的系统级记忆；matter 对 boundary flux 的 screening 能把障碍限制在一个模型相关尺度上。作者用 gauge-symmetric gluing 构造 approximate designs，但 strong PRU 与快速 scrambling 的叙述需要分别看具体构造和 conjecture，不能统称已证物理定律。",
+        "problem": "global continuous symmetry 可阻碍 logarithmic-depth symmetric designs。gauge symmetry 是否也必然如此，还是丰富的 local matter spectrum 可以屏蔽边界信息。",
+        "setting": "一维 open U(1) chain，n matter sites 和 n+1 flux links；integer charges 在有限区间，flux E∈{0,…,Emax}。Gauss law 决定 physical Hilbert space，给定所有 link flux 后 matter charges 由相邻 flux 差确定。local spectral cutoffs 可随 n 变化，故 diff(n) 并非默认 universal constant。",
+        "main_results": [
+          "randomization scale c 是任意 allowed boundary-flux mismatch 都能在 patch 内被实现的最小长度。q∈{−1,0,1} 时 c=Emax；c=1 时 physical space 可等同 local flux tensor-product space。可实现所有 sectors 与 sectors 的统计权重已近似解耦是不同条件，后者由 diffusive scale 控制。",
+          "subdiffusive constituent supports 的 glued random circuits 可与 physical Haar ensemble 区分。反向 gluing theorem 用相邻 patch pairs 上 independent controlled physical k-designs：local relative error ε/n，充分 patch-size 条件为 ξ≫diff(n)log[n k² c(n)^(O(k))/(ε diff(n))]。",
+          "relative-error convention 是 twirling channels 的 completely-positive order，即 (1−ε)ΦH≼ΦE≼(1+ε)ΦH。固定 k、inverse-polynomial ε 时 patch size 约 diff(n)log n；物理深度还需计 local sampler implementation，不能把两个大 block layers 当作两层 two-qubit gates。"
+        ],
+        "techniques": [
+          "先计数 Gauss-law-compatible sectors，分析 boundary-flux correlations 的衰减，再在 physical space 上 glue controlled local designs。",
+          "c>1 时 higher-moment permutations 带 c^(O(k)) prefactors，现有界不能直接支持 sublinear patches 下任意高 design order；c=1 的额外 gauge corrections 消失，可恢复 unconstrained gluing 结构。"
+        ],
+        "assumptions": [
+          "结论针对指定 charge/flux spectra、sector structure、local controlled designs 和误差规格。PRU 的 computational security 不等于仅 fixed-order moment matching。",
+          "screening 与 black-hole discharge 的联系来自 toy model；“complete screening 加 energetic condition 能保证真实 gauge systems 最快 scrambling”仍是 conjectural physical interpretation。"
+        ],
+        "limitations": [
+          "本次阅读 definitions、main gluing theorem、no-go statement 与机制节选；未核查全部 supplemental proofs、strong-design constructions 和 cryptographic assumptions。",
+          "摘要中 incomplete screening 对 order 的限制不能扩大为所有 circuits 的 general no-go。",
+          "没有给 ancilla-free two-qubit depth、magic count 与 target-query costs 同时最优的结果。",
+          "本报告阅读指定 v1 的 HTML 正文节选，提取文本至多 60000 字符；未逐项核查全部证明、附录和图表，公式宏与图中文字可能提取不完整。作者结论不等于独立证明核验。"
+        ],
+        "relevance": [
+          "直接契合 1D gluing、unitary designs、relative approximation 和 symmetry-induced information access，特别适合区分 screening feasibility 与真正 mixing/randomization。"
+        ],
+        "follow_up": [
+          "读者建议：固定 microscopic cutoffs 和 local sampler 后重新核算 depth、design order、magic 和 controlled-boundary resources，避免把 block architecture 与原生线路深度混同。"
+        ],
+        "relevance_score": 98,
+        "status": "analyzed",
+        "model": "ChatGPT hosted",
+        "analyzed_at": "2026-11-28T01:10:33Z",
+        "evidence_level": "full_text_excerpt",
+        "source_url": "https://arxiv.org/html/2611.33312v1"
+      }
+    }
+  ]
+}
