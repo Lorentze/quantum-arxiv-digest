@@ -4,6 +4,43 @@
       "kind": "analysis",
       "paper": {
         "doi": "",
+        "id": "2610.19299",
+        "version": 1,
+        "title": "Gap-Priced $|T\\rangle$-States: Dynamic $|T\\rangle$ Post-Selection and Budget-Aware Factory Provisioning",
+        "authors": [
+          "Maxwell Poster",
+          "Sayam Sethi",
+          "Yuhao Liu",
+          "Jonathan Baker",
+          "Costin Iancu"
+        ],
+        "abstract": "Magic $|T\\rangle$-state preparation dominates the cost of fault-tolerant quantum computation on surface codes, yet cultivation and distillation are typically provisioned statically, leaving much of the program's error budget unused. We present Gap-Priced $|T\\rangle$ States (GP$|T\\rangle$-S), a lattice surgery scheduler and factory allocator that co-optimizes both methods under a total $T$-error budget. GP$|T\\rangle$-S uses the complementary gap of each cultivated state as a fidelity estimate and dynamically adjusts the cultivation gap cutoff, converting budget slack into speed by giving the scheduler control over the cultivation post-selection. GP$|T\\rangle$-S also characterizes distillation factories by size, $|T\\rangle$-state production rate, and budget slack, and introduces cultivating factories that embed cultivation within routing channels, achieving fidelities otherwise requiring two-level distillation at a single-level footprint. GP$|T\\rangle$-S organizes these characterizations into a factory catalog, and performs distillation factory allocation over this catalog in tandem with the gap cutoff using dynamic-programming to achieve one of i) minimum spacetime volume, ii) minimum execution time, or iii) minimum space overhead, all within a user-provided $T$-error budget. Across sixteen benchmarks under high and low $T$-error budgets of $10^{-3}$ and $10^{-5}$ respectively, GP$|T\\rangle$-S consistently outperforms cultivation-only and single-factory baselines without exceeding the budget, achieving a 5.5$\\times$ geometric mean speedup in logical cycle count and a 3.4$\\times$ geometric mean reduction in space-time volume.",
+        "url": "https://arxiv.org/abs/2610.19299",
+        "pdf_url": "https://arxiv.org/pdf/2610.19299v1",
+        "published": "2026-10-13T23:17:26Z",
+        "updated": "2026-10-13T23:17:26Z",
+        "categories": [
+          "quant-ph"
+        ],
+        "keyword_score": 3,
+        "topics": [
+          "adaptive_resources"
+        ],
+        "keyword_matches": {
+          "adaptive_resources": [
+            "state preparation"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-15T04:47:49Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
         "id": "2610.19255",
         "version": 1,
         "title": "Quantum-classical algorithm interpolation for spatial search",
@@ -1570,65 +1607,6 @@
           ],
           "magic_stabilizer": [
             "stabilizer"
-          ]
-        },
-        "first_seen_at": "2026-10-12T02:38:41Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "id": "2610.06574",
-        "version": 1,
-        "title": "CT-bMPS: Approximate Tensor Network Contraction with Boundary MPS on Contraction Trees",
-        "authors": [
-          "Hidetaka Manabe",
-          "Feng Pan"
-        ],
-        "abstract": "We introduce contraction tree boundary matrix product states (CT-bMPS), a scalable approximate contraction method for general closed tensor networks. CT-bMPS represents the boundary tensor and its complementary environment at each edge of a contraction tree as matrix product states. This representation allows local compression based on a reduced transition matrix to incorporate environment information along arbitrary contraction trees, while keeping the time and memory costs polynomial in the network size and bond dimension. We benchmark the method on a variety of models and applications, including Ising partition functions, random tensor networks, kicked Ising dynamics, and quantum error correction decoding. These benchmarks demonstrate improved accuracy and computational efficiency over existing general-purpose approximate contraction methods, together with the ability to handle larger and more complex networks. Optimized contraction trees and environment updates substantially improve accuracy without increasing the bond dimension. These results establish CT-bMPS as a general and scalable approximation framework with flexible contraction orders and environment-based compression for a wide range of applications.",
-        "url": "https://arxiv.org/abs/2610.06574",
-        "pdf_url": "https://arxiv.org/pdf/2610.06574v1",
-        "published": "2026-10-05T15:53:29Z",
-        "updated": "2026-10-05T15:53:29Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "logical_qec"
-        ],
-        "keyword_matches": {
-          "logical_qec": [
-            "quantum error correction"
-          ]
-        },
-        "first_seen_at": "2026-10-12T02:38:41Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "id": "2610.06551",
-        "version": 1,
-        "title": "Mid-circuit measurements and feedforward implement every unitary exactly in constant depth",
-        "authors": [
-          "Chenfeng Cao"
-        ],
-        "abstract": "Mid-circuit measurements with feedforward reduce the optimal worst-case quantum depth for exact $n$-qubit unitary synthesis from $Θ(n)$ to $O(1)$, using arbitrary one- and two-qubit gates and unrestricted ancillary space. Measurements and resets without feedforward remain subject to the circuit causal-cone bound. Our deterministic construction uses single-qubit measurements, $O(1)$ rounds of parity feedforward, and $O(n4^n\\log(n+2))$ total qubits, with all ancillas starting and ending in $|0\\rangle$. Classical processing is not counted in quantum depth. We teleport only the matrix error of an approximation by Nehoran and Yuen. An exactly prepared ancillary state encodes this error, whose action is added back by coherent interference. At operator-norm error $2^{-n}$, one step of amplitude amplification suffices. Coherent fanout circuits achieve the same constant-depth bound, while circuits using only one- and two-qubit gates attain depth $Θ(n)$ with $O(4^n\\log^2(n+2))$ gates. Generic targets require $Ω(4^n/(h+1))$ qubits at depth $h$, even under unrestricted classical control. Our depth-width trade-offs meet this bound within a factor $O(n^2)$ for $1\\le h\\le2^n$.",
-        "url": "https://arxiv.org/abs/2610.06551",
-        "pdf_url": "https://arxiv.org/pdf/2610.06551v1",
-        "published": "2026-10-05T15:43:41Z",
-        "updated": "2026-10-05T15:43:41Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "adaptive_resources"
-        ],
-        "keyword_matches": {
-          "adaptive_resources": [
-            "feedforward"
           ]
         },
         "first_seen_at": "2026-10-12T02:38:41Z"

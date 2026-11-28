@@ -4,6 +4,82 @@
       "kind": "analysis",
       "paper": {
         "doi": "",
+        "id": "2610.23076",
+        "version": 1,
+        "title": "Covert Digital Semantic Communication With Movable Antennas: Constellation Shaping, Spatial Optimization, and Semantic Mapping",
+        "authors": [
+          "Yunfan Bai",
+          "Yuwen Qian",
+          "Hao Jiang",
+          "Yiyang Ni",
+          "Feng Shu",
+          "Jun Li",
+          "Shuning Zhang"
+        ],
+        "abstract": "Digital semantic communication (SemCom) is emerging as a bandwidth-efficient paradigm for next-generation wireless networks by delivering the meaning of a source over finite constellations. However, the broadcast nature of wireless channels exposes transmissions to adversarial wardens, while discrete symbols deviate from the Gaussian signaling assumed by conventional covert communication. In this paper, we propose a covert digital SemCom system assisted by movable antennas (MAs), where the constellation, the antenna positions, and the semantic transceiver are jointly designed to conceal the transmission while preserving the semantic fidelity. Specifically, the maximum covert rate against the optimal detector with unknown noise level is derived in closed-form, which reveals that the legitimate signal-to-noise ratio (SNR) scales with the moment-matching order of the constellation and the spatial gain provided by the MA array. A Gauss-Laguerre ring constellation is then designed to raise the moment-matching order under the peak power constraints, and a covert symbol mapping with rank-to-ring assignment and scrambling is developed to carry the semantics in the ordering of the latent magnitudes. Guided by the derived semantic distortion bound, the semantic encoder and decoder are trained end-to-end through an invertible flow over the designed constellation and MA array. Simulation results demonstrate that the proposed scheme supports a higher achievable covert rate and improves the reconstruction quality by 24% compared to state-of-the-art SemCom schemes.",
+        "url": "https://arxiv.org/abs/2610.23076",
+        "pdf_url": "https://arxiv.org/pdf/2610.23076v1",
+        "published": "2026-10-16T07:45:48Z",
+        "updated": "2026-10-16T07:45:48Z",
+        "categories": [
+          "eess.SP",
+          "cs.IT"
+        ],
+        "keyword_score": 4,
+        "topics": [
+          "random_designs"
+        ],
+        "keyword_matches": {
+          "random_designs": [
+            "scrambling"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-19T04:48:43Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
+        "id": "2610.22966",
+        "version": 1,
+        "title": "Encodings and Node Architecture: Lessons from the Fault-Tolerant Distributed Transversal Fanout",
+        "authors": [
+          "Seng W. Loke"
+        ],
+        "abstract": "An encoding choice specifies the quantum error-correcting code used to encode logical qubits at a given node. Different encoding choices may differ in the number of physical qubits, the number of encoded logical qubits, the code distance, and the available fault-tolerant operations. We study different encodings for a distributed transversal fanout operation and look at its implications on node architecture. Our experiments suggest that an encoding with higher distance, even if requiring more ebits, can yield a lower logical error rate for distributed operations, and that ``upgrading'' an encoding prior to distributed operations and having a cache, as part of node architecture, for qubits can be useful for distributed operations.",
+        "url": "https://arxiv.org/abs/2610.22966",
+        "pdf_url": "https://arxiv.org/pdf/2610.22966v1",
+        "published": "2026-10-16T05:38:37Z",
+        "updated": "2026-10-16T05:38:37Z",
+        "categories": [
+          "quant-ph",
+          "cs.DC"
+        ],
+        "keyword_score": 5,
+        "topics": [
+          "logical_qec"
+        ],
+        "keyword_matches": {
+          "logical_qec": [
+            "quantum error-correcting",
+            "logical error",
+            "transversal"
+          ]
+        },
+        "sources": [
+          "arxiv"
+        ],
+        "first_seen_at": "2026-10-19T04:48:43Z"
+      }
+    },
+    {
+      "kind": "analysis",
+      "paper": {
+        "doi": "",
         "id": "2610.24025",
         "version": 1,
         "title": "New lower bounds for binary constant-weight codes from prescribed-automorphism search, and two quantum codes meeting their upper bounds",
@@ -1641,43 +1717,6 @@
             "randomized benchmarking",
             "SPAM"
           ],
-          "adaptive_resources": [
-            "state preparation"
-          ]
-        },
-        "sources": [
-          "arxiv"
-        ],
-        "first_seen_at": "2026-10-15T04:47:49Z"
-      }
-    },
-    {
-      "kind": "analysis",
-      "paper": {
-        "doi": "",
-        "id": "2610.19299",
-        "version": 1,
-        "title": "Gap-Priced $|T\\rangle$-States: Dynamic $|T\\rangle$ Post-Selection and Budget-Aware Factory Provisioning",
-        "authors": [
-          "Maxwell Poster",
-          "Sayam Sethi",
-          "Yuhao Liu",
-          "Jonathan Baker",
-          "Costin Iancu"
-        ],
-        "abstract": "Magic $|T\\rangle$-state preparation dominates the cost of fault-tolerant quantum computation on surface codes, yet cultivation and distillation are typically provisioned statically, leaving much of the program's error budget unused. We present Gap-Priced $|T\\rangle$ States (GP$|T\\rangle$-S), a lattice surgery scheduler and factory allocator that co-optimizes both methods under a total $T$-error budget. GP$|T\\rangle$-S uses the complementary gap of each cultivated state as a fidelity estimate and dynamically adjusts the cultivation gap cutoff, converting budget slack into speed by giving the scheduler control over the cultivation post-selection. GP$|T\\rangle$-S also characterizes distillation factories by size, $|T\\rangle$-state production rate, and budget slack, and introduces cultivating factories that embed cultivation within routing channels, achieving fidelities otherwise requiring two-level distillation at a single-level footprint. GP$|T\\rangle$-S organizes these characterizations into a factory catalog, and performs distillation factory allocation over this catalog in tandem with the gap cutoff using dynamic-programming to achieve one of i) minimum spacetime volume, ii) minimum execution time, or iii) minimum space overhead, all within a user-provided $T$-error budget. Across sixteen benchmarks under high and low $T$-error budgets of $10^{-3}$ and $10^{-5}$ respectively, GP$|T\\rangle$-S consistently outperforms cultivation-only and single-factory baselines without exceeding the budget, achieving a 5.5$\\times$ geometric mean speedup in logical cycle count and a 3.4$\\times$ geometric mean reduction in space-time volume.",
-        "url": "https://arxiv.org/abs/2610.19299",
-        "pdf_url": "https://arxiv.org/pdf/2610.19299v1",
-        "published": "2026-10-13T23:17:26Z",
-        "updated": "2026-10-13T23:17:26Z",
-        "categories": [
-          "quant-ph"
-        ],
-        "keyword_score": 3,
-        "topics": [
-          "adaptive_resources"
-        ],
-        "keyword_matches": {
           "adaptive_resources": [
             "state preparation"
           ]
